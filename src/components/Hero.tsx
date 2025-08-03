@@ -1,46 +1,61 @@
-
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
+import HeroLoadingAnimations from './hero/HeroLoadingAnimations';
 
 const Hero = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    // Trigger loading sequence
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+      setIsLoaded(true);
+    }, 100); // Small delay to ensure DOM is ready
+
+    return () => clearTimeout(loadingTimer);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Cinematic Background with AI Core */}
-      <div className={`absolute inset-0 ${isLoaded ? 'hero-entrance' : ''}`}>
+    <section className={`relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden ${isLoading ? 'hero-loading' : 'hero-loaded'}`}>
+      {/* Loading Animations */}
+      <HeroLoadingAnimations />
+
+      {/* Cinematic Background with AI Core - Pre-rendered */}
+      <div className="hero-background absolute inset-0">
         <CinematicBackground />
       </div>
 
-      {/* Content - Enhanced with better spacing and preserved Dutch text */}
+      {/* Content - Enhanced with loading choreography */}
       <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Main Content Container with Reflection */}
+          {/* Main Content Container with Loading States */}
           <div className="relative">
             {/* Main Content */}
             <div className="relative z-10">
-              {/* Animated Headline */}
-              <div className={`mb-2 ${isLoaded ? 'premium-fade-in premium-stagger-1' : ''}`}>
-                <AnimatedHeadline />
+              {/* Animated Headline with word-by-word loading */}
+              <div className="hero-headline mb-2">
+                <div className="inline-block">
+                  <span className="word-1 inline-block opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight">Wij</span>
+                  <span className="word-2 inline-block opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight ml-4">bouwen</span>
+                  <br className="hidden sm:block" />
+                  <span className="word-3 inline-block opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-white via-premium-silver to-white bg-clip-text text-transparent mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight">AI-systemen</span>
+                </div>
               </div>
               
-              {/* Enhanced subtitle with premium typography - Dutch text preserved */}
-              <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 ${isLoaded ? 'premium-fade-in premium-stagger-2' : ''}`}>
-                Wij bouwen AI-systemen die uw business 
+              {/* Enhanced subtitle with loading state */}
+              <p className="hero-subtitle opacity-0 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+                die uw business 
                 <br className="hidden sm:block" />
                 <span className="text-white font-medium bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">daadwerkelijk transformeren.</span>
               </p>
               
-              <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 ${isLoaded ? 'premium-fade-in premium-stagger-3' : ''}`}>
+              <div className="hero-buttons opacity-0 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
                 <Button 
-                  className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
+                  className="hero-button-1 opacity-0 group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
                   style={{
                     background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
                     boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
@@ -54,7 +69,7 @@ const Hero = () => {
                 
                 <Button 
                   variant="outline" 
-                  className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-700 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
+                  className="hero-button-2 opacity-0 relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-700 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
                   style={{
                     boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                   }}
@@ -67,7 +82,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Apple-style Reflection Effect */}
+            {/* Apple-style Reflection Effect with Loading State */}
             <div className="absolute top-full left-0 right-0 h-[300px] sm:h-[400px] pointer-events-none overflow-hidden">
               <div 
                 className="absolute inset-0 opacity-20 scale-y-[-1] origin-top"
@@ -79,22 +94,25 @@ const Hero = () => {
                   transform: 'scaleY(-1) translateY(-20px)'
                 }}
               >
-                {/* Reflected Headline */}
-                <div className="mb-2 premium-fade-in premium-stagger-1">
-                  <AnimatedHeadline />
+                {/* Reflected Content - Mirrors the loading states */}
+                <div className="hero-headline mb-2">
+                  <div className="inline-block">
+                    <span className="word-1 inline-block opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight">Wij</span>
+                    <span className="word-2 inline-block opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight ml-4">bouwen</span>
+                    <br className="hidden sm:block" />
+                    <span className="word-3 inline-block opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-gradient-to-r from-white via-premium-silver to-white bg-clip-text text-transparent mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight">AI-systemen</span>
+                  </div>
                 </div>
                 
-                {/* Reflected Subtitle */}
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 premium-fade-in premium-stagger-2">
-                  Wij bouwen AI-systemen die uw business 
+                <p className="hero-subtitle opacity-0 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+                  die uw business 
                   <br className="hidden sm:block" />
                   <span className="text-white font-medium bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">daadwerkelijk transformeren.</span>
                 </p>
                 
-                {/* Reflected Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 premium-fade-in premium-stagger-3">
+                <div className="hero-buttons opacity-0 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
                   <Button 
-                    className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
+                    className="hero-button-1 opacity-0 group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
                     style={{
                       background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
                       boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
@@ -108,7 +126,7 @@ const Hero = () => {
                   
                   <Button 
                     variant="outline" 
-                    className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-700 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
+                    className="hero-button-2 opacity-0 relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-700 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
                     style={{
                       boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                     }}
@@ -125,6 +143,11 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Ambient Glow Effect - Delayed entrance */}
+      <div className="hero-ambient-glow absolute inset-0 pointer-events-none opacity-0">
+        <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-blue-500/5 via-purple-500/3 to-transparent rounded-full blur-3xl" />
+      </div>
+
       {/* Premium scroll indicator */}
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block">
         <div className="w-[1px] h-12 sm:h-16 bg-gradient-to-b from-premium-silver/50 to-transparent relative">
@@ -132,19 +155,9 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Hero entrance and interaction animations */}
+      {/* Existing animations styles preserved */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes hero-entrance {
-            0% { opacity: 0; transform: scale(0.85) translateY(20px); filter: blur(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
-          }
-
-          @keyframes premium-fade-in {
-            0% { opacity: 0; transform: translateY(40px) scale(0.98); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-          }
-
           @keyframes premium-scroll-pulse {
             0%, 100% { opacity: 0.5; transform: translateY(0); }
             50% { opacity: 1; transform: translateY(12px); }
@@ -159,18 +172,6 @@ const Hero = () => {
             0% { transform: scale(1); }
             100% { transform: scale(1.02); }
           }
-
-          .hero-entrance {
-            animation: hero-entrance 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          }
-
-          .premium-fade-in {
-            animation: premium-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          }
-
-          .premium-stagger-1 { animation-delay: 0.2s; }
-          .premium-stagger-2 { animation-delay: 0.4s; }
-          .premium-stagger-3 { animation-delay: 0.6s; }
 
           .premium-scroll-pulse {
             animation: premium-scroll-pulse 3s ease-in-out infinite;
