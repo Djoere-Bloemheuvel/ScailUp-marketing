@@ -10,7 +10,7 @@ const CinematicAnimations = () => {
           0% { 
             opacity: 0; 
             transform: scale(0.85) translateY(20px); 
-            filter: blur(10px); 
+            filter: blur(8px); 
           }
           100% { 
             opacity: 1; 
@@ -22,164 +22,126 @@ const CinematicAnimations = () => {
         /* AI Face Specific Animations */
         @keyframes cinematic-face-pulse {
           0%, 100% { 
-            opacity: 0.6; 
+            opacity: 0.4; 
             transform: scale(1); 
-            box-shadow: 0 0 30px rgba(34, 211, 238, 0.1), 0 0 60px rgba(147, 51, 234, 0.05); 
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.05); 
           }
           50% { 
-            opacity: 0.8; 
-            transform: scale(1.02); 
-            box-shadow: 0 0 50px rgba(34, 211, 238, 0.2), 0 0 100px rgba(147, 51, 234, 0.1); 
+            opacity: 0.6; 
+            transform: scale(1.01); 
+            box-shadow: 0 0 60px rgba(34, 211, 238, 0.08); 
           }
         }
 
         @keyframes cinematic-fragment-float {
           0%, 100% { 
-            opacity: 0.3; 
+            opacity: 0.15; 
             transform: translateY(0) rotate(0deg) scale(1); 
           }
           33% { 
-            opacity: 0.6; 
-            transform: translateY(-5px) rotate(5deg) scale(1.1); 
+            opacity: 0.25; 
+            transform: translateY(-3px) rotate(2deg) scale(1.05); 
           }
           66% { 
-            opacity: 0.4; 
-            transform: translateY(3px) rotate(-3deg) scale(0.95); 
+            opacity: 0.18; 
+            transform: translateY(2px) rotate(-1deg) scale(0.98); 
           }
         }
 
-        @keyframes cinematic-face-outline {
+        @keyframes cinematic-matrix-float {
           0%, 100% { 
-            opacity: 0.2; 
-            border-color: rgba(156, 163, 175, 0.2); 
+            opacity: 0.12; 
+            transform: translateY(0) translateX(0) scale(1); 
+          }
+          25% { 
+            opacity: 0.20; 
+            transform: translateY(-2px) translateX(1px) scale(1.02); 
           }
           50% { 
-            opacity: 0.4; 
-            border-color: rgba(34, 211, 238, 0.3); 
+            opacity: 0.15; 
+            transform: translateY(-1px) translateX(-1px) scale(1.01); 
+          }
+          75% { 
+            opacity: 0.18; 
+            transform: translateY(1px) translateX(0.5px) scale(0.99); 
           }
         }
 
         @keyframes cinematic-eye-glow {
           0%, 100% { 
-            opacity: 0.6; 
+            opacity: 0.5; 
             transform: scale(1); 
-            box-shadow: 0 0 10px currentColor; 
+            box-shadow: 0 0 8px currentColor; 
           }
           50% { 
             opacity: 1; 
-            transform: scale(1.2); 
-            box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; 
+            transform: scale(1.15); 
+            box-shadow: 0 0 16px currentColor, 0 0 24px currentColor; 
           }
         }
 
         @keyframes cinematic-face-scan {
           0% { 
-            transform: translateY(-20px); 
+            transform: translateY(-30px); 
             opacity: 0; 
           }
           50% { 
             opacity: 1; 
           }
           100% { 
-            transform: translateY(40px); 
+            transform: translateY(50px); 
             opacity: 0; 
           }
         }
 
         @keyframes cinematic-face-aura {
           0%, 100% { 
-            opacity: 0.8; 
+            opacity: 0.6; 
             transform: scale(1); 
           }
           50% { 
-            opacity: 1; 
-            transform: scale(1.05); 
+            opacity: 0.8; 
+            transform: scale(1.03); 
           }
         }
 
-        @keyframes cinematic-glitch-overlay {
-          0%, 90%, 100% { 
+        @keyframes cinematic-data-formation {
+          0%, 85%, 100% { 
             opacity: 0; 
             transform: translateX(0); 
           }
+          90% { 
+            opacity: 0.08; 
+            transform: translateX(1px); 
+          }
           95% { 
-            opacity: 0.1; 
-            transform: translateX(2px); 
-          }
-          97% { 
-            opacity: 0.05; 
-            transform: translateX(-1px); 
+            opacity: 0.04; 
+            transform: translateX(-0.5px); 
           }
         }
 
-        /* AI Core Floating Animations */
-        @keyframes cinematic-float-1 {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
-            opacity: 0.9; 
-          }
-          50% { 
-            transform: translateY(-8px) scale(1.01); 
-            opacity: 1; 
-          }
-        }
-
-        @keyframes cinematic-float-2 {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
-            opacity: 0.8; 
-          }
-          50% { 
-            transform: translateY(-12px) scale(1.05); 
-            opacity: 1; 
-          }
-        }
-
-        @keyframes cinematic-float-3 {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
-            opacity: 0.7; 
-          }
-          50% { 
-            transform: translateY(-6px) scale(1.02); 
-            opacity: 1; 
-          }
-        }
-
-        @keyframes cinematic-float-4 {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
-            opacity: 0.9; 
-          }
-          50% { 
-            transform: translateY(-10px) scale(1.03); 
-            opacity: 1; 
-          }
-        }
-
-        /* Core Pulsing Animations */
+        /* Core Processing Animations */
         @keyframes cinematic-core-pulse {
           0%, 100% { 
             opacity: 0.6; 
             transform: translate(-50%, -50%) scale(1); 
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.2), 0 0 40px rgba(147, 51, 234, 0.1); 
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1); 
           }
           50% { 
-            opacity: 1; 
-            transform: translate(-50%, -50%) scale(1.15); 
-            box-shadow: 0 0 40px rgba(34, 211, 238, 0.4), 0 0 80px rgba(147, 51, 234, 0.2); 
+            opacity: 0.8; 
+            transform: translate(-50%, -50%) scale(1.02); 
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.15); 
           }
         }
 
-        /* Ring Pulse Animation */
         @keyframes cinematic-ring-pulse {
           0%, 100% { 
             opacity: 0.3; 
             transform: translate(-50%, -50%) scale(1) rotate(0deg); 
           }
           50% { 
-            opacity: 0.7; 
-            transform: translate(-50%, -50%) scale(1.02) rotate(2deg); 
+            opacity: 0.5; 
+            transform: translate(-50%, -50%) scale(1.01) rotate(1deg); 
           }
         }
 
@@ -187,90 +149,93 @@ const CinematicAnimations = () => {
         @keyframes cinematic-pulse-fast {
           0%, 100% { 
             opacity: 0.4; 
-            box-shadow: 0 0 10px currentColor; 
+            box-shadow: 0 0 8px currentColor; 
           }
           50% { 
-            opacity: 1; 
-            box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; 
+            opacity: 0.8; 
+            box-shadow: 0 0 16px currentColor; 
           }
         }
 
         @keyframes cinematic-pulse-medium {
           0%, 100% { 
-            opacity: 0.3; 
-            box-shadow: 0 0 8px currentColor; 
+            opacity: 0.35; 
+            box-shadow: 0 0 6px currentColor; 
           }
           50% { 
-            opacity: 0.8; 
-            box-shadow: 0 0 16px currentColor, 0 0 24px currentColor; 
+            opacity: 0.7; 
+            box-shadow: 0 0 12px currentColor; 
           }
         }
 
         @keyframes cinematic-pulse-slow {
           0%, 100% { 
-            opacity: 0.2; 
-            box-shadow: 0 0 6px currentColor; 
+            opacity: 0.25; 
+            box-shadow: 0 0 4px currentColor; 
           }
           50% { 
             opacity: 0.6; 
-            box-shadow: 0 0 12px currentColor, 0 0 18px currentColor; 
+            box-shadow: 0 0 10px currentColor; 
           }
         }
 
-        /* Glass Shimmer Effect */
-        @keyframes cinematic-glass-shimmer {
+        /* Ambient & Shimmer Effects */
+        @keyframes cinematic-ambient-pulse {
+          0%, 100% { opacity: 0.7; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes cinematic-shimmer-vertical {
+          0% { 
+            transform: translateY(-100%); 
+            opacity: 0; 
+          }
+          50% { 
+            opacity: 1; 
+          }
+          100% { 
+            transform: translateY(200vh); 
+            opacity: 0; 
+          }
+        }
+
+        @keyframes cinematic-shimmer-vertical-delayed {
+          0% { 
+            transform: translateY(200vh); 
+            opacity: 0; 
+          }
+          50% { 
+            opacity: 1; 
+          }
+          100% { 
+            transform: translateY(-100%); 
+            opacity: 0; 
+          }
+        }
+
+        @keyframes cinematic-cta-pulse {
           0%, 100% { 
-            opacity: 1; 
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.02) 50%, transparent 70%); 
+            opacity: 0.15; 
+            transform: translate(-50%, -50%) scale(1); 
           }
           50% { 
-            opacity: 0.8; 
-            background: linear-gradient(45deg, transparent 20%, rgba(255,255,255,0.04) 50%, transparent 80%); 
+            opacity: 0.25; 
+            transform: translate(-50%, -50%) scale(1.05); 
           }
         }
 
-        /* Scan Line Animations */
-        @keyframes cinematic-scan-horizontal {
-          0% { 
-            transform: translateX(-100%); 
-            opacity: 0; 
-          }
-          50% { 
-            opacity: 1; 
-          }
-          100% { 
-            transform: translateX(200%); 
-            opacity: 0; 
-          }
-        }
-
-        @keyframes cinematic-scan-horizontal-delayed {
-          0% { 
-            transform: translateX(200%); 
-            opacity: 0; 
-          }
-          50% { 
-            opacity: 1; 
-          }
-          100% { 
-            transform: translateX(-100%); 
-            opacity: 0; 
-          }
-        }
-
-        /* Depth Float Animation */
         @keyframes cinematic-depth-float {
           0%, 100% { 
             transform: translateY(0) scale(1); 
             opacity: 0.3; 
           }
           33% { 
-            transform: translateY(-20px) scale(1.2); 
-            opacity: 0.7; 
+            transform: translateY(-15px) scale(1.1); 
+            opacity: 0.6; 
           }
           66% { 
-            transform: translateY(-10px) scale(0.9); 
-            opacity: 0.5; 
+            transform: translateY(-8px) scale(0.95); 
+            opacity: 0.4; 
           }
         }
 
@@ -281,119 +246,150 @@ const CinematicAnimations = () => {
 
         /* AI Face Animations */
         .animate-cinematic-face-pulse {
-          animation: cinematic-face-pulse 6s ease-in-out infinite;
+          animation: cinematic-face-pulse 10s ease-in-out infinite;
         }
 
         .animate-cinematic-fragment-float {
-          animation: cinematic-fragment-float 12s ease-in-out infinite;
+          animation: cinematic-fragment-float 15s ease-in-out infinite;
         }
 
-        .animate-cinematic-face-outline {
-          animation: cinematic-face-outline 8s ease-in-out infinite;
+        .animate-cinematic-matrix-float {
+          animation: cinematic-matrix-float 18s ease-in-out infinite;
         }
 
         .animate-cinematic-eye-glow {
-          animation: cinematic-eye-glow 3s ease-in-out infinite;
+          animation: cinematic-eye-glow 4s ease-in-out infinite;
         }
 
         .animate-cinematic-face-scan {
-          animation: cinematic-face-scan 15s linear infinite;
+          animation: cinematic-face-scan 18s linear infinite;
         }
 
         .animate-cinematic-face-aura {
-          animation: cinematic-face-aura 10s ease-in-out infinite;
+          animation: cinematic-face-aura 12s ease-in-out infinite;
         }
 
-        .animate-cinematic-glitch-overlay {
-          animation: cinematic-glitch-overlay 20s ease-in-out infinite;
+        .animate-cinematic-data-formation {
+          animation: cinematic-data-formation 25s ease-in-out infinite;
         }
 
-        /* Existing Core Animations */
-        .animate-cinematic-float-1 {
-          animation: cinematic-float-1 8s ease-in-out infinite;
-        }
-
-        .animate-cinematic-float-2 {
-          animation: cinematic-float-2 6s ease-in-out infinite;
-        }
-
-        .animate-cinematic-float-3 {
-          animation: cinematic-float-3 10s ease-in-out infinite;
-        }
-
-        .animate-cinematic-float-4 {
-          animation: cinematic-float-4 7s ease-in-out infinite;
-        }
-
+        /* Core Animations */
         .animate-cinematic-core-pulse {
-          animation: cinematic-core-pulse 4s ease-in-out infinite;
+          animation: cinematic-core-pulse 8s ease-in-out infinite;
         }
 
         .animate-cinematic-ring-pulse {
-          animation: cinematic-ring-pulse 12s ease-in-out infinite;
+          animation: cinematic-ring-pulse 15s ease-in-out infinite;
         }
 
         .animate-cinematic-pulse-fast {
-          animation: cinematic-pulse-fast 3s ease-in-out infinite;
+          animation: cinematic-pulse-fast 4s ease-in-out infinite;
         }
 
         .animate-cinematic-pulse-medium {
-          animation: cinematic-pulse-medium 5s ease-in-out infinite;
+          animation: cinematic-pulse-medium 6s ease-in-out infinite;
         }
 
         .animate-cinematic-pulse-slow {
-          animation: cinematic-pulse-slow 8s ease-in-out infinite;
+          animation: cinematic-pulse-slow 10s ease-in-out infinite;
         }
 
-        .animate-cinematic-glass-shimmer {
-          animation: cinematic-glass-shimmer 15s ease-in-out infinite;
+        .animate-cinematic-ambient-pulse {
+          animation: cinematic-ambient-pulse 20s ease-in-out infinite;
         }
 
-        .animate-cinematic-scan-horizontal {
-          animation: cinematic-scan-horizontal 20s ease-in-out infinite;
+        .animate-cinematic-shimmer-vertical {
+          animation: cinematic-shimmer-vertical 15s ease-in-out infinite;
         }
 
-        .animate-cinematic-scan-horizontal-delayed {
-          animation: cinematic-scan-horizontal-delayed 25s ease-in-out infinite;
+        .animate-cinematic-shimmer-vertical-delayed {
+          animation: cinematic-shimmer-vertical-delayed 18s ease-in-out infinite;
+        }
+
+        .animate-cinematic-cta-pulse {
+          animation: cinematic-cta-pulse 12s ease-in-out infinite;
         }
 
         .animate-cinematic-depth-float {
-          animation: cinematic-depth-float 12s ease-in-out infinite;
+          animation: cinematic-depth-float 20s ease-in-out infinite;
         }
 
         /* Mobile Optimizations */
         @media (max-width: 768px) {
-          .animate-cinematic-pulse-fast,
-          .animate-cinematic-pulse-medium,
-          .animate-cinematic-pulse-slow {
-            animation-duration: 4s;
-          }
-          
-          .animate-cinematic-float-1,
-          .animate-cinematic-float-2,
-          .animate-cinematic-float-3,
-          .animate-cinematic-float-4 {
-            animation-duration: 6s;
-          }
-          
-          .animate-cinematic-core-pulse {
-            animation-duration: 3s;
-          }
-          
-          .animate-cinematic-glass-shimmer {
-            animation-duration: 8s;
-          }
-
+          /* Reduce animation intensity on mobile */
           .animate-cinematic-face-pulse {
-            animation-duration: 4s;
+            animation-duration: 8s;
           }
 
-          .animate-cinematic-fragment-float {
-            animation-duration: 8s;
+          .animate-cinematic-fragment-float,
+          .animate-cinematic-matrix-float {
+            animation-duration: 12s;
           }
 
           .animate-cinematic-face-scan {
+            animation-duration: 12s;
+          }
+
+          .animate-cinematic-shimmer-vertical,
+          .animate-cinematic-shimmer-vertical-delayed {
             animation-duration: 10s;
+          }
+
+          .animate-cinematic-ambient-pulse {
+            animation-duration: 15s;
+          }
+
+          /* Reduce transform effects on mobile for performance */
+          @keyframes cinematic-face-pulse {
+            0%, 100% { 
+              opacity: 0.3; 
+              transform: scale(1); 
+            }
+            50% { 
+              opacity: 0.5; 
+              transform: scale(1.005); 
+            }
+          }
+
+          @keyframes cinematic-fragment-float {
+            0%, 100% { 
+              opacity: 0.1; 
+              transform: translateY(0); 
+            }
+            50% { 
+              opacity: 0.2; 
+              transform: translateY(-1px); 
+            }
+          }
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-cinematic-face-pulse,
+          .animate-cinematic-fragment-float,
+          .animate-cinematic-matrix-float,
+          .animate-cinematic-eye-glow,
+          .animate-cinematic-face-scan,
+          .animate-cinematic-face-aura,
+          .animate-cinematic-data-formation,
+          .animate-cinematic-core-pulse,
+          .animate-cinematic-ring-pulse,
+          .animate-cinematic-pulse-fast,
+          .animate-cinematic-pulse-medium,
+          .animate-cinematic-pulse-slow,
+          .animate-cinematic-ambient-pulse,
+          .animate-cinematic-shimmer-vertical,
+          .animate-cinematic-shimmer-vertical-delayed,
+          .animate-cinematic-cta-pulse,
+          .animate-cinematic-depth-float {
+            animation: none;
+          }
+
+          .cinematic-entrance {
+            animation: none;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            filter: blur(0px);
           }
         }
       `
