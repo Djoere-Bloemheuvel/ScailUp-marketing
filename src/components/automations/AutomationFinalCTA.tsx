@@ -1,3 +1,4 @@
+
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CinematicBackground from '@/components/hero/CinematicBackground';
@@ -14,6 +15,41 @@ const AutomationFinalCTA = () => {
       {/* Use the same cinematic background as the hero section but hide glass container */}
       <div className="absolute inset-0 opacity-30">
         <CinematicBackground hideGlassContainer={true} />
+      </div>
+      
+      {/* Additional bottom corner ambient lighting */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Bottom-left corner glow */}
+        <div 
+          className="absolute -bottom-1/3 -left-1/4 w-96 h-96 rounded-full opacity-40 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(34, 211, 238, 0.18) 35%, rgba(37, 99, 235, 0.08) 60%, transparent 85%)',
+            filter: 'blur(100px)',
+            animationDuration: '8s'
+          }}
+        />
+        
+        {/* Bottom-right corner glow */}
+        <div 
+          className="absolute -bottom-1/3 -right-1/4 w-80 h-80 rounded-full opacity-35 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(99, 102, 241, 0.15) 40%, rgba(79, 70, 229, 0.06) 70%, transparent 90%)',
+            filter: 'blur(90px)',
+            animationDuration: '6s',
+            animationDelay: '-3s'
+          }}
+        />
+        
+        {/* Additional bottom center accent glow */}
+        <div 
+          className="absolute -bottom-1/4 left-1/2 transform -translate-x-1/2 w-64 h-64 rounded-full opacity-30 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(16, 185, 129, 0.12) 50%, rgba(59, 130, 246, 0.04) 80%, transparent 95%)',
+            filter: 'blur(80px)',
+            animationDuration: '10s',
+            animationDelay: '-5s'
+          }}
+        />
       </div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center">
