@@ -1,289 +1,210 @@
-
-import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
+import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity, Cog, MessageSquare, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Nothing-inspired minimalistic background */}
+      {/* Enhanced AI Ecosystem Background */}
       <div className="absolute inset-0">
-        {/* Subtle gradient overlay */}
+        {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900/20"></div>
         
-        {/* Floating minimal elements inspired by Nothing */}
-        <div className="absolute top-20 left-20">
-          <div className="w-24 h-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center nothing-float">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white/20 to-white/5 border border-white/20"></div>
+        {/* Scanning sweeps that move across screen */}
+        <div className="absolute inset-0">
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent scan-sweep-horizontal" />
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-500/20 to-transparent scan-sweep-vertical" />
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent scan-sweep-diagonal" />
+        </div>
+
+        {/* AI Automations Device - Top Left */}
+        <div className="absolute top-16 left-16 ai-device-ecosystem-float">
+          <div className="relative w-48 h-32">
+            {/* Main device body */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-950/40 to-purple-950/40 border border-blue-400/20 backdrop-blur-md ai-ecosystem-glow-blue">
+              {/* Internal processing grid */}
+              <div className="absolute inset-4 grid grid-cols-3 gap-1">
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div
+                    key={`automation-cell-${i}`}
+                    className="bg-blue-400/20 rounded-sm ai-ecosystem-pulse"
+                    style={{ animationDelay: `${i * 0.2}s` }}
+                  />
+                ))}
+              </div>
+              
+              {/* Central processing core */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-blue-400/50 rounded-full flex items-center justify-center">
+                <Cog className="w-4 h-4 text-blue-400 ai-ecosystem-spin" />
+              </div>
+
+              {/* Data streams */}
+              <div className="absolute bottom-2 left-2 right-2 h-1 bg-black/50 rounded-full overflow-hidden">
+                <div className="h-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent ai-ecosystem-data-flow" />
+              </div>
+            </div>
+
+            {/* Neural connections */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+              <line x1="100%" y1="50%" x2="120%" y2="40%" stroke="rgba(59, 130, 246, 0.3)" strokeWidth="1" className="ai-ecosystem-connection-pulse" />
+              <line x1="50%" y1="100%" x2="60%" y2="120%" stroke="rgba(59, 130, 246, 0.3)" strokeWidth="1" className="ai-ecosystem-connection-pulse" style={{ animationDelay: '1s' }} />
+            </svg>
           </div>
         </div>
 
-        <div className="absolute top-40 right-32">
-          <div className="w-16 h-16 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm nothing-float-delayed">
-            <div className="w-full h-full rounded-lg bg-gradient-to-br from-premium-silver/20 to-transparent flex items-center justify-center">
-              <div className="w-2 h-2 bg-white/60 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-32 left-32">
-          <div className="w-20 h-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm nothing-float-slow">
-            <div className="w-full h-full rounded-full bg-gradient-to-r from-white/10 to-transparent"></div>
-          </div>
-        </div>
-
-        <div className="absolute top-60 right-20">
-          <div className="w-6 h-6 rounded-full bg-white/20 nothing-pulse"></div>
-        </div>
-
-        <div className="absolute bottom-40 right-40">
-          <div className="w-4 h-4 rounded-sm bg-premium-silver/30 nothing-pulse-delayed"></div>
-        </div>
-      </div>
-
-      {/* Left AI Device - Dashboard/Interface Style */}
-      <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
-        <div className="relative">
-          {/* Main AI Device Body - Dashboard style design */}
-          <div className="relative w-72 h-96 ai-device-float overflow-visible">
-            {/* Custom hexagonal shape using CSS clip-path */}
+        {/* Custom AI SaaS Device - Top Right */}
+        <div className="absolute top-20 right-20 ai-device-ecosystem-float-delayed">
+          <div className="relative w-40 h-40">
+            {/* Hexagonal device */}
             <div 
-              className="absolute inset-0 bg-gradient-to-b from-premium-gray-dark/80 to-black/90 backdrop-blur-xl border border-premium-silver/20 overflow-hidden"
-              style={{
-                clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)',
-                background: 'linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)'
-              }}
-            >
-              {/* Glass effect overlay with premium silver accents */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5"
-                style={{
-                  clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
-                }}
-              ></div>
-            </div>
-            
-            {/* Top Chart Display - Dashboard style */}
-            <div 
-              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-black/60 border border-premium-silver/25 overflow-hidden rounded-lg"
-            >
-              <div className="relative w-full h-full p-3">
-                {/* Mini bar chart visualization */}
-                <div className="flex items-end justify-between h-full space-x-1">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={`chart-bar-${i}`}
-                      className="bg-premium-silver/40 rounded-sm chart-pulse"
-                      style={{
-                        width: '8px',
-                        height: `${20 + (i % 3) * 15}%`,
-                        animationDelay: `${i * 0.2}s`,
-                      }}
-                    />
-                  ))}
-                </div>
-                
-                {/* Chart indicator */}
-                <div className="absolute top-2 right-2">
-                  <BarChart3 className="w-3 h-3 text-premium-silver/60" />
-                </div>
-              </div>
-            </div>
-
-            {/* Left Dashboard Panel */}
-            <div className="absolute top-32 left-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden">
-              {/* Grid pattern background */}
-              <div className="absolute inset-0 opacity-20">
-                <Grid3X3 className="w-full h-full text-premium-silver/30" />
-              </div>
-              
-              {/* Dashboard icons */}
-              <div className="relative p-3 space-y-3">
-                <div className="w-full h-6 bg-premium-silver/30 rounded dashboard-pulse"></div>
-                <div className="w-3/4 h-4 bg-premium-silver/20 rounded dashboard-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-full h-4 bg-premium-silver/25 rounded dashboard-pulse" style={{ animationDelay: '1s' }}></div>
-              </div>
-              
-              {/* Activity indicator */}
-              <div className="absolute bottom-2 right-2">
-                <Activity className="w-4 h-4 text-premium-silver activity-pulse" />
-              </div>
-            </div>
-
-            {/* Right Dashboard Panel */}
-            <div className="absolute top-32 right-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden">
-              {/* Layer visualization */}
-              <div className="relative p-3 space-y-2">
-                <div className="flex space-x-1">
-                  <div className="w-4 h-4 bg-premium-silver/40 rounded-sm layer-pulse"></div>
-                  <div className="w-4 h-4 bg-premium-silver/30 rounded-sm layer-pulse" style={{ animationDelay: '0.3s' }}></div>
-                </div>
-                <div className="flex space-x-1">
-                  <div className="w-4 h-4 bg-premium-silver/25 rounded-sm layer-pulse" style={{ animationDelay: '0.6s' }}></div>
-                  <div className="w-4 h-4 bg-premium-silver/35 rounded-sm layer-pulse" style={{ animationDelay: '0.9s' }}></div>
-                </div>
-              </div>
-              
-              {/* Layers icon */}
-              <div className="absolute bottom-2 right-2">
-                <Layers className="w-4 h-4 text-premium-silver layer-icon-pulse" />
-              </div>
-            </div>
-
-            {/* Central Interface Core - Multi-layered dashboard */}
-            <div 
-              className="absolute top-52 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 rounded-xl overflow-hidden"
-            >
-              <div className="relative w-full h-full">
-                {/* Interface grid */}
-                <div className="absolute inset-2 grid grid-cols-2 gap-1">
-                  <div className="bg-premium-silver/20 rounded-sm interface-pulse"></div>
-                  <div className="bg-premium-silver/30 rounded-sm interface-pulse" style={{ animationDelay: '0.25s' }}></div>
-                  <div className="bg-premium-silver/25 rounded-sm interface-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="bg-premium-silver/35 rounded-sm interface-pulse" style={{ animationDelay: '0.75s' }}></div>
-                </div>
-                
-                {/* Central processing indicator */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 border border-premium-silver/40 rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-premium-silver rounded-full central-pulse"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Interface Panel - Command interface */}
-            <div 
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-black/50 border border-premium-silver/20 rounded-lg overflow-hidden"
-            >
-              <div className="relative w-full h-full">
-                {/* Interface elements */}
-                <div className="absolute inset-0 flex items-center px-3">
-                  <div className="flex-1 space-y-1">
-                    <div className="w-3/4 h-2 bg-premium-silver/30 rounded interface-line-pulse"></div>
-                    <div className="w-1/2 h-1 bg-premium-silver/20 rounded interface-line-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  </div>
-                  
-                  {/* Status indicators */}
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-premium-silver/40 rounded-full status-blink"></div>
-                    <div className="w-2 h-2 bg-premium-silver/30 rounded-full status-blink" style={{ animationDelay: '0.3s' }}></div>
-                    <div className="w-2 h-2 bg-premium-silver/50 rounded-full status-blink" style={{ animationDelay: '0.6s' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Subtle glow effect - monochrome with hexagonal shape */}
-            <div 
-              className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-premium-glow"
+              className="absolute inset-0 bg-gradient-to-br from-purple-950/50 to-pink-950/50 border border-purple-400/30 backdrop-blur-md ai-ecosystem-glow-purple"
               style={{
                 clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
               }}
-            ></div>
+            >
+              {/* Central brain */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/30 to-pink-600/30 flex items-center justify-center border border-purple-400/40">
+                <Brain className="w-6 h-6 text-purple-400 ai-ecosystem-brain-pulse" />
+              </div>
+
+              {/* Orbiting data points */}
+              <div className="absolute inset-0 ai-ecosystem-orbit">
+                <div className="absolute top-4 left-1/2 w-2 h-2 bg-purple-400 rounded-full transform -translate-x-1/2" />
+                <div className="absolute bottom-4 left-1/2 w-2 h-2 bg-pink-400 rounded-full transform -translate-x-1/2" />
+                <div className="absolute left-4 top-1/2 w-2 h-2 bg-violet-400 rounded-full transform -translate-y-1/2" />
+                <div className="absolute right-4 top-1/2 w-2 h-2 bg-fuchsia-400 rounded-full transform -translate-y-1/2" />
+              </div>
+            </div>
           </div>
-
-          {/* Device shadow - hexagonal */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 to-black/30 blur-2xl transform translate-y-4 scale-95 -z-10"
-            style={{
-              clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
-            }}
-          ></div>
         </div>
-      </div>
 
-      {/* Right AI Device - Moved lower down */}
-      <div className="absolute right-20 top-2/3 transform -translate-y-1/2 z-20">
-        <div className="relative">
-          {/* Main AI Device Body */}
-          <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-float overflow-hidden">
-            {/* Glass effect overlay */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/15 via-transparent to-black/10"></div>
-            
-            {/* AI Neural Network Display */}
-            <div className="absolute top-8 left-8 right-8 h-20 rounded-2xl bg-black/40 border border-white/20 overflow-hidden">
-              <div className="relative w-full h-full">
-                {/* Neural network nodes */}
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <div
-                    key={`right-node-${i}`}
-                    className="absolute w-2 h-2 bg-premium-silver rounded-full neural-pulse"
-                    style={{
-                      left: `${15 + (i % 4) * 20}%`,
-                      top: `${20 + Math.floor(i / 4) * 25}%`,
-                      animationDelay: `${i * 0.3}s`
-                    }}
-                  />
-                ))}
+        {/* Consultancy Device - Middle Left */}
+        <div className="absolute top-1/2 left-8 transform -translate-y-1/2 ai-device-ecosystem-float-slow">
+          <div className="relative w-36 h-24">
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-gray-900/60 to-blue-950/30 border border-gray-400/20 backdrop-blur-md ai-ecosystem-glow-gray">
+              {/* Message interface */}
+              <div className="absolute inset-3 space-y-2">
+                <div className="h-2 bg-gray-400/30 rounded-full ai-ecosystem-message-type" />
+                <div className="h-1.5 bg-gray-400/20 rounded-full w-3/4 ai-ecosystem-message-type" style={{ animationDelay: '0.5s' }} />
+                <div className="h-1.5 bg-blue-400/30 rounded-full w-1/2 ai-ecosystem-message-type" style={{ animationDelay: '1s' }} />
+              </div>
+              
+              {/* Communication indicator */}
+              <div className="absolute top-2 right-2">
+                <MessageSquare className="w-4 h-4 text-gray-400 ai-ecosystem-message-pulse" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* AI Studio Service Device - Bottom Center */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 ai-device-ecosystem-float-center">
+          <div className="relative w-56 h-36">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-950/50 to-blue-950/50 border border-cyan-400/30 backdrop-blur-md ai-ecosystem-glow-cyan">
+              {/* Multi-layered interface */}
+              <div className="absolute inset-6">
+                {/* Top layer - Analytics */}
+                <div className="absolute top-0 left-0 right-0 h-4 bg-black/40 rounded-lg border border-cyan-400/20">
+                  <div className="flex items-center justify-between h-full px-2">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div
+                        key={`analytics-bar-${i}`}
+                        className="w-1 bg-cyan-400/60 rounded-full ai-ecosystem-analytics-pulse"
+                        style={{
+                          height: `${60 + (i % 3) * 20}%`,
+                          animationDelay: `${i * 0.3}s`
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
                 
-                {/* Neural connections */}
-                <svg className="absolute inset-0 w-full h-full">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <line
-                      key={`right-connection-${i}`}
-                      x1={`${20 + (i % 3) * 25}%`}
-                      y1={`${30 + Math.floor(i / 3) * 20}%`}
-                      x2={`${40 + (i % 3) * 15}%`}
-                      y2={`${50 + Math.floor(i / 3) * 10}%`}
-                      stroke="rgba(192, 192, 192, 0.3)"
-                      strokeWidth="1"
-                      className="neural-connection"
-                      style={{ animationDelay: `${i * 0.2}s` }}
-                    />
-                  ))}
-                </svg>
+                {/* Middle layer - Processing */}
+                <div className="absolute top-6 left-0 right-0 h-8 bg-black/30 rounded-lg flex items-center justify-center border border-cyan-400/15">
+                  <Server className="w-4 h-4 text-cyan-400 ai-ecosystem-server-pulse" />
+                  <div className="ml-2 flex space-x-1">
+                    <div className="w-1 h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" />
+                    <div className="w-1 h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" style={{ animationDelay: '0.5s' }} />
+                    <div className="w-1 h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" style={{ animationDelay: '1s' }} />
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* AI Processing Units */}
-            <div className="absolute top-36 left-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center">
-              <Brain className="w-8 h-8 text-premium-silver ai-icon-pulse" />
-            </div>
-
-            <div className="absolute top-36 right-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center">
-              <Cpu className="w-8 h-8 text-premium-silver ai-icon-pulse" style={{ animationDelay: '1s' }} />
-            </div>
-
-            {/* Central AI Eye */}
-            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-white/20 to-black/20 border border-white/25 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-black/40 border border-premium-silver/30 flex items-center justify-center">
-                <Eye className="w-8 h-8 text-white ai-eye-scan" />
-              </div>
-            </div>
-
-            {/* Data streams */}
-            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-xl bg-black/30 border border-white/15 overflow-hidden">
-              <div className="relative w-full h-full">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div
-                    key={`right-stream-${i}`}
-                    className="absolute top-2 h-2 bg-gradient-to-r from-transparent via-premium-silver/60 to-transparent rounded-full data-stream-flow"
-                    style={{
-                      width: `${20 + Math.random() * 40}%`,
-                      left: '-50%',
-                      animationDelay: `${i * 0.8}s`,
-                      animationDuration: `${3 + Math.random() * 2}s`
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-glow"></div>
           </div>
-
-          {/* Device shadow */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-black/20 to-black/40 blur-2xl transform translate-y-4 scale-95 -z-10"></div>
         </div>
+
+        {/* Autonomous Agents Device - Bottom Right */}
+        <div className="absolute bottom-16 right-16 ai-device-ecosystem-float-autonomous">
+          <div className="relative w-44 h-44">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-950/40 to-green-950/40 border border-green-400/20 backdrop-blur-md ai-ecosystem-glow-green rotate-45">
+              {/* Agent network */}
+              <div className="absolute inset-4 -rotate-45">
+                {/* Central coordinator */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gradient-to-br from-green-600/40 to-blue-600/40 border border-green-400/50 flex items-center justify-center">
+                  <Users className="w-4 h-4 text-green-400" />
+                </div>
+                
+                {/* Agent nodes */}
+                {Array.from({ length: 8 }).map((_, i) => {
+                  const angle = (i * 45) * Math.PI / 180;
+                  const radius = 40;
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
+                  
+                  return (
+                    <div
+                      key={`agent-node-${i}`}
+                      className="absolute w-3 h-3 rounded-full bg-green-400/60 ai-ecosystem-agent-pulse"
+                      style={{
+                        left: `calc(50% + ${x}px)`,
+                        top: `calc(50% + ${y}px)`,
+                        transform: 'translate(-50%, -50%)',
+                        animationDelay: `${i * 0.2}s`
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional floating elements for ecosystem feel */}
+        <div className="absolute top-32 left-1/3">
+          <div className="w-6 h-6 rounded-full bg-blue-400/30 ai-ecosystem-float-particle" />
+        </div>
+        <div className="absolute top-2/3 right-1/4">
+          <div className="w-4 h-4 rounded-full bg-purple-400/30 ai-ecosystem-float-particle" style={{ animationDelay: '2s' }} />
+        </div>
+        <div className="absolute bottom-1/3 left-1/4">
+          <div className="w-5 h-5 rounded-full bg-cyan-400/30 ai-ecosystem-float-particle" style={{ animationDelay: '4s' }} />
+        </div>
+
+        {/* Subtle scan lines that respond to mouse movement */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(59, 130, 246, 0.02) 0%, transparent 50%)`
+          }}
+        />
       </div>
 
       {/* Content - Centered with new animated headline */}
@@ -334,6 +255,257 @@ const Hero = () => {
           <div className="w-[1px] h-6 bg-premium-silver/60 apple-scroll-pulse"></div>
         </div>
       </div>
+
+      {/* Enhanced CSS Animations */}
+      <style jsx>{`
+        /* Ecosystem Animation Keyframes */
+        @keyframes ai-ecosystem-float {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes ai-ecosystem-float-delayed {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(-1deg); }
+        }
+
+        @keyframes ai-ecosystem-float-slow {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        @keyframes ai-ecosystem-float-center {
+          0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+          50% { transform: translateX(-50%) translateY(-25px) rotate(1deg); }
+        }
+
+        @keyframes ai-ecosystem-float-autonomous {
+          0%, 100% { transform: translateY(0) rotate(45deg); }
+          50% { transform: translateY(-18px) rotate(47deg); }
+        }
+
+        @keyframes ai-ecosystem-pulse {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        @keyframes ai-ecosystem-glow-blue {
+          0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+          50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.1); }
+        }
+
+        @keyframes ai-ecosystem-glow-purple {
+          0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.1); }
+          50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.3), inset 0 0 20px rgba(147, 51, 234, 0.1); }
+        }
+
+        @keyframes ai-ecosystem-glow-gray {
+          0%, 100% { box-shadow: 0 0 15px rgba(156, 163, 175, 0.1); }
+          50% { box-shadow: 0 0 30px rgba(156, 163, 175, 0.2), inset 0 0 15px rgba(156, 163, 175, 0.1); }
+        }
+
+        @keyframes ai-ecosystem-glow-cyan {
+          0%, 100% { box-shadow: 0 0 25px rgba(34, 211, 238, 0.1); }
+          50% { box-shadow: 0 0 50px rgba(34, 211, 238, 0.3), inset 0 0 25px rgba(34, 211, 238, 0.1); }
+        }
+
+        @keyframes ai-ecosystem-glow-green {
+          0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.1); }
+          50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.3), inset 0 0 20px rgba(34, 197, 94, 0.1); }
+        }
+
+        @keyframes ai-ecosystem-spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes ai-ecosystem-data-flow {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(200%); }
+        }
+
+        @keyframes ai-ecosystem-orbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes ai-ecosystem-brain-pulse {
+          0%, 100% { opacity: 0.6; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes ai-ecosystem-message-type {
+          0% { width: 0; opacity: 0; }
+          50% { opacity: 1; }
+          100% { width: 100%; opacity: 0.6; }
+        }
+
+        @keyframes ai-ecosystem-message-pulse {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes ai-ecosystem-analytics-pulse {
+          0%, 100% { opacity: 0.4; height: 60%; }
+          50% { opacity: 1; height: 100%; }
+        }
+
+        @keyframes ai-ecosystem-server-pulse {
+          0%, 100% { opacity: 0.6; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes ai-ecosystem-status-blink {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes ai-ecosystem-agent-pulse {
+          0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+          50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        @keyframes ai-ecosystem-float-particle {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+          50% { transform: translateY(-30px) scale(1.1); opacity: 0.7; }
+        }
+
+        @keyframes scan-sweep-horizontal {
+          0% { transform: translateX(-100%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateX(200%); opacity: 0; }
+        }
+
+        @keyframes scan-sweep-vertical {
+          0% { transform: translateY(-100%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateY(200%); opacity: 0; }
+        }
+
+        @keyframes scan-sweep-diagonal {
+          0% { transform: translateX(-100%) translateY(-100%); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateX(200%) translateY(200%); opacity: 0; }
+        }
+
+        @keyframes ai-ecosystem-connection-pulse {
+          0%, 100% { opacity: 0.2; stroke-width: 1; }
+          50% { opacity: 0.8; stroke-width: 2; }
+        }
+
+        /* Apply animations */
+        .ai-device-ecosystem-float {
+          animation: ai-ecosystem-float 6s ease-in-out infinite;
+        }
+
+        .ai-device-ecosystem-float-delayed {
+          animation: ai-ecosystem-float-delayed 8s ease-in-out infinite;
+        }
+
+        .ai-device-ecosystem-float-slow {
+          animation: ai-ecosystem-float-slow 10s ease-in-out infinite;
+        }
+
+        .ai-device-ecosystem-float-center {
+          animation: ai-ecosystem-float-center 7s ease-in-out infinite;
+        }
+
+        .ai-device-ecosystem-float-autonomous {
+          animation: ai-ecosystem-float-autonomous 9s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-pulse {
+          animation: ai-ecosystem-pulse 2s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-glow-blue {
+          animation: ai-ecosystem-glow-blue 4s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-glow-purple {
+          animation: ai-ecosystem-glow-purple 5s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-glow-gray {
+          animation: ai-ecosystem-glow-gray 6s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-glow-cyan {
+          animation: ai-ecosystem-glow-cyan 4.5s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-glow-green {
+          animation: ai-ecosystem-glow-green 5.5s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-spin {
+          animation: ai-ecosystem-spin 4s linear infinite;
+        }
+
+        .ai-ecosystem-data-flow {
+          animation: ai-ecosystem-data-flow 3s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-orbit {
+          animation: ai-ecosystem-orbit 20s linear infinite;
+        }
+
+        .ai-ecosystem-brain-pulse {
+          animation: ai-ecosystem-brain-pulse 3s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-message-type {
+          animation: ai-ecosystem-message-type 4s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-message-pulse {
+          animation: ai-ecosystem-message-pulse 2s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-analytics-pulse {
+          animation: ai-ecosystem-analytics-pulse 2.5s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-server-pulse {
+          animation: ai-ecosystem-server-pulse 1.8s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-status-blink {
+          animation: ai-ecosystem-status-blink 1.5s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-agent-pulse {
+          animation: ai-ecosystem-agent-pulse 2.2s ease-in-out infinite;
+        }
+
+        .ai-ecosystem-float-particle {
+          animation: ai-ecosystem-float-particle 8s ease-in-out infinite;
+        }
+
+        .scan-sweep-horizontal {
+          animation: scan-sweep-horizontal 8s ease-in-out infinite;
+          top: 20%;
+        }
+
+        .scan-sweep-vertical {
+          animation: scan-sweep-vertical 10s ease-in-out infinite;
+          left: 30%;
+        }
+
+        .scan-sweep-diagonal {
+          animation: scan-sweep-diagonal 12s ease-in-out infinite;
+          top: 0;
+          left: 0;
+          width: 200%;
+          height: 1px;
+          transform-origin: 0 0;
+          transform: rotate(25deg);
+        }
+
+        .ai-ecosystem-connection-pulse {
+          animation: ai-ecosystem-connection-pulse 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };
