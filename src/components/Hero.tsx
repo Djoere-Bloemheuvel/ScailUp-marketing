@@ -1,3 +1,4 @@
+
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -46,56 +47,103 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Left AI Device - Buildrs Style Robot */}
+      {/* Left AI Device - Hexagonal/Diamond Shape - Buildrs Style */}
       <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
         <div className="relative">
-          {/* Main AI Device Body - Industrial/Server style design */}
-          <div className="relative w-72 h-96 rounded-lg bg-gradient-to-b from-premium-gray-dark/80 to-black/90 backdrop-blur-xl border border-premium-silver/20 ai-device-float overflow-hidden">
-            {/* Glass effect overlay with premium silver accents */}
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5"></div>
+          {/* Hexagonal Main AI Device Body - Industrial/Server style design */}
+          <div className="relative w-72 h-96 ai-device-float overflow-visible">
+            {/* Custom hexagonal shape using CSS clip-path */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-b from-premium-gray-dark/80 to-black/90 backdrop-blur-xl border border-premium-silver/20 overflow-hidden"
+              style={{
+                clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)',
+                background: 'linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)'
+              }}
+            >
+              {/* Glass effect overlay with premium silver accents */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5"
+                style={{
+                  clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
+                }}
+              ></div>
+            </div>
             
-            {/* Server Rack Display */}
-            <div className="absolute top-8 left-8 right-8 h-20 rounded-md bg-black/60 border border-premium-silver/25 overflow-hidden">
+            {/* Server Rack Display - Diamond shaped */}
+            <div 
+              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-black/60 border border-premium-silver/25 overflow-hidden"
+              style={{
+                clipPath: 'polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%)'
+              }}
+            >
               <div className="relative w-full h-full">
-                {/* Server indicators - horizontal lines */}
-                {Array.from({ length: 8 }).map((_, i) => (
+                {/* Server indicators - diagonal lines for diamond shape */}
+                {Array.from({ length: 6 }).map((_, i) => (
                   <div
                     key={`left-server-${i}`}
-                    className="absolute w-full h-1 bg-premium-silver/40 server-pulse"
+                    className="absolute w-8 h-1 bg-premium-silver/40 server-pulse transform rotate-45 origin-left"
                     style={{
-                      top: `${15 + i * 8}%`,
+                      left: `${20 + i * 12}%`,
+                      top: `${30 + (i % 2) * 20}%`,
                       animationDelay: `${i * 0.3}s`,
                     }}
                   />
                 ))}
                 
-                {/* Status lights */}
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-1">
-                  <div className="w-2 h-2 bg-premium-silver rounded-full status-light"></div>
-                  <div className="w-2 h-2 bg-white/60 rounded-full status-light" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="w-2 h-2 bg-premium-silver/80 rounded-full status-light" style={{ animationDelay: '1s' }}></div>
+                {/* Status lights - triangular formation */}
+                <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
+                  <div className="flex flex-col space-y-1">
+                    <div className="w-2 h-2 bg-premium-silver rounded-full status-light transform rotate-45"></div>
+                    <div className="w-2 h-2 bg-white/60 rounded-full status-light transform rotate-45" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-2 h-2 bg-premium-silver/80 rounded-full status-light transform rotate-45" style={{ animationDelay: '1s' }}></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Code Processing Units */}
-            <div className="absolute top-36 left-8 w-16 h-16 rounded-md bg-black/50 border border-premium-silver/20 flex items-center justify-center">
-              <Code className="w-8 h-8 text-premium-silver ai-code-pulse" />
+            {/* Code Processing Units - Triangular shapes */}
+            <div 
+              className="absolute top-32 left-12 w-16 h-16 bg-black/50 border border-premium-silver/20 flex items-center justify-center"
+              style={{
+                clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
+              }}
+            >
+              <Code className="w-8 h-8 text-premium-silver ai-code-pulse transform -translate-y-2" />
             </div>
 
-            <div className="absolute top-36 right-8 w-16 h-16 rounded-md bg-black/50 border border-premium-silver/20 flex items-center justify-center">
-              <Server className="w-8 h-8 text-premium-silver ai-server-pulse" style={{ animationDelay: '1s' }} />
+            <div 
+              className="absolute top-32 right-12 w-16 h-16 bg-black/50 border border-premium-silver/20 flex items-center justify-center"
+              style={{
+                clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)'
+              }}
+            >
+              <Server className="w-8 h-8 text-premium-silver ai-server-pulse transform translate-y-2" style={{ animationDelay: '1s' }} />
             </div>
 
-            {/* Central Database Core */}
-            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-lg bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-lg bg-black/60 border border-premium-silver/40 flex items-center justify-center">
+            {/* Central Database Core - Octagonal shape */}
+            <div 
+              className="absolute top-52 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 flex items-center justify-center"
+              style={{
+                clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+              }}
+            >
+              <div 
+                className="w-16 h-16 bg-black/60 border border-premium-silver/40 flex items-center justify-center"
+                style={{
+                  clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
+                }}
+              >
                 <Database className="w-8 h-8 text-white ai-database-scan" />
               </div>
             </div>
 
-            {/* Terminal/Command streams */}
-            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-md bg-black/50 border border-premium-silver/20 overflow-hidden">
+            {/* Terminal/Command streams - Arrow shaped */}
+            <div 
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-black/50 border border-premium-silver/20 overflow-hidden"
+              style={{
+                clipPath: 'polygon(0% 20%, 80% 20%, 100% 50%, 80% 80%, 0% 80%)'
+              }}
+            >
               <div className="relative w-full h-full p-2">
                 {/* Terminal text effect */}
                 <div className="text-xs font-mono text-premium-silver/70 space-y-1">
@@ -108,12 +156,22 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Subtle glow effect - monochrome */}
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-premium-glow"></div>
+            {/* Subtle glow effect - monochrome with hexagonal shape */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-premium-glow"
+              style={{
+                clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
+              }}
+            ></div>
           </div>
 
-          {/* Device shadow - monochrome */}
-          <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-premium-silver/5 to-black/30 blur-2xl transform translate-y-4 scale-95 -z-10"></div>
+          {/* Device shadow - hexagonal */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 to-black/30 blur-2xl transform translate-y-4 scale-95 -z-10"
+            style={{
+              clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
+            }}
+          ></div>
         </div>
       </div>
 
