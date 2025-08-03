@@ -41,6 +41,20 @@ const AutomationCard = ({ feature, index, isVisible, isEven }: AutomationCardPro
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Outer ambient glow/halo effect */}
+      <div className={`
+        absolute inset-[-8px] rounded-[32px] bg-gradient-to-r ${feature.accent} 
+        opacity-20 group-hover:opacity-35 transition-opacity duration-700 blur-md -z-20
+        will-change-opacity
+      `} />
+      
+      {/* Extended outer glow for more ambient effect */}
+      <div className={`
+        absolute inset-[-16px] rounded-[40px] bg-gradient-to-r ${feature.accent} 
+        opacity-10 group-hover:opacity-20 transition-opacity duration-700 blur-lg -z-30
+        will-change-opacity
+      `} />
+
       {/* Main card container with premium glassmorphism */}
       <div className={`
         relative p-8 lg:p-10 rounded-[24px] backdrop-blur-xl 
