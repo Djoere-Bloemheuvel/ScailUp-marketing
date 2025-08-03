@@ -1,3 +1,4 @@
+
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity, Cog, MessageSquare, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -35,20 +36,20 @@ const Hero = () => {
           <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent scan-sweep-diagonal" />
         </div>
 
-        {/* AI Robot Device - Top Left (replacing the automation device) */}
-        <div className="absolute top-16 left-16 ai-robot-float">
-          <div className="relative w-64 h-80">
+        {/* AI Robot Device - Top Left - Mobile Responsive */}
+        <div className="absolute top-8 left-4 sm:top-16 sm:left-16 ai-robot-float">
+          <div className="relative w-32 h-40 sm:w-48 md:w-64 sm:h-60 md:h-80">
             {/* Main robot body with glassmorphic effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gray-900/60 to-gray-800/40 border border-gray-400/20 backdrop-blur-md ai-robot-glow">
+            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-gray-900/60 to-gray-800/40 border border-gray-400/20 backdrop-blur-md ai-robot-glow">
               
               {/* Top section with connection dots */}
-              <div className="absolute top-6 left-6 right-6 h-20 bg-black/40 rounded-xl border border-gray-400/20 overflow-hidden">
+              <div className="absolute top-3 left-3 right-3 h-10 sm:top-6 sm:left-6 sm:right-6 sm:h-20 bg-black/40 rounded-lg sm:rounded-xl border border-gray-400/20 overflow-hidden">
                 {/* Connection grid */}
-                <div className="absolute inset-4 grid grid-cols-4 grid-rows-3 gap-2">
-                  {Array.from({ length: 12 }).map((_, i) => (
+                <div className="absolute inset-2 sm:inset-4 grid grid-cols-3 grid-rows-2 sm:grid-cols-4 sm:grid-rows-3 gap-1 sm:gap-2">
+                  {Array.from({ length: window.innerWidth < 640 ? 6 : 12 }).map((_, i) => (
                     <div
                       key={`connection-dot-${i}`}
-                      className={`w-2 h-2 rounded-full ${i % 3 === 0 ? 'bg-blue-400/80' : i % 3 === 1 ? 'bg-gray-400/60' : 'bg-gray-400/40'} ai-robot-connection-pulse`}
+                      className={`w-1 h-1 sm:w-2 sm:h-2 rounded-full ${i % 3 === 0 ? 'bg-blue-400/80' : i % 3 === 1 ? 'bg-gray-400/60' : 'bg-gray-400/40'} ai-robot-connection-pulse`}
                       style={{ animationDelay: `${i * 0.2}s` }}
                     />
                   ))}
@@ -57,62 +58,61 @@ const Hero = () => {
                 {/* Connecting lines */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none">
                   <line x1="25%" y1="30%" x2="75%" y2="30%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" />
-                  <line x1="25%" y1="50%" x2="75%" y2="50%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" style={{ animationDelay: '1s' }} />
-                  <line x1="25%" y1="70%" x2="75%" y2="70%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" style={{ animationDelay: '2s' }} />
+                  <line x1="25%" y1="70%" x2="75%" y2="70%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" style={{ animationDelay: '1s' }} />
                 </svg>
               </div>
 
               {/* Middle section with brain and chip icons */}
-              <div className="absolute top-32 left-6 right-6 flex justify-between">
+              <div className="absolute top-16 left-3 right-3 sm:top-32 sm:left-6 sm:right-6 flex justify-between">
                 {/* Brain module */}
-                <div className="w-20 h-20 bg-black/50 rounded-2xl border border-gray-400/20 flex items-center justify-center ai-robot-brain-glow">
-                  <Brain className="w-8 h-8 text-gray-300 ai-robot-brain-pulse" />
+                <div className="w-8 h-8 sm:w-12 md:w-20 sm:h-12 md:h-20 bg-black/50 rounded-lg sm:rounded-2xl border border-gray-400/20 flex items-center justify-center ai-robot-brain-glow">
+                  <Brain className="w-4 h-4 sm:w-6 md:w-8 sm:h-6 md:h-8 text-gray-300 ai-robot-brain-pulse" />
                 </div>
                 
                 {/* Chip module */}
-                <div className="w-20 h-20 bg-black/50 rounded-2xl border border-gray-400/20 flex items-center justify-center ai-robot-chip-glow">
-                  <Cpu className="w-8 h-8 text-gray-300 ai-robot-chip-pulse" />
+                <div className="w-8 h-8 sm:w-12 md:w-20 sm:h-12 md:h-20 bg-black/50 rounded-lg sm:rounded-2xl border border-gray-400/20 flex items-center justify-center ai-robot-chip-glow">
+                  <Cpu className="w-4 h-4 sm:w-6 md:w-8 sm:h-6 md:h-8 text-gray-300 ai-robot-chip-pulse" />
                 </div>
               </div>
 
               {/* Central eye module */}
-              <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-24 h-24">
+              <div className="absolute top-28 sm:top-56 left-1/2 transform -translate-x-1/2 w-12 h-12 sm:w-16 md:w-24 sm:h-16 md:h-24">
                 {/* Outer ring */}
-                <div className="absolute inset-0 rounded-full border-2 border-gray-400/30 ai-robot-eye-ring-pulse">
+                <div className="absolute inset-0 rounded-full border border-gray-400/30 sm:border-2 ai-robot-eye-ring-pulse">
                   {/* Inner circle */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-black/60 rounded-full border border-gray-400/40 flex items-center justify-center ai-robot-eye-glow">
-                    <Eye className="w-6 h-6 text-gray-300 ai-robot-eye-pulse" />
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 md:w-16 sm:h-12 md:h-16 bg-black/60 rounded-full border border-gray-400/40 flex items-center justify-center ai-robot-eye-glow">
+                    <Eye className="w-3 h-3 sm:w-4 md:w-6 sm:h-4 md:h-6 text-gray-300 ai-robot-eye-pulse" />
                   </div>
                 </div>
               </div>
 
               {/* Bottom progress bar */}
-              <div className="absolute bottom-6 left-6 right-6 h-8 bg-black/50 rounded-xl border border-gray-400/20 overflow-hidden">
+              <div className="absolute bottom-3 left-3 right-3 h-4 sm:bottom-6 sm:left-6 sm:right-6 sm:h-8 bg-black/50 rounded-lg sm:rounded-xl border border-gray-400/20 overflow-hidden">
                 {/* Progress indicator */}
-                <div className="absolute inset-2 bg-gray-800/50 rounded-lg overflow-hidden">
+                <div className="absolute inset-1 sm:inset-2 bg-gray-800/50 rounded-md sm:rounded-lg overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-gray-400/60 to-blue-400/40 ai-robot-progress-fill" />
                 </div>
               </div>
 
-              {/* Ambient glow particles */}
-              <div className="absolute inset-0 pointer-events-none">
+              {/* Ambient glow particles - Hidden on mobile */}
+              <div className="absolute inset-0 pointer-events-none hidden sm:block">
                 <div className="absolute top-10 right-10 w-1 h-1 bg-blue-400/60 rounded-full ai-robot-particle-float" />
                 <div className="absolute bottom-20 left-8 w-1 h-1 bg-gray-400/50 rounded-full ai-robot-particle-float" style={{ animationDelay: '2s' }} />
                 <div className="absolute top-40 right-16 w-1 h-1 bg-blue-400/40 rounded-full ai-robot-particle-float" style={{ animationDelay: '4s' }} />
               </div>
             </div>
 
-            {/* External connections */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+            {/* External connections - Hidden on mobile */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none hidden sm:block">
               <line x1="100%" y1="30%" x2="130%" y2="25%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-external-connection" />
               <line x1="50%" y1="100%" x2="60%" y2="130%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-external-connection" style={{ animationDelay: '1.5s' }} />
             </svg>
           </div>
         </div>
 
-        {/* Custom AI SaaS Device - Top Right */}
-        <div className="absolute top-20 right-20 ai-device-ecosystem-float-delayed">
-          <div className="relative w-40 h-40">
+        {/* Custom AI SaaS Device - Top Right - Mobile Responsive */}
+        <div className="absolute top-12 right-4 sm:top-20 sm:right-20 ai-device-ecosystem-float-delayed">
+          <div className="relative w-20 h-20 sm:w-28 md:w-40 sm:h-28 md:h-40">
             {/* Hexagonal device */}
             <div 
               className="absolute inset-0 bg-gradient-to-br from-purple-950/50 to-pink-950/50 border border-purple-400/30 backdrop-blur-md ai-ecosystem-glow-purple"
@@ -121,53 +121,53 @@ const Hero = () => {
               }}
             >
               {/* Central brain */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/30 to-pink-600/30 flex items-center justify-center border border-purple-400/40">
-                <Brain className="w-6 h-6 text-purple-400 ai-ecosystem-brain-pulse" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 md:w-12 sm:h-8 md:h-12 rounded-full bg-gradient-to-br from-purple-600/30 to-pink-600/30 flex items-center justify-center border border-purple-400/40">
+                <Brain className="w-3 h-3 sm:w-4 md:w-6 sm:h-4 md:h-6 text-purple-400 ai-ecosystem-brain-pulse" />
               </div>
 
               {/* Orbiting data points */}
               <div className="absolute inset-0 ai-ecosystem-orbit">
-                <div className="absolute top-4 left-1/2 w-2 h-2 bg-purple-400 rounded-full transform -translate-x-1/2" />
-                <div className="absolute bottom-4 left-1/2 w-2 h-2 bg-pink-400 rounded-full transform -translate-x-1/2" />
-                <div className="absolute left-4 top-1/2 w-2 h-2 bg-violet-400 rounded-full transform -translate-y-1/2" />
-                <div className="absolute right-4 top-1/2 w-2 h-2 bg-fuchsia-400 rounded-full transform -translate-y-1/2" />
+                <div className="absolute top-1 left-1/2 w-1 h-1 sm:top-2 sm:w-1.5 sm:h-1.5 md:top-4 md:w-2 md:h-2 bg-purple-400 rounded-full transform -translate-x-1/2" />
+                <div className="absolute bottom-1 left-1/2 w-1 h-1 sm:bottom-2 sm:w-1.5 sm:h-1.5 md:bottom-4 md:w-2 md:h-2 bg-pink-400 rounded-full transform -translate-x-1/2" />
+                <div className="absolute left-1 top-1/2 w-1 h-1 sm:left-2 sm:w-1.5 sm:h-1.5 md:left-4 md:w-2 md:h-2 bg-violet-400 rounded-full transform -translate-y-1/2" />
+                <div className="absolute right-1 top-1/2 w-1 h-1 sm:right-2 sm:w-1.5 sm:h-1.5 md:right-4 md:w-2 md:h-2 bg-fuchsia-400 rounded-full transform -translate-y-1/2" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Consultancy Device - Middle Left */}
-        <div className="absolute top-1/2 left-8 transform -translate-y-1/2 ai-device-ecosystem-float-slow">
-          <div className="relative w-36 h-24">
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-gray-900/60 to-blue-950/30 border border-gray-400/20 backdrop-blur-md ai-ecosystem-glow-gray">
+        {/* Consultancy Device - Middle Left - Mobile Responsive */}
+        <div className="absolute top-1/2 left-2 sm:left-8 transform -translate-y-1/2 ai-device-ecosystem-float-slow">
+          <div className="relative w-24 h-16 sm:w-28 md:w-36 sm:h-20 md:h-24">
+            <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-br from-gray-900/60 to-blue-950/30 border border-gray-400/20 backdrop-blur-md ai-ecosystem-glow-gray">
               {/* Message interface */}
-              <div className="absolute inset-3 space-y-2">
-                <div className="h-2 bg-gray-400/30 rounded-full ai-ecosystem-message-type" />
-                <div className="h-1.5 bg-gray-400/20 rounded-full w-3/4 ai-ecosystem-message-type" style={{ animationDelay: '0.5s' }} />
-                <div className="h-1.5 bg-blue-400/30 rounded-full w-1/2 ai-ecosystem-message-type" style={{ animationDelay: '1s' }} />
+              <div className="absolute inset-2 sm:inset-3 space-y-1 sm:space-y-2">
+                <div className="h-1 sm:h-2 bg-gray-400/30 rounded-full ai-ecosystem-message-type" />
+                <div className="h-1 sm:h-1.5 bg-gray-400/20 rounded-full w-3/4 ai-ecosystem-message-type" style={{ animationDelay: '0.5s' }} />
+                <div className="h-1 sm:h-1.5 bg-blue-400/30 rounded-full w-1/2 ai-ecosystem-message-type" style={{ animationDelay: '1s' }} />
               </div>
               
               {/* Communication indicator */}
-              <div className="absolute top-2 right-2">
-                <MessageSquare className="w-4 h-4 text-gray-400 ai-ecosystem-message-pulse" />
+              <div className="absolute top-1 right-1 sm:top-2 sm:right-2">
+                <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 ai-ecosystem-message-pulse" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* AI Studio Service Device - Bottom Center */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 ai-device-ecosystem-float-center">
-          <div className="relative w-56 h-36">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-950/50 to-blue-950/50 border border-cyan-400/30 backdrop-blur-md ai-ecosystem-glow-cyan">
+        {/* AI Studio Service Device - Bottom Center - Mobile Responsive */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 sm:bottom-20 ai-device-ecosystem-float-center">
+          <div className="relative w-36 h-24 sm:w-44 md:w-56 sm:h-28 md:h-36">
+            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-cyan-950/50 to-blue-950/50 border border-cyan-400/30 backdrop-blur-md ai-ecosystem-glow-cyan">
               {/* Multi-layered interface */}
-              <div className="absolute inset-6">
+              <div className="absolute inset-3 sm:inset-6">
                 {/* Top layer - Analytics */}
-                <div className="absolute top-0 left-0 right-0 h-4 bg-black/40 rounded-lg border border-cyan-400/20">
-                  <div className="flex items-center justify-between h-full px-2">
-                    {Array.from({ length: 6 }).map((_, i) => (
+                <div className="absolute top-0 left-0 right-0 h-2 sm:h-4 bg-black/40 rounded-md sm:rounded-lg border border-cyan-400/20">
+                  <div className="flex items-center justify-between h-full px-1 sm:px-2">
+                    {Array.from({ length: 4 }).map((_, i) => (
                       <div
                         key={`analytics-bar-${i}`}
-                        className="w-1 bg-cyan-400/60 rounded-full ai-ecosystem-analytics-pulse"
+                        className="w-0.5 sm:w-1 bg-cyan-400/60 rounded-full ai-ecosystem-analytics-pulse"
                         style={{
                           height: `${60 + (i % 3) * 20}%`,
                           animationDelay: `${i * 0.3}s`
@@ -178,12 +178,12 @@ const Hero = () => {
                 </div>
                 
                 {/* Middle layer - Processing */}
-                <div className="absolute top-6 left-0 right-0 h-8 bg-black/30 rounded-lg flex items-center justify-center border border-cyan-400/15">
-                  <Server className="w-4 h-4 text-cyan-400 ai-ecosystem-server-pulse" />
-                  <div className="ml-2 flex space-x-1">
-                    <div className="w-1 h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" />
-                    <div className="w-1 h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" style={{ animationDelay: '0.5s' }} />
-                    <div className="w-1 h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" style={{ animationDelay: '1s' }} />
+                <div className="absolute top-3 left-0 right-0 h-4 sm:top-6 sm:h-8 bg-black/30 rounded-md sm:rounded-lg flex items-center justify-center border border-cyan-400/15">
+                  <Server className="w-2 h-2 sm:w-4 sm:h-4 text-cyan-400 ai-ecosystem-server-pulse" />
+                  <div className="ml-1 sm:ml-2 flex space-x-0.5 sm:space-x-1">
+                    <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" />
+                    <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" style={{ animationDelay: '0.5s' }} />
+                    <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-cyan-400 rounded-full ai-ecosystem-status-blink" style={{ animationDelay: '1s' }} />
                   </div>
                 </div>
               </div>
@@ -191,28 +191,28 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Autonomous Agents Device - Bottom Right */}
-        <div className="absolute bottom-16 right-16 ai-device-ecosystem-float-autonomous">
-          <div className="relative w-44 h-44">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-950/40 to-green-950/40 border border-green-400/20 backdrop-blur-md ai-ecosystem-glow-green rotate-45">
+        {/* Autonomous Agents Device - Bottom Right - Mobile Responsive */}
+        <div className="absolute bottom-12 right-4 sm:bottom-16 sm:right-16 ai-device-ecosystem-float-autonomous">
+          <div className="relative w-28 h-28 sm:w-36 md:w-44 sm:h-36 md:h-44">
+            <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-950/40 to-green-950/40 border border-green-400/20 backdrop-blur-md ai-ecosystem-glow-green rotate-45">
               {/* Agent network */}
-              <div className="absolute inset-4 -rotate-45">
+              <div className="absolute inset-2 sm:inset-4 -rotate-45">
                 {/* Central coordinator */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gradient-to-br from-green-600/40 to-blue-600/40 border border-green-400/50 flex items-center justify-center">
-                  <Users className="w-4 h-4 text-green-400" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 sm:w-6 md:w-8 sm:h-6 md:h-8 rounded-full bg-gradient-to-br from-green-600/40 to-blue-600/40 border border-green-400/50 flex items-center justify-center">
+                  <Users className="w-2 h-2 sm:w-3 md:w-4 sm:h-3 md:h-4 text-green-400" />
                 </div>
                 
                 {/* Agent nodes */}
-                {Array.from({ length: 8 }).map((_, i) => {
-                  const angle = (i * 45) * Math.PI / 180;
-                  const radius = 40;
+                {Array.from({ length: 6 }).map((_, i) => {
+                  const angle = (i * 60) * Math.PI / 180;
+                  const radius = window.innerWidth < 640 ? 20 : 30;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
                   
                   return (
                     <div
                       key={`agent-node-${i}`}
-                      className="absolute w-3 h-3 rounded-full bg-green-400/60 ai-ecosystem-agent-pulse"
+                      className="absolute w-1.5 h-1.5 sm:w-2 md:w-3 sm:h-2 md:h-3 rounded-full bg-green-400/60 ai-ecosystem-agent-pulse"
                       style={{
                         left: `calc(50% + ${x}px)`,
                         top: `calc(50% + ${y}px)`,
@@ -227,15 +227,15 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Additional floating elements for ecosystem feel */}
-        <div className="absolute top-32 left-1/3">
-          <div className="w-6 h-6 rounded-full bg-blue-400/30 ai-ecosystem-float-particle" />
+        {/* Additional floating elements for ecosystem feel - Hidden on mobile */}
+        <div className="hidden sm:block absolute top-32 left-1/3">
+          <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-blue-400/30 ai-ecosystem-float-particle" />
         </div>
-        <div className="absolute top-2/3 right-1/4">
-          <div className="w-4 h-4 rounded-full bg-purple-400/30 ai-ecosystem-float-particle" style={{ animationDelay: '2s' }} />
+        <div className="hidden sm:block absolute top-2/3 right-1/4">
+          <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-purple-400/30 ai-ecosystem-float-particle" style={{ animationDelay: '2s' }} />
         </div>
-        <div className="absolute bottom-1/3 left-1/4">
-          <div className="w-5 h-5 rounded-full bg-cyan-400/30 ai-ecosystem-float-particle" style={{ animationDelay: '4s' }} />
+        <div className="hidden lg:block absolute bottom-1/3 left-1/4">
+          <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-cyan-400/30 ai-ecosystem-float-particle" style={{ animationDelay: '4s' }} />
         </div>
 
         {/* Subtle scan lines that respond to mouse movement */}
@@ -248,7 +248,7 @@ const Hero = () => {
       </div>
 
       {/* Content - Centered with new animated headline */}
-      <div className="relative max-w-5xl mx-auto z-30 text-center">
+      <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
         <div className="max-w-4xl mx-auto">
           {/* Animated Headline */}
           <div className={`mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
@@ -256,43 +256,43 @@ const Hero = () => {
           </div>
           
           {/* Apple-style subtitle - centered */}
-          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
+          <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/80 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
             Wij bouwen AI-systemen die uw business 
-            <br />
+            <br className="hidden sm:block" />
             <span className="text-white font-normal">daadwerkelijk transformeren.</span>
           </p>
           
-          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
+          <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
             <Button 
-              className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
+              className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover w-full sm:w-auto"
               style={{
                 background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
               }}
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative z-10 flex items-center justify-center">
                 Ontdek de mogelijkheden
-                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </Button>
             
             <Button 
               variant="outline" 
-              className="relative text-premium-silver hover:text-white px-10 py-6 text-xl font-semibold rounded-full border-premium-silver/30 hover:border-premium-silver/60 transition-all duration-700 apple-button-hover group overflow-hidden bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.08]"
+              className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/30 hover:border-premium-silver/60 transition-all duration-700 apple-button-hover group overflow-hidden bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.08] w-full sm:w-auto"
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative z-10 flex items-center justify-center">
                 Plan een deepdive
-                <Sparkles className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                <Sparkles className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-300" />
               </span>
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Apple-inspired scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-[1px] h-16 bg-gradient-to-b from-premium-silver/40 to-transparent">
-          <div className="w-[1px] h-6 bg-premium-silver/60 apple-scroll-pulse"></div>
+      {/* Apple-inspired scroll indicator - Hidden on mobile */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block">
+        <div className="w-[1px] h-12 sm:h-16 bg-gradient-to-b from-premium-silver/40 to-transparent">
+          <div className="w-[1px] h-4 sm:h-6 bg-premium-silver/60 apple-scroll-pulse"></div>
         </div>
       </div>
 
