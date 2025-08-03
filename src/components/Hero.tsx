@@ -3,6 +3,7 @@ import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot,
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
+import LightningGlitch from './LightningGlitch';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,8 +14,11 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
+      {/* Lightning Glitch Effect - Behind everything but above background */}
+      <LightningGlitch />
+
       {/* Nothing-inspired minimalistic background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-10">
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900/20"></div>
         
@@ -286,22 +290,22 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - Centered with new animated headline */}
-      <div className="relative max-w-5xl mx-auto z-30 text-center">
+      {/* Content - Centered with animated headline - HIGHEST Z-INDEX for text protection */}
+      <div className="relative max-w-5xl mx-auto z-40 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Animated Headline */}
-          <div className={`mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+          {/* Animated Headline - Protected from glitch */}
+          <div className={`mb-2 relative z-50 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
             <AnimatedHeadline />
           </div>
           
-          {/* Apple-style subtitle - centered */}
-          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
+          {/* Apple-style subtitle - Protected from glitch */}
+          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light relative z-50 ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
             Wij bouwen AI-systemen die uw business 
             <br />
             <span className="text-white font-normal">daadwerkelijk transformeren.</span>
           </p>
           
-          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
+          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 relative z-50 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
             <Button 
               className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
               style={{
@@ -329,7 +333,7 @@ const Hero = () => {
       </div>
 
       {/* Apple-inspired scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30">
         <div className="w-[1px] h-16 bg-gradient-to-b from-premium-silver/40 to-transparent">
           <div className="w-[1px] h-6 bg-premium-silver/60 apple-scroll-pulse"></div>
         </div>
