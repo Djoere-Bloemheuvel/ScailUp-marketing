@@ -13,13 +13,12 @@ const AutomationFinalCTA = () => {
       
       <div className="relative max-w-4xl mx-auto px-4 text-center">
         <div className="relative">
-          {/* Premium glassmorphism container with enhanced glow */}
+          {/* Premium glassmorphism container with enhanced glow - contains ALL content */}
           <div className="relative rounded-[24px] p-12 md:p-16 backdrop-blur-xl border border-white/[0.1] bg-gradient-to-br from-white/[0.05] via-white/[0.02] to-transparent shadow-2xl">
             
             {/* Enhanced border glow effect with multiple layers */}
             <div className="absolute inset-0 rounded-[24px] bg-gradient-to-r from-blue-500/12 via-purple-500/12 to-blue-500/12 blur-sm opacity-70" />
             <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-cyan-500/8 via-emerald-500/6 to-purple-500/10 blur-md opacity-50" />
-            <div className="absolute inset-[1px] rounded-[23px] bg-gradient-to-br from-premium-black/95 via-premium-black/90 to-premium-black/95" />
             
             {/* Inner light reflections */}
             <div className="absolute inset-4 rounded-[20px] bg-gradient-to-br from-white/[0.02] via-transparent to-white/[0.01] pointer-events-none" />
@@ -66,7 +65,7 @@ const AutomationFinalCTA = () => {
                 </Button>
               </div>
 
-              {/* Enhanced disclaimer text */}
+              {/* Enhanced disclaimer text - now inside the container */}
               <p className="text-premium-silver/70 text-sm mt-8 italic font-light">
                 Gratis kennismaking. Concrete inzichten. Geen verplichtingen.
               </p>
