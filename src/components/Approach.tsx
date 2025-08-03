@@ -49,79 +49,79 @@ const Approach = () => {
 
   const SpeedVisual = ({ isHovered }: { isHovered: boolean }) => (
     <div className="relative w-24 h-24 mx-auto">
-      {/* Pulsating speed circles */}
-      <div className={`absolute inset-0 rounded-full bg-gradient-to-r from-slate-400/20 to-blue-400/20 animate-pulse transition-all duration-700 ${isHovered ? 'scale-110 opacity-100' : 'scale-100 opacity-70'}`} />
-      <div className={`absolute inset-3 rounded-full bg-gradient-to-r from-slate-400/30 to-blue-400/30 animate-pulse transition-all duration-500 ${isHovered ? 'scale-105' : 'scale-100'}`} style={{ animationDelay: '0.3s' }} />
-      <div className={`absolute inset-6 rounded-full bg-gradient-to-r from-slate-400/40 to-blue-400/40 animate-pulse transition-all duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`} style={{ animationDelay: '0.6s' }} />
+      {/* Enhanced pulsating speed circles with more base color */}
+      <div className={`absolute inset-0 rounded-full bg-gradient-to-r from-slate-400/40 to-blue-400/40 animate-pulse transition-all duration-700 ${isHovered ? 'scale-110 opacity-90 from-slate-400/60 to-blue-400/60' : 'scale-100 opacity-60'}`} />
+      <div className={`absolute inset-3 rounded-full bg-gradient-to-r from-slate-400/50 to-blue-400/50 animate-pulse transition-all duration-500 ${isHovered ? 'scale-105 from-slate-400/70 to-blue-400/70' : 'scale-100'}`} style={{ animationDelay: '0.3s' }} />
+      <div className={`absolute inset-6 rounded-full bg-gradient-to-r from-slate-400/60 to-blue-400/60 animate-pulse transition-all duration-300 ${isHovered ? 'scale-110 from-slate-400/80 to-blue-400/80' : 'scale-100'}`} style={{ animationDelay: '0.6s' }} />
       
-      {/* Central icon with trail effect */}
+      {/* Central icon with enhanced base color */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <Clock className={`w-8 h-8 text-blue-400 transition-all duration-300 ${isHovered ? 'scale-110 drop-shadow-lg' : ''}`} />
+        <Clock className={`w-8 h-8 text-blue-300 transition-all duration-300 ${isHovered ? 'scale-110 drop-shadow-lg text-blue-200' : ''}`} />
       </div>
       
-      {/* Light trail on hover */}
+      {/* Enhanced light trail on hover */}
       {isHovered && (
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent animate-spin opacity-60" style={{ animationDuration: '2s' }} />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-blue-400/50 to-transparent animate-spin opacity-80" style={{ animationDuration: '2s' }} />
       )}
     </div>
   );
 
   const OwnershipVisual = ({ isHovered }: { isHovered: boolean }) => (
     <div className="relative w-24 h-24 mx-auto">
-      {/* Two collaborating circles */}
-      <div className={`absolute left-2 top-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 transition-all duration-500 ${isHovered ? 'translate-x-1 scale-105' : ''}`} />
-      <div className={`absolute right-2 top-4 w-12 h-12 rounded-full bg-gradient-to-br from-purple-500/30 to-blue-500/30 transition-all duration-500 ${isHovered ? '-translate-x-1 scale-105' : ''}`} />
+      {/* Enhanced two collaborating circles with more base color */}
+      <div className={`absolute left-2 top-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/50 to-purple-500/50 transition-all duration-500 ${isHovered ? 'translate-x-1 scale-105 from-blue-500/70 to-purple-500/70' : ''}`} />
+      <div className={`absolute right-2 top-4 w-12 h-12 rounded-full bg-gradient-to-br from-purple-500/50 to-blue-500/50 transition-all duration-500 ${isHovered ? '-translate-x-1 scale-105 from-purple-500/70 to-blue-500/70' : ''}`} />
       
-      {/* Connection line */}
-      <div className={`absolute top-1/2 left-1/2 w-8 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isHovered ? 'scale-110 opacity-100' : 'opacity-70'}`} />
+      {/* Enhanced connection line */}
+      <div className={`absolute top-1/2 left-1/2 w-8 h-0.5 bg-gradient-to-r from-blue-500/70 to-purple-500/70 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isHovered ? 'scale-110 opacity-100 from-blue-400/90 to-purple-400/90' : 'opacity-80'}`} />
       
-      {/* Central handshake icon */}
+      {/* Central handshake icon with enhanced color */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <HandHeart className={`w-6 h-6 text-purple-400 transition-all duration-300 ${isHovered ? 'scale-110 text-purple-300' : ''}`} />
+        <HandHeart className={`w-6 h-6 text-purple-300 transition-all duration-300 ${isHovered ? 'scale-110 text-purple-200' : ''}`} />
       </div>
       
-      {/* Pulsing connection effect */}
-      <div className={`absolute inset-0 rounded-full border border-purple-400/20 animate-pulse transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-50'}`} style={{ animationDuration: '3s' }} />
+      {/* Enhanced pulsing connection effect */}
+      <div className={`absolute inset-0 rounded-full border border-purple-400/40 animate-pulse transition-opacity duration-500 ${isHovered ? 'opacity-100 border-purple-300/60' : 'opacity-70'}`} style={{ animationDuration: '3s' }} />
     </div>
   );
 
   const DesignVisual = ({ isHovered }: { isHovered: boolean }) => (
     <div className="relative w-24 h-24 mx-auto">
-      {/* Building blocks that morph */}
-      <div className={`absolute top-2 left-4 w-4 h-4 rounded bg-gradient-to-br from-purple-400/40 to-pink-400/40 transition-all duration-500 ${isHovered ? 'rotate-12 scale-110' : ''}`} />
-      <div className={`absolute top-2 right-4 w-4 h-4 rounded bg-gradient-to-br from-pink-400/40 to-purple-400/40 transition-all duration-500 ${isHovered ? '-rotate-12 scale-110' : ''}`} style={{ animationDelay: '0.1s' }} />
-      <div className={`absolute bottom-2 left-4 w-4 h-4 rounded bg-gradient-to-br from-purple-400/40 to-pink-400/40 transition-all duration-500 ${isHovered ? '-rotate-12 scale-110' : ''}`} style={{ animationDelay: '0.2s' }} />
-      <div className={`absolute bottom-2 right-4 w-4 h-4 rounded bg-gradient-to-br from-pink-400/40 to-purple-400/40 transition-all duration-500 ${isHovered ? 'rotate-12 scale-110' : ''}`} style={{ animationDelay: '0.3s' }} />
+      {/* Enhanced building blocks with more base color */}
+      <div className={`absolute top-2 left-4 w-4 h-4 rounded bg-gradient-to-br from-purple-400/60 to-pink-400/60 transition-all duration-500 ${isHovered ? 'rotate-12 scale-110 from-purple-400/80 to-pink-400/80' : ''}`} />
+      <div className={`absolute top-2 right-4 w-4 h-4 rounded bg-gradient-to-br from-pink-400/60 to-purple-400/60 transition-all duration-500 ${isHovered ? '-rotate-12 scale-110 from-pink-400/80 to-purple-400/80' : ''}`} style={{ animationDelay: '0.1s' }} />
+      <div className={`absolute bottom-2 left-4 w-4 h-4 rounded bg-gradient-to-br from-purple-400/60 to-pink-400/60 transition-all duration-500 ${isHovered ? '-rotate-12 scale-110 from-purple-400/80 to-pink-400/80' : ''}`} style={{ animationDelay: '0.2s' }} />
+      <div className={`absolute bottom-2 right-4 w-4 h-4 rounded bg-gradient-to-br from-pink-400/60 to-purple-400/60 transition-all duration-500 ${isHovered ? 'rotate-12 scale-110 from-pink-400/80 to-purple-400/80' : ''}`} style={{ animationDelay: '0.3s' }} />
       
-      {/* Central layers icon */}
+      {/* Central layers icon with enhanced color */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <Layers className={`w-8 h-8 text-purple-400 transition-all duration-300 ${isHovered ? 'scale-110 text-pink-400' : ''}`} />
+        <Layers className={`w-8 h-8 text-purple-300 transition-all duration-300 ${isHovered ? 'scale-110 text-pink-300' : ''}`} />
       </div>
       
-      {/* Scan sweep effect on hover */}
+      {/* Enhanced scan sweep effect on hover */}
       {isHovered && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse" style={{ animation: 'sweep 1.5s ease-in-out infinite' }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/40 to-transparent animate-pulse" style={{ animation: 'sweep 1.5s ease-in-out infinite' }} />
       )}
     </div>
   );
 
   const ROIVisual = ({ isHovered }: { isHovered: boolean }) => (
     <div className="relative w-24 h-24 mx-auto">
-      {/* Rising graph bars */}
+      {/* Enhanced rising graph bars with more base color */}
       <div className="absolute bottom-6 left-3 flex items-end space-x-1">
-        <div className={`w-2 h-4 bg-gradient-to-t from-slate-300/40 to-white/40 rounded-sm transition-all duration-500 ${isHovered ? 'h-6' : ''}`} />
-        <div className={`w-2 h-6 bg-gradient-to-t from-slate-300/40 to-white/40 rounded-sm transition-all duration-500 ${isHovered ? 'h-8' : ''}`} style={{ animationDelay: '0.1s' }} />
-        <div className={`w-2 h-8 bg-gradient-to-t from-slate-300/40 to-white/40 rounded-sm transition-all duration-500 ${isHovered ? 'h-10' : ''}`} style={{ animationDelay: '0.2s' }} />
-        <div className={`w-2 h-10 bg-gradient-to-t from-slate-300/40 to-white/40 rounded-sm transition-all duration-500 ${isHovered ? 'h-12' : ''}`} style={{ animationDelay: '0.3s' }} />
+        <div className={`w-2 h-4 bg-gradient-to-t from-slate-300/60 to-white/60 rounded-sm transition-all duration-500 ${isHovered ? 'h-6 from-slate-300/80 to-white/80' : ''}`} />
+        <div className={`w-2 h-6 bg-gradient-to-t from-slate-300/60 to-white/60 rounded-sm transition-all duration-500 ${isHovered ? 'h-8 from-slate-300/80 to-white/80' : ''}`} style={{ animationDelay: '0.1s' }} />
+        <div className={`w-2 h-8 bg-gradient-to-t from-slate-300/60 to-white/60 rounded-sm transition-all duration-500 ${isHovered ? 'h-10 from-slate-300/80 to-white/80' : ''}`} style={{ animationDelay: '0.2s' }} />
+        <div className={`w-2 h-10 bg-gradient-to-t from-slate-300/60 to-white/60 rounded-sm transition-all duration-500 ${isHovered ? 'h-12 from-slate-300/80 to-white/80' : ''}`} style={{ animationDelay: '0.3s' }} />
       </div>
       
-      {/* Central trending icon */}
+      {/* Central trending icon with enhanced color */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <TrendingUp className={`w-8 h-8 text-slate-300 transition-all duration-300 ${isHovered ? 'scale-110 text-white drop-shadow-lg' : ''}`} />
+        <TrendingUp className={`w-8 h-8 text-slate-200 transition-all duration-300 ${isHovered ? 'scale-110 text-white drop-shadow-lg' : ''}`} />
       </div>
       
-      {/* Reflective highlights */}
-      <div className={`absolute inset-0 rounded-full bg-gradient-to-tr from-white/5 to-transparent transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-50'}`} />
+      {/* Enhanced reflective highlights */}
+      <div className={`absolute inset-0 rounded-full bg-gradient-to-tr from-white/10 to-transparent transition-opacity duration-500 ${isHovered ? 'opacity-100 from-white/15' : 'opacity-70'}`} />
     </div>
   );
 
@@ -185,7 +185,7 @@ const Approach = () => {
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 transform -translate-x-full group-hover:translate-x-full" />
                 
                 <div className="relative z-10 text-center">
-                  {/* Premium animated visual */}
+                  {/* Premium animated visual with enhanced presence */}
                   <div className="mb-8 transform transition-all duration-500 group-hover:scale-105">
                     {getVisualComponent(principle.id, hoveredCard === principle.id)}
                   </div>
