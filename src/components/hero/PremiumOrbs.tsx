@@ -4,7 +4,7 @@ import React from 'react';
 const PremiumOrbs = () => {
   return (
     <div className="absolute inset-0 pointer-events-none">
-      {/* Large premium orb - top left */}
+      {/* Large premium orb - top left - No entrance animation */}
       <div className="absolute top-20 left-20 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 opacity-30">
         <div className="relative w-full h-full">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-premium-silver/20 to-transparent premium-orb-float-slow premium-orb-glow-silver blur-sm"></div>
@@ -13,7 +13,7 @@ const PremiumOrbs = () => {
         </div>
       </div>
 
-      {/* Medium orb - top right */}
+      {/* Medium orb - top right - No entrance animation */}
       <div className="absolute top-32 right-16 w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 opacity-25">
         <div className="relative w-full h-full">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/15 to-transparent premium-orb-float-medium premium-orb-glow-blue blur-sm"></div>
@@ -22,7 +22,7 @@ const PremiumOrbs = () => {
         </div>
       </div>
 
-      {/* Small orb - bottom left */}
+      {/* Small orb - bottom left - No entrance animation */}
       <div className="absolute bottom-40 left-32 w-16 h-16 sm:w-24 sm:h-24 opacity-20 hidden sm:block">
         <div className="relative w-full h-full">
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-400/12 to-transparent premium-orb-float-fast premium-orb-glow-purple blur-sm"></div>
@@ -31,7 +31,7 @@ const PremiumOrbs = () => {
         </div>
       </div>
 
-      {/* Tiny accent orbs - Hidden on mobile */}
+      {/* Tiny accent orbs - Hidden on mobile - No entrance animation */}
       <div className="hidden lg:block absolute top-64 right-1/3 w-12 h-12 opacity-15">
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/10 to-transparent premium-orb-float-slow premium-orb-glow-cyan blur-sm" style={{ animationDelay: '3s' }}></div>
       </div>
@@ -40,7 +40,7 @@ const PremiumOrbs = () => {
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/8 to-transparent premium-orb-float-medium premium-orb-glow-green blur-sm" style={{ animationDelay: '4s' }}></div>
       </div>
 
-      {/* Connecting light rays - very subtle */}
+      {/* Connecting light rays - very subtle - No entrance animation */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10 hidden md:block">
         <line x1="20%" y1="30%" x2="80%" y2="40%" stroke="url(#silverGradient)" strokeWidth="1" className="premium-connection-pulse" />
         <line x1="60%" y1="20%" x2="30%" y2="80%" stroke="url(#blueGradient)" strokeWidth="1" className="premium-connection-pulse" style={{ animationDelay: '2s' }} />
