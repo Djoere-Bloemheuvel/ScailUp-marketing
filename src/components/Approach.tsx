@@ -1,4 +1,3 @@
-
 import { Check, Sparkles, ArrowRight, Clock, HandHeart, Layers, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -210,12 +209,14 @@ const Approach = () => {
       </div>
 
       {/* Custom CSS for sweep animation */}
-      <style jsx>{`
-        @keyframes sweep {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes sweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+        `
+      }} />
     </section>
   );
 };
