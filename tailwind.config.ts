@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -164,10 +163,6 @@ export default {
 				'ai-device-premium-glow': {
 					'0%, 100%': { opacity: '0.2' },
 					'50%': { opacity: '0.4' }
-				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-6px)' }
 				}
 			},
 			animation: {
