@@ -11,64 +11,8 @@ const CinematicBackground = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-950/30 via-transparent to-black"></div>
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-gray-900/10 to-black"></div>
       
-      {/* AI Digital Face - Main Feature */}
-      <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 opacity-60">
-        <div className="relative w-80 h-96 md:w-96 md:h-[28rem] lg:w-[26rem] lg:h-[32rem]">
-          {/* Face base structure */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/20 via-gray-700/15 to-gray-900/25 rounded-3xl backdrop-blur-sm border border-gray-600/10 animate-cinematic-face-pulse">
-            
-            {/* Fragmenting effect overlay */}
-            <div className="absolute inset-0 overflow-hidden rounded-3xl">
-              {/* Digital fragments - creating the pixelated/fragmented look */}
-              {Array.from({ length: 24 }).map((_, i) => (
-                <div
-                  key={`fragment-${i}`}
-                  className="absolute bg-gradient-to-br from-cyan-400/20 via-gray-600/15 to-violet-400/10 animate-cinematic-fragment-float"
-                  style={{
-                    width: `${12 + (i % 3) * 8}px`,
-                    height: `${8 + (i % 4) * 6}px`,
-                    left: `${15 + (i % 8) * 10}%`,
-                    top: `${10 + (i % 6) * 12}%`,
-                    animationDelay: `${i * 0.3}s`,
-                    animationDuration: `${8 + (i % 3) * 2}s`,
-                    transform: `rotate(${i * 15}deg)`,
-                  }}
-                />
-              ))}
-              
-              {/* Face outline suggestion - subtle geometric lines */}
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-32 h-40 md:w-40 md:h-48 border-l border-r border-gray-500/20 rounded-t-full animate-cinematic-face-outline"></div>
-              
-              {/* Eyes area indication */}
-              <div className="absolute top-20 md:top-24 left-1/2 transform -translate-x-1/2 flex space-x-12 md:space-x-16">
-                <div className="w-3 h-3 md:w-4 md:h-4 bg-cyan-400/60 rounded-full animate-cinematic-eye-glow blur-sm"></div>
-                <div className="w-3 h-3 md:w-4 md:h-4 bg-cyan-400/60 rounded-full animate-cinematic-eye-glow blur-sm" style={{ animationDelay: '0.5s' }}></div>
-              </div>
-              
-              {/* Nose/mouth area - subtle geometric hints */}
-              <div className="absolute top-32 md:top-40 left-1/2 transform -translate-x-1/2 w-px h-8 md:h-12 bg-gradient-to-b from-transparent via-gray-400/30 to-transparent animate-cinematic-pulse-medium"></div>
-              <div className="absolute top-44 md:top-52 left-1/2 transform -translate-x-1/2 w-8 md:w-12 h-px bg-gradient-to-r from-transparent via-gray-400/25 to-transparent animate-cinematic-pulse-slow"></div>
-            </div>
-            
-            {/* Holographic scan lines */}
-            <div className="absolute inset-0 opacity-40 rounded-3xl overflow-hidden">
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-cinematic-face-scan" style={{ top: '20%' }}></div>
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-violet-400/30 to-transparent animate-cinematic-face-scan" style={{ top: '40%', animationDelay: '2s' }}></div>
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-pink-400/35 to-transparent animate-cinematic-face-scan" style={{ top: '60%', animationDelay: '4s' }}></div>
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-green-400/25 to-transparent animate-cinematic-face-scan" style={{ top: '80%', animationDelay: '6s' }}></div>
-            </div>
-            
-            {/* Glitch effect overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.01] to-transparent rounded-3xl animate-cinematic-glitch-overlay"></div>
-          </div>
-          
-          {/* AI Face glow aura */}
-          <div className="absolute inset-0 bg-gradient-radial from-cyan-500/8 via-violet-500/4 to-transparent rounded-3xl blur-2xl animate-cinematic-face-aura"></div>
-        </div>
-      </div>
-
-      {/* Central AI Core - Repositioned to right side */}
-      <div className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2">
+      {/* Central AI Core - The main showcase */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         {/* Core processor unit */}
         <div className="relative w-80 h-48 md:w-96 md:h-56 lg:w-[28rem] lg:h-64">
           {/* Main chip/processor body */}
