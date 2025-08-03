@@ -1,3 +1,4 @@
+
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
@@ -8,47 +9,47 @@ const CinematicBackground = () => {
       {/* Solid black background */}
       <div className="absolute inset-0 bg-black z-0" />
 
-      {/* Ambient Lighting Layer - Above background, behind everything else */}
-      <AmbientLighting />
+      {/* Ambient Lighting Layer - Behind glass but visible */}
+      <div className="relative z-15">
+        <AmbientLighting />
+      </div>
 
       {/* AI Core Center Component - Above ambient lighting */}
       <div className="relative z-20">
         <AICoreCenter />
       </div>
 
-      {/* Main content background boxes - Above AI core */}
+      {/* Main content background boxes - Above AI core but behind content */}
       <div className="absolute inset-0 flex items-center justify-center z-25">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
-          {/* Enhanced glass container with ambient glow reflection */}
+          {/* Enhanced glass container with reduced opacity to show ambient lighting */}
           <div 
             className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
             style={{
               background: `
-                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.04) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.015) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.012) 0%, transparent 50%)
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.03) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%)
               `,
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              backdropFilter: 'blur(15px)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               boxShadow: `
-                0 32px 64px rgba(255, 255, 255, 0.04),
-                0 16px 32px rgba(34, 211, 238, 0.06),
-                0 8px 16px rgba(139, 92, 246, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15),
-                inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-                inset 0 0 100px rgba(34, 211, 238, 0.012),
-                inset 0 0 80px rgba(139, 92, 246, 0.008)
+                0 32px 64px rgba(255, 255, 255, 0.02),
+                0 16px 32px rgba(34, 211, 238, 0.04),
+                0 8px 16px rgba(139, 92, 246, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.04)
               `
             }}
           />
           
-          {/* Colored edge lighting layers - Enhanced with ambient reflection */}
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-80" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-70" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-75" />
+          {/* Colored edge lighting layers - Reduced opacity */}
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
           
-          {/* Ambient light diffusion - Enhanced */}
-          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
+          {/* Ambient light diffusion - Reduced */}
+          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced opacity-70" />
         </div>
       </div>
 
@@ -171,15 +172,16 @@ const CinematicBackground = () => {
             }
             
             .premium-edge-glow-emerald {
-              opacity: 0.3 !important;
+              opacity: 0.2 !important;
             }
             
             .premium-edge-glow-violet-ambient {
-              opacity: 0.35 !important;
+              opacity: 0.25 !important;
             }
             
             .premium-ambient-diffusion-enhanced {
               animation-duration: 30s;
+              opacity: 0.4 !important;
             }
           }
 
