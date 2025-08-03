@@ -4,101 +4,103 @@ import React from 'react';
 const CinematicBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Ultra-deep cinematic base */}
-      <div className="absolute inset-0" style={{ background: '#060606' }}></div>
+      {/* Premium gradient base */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/95 to-black" />
       
-      {/* Depth gradient layers */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950/30 via-transparent to-black"></div>
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-gray-900/10 to-black"></div>
-      
-      {/* Central AI Core - The main showcase */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        {/* Core processor unit */}
-        <div className="relative w-80 h-48 md:w-96 md:h-56 lg:w-[28rem] lg:h-64">
-          {/* Main chip/processor body */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-40 md:w-80 md:h-48 bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-600/20 animate-cinematic-float-1">
-            {/* Holographic glass overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.02] via-transparent to-white/[0.01] rounded-xl animate-cinematic-glass-shimmer"></div>
-            
-            {/* Circuit pathways */}
-            <div className="absolute inset-0 opacity-70">
-              {/* Horizontal circuit lines */}
-              <div className="absolute top-6 left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-cinematic-pulse-fast"></div>
-              <div className="absolute top-12 left-6 right-6 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent animate-cinematic-pulse-medium" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute bottom-12 left-4 right-4 h-px bg-gradient-to-r from-transparent via-pink-400/60 to-transparent animate-cinematic-pulse-slow" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute bottom-6 left-8 right-8 h-px bg-gradient-to-r from-transparent via-green-400/50 to-transparent animate-cinematic-pulse-fast" style={{ animationDelay: '0.5s' }}></div>
-              
-              {/* Vertical circuit connections */}
-              <div className="absolute left-16 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-cyan-400/40 to-transparent animate-cinematic-pulse-medium"></div>
-              <div className="absolute right-16 top-6 bottom-6 w-px bg-gradient-to-b from-transparent via-violet-400/40 to-transparent animate-cinematic-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
-            </div>
-            
-            {/* Central processing core */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-white/10 via-gray-400/5 to-transparent rounded-lg animate-cinematic-core-pulse">
-              <div className="absolute inset-1 bg-gradient-to-br from-cyan-400/20 via-violet-400/10 to-transparent rounded-lg blur-sm"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white/80 rounded-full animate-cinematic-core-pulse"></div>
-            </div>
-            
-            {/* Core glow emission */}
-            <div className="absolute inset-0 bg-gradient-radial from-cyan-500/10 via-violet-500/5 to-transparent rounded-xl blur-md"></div>
-          </div>
-          
-          {/* Rotating outer ring */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 animate-cinematic-ring-pulse">
-            <div className="w-full h-full rounded-full border border-gray-500/15 relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 w-1 h-6 bg-gradient-to-b from-cyan-400/70 to-transparent transform -translate-x-1/2 blur-sm"></div>
-              <div className="absolute bottom-0 left-1/2 w-1 h-4 bg-gradient-to-t from-violet-400/50 to-transparent transform -translate-x-1/2 blur-sm"></div>
-              <div className="absolute left-0 top-1/2 w-6 h-1 bg-gradient-to-r from-pink-400/60 to-transparent transform -translate-y-1/2 blur-sm"></div>
-              <div className="absolute right-0 top-1/2 w-4 h-1 bg-gradient-to-l from-green-400/50 to-transparent transform -translate-y-1/2 blur-sm"></div>
-            </div>
-          </div>
-          
-          {/* Signal indicators */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80">
-            <div className="absolute -top-2 left-1/2 w-2 h-2 bg-cyan-400/90 rounded-full transform -translate-x-1/2 blur-sm animate-cinematic-float-2"></div>
-            <div className="absolute -bottom-2 left-1/2 w-2 h-2 bg-violet-400/90 rounded-full transform -translate-x-1/2 blur-sm animate-cinematic-float-3"></div>
-            <div className="absolute -left-2 top-1/2 w-2 h-2 bg-pink-400/90 rounded-full transform -translate-y-1/2 blur-sm animate-cinematic-float-4"></div>
-            <div className="absolute -right-2 top-1/2 w-2 h-2 bg-green-400/90 rounded-full transform -translate-y-1/2 blur-sm animate-cinematic-float-1"></div>
-          </div>
-        </div>
+      {/* Enhanced atmospheric layers */}
+      <div className="absolute inset-0">
+        {/* Primary atmospheric glow */}
+        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-96 bg-gradient-radial from-premium-silver/[0.03] via-premium-silver/[0.01] to-transparent rounded-full blur-3xl premium-ambient-pulse" />
         
-        {/* Bottom reflection - Apple style */}
-        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 h-32 md:w-96 md:h-40 lg:w-[28rem] lg:h-48 opacity-20">
-          <div className="w-full h-full bg-gradient-to-b from-gray-700/30 via-gray-800/15 to-transparent rounded-t-xl blur-xl scale-y-[-1] scale-95"></div>
+        {/* Secondary depth layer */}
+        <div className="absolute top-1/3 right-1/4 w-[80%] h-80 bg-gradient-radial from-blue-500/[0.02] via-purple-500/[0.01] to-transparent rounded-full blur-2xl premium-ambient-pulse" style={{ animationDelay: '5s' }} />
+        
+        {/* Tertiary accent layer */}
+        <div className="absolute bottom-1/3 left-1/4 w-[70%] h-72 bg-gradient-radial from-cyan-400/[0.015] to-transparent rounded-full blur-2xl premium-ambient-pulse" style={{ animationDelay: '10s' }} />
+      </div>
+
+      {/* Main content background boxes - Made significantly wider */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        {/* Primary content box - Much wider for better text coverage */}
+        <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh]">
+          <div 
+            className="absolute inset-0 rounded-3xl premium-ambient-pulse"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.03) 100%)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: `
+                0 32px 64px rgba(255, 255, 255, 0.02),
+                0 16px 32px rgba(255, 255, 255, 0.03),
+                0 8px 16px rgba(255, 255, 255, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05)
+              `
+            }}
+          />
+          
+          {/* Secondary inner glow box - Also made wider */}
+          <div 
+            className="absolute inset-4 sm:inset-6 md:inset-8 rounded-2xl premium-ambient-pulse"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.015) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.05)',
+              boxShadow: `
+                0 16px 32px rgba(255, 255, 255, 0.015),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08)
+              `,
+              animationDelay: '3s'
+            }}
+          />
         </div>
       </div>
-      
-      {/* Ambient atmospheric lighting */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-gradient-radial from-cyan-500/3 via-violet-500/2 to-transparent opacity-80 animate-cinematic-pulse-slow"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-gradient-radial from-pink-500/2 via-green-500/1 to-transparent opacity-60 animate-cinematic-pulse-medium" style={{ animationDelay: '5s' }}></div>
-      
-      {/* Scan line effects */}
-      <div className="absolute inset-0 pointer-events-none opacity-15">
-        <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent animate-cinematic-scan-horizontal top-1/3"></div>
-        <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent animate-cinematic-scan-horizontal-delayed top-2/3"></div>
+
+      {/* Premium scan effects - Adjusted for wider boxes */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Horizontal scan sweep */}
+        <div 
+          className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-premium-silver/30 to-transparent premium-scan-sweep-horizontal"
+        />
+        
+        {/* Vertical scan sweep */}
+        <div 
+          className="absolute w-[1px] h-full bg-gradient-to-b from-transparent via-premium-silver/25 to-transparent premium-scan-sweep-vertical"
+        />
+        
+        {/* Diagonal accent sweep */}
+        <div 
+          className="absolute w-[200%] h-[1px] bg-gradient-to-r from-transparent via-blue-400/20 to-transparent premium-scan-sweep-diagonal"
+        />
       </div>
-      
-      {/* Subtle depth particles for atmosphere */}
-      <div className="absolute inset-0 opacity-10 hidden md:block">
-        {Array.from({ length: 8 }).map((_, i) => (
+
+      {/* Enhanced particle system */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 12 }, (_, i) => (
           <div
-            key={`depth-particle-${i}`}
-            className="absolute w-1 h-1 bg-white/40 rounded-full animate-cinematic-depth-float"
+            key={i}
+            className="absolute w-1 h-1 bg-premium-silver/40 rounded-full premium-particle-trail blur-sm"
             style={{
-              left: `${15 + (i * 10)}%`,
-              top: `${20 + (i * 8)}%`,
-              animationDelay: `${i * 1.2}s`,
-              animationDuration: `${10 + (i % 3)}s`,
+              left: `${10 + (i * 8)}%`,
+              top: `${20 + (i * 5)}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: `${6 + (i % 4)}s`
             }}
           />
         ))}
       </div>
-      
-      {/* Cinematic vignette */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/40"></div>
-      
-      {/* Bottom fade for seamless transition */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black via-gray-950/50 to-transparent"></div>
+
+      {/* Subtle grid overlay for premium tech feel */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}
+      />
     </div>
   );
 };
