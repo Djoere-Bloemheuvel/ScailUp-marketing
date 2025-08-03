@@ -85,12 +85,12 @@ const AutomationHero = () => {
           </div>
         </div>
 
-        {/* Core Benefits Section - Glassmorphic */}
+        {/* Core Benefits Section - Enhanced Glassmorphic with Premium Hover Effects */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <Card 
               key={index} 
-              className="group relative overflow-hidden cursor-default animate-fade-in"
+              className="group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3"
               style={{ 
                 animationDelay: `${index * 0.2}s`,
                 background: `
@@ -109,27 +109,40 @@ const AutomationHero = () => {
                 `
               }}
             >
-              {/* Glassmorphic hover glow effect */}
+              {/* Enhanced Glassmorphic hover glow effect */}
               <div 
-                className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-30 transition-all duration-500 -z-10`}
+                className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-all duration-700 ease-out -z-10`}
                 style={{
-                  background: `linear-gradient(135deg, ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('blue-500', '59, 130, 246, 0.2').replace('purple-600', '147, 51, 234, 0.2').replace('purple-500', '168, 85, 247, 0.2').replace('pink-600', '219, 39, 119, 0.2').replace('green-500', '34, 197, 94, 0.2')}`,
-                  filter: 'blur(20px)'
+                  background: `linear-gradient(135deg, ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('blue-500', '59, 130, 246, 0.3').replace('purple-600', '147, 51, 234, 0.3').replace('purple-500', '168, 85, 247, 0.3').replace('pink-600', '219, 39, 119, 0.3').replace('green-500', '34, 197, 94, 0.3')}`,
+                  filter: 'blur(25px)',
+                  transform: 'scale(1.1)'
+                }}
+              />
+
+              {/* Premium hover border enhancement */}
+              <div className="absolute inset-0 rounded-2xl border border-white/0 group-hover:border-white/30 transition-all duration-500 ease-out" />
+              
+              {/* Dynamic ambient glow on hover */}
+              <div 
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 ease-out"
+                style={{
+                  background: `radial-gradient(circle at 50% 50%, ${benefit.accentColor.includes('blue') ? 'rgba(59, 130, 246, 0.2)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.2)' : 'rgba(34, 197, 94, 0.2)'} 0%, transparent 70%)`
                 }}
               />
               
               <CardContent className="p-8 text-center relative z-10">
-                {/* Icon container with glassmorphic styling */}
-                <div className="relative w-20 h-20 mx-auto mb-6">
+                {/* Icon container with enhanced glassmorphic styling and hover effects */}
+                <div className="relative w-20 h-20 mx-auto mb-6 transform transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-3">
                   <div 
-                    className="absolute inset-0 rounded-2xl p-0.5 transition-all duration-500 shadow-xl"
+                    className="absolute inset-0 rounded-2xl p-0.5 transition-all duration-500 shadow-xl group-hover:shadow-2xl"
                     style={{
                       background: `linear-gradient(135deg, ${benefit.accentColor})`,
-                      opacity: '0.9'
+                      opacity: '0.9',
+                      filter: 'brightness(1) group-hover:brightness(1.2)'
                     }}
                   >
                     <div 
-                      className="w-full h-full rounded-2xl flex items-center justify-center relative overflow-hidden"
+                      className="w-full h-full rounded-2xl flex items-center justify-center relative overflow-hidden group-hover:bg-black/95 transition-all duration-500"
                       style={{
                         background: `
                           linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%),
@@ -139,55 +152,91 @@ const AutomationHero = () => {
                         border: '1px solid rgba(255, 255, 255, 0.1)'
                       }}
                     >
-                      {/* Icon with enhanced glow */}
-                      <benefit.icon className="w-10 h-10 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 group-hover:scale-110" />
+                      {/* Icon with enhanced glow and hover animation */}
+                      <benefit.icon className="w-10 h-10 text-white/90 relative z-10 drop-shadow-lg transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl group-hover:scale-110" />
                       
-                      {/* Glassmorphic inner glow */}
+                      {/* Enhanced glassmorphic inner glow with hover animation */}
                       <div 
-                        className="absolute inset-2 rounded-xl opacity-10 group-hover:opacity-20 transition-all duration-500"
+                        className="absolute inset-2 rounded-xl opacity-10 group-hover:opacity-30 transition-all duration-500"
                         style={{
-                          background: `linear-gradient(135deg, ${benefit.accentColor})`
+                          background: `linear-gradient(135deg, ${benefit.accentColor})`,
+                          filter: 'blur(8px) group-hover:blur(6px)'
                         }}
                       />
+
+                      {/* Pulsing hover effect overlay */}
+                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-all duration-700 ease-out animate-pulse" style={{
+                        background: `linear-gradient(135deg, ${benefit.accentColor})`,
+                        animationDuration: '2s'
+                      }} />
                     </div>
                   </div>
                   
-                  {/* Floating glassmorphic accent elements */}
+                  {/* Enhanced floating glassmorphic accent elements with hover animations */}
                   <div 
-                    className="absolute -top-2 -right-2 w-6 h-6 rounded-lg opacity-80 group-hover:opacity-90 group-hover:rotate-12 transition-all duration-500 shadow-lg"
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-lg opacity-80 group-hover:opacity-100 group-hover:rotate-45 group-hover:scale-125 transition-all duration-700 shadow-lg"
                     style={{
                       background: `linear-gradient(135deg, ${benefit.accentColor})`,
-                      backdropFilter: 'blur(4px)'
+                      backdropFilter: 'blur(4px)',
+                      filter: 'brightness(1.2)'
                     }}
                   />
                   <div 
-                    className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full opacity-75 group-hover:opacity-85 group-hover:-rotate-45 transition-all duration-700 delay-100 shadow-lg"
+                    className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full opacity-75 group-hover:opacity-95 group-hover:-rotate-90 group-hover:scale-150 transition-all duration-800 delay-100 shadow-lg"
                     style={{
                       background: `linear-gradient(135deg, ${benefit.accentColor})`,
-                      backdropFilter: 'blur(4px)'
+                      backdropFilter: 'blur(4px)',
+                      filter: 'brightness(1.1)'
                     }}
                   />
+
+                  {/* Orbiting particle effect on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-500">
+                    <div 
+                      className="absolute top-1/2 left-1/2 w-1 h-1 rounded-full animate-spin"
+                      style={{
+                        background: benefit.accentColor.includes('blue') ? '#3b82f6' : benefit.accentColor.includes('purple') ? '#9333ea' : '#22c55e',
+                        transform: 'translate(-50%, -50%)',
+                        animationDuration: '3s'
+                      }}
+                    >
+                      <div className="absolute w-2 h-2 rounded-full -top-8" style={{
+                        background: benefit.accentColor.includes('blue') ? '#60a5fa' : benefit.accentColor.includes('purple') ? '#a855f7' : '#4ade80'
+                      }} />
+                    </div>
+                  </div>
                 </div>
                 
-                {/* Typography with glassmorphic text shadow */}
+                {/* Typography with enhanced glassmorphic text shadow and hover effects */}
                 <h3 
-                  className="text-xl font-bold text-white mb-4 group-hover:text-white transition-colors duration-300"
+                  className="text-xl font-bold text-white mb-4 group-hover:text-white transition-all duration-500 transform group-hover:scale-105"
                   style={{
-                    textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
+                    textShadow: '0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1)'
                   }}
                 >
                   {benefit.title}
                 </h3>
                 
                 <p 
-                  className="text-premium-silver/70 leading-relaxed text-sm group-hover:text-premium-silver/85 transition-colors duration-300"
+                  className="text-premium-silver/70 leading-relaxed text-sm group-hover:text-premium-silver/90 transition-all duration-500 transform group-hover:scale-[1.02]"
                   style={{
                     textShadow: '0 1px 5px rgba(0, 0, 0, 0.3)'
                   }}
                 >
                   {benefit.description}
                 </p>
+
+                {/* Subtle scanning line effect on hover */}
+                <div className="absolute top-0 left-0 w-full h-0.5 opacity-0 group-hover:opacity-80 transition-all duration-1000 ease-out bg-gradient-to-r from-transparent via-white/40 to-transparent transform -translate-y-full group-hover:translate-y-full" style={{
+                  animationDelay: '0.2s'
+                }} />
               </CardContent>
+
+              {/* Enhanced hover shimmer effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 transform -translate-x-full group-hover:translate-x-full" />
+              
+              {/* Premium hover reflection */}
+              <div className="absolute top-0 left-0 w-full h-1/2 rounded-t-2xl bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
             </Card>
           ))}
         </div>
