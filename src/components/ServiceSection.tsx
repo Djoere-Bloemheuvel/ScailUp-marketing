@@ -105,36 +105,36 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl">
                 
                 {service.isSpecial ? (
-                  // Special animated core for Studio service with enhanced base colors
+                  // Special animated core for Studio service with steady glow instead of pulsing
                   <div className="relative w-32 h-32">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/50 to-cyan-400/50 animate-pulse" />
-                    <div className="absolute inset-3 rounded-full bg-gradient-to-br from-blue-500/60 to-cyan-500/60 animate-pulse delay-300" />
-                    <div className="absolute inset-6 rounded-full bg-gradient-to-br from-blue-600/70 to-cyan-600/70 animate-pulse delay-700" />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/50 to-cyan-400/50" />
+                    <div className="absolute inset-3 rounded-full bg-gradient-to-br from-blue-500/60 to-cyan-500/60" />
+                    <div className="absolute inset-6 rounded-full bg-gradient-to-br from-blue-600/70 to-cyan-600/70" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <service.icon className="w-14 h-14 text-blue-300 animate-pulse drop-shadow-lg" />
+                      <service.icon className="w-14 h-14 text-blue-300 drop-shadow-lg" />
                     </div>
                     
-                    {/* Orbiting dots with enhanced visibility */}
+                    {/* Orbiting dots with enhanced visibility but no pulsing */}
                     <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
                       <div className="absolute top-0 left-1/2 w-3 h-3 bg-blue-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-blue-400/50" />
                       <div className="absolute bottom-0 left-1/2 w-3 h-3 bg-cyan-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-cyan-400/50" />
                     </div>
                   </div>
                 ) : (
-                  // Regular service visualization with enhanced base colors
+                  // Regular service visualization with steady glow instead of pulsing
                   <div className="relative w-28 h-28">
                     <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 transition-all duration-500 shadow-xl opacity-90 ${deviceHovered ? 'opacity-100' : ''}`}>
                       <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
                         
-                        {/* Enhanced pulsing icon with better base color */}
-                        <service.icon className="w-14 h-14 text-white/90 animate-pulse relative z-10 drop-shadow-lg transition-all duration-300" style={{
+                        {/* Static icon with steady glow instead of pulsing */}
+                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300" style={{
                           filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' : 
                                                        service.accentColor.includes('purple') ? '#a855f7' : 
                                                        service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
                         }} />
                         
                         {/* Enhanced sweeping light scan with more base presence */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full animate-pulse opacity-60" 
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full" 
                              style={{ 
                                animation: 'sweep 3s ease-in-out infinite',
                                animationDelay: `${index * 0.5}s`
@@ -142,7 +142,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         
                         {/* Enhanced hover scan line */}
                         {deviceHovered && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent animate-pulse" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
                         )}
                         
                         {/* Ambient base glow inside icon container */}
