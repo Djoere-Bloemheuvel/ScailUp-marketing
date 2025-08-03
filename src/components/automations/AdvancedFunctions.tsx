@@ -44,7 +44,7 @@ const AdvancedFunctions = () => {
 
           <div className="relative">
             <div className="relative w-full h-96 rounded-3xl bg-gradient-to-br from-premium-gray/20 to-premium-black/40 border border-premium-silver/20 backdrop-blur-md p-8 overflow-hidden">
-              {/* Animated automation visual */}
+              {/* Animated automation visual - copied from Services section styling */}
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute inset-0" style={{
                   backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
@@ -53,8 +53,36 @@ const AdvancedFunctions = () => {
               </div>
 
               <div className="relative z-10 h-full flex flex-col justify-center items-center">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500/30 to-purple-500/30 border border-blue-400/40 flex items-center justify-center mb-6">
-                  <Cog className="w-12 h-12 text-blue-400 animate-spin" style={{ animationDuration: '4s' }} />
+                {/* Enhanced glow effect with more base presence */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl blur-3xl opacity-40" />
+                
+                {/* Main device with enhanced glassmorphism - matching Services section */}
+                <div className="relative w-32 h-32 rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md flex items-center justify-center shadow-2xl mb-6">
+                  <div className="relative w-28 h-28">
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-0.5 transition-all duration-500 shadow-xl opacity-90">
+                      <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
+                        
+                        {/* Static icon with steady glow */}
+                        <Cog className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 animate-spin" style={{
+                          filter: 'drop-shadow(0 0 8px #60a5fa40)',
+                          animationDuration: '4s'
+                        }} />
+                        
+                        {/* Enhanced sweeping light scan */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full" 
+                             style={{ 
+                               animation: 'sweep 3s ease-in-out infinite'
+                             }} />
+                        
+                        {/* Ambient base glow inside icon container */}
+                        <div className="absolute inset-2 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 opacity-10" />
+                      </div>
+                    </div>
+                    
+                    {/* Enhanced floating accent elements */}
+                    <div className="absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 opacity-80 shadow-lg" />
+                    <div className="absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-75 shadow-lg" />
+                  </div>
                 </div>
                 
                 <div className="text-center">
@@ -78,6 +106,17 @@ const AdvancedFunctions = () => {
           </div>
         </div>
       </div>
+
+      {/* CSS Animations */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes sweep {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+          }
+        `
+      }} />
     </section>
   );
 };
