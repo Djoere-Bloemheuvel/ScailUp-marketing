@@ -3,6 +3,7 @@ import { ArrowLeft, Cog } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollHeader from '@/components/ScrollHeader';
 import AutomationHero from '@/components/automations/AutomationHero';
+import AutomationOverview from '@/components/automations/AutomationOverview';
 import AutomationIntro from '@/components/automations/AutomationIntro';
 import AutomationShowcase from '@/components/automations/AutomationShowcase';
 import AdvancedFunctions from '@/components/automations/AdvancedFunctions';
@@ -20,10 +21,13 @@ const AIAutomations = () => {
       {/* Hero Section with Integrated Benefits */}
       <AutomationHero />
 
-      {/* New Intro Section */}
+      {/* New Overview Section */}
+      <AutomationOverview />
+
+      {/* Intro Section */}
       <AutomationIntro />
 
-      {/* New Visual Showcase */}
+      {/* Visual Showcase */}
       <AutomationShowcase />
 
       {/* Advanced Functions */}
@@ -35,13 +39,13 @@ const AIAutomations = () => {
       {/* Integrations */}
       <Integrations />
 
-      {/* New Testimonial/Proof Section */}
+      {/* Testimonial/Proof Section */}
       <AutomationProof />
 
       {/* Client Examples */}
       <ClientExamples />
 
-      {/* New Final CTA */}
+      {/* Final CTA */}
       <AutomationFinalCTA />
     </div>
   );
