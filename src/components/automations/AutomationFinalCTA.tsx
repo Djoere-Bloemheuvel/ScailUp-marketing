@@ -1,46 +1,14 @@
 
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import CinematicBackground from '@/components/hero/CinematicBackground';
 
 const AutomationFinalCTA = () => {
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Enhanced premium layered background with additional light effects */}
+    <section className="relative py-20 overflow-hidden">
+      {/* Use the same cinematic background as the hero section */}
       <div className="absolute inset-0">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/10 to-purple-950/10" />
-        
-        {/* Enhanced ambient orbs with more variety */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/12 via-blue-500/6 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-purple-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-        <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-gradient-radial from-cyan-500/8 via-cyan-500/4 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDuration: '8s', animationDelay: '1s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-72 h-72 bg-gradient-radial from-emerald-500/6 via-emerald-500/3 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '3s' }} />
-        
-        {/* Floating gradient mesh with enhanced effects */}
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px]" 
-               style={{
-                 background: `radial-gradient(ellipse 800px 600px at 50% 50%, 
-                   rgba(59, 130, 246, 0.04) 0%, 
-                   rgba(147, 51, 234, 0.03) 25%, 
-                   rgba(16, 185, 129, 0.02) 50%,
-                   transparent 70%)`
-               }} />
-        </div>
-
-        {/* Additional sweeping light effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent animate-sweep" />
-          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/15 to-transparent animate-sweep-reverse" />
-          <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent animate-sweep" style={{ animationDelay: '2s' }} />
-          <div className="absolute right-0 bottom-0 w-px h-full bg-gradient-to-t from-transparent via-emerald-400/10 to-transparent animate-sweep-reverse" style={{ animationDelay: '4s' }} />
-        </div>
-
-        {/* Subtle corner glows */}
-        <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-radial from-blue-500/8 to-transparent blur-2xl animate-glow-pulse" />
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-purple-500/6 to-transparent blur-2xl animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-radial from-cyan-500/7 to-transparent blur-2xl animate-glow-pulse" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-0 right-0 w-28 h-28 bg-gradient-radial from-emerald-500/5 to-transparent blur-2xl animate-glow-pulse" style={{ animationDelay: '4.5s' }} />
+        <CinematicBackground />
       </div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center">
