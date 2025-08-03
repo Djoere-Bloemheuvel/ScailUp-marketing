@@ -288,14 +288,14 @@ const Hero = () => {
       <div className="relative max-w-5xl mx-auto z-30 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Apple-inspired typography hierarchy - centered */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] mb-8 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+          <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
             <div className="text-6xl md:text-8xl lg:text-9xl text-white">
               AI die werkt.
             </div>
           </h1>
           
           {/* Apple-style subtitle - centered */}
-          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light mt-4 ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
+          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
             Wij bouwen AI-systemen die uw business 
             <br />
             <span className="text-white font-normal">daadwerkelijk transformeren.</span>
