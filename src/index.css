@@ -96,6 +96,31 @@ All colors MUST be HSL.
     animation: appleScrollPulse 2s ease-in-out infinite;
   }
 
+  /* Nieuwe premium animaties voor WOW effect */
+  .premium-hex-float {
+    animation: premiumHexFloat linear infinite;
+  }
+
+  .premium-data-stream {
+    animation: premiumDataStream linear infinite;
+  }
+
+  .premium-grid-animation {
+    animation: premiumGridMove 25s linear infinite;
+  }
+
+  .premium-particle-float {
+    animation: premiumParticleFloat linear infinite;
+  }
+
+  .premium-glow-pulse {
+    animation: premiumGlowPulse 12s ease-in-out infinite;
+  }
+
+  .premium-circuit-flow {
+    animation: premiumCircuitFlow 20s ease-in-out infinite;
+  }
+
   /* Keep existing utilities */
   .text-gradient {
     @apply bg-gradient-to-r from-white via-premium-silver to-premium-silver-light bg-clip-text text-transparent;
@@ -287,6 +312,105 @@ All colors MUST be HSL.
   50% { 
     opacity: 1;
     transform: translateY(8px);
+  }
+}
+
+/* Premium WOW animaties */
+@keyframes premiumHexFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes premiumDataStream {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px));
+    opacity: 0;
+  }
+}
+
+@keyframes premiumGridMove {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(80px, 80px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes premiumParticleFloat {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes premiumGlowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  33% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  66% {
+    transform: scale(0.95);
+    opacity: 0.3;
+  }
+}
+
+@keyframes premiumCircuitFlow {
+  0%, 100% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    opacity: 0.08;
+  }
+  25% {
+    background-position: 25% 25%, 15% 15%, 10% 10%, 20% 20%;
+    opacity: 0.15;
+  }
+  50% {
+    background-position: 50% 50%, 30% 30%, 20% 20%, 40% 40%;
+    opacity: 0.12;
+  }
+  75% {
+    background-position: 75% 75%, 45% 45%, 30% 30%, 60% 60%;
+    opacity: 0.18;
   }
 }
 

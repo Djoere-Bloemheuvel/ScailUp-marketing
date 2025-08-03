@@ -12,18 +12,95 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-black via-premium-gray to-premium-gray-dark overflow-hidden">
-      {/* Apple-inspired subtle background grid */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)`,
-          backgroundSize: '50px 50px'
-        }}></div>
+      {/* Luxe geometrische animatie achtergrond */}
+      <div className="absolute inset-0 opacity-[0.15]">
+        {/* Bewegende hexagons */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute border border-premium-silver/10 premium-hex-float"
+              style={{
+                width: `${60 + i * 20}px`,
+                height: `${60 + i * 20}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
+                animationDelay: `${i * 0.8}s`,
+                animationDuration: `${15 + Math.random() * 10}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Vloeiende data streams */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute h-[1px] premium-data-stream"
+              style={{
+                width: '200px',
+                background: `linear-gradient(90deg, transparent, rgba(192, 192, 192, ${0.3 + Math.random() * 0.4}), transparent)`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 1.2}s`,
+                animationDuration: `${8 + Math.random() * 6}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Subtiele premium grid */}
+        <div 
+          className="absolute inset-0 premium-grid-animation"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(192, 192, 192, 0.02) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(192, 192, 192, 0.02) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px'
+          }}
+        />
       </div>
 
-      {/* Subtle ambient lighting effects */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-radial from-premium-silver/5 via-premium-silver/2 to-transparent rounded-full blur-3xl apple-glow"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-gradient-radial from-white/3 via-white/1 to-transparent rounded-full blur-3xl apple-glow" style={{animationDelay: '2s'}}></div>
+      {/* Luxe particle systeem */}
+      <div className="absolute inset-0 opacity-40">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-premium-silver/30 rounded-full premium-particle-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${20 + Math.random() * 15}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Premium glow effecten */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-premium-silver/8 via-premium-silver/3 to-transparent rounded-full blur-3xl premium-glow-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-radial from-white/5 via-white/2 to-transparent rounded-full blur-3xl premium-glow-pulse" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-premium-silver/4 via-transparent to-transparent rounded-full blur-3xl premium-glow-pulse" style={{animationDelay: '6s'}}></div>
+      </div>
+
+      {/* Subtiele circuit patroon */}
+      <div className="absolute inset-0 opacity-[0.08] premium-circuit-flow">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 20%, rgba(192, 192, 192, 0.3) 1px, transparent 1px),
+              radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+              linear-gradient(45deg, transparent 48%, rgba(192, 192, 192, 0.05) 50%, transparent 52%),
+              linear-gradient(-45deg, transparent 48%, rgba(192, 192, 192, 0.05) 50%, transparent 52%)
+            `,
+            backgroundSize: '120px 120px, 80px 80px, 40px 40px, 60px 60px'
+          }}
+        />
       </div>
 
       <div className="relative max-w-5xl mx-auto text-center z-10">
@@ -56,7 +133,6 @@ const Hero = () => {
           <span className="text-white font-normal">daadwerkelijk transformeren.</span>
         </p>
         
-        {/* Apple-style CTA buttons */}
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
           <Button 
             className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
