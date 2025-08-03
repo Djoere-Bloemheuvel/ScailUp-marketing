@@ -1,5 +1,4 @@
-
-import { ChevronRight, Cog, Sparkles, Zap, Clock, Target } from 'lucide-react';
+import { ChevronRight, Cog, Sparkles, Zap, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -35,7 +34,7 @@ const AutomationHero = () => {
     backgroundTint: 'rgba(139, 92, 246, 0.03)',
     hoverBackgroundTint: 'rgba(139, 92, 246, 0.08)'
   }, {
-    icon: Target,
+    icon: Cog,
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
     accentColor: 'from-blue-400 to-purple-500',
