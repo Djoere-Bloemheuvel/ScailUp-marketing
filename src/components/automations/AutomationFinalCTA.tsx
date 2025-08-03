@@ -9,9 +9,9 @@ const AutomationFinalCTA = () => {
       {/* Darker background overlay */}
       <div className="absolute inset-0 bg-black/80" />
       
-      {/* Use the same cinematic background as the hero section */}
+      {/* Use the same cinematic background as the hero section but hide glass container */}
       <div className="absolute inset-0">
-        <CinematicBackground />
+        <CinematicBackground hideGlassContainer={true} />
       </div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center">
