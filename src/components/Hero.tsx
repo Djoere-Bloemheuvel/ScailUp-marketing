@@ -9,42 +9,36 @@ const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Small delay to ensure background elements are rendered first
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 200);
-
-    return () => clearTimeout(timer);
+    setIsLoaded(true);
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Cinematic Background - Always visible */}
-      <div className="absolute inset-0">
+      {/* Cinematic Background with AI Core */}
+      <div className={`absolute inset-0 ${isLoaded ? 'hero-entrance' : ''}`}>
         <CinematicBackground />
       </div>
 
-      {/* Unified Hero Content Container */}
-      <div className={`relative max-w-5xl mx-auto z-30 text-center px-4 unified-hero-entrance ${isLoaded ? 'is-loaded' : ''}`}>
+      {/* Content - Enhanced with better spacing and preserved Dutch text */}
+      <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
         <div className="max-w-4xl mx-auto">
           {/* Main Content Container with Reflection */}
           <div className="relative">
-            {/* Main Content - All elements animate together */}
-            <div className="relative z-10 hero-content-group">
+            {/* Main Content */}
+            <div className="relative z-10">
               {/* Animated Headline */}
-              <div className="mb-2">
+              <div className={`mb-2 ${isLoaded ? 'premium-fade-in premium-stagger-1' : ''}`}>
                 <AnimatedHeadline />
               </div>
               
-              {/* Subtitle */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+              {/* Enhanced subtitle with premium typography - Dutch text preserved */}
+              <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 ${isLoaded ? 'premium-fade-in premium-stagger-2' : ''}`}>
                 Wij bouwen AI-systemen die uw business 
                 <br className="hidden sm:block" />
                 <span className="text-white font-medium bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">daadwerkelijk transformeren.</span>
               </p>
               
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
+              <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 ${isLoaded ? 'premium-fade-in premium-stagger-3' : ''}`}>
                 <Button 
                   className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
                   style={{
@@ -74,7 +68,7 @@ const Hero = () => {
             </div>
 
             {/* Apple-style Reflection Effect */}
-            <div className="absolute top-full left-0 right-0 h-[300px] sm:h-[400px] pointer-events-none overflow-hidden hero-reflection-group">
+            <div className="absolute top-full left-0 right-0 h-[300px] sm:h-[400px] pointer-events-none overflow-hidden">
               <div 
                 className="absolute inset-0 opacity-20 scale-y-[-1] origin-top"
                 style={{
@@ -85,20 +79,22 @@ const Hero = () => {
                   transform: 'scaleY(-1) translateY(-20px)'
                 }}
               >
-                {/* Reflected content - mirrors main content */}
-                <div className="mb-2">
+                {/* Reflected Headline */}
+                <div className="mb-2 premium-fade-in premium-stagger-1">
                   <AnimatedHeadline />
                 </div>
                 
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+                {/* Reflected Subtitle */}
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 premium-fade-in premium-stagger-2">
                   Wij bouwen AI-systemen die uw business 
                   <br className="hidden sm:block" />
                   <span className="text-white font-medium bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">daadwerkelijk transformeren.</span>
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
+                {/* Reflected Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20 premium-fade-in premium-stagger-3">
                   <Button 
-                    className="group relative bg-white text-black px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full w-full sm:w-auto"
+                    className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
                     style={{
                       background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
                       boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
@@ -106,20 +102,20 @@ const Hero = () => {
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Ontdek de mogelijkheden
-                      <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5" />
+                      <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                   </Button>
                   
                   <Button 
                     variant="outline" 
-                    className="relative text-premium-silver px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 bg-white/[0.05] backdrop-blur-md w-full sm:w-auto"
+                    className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-700 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
                     style={{
                       boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                     }}
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Plan een deepdive
-                      <Sparkles className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5" />
+                      <Sparkles className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-300" />
                     </span>
                   </Button>
                 </div>
@@ -136,76 +132,24 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Unified Hero Animation Styles */}
+      {/* Hero entrance and interaction animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          /* Unified Hero Entrance Animation */
-          @keyframes unified-hero-entrance {
-            0% { 
-              opacity: 0; 
-              transform: scale(0.98) translateY(20px); 
-              filter: blur(8px);
-            }
-            100% { 
-              opacity: 1; 
-              transform: scale(1) translateY(0); 
-              filter: blur(0px);
-            }
+          @keyframes hero-entrance {
+            0% { opacity: 0; transform: scale(0.85) translateY(20px); filter: blur(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
           }
 
-          @keyframes unified-hero-entrance-mobile {
-            0% { 
-              opacity: 0; 
-              transform: translateY(30px); 
-              filter: blur(8px);
-            }
-            100% { 
-              opacity: 1; 
-              transform: translateY(0); 
-              filter: blur(0px);
-            }
+          @keyframes premium-fade-in {
+            0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
           }
 
-          /* Performance optimizations */
-          .unified-hero-entrance {
-            opacity: 0;
-            will-change: transform, opacity, filter;
-            transform: scale(0.98) translateY(20px);
-            filter: blur(8px);
-            transition-property: none; /* Disable any conflicting transitions */
-          }
-
-          .unified-hero-entrance.is-loaded {
-            animation: unified-hero-entrance 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          }
-
-          .hero-content-group,
-          .hero-reflection-group {
-            will-change: transform, opacity;
-          }
-
-          /* Mobile optimization - no scale transform */
-          @media (max-width: 768px) {
-            .unified-hero-entrance {
-              transform: translateY(30px);
-            }
-            
-            .unified-hero-entrance.is-loaded {
-              animation: unified-hero-entrance-mobile 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            }
-          }
-
-          /* Scroll indicator animation */
           @keyframes premium-scroll-pulse {
             0%, 100% { opacity: 0.5; transform: translateY(0); }
             50% { opacity: 1; transform: translateY(12px); }
           }
 
-          .premium-scroll-pulse {
-            animation: premium-scroll-pulse 3s ease-in-out infinite;
-          }
-
-          /* Button hover effects */
           @keyframes premium-button-hover {
             0% { transform: scale(1) translateY(0); }
             100% { transform: scale(1.02) translateY(-2px); }
@@ -216,22 +160,28 @@ const Hero = () => {
             100% { transform: scale(1.02); }
           }
 
+          .hero-entrance {
+            animation: hero-entrance 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+
+          .premium-fade-in {
+            animation: premium-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+
+          .premium-stagger-1 { animation-delay: 0.2s; }
+          .premium-stagger-2 { animation-delay: 0.4s; }
+          .premium-stagger-3 { animation-delay: 0.6s; }
+
+          .premium-scroll-pulse {
+            animation: premium-scroll-pulse 3s ease-in-out infinite;
+          }
+
           .premium-button-hover:hover {
             animation: premium-button-hover 0.3s ease-out forwards;
           }
 
           .premium-scale-hover:hover {
             animation: premium-scale-hover 0.2s ease-out forwards;
-          }
-
-          /* Reduced motion support */
-          @media (prefers-reduced-motion: reduce) {
-            .unified-hero-entrance.is-loaded {
-              animation: none;
-              opacity: 1;
-              transform: none;
-              filter: none;
-            }
           }
         `
       }} />
