@@ -10,7 +10,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-black overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
       {/* Nothing-inspired minimalistic background */}
       <div className="absolute inset-0">
         {/* Subtle gradient overlay */}
@@ -132,8 +132,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - keeping the existing text */}
-      <div className="relative max-w-5xl mx-auto text-center z-30">
+      {/* Content - moved higher up */}
+      <div className="relative max-w-5xl mx-auto text-center z-30 -mt-16">
         {/* Apple-style product badge */}
         <div className={`mb-12 flex justify-center ${isLoaded ? 'apple-fade-in' : ''}`}>
           <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] apple-card-hover group cursor-pointer">
