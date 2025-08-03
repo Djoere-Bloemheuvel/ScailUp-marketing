@@ -86,7 +86,74 @@
   }
 }
 
-/* Apple-inspired animations */
+/* Debug styles for hero content layer */
+.hero-content-layer {
+  background: rgba(0, 255, 0, 0.05) !important; /* Subtle green tint for debugging */
+  border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.hero-text-container {
+  background: rgba(0, 0, 255, 0.05) !important; /* Subtle blue tint for debugging */
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  padding: 20px;
+}
+
+.hero-debug-indicator {
+  animation: debug-blink 2s infinite !important;
+}
+
+@keyframes debug-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.5; }
+}
+
+/* Fixed Apple-inspired animations with proper isolation */
+.hero-fade-in {
+  animation: hero-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  position: relative !important;
+  z-index: 105 !important;
+}
+
+.hero-stagger-1 { animation-delay: 0.1s !important; opacity: 0 !important; }
+.hero-stagger-2 { animation-delay: 0.2s !important; opacity: 0 !important; }
+.hero-stagger-3 { animation-delay: 0.4s !important; opacity: 0 !important; }
+.hero-stagger-4 { animation-delay: 0.6s !important; opacity: 0 !important; }
+.hero-stagger-5 { animation-delay: 0.8s !important; opacity: 0 !important; }
+
+@keyframes hero-fade-in {
+  0% {
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+  }
+  100% {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* Force text visibility */
+.hero-main-title, .hero-main-title * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  z-index: 106 !important;
+}
+
+.hero-subtitle, .hero-subtitle * {
+  color: rgba(192, 192, 192, 0.8) !important;
+  -webkit-text-fill-color: rgba(192, 192, 192, 0.8) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6) !important;
+  position: relative !important;
+  z-index: 106 !important;
+}
+
+.hero-buttons, .hero-buttons * {
+  position: relative !important;
+  z-index: 106 !important;
+}
+
+/* Legacy Apple animations (kept for compatibility) */
 .apple-fade-in {
   animation: apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -96,6 +163,17 @@
 .apple-stagger-3 { animation-delay: 0.4s; opacity: 0; }
 .apple-stagger-4 { animation-delay: 0.6s; opacity: 0; }
 .apple-stagger-5 { animation-delay: 0.8s; opacity: 0; }
+
+@keyframes apple-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .apple-button-hover {
   transform: translateY(0px);
@@ -115,25 +193,40 @@
   transform: scale(1.02) translateY(-2px);
 }
 
-/* Nothing Phone inspired floating animations */
+/* Scroll indicator */
+.apple-scroll-pulse {
+  animation: apple-scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes apple-scroll-pulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(8px); }
+}
+
+/* Nothing Phone inspired floating animations - restricted to background only */
 .nothing-float {
   animation: nothing-float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 .nothing-float-delayed {
   animation: nothing-float-delayed 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 .nothing-float-slow {
   animation: nothing-float-slow 10s ease-in-out infinite;
+  will-change: transform;
 }
 
 .nothing-pulse {
   animation: nothing-pulse 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .nothing-pulse-delayed {
   animation: nothing-pulse-delayed 6s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes nothing-float {
@@ -163,13 +256,18 @@
   50% { opacity: 0.8; transform: scale(1.1); }
 }
 
-/* AI Device animations */
+/* AI Device animations - restricted to background elements only */
 .ai-device-float {
   animation: ai-device-float 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 .ai-device-glow {
   animation: ai-device-glow 6s ease-in-out infinite;
+}
+
+.ai-device-premium-glow {
+  animation: ai-device-premium-glow 8s ease-in-out infinite;
 }
 
 @keyframes ai-device-float {
@@ -182,6 +280,13 @@
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.6; }
 }
+
+@keyframes ai-device-premium-glow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+/* ... keep existing code (AI Mesh animations) */
 
 /* AI Mesh animations */
 .ai-mesh-line {
