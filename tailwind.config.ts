@@ -165,14 +165,6 @@ export default {
 				'ai-device-premium-glow': {
 					'0%, 100%': { opacity: '0.2' },
 					'50%': { opacity: '0.4' }
-				},
-				// New screen shake animation
-				'screen-shake': {
-					'0%, 100%': { transform: 'translate(0, 0)' },
-					'20%': { transform: 'translate(-1px, 1px)' },
-					'40%': { transform: 'translate(1px, -1px)' },
-					'60%': { transform: 'translate(-1px, -1px)' },
-					'80%': { transform: 'translate(1px, 1px)' }
 				}
 			},
 			animation: {
@@ -194,8 +186,7 @@ export default {
 				'ai-database-scan': 'ai-database-scan 4s ease-in-out infinite',
 				'terminal-line': 'terminal-line 2s ease-out forwards',
 				'terminal-cursor': 'terminal-cursor 1s ease-in-out infinite',
-				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite',
-				'screen-shake': 'screen-shake 200ms ease-in-out'
+				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite'
 			}
 		}
 	},

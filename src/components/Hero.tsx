@@ -3,29 +3,16 @@ import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot,
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
-import DigitalRupture from './DigitalRupture';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isShaking, setIsShaking] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
-    
-    // Trigger screen shake tijdens rupture
-    const shakeTimer = setTimeout(() => {
-      setIsShaking(true);
-      setTimeout(() => setIsShaking(false), 200);
-    }, Math.random() * 2000 + 2000);
-
-    return () => clearTimeout(shakeTimer);
   }, []);
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden ${isShaking ? 'screen-shake' : ''}`}>
-      {/* Digital Rupture Effect */}
-      <DigitalRupture />
-
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
       {/* Nothing-inspired minimalistic background */}
       <div className="absolute inset-0">
         {/* Subtle gradient overlay */}
