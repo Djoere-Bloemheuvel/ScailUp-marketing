@@ -1,3 +1,4 @@
+
 import { ChevronRight, Cog, Sparkles, Zap, Clock, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,19 +8,22 @@ const AutomationHero = () => {
     title: 'Snelheid',
     description: 'Processen die 8 uur duurden, voltooien wij in 3 minuten. Elke dag opnieuw.',
     accentColor: 'from-sky-400 to-blue-500',
-    glowColor: 'rgba(56, 189, 248, 0.3)' // Light blue glow
+    glowColor: 'rgba(56, 189, 248, 0.3)', // Light blue glow
+    iconColor: '#38bdf8' // Sky blue for native color
   }, {
     icon: Clock,
     title: '24/7 Operationeel',
     description: 'Uw automatisering stopt nooit. Weekenden, nachten — altijd actief.',
     accentColor: 'from-purple-400 to-purple-600',
-    glowColor: 'rgba(147, 51, 234, 0.3)' // Purple glow
+    glowColor: 'rgba(147, 51, 234, 0.3)', // Purple glow
+    iconColor: '#a855f7' // Purple for native color
   }, {
     icon: Target,
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
     accentColor: 'from-red-400 to-red-600',
-    glowColor: 'rgba(239, 68, 68, 0.3)' // Red glow
+    glowColor: 'rgba(239, 68, 68, 0.3)', // Red glow
+    iconColor: '#ef4444' // Red for native color
   }];
 
   return <section className="relative py-20 lg:py-32 overflow-hidden">
@@ -131,8 +135,14 @@ const AutomationHero = () => {
                   backdropFilter: 'blur(10px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)'
                 }}>
-                      {/* Icon with uniform white color and enhanced glow and hover animation */}
-                      <benefit.icon className="w-10 h-10 text-white relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110" />
+                      {/* Icon with native color and enhanced glow and hover animation */}
+                      <benefit.icon 
+                        className="w-10 h-10 relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110" 
+                        style={{ 
+                          color: benefit.iconColor,
+                          filter: `drop-shadow(0 0 8px ${benefit.iconColor}40)`
+                        }} 
+                      />
                       
                       {/* Enhanced glassmorphic inner glow with hover animation */}
                       <div className="absolute inset-2 rounded-xl opacity-10 group-hover:opacity-30 transition-all duration-500" style={{
