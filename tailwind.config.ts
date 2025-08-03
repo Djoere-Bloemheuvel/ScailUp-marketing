@@ -119,7 +119,6 @@ export default {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' }
 				},
-				// Apple-inspired animations
 				'apple-fade-in': {
 					'0%': { opacity: '0', transform: 'translateY(30px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
@@ -132,7 +131,6 @@ export default {
 					'0%, 100%': { opacity: '0.4', transform: 'translateY(0)' },
 					'50%': { opacity: '1', transform: 'translateY(8px)' }
 				},
-				// New animations for left robot
 				'server-pulse': {
 					'0%, 100%': { opacity: '0.4', scaleX: '0.8' },
 					'50%': { opacity: '1', scaleX: '1' }
@@ -174,11 +172,9 @@ export default {
 				'glow': 'glow 2s ease-in-out infinite',
 				'pulse-premium': 'pulse-premium 2s ease-in-out infinite',
 				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
-				// Apple-inspired animations
 				'apple-fade-in': 'apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'apple-glow': 'apple-glow 8s ease-in-out infinite',
 				'apple-scroll-pulse': 'apple-scroll-pulse 2s ease-in-out infinite',
-				// New animations for left robot
 				'server-pulse': 'server-pulse 2s ease-in-out infinite',
 				'status-light': 'status-light 1.5s ease-in-out infinite',
 				'ai-code-pulse': 'ai-code-pulse 2.5s ease-in-out infinite',

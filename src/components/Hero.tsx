@@ -3,11 +3,8 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
-import AIRobotDevice from './hero/AIRobotDevice';
-import AIDeviceEcosystem from './hero/AIDeviceEcosystem';
-import HeroAnimations from './hero/HeroAnimations';
-import PremiumOrbs from './hero/PremiumOrbs';
-import FloatingIcons from './hero/FloatingIcons';
+import CinematicBackground from './hero/CinematicBackground';
+import CinematicAnimations from './hero/CinematicAnimations';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,39 +26,17 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Premium Layered Background */}
-      <div className="absolute inset-0">
-        {/* Base gradient with more depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950/60 to-black"></div>
-        <div className="absolute inset-0 bg-gradient-radial from-gray-900/20 via-transparent to-transparent"></div>
+      {/* New Cinematic Background */}
+      <div className={`absolute inset-0 ${isLoaded ? 'cinematic-entrance' : ''}`}>
+        <CinematicBackground />
         
-        {/* Premium orbs layer - deepest */}
-        <PremiumOrbs />
-        
-        {/* Floating icons layer - middle */}
-        <FloatingIcons />
-        
-        {/* Enhanced scanning sweeps */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-premium-silver/20 to-transparent premium-scan-sweep-horizontal" />
-          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-blue-400/15 to-transparent premium-scan-sweep-vertical" />
-          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-purple-400/10 to-transparent premium-scan-sweep-diagonal" />
-        </div>
-
-        {/* AI Devices - top layer */}
-        <AIRobotDevice />
-        <AIDeviceEcosystem />
-
         {/* Subtle mouse interaction layer */}
         <div 
           className="absolute inset-0 pointer-events-none transition-all duration-1000 ease-out"
           style={{
-            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(192, 192, 192, 0.03) 0%, transparent 60%)`
+            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(255, 255, 255, 0.02) 0%, transparent 60%)`
           }}
         />
-
-        {/* Premium ambient glow */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-premium-silver/[0.02] premium-ambient-pulse" />
       </div>
 
       {/* Content - Enhanced with better spacing */}
@@ -117,7 +92,7 @@ const Hero = () => {
       </div>
 
       {/* Enhanced CSS Animations */}
-      <HeroAnimations />
+      <CinematicAnimations />
     </section>
   );
 };
