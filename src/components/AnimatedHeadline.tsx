@@ -1,7 +1,11 @@
 
 import { useEffect, useState } from 'react';
 
-const AnimatedHeadline = () => {
+interface AnimatedHeadlineProps {
+  startAnimation?: boolean;
+}
+
+const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -9,11 +13,11 @@ const AnimatedHeadline = () => {
   const words = ['denkt', 'bouwt', 'werkt'];
 
   useEffect(() => {
-    if (animationComplete) return;
+    if (!startAnimation || animationComplete) return;
 
     const sequence = async () => {
-      // Wacht even voor de eerste transitie
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // Wait for hero animation to complete, then start glitch sequence
+      await new Promise(resolve => setTimeout(resolve, 200));
       
       for (let i = 0; i < words.length; i++) {
         if (i > 0) {
@@ -28,7 +32,7 @@ const AnimatedHeadline = () => {
         
         // Wacht voordat we naar het volgende woord gaan (behalve bij het laatste woord)
         if (i < words.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 300));
+          await new Promise(resolve => setTimeout(resolve, 400));
         }
       }
       
@@ -36,7 +40,7 @@ const AnimatedHeadline = () => {
     };
 
     sequence();
-  }, []);
+  }, [startAnimation]);
 
   const cssStyles = `
     /* RGB Split Animations */
@@ -66,6 +70,11 @@ const AnimatedHeadline = () => {
     /* Scanline Animation */
     .glitch-scanline {
       animation: glitch-scanline 100ms linear infinite;
+    }
+
+    /* Scan ripple effect */
+    .scan-ripple {
+      animation: scanRipple 200ms ease-out;
     }
 
     @keyframes glitch-rgb-red {
@@ -124,6 +133,21 @@ const AnimatedHeadline = () => {
       50% { top: 50%; height: 3px; opacity: 0.6; }
       75% { top: 75%; height: 1px; opacity: 0.9; }
       100% { top: 100%; height: 2px; opacity: 0.7; }
+    }
+
+    @keyframes scanRipple {
+      0% { 
+        transform: scaleX(0.8) scaleY(0.3);
+        opacity: 0.8;
+      }
+      50% { 
+        transform: scaleX(1.2) scaleY(1);
+        opacity: 0.4;
+      }
+      100% { 
+        transform: scaleX(2) scaleY(0.1);
+        opacity: 0;
+      }
     }
   `;
 
@@ -189,6 +213,9 @@ const AnimatedHeadline = () => {
 
                 {/* Scanline effect */}
                 <div className="absolute inset-0 z-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-60 h-1 glitch-scanline"></div>
+                
+                {/* Scan ripple */}
+                <div className="absolute inset-0 z-17 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent scan-ripple"></div>
               </>
             )}
           </span>

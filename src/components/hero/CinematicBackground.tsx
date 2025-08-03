@@ -1,17 +1,23 @@
+
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
 import PremiumOrbs from './PremiumOrbs';
 
-interface CinematicBackgroundProps {
-  isInitialLoadComplete?: boolean;
-}
-
-const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgroundProps) => {
+const CinematicBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Solid black background */}
-      <div className="absolute inset-0 bg-black" />
+      {/* Initial fade from black to textured background */}
+      <div 
+        className="absolute inset-0 bg-black transition-opacity duration-400 ease-out"
+        style={{
+          background: `
+            linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%),
+            radial-gradient(ellipse at 20% 20%, rgba(34, 211, 238, 0.03) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.02) 0%, transparent 50%)
+          `
+        }}
+      />
 
       {/* Ambient Lighting Layer - Behind all content */}
       <AmbientLighting />
@@ -22,12 +28,12 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       {/* AI Core Center Component */}
       <AICoreCenter />
 
-      {/* Main content background boxes - Immediately visible */}
+      {/* Main content background glass container */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[68vh] sm:h-[63vh] md:h-[58vh] lg:h-[61vh] xl:h-[65vh] transform -translate-y-4 sm:-translate-y-8 md:-translate-y-10 lg:-translate-y-12">
-          {/* Glass container - immediately visible */}
+          {/* Glass container with cinematic fade-in */}
           <div 
-            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
+            className="absolute inset-0 rounded-3xl premium-glass-container-ambient opacity-0 transition-all duration-800 ease-out"
             style={{
               background: `
                 linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
@@ -45,23 +51,66 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
                 inset 0 0 100px rgba(34, 211, 238, 0.005),
                 inset 0 0 80px rgba(139, 92, 246, 0.003)
               `,
-              opacity: 1
+              willChange: 'transform, opacity',
+              animation: 'cinematicGlassEntry 800ms ease-out 400ms forwards'
             }}
           />
           
-          {/* Colored edge lighting layers - immediately visible */}
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
+          {/* Colored edge lighting layers - fade in with glass */}
+          <div 
+            className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-0"
+            style={{
+              animation: 'cinematicEdgeGlow 800ms ease-out 500ms forwards'
+            }}
+          />
+          <div 
+            className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-0"
+            style={{
+              animation: 'cinematicEdgeGlow 800ms ease-out 600ms forwards',
+              animationFillMode: 'forwards'
+            }}
+          />
+          <div 
+            className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-0"
+            style={{
+              animation: 'cinematicEdgeGlow 800ms ease-out 700ms forwards'
+            }}
+          />
           
-          {/* Ambient light diffusion - immediately visible */}
-          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
+          {/* Ambient light diffusion */}
+          <div 
+            className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced opacity-0"
+            style={{
+              animation: 'cinematicAmbientEntry 800ms ease-out 800ms forwards'
+            }}
+          />
         </div>
       </div>
 
-      {/* Keep only continuous glow animations, remove entrance animations */}
+      {/* Cinematic entrance animations + continuous glow animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          @keyframes cinematicGlassEntry {
+            0% { 
+              opacity: 0; 
+              transform: scale(0.98);
+            }
+            100% { 
+              opacity: 1; 
+              transform: scale(1);
+            }
+          }
+
+          @keyframes cinematicEdgeGlow {
+            0% { opacity: 0; }
+            100% { opacity: 0.6; }
+          }
+
+          @keyframes cinematicAmbientEntry {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+
           @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
               background: 
@@ -165,33 +214,49 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
           }
 
           .premium-glass-container-ambient {
-            animation: premium-glass-shimmer-ambient 20s ease-in-out infinite;
+            animation: 
+              cinematicGlassEntry 800ms ease-out 400ms forwards,
+              premium-glass-shimmer-ambient 20s ease-in-out 1.2s infinite;
           }
 
           .premium-edge-glow-cyan-ambient {
-            animation: premium-edge-glow-cyan-ambient 14s ease-in-out infinite;
+            animation: 
+              cinematicEdgeGlow 800ms ease-out 500ms forwards,
+              premium-edge-glow-cyan-ambient 14s ease-in-out 1.3s infinite;
+            opacity: 0;
           }
 
           .premium-edge-glow-emerald {
-            animation: premium-edge-glow-emerald 15s ease-in-out infinite;
-            animation-delay: -5s;
+            animation: 
+              cinematicEdgeGlow 800ms ease-out 600ms forwards,
+              premium-edge-glow-emerald 15s ease-in-out 1.8s infinite;
+            opacity: 0;
           }
 
           .premium-edge-glow-violet-ambient {
-            animation: premium-edge-glow-violet-ambient 16s ease-in-out infinite;
-            animation-delay: -8s;
+            animation: 
+              cinematicEdgeGlow 800ms ease-out 700ms forwards,
+              premium-edge-glow-violet-ambient 16s ease-in-out 2.1s infinite;
+            opacity: 0;
           }
 
           .premium-ambient-diffusion-enhanced {
-            animation: premium-ambient-diffusion-enhanced 22s ease-in-out infinite;
+            animation: 
+              cinematicAmbientEntry 800ms ease-out 800ms forwards,
+              premium-ambient-diffusion-enhanced 22s ease-in-out 1.6s infinite;
           }
 
-          /* Mobile optimizations */
+          /* Mobile optimizations - Skip scale animations */
           @media (max-width: 768px) {
             .premium-edge-glow-cyan-ambient,
             .premium-edge-glow-emerald,
             .premium-edge-glow-violet-ambient {
               animation-duration: 25s;
+            }
+            
+            @keyframes cinematicGlassEntry {
+              0% { opacity: 0; }
+              100% { opacity: 1; }
             }
             
             .premium-edge-glow-emerald {
@@ -215,6 +280,7 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
             .premium-edge-glow-violet-ambient,
             .premium-ambient-diffusion-enhanced {
               animation: none;
+              opacity: 1;
             }
           }
         `
