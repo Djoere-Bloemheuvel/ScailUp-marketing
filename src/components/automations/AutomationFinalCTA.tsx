@@ -15,11 +15,15 @@ const AutomationFinalCTA = () => {
       </div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center">
-        {/* Single premium glassmorphism container */}
-        <div className="relative rounded-[24px] p-12 md:p-16 backdrop-blur-xl border border-white/[0.15] bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] shadow-2xl">
+        {/* Single glassmorphism container */}
+        <div className="relative rounded-[24px] p-12 md:p-16 backdrop-blur-xl border border-white/[0.15] shadow-2xl"
+             style={{
+               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.02) 100%)',
+               boxShadow: '0 32px 64px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+             }}>
           
-          {/* Single enhanced glow effect */}
-          <div className="absolute inset-0 rounded-[24px] bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-cyan-500/15 blur-lg opacity-60 -z-10" />
+          {/* Single subtle glow effect */}
+          <div className="absolute inset-0 rounded-[24px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 blur-lg opacity-40 -z-10" />
           
           {/* Content */}
           <div className="relative z-10 space-y-8">
@@ -74,10 +78,6 @@ const AutomationFinalCTA = () => {
           <div className="absolute top-6 right-6 w-2 h-2 rounded-full bg-gradient-to-br from-blue-400/40 to-transparent animate-pulse" />
           <div className="absolute bottom-6 left-6 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-purple-400/40 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
-
-        {/* Single enhanced floating shadow */}
-        <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/15 opacity-40 blur-3xl -z-20" 
-             style={{ transform: 'translateY(20px) scale(1.1)' }} />
       </div>
     </section>
   );
