@@ -23,7 +23,8 @@ const AdvancedFunctions = () => {
 
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
+          {/* Left-aligned text content */}
+          <div className="text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
               Enterprise-Grade Functies
             </h2>
@@ -42,9 +43,10 @@ const AdvancedFunctions = () => {
             </div>
           </div>
 
+          {/* Automation Engine visual on the right */}
           <div className="relative">
             <div className="relative w-full h-96 rounded-3xl bg-gradient-to-br from-premium-gray/20 to-premium-black/40 border border-premium-silver/20 backdrop-blur-md p-8 overflow-hidden">
-              {/* Animated automation visual - copied from Services section styling */}
+              {/* Animated automation visual */}
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute inset-0" style={{
                   backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
@@ -56,7 +58,7 @@ const AdvancedFunctions = () => {
                 {/* Enhanced glow effect with more base presence */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl blur-3xl opacity-40" />
                 
-                {/* Main device with enhanced glassmorphism - matching Services section */}
+                {/* Main device with enhanced glassmorphism */}
                 <div className="relative w-32 h-32 rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md flex items-center justify-center shadow-2xl mb-6">
                   <div className="relative w-28 h-28">
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-0.5 transition-all duration-500 shadow-xl opacity-90">
