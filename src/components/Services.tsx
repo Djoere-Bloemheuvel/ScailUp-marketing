@@ -88,16 +88,17 @@ const Services = () => {
     }
   ];
 
+  const cssStyles = `
+    @keyframes sweep {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+  `;
+
   return (
     <div className="relative bg-premium-black">
-      {/* Add custom keyframes for the sweep animation */}
-      <style jsx>{`
-        @keyframes sweep {
-          0% { transform: translateX(-100%); }
-          50% { transform: translateX(100%); }
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
+      <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
       
       {services.map((service, index) => (
         <ServiceSection
