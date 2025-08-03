@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
-import CinematicAnimations from './hero/CinematicAnimations';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,12 +14,12 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Cinematic Background */}
-      <div className={`absolute inset-0 ${isLoaded ? 'cinematic-entrance' : ''}`}>
+      {/* Cinematic Background with AI Core */}
+      <div className={`absolute inset-0 ${isLoaded ? 'hero-entrance' : ''}`}>
         <CinematicBackground />
       </div>
 
-      {/* Content - Enhanced with better spacing */}
+      {/* Content - Enhanced with better spacing and preserved Dutch text */}
       <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
         <div className="max-w-4xl mx-auto">
           {/* Animated Headline */}
@@ -28,7 +27,7 @@ const Hero = () => {
             <AnimatedHeadline />
           </div>
           
-          {/* Enhanced subtitle with premium typography */}
+          {/* Enhanced subtitle with premium typography - Dutch text preserved */}
           <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 ${isLoaded ? 'premium-fade-in premium-stagger-2' : ''}`}>
             Wij bouwen AI-systemen die uw business 
             <br className="hidden sm:block" />
@@ -71,13 +70,15 @@ const Hero = () => {
           <div className="w-[1px] h-4 sm:h-6 bg-premium-silver/80 premium-scroll-pulse absolute top-0"></div>
         </div>
       </div>
-
-      {/* Cinematic animations */}
-      <CinematicAnimations />
       
-      {/* Keep existing premium animations for buttons and text */}
+      {/* Hero entrance and interaction animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          @keyframes hero-entrance {
+            0% { opacity: 0; transform: scale(0.85) translateY(20px); filter: blur(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
+          }
+
           @keyframes premium-fade-in {
             0% { opacity: 0; transform: translateY(40px) scale(0.98); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
@@ -96,6 +97,10 @@ const Hero = () => {
           @keyframes premium-scale-hover {
             0% { transform: scale(1); }
             100% { transform: scale(1.02); }
+          }
+
+          .hero-entrance {
+            animation: hero-entrance 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
 
           .premium-fade-in {
