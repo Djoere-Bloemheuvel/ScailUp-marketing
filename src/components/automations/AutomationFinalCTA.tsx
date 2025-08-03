@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CinematicBackground from '@/components/hero/CinematicBackground';
@@ -6,11 +5,14 @@ import CinematicBackground from '@/components/hero/CinematicBackground';
 const AutomationFinalCTA = () => {
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Darker background overlay */}
-      <div className="absolute inset-0 bg-black/80" />
+      {/* Much darker background overlay - increased from bg-black/80 to bg-black/95 */}
+      <div className="absolute inset-0 bg-black/95" />
+      
+      {/* Additional darkening layer */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80" />
       
       {/* Use the same cinematic background as the hero section but hide glass container */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 opacity-30">
         <CinematicBackground hideGlassContainer={true} />
       </div>
       
