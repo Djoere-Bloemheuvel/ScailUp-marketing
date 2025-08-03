@@ -46,8 +46,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Left AI Device - Different Design */}
-      <div className="absolute left-20 top-1/2 transform -translate-y-1/2 z-20">
+      {/* Left AI Device - Moved higher up */}
+      <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
         <div className="relative">
           {/* Main AI Device Body - More angular/geometric design */}
           <div className="relative w-72 h-96 rounded-2xl bg-gradient-to-b from-blue-500/10 to-cyan-500/5 backdrop-blur-xl border border-cyan-400/30 ai-device-float overflow-hidden">
@@ -131,8 +131,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right AI Device - Moved to right side */}
-      <div className="absolute right-20 top-1/2 transform -translate-y-1/2 z-20">
+      {/* Right AI Device - Moved lower down */}
+      <div className="absolute right-20 top-2/3 transform -translate-y-1/2 z-20">
         <div className="relative">
           {/* Main AI Device Body */}
           <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-float overflow-hidden">
