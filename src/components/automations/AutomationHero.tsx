@@ -11,6 +11,8 @@ const AutomationHero = () => {
     accentColor: 'from-sky-400 to-blue-500',
     glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.3)]', // Blue glow
     hoverGlow: 'hover:shadow-[0_0_50px_rgba(59,130,246,0.5),0_0_80px_rgba(59,130,246,0.3)]', // Stronger blue glow on hover
+    radiantGlow: 'shadow-[0_0_60px_rgba(59,130,246,0.2),0_0_120px_rgba(59,130,246,0.1),0_0_200px_rgba(59,130,246,0.05)]', // Outward radiant glow
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(59,130,246,0.4),0_0_160px_rgba(59,130,246,0.2),0_0_300px_rgba(59,130,246,0.1)]', // Stronger radiant glow on hover
     iconColor: 'text-blue-400'
   }, {
     icon: Clock,
@@ -19,6 +21,8 @@ const AutomationHero = () => {
     accentColor: 'from-purple-400 to-purple-600',
     glowColor: 'shadow-[0_0_30px_rgba(147,51,234,0.3)]', // Purple glow
     hoverGlow: 'hover:shadow-[0_0_50px_rgba(147,51,234,0.5),0_0_80px_rgba(147,51,234,0.3)]', // Stronger purple glow on hover
+    radiantGlow: 'shadow-[0_0_60px_rgba(147,51,234,0.2),0_0_120px_rgba(147,51,234,0.1),0_0_200px_rgba(147,51,234,0.05)]', // Outward radiant glow
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(147,51,234,0.4),0_0_160px_rgba(147,51,234,0.2),0_0_300px_rgba(147,51,234,0.1)]', // Stronger radiant glow on hover
     iconColor: 'text-purple-400'
   }, {
     icon: Target,
@@ -27,6 +31,8 @@ const AutomationHero = () => {
     accentColor: 'from-red-400 to-red-600',
     glowColor: 'shadow-[0_0_30px_rgba(239,68,68,0.3)]', // Red glow
     hoverGlow: 'hover:shadow-[0_0_50px_rgba(239,68,68,0.5),0_0_80px_rgba(239,68,68,0.3)]', // Stronger red glow on hover
+    radiantGlow: 'shadow-[0_0_60px_rgba(239,68,68,0.2),0_0_120px_rgba(239,68,68,0.1),0_0_200px_rgba(239,68,68,0.05)]', // Outward radiant glow
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(239,68,68,0.4),0_0_160px_rgba(239,68,68,0.2),0_0_300px_rgba(239,68,68,0.1)]', // Stronger radiant glow on hover
     iconColor: 'text-red-400'
   }];
 
@@ -80,11 +86,11 @@ const AutomationHero = () => {
           
         </div>
 
-        {/* Core Benefits Section - Enhanced with Native Color Glows */}
+        {/* Core Benefits Section - Enhanced with Native Color Glows and Outward Radiant Effects */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => <Card 
             key={index} 
-            className={`group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3 ${benefit.glowColor} ${benefit.hoverGlow}`} 
+            className={`group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3 ${benefit.glowColor} ${benefit.hoverGlow} ${benefit.radiantGlow} ${benefit.hoverRadiantGlow}`} 
             style={{
               animationDelay: `${index * 0.2}s`,
               background: `
@@ -116,6 +122,18 @@ const AutomationHero = () => {
               {/* Dynamic ambient glow on hover */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 ease-out" style={{
             background: `radial-gradient(circle at 50% 50%, ${benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? 'rgba(56, 189, 248, 0.2)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.2)' : 'rgba(239, 68, 68, 0.2)'} 0%, transparent 70%)`
+          }} />
+
+              {/* New: Extended Outward Radiant Glow - positioned outside the card */}
+              <div className="absolute -inset-8 rounded-3xl opacity-0 group-hover:opacity-30 transition-all duration-1000 ease-out -z-20" style={{
+            background: `radial-gradient(ellipse 200% 150% at 50% 50%, ${benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? 'rgba(59, 130, 246, 0.15)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.15)' : 'rgba(239, 68, 68, 0.15)'} 0%, transparent 60%)`,
+            filter: 'blur(40px)'
+          }} />
+
+              {/* New: Far Extended Radiant Glow - even further outward */}
+              <div className="absolute -inset-16 rounded-full opacity-0 group-hover:opacity-20 transition-all duration-1500 ease-out -z-30" style={{
+            background: `radial-gradient(ellipse 300% 200% at 50% 50%, ${benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? 'rgba(59, 130, 246, 0.08)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.08)' : 'rgba(239, 68, 68, 0.08)'} 0%, transparent 70%)`,
+            filter: 'blur(60px)'
           }} />
               
               <CardContent className="p-8 text-center relative z-10">
