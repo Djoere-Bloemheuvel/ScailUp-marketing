@@ -1,160 +1,206 @@
 
-import { Brain, Cog, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { Brain, Cog, MessageSquare, Server, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Services = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [visibleSection, setVisibleSection] = useState<number>(-1);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const observers = new Map();
+    
+    const sections = document.querySelectorAll('[data-service-section]');
+    sections.forEach((section, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleSection(index);
+          }
+        },
+        { threshold: 0.3 }
+      );
+      
+      observer.observe(section);
+      observers.set(index, observer);
+    });
 
-    const element = document.getElementById('services-section');
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
   }, []);
 
   const services = [
     {
+      id: 'ai-automations',
       icon: Cog,
-      title: "AI Automations",
-      description: "Slimme workflows verpakt in elegante mini-SaaS oplossingen. n8n + LLMs + JavaScript in perfecte harmonie.",
-      gradient: "from-blue-500/10 via-purple-500/15 to-pink-500/10",
-      glowColor: "rgba(90, 90, 209, 0.3)"
+      title: 'AI Automations',
+      subtitle: 'Slim. Snel. Onzichtbaar.',
+      description: 'Onze automatisering werkt in de achtergrond — maar voelt als magie op de voorgrond.',
+      background: 'from-premium-black via-blue-950/20 to-premium-black',
+      accentColor: 'from-blue-500 to-purple-600'
     },
     {
+      id: 'custom-saas',
       icon: Brain,
-      title: "Custom AI SaaS",
-      description: "Volledige producten gebouwd met cutting-edge design. Van concept tot schaalbare realiteit.",
-      gradient: "from-purple-500/10 via-pink-500/15 to-orange-500/10",
-      glowColor: "rgba(163, 82, 242, 0.3)"
+      title: 'Custom AI SaaS',
+      subtitle: 'Gebouwd voor schaal.',
+      description: 'Custom software met AI als motor. Van prototype tot product.',
+      background: 'from-premium-black via-purple-950/20 to-premium-black',
+      accentColor: 'from-purple-500 to-pink-600'
     },
     {
+      id: 'consultancy',
       icon: MessageSquare,
-      title: "Consultancy",
-      description: "Strategische AI deepdives. Audit van je processen. Roadmap & maatwerkvoorstel voor maximale ROI.",
-      gradient: "from-premium-gray/10 via-premium-silver/5 to-premium-gray/10",
-      glowColor: "rgba(192, 192, 192, 0.2)"
+      title: 'Consultancy',
+      subtitle: 'Denken in impact.',
+      description: 'Samen onderzoeken we wat AI écht kan betekenen voor jouw organisatie.',
+      background: 'from-premium-gray/50 via-premium-silver/5 to-premium-black',
+      accentColor: 'from-premium-silver to-white'
     },
+    {
+      id: 'studio-service',
+      icon: Server,
+      title: 'AI Studio-as-a-Service',
+      subtitle: 'Wij blijven aan. Jouw AI ook.',
+      description: 'Buildrs.AI is geen eenmalige leverancier. We blijven je systemen beheren, verbeteren en schalen — als jouw externe AI-engineers.',
+      background: 'from-black via-premium-gray/10 to-black',
+      accentColor: 'from-blue-400 to-cyan-500',
+      isSpecial: true
+    }
   ];
 
   return (
-    <section id="services-section" className="relative py-32 px-4 bg-premium-black overflow-hidden">
-      {/* Subtle grid pattern background */}
-      <div className="absolute inset-0 opacity-5">
-        <svg width="100%" height="100%" className="absolute inset-0">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-premium-black via-premium-gray/5 to-premium-black"></div>
-      
-      <div className="relative max-w-6xl mx-auto z-10">
-        <div className="text-center mb-20">
-          <h2 className={`text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Wat we <span className="bg-gradient-to-r from-premium-silver via-white to-premium-silver bg-clip-text text-transparent">doen</span>
-          </h2>
-          <p className={`text-premium-silver/70 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed tracking-wide transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Drie pijlers van AI-excellentie, toegespitst op meetbare businessresultaten.
-          </p>
-        </div>
-
-        {/* Asymmetric grid layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6">
-          {/* First card - full width on mobile, spans 5 columns on lg */}
-          <div 
-            className={`lg:col-span-5 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            style={{ animationDelay: `${0.3}s` }}
-          >
-            <ServiceCard service={services[0]} index={0} />
-          </div>
-          
-          {/* Second card - spans 7 columns on lg */}
-          <div 
-            className={`lg:col-span-7 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            style={{ animationDelay: `${0.5}s` }}
-          >
-            <ServiceCard service={services[1]} index={1} />
-          </div>
-          
-          {/* Third card - centered, spans 6 columns with offset on lg */}
-          <div 
-            className={`lg:col-span-6 lg:col-start-4 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            style={{ animationDelay: `${0.7}s` }}
-          >
-            <ServiceCard service={services[2]} index={2} />
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom fade gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-premium-black via-premium-black/95 to-transparent"></div>
-    </section>
+    <div className="relative">
+      {services.map((service, index) => (
+        <ServiceSection
+          key={service.id}
+          service={service}
+          index={index}
+          isVisible={visibleSection >= index}
+        />
+      ))}
+    </div>
   );
 };
 
-const ServiceCard = ({ service, index }: { service: any, index: number }) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setMousePosition({ x, y });
-  };
+const ServiceSection = ({ service, index, isVisible }: { service: any, index: number, isVisible: boolean }) => {
+  const [deviceHovered, setDeviceHovered] = useState(false);
 
   return (
-    <div 
-      className="group relative h-full"
-      onMouseMove={handleMouseMove}
+    <section 
+      data-service-section={index}
+      className={`relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden bg-gradient-to-b ${service.background}`}
     >
-      <div className="relative h-full p-8 lg:p-10 rounded-3xl backdrop-blur-sm bg-white/[0.02] border border-white/10 transition-all duration-700 ease-out hover:border-white/20 hover:-translate-y-2 hover:shadow-2xl">
-        {/* Glassmorphism background */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
-        
-        {/* Mouse tracking glow */}
-        <div 
-          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{
-            background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, ${service.glowColor}, transparent 40%)`
-          }}
-        ></div>
+      {/* Background pattern for special section */}
+      {service.isSpecial && (
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                             radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.1) 0%, transparent 50%)`
+          }} />
+        </div>
+      )}
 
-        {/* Icon container */}
-        <div className="relative mb-8">
-          <div className="w-16 h-16 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
-            <service.icon className="w-8 h-8 text-premium-silver group-hover:text-white group-hover:scale-110 transition-all duration-300" />
-          </div>
-          <div className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:rotate-12">
-            <ArrowUpRight className="w-5 h-5 text-premium-silver/60" />
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        
+        {/* Content */}
+        <div className={`${index % 2 === 1 ? 'lg:order-2' : ''} space-y-8`}>
+          <div className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            
+            {/* Icon */}
+            <div className="mb-8">
+              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5`}>
+                <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center">
+                  <service.icon className="w-8 h-8 text-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* Typography */}
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
+                {service.title}
+              </h2>
+              
+              <h3 className="text-2xl md:text-3xl font-light text-premium-silver/90 tracking-wide leading-relaxed">
+                {service.subtitle}
+              </h3>
+              
+              <p className="text-lg md:text-xl text-premium-silver/70 font-light leading-relaxed max-w-lg tracking-wide">
+                {service.description}
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
+              <button className="group relative inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl overflow-hidden">
+                <span className="relative z-10">
+                  {service.isSpecial ? 'Plan een verkenning' : 'Meer informatie'}
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </button>
+              
+              <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105">
+                <span>{service.isSpecial ? 'Bekijk hoe het werkt' : 'Lees meer'}</span>
+                <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
           </div>
         </div>
-        
-        <h3 className="relative text-2xl lg:text-3xl font-bold text-white mb-6 tracking-tight group-hover:text-white transition-all duration-300">
-          {service.title}
-        </h3>
-        
-        <p className="relative text-premium-silver/80 leading-relaxed text-base lg:text-lg group-hover:text-premium-silver transition-colors duration-300 tracking-wide">
-          {service.description}
-        </p>
 
-        {/* Subtle highlight border */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        {/* Visual Element */}
+        <div className={`${index % 2 === 1 ? 'lg:order-1' : ''} relative`}>
+          <div 
+            className={`transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            onMouseEnter={() => setDeviceHovered(true)}
+            onMouseLeave={() => setDeviceHovered(false)}
+          >
+            <div className={`relative aspect-square max-w-md mx-auto transition-all duration-700 ${deviceHovered ? 'scale-105' : 'scale-100'}`}>
+              
+              {/* Glow effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-20 transition-opacity duration-700 ${deviceHovered ? 'opacity-40' : 'opacity-20'}`} />
+              
+              {/* Main device */}
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/20 to-premium-black/40 border border-premium-silver/20 backdrop-blur-sm p-12 flex items-center justify-center">
+                
+                {service.isSpecial ? (
+                  // Special animated core for Studio service
+                  <div className="relative w-40 h-40">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 to-cyan-400/20 animate-pulse" />
+                    <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-500/30 to-cyan-500/30 animate-pulse delay-300" />
+                    <div className="absolute inset-8 rounded-full bg-gradient-to-br from-blue-600/40 to-cyan-600/40 animate-pulse delay-700" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <service.icon className="w-16 h-16 text-blue-400 animate-pulse" />
+                    </div>
+                    
+                    {/* Orbiting dots */}
+                    <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+                      <div className="absolute top-0 left-1/2 w-2 h-2 bg-blue-400 rounded-full transform -translate-x-1/2" />
+                      <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-cyan-400 rounded-full transform -translate-x-1/2" />
+                    </div>
+                  </div>
+                ) : (
+                  // Regular service visualization
+                  <div className="relative w-32 h-32">
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 transition-all duration-500 ${deviceHovered ? 'rotate-6' : 'rotate-0'}`}>
+                      <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center">
+                        <service.icon className="w-16 h-16 text-white" />
+                      </div>
+                    </div>
+                    
+                    {/* Floating elements */}
+                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} transition-all duration-700 ${deviceHovered ? 'translate-y-2 rotate-12' : ''}`} />
+                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} transition-all duration-700 delay-100 ${deviceHovered ? '-translate-y-2 rotate-45' : ''}`} />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-premium-black via-premium-black/80 to-transparent" />
+    </section>
   );
 };
 
