@@ -60,7 +60,7 @@ const Services = () => {
       title: 'Consultancy',
       subtitle: 'Denken in impact.',
       description: 'Samen onderzoeken we wat AI écht kan betekenen voor jouw organisatie.',
-      background: 'from-premium-gray/50 via-purple-950/10 to-premium-black',
+      background: 'from-premium-black via-purple-950/20 to-premium-black',
       accentColor: 'from-purple-400 to-blue-500',
       primaryButtonText: 'Meer informatie',
       secondaryButtonText: 'Lees meer'
