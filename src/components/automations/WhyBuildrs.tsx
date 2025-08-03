@@ -1,3 +1,4 @@
+
 import { Shield, Zap, Users, Settings } from 'lucide-react';
 
 const WhyBuildrs = () => {
@@ -8,18 +9,18 @@ const WhyBuildrs = () => {
       <div className="relative max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left side - Content */}
-          <div className="lg:order-1 max-w-2xl lg:text-right">
+          <div className="lg:order-1 max-w-2xl">
             <div className="space-y-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
                 Waarom kiezen voor <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Buildrs</span>?
               </h2>
               
               <div className="space-y-6">
-                <p className="text-lg md:text-xl text-premium-silver/90 leading-relaxed font-light max-w-2xl lg:ml-auto">
+                <p className="text-lg md:text-xl text-premium-silver/90 leading-relaxed font-light max-w-2xl">
                   Bij Buildrs combineren we cutting-edge AI-technologie met pragmatische automatisering. Onze AI oplossingen zijn modulair, veilig en 100% no-code. Dat betekent dat je binnen enkele dagen operationeel bent – zonder developer.
                 </p>
                 
-                <p className="text-base md:text-lg text-premium-silver/80 leading-relaxed font-light lg:ml-auto max-w-2xl">
+                <p className="text-base md:text-lg text-premium-silver/80 leading-relaxed font-light max-w-2xl">
                   We integreren met jouw bestaande tools, zoals HubSpot, Notion, Slack, Airtable en Instantly. Onze modulaire automatisering is schaalbaar, beveiligd met data security en altijd afgestemd op jouw organisatie.
                 </p>
               </div>
