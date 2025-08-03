@@ -19,6 +19,99 @@ const CinematicAnimations = () => {
           }
         }
 
+        /* AI Face Specific Animations */
+        @keyframes cinematic-face-pulse {
+          0%, 100% { 
+            opacity: 0.6; 
+            transform: scale(1); 
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.1), 0 0 60px rgba(147, 51, 234, 0.05); 
+          }
+          50% { 
+            opacity: 0.8; 
+            transform: scale(1.02); 
+            box-shadow: 0 0 50px rgba(34, 211, 238, 0.2), 0 0 100px rgba(147, 51, 234, 0.1); 
+          }
+        }
+
+        @keyframes cinematic-fragment-float {
+          0%, 100% { 
+            opacity: 0.3; 
+            transform: translateY(0) rotate(0deg) scale(1); 
+          }
+          33% { 
+            opacity: 0.6; 
+            transform: translateY(-5px) rotate(5deg) scale(1.1); 
+          }
+          66% { 
+            opacity: 0.4; 
+            transform: translateY(3px) rotate(-3deg) scale(0.95); 
+          }
+        }
+
+        @keyframes cinematic-face-outline {
+          0%, 100% { 
+            opacity: 0.2; 
+            border-color: rgba(156, 163, 175, 0.2); 
+          }
+          50% { 
+            opacity: 0.4; 
+            border-color: rgba(34, 211, 238, 0.3); 
+          }
+        }
+
+        @keyframes cinematic-eye-glow {
+          0%, 100% { 
+            opacity: 0.6; 
+            transform: scale(1); 
+            box-shadow: 0 0 10px currentColor; 
+          }
+          50% { 
+            opacity: 1; 
+            transform: scale(1.2); 
+            box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; 
+          }
+        }
+
+        @keyframes cinematic-face-scan {
+          0% { 
+            transform: translateY(-20px); 
+            opacity: 0; 
+          }
+          50% { 
+            opacity: 1; 
+          }
+          100% { 
+            transform: translateY(40px); 
+            opacity: 0; 
+          }
+        }
+
+        @keyframes cinematic-face-aura {
+          0%, 100% { 
+            opacity: 0.8; 
+            transform: scale(1); 
+          }
+          50% { 
+            opacity: 1; 
+            transform: scale(1.05); 
+          }
+        }
+
+        @keyframes cinematic-glitch-overlay {
+          0%, 90%, 100% { 
+            opacity: 0; 
+            transform: translateX(0); 
+          }
+          95% { 
+            opacity: 0.1; 
+            transform: translateX(2px); 
+          }
+          97% { 
+            opacity: 0.05; 
+            transform: translateX(-1px); 
+          }
+        }
+
         /* AI Core Floating Animations */
         @keyframes cinematic-float-1 {
           0%, 100% { 
@@ -186,6 +279,36 @@ const CinematicAnimations = () => {
           animation: cinematic-entrance 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
+        /* AI Face Animations */
+        .animate-cinematic-face-pulse {
+          animation: cinematic-face-pulse 6s ease-in-out infinite;
+        }
+
+        .animate-cinematic-fragment-float {
+          animation: cinematic-fragment-float 12s ease-in-out infinite;
+        }
+
+        .animate-cinematic-face-outline {
+          animation: cinematic-face-outline 8s ease-in-out infinite;
+        }
+
+        .animate-cinematic-eye-glow {
+          animation: cinematic-eye-glow 3s ease-in-out infinite;
+        }
+
+        .animate-cinematic-face-scan {
+          animation: cinematic-face-scan 15s linear infinite;
+        }
+
+        .animate-cinematic-face-aura {
+          animation: cinematic-face-aura 10s ease-in-out infinite;
+        }
+
+        .animate-cinematic-glitch-overlay {
+          animation: cinematic-glitch-overlay 20s ease-in-out infinite;
+        }
+
+        /* Existing Core Animations */
         .animate-cinematic-float-1 {
           animation: cinematic-float-1 8s ease-in-out infinite;
         }
@@ -259,6 +382,18 @@ const CinematicAnimations = () => {
           
           .animate-cinematic-glass-shimmer {
             animation-duration: 8s;
+          }
+
+          .animate-cinematic-face-pulse {
+            animation-duration: 4s;
+          }
+
+          .animate-cinematic-fragment-float {
+            animation-duration: 8s;
+          }
+
+          .animate-cinematic-face-scan {
+            animation-duration: 10s;
           }
         }
       `
