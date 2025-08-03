@@ -119,7 +119,6 @@ export default {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' }
 				},
-				// Apple-inspired animations
 				'apple-fade-in': {
 					'0%': { opacity: '0', transform: 'translateY(30px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
@@ -132,7 +131,6 @@ export default {
 					'0%, 100%': { opacity: '0.4', transform: 'translateY(0)' },
 					'50%': { opacity: '1', transform: 'translateY(8px)' }
 				},
-				// New animations for left robot
 				'server-pulse': {
 					'0%, 100%': { opacity: '0.4', scaleX: '0.8' },
 					'50%': { opacity: '1', scaleX: '1' }
@@ -165,6 +163,82 @@ export default {
 				'ai-device-premium-glow': {
 					'0%, 100%': { opacity: '0.2' },
 					'50%': { opacity: '0.4' }
+				},
+				'ai-device-breathe': {
+					'0%, 100%': { transform: 'scale(1) translateY(0px)' },
+					'50%': { transform: 'scale(1.01) translateY(-2px)' }
+				},
+				'ai-device-pulse': {
+					'0%, 100%': { opacity: '0.95', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.005)' }
+				},
+				'ai-glossy-sweep': {
+					'0%': { transform: 'translateX(-100%)' },
+					'50%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(100%)' }
+				},
+				'ai-glossy-sweep-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'50%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(-100%)' }
+				},
+				'neural-node-pulse': {
+					'0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.1)' }
+				},
+				'neural-connection-pulse': {
+					'0%, 100%': { opacity: '0.3' },
+					'50%': { opacity: '0.7' }
+				},
+				'neural-element-pulse': {
+					'0%, 100%': { opacity: '0.6' },
+					'50%': { opacity: '1' }
+				},
+				'neural-icon-pulse': {
+					'0%, 100%': { opacity: '0.6', transform: 'rotate(0deg)' },
+					'50%': { opacity: '1', transform: 'rotate(2deg)' }
+				},
+				'neural-icon-breathe': {
+					'0%, 100%': { opacity: '0.7', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.05)' }
+				},
+				'neural-status-blink': {
+					'0%, 100%': { opacity: '0.4' },
+					'50%': { opacity: '1' }
+				},
+				'neural-data-flow': {
+					'0%': { left: '-50%', opacity: '0' },
+					'10%': { opacity: '1' },
+					'90%': { opacity: '1' },
+					'100%': { left: '100%', opacity: '0' }
+				},
+				'neural-core-pulse': {
+					'0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.2)' }
+				},
+				'ai-core-pulse': {
+					'0%, 100%': { opacity: '0.9', transform: 'scale(1) rotate(0deg)' },
+					'50%': { opacity: '1', transform: 'scale(1.02) rotate(1deg)' }
+				},
+				'ai-central-pulse': {
+					'0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.1)' }
+				},
+				'ai-element-fade': {
+					'0%, 100%': { opacity: '0.8' },
+					'50%': { opacity: '1' }
+				},
+				'ai-eye-breathe': {
+					'0%, 100%': { opacity: '0.9', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.03)' }
+				},
+				'ai-device-breathing-glow': {
+					'0%, 100%': { opacity: '0.2' },
+					'50%': { opacity: '0.35' }
+				},
+				'chart-neural-pulse': {
+					'0%, 100%': { opacity: '0.6', transform: 'scaleY(1)' },
+					'50%': { opacity: '1', transform: 'scaleY(1.1)' }
 				}
 			},
 			animation: {
@@ -174,11 +248,9 @@ export default {
 				'glow': 'glow 2s ease-in-out infinite',
 				'pulse-premium': 'pulse-premium 2s ease-in-out infinite',
 				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
-				// Apple-inspired animations
 				'apple-fade-in': 'apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'apple-glow': 'apple-glow 8s ease-in-out infinite',
 				'apple-scroll-pulse': 'apple-scroll-pulse 2s ease-in-out infinite',
-				// New animations for left robot
 				'server-pulse': 'server-pulse 2s ease-in-out infinite',
 				'status-light': 'status-light 1.5s ease-in-out infinite',
 				'ai-code-pulse': 'ai-code-pulse 2.5s ease-in-out infinite',
@@ -186,7 +258,25 @@ export default {
 				'ai-database-scan': 'ai-database-scan 4s ease-in-out infinite',
 				'terminal-line': 'terminal-line 2s ease-out forwards',
 				'terminal-cursor': 'terminal-cursor 1s ease-in-out infinite',
-				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite'
+				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite',
+				'ai-device-breathe': 'ai-device-breathe 6s ease-in-out infinite',
+				'ai-device-pulse': 'ai-device-pulse 5s ease-in-out infinite',
+				'ai-glossy-sweep': 'ai-glossy-sweep 8s ease-in-out infinite',
+				'ai-glossy-sweep-right': 'ai-glossy-sweep-right 8s ease-in-out infinite',
+				'neural-node-pulse': 'neural-node-pulse 3s ease-in-out infinite',
+				'neural-connection-pulse': 'neural-connection-pulse 4s ease-in-out infinite',
+				'neural-element-pulse': 'neural-element-pulse 2.5s ease-in-out infinite',
+				'neural-icon-pulse': 'neural-icon-pulse 3.5s ease-in-out infinite',
+				'neural-icon-breathe': 'neural-icon-breathe 4s ease-in-out infinite',
+				'neural-status-blink': 'neural-status-blink 2s ease-in-out infinite',
+				'neural-data-flow': 'neural-data-flow 4s linear infinite',
+				'neural-core-pulse': 'neural-core-pulse 2s ease-in-out infinite',
+				'ai-core-pulse': 'ai-core-pulse 5s ease-in-out infinite',
+				'ai-central-pulse': 'ai-central-pulse 3s ease-in-out infinite',
+				'ai-element-fade': 'ai-element-fade 6s ease-in-out infinite',
+				'ai-eye-breathe': 'ai-eye-breathe 4s ease-in-out infinite',
+				'ai-device-breathing-glow': 'ai-device-breathing-glow 6s ease-in-out infinite',
+				'chart-neural-pulse': 'chart-neural-pulse 2s ease-in-out infinite'
 			}
 		}
 	},
