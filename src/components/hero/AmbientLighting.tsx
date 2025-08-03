@@ -6,29 +6,29 @@ const AmbientLighting = () => {
     <>
       {/* Ambient Corner Lighting Effects - Behind all content */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Top-left ambient glow - Cyan/Blue */}
+        {/* Top-left ambient glow - Cyan/Blue - INCREASED VISIBILITY */}
         <div 
-          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-30 md:opacity-40 ambient-glow-cyan"
+          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-60 md:opacity-70 ambient-glow-cyan"
           style={{
-            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(34, 211, 238, 0.08) 30%, rgba(14, 165, 233, 0.04) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.15) 30%, rgba(14, 165, 233, 0.08) 50%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
         
-        {/* Bottom-right ambient glow - Purple/Violet */}
+        {/* Bottom-right ambient glow - Purple/Violet - INCREASED VISIBILITY */}
         <div 
-          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-25 md:opacity-35 ambient-glow-violet"
+          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-55 md:opacity-65 ambient-glow-violet"
           style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(147, 51, 234, 0.06) 35%, rgba(109, 40, 217, 0.03) 55%, transparent 75%)',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.20) 0%, rgba(147, 51, 234, 0.12) 35%, rgba(109, 40, 217, 0.06) 55%, transparent 75%)',
             filter: 'blur(90px)',
           }}
         />
         
-        {/* Additional accent glow - Teal (center-right) */}
+        {/* Additional accent glow - Teal (center-right) - INCREASED VISIBILITY */}
         <div 
-          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-20 md:opacity-25 ambient-glow-teal"
+          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-45 md:opacity-55 ambient-glow-teal"
           style={{
-            background: 'radial-gradient(circle, rgba(20, 184, 166, 0.10) 0%, rgba(13, 148, 136, 0.05) 40%, rgba(15, 118, 110, 0.02) 60%, transparent 80%)',
+            background: 'radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, rgba(13, 148, 136, 0.10) 40%, rgba(15, 118, 110, 0.05) 60%, transparent 80%)',
             filter: 'blur(70px)',
           }}
         />
@@ -71,17 +71,17 @@ const AmbientLighting = () => {
         __html: `
           @keyframes ambient-glow-cyan {
             0%, 100% { 
-              opacity: 0.30;
+              opacity: 0.60;
               transform: scale(1) rotate(0deg);
               filter: blur(80px);
             }
             33% { 
-              opacity: 0.45;
+              opacity: 0.75;
               transform: scale(1.08) rotate(2deg);
               filter: blur(85px);
             }
             66% { 
-              opacity: 0.25;
+              opacity: 0.50;
               transform: scale(0.95) rotate(-1deg);
               filter: blur(75px);
             }
@@ -89,12 +89,12 @@ const AmbientLighting = () => {
 
           @keyframes ambient-glow-violet {
             0%, 100% { 
-              opacity: 0.25;
+              opacity: 0.55;
               transform: scale(1) rotate(0deg);
               filter: blur(90px);
             }
             50% { 
-              opacity: 0.40;
+              opacity: 0.70;
               transform: scale(1.12) rotate(-3deg);
               filter: blur(95px);
             }
@@ -102,17 +102,17 @@ const AmbientLighting = () => {
 
           @keyframes ambient-glow-teal {
             0%, 100% { 
-              opacity: 0.20;
+              opacity: 0.45;
               transform: scale(1) rotate(0deg);
               filter: blur(70px);
             }
             40% { 
-              opacity: 0.30;
+              opacity: 0.60;
               transform: scale(1.05) rotate(1deg);
               filter: blur(75px);
             }
             80% { 
-              opacity: 0.15;
+              opacity: 0.35;
               transform: scale(0.98) rotate(-2deg);
               filter: blur(65px);
             }
@@ -184,15 +184,15 @@ const AmbientLighting = () => {
             }
             
             .ambient-glow-cyan {
-              opacity: 0.15 !important;
+              opacity: 0.35 !important;
             }
             
             .ambient-glow-violet {
-              opacity: 0.12 !important;
+              opacity: 0.30 !important;
             }
             
             .ambient-glow-teal {
-              opacity: 0.10 !important;
+              opacity: 0.25 !important;
             }
 
             .ambient-grain {
