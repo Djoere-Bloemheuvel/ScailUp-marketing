@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
@@ -15,170 +14,182 @@ const CinematicBackground = () => {
       {/* AI Core Center Component */}
       <AICoreCenter />
 
-      {/* Main content background boxes - Clean Apple Vision Pro style */}
+      {/* Main content background boxes - Enhanced with ambient glow reflection */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
-          
-          {/* Clean glass container - Apple Vision Pro style */}
+          {/* Enhanced glass container with ambient glow reflection */}
           <div 
-            className="absolute inset-0 rounded-3xl clean-glass-container"
+            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
             style={{
-              background: 'transparent',
+              background: `
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%)
+              `,
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.06)',
               boxShadow: `
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1)
-              `,
-              zIndex: 2
+                0 32px 64px rgba(255, 255, 255, 0.01),
+                0 16px 32px rgba(34, 211, 238, 0.02),
+                0 8px 16px rgba(139, 92, 246, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+                inset 0 0 100px rgba(34, 211, 238, 0.005),
+                inset 0 0 80px rgba(139, 92, 246, 0.003)
+              `
             }}
           />
-
-          {/* Subtle white inner glow */}
-          <div 
-            className="absolute inset-0 rounded-3xl clean-inner-glow"
-            style={{
-              background: 'transparent',
-              boxShadow: `
-                inset 0 0 40px rgba(255, 255, 255, 0.03),
-                inset 0 1px 1px rgba(255, 255, 255, 0.08)
-              `,
-              zIndex: 3
-            }}
-          />
-
-          {/* Very soft white/silver outline */}
-          <div 
-            className="absolute inset-0 rounded-3xl clean-outline"
-            style={{
-              background: 'transparent',
-              border: '1px solid rgba(255, 255, 255, 0.04)',
-              zIndex: 4
-            }}
-          />
-
-          {/* Premium glass shine effect */}
-          <div 
-            className="absolute inset-0 rounded-3xl clean-glass-shine overflow-hidden"
-            style={{ zIndex: 5 }}
-          >
-            <div 
-              className="absolute top-0 left-0 w-full h-full clean-shine-animation"
-              style={{
-                background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.04) 50%, transparent 70%)',
-                transform: 'translateX(-100%)',
-              }}
-            />
-          </div>
+          
+          {/* Colored edge lighting layers - Enhanced with ambient reflection */}
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
+          
+          {/* Ambient light diffusion - Enhanced */}
+          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
         </div>
       </div>
 
-      {/* Clean animation styles */}
+      {/* Enhanced premium animation styles with ambient integration */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes clean-glass-shimmer {
+          @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
-              border-color: rgba(255, 255, 255, 0.08);
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%);
+            }
+            33% { 
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(34, 211, 238, 0.01) 50%, rgba(139, 92, 246, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.012) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.009) 0%, transparent 50%);
+            }
+            66% { 
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(139, 92, 246, 0.008) 50%, rgba(20, 184, 166, 0.015) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.006) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.012) 0%, transparent 50%);
+            }
+          }
+
+          @keyframes premium-edge-glow-cyan-ambient {
+            0%, 100% { 
               box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 0 30px rgba(34, 211, 238, 0.1),
+                0 0 60px rgba(34, 211, 238, 0.05),
+                inset 0 0 1px rgba(34, 211, 238, 0.15),
+                inset 0 0 80px rgba(34, 211, 238, 0.008);
             }
             50% { 
-              border-color: rgba(255, 255, 255, 0.12);
               box-shadow: 
-                0 12px 48px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                0 0 45px rgba(34, 211, 238, 0.15),
+                0 0 90px rgba(34, 211, 238, 0.08),
+                inset 0 0 1px rgba(34, 211, 238, 0.25),
+                inset 0 0 100px rgba(34, 211, 238, 0.012);
             }
           }
 
-          @keyframes clean-inner-glow-pulse {
+          @keyframes premium-edge-glow-violet-ambient {
             0%, 100% { 
               box-shadow: 
-                inset 0 0 40px rgba(255, 255, 255, 0.03),
-                inset 0 1px 1px rgba(255, 255, 255, 0.08);
+                0 0 35px rgba(139, 92, 246, 0.09),
+                0 0 70px rgba(139, 92, 246, 0.04),
+                inset 0 0 1px rgba(139, 92, 246, 0.14),
+                inset 0 0 60px rgba(139, 92, 246, 0.006);
             }
-            50% { 
+            66% { 
               box-shadow: 
-                inset 0 0 60px rgba(255, 255, 255, 0.05),
-                inset 0 1px 1px rgba(255, 255, 255, 0.12);
+                0 0 50px rgba(139, 92, 246, 0.14),
+                0 0 100px rgba(139, 92, 246, 0.07),
+                inset 0 0 1px rgba(139, 92, 246, 0.22),
+                inset 0 0 80px rgba(139, 92, 246, 0.01);
             }
           }
 
-          @keyframes clean-outline-pulse {
+          @keyframes premium-ambient-diffusion-enhanced {
             0%, 100% { 
-              border-color: rgba(255, 255, 255, 0.04);
+              background: radial-gradient(
+                ellipse at center,
+                rgba(34, 211, 238, 0.025) 0%,
+                rgba(16, 185, 129, 0.018) 35%,
+                rgba(139, 92, 246, 0.015) 70%,
+                transparent 100%
+              );
             }
-            50% { 
-              border-color: rgba(255, 255, 255, 0.06);
+            33% { 
+              background: radial-gradient(
+                ellipse at center,
+                rgba(16, 185, 129, 0.03) 0%,
+                rgba(139, 92, 246, 0.022) 35%,
+                rgba(34, 211, 238, 0.018) 70%,
+                transparent 100%
+              );
+            }
+            66% { 
+              background: radial-gradient(
+                ellipse at center,
+                rgba(139, 92, 246, 0.025) 0%,
+                rgba(34, 211, 238, 0.02) 35%,
+                rgba(16, 185, 129, 0.015) 70%,
+                transparent 100%
+              );
             }
           }
 
-          @keyframes clean-shine-sweep {
-            0% { 
-              transform: translateX(-100%) translateY(-100%) rotate(45deg);
-              opacity: 0;
-            }
-            5% { 
-              opacity: 1;
-            }
-            95% { 
-              opacity: 1;
-            }
-            100% { 
-              transform: translateX(200%) translateY(200%) rotate(45deg);
-              opacity: 0;
-            }
+          .premium-glass-container-ambient {
+            animation: premium-glass-shimmer-ambient 20s ease-in-out infinite;
           }
 
-          .clean-glass-container {
-            animation: clean-glass-shimmer 15s ease-in-out infinite;
-            will-change: border-color, box-shadow;
+          .premium-edge-glow-cyan-ambient {
+            animation: premium-edge-glow-cyan-ambient 14s ease-in-out infinite;
           }
 
-          .clean-inner-glow {
-            animation: clean-inner-glow-pulse 12s ease-in-out infinite;
-            will-change: box-shadow;
+          .premium-edge-glow-emerald {
+            animation: premium-edge-glow-emerald 15s ease-in-out infinite;
+            animation-delay: -5s;
           }
 
-          .clean-outline {
-            animation: clean-outline-pulse 18s ease-in-out infinite;
-            will-change: border-color;
+          .premium-edge-glow-violet-ambient {
+            animation: premium-edge-glow-violet-ambient 16s ease-in-out infinite;
+            animation-delay: -8s;
           }
 
-          .clean-shine-animation {
-            animation: clean-shine-sweep 25s ease-in-out infinite;
-            will-change: transform, opacity;
+          .premium-ambient-diffusion-enhanced {
+            animation: premium-ambient-diffusion-enhanced 22s ease-in-out infinite;
           }
 
           /* Mobile optimizations */
           @media (max-width: 768px) {
-            .clean-glass-container,
-            .clean-inner-glow,
-            .clean-outline {
-              animation-duration: 20s;
+            .premium-edge-glow-cyan-ambient,
+            .premium-edge-glow-emerald,
+            .premium-edge-glow-violet-ambient {
+              animation-duration: 25s;
             }
             
-            .clean-shine-animation {
+            .premium-edge-glow-emerald {
+              opacity: 0.3 !important;
+            }
+            
+            .premium-edge-glow-violet-ambient {
+              opacity: 0.35 !important;
+            }
+            
+            .premium-ambient-diffusion-enhanced {
               animation-duration: 30s;
             }
           }
 
           /* Reduced motion preferences */
           @media (prefers-reduced-motion: reduce) {
-            .clean-glass-container,
-            .clean-inner-glow,
-            .clean-outline,
-            .clean-shine-animation {
+            .premium-glass-container-ambient,
+            .premium-edge-glow-cyan-ambient,
+            .premium-edge-glow-emerald,
+            .premium-edge-glow-violet-ambient,
+            .premium-ambient-diffusion-enhanced {
               animation: none;
             }
-          }
-
-          /* Performance optimizations */
-          .clean-glass-container,
-          .clean-inner-glow,
-          .clean-outline {
-            transform: translateZ(0);
-            backface-visibility: hidden;
           }
         `
       }} />
