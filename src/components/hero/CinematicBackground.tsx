@@ -1,6 +1,6 @@
-
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
+import AmbientLighting from './AmbientLighting';
 
 const CinematicBackground = () => {
   return (
@@ -8,17 +8,24 @@ const CinematicBackground = () => {
       {/* Solid black background */}
       <div className="absolute inset-0 bg-black" />
 
+      {/* Ambient Lighting Layer - Behind all content */}
+      <AmbientLighting />
+
       {/* AI Core Center Component */}
       <AICoreCenter />
 
-      {/* Main content background boxes - Enhanced with colored edge lighting */}
+      {/* Main content background boxes - Enhanced with ambient glow reflection */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
-          {/* Enhanced glass container with colored edge lighting */}
+          {/* Enhanced glass container with ambient glow reflection */}
           <div 
-            className="absolute inset-0 rounded-3xl premium-glass-container"
+            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
             style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%)',
+              background: `
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%)
+              `,
               backdropFilter: 'blur(20px)',
               border: '1px solid rgba(255, 255, 255, 0.06)',
               boxShadow: `
@@ -26,114 +33,117 @@ const CinematicBackground = () => {
                 0 16px 32px rgba(34, 211, 238, 0.02),
                 0 8px 16px rgba(139, 92, 246, 0.02),
                 inset 0 1px 0 rgba(255, 255, 255, 0.08),
-                inset 0 -1px 0 rgba(255, 255, 255, 0.03)
+                inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+                inset 0 0 100px rgba(34, 211, 238, 0.005),
+                inset 0 0 80px rgba(139, 92, 246, 0.003)
               `
             }}
           />
           
-          {/* Colored edge lighting layers */}
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan opacity-60" />
+          {/* Colored edge lighting layers - Enhanced with ambient reflection */}
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet opacity-55" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
           
-          {/* Ambient light diffusion */}
-          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion" />
+          {/* Ambient light diffusion - Enhanced */}
+          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
         </div>
       </div>
 
-      {/* Premium animation styles */}
+      {/* Enhanced premium animation styles with ambient integration */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes premium-glass-shimmer {
+          @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
-              background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%);
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%);
             }
-            50% { 
-              background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(34, 211, 238, 0.01) 50%, rgba(139, 92, 246, 0.02) 100%);
+            33% { 
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(34, 211, 238, 0.01) 50%, rgba(139, 92, 246, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.012) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.009) 0%, transparent 50%);
+            }
+            66% { 
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(139, 92, 246, 0.008) 50%, rgba(20, 184, 166, 0.015) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.006) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.012) 0%, transparent 50%);
             }
           }
 
-          @keyframes premium-edge-glow-cyan {
+          @keyframes premium-edge-glow-cyan-ambient {
             0%, 100% { 
               box-shadow: 
                 0 0 30px rgba(34, 211, 238, 0.1),
                 0 0 60px rgba(34, 211, 238, 0.05),
-                inset 0 0 1px rgba(34, 211, 238, 0.15);
+                inset 0 0 1px rgba(34, 211, 238, 0.15),
+                inset 0 0 80px rgba(34, 211, 238, 0.008);
             }
             50% { 
               box-shadow: 
                 0 0 45px rgba(34, 211, 238, 0.15),
                 0 0 90px rgba(34, 211, 238, 0.08),
-                inset 0 0 1px rgba(34, 211, 238, 0.25);
+                inset 0 0 1px rgba(34, 211, 238, 0.25),
+                inset 0 0 100px rgba(34, 211, 238, 0.012);
             }
           }
 
-          @keyframes premium-edge-glow-emerald {
-            0%, 100% { 
-              box-shadow: 
-                0 0 25px rgba(16, 185, 129, 0.08),
-                0 0 50px rgba(16, 185, 129, 0.04),
-                inset 0 0 1px rgba(16, 185, 129, 0.12);
-            }
-            33% { 
-              box-shadow: 
-                0 0 40px rgba(16, 185, 129, 0.12),
-                0 0 80px rgba(16, 185, 129, 0.06),
-                inset 0 0 1px rgba(16, 185, 129, 0.2);
-            }
-          }
-
-          @keyframes premium-edge-glow-violet {
+          @keyframes premium-edge-glow-violet-ambient {
             0%, 100% { 
               box-shadow: 
                 0 0 35px rgba(139, 92, 246, 0.09),
                 0 0 70px rgba(139, 92, 246, 0.04),
-                inset 0 0 1px rgba(139, 92, 246, 0.14);
+                inset 0 0 1px rgba(139, 92, 246, 0.14),
+                inset 0 0 60px rgba(139, 92, 246, 0.006);
             }
             66% { 
               box-shadow: 
                 0 0 50px rgba(139, 92, 246, 0.14),
                 0 0 100px rgba(139, 92, 246, 0.07),
-                inset 0 0 1px rgba(139, 92, 246, 0.22);
+                inset 0 0 1px rgba(139, 92, 246, 0.22),
+                inset 0 0 80px rgba(139, 92, 246, 0.01);
             }
           }
 
-          @keyframes premium-ambient-diffusion {
+          @keyframes premium-ambient-diffusion-enhanced {
             0%, 100% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(34, 211, 238, 0.02) 0%,
-                rgba(16, 185, 129, 0.015) 35%,
-                rgba(139, 92, 246, 0.01) 70%,
+                rgba(34, 211, 238, 0.025) 0%,
+                rgba(16, 185, 129, 0.018) 35%,
+                rgba(139, 92, 246, 0.015) 70%,
                 transparent 100%
               );
             }
             33% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(16, 185, 129, 0.025) 0%,
-                rgba(139, 92, 246, 0.02) 35%,
-                rgba(34, 211, 238, 0.015) 70%,
+                rgba(16, 185, 129, 0.03) 0%,
+                rgba(139, 92, 246, 0.022) 35%,
+                rgba(34, 211, 238, 0.018) 70%,
                 transparent 100%
               );
             }
             66% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(139, 92, 246, 0.02) 0%,
-                rgba(34, 211, 238, 0.018) 35%,
-                rgba(16, 185, 129, 0.012) 70%,
+                rgba(139, 92, 246, 0.025) 0%,
+                rgba(34, 211, 238, 0.02) 35%,
+                rgba(16, 185, 129, 0.015) 70%,
                 transparent 100%
               );
             }
           }
 
-          .premium-glass-container {
-            animation: premium-glass-shimmer 18s ease-in-out infinite;
+          .premium-glass-container-ambient {
+            animation: premium-glass-shimmer-ambient 20s ease-in-out infinite;
           }
 
-          .premium-edge-glow-cyan {
-            animation: premium-edge-glow-cyan 12s ease-in-out infinite;
+          .premium-edge-glow-cyan-ambient {
+            animation: premium-edge-glow-cyan-ambient 14s ease-in-out infinite;
           }
 
           .premium-edge-glow-emerald {
@@ -141,43 +151,43 @@ const CinematicBackground = () => {
             animation-delay: -5s;
           }
 
-          .premium-edge-glow-violet {
-            animation: premium-edge-glow-violet 14s ease-in-out infinite;
+          .premium-edge-glow-violet-ambient {
+            animation: premium-edge-glow-violet-ambient 16s ease-in-out infinite;
             animation-delay: -8s;
           }
 
-          .premium-ambient-diffusion {
-            animation: premium-ambient-diffusion 20s ease-in-out infinite;
+          .premium-ambient-diffusion-enhanced {
+            animation: premium-ambient-diffusion-enhanced 22s ease-in-out infinite;
           }
 
           /* Mobile optimizations */
           @media (max-width: 768px) {
-            .premium-edge-glow-cyan,
+            .premium-edge-glow-cyan-ambient,
             .premium-edge-glow-emerald,
-            .premium-edge-glow-violet {
-              animation-duration: 20s;
+            .premium-edge-glow-violet-ambient {
+              animation-duration: 25s;
             }
             
             .premium-edge-glow-emerald {
               opacity: 0.3 !important;
             }
             
-            .premium-edge-glow-violet {
+            .premium-edge-glow-violet-ambient {
               opacity: 0.35 !important;
             }
             
-            .premium-ambient-diffusion {
-              animation-duration: 25s;
+            .premium-ambient-diffusion-enhanced {
+              animation-duration: 30s;
             }
           }
 
           /* Reduced motion preferences */
           @media (prefers-reduced-motion: reduce) {
-            .premium-glass-container,
-            .premium-edge-glow-cyan,
+            .premium-glass-container-ambient,
+            .premium-edge-glow-cyan-ambient,
             .premium-edge-glow-emerald,
-            .premium-edge-glow-violet,
-            .premium-ambient-diffusion {
+            .premium-edge-glow-violet-ambient,
+            .premium-ambient-diffusion-enhanced {
               animation: none;
             }
           }
