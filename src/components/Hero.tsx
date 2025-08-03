@@ -1,4 +1,4 @@
-import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot } from 'lucide-react';
+import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -46,88 +46,74 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Left AI Device - Moved higher up */}
+      {/* Left AI Device - Buildrs Style Robot */}
       <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
         <div className="relative">
-          {/* Main AI Device Body - More angular/geometric design */}
-          <div className="relative w-72 h-96 rounded-2xl bg-gradient-to-b from-blue-500/10 to-cyan-500/5 backdrop-blur-xl border border-cyan-400/30 ai-device-float overflow-hidden">
-            {/* Glass effect overlay with blue tint */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/15 via-transparent to-blue-900/10"></div>
+          {/* Main AI Device Body - Industrial/Server style design */}
+          <div className="relative w-72 h-96 rounded-lg bg-gradient-to-b from-premium-gray-dark/80 to-black/90 backdrop-blur-xl border border-premium-silver/20 ai-device-float overflow-hidden">
+            {/* Glass effect overlay with premium silver accents */}
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5"></div>
             
-            {/* AI Circuit Board Display - Different from neural network */}
-            <div className="absolute top-8 left-8 right-8 h-20 rounded-xl bg-black/50 border border-cyan-400/30 overflow-hidden">
+            {/* Server Rack Display */}
+            <div className="absolute top-8 left-8 right-8 h-20 rounded-md bg-black/60 border border-premium-silver/25 overflow-hidden">
               <div className="relative w-full h-full">
-                {/* Circuit board pattern */}
-                {Array.from({ length: 16 }).map((_, i) => (
+                {/* Server indicators - horizontal lines */}
+                {Array.from({ length: 8 }).map((_, i) => (
                   <div
-                    key={`left-circuit-${i}`}
-                    className="absolute w-1 h-6 bg-cyan-400/60 circuit-pulse"
+                    key={`left-server-${i}`}
+                    className="absolute w-full h-1 bg-premium-silver/40 server-pulse"
                     style={{
-                      left: `${10 + (i % 8) * 10}%`,
-                      top: `${20 + Math.floor(i / 8) * 40}%`,
-                      animationDelay: `${i * 0.2}s`,
-                      transform: i % 2 === 0 ? 'rotate(90deg)' : 'rotate(0deg)'
+                      top: `${15 + i * 8}%`,
+                      animationDelay: `${i * 0.3}s`,
                     }}
                   />
                 ))}
                 
-                {/* Circuit connections - square pattern */}
-                <svg className="absolute inset-0 w-full h-full">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <rect
-                      key={`left-circuit-rect-${i}`}
-                      x={`${15 + (i % 3) * 25}%`}
-                      y={`${25 + Math.floor(i / 3) * 30}%`}
-                      width="15%"
-                      height="4%"
-                      fill="rgba(34, 211, 238, 0.3)"
-                      className="circuit-connection"
-                      style={{ animationDelay: `${i * 0.4}s` }}
-                    />
-                  ))}
-                </svg>
+                {/* Status lights */}
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 space-y-1">
+                  <div className="w-2 h-2 bg-premium-silver rounded-full status-light"></div>
+                  <div className="w-2 h-2 bg-white/60 rounded-full status-light" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="w-2 h-2 bg-premium-silver/80 rounded-full status-light" style={{ animationDelay: '1s' }}></div>
+                </div>
               </div>
             </div>
 
-            {/* AI Processing Units - Different icons and colors */}
-            <div className="absolute top-36 left-8 w-16 h-16 rounded-xl bg-black/40 border border-cyan-400/25 flex items-center justify-center">
-              <Network className="w-8 h-8 text-cyan-400 ai-network-pulse" />
+            {/* Code Processing Units */}
+            <div className="absolute top-36 left-8 w-16 h-16 rounded-md bg-black/50 border border-premium-silver/20 flex items-center justify-center">
+              <Code className="w-8 h-8 text-premium-silver ai-code-pulse" />
             </div>
 
-            <div className="absolute top-36 right-8 w-16 h-16 rounded-xl bg-black/40 border border-cyan-400/25 flex items-center justify-center">
-              <CircuitBoard className="w-8 h-8 text-cyan-400 ai-circuit-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-36 right-8 w-16 h-16 rounded-md bg-black/50 border border-premium-silver/20 flex items-center justify-center">
+              <Server className="w-8 h-8 text-premium-silver ai-server-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
-            {/* Central AI Bot - Different from Eye */}
-            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400/30 to-blue-600/20 border border-cyan-400/35 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-2xl bg-black/50 border border-cyan-400/40 flex items-center justify-center">
-                <Bot className="w-8 h-8 text-cyan-400 ai-bot-scan" />
+            {/* Central Database Core */}
+            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-lg bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-lg bg-black/60 border border-premium-silver/40 flex items-center justify-center">
+                <Database className="w-8 h-8 text-white ai-database-scan" />
               </div>
             </div>
 
-            {/* Digital matrix streams - different from data streams */}
-            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-xl bg-black/40 border border-cyan-400/25 overflow-hidden">
-              <div className="relative w-full h-full">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div
-                    key={`left-matrix-${i}`}
-                    className="absolute w-1 h-full bg-gradient-to-b from-transparent via-cyan-400/80 to-transparent matrix-flow"
-                    style={{
-                      left: `${5 + i * 12}%`,
-                      animationDelay: `${i * 0.3}s`,
-                      animationDuration: `${2 + Math.random() * 1.5}s`
-                    }}
-                  />
-                ))}
+            {/* Terminal/Command streams */}
+            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-md bg-black/50 border border-premium-silver/20 overflow-hidden">
+              <div className="relative w-full h-full p-2">
+                {/* Terminal text effect */}
+                <div className="text-xs font-mono text-premium-silver/70 space-y-1">
+                  <div className="terminal-line">$ buildrs.ai --analyze</div>
+                  <div className="terminal-line" style={{ animationDelay: '1s' }}>Processing...</div>
+                </div>
+                
+                {/* Cursor blink */}
+                <div className="absolute bottom-2 left-24 w-2 h-4 bg-premium-silver terminal-cursor"></div>
               </div>
             </div>
 
-            {/* Glow effect - cyan themed */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-500/5 ai-device-cyan-glow"></div>
+            {/* Subtle glow effect - monochrome */}
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-premium-glow"></div>
           </div>
 
-          {/* Device shadow - blue tinted */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-900/20 blur-2xl transform translate-y-4 scale-95 -z-10"></div>
+          {/* Device shadow - monochrome */}
+          <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-premium-silver/5 to-black/30 blur-2xl transform translate-y-4 scale-95 -z-10"></div>
         </div>
       </div>
 

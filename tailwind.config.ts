@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -66,9 +65,9 @@ export default {
 				premium: {
 					black: '#000000',
 					gray: '#111111',
+					'gray-dark': '#0A0A0A',
 					silver: '#C0C0C0',
-					'silver-light': '#E5E5E5',
-					'gray-dark': '#0A0A0A'
+					'silver-light': '#E5E5E5'
 				}
 			},
 			borderRadius: {
@@ -132,6 +131,40 @@ export default {
 				'apple-scroll-pulse': {
 					'0%, 100%': { opacity: '0.4', transform: 'translateY(0)' },
 					'50%': { opacity: '1', transform: 'translateY(8px)' }
+				},
+				// New animations for left robot
+				'server-pulse': {
+					'0%, 100%': { opacity: '0.4', scaleX: '0.8' },
+					'50%': { opacity: '1', scaleX: '1' }
+				},
+				'status-light': {
+					'0%, 100%': { opacity: '0.3' },
+					'50%': { opacity: '1' }
+				},
+				'ai-code-pulse': {
+					'0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.1)' }
+				},
+				'ai-server-pulse': {
+					'0%, 100%': { opacity: '0.6', transform: 'rotateY(0deg)' },
+					'50%': { opacity: '1', transform: 'rotateY(10deg)' }
+				},
+				'ai-database-scan': {
+					'0%, 100%': { opacity: '0.7', transform: 'scale(1)' },
+					'33%': { opacity: '1', transform: 'scale(1.1)' },
+					'66%': { opacity: '0.8', transform: 'scale(0.95)' }
+				},
+				'terminal-line': {
+					'0%': { opacity: '0', width: '0%' },
+					'100%': { opacity: '1', width: '100%' }
+				},
+				'terminal-cursor': {
+					'0%, 50%': { opacity: '1' },
+					'51%, 100%': { opacity: '0' }
+				},
+				'ai-device-premium-glow': {
+					'0%, 100%': { opacity: '0.2' },
+					'50%': { opacity: '0.4' }
 				}
 			},
 			animation: {
@@ -144,7 +177,16 @@ export default {
 				// Apple-inspired animations
 				'apple-fade-in': 'apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'apple-glow': 'apple-glow 8s ease-in-out infinite',
-				'apple-scroll-pulse': 'apple-scroll-pulse 2s ease-in-out infinite'
+				'apple-scroll-pulse': 'apple-scroll-pulse 2s ease-in-out infinite',
+				// New animations for left robot
+				'server-pulse': 'server-pulse 2s ease-in-out infinite',
+				'status-light': 'status-light 1.5s ease-in-out infinite',
+				'ai-code-pulse': 'ai-code-pulse 2.5s ease-in-out infinite',
+				'ai-server-pulse': 'ai-server-pulse 3s ease-in-out infinite',
+				'ai-database-scan': 'ai-database-scan 4s ease-in-out infinite',
+				'terminal-line': 'terminal-line 2s ease-out forwards',
+				'terminal-cursor': 'terminal-cursor 1s ease-in-out infinite',
+				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite'
 			}
 		}
 	},
