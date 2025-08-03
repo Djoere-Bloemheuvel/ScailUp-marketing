@@ -1,4 +1,3 @@
-
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity, Cog, MessageSquare, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -36,37 +35,77 @@ const Hero = () => {
           <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent scan-sweep-diagonal" />
         </div>
 
-        {/* AI Automations Device - Top Left */}
-        <div className="absolute top-16 left-16 ai-device-ecosystem-float">
-          <div className="relative w-48 h-32">
-            {/* Main device body */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-950/40 to-purple-950/40 border border-blue-400/20 backdrop-blur-md ai-ecosystem-glow-blue">
-              {/* Internal processing grid */}
-              <div className="absolute inset-4 grid grid-cols-3 gap-1">
-                {Array.from({ length: 9 }).map((_, i) => (
-                  <div
-                    key={`automation-cell-${i}`}
-                    className="bg-blue-400/20 rounded-sm ai-ecosystem-pulse"
-                    style={{ animationDelay: `${i * 0.2}s` }}
-                  />
-                ))}
-              </div>
+        {/* AI Robot Device - Top Left (replacing the automation device) */}
+        <div className="absolute top-16 left-16 ai-robot-float">
+          <div className="relative w-64 h-80">
+            {/* Main robot body with glassmorphic effect */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gray-900/60 to-gray-800/40 border border-gray-400/20 backdrop-blur-md ai-robot-glow">
               
-              {/* Central processing core */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-blue-400/50 rounded-full flex items-center justify-center">
-                <Cog className="w-4 h-4 text-blue-400 ai-ecosystem-spin" />
+              {/* Top section with connection dots */}
+              <div className="absolute top-6 left-6 right-6 h-20 bg-black/40 rounded-xl border border-gray-400/20 overflow-hidden">
+                {/* Connection grid */}
+                <div className="absolute inset-4 grid grid-cols-4 grid-rows-3 gap-2">
+                  {Array.from({ length: 12 }).map((_, i) => (
+                    <div
+                      key={`connection-dot-${i}`}
+                      className={`w-2 h-2 rounded-full ${i % 3 === 0 ? 'bg-blue-400/80' : i % 3 === 1 ? 'bg-gray-400/60' : 'bg-gray-400/40'} ai-robot-connection-pulse`}
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    />
+                  ))}
+                </div>
+                
+                {/* Connecting lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                  <line x1="25%" y1="30%" x2="75%" y2="30%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" />
+                  <line x1="25%" y1="50%" x2="75%" y2="50%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" style={{ animationDelay: '1s' }} />
+                  <line x1="25%" y1="70%" x2="75%" y2="70%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-line-pulse" style={{ animationDelay: '2s' }} />
+                </svg>
               </div>
 
-              {/* Data streams */}
-              <div className="absolute bottom-2 left-2 right-2 h-1 bg-black/50 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent ai-ecosystem-data-flow" />
+              {/* Middle section with brain and chip icons */}
+              <div className="absolute top-32 left-6 right-6 flex justify-between">
+                {/* Brain module */}
+                <div className="w-20 h-20 bg-black/50 rounded-2xl border border-gray-400/20 flex items-center justify-center ai-robot-brain-glow">
+                  <Brain className="w-8 h-8 text-gray-300 ai-robot-brain-pulse" />
+                </div>
+                
+                {/* Chip module */}
+                <div className="w-20 h-20 bg-black/50 rounded-2xl border border-gray-400/20 flex items-center justify-center ai-robot-chip-glow">
+                  <Cpu className="w-8 h-8 text-gray-300 ai-robot-chip-pulse" />
+                </div>
+              </div>
+
+              {/* Central eye module */}
+              <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-24 h-24">
+                {/* Outer ring */}
+                <div className="absolute inset-0 rounded-full border-2 border-gray-400/30 ai-robot-eye-ring-pulse">
+                  {/* Inner circle */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-black/60 rounded-full border border-gray-400/40 flex items-center justify-center ai-robot-eye-glow">
+                    <Eye className="w-6 h-6 text-gray-300 ai-robot-eye-pulse" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom progress bar */}
+              <div className="absolute bottom-6 left-6 right-6 h-8 bg-black/50 rounded-xl border border-gray-400/20 overflow-hidden">
+                {/* Progress indicator */}
+                <div className="absolute inset-2 bg-gray-800/50 rounded-lg overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-gray-400/60 to-blue-400/40 ai-robot-progress-fill" />
+                </div>
+              </div>
+
+              {/* Ambient glow particles */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-10 right-10 w-1 h-1 bg-blue-400/60 rounded-full ai-robot-particle-float" />
+                <div className="absolute bottom-20 left-8 w-1 h-1 bg-gray-400/50 rounded-full ai-robot-particle-float" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-40 right-16 w-1 h-1 bg-blue-400/40 rounded-full ai-robot-particle-float" style={{ animationDelay: '4s' }} />
               </div>
             </div>
 
-            {/* Neural connections */}
+            {/* External connections */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none">
-              <line x1="100%" y1="50%" x2="120%" y2="40%" stroke="rgba(59, 130, 246, 0.3)" strokeWidth="1" className="ai-ecosystem-connection-pulse" />
-              <line x1="50%" y1="100%" x2="60%" y2="120%" stroke="rgba(59, 130, 246, 0.3)" strokeWidth="1" className="ai-ecosystem-connection-pulse" style={{ animationDelay: '1s' }} />
+              <line x1="100%" y1="30%" x2="130%" y2="25%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-external-connection" />
+              <line x1="50%" y1="100%" x2="60%" y2="130%" stroke="rgba(156, 163, 175, 0.3)" strokeWidth="1" className="ai-robot-external-connection" style={{ animationDelay: '1.5s' }} />
             </svg>
           </div>
         </div>
@@ -395,6 +434,78 @@ const Hero = () => {
           50% { opacity: 0.8; stroke-width: 2; }
         }
 
+        /* AI Robot Animation Keyframes */
+        @keyframes ai-robot-float {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-25px) rotate(1deg); }
+        }
+
+        @keyframes ai-robot-glow {
+          0%, 100% { box-shadow: 0 0 30px rgba(156, 163, 175, 0.1), inset 0 0 20px rgba(156, 163, 175, 0.05); }
+          50% { box-shadow: 0 0 50px rgba(156, 163, 175, 0.2), inset 0 0 30px rgba(156, 163, 175, 0.1); }
+        }
+
+        @keyframes ai-robot-connection-pulse {
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes ai-robot-line-pulse {
+          0%, 100% { opacity: 0.2; stroke-width: 1; }
+          50% { opacity: 0.6; stroke-width: 2; }
+        }
+
+        @keyframes ai-robot-brain-pulse {
+          0%, 100% { opacity: 0.7; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes ai-robot-chip-pulse {
+          0%, 100% { opacity: 0.7; transform: scale(1) rotate(0deg); }
+          50% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+        }
+
+        @keyframes ai-robot-brain-glow {
+          0%, 100% { box-shadow: 0 0 15px rgba(156, 163, 175, 0.1); }
+          50% { box-shadow: 0 0 25px rgba(156, 163, 175, 0.3), inset 0 0 15px rgba(156, 163, 175, 0.1); }
+        }
+
+        @keyframes ai-robot-chip-glow {
+          0%, 100% { box-shadow: 0 0 15px rgba(156, 163, 175, 0.1); }
+          50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.2), inset 0 0 15px rgba(59, 130, 246, 0.05); }
+        }
+
+        @keyframes ai-robot-eye-ring-pulse {
+          0%, 100% { border-color: rgba(156, 163, 175, 0.3); transform: scale(1); }
+          50% { border-color: rgba(156, 163, 175, 0.6); transform: scale(1.05); }
+        }
+
+        @keyframes ai-robot-eye-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(156, 163, 175, 0.2); }
+          50% { box-shadow: 0 0 40px rgba(156, 163, 175, 0.4), inset 0 0 20px rgba(156, 163, 175, 0.2); }
+        }
+
+        @keyframes ai-robot-eye-pulse {
+          0%, 100% { opacity: 0.8; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes ai-robot-progress-fill {
+          0% { width: 20%; opacity: 0.4; }
+          50% { width: 80%; opacity: 0.8; }
+          100% { width: 60%; opacity: 0.6; }
+        }
+
+        @keyframes ai-robot-particle-float {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+          50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+        }
+
+        @keyframes ai-robot-external-connection {
+          0%, 100% { opacity: 0.2; stroke-width: 1; }
+          50% { opacity: 0.7; stroke-width: 2; }
+        }
+
         /* Apply animations */
         .ai-device-ecosystem-float {
           animation: ai-ecosystem-float 6s ease-in-out infinite;
@@ -506,6 +617,63 @@ const Hero = () => {
 
         .ai-ecosystem-connection-pulse {
           animation: ai-ecosystem-connection-pulse 3s ease-in-out infinite;
+        }
+
+        /* Apply AI Robot animations */
+        .ai-robot-float {
+          animation: ai-robot-float 8s ease-in-out infinite;
+        }
+
+        .ai-robot-glow {
+          animation: ai-robot-glow 6s ease-in-out infinite;
+        }
+
+        .ai-robot-connection-pulse {
+          animation: ai-robot-connection-pulse 2s ease-in-out infinite;
+        }
+
+        .ai-robot-line-pulse {
+          animation: ai-robot-line-pulse 3s ease-in-out infinite;
+        }
+
+        .ai-robot-brain-pulse {
+          animation: ai-robot-brain-pulse 2.5s ease-in-out infinite;
+        }
+
+        .ai-robot-chip-pulse {
+          animation: ai-robot-chip-pulse 3s ease-in-out infinite;
+        }
+
+        .ai-robot-brain-glow {
+          animation: ai-robot-brain-glow 4s ease-in-out infinite;
+        }
+
+        .ai-robot-chip-glow {
+          animation: ai-robot-chip-glow 4.5s ease-in-out infinite;
+        }
+
+        .ai-robot-eye-ring-pulse {
+          animation: ai-robot-eye-ring-pulse 4s ease-in-out infinite;
+        }
+
+        .ai-robot-eye-glow {
+          animation: ai-robot-eye-glow 5s ease-in-out infinite;
+        }
+
+        .ai-robot-eye-pulse {
+          animation: ai-robot-eye-pulse 3s ease-in-out infinite;
+        }
+
+        .ai-robot-progress-fill {
+          animation: ai-robot-progress-fill 4s ease-in-out infinite;
+        }
+
+        .ai-robot-particle-float {
+          animation: ai-robot-particle-float 6s ease-in-out infinite;
+        }
+
+        .ai-robot-external-connection {
+          animation: ai-robot-external-connection 3.5s ease-in-out infinite;
         }
         `
       }} />
