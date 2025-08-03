@@ -11,7 +11,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center px-4 py-12 bg-black overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
       {/* Nothing-inspired minimalistic background */}
       <div className="absolute inset-0">
         {/* Subtle gradient overlay */}
@@ -47,7 +47,93 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* AI Device - Moved to right side */}
+      {/* Left AI Device */}
+      <div className="absolute left-20 top-1/2 transform -translate-y-1/2 z-20">
+        <div className="relative">
+          {/* Main AI Device Body */}
+          <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-float overflow-hidden">
+            {/* Glass effect overlay */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/15 via-transparent to-black/10"></div>
+            
+            {/* AI Neural Network Display */}
+            <div className="absolute top-8 left-8 right-8 h-20 rounded-2xl bg-black/40 border border-white/20 overflow-hidden">
+              <div className="relative w-full h-full">
+                {/* Neural network nodes */}
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div
+                    key={`left-node-${i}`}
+                    className="absolute w-2 h-2 bg-premium-silver rounded-full neural-pulse"
+                    style={{
+                      left: `${15 + (i % 4) * 20}%`,
+                      top: `${20 + Math.floor(i / 4) * 25}%`,
+                      animationDelay: `${i * 0.4 + 0.5}s`
+                    }}
+                  />
+                ))}
+                
+                {/* Neural connections */}
+                <svg className="absolute inset-0 w-full h-full">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <line
+                      key={`left-connection-${i}`}
+                      x1={`${20 + (i % 3) * 25}%`}
+                      y1={`${30 + Math.floor(i / 3) * 20}%`}
+                      x2={`${40 + (i % 3) * 15}%`}
+                      y2={`${50 + Math.floor(i / 3) * 10}%`}
+                      stroke="rgba(192, 192, 192, 0.3)"
+                      strokeWidth="1"
+                      className="neural-connection"
+                      style={{ animationDelay: `${i * 0.3 + 0.5}s` }}
+                    />
+                  ))}
+                </svg>
+              </div>
+            </div>
+
+            {/* AI Processing Units */}
+            <div className="absolute top-36 left-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center">
+              <Brain className="w-8 h-8 text-premium-silver ai-icon-pulse" style={{ animationDelay: '0.5s' }} />
+            </div>
+
+            <div className="absolute top-36 right-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center">
+              <Cpu className="w-8 h-8 text-premium-silver ai-icon-pulse" style={{ animationDelay: '1.5s' }} />
+            </div>
+
+            {/* Central AI Eye */}
+            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-white/20 to-black/20 border border-white/25 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-black/40 border border-premium-silver/30 flex items-center justify-center">
+                <Eye className="w-8 h-8 text-white ai-eye-scan" style={{ animationDelay: '0.5s' }} />
+              </div>
+            </div>
+
+            {/* Data streams */}
+            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-xl bg-black/30 border border-white/15 overflow-hidden">
+              <div className="relative w-full h-full">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div
+                    key={`left-stream-${i}`}
+                    className="absolute top-2 h-2 bg-gradient-to-r from-transparent via-premium-silver/60 to-transparent rounded-full data-stream-flow"
+                    style={{
+                      width: `${20 + Math.random() * 40}%`,
+                      left: '-50%',
+                      animationDelay: `${i * 0.8 + 0.5}s`,
+                      animationDuration: `${3 + Math.random() * 2}s`
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-glow" style={{ animationDelay: '0.5s' }}></div>
+          </div>
+
+          {/* Device shadow */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-black/20 to-black/40 blur-2xl transform translate-y-4 scale-95 -z-10"></div>
+        </div>
+      </div>
+
+      {/* Right AI Device - Moved to right side */}
       <div className="absolute right-20 top-1/2 transform -translate-y-1/2 z-20">
         <div className="relative">
           {/* Main AI Device Body */}
@@ -61,7 +147,7 @@ const Hero = () => {
                 {/* Neural network nodes */}
                 {Array.from({ length: 12 }).map((_, i) => (
                   <div
-                    key={`node-${i}`}
+                    key={`right-node-${i}`}
                     className="absolute w-2 h-2 bg-premium-silver rounded-full neural-pulse"
                     style={{
                       left: `${15 + (i % 4) * 20}%`,
@@ -75,7 +161,7 @@ const Hero = () => {
                 <svg className="absolute inset-0 w-full h-full">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <line
-                      key={`connection-${i}`}
+                      key={`right-connection-${i}`}
                       x1={`${20 + (i % 3) * 25}%`}
                       y1={`${30 + Math.floor(i / 3) * 20}%`}
                       x2={`${40 + (i % 3) * 15}%`}
@@ -111,7 +197,7 @@ const Hero = () => {
               <div className="relative w-full h-full">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div
-                    key={`stream-${i}`}
+                    key={`right-stream-${i}`}
                     className="absolute top-2 h-2 bg-gradient-to-r from-transparent via-premium-silver/60 to-transparent rounded-full data-stream-flow"
                     style={{
                       width: `${20 + Math.random() * 40}%`,
@@ -133,11 +219,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - Left aligned with responsive sizing */}
-      <div className="relative max-w-5xl mx-auto z-30">
-        <div className="max-w-3xl">
+      {/* Content - Centered */}
+      <div className="relative max-w-5xl mx-auto z-30 text-center">
+        <div className="max-w-4xl mx-auto">
           {/* Apple-style product badge */}
-          <div className={`mb-12 flex justify-start ${isLoaded ? 'apple-fade-in' : ''}`}>
+          <div className={`mb-12 flex justify-center ${isLoaded ? 'apple-fade-in' : ''}`}>
             <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] apple-card-hover group cursor-pointer">
               <div className="relative mr-3">
                 <Zap className="w-5 h-5 text-premium-silver-light group-hover:text-white transition-colors duration-500" />
@@ -148,8 +234,8 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Apple-inspired typography hierarchy - left aligned */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] text-left ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+          {/* Apple-inspired typography hierarchy - centered */}
+          <h1 className={`font-bold tracking-tight leading-[0.9] ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
             <div className="text-6xl md:text-8xl lg:text-9xl text-white">
               AI die werkt.
             </div>
@@ -158,14 +244,14 @@ const Hero = () => {
             </div>
           </h1>
           
-          {/* Apple-style subtitle - left aligned */}
-          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light mt-4 text-left ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
+          {/* Apple-style subtitle - centered */}
+          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light mt-4 ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
             Wij bouwen AI-systemen die uw business 
             <br />
             <span className="text-white font-normal">daadwerkelijk transformeren.</span>
           </p>
           
-          <div className={`flex flex-col sm:flex-row gap-6 justify-start items-start mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
+          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
             <Button 
               className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
               style={{
@@ -190,8 +276,8 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Apple-style feature highlight - left aligned */}
-          <div className={`text-left ${isLoaded ? 'apple-fade-in apple-stagger-5' : ''}`}>
+          {/* Apple-style feature highlight - centered */}
+          <div className={`${isLoaded ? 'apple-fade-in apple-stagger-5' : ''}`}>
             <p className="text-lg text-premium-silver/60 mb-2">Gebouwd voor Apple Intelligence</p>
             <p className="text-sm text-premium-silver/40 italic">Premium AI-engineering voor visionairs</p>
           </div>
