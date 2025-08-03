@@ -1,3 +1,4 @@
+
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -53,7 +54,7 @@ const Hero = () => {
           <div className="relative w-72 h-96 ai-device-float overflow-visible">
             {/* Custom hexagonal shape using CSS clip-path */}
             <div 
-              className="absolute inset-0 bg-gradient-to-b from-premium-gray-dark/80 to-black/90 backdrop-blur-xl border border-premium-silver/20 overflow-hidden hexagon-morph"
+              className="absolute inset-0 bg-gradient-to-b from-premium-gray-dark/80 to-black/90 backdrop-blur-xl border border-premium-silver/20 overflow-hidden"
               style={{
                 clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)',
                 background: 'linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)'
@@ -61,137 +62,136 @@ const Hero = () => {
             >
               {/* Glass effect overlay with premium silver accents */}
               <div 
-                className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 hexagon-shimmer"
+                className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5"
                 style={{
                   clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
                 }}
               ></div>
             </div>
             
-            {/* Top Chart Display - Dashboard style with enhanced animations */}
+            {/* Top Chart Display - Dashboard style */}
             <div 
-              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-black/60 border border-premium-silver/25 overflow-hidden rounded-lg chart-container-float"
+              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-black/60 border border-premium-silver/25 overflow-hidden rounded-lg"
             >
               <div className="relative w-full h-full p-3">
-                {/* Mini bar chart visualization with staggered animations */}
+                {/* Mini bar chart visualization */}
                 <div className="flex items-end justify-between h-full space-x-1">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <div
                       key={`chart-bar-${i}`}
-                      className="bg-premium-silver/40 rounded-sm chart-bar-dance"
+                      className="bg-premium-silver/40 rounded-sm chart-pulse"
                       style={{
                         width: '8px',
                         height: `${20 + (i % 3) * 15}%`,
-                        animationDelay: `${i * 0.15 + Math.random() * 0.3}s`,
-                        animationDuration: `${1.5 + Math.random() * 1}s`
+                        animationDelay: `${i * 0.2}s`,
                       }}
                     />
                   ))}
                 </div>
                 
-                {/* Chart indicator with rotation */}
+                {/* Chart indicator */}
                 <div className="absolute top-2 right-2">
-                  <BarChart3 className="w-3 h-3 text-premium-silver/60 chart-icon-spin" />
+                  <BarChart3 className="w-3 h-3 text-premium-silver/60" />
                 </div>
               </div>
             </div>
 
-            {/* Left Dashboard Panel with wave animation */}
-            <div className="absolute top-32 left-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden panel-wave">
+            {/* Left Dashboard Panel */}
+            <div className="absolute top-32 left-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden">
               {/* Grid pattern background */}
-              <div className="absolute inset-0 opacity-20 grid-breathe">
+              <div className="absolute inset-0 opacity-20">
                 <Grid3X3 className="w-full h-full text-premium-silver/30" />
               </div>
               
-              {/* Dashboard icons with typewriter effect */}
+              {/* Dashboard icons */}
               <div className="relative p-3 space-y-3">
-                <div className="w-full h-6 bg-premium-silver/30 rounded dashboard-typewriter"></div>
-                <div className="w-3/4 h-4 bg-premium-silver/20 rounded dashboard-typewriter" style={{ animationDelay: '0.8s' }}></div>
-                <div className="w-full h-4 bg-premium-silver/25 rounded dashboard-typewriter" style={{ animationDelay: '1.6s' }}></div>
+                <div className="w-full h-6 bg-premium-silver/30 rounded dashboard-pulse"></div>
+                <div className="w-3/4 h-4 bg-premium-silver/20 rounded dashboard-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-full h-4 bg-premium-silver/25 rounded dashboard-pulse" style={{ animationDelay: '1s' }}></div>
               </div>
               
-              {/* Activity indicator with heartbeat */}
+              {/* Activity indicator */}
               <div className="absolute bottom-2 right-2">
-                <Activity className="w-4 h-4 text-premium-silver activity-heartbeat" />
+                <Activity className="w-4 h-4 text-premium-silver activity-pulse" />
               </div>
             </div>
 
-            {/* Right Dashboard Panel with slide animations */}
-            <div className="absolute top-32 right-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden panel-slide">
-              {/* Layer visualization with cascade effect */}
+            {/* Right Dashboard Panel */}
+            <div className="absolute top-32 right-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden">
+              {/* Layer visualization */}
               <div className="relative p-3 space-y-2">
                 <div className="flex space-x-1">
-                  <div className="w-4 h-4 bg-premium-silver/40 rounded-sm layer-cascade"></div>
-                  <div className="w-4 h-4 bg-premium-silver/30 rounded-sm layer-cascade" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-4 h-4 bg-premium-silver/40 rounded-sm layer-pulse"></div>
+                  <div className="w-4 h-4 bg-premium-silver/30 rounded-sm layer-pulse" style={{ animationDelay: '0.3s' }}></div>
                 </div>
                 <div className="flex space-x-1">
-                  <div className="w-4 h-4 bg-premium-silver/25 rounded-sm layer-cascade" style={{ animationDelay: '0.4s' }}></div>
-                  <div className="w-4 h-4 bg-premium-silver/35 rounded-sm layer-cascade" style={{ animationDelay: '0.6s' }}></div>
+                  <div className="w-4 h-4 bg-premium-silver/25 rounded-sm layer-pulse" style={{ animationDelay: '0.6s' }}></div>
+                  <div className="w-4 h-4 bg-premium-silver/35 rounded-sm layer-pulse" style={{ animationDelay: '0.9s' }}></div>
                 </div>
               </div>
               
-              {/* Layers icon with flip animation */}
+              {/* Layers icon */}
               <div className="absolute bottom-2 right-2">
-                <Layers className="w-4 h-4 text-premium-silver layer-flip" />
+                <Layers className="w-4 h-4 text-premium-silver layer-icon-pulse" />
               </div>
             </div>
 
-            {/* Central Interface Core - Multi-layered dashboard with spiral animation */}
+            {/* Central Interface Core - Multi-layered dashboard */}
             <div 
-              className="absolute top-52 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 rounded-xl overflow-hidden interface-spiral"
+              className="absolute top-52 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 rounded-xl overflow-hidden"
             >
               <div className="relative w-full h-full">
-                {/* Interface grid with matrix effect */}
+                {/* Interface grid */}
                 <div className="absolute inset-2 grid grid-cols-2 gap-1">
-                  <div className="bg-premium-silver/20 rounded-sm interface-matrix"></div>
-                  <div className="bg-premium-silver/30 rounded-sm interface-matrix" style={{ animationDelay: '0.15s' }}></div>
-                  <div className="bg-premium-silver/25 rounded-sm interface-matrix" style={{ animationDelay: '0.3s' }}></div>
-                  <div className="bg-premium-silver/35 rounded-sm interface-matrix" style={{ animationDelay: '0.45s' }}></div>
+                  <div className="bg-premium-silver/20 rounded-sm interface-pulse"></div>
+                  <div className="bg-premium-silver/30 rounded-sm interface-pulse" style={{ animationDelay: '0.25s' }}></div>
+                  <div className="bg-premium-silver/25 rounded-sm interface-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="bg-premium-silver/35 rounded-sm interface-pulse" style={{ animationDelay: '0.75s' }}></div>
                 </div>
                 
-                {/* Central processing indicator with orbit animation */}
+                {/* Central processing indicator */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 border border-premium-silver/40 rounded-full flex items-center justify-center central-orbit">
-                    <div className="w-2 h-2 bg-premium-silver rounded-full central-core-pulse"></div>
+                  <div className="w-8 h-8 border border-premium-silver/40 rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-premium-silver rounded-full central-pulse"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Interface Panel - Command interface with terminal effect */}
+            {/* Bottom Interface Panel - Command interface */}
             <div 
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-black/50 border border-premium-silver/20 rounded-lg overflow-hidden terminal-glow"
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-black/50 border border-premium-silver/20 rounded-lg overflow-hidden"
             >
               <div className="relative w-full h-full">
-                {/* Interface elements with terminal typing */}
+                {/* Interface elements */}
                 <div className="absolute inset-0 flex items-center px-3">
                   <div className="flex-1 space-y-1">
-                    <div className="w-3/4 h-2 bg-premium-silver/30 rounded terminal-typing"></div>
-                    <div className="w-1/2 h-1 bg-premium-silver/20 rounded terminal-typing" style={{ animationDelay: '1.2s' }}></div>
+                    <div className="w-3/4 h-2 bg-premium-silver/30 rounded interface-line-pulse"></div>
+                    <div className="w-1/2 h-1 bg-premium-silver/20 rounded interface-line-pulse" style={{ animationDelay: '0.5s' }}></div>
                   </div>
                   
-                  {/* Status indicators with sequential blink */}
+                  {/* Status indicators */}
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-premium-silver/40 rounded-full status-sequence"></div>
-                    <div className="w-2 h-2 bg-premium-silver/30 rounded-full status-sequence" style={{ animationDelay: '0.4s' }}></div>
-                    <div className="w-2 h-2 bg-premium-silver/50 rounded-full status-sequence" style={{ animationDelay: '0.8s' }}></div>
+                    <div className="w-2 h-2 bg-premium-silver/40 rounded-full status-blink"></div>
+                    <div className="w-2 h-2 bg-premium-silver/30 rounded-full status-blink" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="w-2 h-2 bg-premium-silver/50 rounded-full status-blink" style={{ animationDelay: '0.6s' }}></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Subtle glow effect with breathing animation */}
+            {/* Subtle glow effect - monochrome with hexagonal shape */}
             <div 
-              className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 hexagon-breathe"
+              className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-premium-glow"
               style={{
                 clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
               }}
             ></div>
           </div>
 
-          {/* Device shadow - hexagonal with pulsing */}
+          {/* Device shadow - hexagonal */}
           <div 
-            className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 to-black/30 blur-2xl transform translate-y-4 scale-95 -z-10 shadow-pulse"
+            className="absolute inset-0 bg-gradient-to-br from-premium-silver/5 to-black/30 blur-2xl transform translate-y-4 scale-95 -z-10"
             style={{
               clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
             }}
@@ -199,32 +199,31 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right AI Device - Enhanced with more varied animations */}
+      {/* Right AI Device - Moved lower down */}
       <div className="absolute right-20 top-2/3 transform -translate-y-1/2 z-20">
         <div className="relative">
-          {/* Main AI Device Body with floating variation */}
-          <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-hover overflow-hidden">
-            {/* Glass effect overlay with wave animation */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/15 via-transparent to-black/10 glass-wave"></div>
+          {/* Main AI Device Body */}
+          <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-float overflow-hidden">
+            {/* Glass effect overlay */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/15 via-transparent to-black/10"></div>
             
-            {/* AI Neural Network Display with organic movement */}
-            <div className="absolute top-8 left-8 right-8 h-20 rounded-2xl bg-black/40 border border-white/20 overflow-hidden neural-container-flow">
+            {/* AI Neural Network Display */}
+            <div className="absolute top-8 left-8 right-8 h-20 rounded-2xl bg-black/40 border border-white/20 overflow-hidden">
               <div className="relative w-full h-full">
-                {/* Neural network nodes with organic pulsing */}
+                {/* Neural network nodes */}
                 {Array.from({ length: 12 }).map((_, i) => (
                   <div
                     key={`right-node-${i}`}
-                    className="absolute w-2 h-2 bg-premium-silver rounded-full neural-organic"
+                    className="absolute w-2 h-2 bg-premium-silver rounded-full neural-pulse"
                     style={{
                       left: `${15 + (i % 4) * 20}%`,
                       top: `${20 + Math.floor(i / 4) * 25}%`,
-                      animationDelay: `${i * 0.2 + Math.random() * 0.5}s`,
-                      animationDuration: `${1.5 + Math.random() * 1.5}s`
+                      animationDelay: `${i * 0.3}s`
                     }}
                   />
                 ))}
                 
-                {/* Neural connections with flowing animation */}
+                {/* Neural connections */}
                 <svg className="absolute inset-0 w-full h-full">
                   {Array.from({ length: 8 }).map((_, i) => (
                     <line
@@ -235,58 +234,54 @@ const Hero = () => {
                       y2={`${50 + Math.floor(i / 3) * 10}%`}
                       stroke="rgba(192, 192, 192, 0.3)"
                       strokeWidth="1"
-                      className="connection-flow"
-                      style={{ 
-                        animationDelay: `${i * 0.3}s`,
-                        animationDuration: `${2 + Math.random() * 2}s`
-                      }}
+                      className="neural-connection"
+                      style={{ animationDelay: `${i * 0.2}s` }}
                     />
                   ))}
                 </svg>
               </div>
             </div>
 
-            {/* AI Processing Units with alternating animations */}
-            <div className="absolute top-36 left-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center processing-left">
-              <Brain className="w-8 h-8 text-premium-silver brain-think" />
+            {/* AI Processing Units */}
+            <div className="absolute top-36 left-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center">
+              <Brain className="w-8 h-8 text-premium-silver ai-icon-pulse" />
             </div>
 
-            <div className="absolute top-36 right-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center processing-right">
-              <Cpu className="w-8 h-8 text-premium-silver cpu-compute" />
+            <div className="absolute top-36 right-8 w-16 h-16 rounded-2xl bg-black/30 border border-white/15 flex items-center justify-center">
+              <Cpu className="w-8 h-8 text-premium-silver ai-icon-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
-            {/* Central AI Eye with scanning animation */}
-            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-white/20 to-black/20 border border-white/25 flex items-center justify-center eye-container-rotate">
+            {/* Central AI Eye */}
+            <div className="absolute top-56 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full bg-gradient-to-br from-white/20 to-black/20 border border-white/25 flex items-center justify-center">
               <div className="w-16 h-16 rounded-full bg-black/40 border border-premium-silver/30 flex items-center justify-center">
-                <Eye className="w-8 h-8 text-white ai-eye-advanced-scan" />
+                <Eye className="w-8 h-8 text-white ai-eye-scan" />
               </div>
             </div>
 
-            {/* Data streams with varied flow patterns */}
-            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-xl bg-black/30 border border-white/15 overflow-hidden stream-container">
+            {/* Data streams */}
+            <div className="absolute bottom-8 left-8 right-8 h-12 rounded-xl bg-black/30 border border-white/15 overflow-hidden">
               <div className="relative w-full h-full">
-                {Array.from({ length: 8 }).map((_, i) => (
+                {Array.from({ length: 6 }).map((_, i) => (
                   <div
                     key={`right-stream-${i}`}
-                    className="absolute h-2 bg-gradient-to-r from-transparent via-premium-silver/60 to-transparent rounded-full data-stream-varied"
+                    className="absolute top-2 h-2 bg-gradient-to-r from-transparent via-premium-silver/60 to-transparent rounded-full data-stream-flow"
                     style={{
-                      width: `${15 + Math.random() * 35}%`,
-                      left: '-60%',
-                      top: `${2 + (i % 4) * 2}px`,
-                      animationDelay: `${i * 0.4 + Math.random() * 0.6}s`,
-                      animationDuration: `${2 + Math.random() * 3}s`
+                      width: `${20 + Math.random() * 40}%`,
+                      left: '-50%',
+                      animationDelay: `${i * 0.8}s`,
+                      animationDuration: `${3 + Math.random() * 2}s`
                     }}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Glow effect with breathing variation */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-glow-breathe"></div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-premium-silver/5 via-transparent to-white/5 ai-device-glow"></div>
           </div>
 
-          {/* Device shadow with floating effect */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-black/20 to-black/40 blur-2xl transform translate-y-4 scale-95 -z-10 shadow-float"></div>
+          {/* Device shadow */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-black/20 to-black/40 blur-2xl transform translate-y-4 scale-95 -z-10"></div>
         </div>
       </div>
 
