@@ -13,19 +13,19 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Enhanced background with glitch and AI mesh - lower z-index */}
-      <div className="absolute inset-0 z-0">
+      {/* Background layer - completely isolated with negative z-index */}
+      <div className="absolute inset-0 -z-10">
         {/* Base gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900/20"></div>
         
         {/* AI Mesh Lines - underneath everything */}
         <AIMeshLines />
         
-        {/* Glitch Background - on top of mesh, under floating elements */}
+        {/* Glitch Background - completely isolated */}
         <GlitchBackground />
       </div>
 
-      {/* Floating minimal elements inspired by Nothing - mid z-index */}
+      {/* Floating minimal elements - mid layer with positive z-index but below text */}
       <div className="absolute inset-0 z-10">
         <div className="absolute top-20 left-20">
           <div className="w-24 h-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center nothing-float">
@@ -56,7 +56,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Left AI Device - Dashboard/Interface Style - mid z-index */}
+      {/* Left AI Device - mid layer */}
       <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
         <div className="relative">
           {/* Main AI Device Body - Dashboard style design */}
@@ -208,7 +208,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right AI Device - Moved lower down - mid z-index */}
+      {/* Right AI Device - mid layer */}
       <div className="absolute right-20 top-2/3 transform -translate-y-1/2 z-20">
         <div className="relative">
           {/* Main AI Device Body */}
@@ -294,17 +294,17 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - Centered - highest z-index to ensure text is always visible */}
-      <div className="relative max-w-5xl mx-auto z-50 text-center">
+      {/* Content - Completely isolated top layer with very high z-index */}
+      <div className="relative z-[100] max-w-5xl mx-auto text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Apple-inspired typography hierarchy - centered */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
-            <div className="text-6xl md:text-8xl lg:text-9xl text-white">
+          {/* Apple-inspired typography hierarchy - centered with explicit colors */}
+          <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 text-white ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+            <div className="text-6xl md:text-8xl lg:text-9xl">
               AI die werkt.
             </div>
           </h1>
           
-          {/* Apple-style subtitle - centered */}
+          {/* Apple-style subtitle - centered with explicit colors */}
           <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
             Wij bouwen AI-systemen die uw business 
             <br />
@@ -338,8 +338,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Apple-inspired scroll indicator - highest z-index */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+      {/* Apple-inspired scroll indicator - top layer */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[100]">
         <div className="w-[1px] h-16 bg-gradient-to-b from-premium-silver/40 to-transparent">
           <div className="w-[1px] h-6 bg-premium-silver/60 apple-scroll-pulse"></div>
         </div>

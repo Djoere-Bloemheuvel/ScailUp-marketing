@@ -113,7 +113,7 @@ const GlitchBackground = () => {
       width: `${glitch.width}%`,
       height: `${glitch.height}%`,
       pointerEvents: 'none',
-      zIndex: 1,
+      zIndex: -1, // Ensure glitch effects stay behind everything
     };
 
     switch (glitch.type) {
@@ -144,28 +144,28 @@ const GlitchBackground = () => {
             style={{
               ...baseStyles,
               animation: `glitch-rgb-offset ${glitch.duration}ms ease-out forwards`,
-              opacity: glitch.intensity,
+              opacity: glitch.intensity * 0.5, // Reduced opacity to prevent interference
             }}
           >
             <div 
               className="absolute inset-0 bg-red-500 mix-blend-screen"
               style={{ 
-                transform: `translateX(${glitch.intensity * 4}px)`,
-                opacity: 0.6 
+                transform: `translateX(${glitch.intensity * 2}px)`, // Reduced offset
+                opacity: 0.3 
               }}
             />
             <div 
               className="absolute inset-0 bg-green-500 mix-blend-screen"
               style={{ 
-                transform: `translateX(${-glitch.intensity * 3}px)`,
-                opacity: 0.4 
+                transform: `translateX(${-glitch.intensity * 1.5}px)`, // Reduced offset
+                opacity: 0.2 
               }}
             />
             <div 
               className="absolute inset-0 bg-blue-500 mix-blend-screen"
               style={{ 
-                transform: `translateX(${glitch.intensity * 2}px)`,
-                opacity: 0.5 
+                transform: `translateX(${glitch.intensity * 1}px)`, // Reduced offset
+                opacity: 0.25 
               }}
             />
           </div>
@@ -179,9 +179,9 @@ const GlitchBackground = () => {
             style={{
               ...baseStyles,
               background: `radial-gradient(circle, 
-                rgba(255, 255, 255, ${glitch.intensity * 0.8}) 0%, 
-                rgba(0, 255, 255, ${glitch.intensity * 0.6}) 30%, 
-                rgba(255, 0, 255, ${glitch.intensity * 0.4}) 60%, 
+                rgba(255, 255, 255, ${glitch.intensity * 0.4}) 0%, 
+                rgba(0, 255, 255, ${glitch.intensity * 0.3}) 30%, 
+                rgba(255, 0, 255, ${glitch.intensity * 0.2}) 60%, 
                 transparent 80%)`,
               mixBlendMode: 'overlay',
               animation: `glitch-pixelflicker ${glitch.duration}ms steps(8, end) forwards`,
@@ -199,10 +199,10 @@ const GlitchBackground = () => {
               ...baseStyles,
               background: `linear-gradient(180deg, 
                 transparent 0%, 
-                rgba(255, 255, 255, ${glitch.intensity * 0.1}) 20%, 
-                rgba(0, 255, 255, ${glitch.intensity * 0.3}) 40%, 
-                rgba(255, 0, 255, ${glitch.intensity * 0.4}) 60%, 
-                rgba(255, 255, 0, ${glitch.intensity * 0.2}) 80%, 
+                rgba(255, 255, 255, ${glitch.intensity * 0.05}) 20%, 
+                rgba(0, 255, 255, ${glitch.intensity * 0.15}) 40%, 
+                rgba(255, 0, 255, ${glitch.intensity * 0.2}) 60%, 
+                rgba(255, 255, 0, ${glitch.intensity * 0.1}) 80%, 
                 transparent 100%)`,
               mixBlendMode: 'lighten',
               animation: `glitch-slice ${glitch.duration}ms ease-in-out forwards`,
@@ -217,7 +217,7 @@ const GlitchBackground = () => {
   };
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden -z-10">
       {glitchLayers.map(renderGlitchLayer)}
     </div>
   );
