@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const AmbientLighting = () => {
@@ -6,29 +5,29 @@ const AmbientLighting = () => {
     <>
       {/* Ambient Corner Lighting Effects - Behind all content */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Top-left ambient glow - Cyan/Blue - INCREASED VISIBILITY */}
+        {/* Top-left ambient glow - Enhanced Blue/Purple */}
         <div 
-          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-60 md:opacity-70 ambient-glow-cyan"
+          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-80 md:opacity-90 ambient-glow-blue"
           style={{
-            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, rgba(34, 211, 238, 0.15) 30%, rgba(14, 165, 233, 0.08) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(67, 56, 202, 0.25) 30%, rgba(55, 48, 163, 0.15) 50%, rgba(30, 27, 75, 0.08) 70%, transparent 85%)',
             filter: 'blur(80px)',
           }}
         />
         
-        {/* Bottom-right ambient glow - Purple/Violet - INCREASED VISIBILITY */}
+        {/* Bottom-right ambient glow - Enhanced Purple/Violet */}
         <div 
-          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-55 md:opacity-65 ambient-glow-violet"
+          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-75 md:opacity-85 ambient-glow-purple"
           style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.20) 0%, rgba(147, 51, 234, 0.12) 35%, rgba(109, 40, 217, 0.06) 55%, transparent 75%)',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.30) 0%, rgba(124, 58, 237, 0.22) 35%, rgba(109, 40, 217, 0.12) 55%, rgba(88, 28, 135, 0.06) 75%, transparent 90%)',
             filter: 'blur(90px)',
           }}
         />
         
-        {/* Additional accent glow - Teal (center-right) - INCREASED VISIBILITY */}
+        {/* Additional accent glow - Blue-Purple blend (center-right) */}
         <div 
-          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-45 md:opacity-55 ambient-glow-teal"
+          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-65 md:opacity-75 ambient-glow-blend"
           style={{
-            background: 'radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, rgba(13, 148, 136, 0.10) 40%, rgba(15, 118, 110, 0.05) 60%, transparent 80%)',
+            background: 'radial-gradient(circle, rgba(79, 70, 229, 0.25) 0%, rgba(99, 102, 241, 0.18) 40%, rgba(124, 58, 237, 0.10) 60%, rgba(67, 56, 202, 0.05) 80%, transparent 95%)',
             filter: 'blur(70px)',
           }}
         />
@@ -55,10 +54,10 @@ const AmbientLighting = () => {
           style={{
             backgroundImage: `
               radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
-              radial-gradient(1px 1px at 40% 70%, rgba(34, 211, 238, 0.6), transparent),
+              radial-gradient(1px 1px at 40% 70%, rgba(99, 102, 241, 0.6), transparent),
               radial-gradient(1px 1px at 60% 20%, rgba(255, 255, 255, 0.5), transparent),
               radial-gradient(1px 1px at 80% 80%, rgba(139, 92, 246, 0.4), transparent),
-              radial-gradient(1px 1px at 10% 60%, rgba(20, 184, 166, 0.3), transparent),
+              radial-gradient(1px 1px at 10% 60%, rgba(124, 58, 237, 0.3), transparent),
               radial-gradient(1px 1px at 90% 40%, rgba(255, 255, 255, 0.6), transparent)
             `,
             backgroundSize: '550px 550px, 350px 350px, 450px 450px, 500px 500px, 400px 400px, 600px 600px',
@@ -69,50 +68,50 @@ const AmbientLighting = () => {
       {/* Ambient Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes ambient-glow-cyan {
+          @keyframes ambient-glow-blue {
             0%, 100% { 
-              opacity: 0.60;
+              opacity: 0.80;
               transform: scale(1) rotate(0deg);
               filter: blur(80px);
             }
             33% { 
-              opacity: 0.75;
+              opacity: 0.95;
               transform: scale(1.08) rotate(2deg);
               filter: blur(85px);
             }
             66% { 
-              opacity: 0.50;
+              opacity: 0.70;
               transform: scale(0.95) rotate(-1deg);
               filter: blur(75px);
             }
           }
 
-          @keyframes ambient-glow-violet {
+          @keyframes ambient-glow-purple {
             0%, 100% { 
-              opacity: 0.55;
+              opacity: 0.75;
               transform: scale(1) rotate(0deg);
               filter: blur(90px);
             }
             50% { 
-              opacity: 0.70;
+              opacity: 0.90;
               transform: scale(1.12) rotate(-3deg);
               filter: blur(95px);
             }
           }
 
-          @keyframes ambient-glow-teal {
+          @keyframes ambient-glow-blend {
             0%, 100% { 
-              opacity: 0.45;
+              opacity: 0.65;
               transform: scale(1) rotate(0deg);
               filter: blur(70px);
             }
             40% { 
-              opacity: 0.60;
+              opacity: 0.80;
               transform: scale(1.05) rotate(1deg);
               filter: blur(75px);
             }
             80% { 
-              opacity: 0.35;
+              opacity: 0.55;
               transform: scale(0.98) rotate(-2deg);
               filter: blur(65px);
             }
@@ -148,19 +147,19 @@ const AmbientLighting = () => {
             }
           }
 
-          .ambient-glow-cyan {
-            animation: ambient-glow-cyan 14s ease-in-out infinite;
+          .ambient-glow-blue {
+            animation: ambient-glow-blue 14s ease-in-out infinite;
             will-change: transform, opacity, filter;
           }
 
-          .ambient-glow-violet {
-            animation: ambient-glow-violet 16s ease-in-out infinite;
+          .ambient-glow-purple {
+            animation: ambient-glow-purple 16s ease-in-out infinite;
             animation-delay: -5s;
             will-change: transform, opacity, filter;
           }
 
-          .ambient-glow-teal {
-            animation: ambient-glow-teal 12s ease-in-out infinite;
+          .ambient-glow-blend {
+            animation: ambient-glow-blend 12s ease-in-out infinite;
             animation-delay: -8s;
             will-change: transform, opacity, filter;
           }
@@ -177,22 +176,22 @@ const AmbientLighting = () => {
 
           /* Mobile optimizations - Reduce complexity and animation frequency */
           @media (max-width: 768px) {
-            .ambient-glow-cyan,
-            .ambient-glow-violet,
-            .ambient-glow-teal {
+            .ambient-glow-blue,
+            .ambient-glow-purple,
+            .ambient-glow-blend {
               animation-duration: 20s;
             }
             
-            .ambient-glow-cyan {
-              opacity: 0.35 !important;
+            .ambient-glow-blue {
+              opacity: 0.55 !important;
             }
             
-            .ambient-glow-violet {
-              opacity: 0.30 !important;
+            .ambient-glow-purple {
+              opacity: 0.50 !important;
             }
             
-            .ambient-glow-teal {
-              opacity: 0.25 !important;
+            .ambient-glow-blend {
+              opacity: 0.45 !important;
             }
 
             .ambient-grain {
@@ -208,9 +207,9 @@ const AmbientLighting = () => {
 
           /* Reduced motion preferences */
           @media (prefers-reduced-motion: reduce) {
-            .ambient-glow-cyan,
-            .ambient-glow-violet,
-            .ambient-glow-teal,
+            .ambient-glow-blue,
+            .ambient-glow-purple,
+            .ambient-glow-blend,
             .ambient-grain,
             .ambient-starfield {
               animation: none;
@@ -218,9 +217,9 @@ const AmbientLighting = () => {
           }
 
           /* Performance hint for browsers */
-          .ambient-glow-cyan,
-          .ambient-glow-violet,
-          .ambient-glow-teal {
+          .ambient-glow-blue,
+          .ambient-glow-purple,
+          .ambient-glow-blend {
             transform: translateZ(0);
             backface-visibility: hidden;
           }
