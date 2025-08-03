@@ -1,42 +1,22 @@
-
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
-import CinematicBackground from './hero/CinematicBackground';
-import CinematicAnimations from './hero/CinematicAnimations';
+import AppleStyleBackground from './hero/AppleStyleBackground';
+import AppleStyleAnimations from './hero/AppleStyleAnimations';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsLoaded(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* New Cinematic Background */}
-      <div className={`absolute inset-0 ${isLoaded ? 'cinematic-entrance' : ''}`}>
-        <CinematicBackground />
-        
-        {/* Subtle mouse interaction layer */}
-        <div 
-          className="absolute inset-0 pointer-events-none transition-all duration-1000 ease-out"
-          style={{
-            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(255, 255, 255, 0.02) 0%, transparent 60%)`
-          }}
-        />
+      {/* Apple-style Background */}
+      <div className={`absolute inset-0 ${isLoaded ? 'apple-entrance' : ''}`}>
+        <AppleStyleBackground />
       </div>
 
       {/* Content - Enhanced with better spacing */}
@@ -91,8 +71,53 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced CSS Animations */}
-      <CinematicAnimations />
+      {/* Apple-style animations */}
+      <AppleStyleAnimations />
+      
+      {/* Keep existing premium animations for buttons and text */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes premium-fade-in {
+            0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+          }
+
+          @keyframes premium-scroll-pulse {
+            0%, 100% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(12px); }
+          }
+
+          @keyframes premium-button-hover {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.02) translateY(-2px); }
+          }
+
+          @keyframes premium-scale-hover {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+          }
+
+          .premium-fade-in {
+            animation: premium-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+
+          .premium-stagger-1 { animation-delay: 0.2s; }
+          .premium-stagger-2 { animation-delay: 0.4s; }
+          .premium-stagger-3 { animation-delay: 0.6s; }
+
+          .premium-scroll-pulse {
+            animation: premium-scroll-pulse 3s ease-in-out infinite;
+          }
+
+          .premium-button-hover:hover {
+            animation: premium-button-hover 0.3s ease-out forwards;
+          }
+
+          .premium-scale-hover:hover {
+            animation: premium-scale-hover 0.2s ease-out forwards;
+          }
+        `
+      }} />
     </section>
   );
 };
