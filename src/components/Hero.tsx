@@ -1,6 +1,7 @@
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
+import AnimatedHeadline from './AnimatedHeadline';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -284,15 +285,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - Centered */}
+      {/* Content - Centered with new animated headline */}
       <div className="relative max-w-5xl mx-auto z-30 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Apple-inspired typography hierarchy - centered */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
-            <div className="text-6xl md:text-8xl lg:text-9xl text-white">
-              AI die werkt.
-            </div>
-          </h1>
+          {/* Animated Headline */}
+          <div className={`mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+            <AnimatedHeadline />
+          </div>
           
           {/* Apple-style subtitle - centered */}
           <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
