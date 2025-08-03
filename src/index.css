@@ -298,6 +298,66 @@ All colors MUST be HSL.
   .data-stream {
     animation: data-flow 8s linear infinite;
   }
+
+  /* AI Device animations */
+  .ai-device-float {
+    animation: aiDeviceFloat 8s ease-in-out infinite;
+  }
+
+  .ai-device-glow {
+    animation: aiDeviceGlow 4s ease-in-out infinite;
+  }
+
+  .ai-device-cyan-glow {
+    animation: aiDeviceCyanGlow 3s ease-in-out infinite;
+  }
+
+  .neural-pulse {
+    animation: neuralPulse 2s ease-in-out infinite;
+  }
+
+  .neural-connection {
+    animation: neuralConnection 3s ease-in-out infinite;
+    opacity: 0.3;
+  }
+
+  .ai-icon-pulse {
+    animation: aiIconPulse 3s ease-in-out infinite;
+  }
+
+  .ai-eye-scan {
+    animation: aiEyeScan 2s ease-in-out infinite;
+  }
+
+  .data-stream-flow {
+    animation: dataStreamFlow linear infinite;
+  }
+
+  /* New animations for left AI device */
+  .circuit-pulse {
+    animation: circuitPulse 2.5s ease-in-out infinite;
+  }
+
+  .circuit-connection {
+    animation: circuitConnection 4s ease-in-out infinite;
+    opacity: 0.3;
+  }
+
+  .ai-network-pulse {
+    animation: aiNetworkPulse 2.8s ease-in-out infinite;
+  }
+
+  .ai-circuit-pulse {
+    animation: aiCircuitPulse 3.2s ease-in-out infinite;
+  }
+
+  .ai-bot-scan {
+    animation: aiBotScan 1.8s ease-in-out infinite;
+  }
+
+  .matrix-flow {
+    animation: matrixFlow linear infinite;
+  }
 }
 
 /* Apple-inspired keyframes */
@@ -700,6 +760,118 @@ html {
   animation: dataStreamFlow linear infinite;
 }
 
+/* New animations for left AI device */
+.circuit-pulse {
+  animation: circuitPulse 2.5s ease-in-out infinite;
+}
+
+.circuit-connection {
+  animation: circuitConnection 4s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+.ai-network-pulse {
+  animation: aiNetworkPulse 2.8s ease-in-out infinite;
+}
+
+.ai-circuit-pulse {
+  animation: aiCircuitPulse 3.2s ease-in-out infinite;
+}
+
+.ai-bot-scan {
+  animation: aiBotScan 1.8s ease-in-out infinite;
+}
+
+.matrix-flow {
+  animation: matrixFlow linear infinite;
+}
+
+/* New keyframes for left AI device */
+@keyframes circuitPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 3px currentColor;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px currentColor;
+  }
+}
+
+@keyframes circuitConnection {
+  0%, 100% {
+    opacity: 0.2;
+    fill: rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    fill: rgba(34, 211, 238, 0.7);
+  }
+}
+
+@keyframes aiNetworkPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
+    color: rgb(34, 211, 238);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(180deg);
+    color: rgb(56, 189, 248);
+  }
+}
+
+@keyframes aiCircuitPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+    color: rgb(34, 211, 238);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    color: rgb(14, 165, 233);
+  }
+}
+
+@keyframes aiBotScan {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+    color: rgb(34, 211, 238);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.1);
+    color: rgb(56, 189, 248);
+  }
+  75% {
+    opacity: 0.9;
+    transform: scale(1.05);
+    color: rgb(14, 165, 233);
+  }
+}
+
+@keyframes matrixFlow {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+
 /* Nothing.tech inspired keyframes */
 @keyframes nothingFloat {
   0%, 100% {
@@ -742,6 +914,15 @@ html {
   }
   50% {
     opacity: 0.7;
+  }
+}
+
+@keyframes aiDeviceCyanGlow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
   }
 }
 
