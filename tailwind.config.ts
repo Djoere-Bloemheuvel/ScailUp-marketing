@@ -165,6 +165,184 @@ export default {
 				'ai-device-premium-glow': {
 					'0%, 100%': { opacity: '0.2' },
 					'50%': { opacity: '0.4' }
+				},
+				// Enhanced left robot animations
+				'hexagon-morph': {
+					'0%, 100%': { transform: 'rotate(0deg) scale(1)' },
+					'50%': { transform: 'rotate(0.5deg) scale(1.002)' }
+				},
+				'hexagon-shimmer': {
+					'0%': { opacity: '0.1', transform: 'translateX(-100%)' },
+					'50%': { opacity: '0.3', transform: 'translateX(0%)' },
+					'100%': { opacity: '0.1', transform: 'translateX(100%)' }
+				},
+				'hexagon-breathe': {
+					'0%, 100%': { opacity: '0.2', transform: 'scale(1)' },
+					'50%': { opacity: '0.4', transform: 'scale(1.01)' }
+				},
+				'chart-bar-dance': {
+					'0%, 100%': { transform: 'scaleY(1)', opacity: '0.4' },
+					'25%': { transform: 'scaleY(1.3)', opacity: '0.8' },
+					'50%': { transform: 'scaleY(0.7)', opacity: '0.6' },
+					'75%': { transform: 'scaleY(1.1)', opacity: '0.9' }
+				},
+				'chart-container-float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-2px)' }
+				},
+				'chart-icon-spin': {
+					'0%': { transform: 'rotate(0deg) scale(1)' },
+					'25%': { transform: 'rotate(5deg) scale(1.1)' },
+					'75%': { transform: 'rotate(-5deg) scale(0.9)' },
+					'100%': { transform: 'rotate(0deg) scale(1)' }
+				},
+				'panel-wave': {
+					'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+					'50%': { transform: 'translateY(-1px) rotate(0.2deg)' }
+				},
+				'panel-slide': {
+					'0%, 100%': { transform: 'translateX(0px)' },
+					'50%': { transform: 'translateX(1px)' }
+				},
+				'grid-breathe': {
+					'0%, 100%': { opacity: '0.2', transform: 'scale(1)' },
+					'50%': { opacity: '0.4', transform: 'scale(1.05)' }
+				},
+				'dashboard-typewriter': {
+					'0%': { width: '0%', opacity: '0' },
+					'50%': { width: '100%', opacity: '1' },
+					'100%': { width: '100%', opacity: '0.6' }
+				},
+				'activity-heartbeat': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
+					'14%': { transform: 'scale(1.3)', opacity: '1' },
+					'28%': { transform: 'scale(1)', opacity: '0.8' },
+					'42%': { transform: 'scale(1.3)', opacity: '1' },
+					'70%': { transform: 'scale(1)', opacity: '0.6' }
+				},
+				'layer-cascade': {
+					'0%': { transform: 'translateY(10px)', opacity: '0' },
+					'50%': { transform: 'translateY(0px)', opacity: '1' },
+					'100%': { transform: 'translateY(-2px)', opacity: '0.7' }
+				},
+				'layer-flip': {
+					'0%, 100%': { transform: 'rotateX(0deg)' },
+					'50%': { transform: 'rotateX(180deg)' }
+				},
+				'interface-spiral': {
+					'0%, 100%': { transform: 'rotate(0deg) scale(1)' },
+					'25%': { transform: 'rotate(1deg) scale(1.02)' },
+					'50%': { transform: 'rotate(0deg) scale(1.05)' },
+					'75%': { transform: 'rotate(-1deg) scale(1.02)' }
+				},
+				'interface-matrix': {
+					'0%, 100%': { opacity: '0.2', transform: 'scale(1)' },
+					'20%': { opacity: '1', transform: 'scale(1.2)' },
+					'40%': { opacity: '0.3', transform: 'scale(0.8)' },
+					'60%': { opacity: '0.8', transform: 'scale(1.1)' },
+					'80%': { opacity: '0.4', transform: 'scale(0.9)' }
+				},
+				'central-orbit': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'central-core-pulse': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '1' },
+					'50%': { transform: 'scale(1.5)', opacity: '0.5' }
+				},
+				'terminal-glow': {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(192, 192, 192, 0.2)' },
+					'50%': { boxShadow: '0 0 15px rgba(192, 192, 192, 0.4)' }
+				},
+				'terminal-typing': {
+					'0%': { width: '0%' },
+					'70%': { width: '100%' },
+					'100%': { width: '100%' }
+				},
+				'status-sequence': {
+					'0%, 80%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+					'20%': { opacity: '1', transform: 'scale(1.3)' }
+				},
+				'shadow-pulse': {
+					'0%, 100%': { opacity: '0.3', transform: 'translateY(4px) scale(0.95)' },
+					'50%': { opacity: '0.5', transform: 'translateY(6px) scale(0.98)' }
+				},
+				// Enhanced right robot animations
+				'ai-device-hover': {
+					'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+					'33%': { transform: 'translateY(-3px) rotate(0.3deg)' },
+					'66%': { transform: 'translateY(-1px) rotate(-0.2deg)' }
+				},
+				'glass-wave': {
+					'0%': { opacity: '0.15', transform: 'translateX(-100%) skewX(-5deg)' },
+					'50%': { opacity: '0.25', transform: 'translateX(0%) skewX(0deg)' },
+					'100%': { opacity: '0.15', transform: 'translateX(100%) skewX(5deg)' }
+				},
+				'neural-container-flow': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.9' },
+					'50%': { transform: 'scale(1.01)', opacity: '1' }
+				},
+				'neural-organic': {
+					'0%, 100%': { transform: 'scale(1) translateY(0px)', opacity: '0.6' },
+					'25%': { transform: 'scale(1.2) translateY(-2px)', opacity: '1' },
+					'50%': { transform: 'scale(0.8) translateY(1px)', opacity: '0.8' },
+					'75%': { transform: 'scale(1.1) translateY(-1px)', opacity: '0.9' }
+				},
+				'connection-flow': {
+					'0%': { strokeDasharray: '0,100', opacity: '0' },
+					'50%': { strokeDasharray: '50,100', opacity: '1' },
+					'100%': { strokeDasharray: '100,100', opacity: '0.3' }
+				},
+				'processing-left': {
+					'0%, 100%': { transform: 'translateX(0px) rotate(0deg)' },
+					'50%': { transform: 'translateX(-2px) rotate(-1deg)' }
+				},
+				'processing-right': {
+					'0%, 100%': { transform: 'translateX(0px) rotate(0deg)' },
+					'50%': { transform: 'translateX(2px) rotate(1deg)' }
+				},
+				'brain-think': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+					'25%': { transform: 'scale(1.1)', opacity: '1' },
+					'50%': { transform: 'scale(0.95)', opacity: '0.9' },
+					'75%': { transform: 'scale(1.05)', opacity: '1' }
+				},
+				'cpu-compute': {
+					'0%, 100%': { transform: 'rotateY(0deg)', opacity: '0.8' },
+					'20%': { transform: 'rotateY(10deg)', opacity: '1' },
+					'40%': { transform: 'rotateY(-5deg)', opacity: '0.9' },
+					'60%': { transform: 'rotateY(8deg)', opacity: '1' },
+					'80%': { transform: 'rotateY(-3deg)', opacity: '0.9' }
+				},
+				'eye-container-rotate': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'ai-eye-advanced-scan': {
+					'0%, 100%': { transform: 'scale(1)', color: 'rgba(255, 255, 255, 0.8)' },
+					'25%': { transform: 'scale(1.2)', color: 'rgba(192, 192, 192, 1)' },
+					'50%': { transform: 'scale(0.9)', color: 'rgba(255, 255, 255, 1)' },
+					'75%': { transform: 'scale(1.1)', color: 'rgba(192, 192, 192, 0.9)' }
+				},
+				'stream-container': {
+					'0%, 100%': { transform: 'scaleX(1)' },
+					'50%': { transform: 'scaleX(1.02)' }
+				},
+				'data-stream-varied': {
+					'0%': { left: '-60%', opacity: '0', transform: 'scaleX(0.5)' },
+					'10%': { opacity: '0.3', transform: 'scaleX(1)' },
+					'50%': { opacity: '1', transform: 'scaleX(1.2)' },
+					'90%': { opacity: '0.3', transform: 'scaleX(0.8)' },
+					'100%': { left: '100%', opacity: '0', transform: 'scaleX(0.3)' }
+				},
+				'ai-glow-breathe': {
+					'0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+					'33%': { opacity: '0.5', transform: 'scale(1.01)' },
+					'66%': { opacity: '0.4', transform: 'scale(0.99)' }
+				},
+				'shadow-float': {
+					'0%, 100%': { transform: 'translateY(4px) scale(0.95)', opacity: '0.4' },
+					'50%': { transform: 'translateY(8px) scale(0.97)', opacity: '0.2' }
 				}
 			},
 			animation: {
@@ -186,7 +364,45 @@ export default {
 				'ai-database-scan': 'ai-database-scan 4s ease-in-out infinite',
 				'terminal-line': 'terminal-line 2s ease-out forwards',
 				'terminal-cursor': 'terminal-cursor 1s ease-in-out infinite',
-				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite'
+				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite',
+				// Enhanced left robot animations
+				'hexagon-morph': 'hexagon-morph 8s ease-in-out infinite',
+				'hexagon-shimmer': 'hexagon-shimmer 6s linear infinite',
+				'hexagon-breathe': 'hexagon-breathe 4s ease-in-out infinite',
+				'chart-bar-dance': 'chart-bar-dance 2s ease-in-out infinite',
+				'chart-container-float': 'chart-container-float 3s ease-in-out infinite',
+				'chart-icon-spin': 'chart-icon-spin 4s ease-in-out infinite',
+				'panel-wave': 'panel-wave 5s ease-in-out infinite',
+				'panel-slide': 'panel-slide 4s ease-in-out infinite',
+				'grid-breathe': 'grid-breathe 3s ease-in-out infinite',
+				'dashboard-typewriter': 'dashboard-typewriter 3s ease-in-out infinite',
+				'activity-heartbeat': 'activity-heartbeat 2s ease-in-out infinite',
+				'layer-cascade': 'layer-cascade 2s ease-in-out infinite',
+				'layer-flip': 'layer-flip 6s ease-in-out infinite',
+				'interface-spiral': 'interface-spiral 8s ease-in-out infinite',
+				'interface-matrix': 'interface-matrix 1.5s ease-in-out infinite',
+				'central-orbit': 'central-orbit 20s linear infinite',
+				'central-core-pulse': 'central-core-pulse 2s ease-in-out infinite',
+				'terminal-glow': 'terminal-glow 3s ease-in-out infinite',
+				'terminal-typing': 'terminal-typing 4s ease-in-out infinite',
+				'status-sequence': 'status-sequence 2s ease-in-out infinite',
+				'shadow-pulse': 'shadow-pulse 4s ease-in-out infinite',
+				// Enhanced right robot animations
+				'ai-device-hover': 'ai-device-hover 6s ease-in-out infinite',
+				'glass-wave': 'glass-wave 8s linear infinite',
+				'neural-container-flow': 'neural-container-flow 4s ease-in-out infinite',
+				'neural-organic': 'neural-organic 3s ease-in-out infinite',
+				'connection-flow': 'connection-flow 4s ease-in-out infinite',
+				'processing-left': 'processing-left 3s ease-in-out infinite',
+				'processing-right': 'processing-right 3.2s ease-in-out infinite',
+				'brain-think': 'brain-think 2.5s ease-in-out infinite',
+				'cpu-compute': 'cpu-compute 3s ease-in-out infinite',
+				'eye-container-rotate': 'eye-container-rotate 30s linear infinite',
+				'ai-eye-advanced-scan': 'ai-eye-advanced-scan 2s ease-in-out infinite',
+				'stream-container': 'stream-container 4s ease-in-out infinite',
+				'data-stream-varied': 'data-stream-varied 4s ease-in-out infinite',
+				'ai-glow-breathe': 'ai-glow-breathe 5s ease-in-out infinite',
+				'shadow-float': 'shadow-float 6s ease-in-out infinite'
 			}
 		}
 	},
