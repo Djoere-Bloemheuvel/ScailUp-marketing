@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
@@ -25,28 +24,28 @@ const CinematicBackground = () => {
             className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
             style={{
               background: `
-                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.03) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.01) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.008) 0%, transparent 50%)
+                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.04) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.015) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.012) 0%, transparent 50%)
               `,
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
               boxShadow: `
-                0 32px 64px rgba(255, 255, 255, 0.02),
-                0 16px 32px rgba(34, 211, 238, 0.03),
-                0 8px 16px rgba(139, 92, 246, 0.03),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-                inset 0 0 100px rgba(34, 211, 238, 0.008),
-                inset 0 0 80px rgba(139, 92, 246, 0.005)
+                0 32px 64px rgba(255, 255, 255, 0.04),
+                0 16px 32px rgba(34, 211, 238, 0.06),
+                0 8px 16px rgba(139, 92, 246, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+                inset 0 0 100px rgba(34, 211, 238, 0.012),
+                inset 0 0 80px rgba(139, 92, 246, 0.008)
               `
             }}
           />
           
           {/* Colored edge lighting layers - Enhanced with ambient reflection */}
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-70" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-60" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-65" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-80" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-70" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-75" />
           
           {/* Ambient light diffusion - Enhanced */}
           <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
@@ -59,21 +58,21 @@ const CinematicBackground = () => {
           @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
               background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%);
-            }
-            33% { 
-              background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(34, 211, 238, 0.01) 50%, rgba(139, 92, 246, 0.02) 100%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.03) 100%),
                 radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.012) 0%, transparent 50%),
                 radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.009) 0%, transparent 50%);
             }
+            33% { 
+              background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(34, 211, 238, 0.015) 50%, rgba(139, 92, 246, 0.03) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.018) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.015) 0%, transparent 50%);
+            }
             66% { 
               background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(139, 92, 246, 0.008) 50%, rgba(20, 184, 166, 0.015) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.006) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.012) 0%, transparent 50%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(139, 92, 246, 0.012) 50%, rgba(20, 184, 166, 0.025) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.009) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.018) 0%, transparent 50%);
             }
           }
 
@@ -115,27 +114,27 @@ const CinematicBackground = () => {
             0%, 100% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(34, 211, 238, 0.025) 0%,
-                rgba(16, 185, 129, 0.018) 35%,
-                rgba(139, 92, 246, 0.015) 70%,
+                rgba(34, 211, 238, 0.04) 0%,
+                rgba(16, 185, 129, 0.03) 35%,
+                rgba(139, 92, 246, 0.025) 70%,
                 transparent 100%
               );
             }
             33% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(16, 185, 129, 0.03) 0%,
-                rgba(139, 92, 246, 0.022) 35%,
-                rgba(34, 211, 238, 0.018) 70%,
+                rgba(16, 185, 129, 0.05) 0%,
+                rgba(139, 92, 246, 0.035) 35%,
+                rgba(34, 211, 238, 0.03) 70%,
                 transparent 100%
               );
             }
             66% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(139, 92, 246, 0.025) 0%,
-                rgba(34, 211, 238, 0.02) 35%,
-                rgba(16, 185, 129, 0.015) 70%,
+                rgba(139, 92, 246, 0.04) 0%,
+                rgba(34, 211, 238, 0.032) 35%,
+                rgba(16, 185, 129, 0.025) 70%,
                 transparent 100%
               );
             }
