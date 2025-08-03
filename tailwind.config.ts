@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -163,6 +164,89 @@ export default {
 				'ai-device-premium-glow': {
 					'0%, 100%': { opacity: '0.2' },
 					'50%': { opacity: '0.4' }
+				},
+				'scale-pulse': {
+					'0%, 100%': { 
+						transform: 'translateY(0) scale(1)', 
+						opacity: '0.8' 
+					},
+					'50%': { 
+						transform: 'translateY(-5px) scale(1.1)', 
+						opacity: '1' 
+					}
+				},
+				'float-smooth': {
+					'0%, 100%': { 
+						transform: 'translateX(-50%) translateY(0)' 
+					},
+					'50%': { 
+						transform: 'translateX(-50%) translateY(-8px)' 
+					}
+				},
+				'wobble': {
+					'0%, 100%': { 
+						transform: 'translateY(0) rotate(0deg)' 
+					},
+					'25%': { 
+						transform: 'translateY(-3px) rotate(-2deg)' 
+					},
+					'75%': { 
+						transform: 'translateY(-3px) rotate(2deg)' 
+					}
+				},
+				'float-orbit': {
+					'0%, 100%': { 
+						transform: 'translateY(0) translateX(0)', 
+						opacity: '0.6' 
+					},
+					'25%': { 
+						transform: 'translateY(-6px) translateX(3px)', 
+						opacity: '0.8' 
+					},
+					'50%': { 
+						transform: 'translateY(-8px) translateX(0)', 
+						opacity: '1' 
+					},
+					'75%': { 
+						transform: 'translateY(-6px) translateX(-3px)', 
+						opacity: '0.8' 
+					}
+				},
+				'glow-pulse': {
+					'0%, 100%': { 
+						opacity: '0.6', 
+						boxShadow: '0 0 10px currentColor' 
+					},
+					'50%': { 
+						opacity: '1', 
+						boxShadow: '0 0 20px currentColor, 0 0 30px currentColor' 
+					}
+				},
+				'sweep': {
+					'0%': { 
+						transform: 'translateX(-100%)', 
+						opacity: '0' 
+					},
+					'50%': { 
+						opacity: '1' 
+					},
+					'100%': { 
+						transform: 'translateX(200%)', 
+						opacity: '0' 
+					}
+				},
+				'sweep-reverse': {
+					'0%': { 
+						transform: 'translateX(200%)', 
+						opacity: '0' 
+					},
+					'50%': { 
+						opacity: '1' 
+					},
+					'100%': { 
+						transform: 'translateX(-100%)', 
+						opacity: '0' 
+					}
 				}
 			},
 			animation: {
@@ -182,7 +266,14 @@ export default {
 				'ai-database-scan': 'ai-database-scan 4s ease-in-out infinite',
 				'terminal-line': 'terminal-line 2s ease-out forwards',
 				'terminal-cursor': 'terminal-cursor 1s ease-in-out infinite',
-				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite'
+				'ai-device-premium-glow': 'ai-device-premium-glow 6s ease-in-out infinite',
+				'scale-pulse': 'scale-pulse 3s ease-in-out infinite',
+				'float-smooth': 'float-smooth 5s ease-in-out infinite',
+				'wobble': 'wobble 4s ease-in-out infinite',
+				'float-orbit': 'float-orbit 4s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 2.5s ease-in-out infinite',
+				'sweep': 'sweep 4s ease-in-out infinite',
+				'sweep-reverse': 'sweep-reverse 6s ease-in-out infinite reverse'
 			}
 		}
 	},

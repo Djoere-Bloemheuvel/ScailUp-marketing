@@ -74,15 +74,9 @@ const AutomationOverview = () => {
                       </div>
                       
                       {/* Enhanced sweeping scan effect with multiple layers */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full" 
-                           style={{ 
-                             animation: 'sweep 4s ease-in-out infinite'
-                           }} />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent translate-x-full" 
-                           style={{ 
-                             animation: 'sweep 6s ease-in-out infinite reverse',
-                             animationDelay: '2s'
-                           }} />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-sweep" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent translate-x-full animate-sweep-reverse" 
+                           style={{ animationDelay: '2s' }} />
                     </div>
                   </div>
                   
@@ -108,19 +102,19 @@ const AutomationOverview = () => {
                   </div>
                   
                   {/* Right node - Processing with scale animation */}
-                  <div className="absolute top-1/2 right-8 transform -translate-y-1/2 w-12 h-12 rounded-xl bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl" style={{ animation: 'scale-pulse 3s ease-in-out infinite', animationDelay: '1s' }}>
+                  <div className="absolute top-1/2 right-8 transform -translate-y-1/2 w-12 h-12 rounded-xl bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl animate-scale-pulse" style={{ animationDelay: '1s' }}>
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-400/20 to-red-500/20 animate-pulse" style={{ animationDuration: '2.5s' }} />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded bg-gradient-to-br from-orange-400 to-red-500 shadow-lg animate-pulse" style={{ animationDuration: '1s' }} />
                   </div>
                   
                   {/* Bottom node - Output with floating animation */}
-                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-8 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl" style={{ animation: 'float-smooth 5s ease-in-out infinite', animationDelay: '2s' }}>
+                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-8 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl animate-float-smooth" style={{ animationDelay: '2s' }}>
                     <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-400/20 to-indigo-500/20 animate-pulse" style={{ animationDuration: '3s' }} />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-2 rounded bg-gradient-to-r from-purple-400 to-indigo-500 shadow-lg animate-pulse" style={{ animationDuration: '2s' }} />
                   </div>
                   
                   {/* Left node - Integration with wobble animation */}
-                  <div className="absolute top-1/2 left-8 transform -translate-y-1/2 w-10 h-10 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl" style={{ animation: 'wobble 4s ease-in-out infinite', animationDelay: '3s' }}>
+                  <div className="absolute top-1/2 left-8 transform -translate-y-1/2 w-10 h-10 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl animate-wobble" style={{ animationDelay: '3s' }}>
                     <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-400/20 to-blue-500/20 animate-pulse" style={{ animationDuration: '2.5s' }} />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded bg-gradient-to-br from-cyan-400 to-blue-500 shadow-lg animate-pulse" style={{ animationDuration: '1.5s' }} />
                   </div>
@@ -168,9 +162,9 @@ const AutomationOverview = () => {
                 {/* Enhanced floating data particles with varied animations */}
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="absolute top-16 left-16 w-1.5 h-1.5 bg-cyan-400/60 rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }} />
-                  <div className="absolute top-24 right-20 w-1 h-1 bg-purple-400/60 rounded-full" style={{ animation: 'float-orbit 4s ease-in-out infinite', animationDelay: '1s' }} />
+                  <div className="absolute top-24 right-20 w-1 h-1 bg-purple-400/60 rounded-full animate-float-orbit" style={{ animationDelay: '1s' }} />
                   <div className="absolute bottom-20 left-24 w-1 h-1 bg-green-400/60 rounded-full animate-ping" style={{ animationDelay: '2s', animationDuration: '3.5s' }} />
-                  <div className="absolute bottom-16 right-16 w-1.5 h-1.5 bg-orange-400/60 rounded-full" style={{ animation: 'glow-pulse 2.5s ease-in-out infinite', animationDelay: '1.5s' }} />
+                  <div className="absolute bottom-16 right-16 w-1.5 h-1.5 bg-orange-400/60 rounded-full animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
                   
                   {/* Additional floating particles */}
                   <div className="absolute top-32 left-32 w-0.5 h-0.5 bg-blue-300/70 rounded-full animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '4s' }} />
@@ -186,85 +180,6 @@ const AutomationOverview = () => {
           </div>
         </div>
       </div>
-
-      {/* Custom keyframes styles */}
-      <style jsx>{`
-        @keyframes scale-pulse {
-          0%, 100% { 
-            transform: translateY(0) scale(1); 
-            opacity: 0.8; 
-          }
-          50% { 
-            transform: translateY(-5px) scale(1.1); 
-            opacity: 1; 
-          }
-        }
-        
-        @keyframes float-smooth {
-          0%, 100% { 
-            transform: translateX(-50%) translateY(0); 
-          }
-          50% { 
-            transform: translateX(-50%) translateY(-8px); 
-          }
-        }
-        
-        @keyframes wobble {
-          0%, 100% { 
-            transform: translateY(0) rotate(0deg); 
-          }
-          25% { 
-            transform: translateY(-3px) rotate(-2deg); 
-          }
-          75% { 
-            transform: translateY(-3px) rotate(2deg); 
-          }
-        }
-        
-        @keyframes float-orbit {
-          0%, 100% { 
-            transform: translateY(0) translateX(0); 
-            opacity: 0.6; 
-          }
-          25% { 
-            transform: translateY(-6px) translateX(3px); 
-            opacity: 0.8; 
-          }
-          50% { 
-            transform: translateY(-8px) translateX(0); 
-            opacity: 1; 
-          }
-          75% { 
-            transform: translateY(-6px) translateX(-3px); 
-            opacity: 0.8; 
-          }
-        }
-        
-        @keyframes glow-pulse {
-          0%, 100% { 
-            opacity: 0.6; 
-            box-shadow: 0 0 10px currentColor; 
-          }
-          50% { 
-            opacity: 1; 
-            box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; 
-          }
-        }
-        
-        @keyframes sweep {
-          0% { 
-            transform: translateX(-100%); 
-            opacity: 0; 
-          }
-          50% { 
-            opacity: 1; 
-          }
-          100% { 
-            transform: translateX(200%); 
-            opacity: 0; 
-          }
-        }
-      `}</style>
     </section>
   );
 };
