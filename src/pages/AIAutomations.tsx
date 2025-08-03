@@ -2,7 +2,6 @@
 import { ArrowLeft, Cog } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AutomationHero from '@/components/automations/AutomationHero';
-import WhyAutomations from '@/components/automations/WhyAutomations';
 import AdvancedFunctions from '@/components/automations/AdvancedFunctions';
 import UseCases from '@/components/automations/UseCases';
 import Integrations from '@/components/automations/Integrations';
@@ -30,11 +29,8 @@ const AIAutomations = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section with Integrated Benefits */}
       <AutomationHero />
-
-      {/* Why AI Automations */}
-      <WhyAutomations />
 
       {/* Advanced Functions */}
       <AdvancedFunctions />
