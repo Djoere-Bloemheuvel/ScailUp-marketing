@@ -25,108 +25,123 @@ const AutomationOverview = () => {
             </div>
           </div>
 
-          {/* Right side - AI Chip Visual */}
+          {/* Right side - AI Chip Visual with Enhanced Animations */}
           <div className="relative lg:order-2">
             <div className="relative w-full max-w-md mx-auto lg:mx-0">
-              {/* Enhanced glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/40 to-purple-600/40 rounded-3xl blur-3xl opacity-60" />
+              {/* Enhanced glow effect with pulsing animation */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/40 to-purple-600/40 rounded-3xl blur-3xl opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
               
               {/* Main visual container */}
               <div className="relative w-72 h-72 mx-auto rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-16 flex items-center justify-center shadow-2xl">
                 
-                {/* Background circuit pattern */}
+                {/* Animated background circuit pattern */}
                 <div className="absolute inset-0 opacity-10">
-                  <div className="absolute inset-0" style={{
-                    backgroundImage: `radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
-                                     radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)`
-                  }} />
+                  <div className="absolute inset-0 animate-pulse" style={{ animationDuration: '6s' }}>
+                    <div style={{
+                      backgroundImage: `radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+                                       radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)`
+                    }} className="absolute inset-0" />
+                  </div>
                 </div>
                 
-                {/* Central AI Chip */}
+                {/* Central AI Chip with enhanced animations */}
                 <div className="relative w-32 h-20">
-                  {/* Main chip body */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/60 to-purple-600/60 p-0.5 transition-all duration-500 shadow-2xl">
+                  {/* Main chip body with pulsing glow */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/60 to-purple-600/60 p-0.5 transition-all duration-500 shadow-2xl animate-pulse" style={{ animationDuration: '3s' }}>
                     <div className="w-full h-full rounded-2xl bg-premium-black/90 backdrop-blur-sm relative overflow-hidden">
                       
-                      {/* Chip surface with circuits */}
+                      {/* Chip surface with animated circuits */}
                       <div className="absolute inset-1 rounded-xl bg-gradient-to-br from-premium-gray/30 to-premium-black/50">
-                        {/* Circuit lines */}
+                        {/* Animated circuit lines */}
                         <div className="absolute inset-0 opacity-60">
-                          <div className="absolute top-2 left-2 right-2 h-0.5 bg-gradient-to-r from-cyan-400 to-transparent" />
-                          <div className="absolute top-4 left-2 right-2 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-                          <div className="absolute bottom-2 left-2 right-2 h-0.5 bg-gradient-to-r from-transparent to-purple-400" />
-                          <div className="absolute left-2 top-2 bottom-2 w-px bg-gradient-to-b from-cyan-400 to-purple-400" />
-                          <div className="absolute right-4 top-2 bottom-2 w-px bg-gradient-to-b from-blue-400 to-transparent" />
+                          <div className="absolute top-2 left-2 right-2 h-0.5 bg-gradient-to-r from-cyan-400 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '2s' }} />
+                          <div className="absolute top-4 left-2 right-2 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '2.5s' }} />
+                          <div className="absolute bottom-2 left-2 right-2 h-0.5 bg-gradient-to-r from-transparent to-purple-400 animate-pulse" style={{ animationDelay: '1s', animationDuration: '2s' }} />
+                          <div className="absolute left-2 top-2 bottom-2 w-px bg-gradient-to-b from-cyan-400 to-purple-400 animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '3s' }} />
+                          <div className="absolute right-4 top-2 bottom-2 w-px bg-gradient-to-b from-blue-400 to-transparent animate-pulse" style={{ animationDelay: '0.75s', animationDuration: '2.5s' }} />
                         </div>
                         
-                        {/* Central processor core */}
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-6 rounded bg-gradient-to-br from-cyan-400/80 to-blue-600/80 shadow-lg">
-                          <div className="absolute inset-0.5 rounded bg-gradient-to-br from-white/30 to-transparent" />
-                          <div className="absolute inset-0 rounded animate-pulse bg-gradient-to-br from-cyan-300/20 to-blue-500/20" />
+                        {/* Central processor core with intensive pulsing */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-6 rounded bg-gradient-to-br from-cyan-400/80 to-blue-600/80 shadow-lg animate-pulse" style={{ animationDuration: '1.5s' }}>
+                          <div className="absolute inset-0.5 rounded bg-gradient-to-br from-white/30 to-transparent animate-pulse" style={{ animationDelay: '0.25s', animationDuration: '1.5s' }} />
+                          <div className="absolute inset-0 rounded bg-gradient-to-br from-cyan-300/20 to-blue-500/20 animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '1s' }} />
                         </div>
                         
-                        {/* Micro components */}
-                        <div className="absolute top-2 right-2 w-2 h-2 rounded bg-orange-400/70" />
-                        <div className="absolute bottom-2 left-4 w-1.5 h-1.5 rounded bg-green-400/70" />
-                        <div className="absolute top-3 left-6 w-1 h-1 rounded bg-purple-400/70" />
+                        {/* Animated micro components */}
+                        <div className="absolute top-2 right-2 w-2 h-2 rounded bg-orange-400/70 animate-pulse" style={{ animationDelay: '0.3s', animationDuration: '2s' }} />
+                        <div className="absolute bottom-2 left-4 w-1.5 h-1.5 rounded bg-green-400/70 animate-pulse" style={{ animationDelay: '0.8s', animationDuration: '2.5s' }} />
+                        <div className="absolute top-3 left-6 w-1 h-1 rounded bg-purple-400/70 animate-pulse" style={{ animationDelay: '1.2s', animationDuration: '2s' }} />
                       </div>
                       
-                      {/* Sweeping scan effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-pulse" 
+                      {/* Enhanced sweeping scan effect with multiple layers */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full" 
                            style={{ 
                              animation: 'sweep 4s ease-in-out infinite'
+                           }} />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent translate-x-full" 
+                           style={{ 
+                             animation: 'sweep 6s ease-in-out infinite reverse',
+                             animationDelay: '2s'
                            }} />
                     </div>
                   </div>
                   
-                  {/* Chip pins/connectors */}
+                  {/* Animated chip pins/connectors */}
                   <div className="absolute -left-1 top-1/2 transform -translate-y-1/2 space-y-1">
-                    <div className="w-2 h-1 bg-premium-silver/60 rounded-l" />
-                    <div className="w-2 h-1 bg-premium-silver/60 rounded-l" />
-                    <div className="w-2 h-1 bg-premium-silver/60 rounded-l" />
+                    <div className="w-2 h-1 bg-premium-silver/60 rounded-l animate-pulse" style={{ animationDelay: '0s', animationDuration: '3s' }} />
+                    <div className="w-2 h-1 bg-premium-silver/60 rounded-l animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }} />
+                    <div className="w-2 h-1 bg-premium-silver/60 rounded-l animate-pulse" style={{ animationDelay: '2s', animationDuration: '3s' }} />
                   </div>
                   <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 space-y-1">
-                    <div className="w-2 h-1 bg-premium-silver/60 rounded-r" />
-                    <div className="w-2 h-1 bg-premium-silver/60 rounded-r" />
-                    <div className="w-2 h-1 bg-premium-silver/60 rounded-r" />
+                    <div className="w-2 h-1 bg-premium-silver/60 rounded-r animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '3s' }} />
+                    <div className="w-2 h-1 bg-premium-silver/60 rounded-r animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '3s' }} />
+                    <div className="w-2 h-1 bg-premium-silver/60 rounded-r animate-pulse" style={{ animationDelay: '2.5s', animationDuration: '3s' }} />
                   </div>
                 </div>
 
-                {/* Surrounding data flow nodes */}
+                {/* Surrounding data flow nodes with floating animations */}
                 <div className="absolute inset-0">
-                  {/* Top node - Input Processing */}
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-16 h-8 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl">
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-green-400/20 to-emerald-500/20" />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-2 rounded bg-gradient-to-r from-green-400 to-emerald-600 shadow-lg" />
+                  {/* Top node - Input Processing with bounce animation */}
+                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-16 h-8 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl animate-bounce" style={{ animationDelay: '0s', animationDuration: '4s' }}>
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-green-400/20 to-emerald-500/20 animate-pulse" style={{ animationDuration: '2s' }} />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-2 rounded bg-gradient-to-r from-green-400 to-emerald-600 shadow-lg animate-pulse" style={{ animationDuration: '1.5s' }} />
                   </div>
                   
-                  {/* Right node - Processing */}
-                  <div className="absolute top-1/2 right-8 transform -translate-y-1/2 w-12 h-12 rounded-xl bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl">
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-400/20 to-red-500/20" />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded bg-gradient-to-br from-orange-400 to-red-500 shadow-lg animate-pulse" />
+                  {/* Right node - Processing with scale animation */}
+                  <div className="absolute top-1/2 right-8 transform -translate-y-1/2 w-12 h-12 rounded-xl bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl" style={{ animation: 'scale-pulse 3s ease-in-out infinite', animationDelay: '1s' }}>
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-400/20 to-red-500/20 animate-pulse" style={{ animationDuration: '2.5s' }} />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded bg-gradient-to-br from-orange-400 to-red-500 shadow-lg animate-pulse" style={{ animationDuration: '1s' }} />
                   </div>
                   
-                  {/* Bottom node - Output */}
-                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-8 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl">
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-400/20 to-indigo-500/20" />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-2 rounded bg-gradient-to-r from-purple-400 to-indigo-500 shadow-lg" />
+                  {/* Bottom node - Output with floating animation */}
+                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-8 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl" style={{ animation: 'float-smooth 5s ease-in-out infinite', animationDelay: '2s' }}>
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-400/20 to-indigo-500/20 animate-pulse" style={{ animationDuration: '3s' }} />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-2 rounded bg-gradient-to-r from-purple-400 to-indigo-500 shadow-lg animate-pulse" style={{ animationDuration: '2s' }} />
                   </div>
                   
-                  {/* Left node - Integration */}
-                  <div className="absolute top-1/2 left-8 transform -translate-y-1/2 w-10 h-10 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl">
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-400/20 to-blue-500/20" />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded bg-gradient-to-br from-cyan-400 to-blue-500 shadow-lg" />
+                  {/* Left node - Integration with wobble animation */}
+                  <div className="absolute top-1/2 left-8 transform -translate-y-1/2 w-10 h-10 rounded-lg bg-gradient-to-br from-premium-gray/50 to-premium-black/70 border border-premium-silver/40 backdrop-blur-md shadow-xl" style={{ animation: 'wobble 4s ease-in-out infinite', animationDelay: '3s' }}>
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-400/20 to-blue-500/20 animate-pulse" style={{ animationDuration: '2.5s' }} />
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded bg-gradient-to-br from-cyan-400 to-blue-500 shadow-lg animate-pulse" style={{ animationDuration: '1.5s' }} />
                   </div>
                 </div>
 
-                {/* Data connection beams */}
+                {/* Enhanced data connection beams with animated flow */}
                 <div className="absolute inset-0 pointer-events-none opacity-50">
                   <svg className="w-full h-full">
                     <g className="animate-pulse" style={{ animationDuration: '2s' }}>
-                      <line x1="50%" y1="50%" x2="50%" y2="20%" stroke="url(#chipBeam1)" strokeWidth="2" strokeDasharray="4,4" />
-                      <line x1="50%" y1="50%" x2="80%" y2="50%" stroke="url(#chipBeam2)" strokeWidth="2" strokeDasharray="4,4" />
-                      <line x1="50%" y1="50%" x2="50%" y2="80%" stroke="url(#chipBeam3)" strokeWidth="2" strokeDasharray="4,4" />
-                      <line x1="50%" y1="50%" x2="20%" y2="50%" stroke="url(#chipBeam4)" strokeWidth="2" strokeDasharray="4,4" />
+                      <line x1="50%" y1="50%" x2="50%" y2="20%" stroke="url(#chipBeam1)" strokeWidth="2" strokeDasharray="4,4">
+                        <animate attributeName="stroke-dashoffset" values="0;8" dur="1.5s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="50%" y1="50%" x2="80%" y2="50%" stroke="url(#chipBeam2)" strokeWidth="2" strokeDasharray="4,4">
+                        <animate attributeName="stroke-dashoffset" values="0;8" dur="2s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="50%" y1="50%" x2="50%" y2="80%" stroke="url(#chipBeam3)" strokeWidth="2" strokeDasharray="4,4">
+                        <animate attributeName="stroke-dashoffset" values="8;0" dur="1.8s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="50%" y1="50%" x2="20%" y2="50%" stroke="url(#chipBeam4)" strokeWidth="2" strokeDasharray="4,4">
+                        <animate attributeName="stroke-dashoffset" values="8;0" dur="2.2s" repeatCount="indefinite" />
+                      </line>
                     </g>
                     
                     <defs>
@@ -150,21 +165,106 @@ const AutomationOverview = () => {
                   </svg>
                 </div>
 
-                {/* Floating data particles */}
+                {/* Enhanced floating data particles with varied animations */}
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="absolute top-16 left-16 w-1.5 h-1.5 bg-cyan-400/60 rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }} />
-                  <div className="absolute top-24 right-20 w-1 h-1 bg-purple-400/60 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }} />
-                  <div className="absolute bottom-20 left-24 w-1 h-1 bg-green-400/60 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '3.5s' }} />
-                  <div className="absolute bottom-16 right-16 w-1.5 h-1.5 bg-orange-400/60 rounded-full animate-bounce" style={{ animationDelay: '1.5s', animationDuration: '2.5s' }} />
+                  <div className="absolute top-24 right-20 w-1 h-1 bg-purple-400/60 rounded-full" style={{ animation: 'float-orbit 4s ease-in-out infinite', animationDelay: '1s' }} />
+                  <div className="absolute bottom-20 left-24 w-1 h-1 bg-green-400/60 rounded-full animate-ping" style={{ animationDelay: '2s', animationDuration: '3.5s' }} />
+                  <div className="absolute bottom-16 right-16 w-1.5 h-1.5 bg-orange-400/60 rounded-full" style={{ animation: 'glow-pulse 2.5s ease-in-out infinite', animationDelay: '1.5s' }} />
+                  
+                  {/* Additional floating particles */}
+                  <div className="absolute top-32 left-32 w-0.5 h-0.5 bg-blue-300/70 rounded-full animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '4s' }} />
+                  <div className="absolute bottom-32 right-32 w-0.5 h-0.5 bg-pink-300/70 rounded-full animate-pulse" style={{ animationDelay: '2.5s', animationDuration: '3s' }} />
                 </div>
 
-                {/* Holographic scanning effect */}
+                {/* Enhanced holographic scanning effect with multiple layers */}
                 <div className="absolute inset-0 rounded-full bg-gradient-conic from-transparent via-white/5 to-transparent opacity-20 animate-spin" style={{ animationDuration: '20s' }} />
+                <div className="absolute inset-4 rounded-full bg-gradient-conic from-transparent via-cyan-400/10 to-transparent opacity-30 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }} />
+                <div className="absolute inset-8 rounded-full bg-gradient-conic from-transparent via-purple-400/10 to-transparent opacity-25 animate-spin" style={{ animationDuration: '25s' }} />
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Custom keyframes styles */}
+      <style jsx>{`
+        @keyframes scale-pulse {
+          0%, 100% { 
+            transform: translateY(0) scale(1); 
+            opacity: 0.8; 
+          }
+          50% { 
+            transform: translateY(-5px) scale(1.1); 
+            opacity: 1; 
+          }
+        }
+        
+        @keyframes float-smooth {
+          0%, 100% { 
+            transform: translateX(-50%) translateY(0); 
+          }
+          50% { 
+            transform: translateX(-50%) translateY(-8px); 
+          }
+        }
+        
+        @keyframes wobble {
+          0%, 100% { 
+            transform: translateY(0) rotate(0deg); 
+          }
+          25% { 
+            transform: translateY(-3px) rotate(-2deg); 
+          }
+          75% { 
+            transform: translateY(-3px) rotate(2deg); 
+          }
+        }
+        
+        @keyframes float-orbit {
+          0%, 100% { 
+            transform: translateY(0) translateX(0); 
+            opacity: 0.6; 
+          }
+          25% { 
+            transform: translateY(-6px) translateX(3px); 
+            opacity: 0.8; 
+          }
+          50% { 
+            transform: translateY(-8px) translateX(0); 
+            opacity: 1; 
+          }
+          75% { 
+            transform: translateY(-6px) translateX(-3px); 
+            opacity: 0.8; 
+          }
+        }
+        
+        @keyframes glow-pulse {
+          0%, 100% { 
+            opacity: 0.6; 
+            box-shadow: 0 0 10px currentColor; 
+          }
+          50% { 
+            opacity: 1; 
+            box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; 
+          }
+        }
+        
+        @keyframes sweep {
+          0% { 
+            transform: translateX(-100%); 
+            opacity: 0; 
+          }
+          50% { 
+            opacity: 1; 
+          }
+          100% { 
+            transform: translateX(200%); 
+            opacity: 0; 
+          }
+        }
+      `}</style>
     </section>
   );
 };
