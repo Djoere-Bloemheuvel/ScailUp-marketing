@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
@@ -7,49 +6,47 @@ const CinematicBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {/* Solid black background */}
-      <div className="absolute inset-0 bg-black z-0" />
+      <div className="absolute inset-0 bg-black" />
 
-      {/* Ambient Lighting Layer - Behind glass but visible */}
-      <div className="relative z-15">
-        <AmbientLighting />
-      </div>
+      {/* Ambient Lighting Layer - Behind all content */}
+      <AmbientLighting />
 
-      {/* AI Core Center Component - Above ambient lighting */}
-      <div className="relative z-20">
-        <AICoreCenter />
-      </div>
+      {/* AI Core Center Component */}
+      <AICoreCenter />
 
-      {/* Main content background boxes - Above AI core but behind content */}
-      <div className="absolute inset-0 flex items-center justify-center z-25">
+      {/* Main content background boxes - Enhanced with ambient glow reflection */}
+      <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
-          {/* Enhanced glass container with reduced opacity to show ambient lighting */}
+          {/* Enhanced glass container with ambient glow reflection */}
           <div 
             className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
             style={{
               background: `
-                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.03) 100%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
                 radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
                 radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%)
               `,
-              backdropFilter: 'blur(15px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.06)',
               boxShadow: `
-                0 32px 64px rgba(255, 255, 255, 0.02),
-                0 16px 32px rgba(34, 211, 238, 0.04),
-                0 8px 16px rgba(139, 92, 246, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                inset 0 -1px 0 rgba(255, 255, 255, 0.04)
+                0 32px 64px rgba(255, 255, 255, 0.01),
+                0 16px 32px rgba(34, 211, 238, 0.02),
+                0 8px 16px rgba(139, 92, 246, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+                inset 0 0 100px rgba(34, 211, 238, 0.005),
+                inset 0 0 80px rgba(139, 92, 246, 0.003)
               `
             }}
           />
           
-          {/* Colored edge lighting layers - Reduced opacity */}
+          {/* Colored edge lighting layers - Enhanced with ambient reflection */}
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50" />
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
           
-          {/* Ambient light diffusion - Reduced */}
-          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced opacity-70" />
+          {/* Ambient light diffusion - Enhanced */}
+          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
         </div>
       </div>
 
@@ -59,21 +56,21 @@ const CinematicBackground = () => {
           @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
               background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.03) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.012) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.009) 0%, transparent 50%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%);
             }
             33% { 
               background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(34, 211, 238, 0.015) 50%, rgba(139, 92, 246, 0.03) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.018) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.015) 0%, transparent 50%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(34, 211, 238, 0.01) 50%, rgba(139, 92, 246, 0.02) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.012) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.009) 0%, transparent 50%);
             }
             66% { 
               background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(139, 92, 246, 0.012) 50%, rgba(20, 184, 166, 0.025) 100%),
-                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.009) 0%, transparent 50%),
-                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.018) 0%, transparent 50%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(139, 92, 246, 0.008) 50%, rgba(20, 184, 166, 0.015) 100%),
+                radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.006) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.012) 0%, transparent 50%);
             }
           }
 
@@ -115,27 +112,27 @@ const CinematicBackground = () => {
             0%, 100% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(34, 211, 238, 0.04) 0%,
-                rgba(16, 185, 129, 0.03) 35%,
-                rgba(139, 92, 246, 0.025) 70%,
+                rgba(34, 211, 238, 0.025) 0%,
+                rgba(16, 185, 129, 0.018) 35%,
+                rgba(139, 92, 246, 0.015) 70%,
                 transparent 100%
               );
             }
             33% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(16, 185, 129, 0.05) 0%,
-                rgba(139, 92, 246, 0.035) 35%,
-                rgba(34, 211, 238, 0.03) 70%,
+                rgba(16, 185, 129, 0.03) 0%,
+                rgba(139, 92, 246, 0.022) 35%,
+                rgba(34, 211, 238, 0.018) 70%,
                 transparent 100%
               );
             }
             66% { 
               background: radial-gradient(
                 ellipse at center,
-                rgba(139, 92, 246, 0.04) 0%,
-                rgba(34, 211, 238, 0.032) 35%,
-                rgba(16, 185, 129, 0.025) 70%,
+                rgba(139, 92, 246, 0.025) 0%,
+                rgba(34, 211, 238, 0.02) 35%,
+                rgba(16, 185, 129, 0.015) 70%,
                 transparent 100%
               );
             }
@@ -172,16 +169,15 @@ const CinematicBackground = () => {
             }
             
             .premium-edge-glow-emerald {
-              opacity: 0.2 !important;
+              opacity: 0.3 !important;
             }
             
             .premium-edge-glow-violet-ambient {
-              opacity: 0.25 !important;
+              opacity: 0.35 !important;
             }
             
             .premium-ambient-diffusion-enhanced {
               animation-duration: 30s;
-              opacity: 0.4 !important;
             }
           }
 
