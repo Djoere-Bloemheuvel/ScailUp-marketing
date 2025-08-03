@@ -1,11 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-interface AnimatedHeadlineProps {
-  startAnimation?: boolean;
-}
-
-const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
+const AnimatedHeadline = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -13,11 +9,11 @@ const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
   const words = ['denkt', 'bouwt', 'werkt'];
 
   useEffect(() => {
-    if (!startAnimation || animationComplete) return;
+    if (animationComplete) return;
 
     const sequence = async () => {
-      // Wait for hero animation to complete, then start glitch sequence
-      await new Promise(resolve => setTimeout(resolve, 200));
+      // Wacht even voor de eerste transitie
+      await new Promise(resolve => setTimeout(resolve, 300));
       
       for (let i = 0; i < words.length; i++) {
         if (i > 0) {
@@ -32,7 +28,7 @@ const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
         
         // Wacht voordat we naar het volgende woord gaan (behalve bij het laatste woord)
         if (i < words.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 400));
+          await new Promise(resolve => setTimeout(resolve, 300));
         }
       }
       
@@ -40,7 +36,7 @@ const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
     };
 
     sequence();
-  }, [startAnimation]);
+  }, []);
 
   const cssStyles = `
     /* RGB Split Animations */
@@ -70,11 +66,6 @@ const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
     /* Scanline Animation */
     .glitch-scanline {
       animation: glitch-scanline 100ms linear infinite;
-    }
-
-    /* Scan ripple effect */
-    .scan-ripple {
-      animation: scanRipple 200ms ease-out;
     }
 
     @keyframes glitch-rgb-red {
@@ -133,21 +124,6 @@ const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
       50% { top: 50%; height: 3px; opacity: 0.6; }
       75% { top: 75%; height: 1px; opacity: 0.9; }
       100% { top: 100%; height: 2px; opacity: 0.7; }
-    }
-
-    @keyframes scanRipple {
-      0% { 
-        transform: scaleX(0.8) scaleY(0.3);
-        opacity: 0.8;
-      }
-      50% { 
-        transform: scaleX(1.2) scaleY(1);
-        opacity: 0.4;
-      }
-      100% { 
-        transform: scaleX(2) scaleY(0.1);
-        opacity: 0;
-      }
     }
   `;
 
@@ -213,9 +189,6 @@ const AnimatedHeadline = ({ startAnimation = true }: AnimatedHeadlineProps) => {
 
                 {/* Scanline effect */}
                 <div className="absolute inset-0 z-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-60 h-1 glitch-scanline"></div>
-                
-                {/* Scan ripple */}
-                <div className="absolute inset-0 z-17 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent scan-ripple"></div>
               </>
             )}
           </span>
