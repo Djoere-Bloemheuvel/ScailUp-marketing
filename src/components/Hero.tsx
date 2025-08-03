@@ -1,6 +1,7 @@
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
+import AnimatedHeadline from './AnimatedHeadline';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -284,47 +285,20 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - Centered */}
+      {/* Content - Centered with AnimatedHeadline */}
       <div className="relative max-w-5xl mx-auto z-30 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Apple-inspired typography hierarchy - centered */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
-            <div className="text-6xl md:text-8xl lg:text-9xl text-white">
-              AI die werkt.
-            </div>
-          </h1>
+          {/* Animated Headline Component */}
+          <div className={`${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+            <AnimatedHeadline />
+          </div>
           
-          {/* Apple-style subtitle - centered */}
+          {/* Apple-style subtitle */}
           <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
             Wij bouwen AI-systemen die uw business 
             <br />
             <span className="text-white font-normal">daadwerkelijk transformeren.</span>
           </p>
-          
-          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
-            <Button 
-              className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
-              style={{
-                background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
-              }}
-            >
-              <span className="relative z-10 flex items-center">
-                Ontdek de mogelijkheden
-                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              className="relative text-premium-silver hover:text-white px-10 py-6 text-xl font-semibold rounded-full border-premium-silver/30 hover:border-premium-silver/60 transition-all duration-700 apple-button-hover group overflow-hidden bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.08]"
-            >
-              <span className="relative z-10 flex items-center">
-                Plan een deepdive
-                <Sparkles className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
-              </span>
-            </Button>
-          </div>
         </div>
       </div>
 
