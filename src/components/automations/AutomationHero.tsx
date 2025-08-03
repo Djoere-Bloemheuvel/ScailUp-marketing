@@ -85,45 +85,106 @@ const AutomationHero = () => {
           </div>
         </div>
 
-        {/* Core Benefits Section */}
+        {/* Core Benefits Section - Glassmorphic */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <Card 
               key={index} 
-              className="group relative bg-gradient-to-br from-premium-gray/20 to-premium-black/40 border-premium-silver/20 backdrop-blur-md hover:border-blue-400/30 transition-all duration-500 hover:scale-105 cursor-default overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="group relative overflow-hidden cursor-default animate-fade-in"
+              style={{ 
+                animationDelay: `${index * 0.2}s`,
+                background: `
+                  linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%),
+                  radial-gradient(ellipse 400px 200px at 50% 0%, rgba(34, 211, 238, 0.06) 0%, transparent 70%),
+                  radial-gradient(ellipse 300px 150px at 50% 100%, rgba(139, 92, 246, 0.04) 0%, transparent 70%)
+                `,
+                backdropFilter: 'blur(20px) saturate(180%)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '16px',
+                boxShadow: `
+                  0 8px 32px rgba(0, 0, 0, 0.3),
+                  0 4px 16px rgba(0, 0, 0, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.05)
+                `
+              }}
             >
-              {/* Enhanced glow effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${benefit.accentColor} rounded-lg blur-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 -z-10`} />
+              {/* Glassmorphic hover glow effect */}
+              <div 
+                className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-30 transition-all duration-500 -z-10`}
+                style={{
+                  background: `linear-gradient(135deg, ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('blue-500', '59, 130, 246, 0.2').replace('purple-600', '147, 51, 234, 0.2').replace('purple-500', '168, 85, 247, 0.2').replace('pink-600', '219, 39, 119, 0.2').replace('green-500', '34, 197, 94, 0.2')}`,
+                  filter: 'blur(20px)'
+                }}
+              />
               
               <CardContent className="p-8 text-center relative z-10">
-                {/* Icon container with premium styling */}
+                {/* Icon container with glassmorphic styling */}
                 <div className="relative w-20 h-20 mx-auto mb-6">
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${benefit.accentColor} p-0.5 transition-all duration-500 shadow-xl opacity-90 group-hover:opacity-100`}>
-                    <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
-                      
-                      {/* Icon with glow effect */}
+                  <div 
+                    className="absolute inset-0 rounded-2xl p-0.5 transition-all duration-500 shadow-xl"
+                    style={{
+                      background: `linear-gradient(135deg, ${benefit.accentColor})`,
+                      opacity: '0.9'
+                    }}
+                  >
+                    <div 
+                      className="w-full h-full rounded-2xl flex items-center justify-center relative overflow-hidden"
+                      style={{
+                        background: `
+                          linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%),
+                          radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)
+                        `,
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)'
+                      }}
+                    >
+                      {/* Icon with enhanced glow */}
                       <benefit.icon className="w-10 h-10 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 group-hover:scale-110" />
                       
-                      {/* Sweeping light scan */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                      
-                      {/* Ambient base glow inside icon container */}
-                      <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${benefit.accentColor} opacity-10 group-hover:opacity-20 transition-all duration-500`} />
+                      {/* Glassmorphic inner glow */}
+                      <div 
+                        className="absolute inset-2 rounded-xl opacity-10 group-hover:opacity-20 transition-all duration-500"
+                        style={{
+                          background: `linear-gradient(135deg, ${benefit.accentColor})`
+                        }}
+                      />
                     </div>
                   </div>
                   
-                  {/* Floating accent elements */}
-                  <div className={`absolute -top-2 -right-2 w-6 h-6 rounded-lg bg-gradient-to-br ${benefit.accentColor} opacity-80 group-hover:opacity-90 group-hover:rotate-12 transition-all duration-500 shadow-lg`} />
-                  <div className={`absolute -bottom-2 -left-2 w-4 h-4 rounded-full bg-gradient-to-br ${benefit.accentColor} opacity-75 group-hover:opacity-85 group-hover:-rotate-45 transition-all duration-700 delay-100 shadow-lg`} />
+                  {/* Floating glassmorphic accent elements */}
+                  <div 
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-lg opacity-80 group-hover:opacity-90 group-hover:rotate-12 transition-all duration-500 shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${benefit.accentColor})`,
+                      backdropFilter: 'blur(4px)'
+                    }}
+                  />
+                  <div 
+                    className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full opacity-75 group-hover:opacity-85 group-hover:-rotate-45 transition-all duration-700 delay-100 shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${benefit.accentColor})`,
+                      backdropFilter: 'blur(4px)'
+                    }}
+                  />
                 </div>
                 
-                {/* Typography */}
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-white transition-colors duration-300">
+                {/* Typography with glassmorphic text shadow */}
+                <h3 
+                  className="text-xl font-bold text-white mb-4 group-hover:text-white transition-colors duration-300"
+                  style={{
+                    textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
+                  }}
+                >
                   {benefit.title}
                 </h3>
                 
-                <p className="text-premium-silver/70 leading-relaxed text-sm group-hover:text-premium-silver/85 transition-colors duration-300">
+                <p 
+                  className="text-premium-silver/70 leading-relaxed text-sm group-hover:text-premium-silver/85 transition-colors duration-300"
+                  style={{
+                    textShadow: '0 1px 5px rgba(0, 0, 0, 0.3)'
+                  }}
+                >
                   {benefit.description}
                 </p>
               </CardContent>
