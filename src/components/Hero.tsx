@@ -1,3 +1,4 @@
+
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
+    <section className="relative min-h-screen flex items-center px-4 py-12 bg-black overflow-hidden">
       {/* Nothing-inspired minimalistic background */}
       <div className="absolute inset-0">
         {/* Subtle gradient overlay */}
@@ -46,8 +47,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* AI Device - Central focal point */}
-      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+      {/* AI Device - Moved to right side */}
+      <div className="absolute right-20 top-1/2 transform -translate-y-1/2 z-20">
         <div className="relative">
           {/* Main AI Device Body */}
           <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-float overflow-hidden">
@@ -132,66 +133,68 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - moved higher up */}
-      <div className="relative max-w-5xl mx-auto text-center z-30 -mt-16">
-        {/* Apple-style product badge */}
-        <div className={`mb-12 flex justify-center ${isLoaded ? 'apple-fade-in' : ''}`}>
-          <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] apple-card-hover group cursor-pointer">
-            <div className="relative mr-3">
-              <Zap className="w-5 h-5 text-premium-silver-light group-hover:text-white transition-colors duration-500" />
+      {/* Content - Left aligned with responsive sizing */}
+      <div className="relative max-w-5xl mx-auto z-30">
+        <div className="max-w-3xl">
+          {/* Apple-style product badge */}
+          <div className={`mb-12 flex justify-start ${isLoaded ? 'apple-fade-in' : ''}`}>
+            <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] apple-card-hover group cursor-pointer">
+              <div className="relative mr-3">
+                <Zap className="w-5 h-5 text-premium-silver-light group-hover:text-white transition-colors duration-500" />
+              </div>
+              <span className="text-premium-silver-light group-hover:text-white text-sm font-medium tracking-wide transition-colors duration-500">
+                Gebouwd voor AI Intelligence
+              </span>
             </div>
-            <span className="text-premium-silver-light group-hover:text-white text-sm font-medium tracking-wide transition-colors duration-500">
-              Gebouwd voor AI Intelligence
-            </span>
           </div>
-        </div>
-        
-        {/* Apple-inspired typography hierarchy - tighter spacing */}
-        <h1 className={`font-bold tracking-tight leading-[0.9] ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
-          <div className="text-6xl md:text-8xl lg:text-9xl text-white">
-            AI die werkt.
-          </div>
-          <div className="text-4xl md:text-6xl lg:text-7xl text-premium-silver font-normal">
-            Eindelijk.
-          </div>
-        </h1>
-        
-        {/* Apple-style subtitle - moved much closer */}
-        <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 max-w-4xl mx-auto leading-relaxed font-light mt-4 ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
-          Wij bouwen AI-systemen die uw business 
-          <br />
-          <span className="text-white font-normal">daadwerkelijk transformeren.</span>
-        </p>
-        
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
-          <Button 
-            className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
-            style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
-            }}
-          >
-            <span className="relative z-10 flex items-center">
-              Ontdek de mogelijkheden
-              <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </span>
-          </Button>
           
-          <Button 
-            variant="outline" 
-            className="relative text-premium-silver hover:text-white px-10 py-6 text-xl font-semibold rounded-full border-premium-silver/30 hover:border-premium-silver/60 transition-all duration-700 apple-button-hover group overflow-hidden bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.08]"
-          >
-            <span className="relative z-10 flex items-center">
-              Plan een deepdive
-              <Sparkles className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
-            </span>
-          </Button>
-        </div>
+          {/* Apple-inspired typography hierarchy - left aligned */}
+          <h1 className={`font-bold tracking-tight leading-[0.9] text-left ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+            <div className="text-6xl md:text-8xl lg:text-9xl text-white">
+              AI die werkt.
+            </div>
+            <div className="text-4xl md:text-6xl lg:text-7xl text-premium-silver font-normal">
+              Eindelijk.
+            </div>
+          </h1>
+          
+          {/* Apple-style subtitle - left aligned */}
+          <p className={`text-2xl md:text-3xl lg:text-4xl text-premium-silver/80 mb-16 leading-relaxed font-light mt-4 text-left ${isLoaded ? 'apple-fade-in apple-stagger-3' : ''}`}>
+            Wij bouwen AI-systemen die uw business 
+            <br />
+            <span className="text-white font-normal">daadwerkelijk transformeren.</span>
+          </p>
+          
+          <div className={`flex flex-col sm:flex-row gap-6 justify-start items-start mb-20 ${isLoaded ? 'apple-fade-in apple-stagger-4' : ''}`}>
+            <Button 
+              className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-700 px-10 py-6 text-xl font-semibold rounded-full overflow-hidden apple-button-hover apple-scale-hover"
+              style={{
+                background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+              }}
+            >
+              <span className="relative z-10 flex items-center">
+                Ontdek de mogelijkheden
+                <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              className="relative text-premium-silver hover:text-white px-10 py-6 text-xl font-semibold rounded-full border-premium-silver/30 hover:border-premium-silver/60 transition-all duration-700 apple-button-hover group overflow-hidden bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.08]"
+            >
+              <span className="relative z-10 flex items-center">
+                Plan een deepdive
+                <Sparkles className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+              </span>
+            </Button>
+          </div>
 
-        {/* Apple-style feature highlight */}
-        <div className={`text-center ${isLoaded ? 'apple-fade-in apple-stagger-5' : ''}`}>
-          <p className="text-lg text-premium-silver/60 mb-2">Gebouwd voor Apple Intelligence</p>
-          <p className="text-sm text-premium-silver/40 italic">Premium AI-engineering voor visionairs</p>
+          {/* Apple-style feature highlight - left aligned */}
+          <div className={`text-left ${isLoaded ? 'apple-fade-in apple-stagger-5' : ''}`}>
+            <p className="text-lg text-premium-silver/60 mb-2">Gebouwd voor Apple Intelligence</p>
+            <p className="text-sm text-premium-silver/40 italic">Premium AI-engineering voor visionairs</p>
+          </div>
         </div>
       </div>
 
