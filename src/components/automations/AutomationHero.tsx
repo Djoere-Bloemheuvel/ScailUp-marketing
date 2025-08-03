@@ -9,28 +9,46 @@ const AutomationHero = () => {
       icon: Zap,
       title: 'Snelheid',
       description: 'Processen die 8 uur duurden, voltooien wij in 3 minuten. Elke dag opnieuw.',
-      accentColor: 'from-blue-500 to-purple-600',
-      glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.4),0_0_60px_rgba(147,51,234,0.3)]',
-      hoverGlow: 'hover:shadow-[0_0_40px_rgba(59,130,246,0.6),0_0_80px_rgba(147,51,234,0.4)]',
-      borderGlow: 'border-blue-500/30 hover:border-blue-400/50'
+      accentColor: 'from-blue-500 to-blue-600',
+      glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.4),0_0_60px_rgba(59,130,246,0.3)]',
+      hoverGlow: 'hover:shadow-[0_0_40px_rgba(59,130,246,0.6),0_0_80px_rgba(59,130,246,0.4)]',
+      borderGlow: 'border-blue-500/30 hover:border-blue-400/50',
+      backgroundGlow: 'rgba(59, 130, 246, 0.15)',
+      hoverBackground: 'from-blue-500/20 via-blue-500/15 to-transparent',
+      iconColor: 'text-blue-300 group-hover:text-blue-200',
+      iconBorder: 'rgba(59, 130, 246, 0.4)',
+      iconBackground: 'rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.2)',
+      iconShadow: 'rgba(59, 130, 246, 0.1)'
     },
     {
       icon: Clock,
       title: '24/7 Operationeel',
       description: 'Uw automatisering stopt nooit. Weekenden, nachten — altijd actief.',
-      accentColor: 'from-purple-500 to-pink-600',
-      glowColor: 'shadow-[0_0_30px_rgba(147,51,234,0.4),0_0_60px_rgba(236,72,153,0.3)]',
-      hoverGlow: 'hover:shadow-[0_0_40px_rgba(147,51,234,0.6),0_0_80px_rgba(236,72,153,0.4)]',
-      borderGlow: 'border-purple-500/30 hover:border-purple-400/50'
+      accentColor: 'from-purple-500 to-purple-600',
+      glowColor: 'shadow-[0_0_30px_rgba(147,51,234,0.4),0_0_60px_rgba(147,51,234,0.3)]',
+      hoverGlow: 'hover:shadow-[0_0_40px_rgba(147,51,234,0.6),0_0_80px_rgba(147,51,234,0.4)]',
+      borderGlow: 'border-purple-500/30 hover:border-purple-400/50',
+      backgroundGlow: 'rgba(147, 51, 234, 0.15)',
+      hoverBackground: 'from-purple-500/20 via-purple-500/15 to-transparent',
+      iconColor: 'text-purple-300 group-hover:text-purple-200',
+      iconBorder: 'rgba(147, 51, 234, 0.4)',
+      iconBackground: 'rgba(147, 51, 234, 0.3), rgba(147, 51, 234, 0.2)',
+      iconShadow: 'rgba(147, 51, 234, 0.1)'
     },
     {
       icon: Target,
       title: 'Precisie',
       description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
-      accentColor: 'from-green-500 to-blue-600',
-      glowColor: 'shadow-[0_0_30px_rgba(34,197,94,0.4),0_0_60px_rgba(59,130,246,0.3)]',
-      hoverGlow: 'hover:shadow-[0_0_40px_rgba(34,197,94,0.6),0_0_80px_rgba(59,130,246,0.4)]',
-      borderGlow: 'border-green-500/30 hover:border-green-400/50'
+      accentColor: 'from-green-500 to-green-600',
+      glowColor: 'shadow-[0_0_30px_rgba(34,197,94,0.4),0_0_60px_rgba(34,197,94,0.3)]',
+      hoverGlow: 'hover:shadow-[0_0_40px_rgba(34,197,94,0.6),0_0_80px_rgba(34,197,94,0.4)]',
+      borderGlow: 'border-green-500/30 hover:border-green-400/50',
+      backgroundGlow: 'rgba(34, 197, 94, 0.15)',
+      hoverBackground: 'from-green-500/20 via-green-500/15 to-transparent',
+      iconColor: 'text-green-300 group-hover:text-green-200',
+      iconBorder: 'rgba(34, 197, 94, 0.4)',
+      iconBackground: 'rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.2)',
+      iconShadow: 'rgba(34, 197, 94, 0.1)'
     }
   ];
 
@@ -83,7 +101,7 @@ const AutomationHero = () => {
           </p>
         </div>
 
-        {/* Core Benefits Section - Enhanced with colorful glows */}
+        {/* Core Benefits Section - Enhanced with uniform colors per block */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <Card 
@@ -93,65 +111,29 @@ const AutomationHero = () => {
                 animationDelay: `${index * 0.2}s`,
                 background: `
                   linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%),
-                  radial-gradient(ellipse 300px 150px at 50% 0%, ${
-                    benefit.accentColor.includes('blue') 
-                      ? 'rgba(59, 130, 246, 0.15)' 
-                      : benefit.accentColor.includes('purple') 
-                      ? 'rgba(147, 51, 234, 0.15)'
-                      : 'rgba(34, 197, 94, 0.15)'
-                  } 0%, transparent 70%)
+                  radial-gradient(ellipse 300px 150px at 50% 0%, ${benefit.backgroundGlow} 0%, transparent 70%)
                 `,
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 borderRadius: '20px'
               }}
             >
-              {/* Enhanced hover glow effect with color */}
-              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-all duration-500 ease-out bg-gradient-to-br ${
-                benefit.accentColor.includes('blue') 
-                  ? 'from-blue-500/20 via-purple-500/15 to-transparent' 
-                  : benefit.accentColor.includes('purple') 
-                  ? 'from-purple-500/20 via-pink-500/15 to-transparent'
-                  : 'from-green-500/20 via-blue-500/15 to-transparent'
-              }`} />
+              {/* Enhanced hover glow effect with uniform color */}
+              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-all duration-500 ease-out bg-gradient-to-br ${benefit.hoverBackground}`} />
               
               <CardContent className="p-8 text-center relative z-10">
-                {/* Icon container - enhanced with colorful styling */}
+                {/* Icon container - enhanced with uniform color styling */}
                 <div className="relative w-16 h-16 mx-auto mb-6 transform transition-all duration-300 group-hover:scale-110">
                   <div 
                     className={`absolute inset-0 rounded-xl transition-all duration-300 ${benefit.borderGlow}`}
                     style={{
-                      background: `linear-gradient(135deg, ${
-                        benefit.accentColor.includes('blue') 
-                          ? 'rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.2)' 
-                          : benefit.accentColor.includes('purple') 
-                          ? 'rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.2)'
-                          : 'rgba(34, 197, 94, 0.3), rgba(59, 130, 246, 0.2)'
-                      })`,
-                      border: `1px solid ${
-                        benefit.accentColor.includes('blue') 
-                          ? 'rgba(59, 130, 246, 0.4)' 
-                          : benefit.accentColor.includes('purple') 
-                          ? 'rgba(147, 51, 234, 0.4)'
-                          : 'rgba(34, 197, 94, 0.4)'
-                      }`,
-                      boxShadow: `inset 0 0 20px ${
-                        benefit.accentColor.includes('blue') 
-                          ? 'rgba(59, 130, 246, 0.1)' 
-                          : benefit.accentColor.includes('purple') 
-                          ? 'rgba(147, 51, 234, 0.1)'
-                          : 'rgba(34, 197, 94, 0.1)'
-                      }`
+                      background: `linear-gradient(135deg, ${benefit.iconBackground})`,
+                      border: `1px solid ${benefit.iconBorder}`,
+                      boxShadow: `inset 0 0 20px ${benefit.iconShadow}`
                     }}
                   >
                     <div className="w-full h-full rounded-xl flex items-center justify-center bg-black/30 backdrop-blur-sm">
-                      <benefit.icon className={`w-8 h-8 transition-all duration-300 ${
-                        benefit.accentColor.includes('blue') 
-                          ? 'text-blue-300 group-hover:text-blue-200' 
-                          : benefit.accentColor.includes('purple') 
-                          ? 'text-purple-300 group-hover:text-purple-200'
-                          : 'text-green-300 group-hover:text-green-200'
-                      }`} />
+                      <benefit.icon className={`w-8 h-8 transition-all duration-300 ${benefit.iconColor}`} />
                     </div>
                   </div>
                 </div>
