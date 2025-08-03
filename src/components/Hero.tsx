@@ -1,10 +1,9 @@
-
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
-import CinematicBackground from './hero/CinematicBackground';
-import CinematicAnimations from './hero/CinematicAnimations';
+import AppleAICore from './hero/AppleAICore';
+import AppleAICoreAnimations from './hero/AppleAICoreAnimations';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,12 +14,12 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Cinematic Background */}
-      <div className={`absolute inset-0 ${isLoaded ? 'cinematic-entrance' : ''}`}>
-        <CinematicBackground />
+      {/* Apple-style AI Core Background */}
+      <div className={`absolute inset-0 ${isLoaded ? 'apple-core-entrance' : ''}`}>
+        <AppleAICore />
       </div>
 
-      {/* Content - Enhanced with better spacing */}
+      {/* Content - Keep existing text and buttons unchanged */}
       <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
         <div className="max-w-4xl mx-auto">
           {/* Animated Headline */}
@@ -72,8 +71,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Cinematic animations */}
-      <CinematicAnimations />
+      {/* Apple-style AI Core animations */}
+      <AppleAICoreAnimations />
       
       {/* Keep existing premium animations for buttons and text */}
       <style dangerouslySetInnerHTML={{

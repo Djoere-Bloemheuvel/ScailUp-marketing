@@ -11,153 +11,150 @@ const CinematicBackground = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-950/30 via-transparent to-black"></div>
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-gray-900/10 to-black"></div>
       
-      {/* AI Digital Face - Right Side Positioning */}
-      <div className="absolute top-1/2 right-0 transform translate-x-1/4 -translate-y-1/2 opacity-40 md:opacity-50">
-        <div className="relative w-96 h-[28rem] md:w-[28rem] md:h-[36rem] lg:w-[32rem] lg:h-[42rem]">
-          {/* Face base structure with fragmenting effect */}
-          <div className="absolute inset-0 overflow-hidden">
+      {/* AI Digital Face - Main Feature */}
+      <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 opacity-60">
+        <div className="relative w-80 h-96 md:w-96 md:h-[28rem] lg:w-[26rem] lg:h-[32rem]">
+          {/* Face base structure */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/20 via-gray-700/15 to-gray-900/25 rounded-3xl backdrop-blur-sm border border-gray-600/10 animate-cinematic-face-pulse">
             
-            {/* Main face silhouette - subtle base */}
-            <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-64 md:w-56 md:h-80 lg:w-64 lg:h-96 bg-gradient-to-br from-gray-800/15 via-gray-700/10 to-gray-900/20 rounded-t-full animate-cinematic-face-pulse backdrop-blur-sm">
+            {/* Fragmenting effect overlay */}
+            <div className="absolute inset-0 overflow-hidden rounded-3xl">
+              {/* Digital fragments - creating the pixelated/fragmented look */}
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div
+                  key={`fragment-${i}`}
+                  className="absolute bg-gradient-to-br from-cyan-400/20 via-gray-600/15 to-violet-400/10 animate-cinematic-fragment-float"
+                  style={{
+                    width: `${12 + (i % 3) * 8}px`,
+                    height: `${8 + (i % 4) * 6}px`,
+                    left: `${15 + (i % 8) * 10}%`,
+                    top: `${10 + (i % 6) * 12}%`,
+                    animationDelay: `${i * 0.3}s`,
+                    animationDuration: `${8 + (i % 3) * 2}s`,
+                    transform: `rotate(${i * 15}deg)`,
+                  }}
+                />
+              ))}
               
-              {/* Face features - eyes area */}
-              <div className="absolute top-16 md:top-20 lg:top-24 left-1/2 transform -translate-x-1/2 flex space-x-8 md:space-x-12 lg:space-x-16">
-                <div className="w-2 h-2 md:w-3 md:h-3 bg-cyan-400/50 rounded-full animate-cinematic-eye-glow blur-sm"></div>
-                <div className="w-2 h-2 md:w-3 md:h-3 bg-cyan-400/50 rounded-full animate-cinematic-eye-glow blur-sm" style={{ animationDelay: '0.5s' }}></div>
+              {/* Face outline suggestion - subtle geometric lines */}
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-32 h-40 md:w-40 md:h-48 border-l border-r border-gray-500/20 rounded-t-full animate-cinematic-face-outline"></div>
+              
+              {/* Eyes area indication */}
+              <div className="absolute top-20 md:top-24 left-1/2 transform -translate-x-1/2 flex space-x-12 md:space-x-16">
+                <div className="w-3 h-3 md:w-4 md:h-4 bg-cyan-400/60 rounded-full animate-cinematic-eye-glow blur-sm"></div>
+                <div className="w-3 h-3 md:w-4 md:h-4 bg-cyan-400/60 rounded-full animate-cinematic-eye-glow blur-sm" style={{ animationDelay: '0.5s' }}></div>
               </div>
               
-              {/* Nose bridge - subtle line */}
-              <div className="absolute top-28 md:top-36 lg:top-44 left-1/2 transform -translate-x-1/2 w-px h-6 md:h-8 lg:h-12 bg-gradient-to-b from-transparent via-gray-400/25 to-transparent animate-cinematic-pulse-slow"></div>
-              
-              {/* Mouth area - horizontal hint */}
-              <div className="absolute top-40 md:top-52 lg:top-64 left-1/2 transform -translate-x-1/2 w-6 md:w-8 lg:w-12 h-px bg-gradient-to-r from-transparent via-gray-400/20 to-transparent animate-cinematic-pulse-medium"></div>
+              {/* Nose/mouth area - subtle geometric hints */}
+              <div className="absolute top-32 md:top-40 left-1/2 transform -translate-x-1/2 w-px h-8 md:h-12 bg-gradient-to-b from-transparent via-gray-400/30 to-transparent animate-cinematic-pulse-medium"></div>
+              <div className="absolute top-44 md:top-52 left-1/2 transform -translate-x-1/2 w-8 md:w-12 h-px bg-gradient-to-r from-transparent via-gray-400/25 to-transparent animate-cinematic-pulse-slow"></div>
             </div>
             
-            {/* Digital fragmentation blocks - scattered around face */}
-            {Array.from({ length: 32 }).map((_, i) => (
-              <div
-                key={`fragment-${i}`}
-                className="absolute bg-gradient-to-br from-cyan-400/15 via-gray-600/10 to-violet-400/8 animate-cinematic-fragment-float rounded-sm"
-                style={{
-                  width: `${8 + (i % 4) * 6}px`,
-                  height: `${6 + (i % 3) * 5}px`,
-                  left: `${10 + (i % 9) * 10}%`,
-                  top: `${5 + (i % 8) * 11}%`,
-                  animationDelay: `${i * 0.4}s`,
-                  animationDuration: `${12 + (i % 4) * 3}s`,
-                  transform: `rotate(${i * 11}deg)`,
-                }}
-              />
-            ))}
-            
-            {/* Matrix-style floating blocks - inspired by uploaded image */}
-            {Array.from({ length: 18 }).map((_, i) => (
-              <div
-                key={`matrix-${i}`}
-                className="absolute animate-cinematic-matrix-float"
-                style={{
-                  width: `${12 + (i % 3) * 8}px`,
-                  height: `${12 + (i % 3) * 8}px`,
-                  left: `${15 + (i % 6) * 12}%`,
-                  top: `${10 + (i % 7) * 10}%`,
-                  animationDelay: `${i * 0.6}s`,
-                  animationDuration: `${15 + (i % 3) * 5}s`,
-                  background: i % 4 === 0 ? 'rgba(34, 211, 238, 0.12)' :
-                              i % 4 === 1 ? 'rgba(147, 51, 234, 0.10)' :
-                              i % 4 === 2 ? 'rgba(236, 72, 153, 0.08)' :
-                              'rgba(16, 185, 129, 0.09)',
-                }}
-              />
-            ))}
-            
-            {/* Holographic scan lines across face */}
-            <div className="absolute inset-0 opacity-30 overflow-hidden">
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent animate-cinematic-face-scan" style={{ top: '15%' }}></div>
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-violet-400/25 to-transparent animate-cinematic-face-scan" style={{ top: '35%', animationDelay: '3s' }}></div>
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-pink-400/28 to-transparent animate-cinematic-face-scan" style={{ top: '55%', animationDelay: '6s' }}></div>
-              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-emerald-400/22 to-transparent animate-cinematic-face-scan" style={{ top: '75%', animationDelay: '9s' }}></div>
+            {/* Holographic scan lines */}
+            <div className="absolute inset-0 opacity-40 rounded-3xl overflow-hidden">
+              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-cinematic-face-scan" style={{ top: '20%' }}></div>
+              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-violet-400/30 to-transparent animate-cinematic-face-scan" style={{ top: '40%', animationDelay: '2s' }}></div>
+              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-pink-400/35 to-transparent animate-cinematic-face-scan" style={{ top: '60%', animationDelay: '4s' }}></div>
+              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-green-400/25 to-transparent animate-cinematic-face-scan" style={{ top: '80%', animationDelay: '6s' }}></div>
             </div>
             
-            {/* Data formation effect - pixelated overlay */}
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/[0.008] to-transparent animate-cinematic-data-formation"></div>
+            {/* Glitch effect overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.01] to-transparent rounded-3xl animate-cinematic-glitch-overlay"></div>
           </div>
           
-          {/* Face emergence glow aura */}
-          <div className="absolute inset-0 bg-gradient-radial from-cyan-500/6 via-violet-500/3 to-transparent blur-3xl animate-cinematic-face-aura"></div>
+          {/* AI Face glow aura */}
+          <div className="absolute inset-0 bg-gradient-radial from-cyan-500/8 via-violet-500/4 to-transparent rounded-3xl blur-2xl animate-cinematic-face-aura"></div>
         </div>
       </div>
 
-      {/* Central processing core - left-center for depth */}
-      <div className="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 opacity-60">
-        <div className="relative w-64 h-40 md:w-80 md:h-48 lg:w-96 lg:h-56">
-          {/* Main processor unit */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-32 md:w-72 md:h-40 lg:w-80 lg:h-44 bg-gradient-to-br from-gray-800/25 via-gray-700/20 to-gray-900/30 rounded-xl backdrop-blur-sm border border-gray-600/15 animate-cinematic-core-pulse">
+      {/* Central AI Core - Repositioned to right side */}
+      <div className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2">
+        {/* Core processor unit */}
+        <div className="relative w-80 h-48 md:w-96 md:h-56 lg:w-[28rem] lg:h-64">
+          {/* Main chip/processor body */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-40 md:w-80 md:h-48 bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-600/20 animate-cinematic-float-1">
+            {/* Holographic glass overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.02] via-transparent to-white/[0.01] rounded-xl animate-cinematic-glass-shimmer"></div>
             
-            {/* Circuit pathways - inspired by digital brain */}
-            <div className="absolute inset-0 opacity-50">
-              <div className="absolute top-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-cinematic-pulse-fast"></div>
-              <div className="absolute top-8 left-6 right-6 h-px bg-gradient-to-r from-transparent via-violet-400/35 to-transparent animate-cinematic-pulse-medium" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute bottom-8 left-4 right-4 h-px bg-gradient-to-r from-transparent via-pink-400/40 to-transparent animate-cinematic-pulse-slow" style={{ animationDelay: '2s' }}></div>
-              <div className="absolute bottom-4 left-8 right-8 h-px bg-gradient-to-r from-transparent via-emerald-400/35 to-transparent animate-cinematic-pulse-fast" style={{ animationDelay: '0.5s' }}></div>
+            {/* Circuit pathways */}
+            <div className="absolute inset-0 opacity-70">
+              {/* Horizontal circuit lines */}
+              <div className="absolute top-6 left-4 right-4 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-cinematic-pulse-fast"></div>
+              <div className="absolute top-12 left-6 right-6 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent animate-cinematic-pulse-medium" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute bottom-12 left-4 right-4 h-px bg-gradient-to-r from-transparent via-pink-400/60 to-transparent animate-cinematic-pulse-slow" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute bottom-6 left-8 right-8 h-px bg-gradient-to-r from-transparent via-green-400/50 to-transparent animate-cinematic-pulse-fast" style={{ animationDelay: '0.5s' }}></div>
               
-              {/* Vertical connections */}
-              <div className="absolute left-12 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-cyan-400/30 to-transparent animate-cinematic-pulse-medium"></div>
-              <div className="absolute right-12 top-3 bottom-3 w-px bg-gradient-to-b from-transparent via-violet-400/30 to-transparent animate-cinematic-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
+              {/* Vertical circuit connections */}
+              <div className="absolute left-16 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-cyan-400/40 to-transparent animate-cinematic-pulse-medium"></div>
+              <div className="absolute right-16 top-6 bottom-6 w-px bg-gradient-to-b from-transparent via-violet-400/40 to-transparent animate-cinematic-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
             </div>
             
-            {/* Central AI core */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-white/8 via-gray-400/4 to-transparent rounded-lg animate-cinematic-core-pulse">
-              <div className="absolute inset-1 bg-gradient-to-br from-cyan-400/15 via-violet-400/8 to-transparent rounded-lg blur-sm"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white/60 rounded-full animate-cinematic-core-pulse"></div>
+            {/* Central processing core */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-white/10 via-gray-400/5 to-transparent rounded-lg animate-cinematic-core-pulse">
+              <div className="absolute inset-1 bg-gradient-to-br from-cyan-400/20 via-violet-400/10 to-transparent rounded-lg blur-sm"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white/80 rounded-full animate-cinematic-core-pulse"></div>
+            </div>
+            
+            {/* Core glow emission */}
+            <div className="absolute inset-0 bg-gradient-radial from-cyan-500/10 via-violet-500/5 to-transparent rounded-xl blur-md"></div>
+          </div>
+          
+          {/* Rotating outer ring */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 animate-cinematic-ring-pulse">
+            <div className="w-full h-full rounded-full border border-gray-500/15 relative overflow-hidden">
+              <div className="absolute top-0 left-1/2 w-1 h-6 bg-gradient-to-b from-cyan-400/70 to-transparent transform -translate-x-1/2 blur-sm"></div>
+              <div className="absolute bottom-0 left-1/2 w-1 h-4 bg-gradient-to-t from-violet-400/50 to-transparent transform -translate-x-1/2 blur-sm"></div>
+              <div className="absolute left-0 top-1/2 w-6 h-1 bg-gradient-to-r from-pink-400/60 to-transparent transform -translate-y-1/2 blur-sm"></div>
+              <div className="absolute right-0 top-1/2 w-4 h-1 bg-gradient-to-l from-green-400/50 to-transparent transform -translate-y-1/2 blur-sm"></div>
             </div>
           </div>
           
-          {/* Surrounding energy ring */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80 animate-cinematic-ring-pulse opacity-30">
-            <div className="w-full h-full rounded-full border border-gray-500/12 relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 w-0.5 h-4 bg-gradient-to-b from-cyan-400/50 to-transparent transform -translate-x-1/2 blur-sm"></div>
-              <div className="absolute bottom-0 left-1/2 w-0.5 h-3 bg-gradient-to-t from-violet-400/40 to-transparent transform -translate-x-1/2 blur-sm"></div>
-            </div>
+          {/* Signal indicators */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80">
+            <div className="absolute -top-2 left-1/2 w-2 h-2 bg-cyan-400/90 rounded-full transform -translate-x-1/2 blur-sm animate-cinematic-float-2"></div>
+            <div className="absolute -bottom-2 left-1/2 w-2 h-2 bg-violet-400/90 rounded-full transform -translate-x-1/2 blur-sm animate-cinematic-float-3"></div>
+            <div className="absolute -left-2 top-1/2 w-2 h-2 bg-pink-400/90 rounded-full transform -translate-y-1/2 blur-sm animate-cinematic-float-4"></div>
+            <div className="absolute -right-2 top-1/2 w-2 h-2 bg-green-400/90 rounded-full transform -translate-y-1/2 blur-sm animate-cinematic-float-1"></div>
           </div>
+        </div>
+        
+        {/* Bottom reflection - Apple style */}
+        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 h-32 md:w-96 md:h-40 lg:w-[28rem] lg:h-48 opacity-20">
+          <div className="w-full h-full bg-gradient-to-b from-gray-700/30 via-gray-800/15 to-transparent rounded-t-xl blur-xl scale-y-[-1] scale-95"></div>
         </div>
       </div>
       
-      {/* Atmospheric lighting effects */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-gradient-radial from-cyan-500/2 via-violet-500/1 to-transparent opacity-70 animate-cinematic-ambient-pulse"></div>
-      <div className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-gradient-radial from-pink-500/1.5 via-emerald-500/0.8 to-transparent opacity-50 animate-cinematic-ambient-pulse" style={{ animationDelay: '8s' }}></div>
+      {/* Ambient atmospheric lighting */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-gradient-radial from-cyan-500/3 via-violet-500/2 to-transparent opacity-80 animate-cinematic-pulse-slow"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-gradient-radial from-pink-500/2 via-green-500/1 to-transparent opacity-60 animate-cinematic-pulse-medium" style={{ animationDelay: '5s' }}></div>
       
-      {/* Tech shimmer scanlines - vertical */}
-      <div className="absolute inset-0 pointer-events-none opacity-10">
-        <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-white/20 to-transparent animate-cinematic-shimmer-vertical left-1/4"></div>
-        <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-cyan-400/15 to-transparent animate-cinematic-shimmer-vertical-delayed right-1/3"></div>
+      {/* Scan line effects */}
+      <div className="absolute inset-0 pointer-events-none opacity-15">
+        <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent animate-cinematic-scan-horizontal top-1/3"></div>
+        <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent animate-cinematic-scan-horizontal-delayed top-2/3"></div>
       </div>
       
-      {/* Background pulse ring - behind CTAs */}
-      <div className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] opacity-15">
-        <div className="w-full h-full rounded-full bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent animate-cinematic-cta-pulse blur-2xl"></div>
-      </div>
-      
-      {/* Subtle depth particles for premium feel */}
-      <div className="absolute inset-0 opacity-8 hidden md:block">
-        {Array.from({ length: 6 }).map((_, i) => (
+      {/* Subtle depth particles for atmosphere */}
+      <div className="absolute inset-0 opacity-10 hidden md:block">
+        {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={`depth-particle-${i}`}
-            className="absolute w-0.5 h-0.5 bg-white/30 rounded-full animate-cinematic-depth-float"
+            className="absolute w-1 h-1 bg-white/40 rounded-full animate-cinematic-depth-float"
             style={{
-              left: `${20 + (i * 12)}%`,
-              top: `${15 + (i * 10)}%`,
-              animationDelay: `${i * 2}s`,
-              animationDuration: `${18 + (i % 2) * 4}s`,
+              left: `${15 + (i * 10)}%`,
+              top: `${20 + (i * 8)}%`,
+              animationDelay: `${i * 1.2}s`,
+              animationDuration: `${10 + (i % 3)}s`,
             }}
           />
         ))}
       </div>
       
-      {/* Premium vignette for depth */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/30"></div>
+      {/* Cinematic vignette */}
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/40"></div>
       
-      {/* Bottom seamless transition */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black via-gray-950/30 to-transparent"></div>
+      {/* Bottom fade for seamless transition */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black via-gray-950/50 to-transparent"></div>
     </div>
   );
 };
