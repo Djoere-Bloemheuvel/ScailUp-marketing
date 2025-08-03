@@ -4,46 +4,46 @@ import React from 'react';
 const AmbientLighting = () => {
   return (
     <>
-      {/* Ambient Corner Lighting Effects - Behind all content */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Ambient Corner Lighting Effects - Behind all content but above background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         {/* Top-left ambient glow - Cyan/Blue */}
         <div 
-          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-30 md:opacity-40 ambient-glow-cyan"
+          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-40 md:opacity-50 ambient-glow-cyan"
           style={{
-            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(34, 211, 238, 0.08) 30%, rgba(14, 165, 233, 0.04) 50%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, rgba(34, 211, 238, 0.1) 30%, rgba(14, 165, 233, 0.05) 50%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
         
         {/* Bottom-right ambient glow - Purple/Violet */}
         <div 
-          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-25 md:opacity-35 ambient-glow-violet"
+          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-35 md:opacity-45 ambient-glow-violet"
           style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(147, 51, 234, 0.06) 35%, rgba(109, 40, 217, 0.03) 55%, transparent 75%)',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(147, 51, 234, 0.08) 35%, rgba(109, 40, 217, 0.04) 55%, transparent 75%)',
             filter: 'blur(90px)',
           }}
         />
         
         {/* Additional accent glow - Teal (center-right) */}
         <div 
-          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-20 md:opacity-25 ambient-glow-teal"
+          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-25 md:opacity-35 ambient-glow-teal"
           style={{
-            background: 'radial-gradient(circle, rgba(20, 184, 166, 0.10) 0%, rgba(13, 148, 136, 0.05) 40%, rgba(15, 118, 110, 0.02) 60%, transparent 80%)',
+            background: 'radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, rgba(13, 148, 136, 0.06) 40%, rgba(15, 118, 110, 0.03) 60%, transparent 80%)',
             filter: 'blur(70px)',
           }}
         />
 
         {/* Subtle grain texture layer */}
         <div 
-          className="absolute inset-0 opacity-[0.02] ambient-grain"
+          className="absolute inset-0 opacity-[0.03] ambient-grain"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 2%),
-              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 2%),
-              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 0%, transparent 1.5%),
-              radial-gradient(circle at 60% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 1.5%),
-              radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 1%),
-              radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 1%)
+              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 2%),
+              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 2%),
+              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 1.5%),
+              radial-gradient(circle at 60% 90%, rgba(255, 255, 255, 0.06) 0%, transparent 1.5%),
+              radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.07) 0%, transparent 1%),
+              radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 1%)
             `,
             backgroundSize: '400px 400px, 300px 300px, 500px 500px, 350px 350px, 450px 450px, 280px 280px',
           }}
@@ -51,15 +51,15 @@ const AmbientLighting = () => {
 
         {/* Starfield particle layer */}
         <div 
-          className="absolute inset-0 opacity-[0.03] ambient-starfield"
+          className="absolute inset-0 opacity-[0.04] ambient-starfield"
           style={{
             backgroundImage: `
-              radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
-              radial-gradient(1px 1px at 40% 70%, rgba(34, 211, 238, 0.6), transparent),
-              radial-gradient(1px 1px at 60% 20%, rgba(255, 255, 255, 0.5), transparent),
-              radial-gradient(1px 1px at 80% 80%, rgba(139, 92, 246, 0.4), transparent),
-              radial-gradient(1px 1px at 10% 60%, rgba(20, 184, 166, 0.3), transparent),
-              radial-gradient(1px 1px at 90% 40%, rgba(255, 255, 255, 0.6), transparent)
+              radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 1), transparent),
+              radial-gradient(1px 1px at 40% 70%, rgba(34, 211, 238, 0.8), transparent),
+              radial-gradient(1px 1px at 60% 20%, rgba(255, 255, 255, 0.7), transparent),
+              radial-gradient(1px 1px at 80% 80%, rgba(139, 92, 246, 0.6), transparent),
+              radial-gradient(1px 1px at 10% 60%, rgba(20, 184, 166, 0.5), transparent),
+              radial-gradient(1px 1px at 90% 40%, rgba(255, 255, 255, 0.8), transparent)
             `,
             backgroundSize: '550px 550px, 350px 350px, 450px 450px, 500px 500px, 400px 400px, 600px 600px',
           }}
