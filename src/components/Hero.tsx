@@ -288,7 +288,7 @@ const Hero = () => {
       <div className="relative max-w-5xl mx-auto z-30 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Apple-inspired typography hierarchy - centered */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] mb-0 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+          <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
             <div className="text-6xl md:text-8xl lg:text-9xl text-white">
               AI die werkt.
             </div>
