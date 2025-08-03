@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -82,8 +81,6 @@ export default {
 			},
 			fontFamily: {
 				'apple': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
-				'inter': ['Inter', 'system-ui', 'sans-serif'],
-				'satoshi': ['Satoshi', 'system-ui', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {
@@ -135,15 +132,6 @@ export default {
 					'0%, 100%': { opacity: '0.4', transform: 'translateY(0)' },
 					'50%': { opacity: '1', transform: 'translateY(8px)' }
 				},
-				// Headline animation keyframes
-				'headline-fade-in': {
-					'0%': { opacity: '0', transform: 'translateY(10px) scale(0.98)' },
-					'100%': { opacity: '1', transform: 'translateY(0) scale(1.02)' }
-				},
-				'headline-fade-out': {
-					'0%': { opacity: '1', transform: 'translateY(0) scale(1.02)' },
-					'100%': { opacity: '0', transform: 'translateY(-10px) scale(0.98)' }
-				},
 				// New animations for left robot
 				'server-pulse': {
 					'0%, 100%': { opacity: '0.4', scaleX: '0.8' },
@@ -190,9 +178,6 @@ export default {
 				'apple-fade-in': 'apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'apple-glow': 'apple-glow 8s ease-in-out infinite',
 				'apple-scroll-pulse': 'apple-scroll-pulse 2s ease-in-out infinite',
-				// Headline animations
-				'headline-fade-in': 'headline-fade-in 0.5s ease-in-out forwards',
-				'headline-fade-out': 'headline-fade-out 0.5s ease-in-out forwards',
 				// New animations for left robot
 				'server-pulse': 'server-pulse 2s ease-in-out infinite',
 				'status-light': 'status-light 1.5s ease-in-out infinite',
