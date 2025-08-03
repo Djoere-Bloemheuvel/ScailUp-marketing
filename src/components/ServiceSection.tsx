@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 
@@ -24,10 +23,20 @@ interface ServiceSectionProps {
 
 const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   const [deviceHovered, setDeviceHovered] = useState(false);
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Once visible, keep it visible to prevent unloading
+  if (isVisible && !hasBeenVisible) {
+    setHasBeenVisible(true);
+  }
+  
   const isEven = index % 2 === 1; // 2nd and 4th sections (index 1 and 3)
+  const shouldShowContent = hasBeenVisible || isVisible;
 
   return (
     <section 
+      ref={sectionRef}
       data-service-section={index}
       className={`relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-gradient-to-b ${service.background}`}
     >
@@ -45,7 +54,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
         
         {/* Content - Left for odd sections (1st, 3rd, 5th), Right for even sections (2nd, 4th) */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-          <div className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <div className={`transition-all duration-1000 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             
             {/* Typography */}
             <div className="space-y-6">
@@ -82,45 +91,50 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
         {/* Visual Element - Right for odd sections (1st, 3rd, 5th), Left for even sections (2nd, 4th) */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
           <div 
-            className={`transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+            style={{ transitionDelay: shouldShowContent ? '200ms' : '0ms' }}
             onMouseEnter={() => setDeviceHovered(true)}
             onMouseLeave={() => setDeviceHovered(false)}
           >
             <div className={`relative w-72 h-72 transition-all duration-700 ${deviceHovered ? 'scale-105' : 'scale-100'}`}>
               
-              {/* Enhanced glow effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-20 transition-all duration-700 ${deviceHovered ? 'opacity-50 scale-110' : 'opacity-20 scale-100'}`} />
+              {/* Enhanced glow effect with more base presence */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-40 transition-all duration-700 ${deviceHovered ? 'opacity-70 scale-110' : 'opacity-40 scale-100'}`} />
               
               {/* Main device with enhanced glassmorphism */}
-              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/30 to-premium-black/50 border border-premium-silver/30 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl">
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl">
                 
                 {service.isSpecial ? (
-                  // Special animated core for Studio service
+                  // Special animated core for Studio service with enhanced base colors
                   <div className="relative w-32 h-32">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/30 to-cyan-400/30 animate-pulse" />
-                    <div className="absolute inset-3 rounded-full bg-gradient-to-br from-blue-500/40 to-cyan-500/40 animate-pulse delay-300" />
-                    <div className="absolute inset-6 rounded-full bg-gradient-to-br from-blue-600/50 to-cyan-600/50 animate-pulse delay-700" />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/50 to-cyan-400/50 animate-pulse" />
+                    <div className="absolute inset-3 rounded-full bg-gradient-to-br from-blue-500/60 to-cyan-500/60 animate-pulse delay-300" />
+                    <div className="absolute inset-6 rounded-full bg-gradient-to-br from-blue-600/70 to-cyan-600/70 animate-pulse delay-700" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <service.icon className="w-14 h-14 text-blue-400 animate-pulse drop-shadow-lg" />
+                      <service.icon className="w-14 h-14 text-blue-300 animate-pulse drop-shadow-lg" />
                     </div>
                     
-                    {/* Orbiting dots */}
+                    {/* Orbiting dots with enhanced visibility */}
                     <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
-                      <div className="absolute top-0 left-1/2 w-3 h-3 bg-blue-400 rounded-full transform -translate-x-1/2 shadow-lg" />
-                      <div className="absolute bottom-0 left-1/2 w-3 h-3 bg-cyan-400 rounded-full transform -translate-x-1/2 shadow-lg" />
+                      <div className="absolute top-0 left-1/2 w-3 h-3 bg-blue-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-blue-400/50" />
+                      <div className="absolute bottom-0 left-1/2 w-3 h-3 bg-cyan-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-cyan-400/50" />
                     </div>
                   </div>
                 ) : (
-                  // Regular service visualization with enhanced effects
+                  // Regular service visualization with enhanced base colors
                   <div className="relative w-28 h-28">
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 transition-all duration-500 shadow-xl`}>
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 transition-all duration-500 shadow-xl opacity-90 ${deviceHovered ? 'opacity-100' : ''}`}>
                       <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
                         
-                        {/* Pulsing icon with enhanced glow */}
-                        <service.icon className="w-14 h-14 text-white animate-pulse relative z-10 drop-shadow-lg" />
+                        {/* Enhanced pulsing icon with better base color */}
+                        <service.icon className="w-14 h-14 text-white/90 animate-pulse relative z-10 drop-shadow-lg transition-all duration-300" style={{
+                          filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' : 
+                                                       service.accentColor.includes('purple') ? '#a855f7' : 
+                                                       service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
+                        }} />
                         
-                        {/* Enhanced sweeping light scan */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-pulse" 
+                        {/* Enhanced sweeping light scan with more base presence */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full animate-pulse opacity-60" 
                              style={{ 
                                animation: 'sweep 3s ease-in-out infinite',
                                animationDelay: `${index * 0.5}s`
@@ -128,14 +142,17 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         
                         {/* Enhanced hover scan line */}
                         {deviceHovered && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/40 to-transparent animate-pulse" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent animate-pulse" />
                         )}
+                        
+                        {/* Ambient base glow inside icon container */}
+                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-all duration-700 ${deviceHovered ? 'opacity-20' : 'opacity-10'}`} />
                       </div>
                     </div>
                     
-                    {/* Enhanced floating accent elements */}
-                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} transition-all duration-700 shadow-lg ${deviceHovered ? 'translate-y-1 rotate-12 shadow-xl' : ''}`} />
-                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} transition-all duration-700 delay-100 shadow-lg ${deviceHovered ? '-translate-y-1 rotate-45 shadow-xl' : ''}`} />
+                    {/* Enhanced floating accent elements with more base color */}
+                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-80 transition-all duration-700 shadow-lg ${deviceHovered ? 'translate-y-1 rotate-12 shadow-xl opacity-90' : 'opacity-80'}`} />
+                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 transition-all duration-700 delay-100 shadow-lg ${deviceHovered ? '-translate-y-1 rotate-45 shadow-xl opacity-85' : 'opacity-75'}`} />
                   </div>
                 )}
               </div>

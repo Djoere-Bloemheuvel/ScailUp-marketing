@@ -1,4 +1,3 @@
-
 import { Brain, Cog, MessageSquare, Server, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ServiceSection from './ServiceSection';
@@ -14,10 +13,13 @@ const Services = () => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleSection(index);
+            setVisibleSection(prev => Math.max(prev, index));
           }
         },
-        { threshold: 0.3 }
+        { 
+          threshold: 0.2,
+          rootMargin: '50px 0px -50px 0px'
+        }
       );
       
       observer.observe(section);
