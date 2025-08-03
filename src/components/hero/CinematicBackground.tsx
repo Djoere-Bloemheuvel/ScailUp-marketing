@@ -2,14 +2,13 @@ import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
 import PremiumOrbs from './PremiumOrbs';
-
 interface CinematicBackgroundProps {
   isInitialLoadComplete?: boolean;
 }
-
-const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgroundProps) => {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
+const CinematicBackground = ({
+  isInitialLoadComplete = false
+}: CinematicBackgroundProps) => {
+  return <div className="absolute inset-0 overflow-hidden">
       {/* Solid black background */}
       <div className="absolute inset-0 bg-black" />
 
@@ -26,17 +25,15 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[68vh] sm:h-[63vh] md:h-[58vh] lg:h-[61vh] xl:h-[65vh] transform -translate-y-4 sm:-translate-y-8 md:-translate-y-10 lg:-translate-y-12">
           {/* Glass container - immediately visible */}
-          <div 
-            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
-            style={{
-              background: `
+          <div className="absolute inset-0 rounded-3xl premium-glass-container-ambient" style={{
+          background: `
                 linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
                 radial-gradient(ellipse 800px 400px at 0% 0%, rgba(34, 211, 238, 0.008) 0%, transparent 50%),
                 radial-gradient(ellipse 600px 300px at 100% 100%, rgba(139, 92, 246, 0.006) 0%, transparent 50%)
               `,
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.06)',
-              boxShadow: `
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.06)',
+          boxShadow: `
                 0 32px 64px rgba(255, 255, 255, 0.01),
                 0 16px 32px rgba(34, 211, 238, 0.02),
                 0 8px 16px rgba(139, 92, 246, 0.02),
@@ -45,9 +42,8 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
                 inset 0 0 100px rgba(34, 211, 238, 0.005),
                 inset 0 0 80px rgba(139, 92, 246, 0.003)
               `,
-              opacity: 1
-            }}
-          />
+          opacity: 1
+        }} />
           
           {/* Colored edge lighting layers - immediately visible */}
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
@@ -55,13 +51,13 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
           
           {/* Ambient light diffusion - immediately visible */}
-          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
+          
         </div>
       </div>
 
       {/* Keep only continuous glow animations, remove entrance animations */}
       <style dangerouslySetInnerHTML={{
-        __html: `
+      __html: `
           @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
               background: 
@@ -218,9 +214,7 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
             }
           }
         `
-      }} />
-    </div>
-  );
+    }} />
+    </div>;
 };
-
 export default CinematicBackground;
