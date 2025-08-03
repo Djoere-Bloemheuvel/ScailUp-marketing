@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'react-router-dom';
 
 const ScrollHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,11 +20,37 @@ const ScrollHeader = () => {
   }, []);
 
   const navItems = [
-    { label: 'Services', href: '#services' },
-    { label: 'Aanpak', href: '#approach' },
-    { label: 'Projecten', href: '#showcase' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Services', href: '#services', path: '/' },
+    { label: 'AI Automations', href: '/ai-automations', path: '/ai-automations' },
+    { label: 'Aanpak', href: '#approach', path: '/' },
+    { label: 'Projecten', href: '#showcase', path: '/' },
+    { label: 'Contact', href: '#contact', path: '/' }
   ];
+
+  const isActive = (item: typeof navItems[0]) => {
+    if (item.path === '/ai-automations') {
+      return location.pathname === '/ai-automations';
+    }
+    return location.pathname === '/' && item.path === '/';
+  };
+
+  const handleNavClick = (item: typeof navItems[0]) => {
+    if (item.path === '/ai-automations') {
+      // This will be handled by React Router
+      return;
+    }
+    
+    // For homepage sections, scroll to anchor if on homepage
+    if (location.pathname === '/' && item.href.startsWith('#')) {
+      const element = document.querySelector(item.href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (item.href.startsWith('#')) {
+      // Navigate to homepage first, then scroll
+      window.location.href = `/${item.href}`;
+    }
+  };
 
   return (
     <header
@@ -48,25 +76,48 @@ const ScrollHeader = () => {
           <div className="flex items-center justify-between">
             {/* Buildrs Logo */}
             <div className="text-white font-bold text-xl tracking-wider font-mono">
-              <span className="bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">
+              <a href="/" className="bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">
                 BUILDRS
-              </span>
+              </a>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-premium-silver hover:text-white transition-colors duration-200 text-sm font-medium"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                if (item.path === '/ai-automations') {
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className={`transition-colors duration-200 text-sm font-medium ${
+                        isActive(item) 
+                          ? 'text-white border-b-2 border-white/50 pb-1' 
+                          : 'text-premium-silver hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                }
+                
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => handleNavClick(item)}
+                    className={`transition-colors duration-200 text-sm font-medium cursor-pointer ${
+                      isActive(item) 
+                        ? 'text-white border-b-2 border-white/50 pb-1' 
+                        : 'text-premium-silver hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
               <Button 
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 text-sm px-4 py-2 rounded-lg backdrop-blur-sm transition-all duration-200"
                 variant="outline"
+                onClick={() => handleNavClick({ label: 'Contact', href: '#contact', path: '/' })}
               >
                 Contact
               </Button>
@@ -92,20 +143,48 @@ const ScrollHeader = () => {
             }`}
           >
             <nav className="flex flex-col space-y-3 pt-2 border-t border-white/10">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-premium-silver hover:text-white transition-colors duration-200 text-sm py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                if (item.path === '/ai-automations') {
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className={`transition-colors duration-200 text-sm py-2 ${
+                        isActive(item) 
+                          ? 'text-white font-semibold' 
+                          : 'text-premium-silver hover:text-white'
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                }
+                
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => {
+                      handleNavClick(item);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`transition-colors duration-200 text-sm py-2 text-left ${
+                      isActive(item) 
+                        ? 'text-white font-semibold' 
+                        : 'text-premium-silver hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
               <Button 
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 text-sm px-4 py-2 rounded-lg backdrop-blur-sm transition-all duration-200 w-full mt-2"
                 variant="outline"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick({ label: 'Contact', href: '#contact', path: '/' });
+                  setIsMobileMenuOpen(false);
+                }}
               >
                 Contact
               </Button>
