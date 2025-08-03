@@ -20,12 +20,12 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       <AICoreCenter />
 
       {/* Main content background boxes - Enhanced with ambient glow reflection */}
-      {/* Glass container is always present now */}
+      {/* Glass container is always present and immediately visible */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
-          {/* Enhanced glass container with ambient glow reflection */}
+          {/* Enhanced glass container with ambient glow reflection - removed animate-fade-in */}
           <div 
-            className="absolute inset-0 rounded-3xl premium-glass-container-ambient animate-fade-in"
+            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
             style={{
               background: `
                 linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
