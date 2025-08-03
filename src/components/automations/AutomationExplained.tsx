@@ -1,4 +1,3 @@
-
 import { Brain } from 'lucide-react';
 
 const AutomationExplained = () => {
@@ -68,11 +67,11 @@ const AutomationExplained = () => {
               
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-premium-silver/90 leading-relaxed font-light max-w-2xl">
-                  <strong className="text-white font-medium">AI automatisering</strong> combineert slimme algoritmes met dagelijkse workflows om repetitieve taken te vervangen door <strong className="text-blue-300 font-medium">zelflerende systemen</strong>. In plaats van handmatige processen kunnen bedrijven nu vertrouwen op <strong className="text-purple-300 font-medium">slimme agents</strong> die e-mails verzenden, leads opvolgen, documenten genereren of klantvragen automatisch afhandelen.
+                  AI automatisering combineert slimme algoritmes met dagelijkse workflows om repetitieve taken te vervangen door zelflerende systemen. In plaats van handmatige processen kunnen bedrijven nu vertrouwen op slimme agents die e-mails verzenden, leads opvolgen, documenten genereren of klantvragen automatisch afhandelen.
                 </p>
                 
                 <p className="text-base md:text-lg text-premium-silver/80 leading-relaxed font-light">
-                  Dit leidt tot hogere <strong className="text-cyan-300 font-medium">efficiëntie</strong>, lagere kosten en meer focus op strategisch werk. <strong className="text-white font-medium">Automatisering voor bedrijven</strong> betekent dat uw team zich kan richten op wat écht belangrijk is: innovatie en groei.
+                  Dit leidt tot hogere efficiëntie, lagere kosten en meer focus op strategisch werk. Automatisering voor bedrijven betekent dat uw team zich kan richten op wat écht belangrijk is: innovatie en groei.
                 </p>
               </div>
             </div>

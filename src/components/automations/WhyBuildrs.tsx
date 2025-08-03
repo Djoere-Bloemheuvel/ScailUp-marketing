@@ -1,4 +1,3 @@
-
 import { Shield, Zap, Users, Settings } from 'lucide-react';
 
 const WhyBuildrs = () => {
@@ -17,11 +16,11 @@ const WhyBuildrs = () => {
               
               <div className="space-y-6">
                 <p className="text-lg md:text-xl text-premium-silver/90 leading-relaxed font-light max-w-2xl lg:ml-auto">
-                  Bij Buildrs combineren we <strong className="text-white font-medium">cutting-edge AI-technologie</strong> met pragmatische automatisering. Onze <strong className="text-blue-300 font-medium">AI oplossingen</strong> zijn modulair, veilig en <strong className="text-purple-300 font-medium">100% no-code</strong>. Dat betekent dat je binnen enkele dagen operationeel bent – zonder developer.
+                  Bij Buildrs combineren we cutting-edge AI-technologie met pragmatische automatisering. Onze AI oplossingen zijn modulair, veilig en 100% no-code. Dat betekent dat je binnen enkele dagen operationeel bent – zonder developer.
                 </p>
                 
                 <p className="text-base md:text-lg text-premium-silver/80 leading-relaxed font-light lg:ml-auto max-w-2xl">
-                  We integreren met jouw bestaande tools, zoals <strong className="text-cyan-300 font-medium">HubSpot</strong>, Notion, Slack, Airtable en Instantly. Onze <strong className="text-emerald-300 font-medium">modulaire automatisering</strong> is schaalbaar, beveiligd met <strong className="text-orange-300 font-medium">data security</strong> en altijd afgestemd op jouw organisatie.
+                  We integreren met jouw bestaande tools, zoals HubSpot, Notion, Slack, Airtable en Instantly. Onze modulaire automatisering is schaalbaar, beveiligd met data security en altijd afgestemd op jouw organisatie.
                 </p>
               </div>
             </div>
