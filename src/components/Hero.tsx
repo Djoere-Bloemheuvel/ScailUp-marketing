@@ -1,4 +1,3 @@
-
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -288,25 +287,10 @@ const Hero = () => {
       {/* Content - Centered */}
       <div className="relative max-w-5xl mx-auto z-30 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Apple-style product badge */}
-          <div className={`mb-12 flex justify-center ${isLoaded ? 'apple-fade-in' : ''}`}>
-            <div className="inline-flex items-center px-8 py-4 rounded-full bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] apple-card-hover group cursor-pointer">
-              <div className="relative mr-3">
-                <Zap className="w-5 h-5 text-premium-silver-light group-hover:text-white transition-colors duration-500" />
-              </div>
-              <span className="text-premium-silver-light group-hover:text-white text-sm font-medium tracking-wide transition-colors duration-500">
-                Gebouwd voor AI Intelligence
-              </span>
-            </div>
-          </div>
-          
           {/* Apple-inspired typography hierarchy - centered */}
-          <h1 className={`font-bold tracking-tight leading-[0.9] ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
+          <h1 className={`font-bold tracking-tight leading-[0.9] mb-8 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
             <div className="text-6xl md:text-8xl lg:text-9xl text-white">
               AI die werkt.
-            </div>
-            <div className="text-4xl md:text-6xl lg:text-7xl text-premium-silver font-normal">
-              Eindelijk.
             </div>
           </h1>
           
@@ -340,12 +324,6 @@ const Hero = () => {
                 <Sparkles className="ml-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
               </span>
             </Button>
-          </div>
-
-          {/* Apple-style feature highlight - centered */}
-          <div className={`${isLoaded ? 'apple-fade-in apple-stagger-5' : ''}`}>
-            <p className="text-lg text-premium-silver/60 mb-2">Gebouwd voor Apple Intelligence</p>
-            <p className="text-sm text-premium-silver/40 italic">Premium AI-engineering voor visionairs</p>
           </div>
         </div>
       </div>
