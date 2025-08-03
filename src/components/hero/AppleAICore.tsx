@@ -16,11 +16,11 @@ const AppleAICore = () => {
         {/* Main processor core */}
         <div className="relative w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem]">
           
-          {/* Core processor hexagon */}
+          {/* Cinematic soft glow box - Core processor hexagon with ambient pulsing edges */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
-            {/* Hexagonal core structure */}
+            {/* Hexagonal core structure - Cinematic soft glow box container */}
             <div 
-              className="w-full h-full bg-gradient-to-br from-white/10 via-gray-800/20 to-gray-900/30 backdrop-blur-sm border border-gray-600/15 relative overflow-hidden apple-core-entrance"
+              className="w-full h-full bg-gradient-to-br from-white/10 via-gray-800/20 to-gray-900/30 backdrop-blur-sm border border-gray-600/15 relative overflow-hidden apple-core-entrance cinematic-soft-glow-box"
               style={{
                 clipPath: 'polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)',
                 boxShadow: '0 0 60px rgba(34, 211, 238, 0.15), 0 0 120px rgba(147, 51, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
@@ -48,22 +48,22 @@ const AppleAICore = () => {
             </div>
           </div>
           
-          {/* Light rings - outer to inner */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] apple-ring-rotate-slow">
+          {/* Ambient pulsing edges - Light rings with cinematic glow effects */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] apple-ring-rotate-slow ambient-pulsing-edges">
             <div className="w-full h-full rounded-full border border-gray-500/10 relative">
               <div className="absolute top-0 left-1/2 w-2 h-8 bg-gradient-to-b from-cyan-400/60 to-transparent transform -translate-x-1/2 blur-sm"></div>
               <div className="absolute bottom-0 left-1/2 w-2 h-6 bg-gradient-to-t from-violet-400/50 to-transparent transform -translate-x-1/2 blur-sm"></div>
             </div>
           </div>
           
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 apple-ring-rotate-medium">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 apple-ring-rotate-medium ambient-pulsing-edges">
             <div className="w-full h-full rounded-full border border-gray-500/8 relative">
               <div className="absolute left-0 top-1/2 w-8 h-2 bg-gradient-to-r from-pink-400/55 to-transparent transform -translate-y-1/2 blur-sm"></div>
               <div className="absolute right-0 top-1/2 w-6 h-2 bg-gradient-to-l from-emerald-400/45 to-transparent transform -translate-y-1/2 blur-sm"></div>
             </div>
           </div>
           
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 apple-ring-rotate-fast">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 apple-ring-rotate-fast ambient-pulsing-edges">
             <div className="w-full h-full rounded-full border border-gray-400/12 relative opacity-80">
               <div className="absolute top-0 right-0 w-1 h-4 bg-cyan-400/70 transform rotate-45 blur-sm"></div>
               <div className="absolute bottom-0 left-0 w-1 h-4 bg-violet-400/60 transform -rotate-45 blur-sm"></div>
@@ -104,8 +104,8 @@ const AppleAICore = () => {
           </div>
         </div>
         
-        {/* Ambient core glow */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] md:w-[40rem] md:h-[40rem] lg:w-[48rem] lg:h-[48rem] bg-gradient-radial from-cyan-500/8 via-violet-500/4 to-transparent opacity-80 apple-ambient-pulse"></div>
+        {/* Cinematic ambient core glow with soft pulsing */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] md:w-[40rem] md:h-[40rem] lg:w-[48rem] lg:h-[48rem] bg-gradient-radial from-cyan-500/8 via-violet-500/4 to-transparent opacity-80 apple-ambient-pulse cinematic-ambient-glow"></div>
         
         {/* Top-down directional glow */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] bg-gradient-to-b from-white/[0.02] via-transparent to-transparent rounded-full opacity-60"></div>
