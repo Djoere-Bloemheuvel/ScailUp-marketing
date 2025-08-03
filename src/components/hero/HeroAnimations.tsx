@@ -1,11 +1,209 @@
-
 import React from 'react';
 
 const HeroAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{
       __html: `
-      /* Ecosystem Animation Keyframes */
+      /* Premium Animation Keyframes */
+      @keyframes premium-fade-in {
+        0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      @keyframes premium-orb-float-slow {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-30px) scale(1.02); }
+      }
+
+      @keyframes premium-orb-float-medium {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-20px) scale(1.03); }
+      }
+
+      @keyframes premium-orb-float-fast {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-15px) scale(1.05); }
+      }
+
+      @keyframes premium-orb-glow-silver {
+        0%, 100% { box-shadow: 0 0 60px rgba(192, 192, 192, 0.1), 0 0 120px rgba(192, 192, 192, 0.05); }
+        50% { box-shadow: 0 0 80px rgba(192, 192, 192, 0.2), 0 0 160px rgba(192, 192, 192, 0.08); }
+      }
+
+      @keyframes premium-orb-glow-blue {
+        0%, 100% { box-shadow: 0 0 50px rgba(59, 130, 246, 0.08), 0 0 100px rgba(59, 130, 246, 0.04); }
+        50% { box-shadow: 0 0 70px rgba(59, 130, 246, 0.15), 0 0 140px rgba(59, 130, 246, 0.06); }
+      }
+
+      @keyframes premium-orb-glow-purple {
+        0%, 100% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.06), 0 0 80px rgba(147, 51, 234, 0.03); }
+        50% { box-shadow: 0 0 60px rgba(147, 51, 234, 0.12), 0 0 120px rgba(147, 51, 234, 0.05); }
+      }
+
+      @keyframes premium-orb-glow-cyan {
+        0%, 100% { box-shadow: 0 0 35px rgba(34, 211, 238, 0.05), 0 0 70px rgba(34, 211, 238, 0.02); }
+        50% { box-shadow: 0 0 50px rgba(34, 211, 238, 0.1), 0 0 100px rgba(34, 211, 238, 0.04); }
+      }
+
+      @keyframes premium-orb-glow-green {
+        0%, 100% { box-shadow: 0 0 35px rgba(34, 197, 94, 0.05), 0 0 70px rgba(34, 197, 94, 0.02); }
+        50% { box-shadow: 0 0 50px rgba(34, 197, 94, 0.1), 0 0 100px rgba(34, 197, 94, 0.04); }
+      }
+
+      @keyframes premium-orb-pulse {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+      }
+
+      @keyframes premium-core-pulse {
+        0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+      }
+
+      @keyframes premium-icon-float-1 {
+        0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+        33% { transform: translateX(-50%) translateY(-15px) rotate(1deg); }
+        66% { transform: translateX(-50%) translateY(-5px) rotate(-0.5deg); }
+      }
+
+      @keyframes premium-icon-float-2 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(2deg); }
+      }
+
+      @keyframes premium-icon-float-3 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        40% { transform: translateY(-10px) rotate(-1deg); }
+        80% { transform: translateY(-18px) rotate(1.5deg); }
+      }
+
+      @keyframes premium-icon-float-4 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        60% { transform: translateY(-12px) rotate(-2deg); }
+      }
+
+      @keyframes premium-icon-float-5 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(1deg); }
+      }
+
+      @keyframes premium-icon-float-6 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        30% { transform: translateY(-14px) rotate(-1deg); }
+        70% { transform: translateY(-6px) rotate(2deg); }
+      }
+
+      @keyframes premium-icon-float-7 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-16px) rotate(1.5deg); }
+      }
+
+      @keyframes premium-icon-float-8 {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        45% { transform: translateY(-11px) rotate(-1.5deg); }
+        85% { transform: translateY(-3px) rotate(0.5deg); }
+      }
+
+      @keyframes premium-icon-breathe {
+        0%, 100% { opacity: 0.7; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+      }
+
+      @keyframes premium-icon-glow-silver {
+        0%, 100% { box-shadow: 0 0 20px rgba(192, 192, 192, 0.2), 0 0 40px rgba(192, 192, 192, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+        50% { box-shadow: 0 0 30px rgba(192, 192, 192, 0.3), 0 0 60px rgba(192, 192, 192, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-blue {
+        0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(59, 130, 246, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4), 0 0 50px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(59, 130, 246, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-purple {
+        0%, 100% { box-shadow: 0 0 15px rgba(147, 51, 234, 0.3), 0 0 30px rgba(147, 51, 234, 0.15), inset 0 1px 0 rgba(147, 51, 234, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(147, 51, 234, 0.4), 0 0 50px rgba(147, 51, 234, 0.2), inset 0 1px 0 rgba(147, 51, 234, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-green {
+        0%, 100% { box-shadow: 0 0 15px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.15), inset 0 1px 0 rgba(34, 197, 94, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(34, 197, 94, 0.4), 0 0 50px rgba(34, 197, 94, 0.2), inset 0 1px 0 rgba(34, 197, 94, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-cyan {
+        0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.3), 0 0 30px rgba(34, 211, 238, 0.15), inset 0 1px 0 rgba(34, 211, 238, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(34, 211, 238, 0.4), 0 0 50px rgba(34, 211, 238, 0.2), inset 0 1px 0 rgba(34, 211, 238, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-orange {
+        0%, 100% { box-shadow: 0 0 15px rgba(249, 115, 22, 0.3), 0 0 30px rgba(249, 115, 22, 0.15), inset 0 1px 0 rgba(249, 115, 22, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(249, 115, 22, 0.4), 0 0 50px rgba(249, 115, 22, 0.2), inset 0 1px 0 rgba(249, 115, 22, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-pink {
+        0%, 100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.3), 0 0 30px rgba(236, 72, 153, 0.15), inset 0 1px 0 rgba(236, 72, 153, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.4), 0 0 50px rgba(236, 72, 153, 0.2), inset 0 1px 0 rgba(236, 72, 153, 0.3); }
+      }
+
+      @keyframes premium-icon-glow-indigo {
+        0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.3), 0 0 30px rgba(99, 102, 241, 0.15), inset 0 1px 0 rgba(99, 102, 241, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(99, 102, 241, 0.4), 0 0 50px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(99, 102, 241, 0.3); }
+      }
+
+      @keyframes premium-icon-shimmer {
+        0% { opacity: 0; transform: translateX(-100%); }
+        50% { opacity: 0.8; }
+        100% { opacity: 0; transform: translateX(100%); }
+      }
+
+      @keyframes premium-scan-sweep-horizontal {
+        0% { transform: translateX(-100%); opacity: 0; }
+        10%, 90% { opacity: 1; }
+        100% { transform: translateX(200%); opacity: 0; }
+      }
+
+      @keyframes premium-scan-sweep-vertical {
+        0% { transform: translateY(-100%); opacity: 0; }
+        10%, 90% { opacity: 1; }
+        100% { transform: translateY(200%); opacity: 0; }
+      }
+
+      @keyframes premium-scan-sweep-diagonal {
+        0% { transform: translateX(-100%) translateY(-100%); opacity: 0; }
+        10%, 90% { opacity: 1; }
+        100% { transform: translateX(200%) translateY(200%); opacity: 0; }
+      }
+
+      @keyframes premium-connection-pulse {
+        0%, 100% { opacity: 0.1; stroke-width: 1; }
+        50% { opacity: 0.4; stroke-width: 1.5; }
+      }
+
+      @keyframes premium-ambient-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+
+      @keyframes premium-scroll-pulse {
+        0%, 100% { opacity: 0.5; transform: translateY(0); }
+        50% { opacity: 1; transform: translateY(12px); }
+      }
+
+      @keyframes premium-particle-trail {
+        0%, 100% { opacity: 0; transform: scale(0.8); }
+        50% { opacity: 0.6; transform: scale(1.2); }
+      }
+
+      @keyframes premium-button-hover {
+        0% { transform: scale(1) translateY(0); }
+        100% { transform: scale(1.02) translateY(-2px); }
+      }
+
+      @keyframes premium-scale-hover {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.02); }
+      }
+
+      /* Existing ecosystem and robot animations */
       @keyframes ai-ecosystem-float {
         0%, 100% { transform: translateY(0) rotate(0deg); }
         50% { transform: translateY(-20px) rotate(2deg); }
@@ -140,246 +338,177 @@ const HeroAnimations = () => {
         50% { opacity: 0.8; stroke-width: 2; }
       }
 
-      /* AI Robot Animation Keyframes */
-      @keyframes ai-robot-float {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-25px) rotate(1deg); }
+      /* Apply Premium Animations */
+      .premium-fade-in {
+        animation: premium-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      @keyframes ai-robot-glow {
-        0%, 100% { box-shadow: 0 0 30px rgba(156, 163, 175, 0.1), inset 0 0 20px rgba(156, 163, 175, 0.05); }
-        50% { box-shadow: 0 0 50px rgba(156, 163, 175, 0.2), inset 0 0 30px rgba(156, 163, 175, 0.1); }
+      .premium-stagger-1 {
+        animation-delay: 0.2s;
       }
 
-      @keyframes ai-robot-connection-pulse {
-        0%, 100% { opacity: 0.4; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.1); }
+      .premium-stagger-2 {
+        animation-delay: 0.4s;
       }
 
-      @keyframes ai-robot-line-pulse {
-        0%, 100% { opacity: 0.2; stroke-width: 1; }
-        50% { opacity: 0.6; stroke-width: 2; }
+      .premium-stagger-3 {
+        animation-delay: 0.6s;
       }
 
-      @keyframes ai-robot-brain-pulse {
-        0%, 100% { opacity: 0.7; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.1); }
+      .premium-orb-float-slow {
+        animation: premium-orb-float-slow 12s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-chip-pulse {
-        0%, 100% { opacity: 0.7; transform: scale(1) rotate(0deg); }
-        50% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+      .premium-orb-float-medium {
+        animation: premium-orb-float-medium 9s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-brain-glow {
-        0%, 100% { box-shadow: 0 0 15px rgba(156, 163, 175, 0.1); }
-        50% { box-shadow: 0 0 25px rgba(156, 163, 175, 0.3), inset 0 0 15px rgba(156, 163, 175, 0.1); }
+      .premium-orb-float-fast {
+        animation: premium-orb-float-fast 6s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-chip-glow {
-        0%, 100% { box-shadow: 0 0 15px rgba(156, 163, 175, 0.1); }
-        50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.2), inset 0 0 15px rgba(59, 130, 246, 0.05); }
+      .premium-orb-glow-silver {
+        animation: premium-orb-glow-silver 8s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-eye-ring-pulse {
-        0%, 100% { border-color: rgba(156, 163, 175, 0.3); transform: scale(1); }
-        50% { border-color: rgba(156, 163, 175, 0.6); transform: scale(1.05); }
+      .premium-orb-glow-blue {
+        animation: premium-orb-glow-blue 7s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-eye-glow {
-        0%, 100% { box-shadow: 0 0 20px rgba(156, 163, 175, 0.2); }
-        50% { box-shadow: 0 0 40px rgba(156, 163, 175, 0.4), inset 0 0 20px rgba(156, 163, 175, 0.2); }
+      .premium-orb-glow-purple {
+        animation: premium-orb-glow-purple 9s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-eye-pulse {
-        0%, 100% { opacity: 0.8; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
+      .premium-orb-glow-cyan {
+        animation: premium-orb-glow-cyan 6s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-progress-fill {
-        0% { width: 20%; opacity: 0.4; }
-        50% { width: 80%; opacity: 0.8; }
-        100% { width: 60%; opacity: 0.6; }
+      .premium-orb-glow-green {
+        animation: premium-orb-glow-green 8s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-particle-float {
-        0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-        50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+      .premium-orb-pulse {
+        animation: premium-orb-pulse 4s ease-in-out infinite;
       }
 
-      @keyframes ai-robot-external-connection {
-        0%, 100% { opacity: 0.2; stroke-width: 1; }
-        50% { opacity: 0.7; stroke-width: 2; }
+      .premium-core-pulse {
+        animation: premium-core-pulse 3s ease-in-out infinite;
       }
 
-      /* Apply animations */
-      .ai-device-ecosystem-float {
-        animation: ai-ecosystem-float 6s ease-in-out infinite;
+      .premium-icon-float-1 {
+        animation: premium-icon-float-1 15s ease-in-out infinite;
       }
 
-      .ai-device-ecosystem-float-delayed {
-        animation: ai-ecosystem-float-delayed 8s ease-in-out infinite;
+      .premium-icon-float-2 {
+        animation: premium-icon-float-2 11s ease-in-out infinite;
       }
 
-      .ai-device-ecosystem-float-slow {
-        animation: ai-ecosystem-float-slow 10s ease-in-out infinite;
+      .premium-icon-float-3 {
+        animation: premium-icon-float-3 13s ease-in-out infinite;
       }
 
-      .ai-device-ecosystem-float-center {
-        animation: ai-ecosystem-float-center 7s ease-in-out infinite;
+      .premium-icon-float-4 {
+        animation: premium-icon-float-4 9s ease-in-out infinite;
       }
 
-      .ai-device-ecosystem-float-autonomous {
-        animation: ai-ecosystem-float-autonomous 9s ease-in-out infinite;
+      .premium-icon-float-5 {
+        animation: premium-icon-float-5 14s ease-in-out infinite;
       }
 
-      .ai-ecosystem-pulse {
-        animation: ai-ecosystem-pulse 2s ease-in-out infinite;
+      .premium-icon-float-6 {
+        animation: premium-icon-float-6 10s ease-in-out infinite;
       }
 
-      .ai-ecosystem-glow-blue {
-        animation: ai-ecosystem-glow-blue 4s ease-in-out infinite;
+      .premium-icon-float-7 {
+        animation: premium-icon-float-7 12s ease-in-out infinite;
       }
 
-      .ai-ecosystem-glow-purple {
-        animation: ai-ecosystem-glow-purple 5s ease-in-out infinite;
+      .premium-icon-float-8 {
+        animation: premium-icon-float-8 8s ease-in-out infinite;
       }
 
-      .ai-ecosystem-glow-gray {
-        animation: ai-ecosystem-glow-gray 6s ease-in-out infinite;
+      .premium-icon-breathe {
+        animation: premium-icon-breathe 5s ease-in-out infinite;
       }
 
-      .ai-ecosystem-glow-cyan {
-        animation: ai-ecosystem-glow-cyan 4.5s ease-in-out infinite;
+      .premium-icon-glow-silver {
+        animation: premium-icon-glow-silver 6s ease-in-out infinite;
       }
 
-      .ai-ecosystem-glow-green {
-        animation: ai-ecosystem-glow-green 5.5s ease-in-out infinite;
+      .premium-icon-glow-blue {
+        animation: premium-icon-glow-blue 5s ease-in-out infinite;
       }
 
-      .ai-ecosystem-spin {
-        animation: ai-ecosystem-spin 4s linear infinite;
+      .premium-icon-glow-purple {
+        animation: premium-icon-glow-purple 7s ease-in-out infinite;
       }
 
-      .ai-ecosystem-data-flow {
-        animation: ai-ecosystem-data-flow 3s ease-in-out infinite;
+      .premium-icon-glow-green {
+        animation: premium-icon-glow-green 6s ease-in-out infinite;
       }
 
-      .ai-ecosystem-orbit {
-        animation: ai-ecosystem-orbit 20s linear infinite;
+      .premium-icon-glow-cyan {
+        animation: premium-icon-glow-cyan 5.5s ease-in-out infinite;
       }
 
-      .ai-ecosystem-brain-pulse {
-        animation: ai-ecosystem-brain-pulse 3s ease-in-out infinite;
+      .premium-icon-glow-orange {
+        animation: premium-icon-glow-orange 6.5s ease-in-out infinite;
       }
 
-      .ai-ecosystem-message-type {
-        animation: ai-ecosystem-message-type 4s ease-in-out infinite;
+      .premium-icon-glow-pink {
+        animation: premium-icon-glow-pink 7.5s ease-in-out infinite;
       }
 
-      .ai-ecosystem-message-pulse {
-        animation: ai-ecosystem-message-pulse 2s ease-in-out infinite;
+      .premium-icon-glow-indigo {
+        animation: premium-icon-glow-indigo 8s ease-in-out infinite;
       }
 
-      .ai-ecosystem-analytics-pulse {
-        animation: ai-ecosystem-analytics-pulse 2.5s ease-in-out infinite;
+      .premium-icon-shimmer {
+        animation: premium-icon-shimmer 8s ease-in-out infinite;
       }
 
-      .ai-ecosystem-server-pulse {
-        animation: ai-ecosystem-server-pulse 1.8s ease-in-out infinite;
+      .premium-scan-sweep-horizontal {
+        animation: premium-scan-sweep-horizontal 15s ease-in-out infinite;
+        top: 25%;
       }
 
-      .ai-ecosystem-status-blink {
-        animation: ai-ecosystem-status-blink 1.5s ease-in-out infinite;
+      .premium-scan-sweep-vertical {
+        animation: premium-scan-sweep-vertical 18s ease-in-out infinite;
+        left: 35%;
       }
 
-      .ai-ecosystem-agent-pulse {
-        animation: ai-ecosystem-agent-pulse 2.2s ease-in-out infinite;
-      }
-
-      .ai-ecosystem-float-particle {
-        animation: ai-ecosystem-float-particle 8s ease-in-out infinite;
-      }
-
-      .scan-sweep-horizontal {
-        animation: scan-sweep-horizontal 8s ease-in-out infinite;
-        top: 20%;
-      }
-
-      .scan-sweep-vertical {
-        animation: scan-sweep-vertical 10s ease-in-out infinite;
-        left: 30%;
-      }
-
-      .scan-sweep-diagonal {
-        animation: scan-sweep-diagonal 12s ease-in-out infinite;
+      .premium-scan-sweep-diagonal {
+        animation: premium-scan-sweep-diagonal 20s ease-in-out infinite;
         top: 0;
         left: 0;
         width: 200%;
         height: 1px;
         transform-origin: 0 0;
-        transform: rotate(25deg);
+        transform: rotate(30deg);
       }
 
-      .ai-ecosystem-connection-pulse {
-        animation: ai-ecosystem-connection-pulse 3s ease-in-out infinite;
+      .premium-connection-pulse {
+        animation: premium-connection-pulse 8s ease-in-out infinite;
       }
 
-      /* Apply AI Robot animations */
-      .ai-robot-float {
-        animation: ai-robot-float 8s ease-in-out infinite;
+      .premium-ambient-pulse {
+        animation: premium-ambient-pulse 20s ease-in-out infinite;
       }
 
-      .ai-robot-glow {
-        animation: ai-robot-glow 6s ease-in-out infinite;
+      .premium-scroll-pulse {
+        animation: premium-scroll-pulse 3s ease-in-out infinite;
       }
 
-      .ai-robot-connection-pulse {
-        animation: ai-robot-connection-pulse 2s ease-in-out infinite;
+      .premium-particle-trail {
+        animation: premium-particle-trail 6s ease-in-out infinite;
       }
 
-      .ai-robot-line-pulse {
-        animation: ai-robot-line-pulse 3s ease-in-out infinite;
+      .premium-button-hover:hover {
+        animation: premium-button-hover 0.3s ease-out forwards;
       }
 
-      .ai-robot-brain-pulse {
-        animation: ai-robot-brain-pulse 2.5s ease-in-out infinite;
-      }
-
-      .ai-robot-chip-pulse {
-        animation: ai-robot-chip-pulse 3s ease-in-out infinite;
-      }
-
-      .ai-robot-brain-glow {
-        animation: ai-robot-brain-glow 4s ease-in-out infinite;
-      }
-
-      .ai-robot-chip-glow {
-        animation: ai-robot-chip-glow 4.5s ease-in-out infinite;
-      }
-
-      .ai-robot-eye-ring-pulse {
-        animation: ai-robot-eye-ring-pulse 4s ease-in-out infinite;
-      }
-
-      .ai-robot-eye-glow {
-        animation: ai-robot-eye-glow 5s ease-in-out infinite;
-      }
-
-      .ai-robot-eye-pulse {
-        animation: ai-robot-eye-pulse 3s ease-in-out infinite;
-      }
-
-      .ai-robot-progress-fill {
-        animation: ai-robot-progress-fill 4s ease-in-out infinite;
-      }
-
-      .ai-robot-particle-float {
-        animation: ai-robot-particle-float 6s ease-in-out infinite;
-      }
-
-      .ai-robot-external-connection {
-        animation: ai-robot-external-connection 3.5s ease-in-out infinite;
+      .premium-scale-hover:hover {
+        animation: premium-scale-hover 0.2s ease-out forwards;
       }
       `
     }} />
