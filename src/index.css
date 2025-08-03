@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -52,6 +53,50 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Apple-inspired animations */
+  .apple-fade-in {
+    animation: appleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .apple-stagger-2 { animation-delay: 0.2s; }
+  .apple-stagger-3 { animation-delay: 0.4s; }
+  .apple-stagger-4 { animation-delay: 0.6s; }
+  .apple-stagger-5 { animation-delay: 0.8s; }
+
+  .apple-glow {
+    animation: appleGlow 8s ease-in-out infinite;
+  }
+
+  .apple-card-hover {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-card-hover:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .apple-button-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-button-hover:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .apple-scale-hover:hover {
+    transform: scale(1.02);
+  }
+
+  .apple-scroll-pulse {
+    animation: appleScrollPulse 2s ease-in-out infinite;
+  }
+
+  /* Keep existing utilities */
   .text-gradient {
     @apply bg-gradient-to-r from-white via-premium-silver to-premium-silver-light bg-clip-text text-transparent;
     background-size: 200% 200%;
@@ -215,6 +260,37 @@ All colors MUST be HSL.
   }
 }
 
+/* Apple-inspired keyframes */
+@keyframes appleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appleGlow {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes appleScrollPulse {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  50% { 
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+
+/* Keep all existing keyframes */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }

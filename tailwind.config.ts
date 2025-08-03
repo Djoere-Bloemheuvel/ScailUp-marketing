@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -79,6 +80,9 @@ export default {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
+			fontFamily: {
+				'apple': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -115,6 +119,19 @@ export default {
 				'gradient-shift': {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' }
+				},
+				// Apple-inspired animations
+				'apple-fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(30px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'apple-glow': {
+					'0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+					'50%': { opacity: '0.5', transform: 'scale(1.05)' }
+				},
+				'apple-scroll-pulse': {
+					'0%, 100%': { opacity: '0.4', transform: 'translateY(0)' },
+					'50%': { opacity: '1', transform: 'translateY(8px)' }
 				}
 			},
 			animation: {
@@ -123,7 +140,11 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out',
 				'glow': 'glow 2s ease-in-out infinite',
 				'pulse-premium': 'pulse-premium 2s ease-in-out infinite',
-				'gradient-shift': 'gradient-shift 3s ease-in-out infinite'
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
+				// Apple-inspired animations
+				'apple-fade-in': 'apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+				'apple-glow': 'apple-glow 8s ease-in-out infinite',
+				'apple-scroll-pulse': 'apple-scroll-pulse 2s ease-in-out infinite'
 			}
 		}
 	},
