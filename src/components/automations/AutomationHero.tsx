@@ -1,3 +1,4 @@
+
 import { ChevronRight, Cog, Sparkles, Zap, Clock, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,18 +7,22 @@ const AutomationHero = () => {
     icon: Zap,
     title: 'Snelheid',
     description: 'Processen die 8 uur duurden, voltooien wij in 3 minuten. Elke dag opnieuw.',
-    accentColor: 'from-blue-500 to-purple-600'
+    accentColor: 'from-blue-500 to-purple-600',
+    glowColor: 'rgba(59, 130, 246, 0.3)' // Blue glow
   }, {
     icon: Clock,
     title: '24/7 Operationeel',
     description: 'Uw automatisering stopt nooit. Weekenden, nachten — altijd actief.',
-    accentColor: 'from-purple-500 to-pink-600'
+    accentColor: 'from-purple-500 to-pink-600',
+    glowColor: 'rgba(147, 51, 234, 0.3)' // Purple glow
   }, {
     icon: Target,
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
-    accentColor: 'from-green-500 to-blue-600'
+    accentColor: 'from-green-500 to-blue-600',
+    glowColor: 'rgba(236, 72, 153, 0.3)' // Pink glow
   }];
+
   return <section className="relative py-20 lg:py-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
@@ -84,7 +89,8 @@ const AutomationHero = () => {
                   0 8px 32px rgba(0, 0, 0, 0.3),
                   0 4px 16px rgba(0, 0, 0, 0.2),
                   inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                  inset 0 -1px 0 rgba(255, 255, 255, 0.05)
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+                  0 0 20px ${benefit.glowColor}
                 `
         }}>
               {/* Enhanced Glassmorphic hover glow effect */}
@@ -96,6 +102,14 @@ const AutomationHero = () => {
 
               {/* Premium hover border enhancement */}
               <div className="absolute inset-0 rounded-2xl border border-white/0 group-hover:border-white/30 transition-all duration-500 ease-out" />
+              
+              {/* Stronger glow on hover */}
+              <div 
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out -z-20" 
+                style={{
+                  boxShadow: `0 0 40px ${benefit.glowColor.replace('0.3', '0.6')}, 0 0 80px ${benefit.glowColor.replace('0.3', '0.4')}`
+                }}
+              />
               
               {/* Dynamic ambient glow on hover */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 ease-out" style={{
@@ -118,8 +132,8 @@ const AutomationHero = () => {
                   backdropFilter: 'blur(10px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)'
                 }}>
-                      {/* Icon with enhanced glow and hover animation */}
-                      <benefit.icon className="w-10 h-10 text-white/90 relative z-10 drop-shadow-lg transition-all duration-500 group-hover:text-white group-hover:drop-shadow-2xl group-hover:scale-110" />
+                      {/* Icon with uniform white color and enhanced glow and hover animation */}
+                      <benefit.icon className="w-10 h-10 text-white relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110" />
                       
                       {/* Enhanced glassmorphic inner glow with hover animation */}
                       <div className="absolute inset-2 rounded-xl opacity-10 group-hover:opacity-30 transition-all duration-500" style={{
