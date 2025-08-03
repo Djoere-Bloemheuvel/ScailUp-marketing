@@ -1,3 +1,4 @@
+
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity, Cog, MessageSquare, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
@@ -257,7 +258,8 @@ const Hero = () => {
       </div>
 
       {/* Enhanced CSS Animations */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         /* Ecosystem Animation Keyframes */
         @keyframes ai-ecosystem-float {
           0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -505,7 +507,8 @@ const Hero = () => {
         .ai-ecosystem-connection-pulse {
           animation: ai-ecosystem-connection-pulse 3s ease-in-out infinite;
         }
-      `}</style>
+        `
+      }} />
     </section>
   );
 };
