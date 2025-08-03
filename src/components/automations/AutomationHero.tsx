@@ -38,17 +38,17 @@ const AutomationHero = () => {
     icon: Target,
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
-    accentColor: 'from-emerald-400 to-green-500',
-    glowColor: 'shadow-[0_0_30px_rgba(16,185,129,0.3)]', // Enhanced emerald glow
-    hoverGlow: 'hover:shadow-[0_0_50px_rgba(16,185,129,0.5),0_0_80px_rgba(16,185,129,0.3)]', // Stronger emerald glow on hover
-    radiantGlow: 'shadow-[0_0_60px_rgba(16,185,129,0.2),0_0_120px_rgba(16,185,129,0.1),0_0_200px_rgba(16,185,129,0.05)]', // Outward radiant glow
-    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(16,185,129,0.4),0_0_160px_rgba(16,185,129,0.2),0_0_300px_rgba(16,185,129,0.1)]', // Stronger radiant glow on hover
-    iconColor: 'text-emerald-400',
-    nativeColor: 'emerald',
-    borderColor: 'border-emerald-500/20',
-    hoverBorderColor: 'group-hover:border-emerald-400/40',
-    backgroundTint: 'rgba(16, 185, 129, 0.03)',
-    hoverBackgroundTint: 'rgba(16, 185, 129, 0.08)'
+    accentColor: 'from-blue-400 to-purple-500',
+    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.3)]', // Blue-purple glow
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(99,102,241,0.5),0_0_80px_rgba(99,102,241,0.3)]', // Stronger blue-purple glow on hover
+    radiantGlow: 'shadow-[0_0_60px_rgba(99,102,241,0.2),0_0_120px_rgba(99,102,241,0.1),0_0_200px_rgba(99,102,241,0.05)]', // Outward radiant glow
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(99,102,241,0.4),0_0_160px_rgba(99,102,241,0.2),0_0_300px_rgba(99,102,241,0.1)]', // Stronger radiant glow on hover
+    iconColor: 'text-indigo-400',
+    nativeColor: 'indigo',
+    borderColor: 'border-indigo-500/20',
+    hoverBorderColor: 'group-hover:border-indigo-400/40',
+    backgroundTint: 'rgba(99, 102, 241, 0.03)',
+    hoverBackgroundTint: 'rgba(99, 102, 241, 0.08)'
   }];
 
   return <section className="relative py-20 lg:py-32 overflow-hidden">
@@ -136,7 +136,7 @@ const AutomationHero = () => {
                 ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(')
                   .replace('sky-400', '56, 189, 248, 0.4').replace('blue-500', '59, 130, 246, 0.4')
                   .replace('violet-400', '139, 92, 246, 0.4').replace('indigo-600', '79, 70, 229, 0.4')
-                  .replace('emerald-400', '16, 185, 129, 0.4').replace('green-500', '34, 197, 94, 0.4')} 50%, 
+                  .replace('blue-400', '96, 165, 250, 0.4').replace('purple-500', '168, 85, 247, 0.4')} 50%, 
                 ${benefit.hoverBackgroundTint} 100%
               )
             `,
@@ -148,7 +148,7 @@ const AutomationHero = () => {
               <div className={`absolute inset-0 rounded-2xl border opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out`} style={{
             borderColor: benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.4)' : 
                          benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.4)' : 
-                         'rgba(16, 185, 129, 0.4)'
+                         'rgba(99, 102, 241, 0.4)'
           }} />
               
               {/* Dynamic ambient glow on hover with native colors */}
@@ -158,13 +158,13 @@ const AutomationHero = () => {
 
               {/* New: Extended Outward Radiant Glow - positioned outside the card */}
               <div className="absolute -inset-8 rounded-3xl opacity-0 group-hover:opacity-30 transition-all duration-1000 ease-out -z-20" style={{
-            background: `radial-gradient(ellipse 200% 150% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.15)' : benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.15)' : 'rgba(16, 185, 129, 0.15)'} 0%, transparent 60%)`,
+            background: `radial-gradient(ellipse 200% 150% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.15)' : benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.15)' : 'rgba(99, 102, 241, 0.15)'} 0%, transparent 60%)`,
             filter: 'blur(40px)'
           }} />
 
               {/* New: Far Extended Radiant Glow - even further outward */}
               <div className="absolute -inset-16 rounded-full opacity-0 group-hover:opacity-20 transition-all duration-1500 ease-out -z-30" style={{
-            background: `radial-gradient(ellipse 300% 200% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.08)' : benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(16, 185, 129, 0.08)'} 0%, transparent 70%)`,
+            background: `radial-gradient(ellipse 300% 200% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.08)' : benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(99, 102, 241, 0.08)'} 0%, transparent 70%)`,
             filter: 'blur(60px)'
           }} />
               
@@ -188,7 +188,7 @@ const AutomationHero = () => {
                   backdropFilter: 'blur(10px)',
                   border: `1px solid ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.2)' : 
                           benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.2)' : 
-                          'rgba(16, 185, 129, 0.2)'}`
+                          'rgba(99, 102, 241, 0.2)'}`
                 }}>
                       {/* Icon with native color */}
                       <benefit.icon className={`w-10 h-10 ${benefit.iconColor} relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110`} />
@@ -222,12 +222,12 @@ const AutomationHero = () => {
                   {/* Orbiting particle effect on hover with native colors */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-500">
                     <div className="absolute top-1/2 left-1/2 w-1 h-1 rounded-full animate-spin" style={{
-                  background: benefit.nativeColor === 'blue' ? '#38bdf8' : benefit.nativeColor === 'violet' ? '#8b5cf6' : '#10b981',
+                  background: benefit.nativeColor === 'blue' ? '#38bdf8' : benefit.nativeColor === 'violet' ? '#8b5cf6' : '#6366f1',
                   transform: 'translate(-50%, -50%)',
                   animationDuration: '3s'
                 }}>
                       <div className="absolute w-2 h-2 rounded-full -top-8" style={{
-                    background: benefit.nativeColor === 'blue' ? '#60a5fa' : benefit.nativeColor === 'violet' ? '#a78bfa' : '#34d399'
+                    background: benefit.nativeColor === 'blue' ? '#60a5fa' : benefit.nativeColor === 'violet' ? '#a78bfa' : '#818cf8'
                   }} />
                     </div>
                   </div>
@@ -237,7 +237,7 @@ const AutomationHero = () => {
                 <h3 className="text-xl font-bold mb-4 group-hover:scale-105 transition-all duration-500 transform" style={{
               color: benefit.nativeColor === 'blue' ? '#dbeafe' : 
                      benefit.nativeColor === 'violet' ? '#ede9fe' : 
-                     '#dcfce7',
+                     '#e0e7ff',
               textShadow: `0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px ${benefit.backgroundTint}`
             }}>
                   {benefit.title}
@@ -251,7 +251,7 @@ const AutomationHero = () => {
 
                 {/* Subtle scanning line effect on hover with native colors */}
                 <div className="absolute top-0 left-0 w-full h-0.5 opacity-0 group-hover:opacity-80 transition-all duration-1000 ease-out transform -translate-y-full group-hover:translate-y-full" style={{
-              background: `linear-gradient(to right, transparent, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.6)' : benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.6)' : 'rgba(16, 185, 129, 0.6)'}, transparent)`,
+              background: `linear-gradient(to right, transparent, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.6)' : benefit.nativeColor === 'violet' ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.6)'}, transparent)`,
               animationDelay: '0.2s'
             }} />
               </CardContent>
