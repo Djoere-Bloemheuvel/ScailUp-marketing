@@ -1,9 +1,10 @@
+
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
-import AppleStyleBackground from './hero/AppleStyleBackground';
-import AppleStyleAnimations from './hero/AppleStyleAnimations';
+import CinematicBackground from './hero/CinematicBackground';
+import CinematicAnimations from './hero/CinematicAnimations';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,9 +15,9 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Apple-style Background */}
-      <div className={`absolute inset-0 ${isLoaded ? 'apple-entrance' : ''}`}>
-        <AppleStyleBackground />
+      {/* Cinematic Background */}
+      <div className={`absolute inset-0 ${isLoaded ? 'cinematic-entrance' : ''}`}>
+        <CinematicBackground />
       </div>
 
       {/* Content - Enhanced with better spacing */}
@@ -71,8 +72,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Apple-style animations */}
-      <AppleStyleAnimations />
+      {/* Cinematic animations */}
+      <CinematicAnimations />
       
       {/* Keep existing premium animations for buttons and text */}
       <style dangerouslySetInnerHTML={{
