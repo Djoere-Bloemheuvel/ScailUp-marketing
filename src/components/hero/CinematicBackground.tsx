@@ -20,12 +20,12 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       <AICoreCenter />
 
       {/* Main content background boxes - Enhanced with ambient glow reflection */}
-      {/* Glass container is always present and immediately visible */}
+      {/* Glass container with immediate entrance animation */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[70vh] sm:h-[65vh] md:h-[60vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
-          {/* Enhanced glass container with ambient glow reflection - removed animate-fade-in */}
+          {/* Enhanced glass container with immediate entrance animation */}
           <div 
-            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
+            className="absolute inset-0 rounded-3xl premium-glass-container-ambient premium-glass-entrance"
             style={{
               background: `
                 linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
@@ -47,18 +47,101 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
           />
           
           {/* Colored edge lighting layers - Enhanced with ambient reflection */}
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50" />
-          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60 premium-edge-entrance" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-emerald opacity-50 premium-edge-entrance-delayed-1" />
+          <div className="absolute inset-0 rounded-3xl premium-edge-glow-violet-ambient opacity-55 premium-edge-entrance-delayed-2" />
           
           {/* Ambient light diffusion - Enhanced */}
-          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced" />
+          <div className="absolute inset-0 rounded-3xl premium-ambient-diffusion-enhanced premium-ambient-entrance" />
         </div>
       </div>
 
-      {/* Enhanced premium animation styles with ambient integration */}
+      {/* Enhanced premium animation styles with immediate entrance animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          /* Immediate entrance animations for glass container */
+          @keyframes premium-glass-entrance {
+            0% { 
+              opacity: 0; 
+              transform: scale(0.95) translateY(20px); 
+              filter: blur(8px); 
+            }
+            100% { 
+              opacity: 1; 
+              transform: scale(1) translateY(0); 
+              filter: blur(0px); 
+            }
+          }
+
+          @keyframes premium-edge-entrance {
+            0% { 
+              opacity: 0; 
+              transform: scale(0.98); 
+            }
+            100% { 
+              opacity: 0.6; 
+              transform: scale(1); 
+            }
+          }
+
+          @keyframes premium-edge-entrance-delayed-1 {
+            0% { 
+              opacity: 0; 
+              transform: scale(0.98); 
+            }
+            100% { 
+              opacity: 0.5; 
+              transform: scale(1); 
+            }
+          }
+
+          @keyframes premium-edge-entrance-delayed-2 {
+            0% { 
+              opacity: 0; 
+              transform: scale(0.98); 
+            }
+            100% { 
+              opacity: 0.55; 
+              transform: scale(1); 
+            }
+          }
+
+          @keyframes premium-ambient-entrance {
+            0% { 
+              opacity: 0; 
+              transform: scale(1.05); 
+            }
+            100% { 
+              opacity: 1; 
+              transform: scale(1); 
+            }
+          }
+
+          /* Apply immediate entrance animations */
+          .premium-glass-entrance {
+            animation: premium-glass-entrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+
+          .premium-edge-entrance {
+            animation: premium-edge-entrance 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+          }
+
+          .premium-edge-entrance-delayed-1 {
+            animation: premium-edge-entrance-delayed-1 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.4s;
+          }
+
+          .premium-edge-entrance-delayed-2 {
+            animation: premium-edge-entrance-delayed-2 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.6s;
+          }
+
+          .premium-ambient-entrance {
+            animation: premium-ambient-entrance 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.3s;
+          }
+
           @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
               background: 
@@ -168,6 +251,14 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
 
           /* Mobile optimizations */
           @media (max-width: 768px) {
+            .premium-glass-entrance,
+            .premium-edge-entrance,
+            .premium-edge-entrance-delayed-1,
+            .premium-edge-entrance-delayed-2,
+            .premium-ambient-entrance {
+              animation-duration: 1s;
+            }
+            
             .premium-edge-glow-cyan-ambient,
             .premium-edge-glow-emerald,
             .premium-edge-glow-violet-ambient {
@@ -189,6 +280,17 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
 
           /* Reduced motion preferences */
           @media (prefers-reduced-motion: reduce) {
+            .premium-glass-entrance,
+            .premium-edge-entrance,
+            .premium-edge-entrance-delayed-1,
+            .premium-edge-entrance-delayed-2,
+            .premium-ambient-entrance {
+              animation: none;
+              opacity: 1;
+              transform: scale(1) translateY(0);
+              filter: blur(0px);
+            }
+            
             .premium-glass-container-ambient,
             .premium-edge-glow-cyan-ambient,
             .premium-edge-glow-emerald,
