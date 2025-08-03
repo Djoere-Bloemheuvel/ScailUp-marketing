@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,8 +8,6 @@ const ScrollHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  
-  const isHomepage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,19 +15,9 @@ const ScrollHeader = () => {
       setIsVisible(scrollY > 40);
     };
 
-    // On homepage, header starts hidden and appears on scroll
-    // On other pages, header is immediately visible
-    if (isHomepage) {
-      setIsVisible(false);
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    } else {
-      setIsVisible(true);
-      // Still listen for scroll to maintain consistent behavior
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
-  }, [isHomepage]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { label: 'Services', href: '#services', path: '/' },
