@@ -20,9 +20,9 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       <AICoreCenter />
 
       {/* Main content background boxes - Enhanced with ambient glow reflection */}
-      {/* Glass container with immediate entrance animation - Made longer */}
+      {/* Glass container with immediate entrance animation - Made smaller */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[80vh] sm:h-[75vh] md:h-[70vh] lg:h-[75vh] xl:h-[80vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
+        <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[65vh] sm:h-[60vh] md:h-[55vh] lg:h-[58vh] xl:h-[62vh] transform -translate-y-8 sm:-translate-y-12 md:-translate-y-16 lg:-translate-y-20">
           {/* Enhanced glass container with immediate entrance animation */}
           <div 
             className="absolute inset-0 rounded-3xl premium-glass-container-ambient premium-glass-entrance"
