@@ -1,25 +1,33 @@
+
 import { ChevronRight, Cog, Sparkles, Zap, Clock, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+
 const AutomationHero = () => {
   const benefits = [{
     icon: Zap,
     title: 'Snelheid',
     description: 'Processen die 8 uur duurden, voltooien wij in 3 minuten. Elke dag opnieuw.',
     accentColor: 'from-sky-400 to-blue-500',
-    glowColor: 'rgba(56, 189, 248, 0.3)' // Light blue glow
+    glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.3)]', // Blue glow
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(59,130,246,0.5),0_0_80px_rgba(59,130,246,0.3)]', // Stronger blue glow on hover
+    iconColor: 'text-blue-400'
   }, {
     icon: Clock,
     title: '24/7 Operationeel',
     description: 'Uw automatisering stopt nooit. Weekenden, nachten — altijd actief.',
     accentColor: 'from-purple-400 to-purple-600',
-    glowColor: 'rgba(147, 51, 234, 0.3)' // Purple glow
+    glowColor: 'shadow-[0_0_30px_rgba(147,51,234,0.3)]', // Purple glow
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(147,51,234,0.5),0_0_80px_rgba(147,51,234,0.3)]', // Stronger purple glow on hover
+    iconColor: 'text-purple-400'
   }, {
     icon: Target,
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
     accentColor: 'from-red-400 to-red-600',
-    glowColor: 'rgba(239, 68, 68, 0.3)' // Red glow
+    glowColor: 'shadow-[0_0_30px_rgba(239,68,68,0.3)]', // Red glow
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(239,68,68,0.5),0_0_80px_rgba(239,68,68,0.3)]', // Stronger red glow on hover
+    iconColor: 'text-red-400'
   }];
 
   return <section className="relative py-20 lg:py-32 overflow-hidden">
@@ -72,26 +80,29 @@ const AutomationHero = () => {
           
         </div>
 
-        {/* Core Benefits Section - Enhanced Glassmorphic with Premium Hover Effects */}
+        {/* Core Benefits Section - Enhanced with Native Color Glows */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => <Card key={index} className="group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3" style={{
-          animationDelay: `${index * 0.2}s`,
-          background: `
-                  linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%),
-                  radial-gradient(ellipse 400px 200px at 50% 0%, rgba(34, 211, 238, 0.06) 0%, transparent 70%),
-                  radial-gradient(ellipse 300px 150px at 50% 100%, rgba(139, 92, 246, 0.04) 0%, transparent 70%)
-                `,
-          backdropFilter: 'blur(20px) saturate(180%)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '16px',
-          boxShadow: `
-                  0 8px 32px rgba(0, 0, 0, 0.3),
-                  0 4px 16px rgba(0, 0, 0, 0.2),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                  inset 0 -1px 0 rgba(255, 255, 255, 0.05),
-                  0 0 20px ${benefit.glowColor}
-                `
-        }}>
+          {benefits.map((benefit, index) => <Card 
+            key={index} 
+            className={`group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3 ${benefit.glowColor} ${benefit.hoverGlow}`} 
+            style={{
+              animationDelay: `${index * 0.2}s`,
+              background: `
+                linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%),
+                radial-gradient(ellipse 400px 200px at 50% 0%, rgba(34, 211, 238, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 300px 150px at 50% 100%, rgba(139, 92, 246, 0.04) 0%, transparent 70%)
+              `,
+              backdropFilter: 'blur(20px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '16px',
+              boxShadow: `
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05)
+              `
+            }}
+          >
               {/* Enhanced Glassmorphic hover glow effect */}
               <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-all duration-700 ease-out -z-10`} style={{
             background: `linear-gradient(135deg, ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('sky-400', '56, 189, 248, 0.3').replace('blue-500', '59, 130, 246, 0.3').replace('purple-400', '168, 85, 247, 0.3').replace('purple-600', '147, 51, 234, 0.3').replace('red-400', '248, 113, 113, 0.3').replace('red-600', '220, 38, 127, 0.3')}`,
@@ -102,21 +113,13 @@ const AutomationHero = () => {
               {/* Premium hover border enhancement */}
               <div className="absolute inset-0 rounded-2xl border border-white/0 group-hover:border-white/30 transition-all duration-500 ease-out" />
               
-              {/* Stronger glow on hover */}
-              <div 
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out -z-20" 
-                style={{
-                  boxShadow: `0 0 40px ${benefit.glowColor.replace('0.3', '0.6')}, 0 0 80px ${benefit.glowColor.replace('0.3', '0.4')}`
-                }}
-              />
-              
               {/* Dynamic ambient glow on hover */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 ease-out" style={{
             background: `radial-gradient(circle at 50% 50%, ${benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? 'rgba(56, 189, 248, 0.2)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.2)' : 'rgba(239, 68, 68, 0.2)'} 0%, transparent 70%)`
           }} />
               
               <CardContent className="p-8 text-center relative z-10">
-                {/* Icon container with enhanced glassmorphic styling and hover effects */}
+                {/* Icon container with native colors */}
                 <div className="relative w-20 h-20 mx-auto mb-6 transform transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-3">
                   <div className="absolute inset-0 rounded-2xl p-0.5 transition-all duration-500 shadow-xl group-hover:shadow-2xl" style={{
                 background: `linear-gradient(135deg, ${benefit.accentColor})`,
@@ -131,8 +134,8 @@ const AutomationHero = () => {
                   backdropFilter: 'blur(10px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)'
                 }}>
-                      {/* Icon with uniform white color and enhanced glow and hover animation */}
-                      <benefit.icon className="w-10 h-10 text-white relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110" />
+                      {/* Icon with native color */}
+                      <benefit.icon className={`w-10 h-10 ${benefit.iconColor} relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110`} />
                       
                       {/* Enhanced glassmorphic inner glow with hover animation */}
                       <div className="absolute inset-2 rounded-xl opacity-10 group-hover:opacity-30 transition-all duration-500" style={{
@@ -203,4 +206,5 @@ const AutomationHero = () => {
       </div>
     </section>;
 };
+
 export default AutomationHero;
