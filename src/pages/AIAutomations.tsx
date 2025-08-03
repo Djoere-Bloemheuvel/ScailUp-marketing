@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import ScrollHeader from '@/components/ScrollHeader';
 import AutomationHero from '@/components/automations/AutomationHero';
 import AutomationOverview from '@/components/automations/AutomationOverview';
+import AutomationExplained from '@/components/automations/AutomationExplained';
+import WhyBuildrs from '@/components/automations/WhyBuildrs';
 import AutomationIntro from '@/components/automations/AutomationIntro';
 import AutomationShowcase from '@/components/automations/AutomationShowcase';
 import AdvancedFunctions from '@/components/automations/AdvancedFunctions';
@@ -23,6 +25,10 @@ const AIAutomations = () => {
 
       {/* New Overview Section */}
       <AutomationOverview />
+
+      {/* New SEO Content Sections */}
+      <AutomationExplained />
+      <WhyBuildrs />
 
       {/* Intro Section */}
       <AutomationIntro />
