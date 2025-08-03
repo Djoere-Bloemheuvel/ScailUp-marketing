@@ -1,3 +1,4 @@
+
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
@@ -25,9 +26,9 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       {/* Main content background boxes - Immediately visible */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[68vh] sm:h-[63vh] md:h-[58vh] lg:h-[61vh] xl:h-[65vh] transform -translate-y-4 sm:-translate-y-8 md:-translate-y-10 lg:-translate-y-12">
-          {/* Glass container - immediately visible */}
+          {/* Glass container - immediately visible with sweep animation */}
           <div 
-            className="absolute inset-0 rounded-3xl premium-glass-container-ambient"
+            className="absolute inset-0 rounded-3xl premium-glass-container-ambient glass-sweep-container"
             style={{
               background: `
                 linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 50%, rgba(255, 255, 255, 0.02) 100%),
@@ -45,9 +46,24 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
                 inset 0 0 100px rgba(34, 211, 238, 0.005),
                 inset 0 0 80px rgba(139, 92, 246, 0.003)
               `,
-              opacity: 1
+              opacity: 1,
+              overflow: 'hidden',
+              willChange: 'transform, opacity'
             }}
-          />
+          >
+            {/* Glass illumination sweep overlay */}
+            <div 
+              className="absolute inset-0 glass-illumination-sweep"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%)',
+                width: '200%',
+                height: '100%',
+                transform: 'translateX(-100%)',
+                willChange: 'transform',
+                pointerEvents: 'none'
+              }}
+            />
+          </div>
           
           {/* Colored edge lighting layers - immediately visible */}
           <div className="absolute inset-0 rounded-3xl premium-edge-glow-cyan-ambient opacity-60" />
@@ -62,6 +78,65 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
       {/* Keep only continuous glow animations, remove entrance animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          /* Glass illumination sweep animation - triggers once on load */
+          @keyframes glass-illumination-sweep {
+            0% { 
+              transform: translateX(-100%);
+              opacity: 0;
+            }
+            15% { 
+              opacity: 1;
+            }
+            85% { 
+              opacity: 1;
+            }
+            100% { 
+              transform: translateX(100%);
+              opacity: 0;
+            }
+          }
+
+          .glass-illumination-sweep {
+            animation: glass-illumination-sweep 1000ms ease-in-out forwards;
+            animation-delay: 200ms;
+          }
+
+          /* Fallback for browsers without mask support */
+          @supports not (mask-image: linear-gradient(90deg, transparent, white, transparent)) {
+            .glass-illumination-sweep {
+              background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.08) 30%, 
+                rgba(255, 255, 255, 0.12) 50%, 
+                rgba(255, 255, 255, 0.08) 70%, 
+                transparent 100%
+              );
+            }
+          }
+
+          /* Enhanced mask support for smoother effect */
+          @supports (mask-image: linear-gradient(90deg, transparent, white, transparent)) {
+            .glass-illumination-sweep {
+              mask-image: linear-gradient(90deg, transparent 0%, white 50%, transparent 100%);
+              -webkit-mask-image: linear-gradient(90deg, transparent 0%, white 50%, transparent 100%);
+            }
+          }
+
+          /* Mobile optimization for sweep animation */
+          @media (max-width: 768px) {
+            .glass-illumination-sweep {
+              animation-duration: 800ms;
+            }
+          }
+
+          /* Reduced motion preference */
+          @media (prefers-reduced-motion: reduce) {
+            .glass-illumination-sweep {
+              animation: none;
+              opacity: 0;
+            }
+          }
+
           @keyframes premium-glass-shimmer-ambient {
             0%, 100% { 
               background: 
