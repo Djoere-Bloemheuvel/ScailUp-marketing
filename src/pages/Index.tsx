@@ -6,10 +6,12 @@ import Showcase from '@/components/Showcase';
 import Target from '@/components/Target';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import ScrollHeader from '@/components/ScrollHeader';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-premium-black">
+      <ScrollHeader />
       <Hero />
       <Services />
       <Approach />
