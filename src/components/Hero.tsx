@@ -1,5 +1,5 @@
 
-import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database } from 'lucide-react';
+import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
@@ -47,10 +47,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Left AI Device - Hexagonal/Diamond Shape - Buildrs Style */}
+      {/* Left AI Device - Dashboard/Interface Style */}
       <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
         <div className="relative">
-          {/* Hexagonal Main AI Device Body - Industrial/Server style design */}
+          {/* Main AI Device Body - Dashboard style design */}
           <div className="relative w-72 h-96 ai-device-float overflow-visible">
             {/* Custom hexagonal shape using CSS clip-path */}
             <div 
@@ -69,90 +69,114 @@ const Hero = () => {
               ></div>
             </div>
             
-            {/* Server Rack Display - Diamond shaped */}
+            {/* Top Chart Display - Dashboard style */}
             <div 
-              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-black/60 border border-premium-silver/25 overflow-hidden"
-              style={{
-                clipPath: 'polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%)'
-              }}
+              className="absolute top-8 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-black/60 border border-premium-silver/25 overflow-hidden rounded-lg"
+            >
+              <div className="relative w-full h-full p-3">
+                {/* Mini bar chart visualization */}
+                <div className="flex items-end justify-between h-full space-x-1">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div
+                      key={`chart-bar-${i}`}
+                      className="bg-premium-silver/40 rounded-sm chart-pulse"
+                      style={{
+                        width: '8px',
+                        height: `${20 + (i % 3) * 15}%`,
+                        animationDelay: `${i * 0.2}s`,
+                      }}
+                    />
+                  ))}
+                </div>
+                
+                {/* Chart indicator */}
+                <div className="absolute top-2 right-2">
+                  <BarChart3 className="w-3 h-3 text-premium-silver/60" />
+                </div>
+              </div>
+            </div>
+
+            {/* Left Dashboard Panel */}
+            <div className="absolute top-32 left-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden">
+              {/* Grid pattern background */}
+              <div className="absolute inset-0 opacity-20">
+                <Grid3X3 className="w-full h-full text-premium-silver/30" />
+              </div>
+              
+              {/* Dashboard icons */}
+              <div className="relative p-3 space-y-3">
+                <div className="w-full h-6 bg-premium-silver/30 rounded dashboard-pulse"></div>
+                <div className="w-3/4 h-4 bg-premium-silver/20 rounded dashboard-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-full h-4 bg-premium-silver/25 rounded dashboard-pulse" style={{ animationDelay: '1s' }}></div>
+              </div>
+              
+              {/* Activity indicator */}
+              <div className="absolute bottom-2 right-2">
+                <Activity className="w-4 h-4 text-premium-silver activity-pulse" />
+              </div>
+            </div>
+
+            {/* Right Dashboard Panel */}
+            <div className="absolute top-32 right-8 w-24 h-32 bg-black/50 border border-premium-silver/20 rounded-xl overflow-hidden">
+              {/* Layer visualization */}
+              <div className="relative p-3 space-y-2">
+                <div className="flex space-x-1">
+                  <div className="w-4 h-4 bg-premium-silver/40 rounded-sm layer-pulse"></div>
+                  <div className="w-4 h-4 bg-premium-silver/30 rounded-sm layer-pulse" style={{ animationDelay: '0.3s' }}></div>
+                </div>
+                <div className="flex space-x-1">
+                  <div className="w-4 h-4 bg-premium-silver/25 rounded-sm layer-pulse" style={{ animationDelay: '0.6s' }}></div>
+                  <div className="w-4 h-4 bg-premium-silver/35 rounded-sm layer-pulse" style={{ animationDelay: '0.9s' }}></div>
+                </div>
+              </div>
+              
+              {/* Layers icon */}
+              <div className="absolute bottom-2 right-2">
+                <Layers className="w-4 h-4 text-premium-silver layer-icon-pulse" />
+              </div>
+            </div>
+
+            {/* Central Interface Core - Multi-layered dashboard */}
+            <div 
+              className="absolute top-52 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 rounded-xl overflow-hidden"
             >
               <div className="relative w-full h-full">
-                {/* Server indicators - diagonal lines for diamond shape */}
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div
-                    key={`left-server-${i}`}
-                    className="absolute w-8 h-1 bg-premium-silver/40 server-pulse transform rotate-45 origin-left"
-                    style={{
-                      left: `${20 + i * 12}%`,
-                      top: `${30 + (i % 2) * 20}%`,
-                      animationDelay: `${i * 0.3}s`,
-                    }}
-                  />
-                ))}
+                {/* Interface grid */}
+                <div className="absolute inset-2 grid grid-cols-2 gap-1">
+                  <div className="bg-premium-silver/20 rounded-sm interface-pulse"></div>
+                  <div className="bg-premium-silver/30 rounded-sm interface-pulse" style={{ animationDelay: '0.25s' }}></div>
+                  <div className="bg-premium-silver/25 rounded-sm interface-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="bg-premium-silver/35 rounded-sm interface-pulse" style={{ animationDelay: '0.75s' }}></div>
+                </div>
                 
-                {/* Status lights - triangular formation */}
-                <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
-                  <div className="flex flex-col space-y-1">
-                    <div className="w-2 h-2 bg-premium-silver rounded-full status-light transform rotate-45"></div>
-                    <div className="w-2 h-2 bg-white/60 rounded-full status-light transform rotate-45" style={{ animationDelay: '0.5s' }}></div>
-                    <div className="w-2 h-2 bg-premium-silver/80 rounded-full status-light transform rotate-45" style={{ animationDelay: '1s' }}></div>
+                {/* Central processing indicator */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-8 h-8 border border-premium-silver/40 rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-premium-silver rounded-full central-pulse"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Code Processing Units - Triangular shapes */}
+            {/* Bottom Interface Panel - Command interface */}
             <div 
-              className="absolute top-32 left-12 w-16 h-16 bg-black/50 border border-premium-silver/20 flex items-center justify-center"
-              style={{
-                clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
-              }}
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-black/50 border border-premium-silver/20 rounded-lg overflow-hidden"
             >
-              <Code className="w-8 h-8 text-premium-silver ai-code-pulse transform -translate-y-2" />
-            </div>
-
-            <div 
-              className="absolute top-32 right-12 w-16 h-16 bg-black/50 border border-premium-silver/20 flex items-center justify-center"
-              style={{
-                clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)'
-              }}
-            >
-              <Server className="w-8 h-8 text-premium-silver ai-server-pulse transform translate-y-2" style={{ animationDelay: '1s' }} />
-            </div>
-
-            {/* Central Database Core - Octagonal shape */}
-            <div 
-              className="absolute top-52 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-premium-silver/15 to-black/30 border border-premium-silver/30 flex items-center justify-center"
-              style={{
-                clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
-              }}
-            >
-              <div 
-                className="w-16 h-16 bg-black/60 border border-premium-silver/40 flex items-center justify-center"
-                style={{
-                  clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
-                }}
-              >
-                <Database className="w-8 h-8 text-white ai-database-scan" />
-              </div>
-            </div>
-
-            {/* Terminal/Command streams - Arrow shaped */}
-            <div 
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-black/50 border border-premium-silver/20 overflow-hidden"
-              style={{
-                clipPath: 'polygon(0% 20%, 80% 20%, 100% 50%, 80% 80%, 0% 80%)'
-              }}
-            >
-              <div className="relative w-full h-full p-2">
-                {/* Terminal text effect */}
-                <div className="text-xs font-mono text-premium-silver/70 space-y-1">
-                  <div className="terminal-line">$ buildrs.ai --analyze</div>
-                  <div className="terminal-line" style={{ animationDelay: '1s' }}>Processing...</div>
+              <div className="relative w-full h-full">
+                {/* Interface elements */}
+                <div className="absolute inset-0 flex items-center px-3">
+                  <div className="flex-1 space-y-1">
+                    <div className="w-3/4 h-2 bg-premium-silver/30 rounded interface-line-pulse"></div>
+                    <div className="w-1/2 h-1 bg-premium-silver/20 rounded interface-line-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  </div>
+                  
+                  {/* Status indicators */}
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-premium-silver/40 rounded-full status-blink"></div>
+                    <div className="w-2 h-2 bg-premium-silver/30 rounded-full status-blink" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="w-2 h-2 bg-premium-silver/50 rounded-full status-blink" style={{ animationDelay: '0.6s' }}></div>
+                  </div>
                 </div>
-                
-                {/* Cursor blink */}
-                <div className="absolute bottom-2 left-24 w-2 h-4 bg-premium-silver terminal-cursor"></div>
               </div>
             </div>
 
