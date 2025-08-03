@@ -1,6 +1,8 @@
 import { ArrowRight, Zap, Sparkles, Brain, Cpu, Eye, Network, CircuitBoard, Bot, Code, Server, Database, BarChart3, Layers, Grid3X3, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
+import GlitchBackground from './GlitchBackground';
+import AIMeshLines from './AIMeshLines';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -11,19 +13,25 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
-      {/* Nothing-inspired minimalistic background */}
+      {/* Enhanced background with glitch and AI mesh */}
       <div className="absolute inset-0">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900/20"></div>
+        {/* Base gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900/20 z-10"></div>
         
-        {/* Floating minimal elements inspired by Nothing */}
-        <div className="absolute top-20 left-20">
+        {/* AI Mesh Lines - underneath everything */}
+        <AIMeshLines />
+        
+        {/* Glitch Background - on top of mesh, under floating elements */}
+        <GlitchBackground />
+        
+        {/* Floating minimal elements inspired by Nothing - higher z-index */}
+        <div className="absolute top-20 left-20 z-20">
           <div className="w-24 h-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center nothing-float">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white/20 to-white/5 border border-white/20"></div>
           </div>
         </div>
 
-        <div className="absolute top-40 right-32">
+        <div className="absolute top-40 right-32 z-20">
           <div className="w-16 h-16 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm nothing-float-delayed">
             <div className="w-full h-full rounded-lg bg-gradient-to-br from-premium-silver/20 to-transparent flex items-center justify-center">
               <div className="w-2 h-2 bg-white/60 rounded-full"></div>
@@ -31,23 +39,23 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-32 left-32">
+        <div className="absolute bottom-32 left-32 z-20">
           <div className="w-20 h-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm nothing-float-slow">
             <div className="w-full h-full rounded-full bg-gradient-to-r from-white/10 to-transparent"></div>
           </div>
         </div>
 
-        <div className="absolute top-60 right-20">
+        <div className="absolute top-60 right-20 z-20">
           <div className="w-6 h-6 rounded-full bg-white/20 nothing-pulse"></div>
         </div>
 
-        <div className="absolute bottom-40 right-40">
+        <div className="absolute bottom-40 right-40 z-20">
           <div className="w-4 h-4 rounded-sm bg-premium-silver/30 nothing-pulse-delayed"></div>
         </div>
       </div>
 
-      {/* Left AI Device - Dashboard/Interface Style */}
-      <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-20">
+      {/* Left AI Device - Dashboard/Interface Style - higher z-index */}
+      <div className="absolute left-20 top-1/3 transform -translate-y-1/2 z-30">
         <div className="relative">
           {/* Main AI Device Body - Dashboard style design */}
           <div className="relative w-72 h-96 ai-device-float overflow-visible">
@@ -198,8 +206,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right AI Device - Moved lower down */}
-      <div className="absolute right-20 top-2/3 transform -translate-y-1/2 z-20">
+      {/* Right AI Device - Moved lower down - higher z-index */}
+      <div className="absolute right-20 top-2/3 transform -translate-y-1/2 z-30">
         <div className="relative">
           {/* Main AI Device Body */}
           <div className="relative w-72 h-96 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 ai-device-float overflow-hidden">
@@ -284,8 +292,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content - Centered */}
-      <div className="relative max-w-5xl mx-auto z-30 text-center">
+      {/* Content - Centered - highest z-index */}
+      <div className="relative max-w-5xl mx-auto z-40 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Apple-inspired typography hierarchy - centered */}
           <h1 className={`font-bold tracking-tight leading-[0.9] mb-2 ${isLoaded ? 'apple-fade-in apple-stagger-2' : ''}`}>
@@ -328,8 +336,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Apple-inspired scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      {/* Apple-inspired scroll indicator - highest z-index */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
         <div className="w-[1px] h-16 bg-gradient-to-b from-premium-silver/40 to-transparent">
           <div className="w-[1px] h-6 bg-premium-silver/60 apple-scroll-pulse"></div>
         </div>

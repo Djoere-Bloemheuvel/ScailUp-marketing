@@ -1,992 +1,409 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 0 0% 45.1%;
+  --sidebar-primary: 0 0% 9%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 0 0% 96.1%;
+  --sidebar-accent-foreground: 0 0% 9%;
+  --sidebar-border: 0 0% 89.8%;
+  --sidebar-ring: 0 0% 3.9%;
+}
 
-@layer base {
-  :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --sidebar-background: 0 0% 3.9%;
+  --sidebar-foreground: 0 0% 63.9%;
+  --sidebar-primary: 0 0% 98%;
+  --sidebar-primary-foreground: 0 0% 9%;
+  --sidebar-accent: 0 0% 14.9%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 0 0% 14.9%;
+  --sidebar-ring: 0 0% 83.1%;
+}
 
-    --card: 0 0% 6.7%;
-    --card-foreground: 0 0% 100%;
+* {
+  border-color: hsl(var(--border));
+}
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 0 0% 75.3%;
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 0 0% 6.7%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 6.7%;
-    --muted-foreground: 0 0% 63.9%;
-
-    --accent: 0 0% 6.7%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 75.3%;
-
-    --radius: 0.5rem;
-  }
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    overflow-x: hidden;
+    @apply bg-background text-foreground;
   }
 }
 
-@layer utilities {
-  /* Apple-inspired animations */
-  .apple-fade-in {
-    animation: appleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .apple-stagger-2 { animation-delay: 0.2s; }
-  .apple-stagger-3 { animation-delay: 0.4s; }
-  .apple-stagger-4 { animation-delay: 0.6s; }
-  .apple-stagger-5 { animation-delay: 0.8s; }
-
-  .apple-glow {
-    animation: appleGlow 8s ease-in-out infinite;
-  }
-
-  .apple-card-hover {
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .apple-card-hover:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  }
-
-  .apple-button-hover {
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .apple-button-hover:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .apple-scale-hover:hover {
-    transform: scale(1.02);
-  }
-
-  .apple-scroll-pulse {
-    animation: appleScrollPulse 2s ease-in-out infinite;
-  }
-
-  /* GEOPTIMALISEERDE CINEMATISCHE ANIMATIES - BETERE PERFORMANCE */
-  .matrix-cascade {
-    animation: matrixCascade linear infinite;
-    will-change: transform, opacity;
-  }
-
-  .large-hex-movement {
-    animation: largeHexMovement ease-in-out infinite;
-    will-change: transform, opacity;
-  }
-
-  .large-circle-pulse {
-    animation: largeCirclePulse ease-in-out infinite;
-    will-change: transform, opacity, border-width;
-  }
-
-  .energy-beam {
-    animation: energyBeam ease-in-out infinite;
-    will-change: transform, opacity;
-  }
-
-  .holographic-panel {
-    animation: holographicPanel ease-in-out infinite;
-    will-change: transform, opacity;
-  }
-
-  .massive-tech-grid {
-    animation: massiveTechGrid linear infinite;
-    will-change: transform, opacity;
-  }
-
-  .massive-light-pulse {
-    animation: massiveLightPulse ease-in-out infinite;
-    will-change: transform, opacity;
-  }
-
-  .digital-particle {
-    animation: digitalParticle linear infinite;
-    will-change: transform, opacity;
-  }
-
-  /* Keep existing utilities */
-  .text-gradient {
-    @apply bg-gradient-to-r from-white via-premium-silver to-premium-silver-light bg-clip-text text-transparent;
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease-in-out infinite;
-  }
-  
-  .text-gradient-premium {
-    @apply bg-gradient-to-r from-premium-silver via-white to-premium-silver bg-clip-text text-transparent;
-    background-size: 300% 300%;
-    animation: premium-gradient 6s ease-in-out infinite;
-  }
-  
-  .border-gradient {
-    @apply relative;
-  }
-  
-  .border-gradient::before {
-    content: '';
-    @apply absolute inset-0 rounded-lg p-[1px] bg-gradient-to-r from-premium-silver/50 to-white/20 -z-10;
-    background-size: 200% 200%;
-    animation: border-glow 3s ease-in-out infinite;
-  }
-  
-  .border-gradient::after {
-    content: '';
-    @apply absolute inset-[1px] rounded-[7px] bg-black z-[-1];
-  }
-
-  .glass-morphism {
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  }
-
-  .premium-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(192, 192, 192, 0.1);
-    box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .floating {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .slide-in-left {
-    animation: slideInLeft 1s ease-out forwards;
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-
-  .slide-in-right {
-    animation: slideInRight 1s ease-out forwards;
-    opacity: 0;
-    transform: translateX(50px);
-  }
-
-  .scale-in {
-    animation: scaleIn 1s ease-out forwards;
-    opacity: 0;
-    transform: scale(0.8);
-  }
-
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
-
-  .hover-lift {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  }
-
-  .premium-glow {
-    position: relative;
-  }
-
-  .premium-glow::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    background: linear-gradient(45deg, transparent, rgba(192, 192, 192, 0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    z-index: -1;
-  }
-
-  .premium-glow:hover::before {
-    opacity: 1;
-  }
-
-  .text-shimmer {
-    background: linear-gradient(90deg, 
-      rgba(255, 255, 255, 0.8) 25%, 
-      rgba(255, 255, 255, 1) 50%, 
-      rgba(255, 255, 255, 0.8) 75%);
-    background-size: 200% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  .particle-bg {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .particle-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(circle at 20% 50%, rgba(192, 192, 192, 0.1) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                      radial-gradient(circle at 40% 80%, rgba(192, 192, 192, 0.08) 0%, transparent 50%);
-    animation: particles 20s linear infinite;
-  }
-
-  .bg-grid-pattern {
-    background-image: 
-      linear-gradient(rgba(192, 192, 192, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(192, 192, 192, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: grid-move 20s linear infinite;
-  }
-
-  .bg-circuit-lines {
-    background-image: 
-      radial-gradient(circle at 25% 25%, rgba(192, 192, 192, 0.1) 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(45deg, transparent 48%, rgba(192, 192, 192, 0.02) 50%, transparent 52%);
-    background-size: 120px 120px, 80px 80px, 40px 40px;
-    animation: circuit-flow 15s ease-in-out infinite;
-  }
-
-  .tech-pulse {
-    animation: tech-pulse 3s ease-in-out infinite;
-    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
-  }
-
-  .data-stream {
-    animation: data-flow 8s linear infinite;
-  }
-
-  /* AI Device animations */
-  .ai-device-float {
-    animation: aiDeviceFloat 8s ease-in-out infinite;
-  }
-
-  .ai-device-glow {
-    animation: aiDeviceGlow 4s ease-in-out infinite;
-  }
-
-  .ai-device-cyan-glow {
-    animation: aiDeviceCyanGlow 3s ease-in-out infinite;
-  }
-
-  .neural-pulse {
-    animation: neuralPulse 2s ease-in-out infinite;
-  }
-
-  .neural-connection {
-    animation: neuralConnection 3s ease-in-out infinite;
-    opacity: 0.3;
-  }
-
-  .ai-icon-pulse {
-    animation: aiIconPulse 3s ease-in-out infinite;
-  }
-
-  .ai-eye-scan {
-    animation: aiEyeScan 2s ease-in-out infinite;
-  }
-
-  .data-stream-flow {
-    animation: dataStreamFlow linear infinite;
-  }
-
-  /* New animations for left AI device */
-  .circuit-pulse {
-    animation: circuitPulse 2.5s ease-in-out infinite;
-  }
-
-  .circuit-connection {
-    animation: circuitConnection 4s ease-in-out infinite;
-    opacity: 0.3;
-  }
-
-  .ai-network-pulse {
-    animation: aiNetworkPulse 2.8s ease-in-out infinite;
-  }
-
-  .ai-circuit-pulse {
-    animation: aiCircuitPulse 3.2s ease-in-out infinite;
-  }
-
-  .ai-bot-scan {
-    animation: aiBotScan 1.8s ease-in-out infinite;
-  }
-
-  .matrix-flow {
-    animation: matrixFlow linear infinite;
-  }
+/* Apple-inspired design system animations */
+.apple-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Apple-inspired keyframes */
-@keyframes appleFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.apple-stagger-1 { animation-delay: 0.1s; }
+.apple-stagger-2 { animation-delay: 0.2s; }
+.apple-stagger-3 { animation-delay: 0.4s; }
+.apple-stagger-4 { animation-delay: 0.6s; }
+
+.apple-button-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes appleGlow {
-  0%, 100% { 
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.5;
-    transform: scale(1.05);
-  }
+.apple-button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes appleScrollPulse {
-  0%, 100% { 
-    opacity: 0.4;
-    transform: translateY(0);
-  }
-  50% { 
-    opacity: 1;
-    transform: translateY(8px);
-  }
+.apple-scale-hover:hover {
+  transform: scale(1.02) translateY(-2px);
 }
 
-/* GEOPTIMALISEERDE CINEMATISCHE KEYFRAMES - VLOEIENDERE ANIMATIES */
-@keyframes matrixCascade {
-  0% {
-    transform: translate3d(0, -100vh, 0);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(0, 100vh, 0);
-    opacity: 0;
-  }
-}
-
-@keyframes largeHexMovement {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    opacity: 0.1;
-  }
-  25% {
-    transform: translate3d(0, -30px, 0) rotate(90deg) scale(1.05);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translate3d(0, -10px, 0) rotate(180deg) scale(0.95);
-    opacity: 0.2;
-  }
-  75% {
-    transform: translate3d(0, 15px, 0) rotate(270deg) scale(1.08);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translate3d(0, 0, 0) rotate(360deg) scale(1);
-    opacity: 0.1;
-  }
-}
-
-@keyframes largeCirclePulse {
-  0%, 100% {
-    transform: scale3d(1, 1, 1);
-    opacity: 0.05;
-    border-width: 1px;
-  }
-  30% {
-    transform: scale3d(1.15, 1.15, 1);
-    opacity: 0.15;
-    border-width: 1px;
-  }
-  60% {
-    transform: scale3d(0.9, 0.9, 1);
-    opacity: 0.25;
-    border-width: 2px;
-  }
-  80% {
-    transform: scale3d(1.25, 1.25, 1);
-    opacity: 0.1;
-    border-width: 1px;
-  }
-}
-
-@keyframes energyBeam {
-  0% {
-    transform: translate3d(-30px, 0, 0) scaleY(0.3);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.6;
-    transform: translate3d(0, 0, 0) scaleY(1);
-  }
-  75% {
-    opacity: 0.6;
-    transform: translate3d(0, 0, 0) scaleY(1);
-  }
-  100% {
-    transform: translate3d(30px, 0, 0) scaleY(0.3);
-    opacity: 0;
-  }
-}
-
-@keyframes holographicPanel {
-  0% {
-    transform: translate3d(-60px, 0, 0) rotateY(0deg);
-    opacity: 0;
-  }
-  30% {
-    transform: translate3d(0, 0, 0) rotateY(5deg);
-    opacity: 0.4;
-  }
-  60% {
-    transform: translate3d(10px, 0, 0) rotateY(-3deg);
-    opacity: 0.2;
-  }
-  80% {
-    transform: translate3d(-5px, 0, 0) rotateY(8deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate3d(60px, 0, 0) rotateY(0deg);
-    opacity: 0;
-  }
-}
-
-@keyframes massiveTechGrid {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.08;
-  }
-  50% {
-    transform: translate3d(-80px, -80px, 0) scale(1.05);
-    opacity: 0.15;
-  }
-  100% {
-    transform: translate3d(-160px, -160px, 0) scale(1.1);
-    opacity: 0.08;
-  }
-}
-
-@keyframes massiveLightPulse {
-  0%, 100% {
-    transform: scale3d(1, 1, 1);
-    opacity: 0.05;
-  }
-  30% {
-    transform: scale3d(1.2, 1.2, 1);
-    opacity: 0.15;
-  }
-  60% {
-    transform: scale3d(0.8, 0.8, 1);
-    opacity: 0.25;
-  }
-  80% {
-    transform: scale3d(1.3, 1.3, 1);
-    opacity: 0.1;
-  }
-}
-
-@keyframes digitalParticle {
-  0% {
-    transform: translate3d(0, 100vh, 0) scale(0) rotate(0deg);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.8;
-    transform: scale(1) rotate(45deg);
-  }
-  50% {
-    transform: translate3d(60px, 50vh, 0) scale(1.2) rotate(180deg);
-    opacity: 0.6;
-  }
-  85% {
-    opacity: 0.8;
-    transform: scale(0.7) rotate(315deg);
-  }
-  100% {
-    transform: translate3d(-30px, -50px, 0) scale(0) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* Keep all existing keyframes */
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes premium-gradient {
-  0%, 100% { background-position: 0% 50%; }
-  25% { background-position: 100% 50%; }
-  50% { background-position: 200% 50%; }
-  75% { background-position: 100% 50%; }
-}
-
-@keyframes border-glow {
-  0%, 100% { 
-    background-position: 0% 50%;
-    opacity: 0.5;
-  }
-  50% { 
-    background-position: 100% 50%;
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes particles {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-100vh) rotate(360deg); }
-}
-
-@keyframes glow {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(192, 192, 192, 0.3),
-                0 0 40px rgba(192, 192, 192, 0.2),
-                0 0 60px rgba(192, 192, 192, 0.1);
-  }
-  50% { 
-    box-shadow: 0 0 30px rgba(192, 192, 192, 0.4),
-                0 0 60px rgba(192, 192, 192, 0.3),
-                0 0 90px rgba(192, 192, 192, 0.2);
-  }
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection styling */
-::selection {
-  background: rgba(192, 192, 192, 0.2);
-  color: white;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(192, 192, 192, 0.3);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(192, 192, 192, 0.5);
-}
-
-@keyframes grid-move {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
-}
-
-@keyframes circuit-flow {
-  0%, 100% { 
-    background-position: 0% 0%, 0% 0%, 0% 0%;
-    opacity: 0.3;
-  }
-  50% { 
-    background-position: 100% 100%, 50% 50%, 25% 25%;
-    opacity: 0.6;
-  }
-}
-
-@keyframes tech-pulse {
-  0%, 100% { 
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes data-flow {
-  0% { 
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% { 
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-/* Nothing.tech inspired animations */
+/* Nothing-inspired floating animations */
 .nothing-float {
-  animation: nothingFloat 6s ease-in-out infinite;
+  animation: nothing-float 8s ease-in-out infinite;
 }
 
 .nothing-float-delayed {
-  animation: nothingFloat 8s ease-in-out infinite;
-  animation-delay: 2s;
+  animation: nothing-float 8s ease-in-out infinite 2s;
 }
 
 .nothing-float-slow {
-  animation: nothingFloat 10s ease-in-out infinite;
-  animation-delay: 1s;
+  animation: nothing-float 12s ease-in-out infinite 4s;
 }
 
 .nothing-pulse {
-  animation: nothingPulse 3s ease-in-out infinite;
+  animation: nothing-pulse 3s ease-in-out infinite;
 }
 
 .nothing-pulse-delayed {
-  animation: nothingPulse 4s ease-in-out infinite;
-  animation-delay: 1.5s;
+  animation: nothing-pulse 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes nothing-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  50% { transform: translateY(-5px) rotate(-1deg); }
+  75% { transform: translateY(-15px) rotate(0.5deg); }
+}
+
+@keyframes nothing-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* AI Device animations */
 .ai-device-float {
-  animation: aiDeviceFloat 8s ease-in-out infinite;
+  animation: ai-device-float 12s ease-in-out infinite;
 }
 
 .ai-device-glow {
-  animation: aiDeviceGlow 4s ease-in-out infinite;
+  animation: ai-device-glow 8s ease-in-out infinite;
 }
 
 .neural-pulse {
-  animation: neuralPulse 2s ease-in-out infinite;
+  animation: neural-pulse 3s ease-in-out infinite;
 }
 
 .neural-connection {
-  animation: neuralConnection 3s ease-in-out infinite;
+  animation: neural-connection 4s ease-in-out infinite;
   opacity: 0.3;
 }
 
 .ai-icon-pulse {
-  animation: aiIconPulse 3s ease-in-out infinite;
+  animation: ai-icon-pulse 2s ease-in-out infinite;
 }
 
 .ai-eye-scan {
-  animation: aiEyeScan 2s ease-in-out infinite;
+  animation: ai-eye-scan 3s ease-in-out infinite;
 }
 
 .data-stream-flow {
-  animation: dataStreamFlow linear infinite;
+  animation: data-stream-flow 3s linear infinite;
 }
 
-/* New animations for left AI device */
-.circuit-pulse {
-  animation: circuitPulse 2.5s ease-in-out infinite;
+@keyframes ai-device-float {
+  0%, 100% { transform: translateY(0px) rotateX(0deg); }
+  25% { transform: translateY(-8px) rotateX(1deg); }
+  50% { transform: translateY(-4px) rotateX(-1deg); }
+  75% { transform: translateY(-12px) rotateX(0.5deg); }
 }
 
-.circuit-connection {
-  animation: circuitConnection 4s ease-in-out infinite;
-  opacity: 0.3;
+@keyframes ai-device-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
 }
 
-.ai-network-pulse {
-  animation: aiNetworkPulse 2.8s ease-in-out infinite;
+@keyframes neural-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
-.ai-circuit-pulse {
-  animation: aiCircuitPulse 3.2s ease-in-out infinite;
+@keyframes neural-connection {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
 }
 
-.ai-bot-scan {
-  animation: aiBotScan 1.8s ease-in-out infinite;
+@keyframes ai-icon-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
-.matrix-flow {
-  animation: matrixFlow linear infinite;
+@keyframes ai-eye-scan {
+  0%, 100% { opacity: 0.8; transform: scale(1) rotateY(0deg); }
+  25% { opacity: 1; transform: scale(1.05) rotateY(5deg); }
+  50% { opacity: 0.9; transform: scale(1.1) rotateY(-5deg); }
+  75% { opacity: 1; transform: scale(1.05) rotateY(3deg); }
 }
 
-/* New keyframes for left AI device */
-@keyframes circuitPulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-    box-shadow: 0 0 3px currentColor;
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-    box-shadow: 0 0 10px currentColor;
-  }
+@keyframes data-stream-flow {
+  0% { left: -50%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
 }
 
-@keyframes circuitConnection {
-  0%, 100% {
-    opacity: 0.2;
-    fill: rgba(34, 211, 238, 0.3);
-  }
-  50% {
-    opacity: 0.8;
-    fill: rgba(34, 211, 238, 0.7);
-  }
+/* Dashboard-style animations for left AI device */
+.chart-pulse {
+  animation: chart-pulse 2s ease-in-out infinite;
 }
 
-@keyframes aiNetworkPulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1) rotate(0deg);
-    color: rgb(34, 211, 238);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15) rotate(180deg);
-    color: rgb(56, 189, 248);
-  }
+.dashboard-pulse {
+  animation: dashboard-pulse 3s ease-in-out infinite;
 }
 
-@keyframes aiCircuitPulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-    color: rgb(34, 211, 238);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-    color: rgb(14, 165, 233);
-  }
+.layer-pulse {
+  animation: layer-pulse 2.5s ease-in-out infinite;
 }
 
-@keyframes aiBotScan {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-    color: rgb(34, 211, 238);
-  }
-  25% {
-    opacity: 1;
-    transform: scale(1.1);
-    color: rgb(56, 189, 248);
-  }
-  75% {
-    opacity: 0.9;
-    transform: scale(1.05);
-    color: rgb(14, 165, 233);
-  }
+.layer-icon-pulse {
+  animation: layer-icon-pulse 4s ease-in-out infinite;
 }
 
-@keyframes matrixFlow {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(200%);
-    opacity: 0;
-  }
+.interface-pulse {
+  animation: interface-pulse 2s ease-in-out infinite;
 }
 
-/* Nothing.tech inspired keyframes */
-@keyframes nothingFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-    opacity: 1;
-  }
+.central-pulse {
+  animation: central-pulse 1.5s ease-in-out infinite;
 }
 
-@keyframes nothingPulse {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+.interface-line-pulse {
+  animation: interface-line-pulse 3s ease-in-out infinite;
 }
 
-/* AI Device keyframes */
-@keyframes aiDeviceFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-10px) rotate(1deg);
-  }
-  66% {
-    transform: translateY(5px) rotate(-1deg);
-  }
+.status-blink {
+  animation: status-blink 2s ease-in-out infinite;
 }
 
-@keyframes aiDeviceGlow {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.7;
-  }
+.activity-pulse {
+  animation: activity-pulse 2s ease-in-out infinite;
 }
 
-@keyframes aiDeviceCyanGlow {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.6;
-  }
+@keyframes chart-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
-@keyframes neuralPulse {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-    box-shadow: 0 0 5px currentColor;
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.3);
-    box-shadow: 0 0 15px currentColor;
-  }
+@keyframes dashboard-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
 
-@keyframes neuralConnection {
-  0%, 100% {
-    opacity: 0.1;
-    stroke-width: 1;
-  }
-  50% {
-    opacity: 0.6;
-    stroke-width: 2;
-  }
+@keyframes layer-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
 }
 
-@keyframes aiIconPulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+@keyframes layer-icon-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
-@keyframes aiEyeScan {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-    color: rgb(255, 255, 255);
+@keyframes interface-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes central-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes interface-line-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes status-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes activity-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Glitch effect animations */
+@keyframes glitch-scanline {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes glitch-rgb-offset {
+  0% { transform: translateX(0); opacity: 1; }
+  20% { transform: translateX(2px); }
+  40% { transform: translateX(-1px); }
+  60% { transform: translateX(3px); }
+  80% { transform: translateX(-2px); }
+  100% { transform: translateX(0); opacity: 0; }
+}
+
+@keyframes glitch-pixelflicker {
+  0%, 100% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 0; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  50% { opacity: 1; }
+  60% { opacity: 0; }
+  70% { opacity: 1; }
+  80% { opacity: 0; }
+  90% { opacity: 1; }
+}
+
+@keyframes glitch-slice {
+  0% { transform: translateX(0) skewX(0deg); opacity: 0; }
+  10% { opacity: 1; transform: translateX(2px) skewX(1deg); }
+  20% { transform: translateX(-1px) skewX(-1deg); }
+  30% { transform: translateX(3px) skewX(0.5deg); }
+  40% { transform: translateX(-2px) skewX(-0.5deg); }
+  50% { transform: translateX(1px) skewX(1deg); }
+  60% { transform: translateX(-3px) skewX(-1deg); }
+  70% { transform: translateX(2px) skewX(0.5deg); }
+  80% { transform: translateX(-1px) skewX(-0.5deg); }
+  90% { transform: translateX(1px) skewX(0deg); }
+  100% { transform: translateX(0) skewX(0deg); opacity: 0; }
+}
+
+/* AI Mesh animations */
+.ai-mesh-line {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+}
+
+.ai-mesh-animate-1 {
+  animation: ai-mesh-flow 8s ease-in-out infinite;
+}
+
+.ai-mesh-animate-2 {
+  animation: ai-mesh-flow 10s ease-in-out infinite 2s;
+}
+
+.ai-mesh-animate-3 {
+  animation: ai-mesh-flow 12s ease-in-out infinite 4s;
+}
+
+.ai-mesh-animate-4 {
+  animation: ai-mesh-flow 9s ease-in-out infinite 1s;
+}
+
+.ai-mesh-animate-5 {
+  animation: ai-mesh-flow 11s ease-in-out infinite 3s;
+}
+
+.ai-mesh-animate-6 {
+  animation: ai-mesh-flow 15s ease-in-out infinite 6s;
+}
+
+.ai-node-pulse {
+  animation: ai-node-pulse 4s ease-in-out infinite;
+}
+
+@keyframes ai-mesh-flow {
+  0%, 100% { 
+    stroke-dashoffset: 20; 
+    opacity: 0.1; 
   }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-    color: rgb(192, 192, 192);
+  50% { 
+    stroke-dashoffset: 0; 
+    opacity: 0.6; 
   }
 }
 
-@keyframes dataStreamFlow {
-  0% {
-    left: -50%;
-    opacity: 0;
+@keyframes ai-node-pulse {
+  0%, 100% { 
+    opacity: 0.2; 
+    transform: scale(1); 
   }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    left: 150%;
-    opacity: 0;
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.5); 
   }
 }
