@@ -1,4 +1,3 @@
-
 import { ChevronRight, Cog, Sparkles, Zap, Clock, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,20 +6,20 @@ const AutomationHero = () => {
     icon: Zap,
     title: 'Snelheid',
     description: 'Processen die 8 uur duurden, voltooien wij in 3 minuten. Elke dag opnieuw.',
-    accentColor: 'from-blue-500 to-purple-600',
-    glowColor: 'rgba(59, 130, 246, 0.3)' // Blue glow
+    accentColor: 'from-sky-400 to-blue-500',
+    glowColor: 'rgba(56, 189, 248, 0.3)' // Light blue glow
   }, {
     icon: Clock,
     title: '24/7 Operationeel',
     description: 'Uw automatisering stopt nooit. Weekenden, nachten — altijd actief.',
-    accentColor: 'from-purple-500 to-pink-600',
+    accentColor: 'from-purple-400 to-purple-600',
     glowColor: 'rgba(147, 51, 234, 0.3)' // Purple glow
   }, {
     icon: Target,
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
-    accentColor: 'from-green-500 to-blue-600',
-    glowColor: 'rgba(236, 72, 153, 0.3)' // Pink glow
+    accentColor: 'from-red-400 to-red-600',
+    glowColor: 'rgba(239, 68, 68, 0.3)' // Red glow
   }];
 
   return <section className="relative py-20 lg:py-32 overflow-hidden">
@@ -95,7 +94,7 @@ const AutomationHero = () => {
         }}>
               {/* Enhanced Glassmorphic hover glow effect */}
               <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-all duration-700 ease-out -z-10`} style={{
-            background: `linear-gradient(135deg, ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('blue-500', '59, 130, 246, 0.3').replace('purple-600', '147, 51, 234, 0.3').replace('purple-500', '168, 85, 247, 0.3').replace('pink-600', '219, 39, 119, 0.3').replace('green-500', '34, 197, 94, 0.3')}`,
+            background: `linear-gradient(135deg, ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(').replace('sky-400', '56, 189, 248, 0.3').replace('blue-500', '59, 130, 246, 0.3').replace('purple-400', '168, 85, 247, 0.3').replace('purple-600', '147, 51, 234, 0.3').replace('red-400', '248, 113, 113, 0.3').replace('red-600', '220, 38, 127, 0.3')}`,
             filter: 'blur(25px)',
             transform: 'scale(1.1)'
           }} />
@@ -113,7 +112,7 @@ const AutomationHero = () => {
               
               {/* Dynamic ambient glow on hover */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 ease-out" style={{
-            background: `radial-gradient(circle at 50% 50%, ${benefit.accentColor.includes('blue') ? 'rgba(59, 130, 246, 0.2)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.2)' : 'rgba(34, 197, 94, 0.2)'} 0%, transparent 70%)`
+            background: `radial-gradient(circle at 50% 50%, ${benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? 'rgba(56, 189, 248, 0.2)' : benefit.accentColor.includes('purple') ? 'rgba(147, 51, 234, 0.2)' : 'rgba(239, 68, 68, 0.2)'} 0%, transparent 70%)`
           }} />
               
               <CardContent className="p-8 text-center relative z-10">
@@ -164,12 +163,12 @@ const AutomationHero = () => {
                   {/* Orbiting particle effect on hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-500">
                     <div className="absolute top-1/2 left-1/2 w-1 h-1 rounded-full animate-spin" style={{
-                  background: benefit.accentColor.includes('blue') ? '#3b82f6' : benefit.accentColor.includes('purple') ? '#9333ea' : '#22c55e',
+                  background: benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? '#38bdf8' : benefit.accentColor.includes('purple') ? '#9333ea' : '#ef4444',
                   transform: 'translate(-50%, -50%)',
                   animationDuration: '3s'
                 }}>
                       <div className="absolute w-2 h-2 rounded-full -top-8" style={{
-                    background: benefit.accentColor.includes('blue') ? '#60a5fa' : benefit.accentColor.includes('purple') ? '#a855f7' : '#4ade80'
+                    background: benefit.accentColor.includes('sky') || benefit.accentColor.includes('blue') ? '#60a5fa' : benefit.accentColor.includes('purple') ? '#a855f7' : '#f87171'
                   }} />
                     </div>
                   </div>
