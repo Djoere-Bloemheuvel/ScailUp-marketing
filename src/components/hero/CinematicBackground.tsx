@@ -2,6 +2,7 @@
 import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
+import PremiumOrbs from './PremiumOrbs';
 
 interface CinematicBackgroundProps {
   isInitialLoadComplete?: boolean;
@@ -15,6 +16,9 @@ const CinematicBackground = ({ isInitialLoadComplete = false }: CinematicBackgro
 
       {/* Ambient Lighting Layer - Behind all content */}
       <AmbientLighting />
+
+      {/* Premium Orbs - Added to the background */}
+      <PremiumOrbs />
 
       {/* AI Core Center Component */}
       <AICoreCenter />

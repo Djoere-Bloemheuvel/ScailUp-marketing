@@ -11,43 +11,18 @@ const HeroAnimations = () => {
       }
 
       @keyframes premium-orb-float-slow {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-30px) scale(1.02); }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-30px); }
       }
 
       @keyframes premium-orb-float-medium {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-20px) scale(1.03); }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
       }
 
       @keyframes premium-orb-float-fast {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-15px) scale(1.05); }
-      }
-
-      @keyframes premium-orb-glow-silver {
-        0%, 100% { box-shadow: 0 0 60px rgba(192, 192, 192, 0.1), 0 0 120px rgba(192, 192, 192, 0.05); }
-        50% { box-shadow: 0 0 80px rgba(192, 192, 192, 0.2), 0 0 160px rgba(192, 192, 192, 0.08); }
-      }
-
-      @keyframes premium-orb-glow-blue {
-        0%, 100% { box-shadow: 0 0 50px rgba(59, 130, 246, 0.08), 0 0 100px rgba(59, 130, 246, 0.04); }
-        50% { box-shadow: 0 0 70px rgba(59, 130, 246, 0.15), 0 0 140px rgba(59, 130, 246, 0.06); }
-      }
-
-      @keyframes premium-orb-glow-purple {
-        0%, 100% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.06), 0 0 80px rgba(147, 51, 234, 0.03); }
-        50% { box-shadow: 0 0 60px rgba(147, 51, 234, 0.12), 0 0 120px rgba(147, 51, 234, 0.05); }
-      }
-
-      @keyframes premium-orb-glow-cyan {
-        0%, 100% { box-shadow: 0 0 35px rgba(34, 211, 238, 0.05), 0 0 70px rgba(34, 211, 238, 0.02); }
-        50% { box-shadow: 0 0 50px rgba(34, 211, 238, 0.1), 0 0 100px rgba(34, 211, 238, 0.04); }
-      }
-
-      @keyframes premium-orb-glow-green {
-        0%, 100% { box-shadow: 0 0 35px rgba(34, 197, 94, 0.05), 0 0 70px rgba(34, 197, 94, 0.02); }
-        50% { box-shadow: 0 0 50px rgba(34, 197, 94, 0.1), 0 0 100px rgba(34, 197, 94, 0.04); }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
       }
 
       @keyframes premium-orb-pulse {
@@ -56,8 +31,8 @@ const HeroAnimations = () => {
       }
 
       @keyframes premium-core-pulse {
-        0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+        0%, 100% { opacity: 0.6; transform: translate(-50%, -50%); }
+        50% { opacity: 1; transform: translate(-50%, -50%); }
       }
 
       @keyframes premium-icon-float-1 {
@@ -365,26 +340,6 @@ const HeroAnimations = () => {
 
       .premium-orb-float-fast {
         animation: premium-orb-float-fast 6s ease-in-out infinite;
-      }
-
-      .premium-orb-glow-silver {
-        animation: premium-orb-glow-silver 8s ease-in-out infinite;
-      }
-
-      .premium-orb-glow-blue {
-        animation: premium-orb-glow-blue 7s ease-in-out infinite;
-      }
-
-      .premium-orb-glow-purple {
-        animation: premium-orb-glow-purple 9s ease-in-out infinite;
-      }
-
-      .premium-orb-glow-cyan {
-        animation: premium-orb-glow-cyan 6s ease-in-out infinite;
-      }
-
-      .premium-orb-glow-green {
-        animation: premium-orb-glow-green 8s ease-in-out infinite;
       }
 
       .premium-orb-pulse {
