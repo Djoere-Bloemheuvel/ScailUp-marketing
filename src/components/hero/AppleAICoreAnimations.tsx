@@ -19,7 +19,7 @@ const AppleAICoreAnimations = () => {
           }
         }
 
-        /* Cinematic Soft Glow Box - Core Pulsing Animation */
+        /* Core Pulsing Animation */
         @keyframes apple-core-pulse {
           0%, 100% { 
             opacity: 0.8; 
@@ -47,7 +47,7 @@ const AppleAICoreAnimations = () => {
           }
         }
 
-        /* Ambient Pulsing Edges - Ring Rotations with Different Speeds */
+        /* Ring Rotations - Different Speeds */
         @keyframes apple-ring-rotate-slow {
           0% { transform: translate(-50%, -50%) rotate(0deg); }
           100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -111,7 +111,7 @@ const AppleAICoreAnimations = () => {
           }
         }
 
-        /* Cinematic Ambient Glow - Ambient Pulse */
+        /* Ambient Pulse */
         @keyframes apple-ambient-pulse {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 0.8; }
@@ -148,13 +148,9 @@ const AppleAICoreAnimations = () => {
           }
         }
 
-        /* Apply Animations - Cinematic Soft Glow Box with Ambient Pulsing Edges */
+        /* Apply Animations */
         .apple-core-entrance {
           animation: apple-core-entrance 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .cinematic-soft-glow-box {
-          /* Additional styling for the cinematic soft glow box concept */
         }
 
         .apple-core-pulse {
@@ -163,10 +159,6 @@ const AppleAICoreAnimations = () => {
 
         .apple-inner-pulse {
           animation: apple-inner-pulse 3s ease-in-out infinite;
-        }
-
-        .ambient-pulsing-edges {
-          /* Ambient pulsing edges styling */
         }
 
         .apple-ring-rotate-slow {
@@ -195,10 +187,6 @@ const AppleAICoreAnimations = () => {
 
         .apple-glass-shimmer {
           animation: apple-glass-shimmer 12s ease-in-out infinite;
-        }
-
-        .cinematic-ambient-glow {
-          /* Cinematic ambient glow styling */
         }
 
         .apple-ambient-pulse {
