@@ -1,6 +1,8 @@
+
 import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Service {
   id: string;
@@ -33,6 +35,9 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   
   const isEven = index % 2 === 1; // 2nd and 4th sections (index 1 and 3)
   const shouldShowContent = hasBeenVisible || isVisible;
+
+  // Determine if this is the AI Automations service
+  const isAIAutomations = service.id === 'ai-automations';
 
   return (
     <section 
@@ -80,10 +85,20 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
               
-              <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
-                <span className="text-sm font-medium">{service.secondaryButtonText}</span>
-                <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              {isAIAutomations ? (
+                <Link 
+                  to="/ai-automations"
+                  className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
+                >
+                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
+                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              ) : (
+                <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
+                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
+                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+              )}
             </div>
           </div>
         </div>
