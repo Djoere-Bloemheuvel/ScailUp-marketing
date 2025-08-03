@@ -20,38 +20,22 @@ const AIAutomations = () => {
     <div className="min-h-screen bg-premium-black">
       <ScrollHeader />
       
-      {/* Hero Section with Integrated Benefits */}
+      {/* Hero Section - heldere positionering */}
       <AutomationHero />
 
-      {/* New Overview Section */}
-      <AutomationOverview />
-
-      {/* New SEO Content Sections */}
+      {/* Section 1 - Wat is AI Automatisering? */}
       <AutomationExplained />
-      <WhyBuildrs />
 
-      {/* Intro Section */}
-      <AutomationIntro />
-
-      {/* Visual Showcase */}
+      {/* Feature Cards – concrete AI-diensten of use cases */}
       <AutomationShowcase />
 
-      {/* Advanced Functions */}
-      <AdvancedFunctions />
+      {/* Section 2 - Transformeer je processen */}
+      <AutomationOverview />
 
-      {/* Use Cases */}
-      <UseCases />
+      {/* Section 3 - Waarom Buildrs? */}
+      <WhyBuildrs />
 
-      {/* Integrations */}
-      <Integrations />
-
-      {/* Testimonial/Proof Section */}
-      <AutomationProof />
-
-      {/* Client Examples */}
-      <ClientExamples />
-
-      {/* Final CTA */}
+      {/* CTA blok */}
       <AutomationFinalCTA />
     </div>
   );
