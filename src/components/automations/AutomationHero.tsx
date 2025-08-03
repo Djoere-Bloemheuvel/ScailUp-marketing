@@ -1,4 +1,3 @@
-
 import { ChevronRight, Cog, Sparkles, Zap, Clock, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -58,7 +57,7 @@ const AutomationHero = () => {
         {/* Main Hero Content */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
-            Slim. Snel. 
+            Slim. Snel.{' '}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent block">
                 Onzichtbaar.
