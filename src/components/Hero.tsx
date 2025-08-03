@@ -12,97 +12,151 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-black via-premium-gray to-premium-gray-dark overflow-hidden">
-      {/* Luxe geometrische animatie achtergrond */}
-      <div className="absolute inset-0 opacity-[0.15]">
-        {/* Bewegende hexagons */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute border border-premium-silver/10 premium-hex-float"
-              style={{
-                width: `${60 + i * 20}px`,
-                height: `${60 + i * 20}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
-                animationDelay: `${i * 0.8}s`,
-                animationDuration: `${15 + Math.random() * 10}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Vloeiende data streams */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute h-[1px] premium-data-stream"
-              style={{
-                width: '200px',
-                background: `linear-gradient(90deg, transparent, rgba(192, 192, 192, ${0.3 + Math.random() * 0.4}), transparent)`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 1.2}s`,
-                animationDuration: `${8 + Math.random() * 6}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Subtiele premium grid */}
-        <div 
-          className="absolute inset-0 premium-grid-animation"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(192, 192, 192, 0.02) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(192, 192, 192, 0.02) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px'
-          }}
-        />
-      </div>
-
-      {/* Luxe particle systeem */}
-      <div className="absolute inset-0 opacity-40">
-        {Array.from({ length: 20 }).map((_, i) => (
+      {/* Cinematische matrix-style data cascade */}
+      <div className="absolute inset-0 opacity-60">
+        {Array.from({ length: 25 }).map((_, i) => (
           <div
-            key={i}
-            className="absolute w-1 h-1 bg-premium-silver/30 rounded-full premium-particle-float"
+            key={`matrix-${i}`}
+            className="absolute top-0 w-[2px] bg-gradient-to-b from-premium-silver via-white to-transparent matrix-cascade"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${20 + Math.random() * 15}s`
+              left: `${i * 4}%`,
+              height: '100vh',
+              animationDelay: `${i * 0.3}s`,
+              animationDuration: `${6 + Math.random() * 4}s`,
+              opacity: 0.3 + Math.random() * 0.4
             }}
           />
         ))}
       </div>
 
-      {/* Premium glow effecten */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-premium-silver/8 via-premium-silver/3 to-transparent rounded-full blur-3xl premium-glow-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-radial from-white/5 via-white/2 to-transparent rounded-full blur-3xl premium-glow-pulse" style={{animationDelay: '3s'}}></div>
-        <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-premium-silver/4 via-transparent to-transparent rounded-full blur-3xl premium-glow-pulse" style={{animationDelay: '6s'}}></div>
+      {/* Grote bewegende geometrische vormen */}
+      <div className="absolute inset-0 opacity-30">
+        {/* Grote hexagons */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div
+            key={`hex-${i}`}
+            className="absolute border-2 border-premium-silver/20 large-hex-movement"
+            style={{
+              width: `${200 + i * 80}px`,
+              height: `${200 + i * 80}px`,
+              left: `${20 + i * 10}%`,
+              top: `${10 + i * 8}%`,
+              clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
+              animationDelay: `${i * 1.2}s`,
+              animationDuration: `${20 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+
+        {/* Grote cirkels met pulse */}
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div
+            key={`circle-${i}`}
+            className="absolute rounded-full border border-white/10 large-circle-pulse"
+            style={{
+              width: `${300 + i * 150}px`,
+              height: `${300 + i * 150}px`,
+              left: `${Math.random() * 80}%`,
+              top: `${Math.random() * 80}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: `${15 + i * 3}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Subtiele circuit patroon */}
-      <div className="absolute inset-0 opacity-[0.08] premium-circuit-flow">
+      {/* Grote energie stralen */}
+      <div className="absolute inset-0 opacity-40">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={`beam-${i}`}
+            className="absolute energy-beam"
+            style={{
+              width: '4px',
+              height: '100vh',
+              left: `${Math.random() * 100}%`,
+              background: `linear-gradient(180deg, 
+                transparent 0%, 
+                rgba(192, 192, 192, ${0.6 + Math.random() * 0.4}) 20%, 
+                rgba(255, 255, 255, ${0.8 + Math.random() * 0.2}) 50%, 
+                rgba(192, 192, 192, ${0.6 + Math.random() * 0.4}) 80%, 
+                transparent 100%)`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${8 + Math.random() * 4}s`,
+              filter: 'blur(1px)'
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Grote holografische panelen */}
+      <div className="absolute inset-0 opacity-25">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div
+            key={`panel-${i}`}
+            className="absolute holographic-panel"
+            style={{
+              width: `${400 + i * 100}px`,
+              height: `${200 + i * 50}px`,
+              left: `${Math.random() * 60}%`,
+              top: `${Math.random() * 70}%`,
+              background: `linear-gradient(135deg, 
+                rgba(192, 192, 192, 0.08) 0%, 
+                rgba(255, 255, 255, 0.15) 50%, 
+                rgba(192, 192, 192, 0.08) 100%)`,
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              animationDelay: `${i * 1.5}s`,
+              animationDuration: `${12 + i * 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Massive tech grid met beweging */}
+      <div className="absolute inset-0 opacity-20">
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 massive-tech-grid"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 20% 20%, rgba(192, 192, 192, 0.3) 1px, transparent 1px),
-              radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-              linear-gradient(45deg, transparent 48%, rgba(192, 192, 192, 0.05) 50%, transparent 52%),
-              linear-gradient(-45deg, transparent 48%, rgba(192, 192, 192, 0.05) 50%, transparent 52%)
+              linear-gradient(rgba(192, 192, 192, 0.15) 2px, transparent 2px),
+              linear-gradient(90deg, rgba(192, 192, 192, 0.15) 2px, transparent 2px),
+              linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
             `,
-            backgroundSize: '120px 120px, 80px 80px, 40px 40px, 60px 60px'
+            backgroundSize: '200px 200px, 200px 200px, 40px 40px, 40px 40px'
           }}
         />
       </div>
 
+      {/* Grote lichtpulsen */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-gradient-radial from-premium-silver/20 via-white/10 to-transparent rounded-full blur-3xl massive-light-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-gradient-radial from-white/15 via-premium-silver/8 to-transparent rounded-full blur-3xl massive-light-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-premium-silver/10 via-transparent to-transparent rounded-full blur-3xl massive-light-pulse" style={{animationDelay: '8s'}}></div>
+      </div>
+
+      {/* Grote digitale deeltjes */}
+      <div className="absolute inset-0 opacity-50">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="absolute digital-particle"
+            style={{
+              width: `${4 + Math.random() * 8}px`,
+              height: `${4 + Math.random() * 8}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: Math.random() > 0.5 ? '#C0C0C0' : '#FFFFFF',
+              boxShadow: `0 0 ${10 + Math.random() * 20}px currentColor`,
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: `${15 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Content blijft hetzelfde */}
       <div className="relative max-w-5xl mx-auto text-center z-10">
         {/* Apple-style product badge */}
         <div className={`mb-12 flex justify-center ${isLoaded ? 'apple-fade-in' : ''}`}>
