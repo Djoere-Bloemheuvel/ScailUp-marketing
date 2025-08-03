@@ -1,91 +1,80 @@
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 3.9%;
-  --primary: 0 0% 9%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 96.1%;
-  --secondary-foreground: 0 0% 9%;
-  --muted: 0 0% 96.1%;
-  --muted-foreground: 0 0% 45.1%;
-  --accent: 0 0% 96.1%;
-  --accent-foreground: 0 0% 9%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 89.8%;
-  --input: 0 0% 89.8%;
-  --ring: 0 0% 3.9%;
-  --chart-1: 12 76% 61%;
-  --chart-2: 173 58% 39%;
-  --chart-3: 197 37% 24%;
-  --chart-4: 43 74% 66%;
-  --chart-5: 27 87% 67%;
-  --radius: 0.5rem;
-  --sidebar-background: 0 0% 98%;
-  --sidebar-foreground: 0 0% 45.1%;
-  --sidebar-primary: 0 0% 9%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 0 0% 96.1%;
-  --sidebar-accent-foreground: 0 0% 9%;
-  --sidebar-border: 0 0% 89.8%;
-  --sidebar-ring: 0 0% 3.9%;
-}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 3.9%;
+    --sidebar-primary: 0 0% 9%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96.1%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 89.8%;
+    --sidebar-ring: 0 0% 3.9%;
+  }
 
-.dark {
-  --background: 0 0% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 0 0% 14.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 14.9%;
-  --muted-foreground: 0 0% 63.9%;
-  --accent: 0 0% 14.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
-  --input: 0 0% 14.9%;
-  --ring: 0 0% 83.1%;
-  --chart-1: 220 70% 50%;
-  --chart-2: 160 60% 45%;
-  --chart-3: 30 80% 55%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 340 75% 55%;
-  --sidebar-background: 0 0% 3.9%;
-  --sidebar-foreground: 0 0% 63.9%;
-  --sidebar-primary: 0 0% 98%;
-  --sidebar-primary-foreground: 0 0% 9%;
-  --sidebar-accent: 0 0% 14.9%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-border: 0 0% 14.9%;
-  --sidebar-ring: 0 0% 83.1%;
-}
-
-* {
-  border-color: hsl(var(--border));
-}
-
-body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 0 0% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 14.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 14.9%;
+    --sidebar-ring: 0 0% 83.1%;
+  }
 }
 
 @layer base {
@@ -97,99 +86,96 @@ body {
   }
 }
 
-/* Apple-inspired design system animations */
+/* Apple-inspired animations */
 .apple-fade-in {
-  opacity: 0;
-  transform: translateY(30px);
   animation: apple-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.apple-stagger-1 { animation-delay: 0.1s; }
-.apple-stagger-2 { animation-delay: 0.2s; }
-.apple-stagger-3 { animation-delay: 0.4s; }
-.apple-stagger-4 { animation-delay: 0.6s; }
+.apple-stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.apple-stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.apple-stagger-3 { animation-delay: 0.4s; opacity: 0; }
+.apple-stagger-4 { animation-delay: 0.6s; opacity: 0; }
+.apple-stagger-5 { animation-delay: 0.8s; opacity: 0; }
 
 .apple-button-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-button-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.apple-scale-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-scale-hover:hover {
   transform: scale(1.02) translateY(-2px);
 }
 
-/* Nothing-inspired floating animations */
+/* Nothing Phone inspired floating animations */
 .nothing-float {
-  animation: nothing-float 8s ease-in-out infinite;
+  animation: nothing-float 6s ease-in-out infinite;
 }
 
 .nothing-float-delayed {
-  animation: nothing-float 8s ease-in-out infinite 2s;
+  animation: nothing-float-delayed 8s ease-in-out infinite;
 }
 
 .nothing-float-slow {
-  animation: nothing-float 12s ease-in-out infinite 4s;
+  animation: nothing-float-slow 10s ease-in-out infinite;
 }
 
 .nothing-pulse {
-  animation: nothing-pulse 3s ease-in-out infinite;
+  animation: nothing-pulse 4s ease-in-out infinite;
 }
 
 .nothing-pulse-delayed {
-  animation: nothing-pulse 3s ease-in-out infinite 1.5s;
+  animation: nothing-pulse-delayed 6s ease-in-out infinite;
 }
 
 @keyframes nothing-float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  25% { transform: translateY(-10px) rotate(1deg); }
-  50% { transform: translateY(-5px) rotate(-1deg); }
-  75% { transform: translateY(-15px) rotate(0.5deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-0.5deg); }
+}
+
+@keyframes nothing-float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(8px) rotate(-1deg); }
+  66% { transform: translateY(-12px) rotate(0.5deg); }
+}
+
+@keyframes nothing-float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1deg); }
 }
 
 @keyframes nothing-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes nothing-pulse-delayed {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
 }
 
 /* AI Device animations */
 .ai-device-float {
-  animation: ai-device-float 12s ease-in-out infinite;
+  animation: ai-device-float 8s ease-in-out infinite;
 }
 
 .ai-device-glow {
-  animation: ai-device-glow 8s ease-in-out infinite;
-}
-
-.neural-pulse {
-  animation: neural-pulse 3s ease-in-out infinite;
-}
-
-.neural-connection {
-  animation: neural-connection 4s ease-in-out infinite;
-  opacity: 0.3;
-}
-
-.ai-icon-pulse {
-  animation: ai-icon-pulse 2s ease-in-out infinite;
-}
-
-.ai-eye-scan {
-  animation: ai-eye-scan 3s ease-in-out infinite;
-}
-
-.data-stream-flow {
-  animation: data-stream-flow 3s linear infinite;
+  animation: ai-device-glow 6s ease-in-out infinite;
 }
 
 @keyframes ai-device-float {
   0%, 100% { transform: translateY(0px) rotateX(0deg); }
-  25% { transform: translateY(-8px) rotateX(1deg); }
-  50% { transform: translateY(-4px) rotateX(-1deg); }
-  75% { transform: translateY(-12px) rotateX(0.5deg); }
+  33% { transform: translateY(-8px) rotateX(2deg); }
+  66% { transform: translateY(4px) rotateX(-1deg); }
 }
 
 @keyframes ai-device-glow {
@@ -197,132 +183,71 @@ body {
   50% { opacity: 0.6; }
 }
 
-@keyframes neural-pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+/* AI Mesh animations */
+.ai-mesh-line {
+  opacity: 0;
 }
 
-@keyframes neural-connection {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.6; }
+.ai-mesh-animate-1 { animation: ai-mesh-flow-1 8s ease-in-out infinite; }
+.ai-mesh-animate-2 { animation: ai-mesh-flow-2 10s ease-in-out infinite; }
+.ai-mesh-animate-3 { animation: ai-mesh-flow-3 12s ease-in-out infinite; }
+.ai-mesh-animate-4 { animation: ai-mesh-flow-4 9s ease-in-out infinite; }
+.ai-mesh-animate-5 { animation: ai-mesh-flow-5 11s ease-in-out infinite; }
+.ai-mesh-animate-6 { animation: ai-mesh-flow-6 14s ease-in-out infinite; }
+
+@keyframes ai-mesh-flow-1 {
+  0%, 100% { opacity: 0; stroke-dasharray: 0 100; }
+  50% { opacity: 1; stroke-dasharray: 50 50; }
 }
 
-@keyframes ai-icon-pulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
+@keyframes ai-mesh-flow-2 {
+  0%, 100% { opacity: 0; stroke-dasharray: 0 100; }
+  40% { opacity: 0.8; stroke-dasharray: 30 70; }
 }
 
-@keyframes ai-eye-scan {
-  0%, 100% { opacity: 0.8; transform: scale(1) rotateY(0deg); }
-  25% { opacity: 1; transform: scale(1.05) rotateY(5deg); }
-  50% { opacity: 0.9; transform: scale(1.1) rotateY(-5deg); }
-  75% { opacity: 1; transform: scale(1.05) rotateY(3deg); }
+@keyframes ai-mesh-flow-3 {
+  0%, 100% { opacity: 0; stroke-dasharray: 0 100; }
+  60% { opacity: 0.6; stroke-dasharray: 40 60; }
 }
 
-@keyframes data-stream-flow {
-  0% { left: -50%; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
+@keyframes ai-mesh-flow-4 {
+  0%, 100% { opacity: 0; stroke-dasharray: 0 100; }
+  45% { opacity: 0.7; stroke-dasharray: 35 65; }
 }
 
-/* Dashboard-style animations for left AI device */
-.chart-pulse {
-  animation: chart-pulse 2s ease-in-out infinite;
+@keyframes ai-mesh-flow-5 {
+  0%, 100% { opacity: 0; stroke-dasharray: 0 100; }
+  55% { opacity: 0.5; stroke-dasharray: 25 75; }
 }
 
-.dashboard-pulse {
-  animation: dashboard-pulse 3s ease-in-out infinite;
+@keyframes ai-mesh-flow-6 {
+  0%, 100% { opacity: 0; stroke-dasharray: 0 100; }
+  35% { opacity: 0.4; stroke-dasharray: 20 80; }
 }
 
-.layer-pulse {
-  animation: layer-pulse 2.5s ease-in-out infinite;
+.ai-node-pulse {
+  animation: ai-node-pulse 3s ease-in-out infinite;
 }
 
-.layer-icon-pulse {
-  animation: layer-icon-pulse 4s ease-in-out infinite;
+@keyframes ai-node-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.5); }
 }
 
-.interface-pulse {
-  animation: interface-pulse 2s ease-in-out infinite;
-}
-
-.central-pulse {
-  animation: central-pulse 1.5s ease-in-out infinite;
-}
-
-.interface-line-pulse {
-  animation: interface-line-pulse 3s ease-in-out infinite;
-}
-
-.status-blink {
-  animation: status-blink 2s ease-in-out infinite;
-}
-
-.activity-pulse {
-  animation: activity-pulse 2s ease-in-out infinite;
-}
-
-@keyframes chart-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-@keyframes dashboard-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes layer-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.9; }
-}
-
-@keyframes layer-icon-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-@keyframes interface-pulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes central-pulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-@keyframes interface-line-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes status-blink {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-@keyframes activity-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.15); }
-}
-
-/* Glitch effect animations */
+/* Glitch animations */
 @keyframes glitch-scanline {
   0% { transform: translateX(-100%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
+  50% { opacity: 1; }
   100% { transform: translateX(100%); opacity: 0; }
 }
 
 @keyframes glitch-rgb-offset {
-  0% { transform: translateX(0); opacity: 1; }
-  20% { transform: translateX(2px); }
-  40% { transform: translateX(-1px); }
-  60% { transform: translateX(3px); }
-  80% { transform: translateX(-2px); }
-  100% { transform: translateX(0); opacity: 0; }
+  0% { transform: translate(0, 0); opacity: 1; }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0, 0); opacity: 0; }
 }
 
 @keyframes glitch-pixelflicker {
@@ -339,71 +264,139 @@ body {
 }
 
 @keyframes glitch-slice {
-  0% { transform: translateX(0) skewX(0deg); opacity: 0; }
-  10% { opacity: 1; transform: translateX(2px) skewX(1deg); }
-  20% { transform: translateX(-1px) skewX(-1deg); }
-  30% { transform: translateX(3px) skewX(0.5deg); }
-  40% { transform: translateX(-2px) skewX(-0.5deg); }
-  50% { transform: translateX(1px) skewX(1deg); }
-  60% { transform: translateX(-3px) skewX(-1deg); }
-  70% { transform: translateX(2px) skewX(0.5deg); }
-  80% { transform: translateX(-1px) skewX(-0.5deg); }
-  90% { transform: translateX(1px) skewX(0deg); }
-  100% { transform: translateX(0) skewX(0deg); opacity: 0; }
+  0% { transform: translateX(0); opacity: 1; }
+  25% { transform: translateX(-5px); opacity: 0.8; }
+  50% { transform: translateX(3px); opacity: 0.6; }
+  75% { transform: translateX(-2px); opacity: 0.4; }
+  100% { transform: translateX(0); opacity: 0; }
 }
 
-/* AI Mesh animations */
-.ai-mesh-line {
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
+/* AI Device specific animations */
+.chart-pulse {
+  animation: chart-pulse 2s ease-in-out infinite;
 }
 
-.ai-mesh-animate-1 {
-  animation: ai-mesh-flow 8s ease-in-out infinite;
+.dashboard-pulse {
+  animation: dashboard-pulse 3s ease-in-out infinite;
 }
 
-.ai-mesh-animate-2 {
-  animation: ai-mesh-flow 10s ease-in-out infinite 2s;
+.activity-pulse {
+  animation: activity-pulse 1.5s ease-in-out infinite;
 }
 
-.ai-mesh-animate-3 {
-  animation: ai-mesh-flow 12s ease-in-out infinite 4s;
+.layer-pulse {
+  animation: layer-pulse 2.5s ease-in-out infinite;
 }
 
-.ai-mesh-animate-4 {
-  animation: ai-mesh-flow 9s ease-in-out infinite 1s;
+.layer-icon-pulse {
+  animation: layer-icon-pulse 4s ease-in-out infinite;
 }
 
-.ai-mesh-animate-5 {
-  animation: ai-mesh-flow 11s ease-in-out infinite 3s;
+.interface-pulse {
+  animation: interface-pulse 2s ease-in-out infinite;
 }
 
-.ai-mesh-animate-6 {
-  animation: ai-mesh-flow 15s ease-in-out infinite 6s;
+.central-pulse {
+  animation: central-pulse 1s ease-in-out infinite;
 }
 
-.ai-node-pulse {
-  animation: ai-node-pulse 4s ease-in-out infinite;
+.interface-line-pulse {
+  animation: interface-line-pulse 3s ease-in-out infinite;
 }
 
-@keyframes ai-mesh-flow {
-  0%, 100% { 
-    stroke-dashoffset: 20; 
-    opacity: 0.1; 
-  }
-  50% { 
-    stroke-dashoffset: 0; 
-    opacity: 0.6; 
-  }
+.status-blink {
+  animation: status-blink 1.5s ease-in-out infinite;
 }
 
-@keyframes ai-node-pulse {
-  0%, 100% { 
-    opacity: 0.2; 
-    transform: scale(1); 
-  }
-  50% { 
-    opacity: 0.8; 
-    transform: scale(1.5); 
-  }
+.neural-pulse {
+  animation: neural-pulse 2s ease-in-out infinite;
+}
+
+.neural-connection {
+  animation: neural-connection 4s ease-in-out infinite;
+}
+
+.ai-icon-pulse {
+  animation: ai-icon-pulse 3s ease-in-out infinite;
+}
+
+.ai-eye-scan {
+  animation: ai-eye-scan 2s ease-in-out infinite;
+}
+
+.data-stream-flow {
+  animation: data-stream-flow 4s linear infinite;
+}
+
+@keyframes chart-pulse {
+  0%, 100% { opacity: 0.6; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+@keyframes dashboard-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes activity-pulse {
+  0%, 100% { opacity: 0.5; transform: rotate(0deg); }
+  50% { opacity: 1; transform: rotate(180deg); }
+}
+
+@keyframes layer-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes layer-icon-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes interface-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes central-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes interface-line-pulse {
+  0%, 100% { opacity: 0.3; width: 0%; }
+  50% { opacity: 0.7; width: 100%; }
+}
+
+@keyframes status-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes neural-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes neural-connection {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes ai-icon-pulse {
+  0%, 100% { opacity: 0.6; transform: rotate(0deg); }
+  50% { opacity: 1; transform: rotate(10deg); }
+}
+
+@keyframes ai-eye-scan {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  25% { opacity: 1; transform: scale(1.1); }
+  50% { opacity: 0.9; transform: scale(0.95); }
+  75% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes data-stream-flow {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
 }
