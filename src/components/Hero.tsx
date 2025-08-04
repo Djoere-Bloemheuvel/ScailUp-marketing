@@ -1,11 +1,22 @@
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
+import ContactModal from './ContactModal';
 
 const Hero = () => {
   const backgroundLoaded = useProgressiveLoad(100); // Load background after 100ms
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleDeepDiveClick = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsContactModalOpen(false);
+  };
 
   return (
     <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
@@ -59,6 +70,7 @@ const Hero = () => {
                   style={{
                     boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                   }}
+                  onClick={handleDeepDiveClick}
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Plan een deepdive
@@ -132,6 +144,12 @@ const Hero = () => {
           <div className="w-[1px] h-4 sm:h-6 bg-premium-silver/80 premium-scroll-pulse absolute top-0"></div>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={handleCloseModal} 
+      />
 
       {/* Keep only hover and continuous animations */}
       <style dangerouslySetInnerHTML={{
