@@ -18,8 +18,21 @@ const Workflow = () => {
       }
     };
 
+    // Add scroll-triggered animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .animate-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+    `;
+    document.head.appendChild(style);
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.head.removeChild(style);
+    };
   }, []);
 
   const steps = [
@@ -48,11 +61,14 @@ const Workflow = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header Section - Promoted subheading as main title with tighter spacing */}
+        {/* Header Section - Enhanced with subtitle */}
         <div className="text-left mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             In drie heldere stappen van idee naar impact.
           </h2>
+          <p className="text-white/60 text-lg lg:text-xl font-light tracking-wide apple-fade-in apple-stagger-3">
+            Onze bewezen aanpak voor succesvolle AI-implementatie
+          </p>
         </div>
 
         {/* Horizontal Timeline */}
@@ -71,7 +87,7 @@ const Workflow = () => {
               <WorkflowStep 
                 key={step.number}
                 step={step} 
-                delay={`${0.2 + index * 0.15}s`}
+                delay={`${0.2 + index * 0.1}s`}
                 isLast={index === steps.length - 1}
               />
             ))}
