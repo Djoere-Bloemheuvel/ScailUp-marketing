@@ -6,8 +6,8 @@ const AppleTimeline = () => {
     {
       id: 1,
       number: "01",
-      title: "Gebouwd op principes.",
-      subtitle: "Gedreven door resultaat.",
+      title: "Snelheid zonder concessies",
+      subtitle: "We bouwen in dagen waar andere maanden over doen. Snelheid is niet optioneel.",
       icon: Clock,
       glowColor: "from-blue-500/20 to-cyan-400/15", // AI Automations blue
       glowColorHover: "from-blue-500/35 to-cyan-400/25",
