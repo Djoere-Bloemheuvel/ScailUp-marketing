@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 interface WorkflowStepProps {
@@ -200,15 +199,7 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
         transform: `translateY(${verticalOffset}px)`
       } as React.CSSProperties}
     >
-      {/* Glassmorphism container */}
-      <div className="relative flex flex-col items-center space-y-8 p-8 lg:p-12 rounded-3xl backdrop-blur-xl border border-white/[0.08] transition-all duration-700 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer group-hover:border-white/[0.15]"
-           style={{
-             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.01) 100%)',
-             boxShadow: '0 24px 48px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06)'
-           }}>
-        
-        {/* Enhanced glassmorphism glow */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10" />
+      <div className="relative flex flex-col items-center space-y-8 p-8 lg:p-12 transition-all duration-500 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer">
         
         {/* Enhanced number circle with step-specific colors */}
         <div className="relative">
