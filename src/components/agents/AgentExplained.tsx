@@ -1,5 +1,5 @@
 
-import { Bot, MessageSquare, Cpu } from 'lucide-react';
+import { Bot, MessageSquare, Cpu, Brain } from 'lucide-react';
 
 const AgentExplained = () => {
   return (
@@ -57,81 +57,72 @@ const AgentExplained = () => {
             </div>
           </div>
 
-          {/* AI Agent Visual */}
+          {/* Glowing Brain Visual */}
           <div className="relative">
             <div className="relative w-full max-w-lg mx-auto">
-              {/* Main Agent Interface */}
-              <div className="relative rounded-3xl bg-gradient-to-br from-gray-900/60 to-blue-950/40 border border-blue-400/30 backdrop-blur-xl p-8 shadow-2xl">
+              {/* Outer glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-teal-500/30 to-blue-500/20 rounded-full blur-3xl opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
+              
+              {/* Main container */}
+              <div className="relative w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-slate-900/60 to-blue-950/40 border border-cyan-400/30 backdrop-blur-xl shadow-2xl flex items-center justify-center">
                 
-                {/* Agent Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                      <Bot className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-white font-medium">AI Agent Alpha</span>
+                {/* Inner glow circle */}
+                <div className="absolute inset-8 rounded-full bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/20">
+                  {/* Rotating orbital rings */}
+                  <div className="absolute inset-0 rounded-full border border-cyan-400/10 animate-spin" style={{ animationDuration: '20s' }}>
+                    <div className="absolute top-0 left-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-cyan-400/60 rounded-full animate-pulse" />
                   </div>
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-green-400/80 animate-pulse" />
-                    <div className="text-xs text-green-400">Online</div>
+                  
+                  <div className="absolute inset-4 rounded-full border border-teal-400/10 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
+                    <div className="absolute top-1/4 right-0 w-1.5 h-1.5 translate-x-1/2 -translate-y-1/2 bg-teal-400/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
                   </div>
-                </div>
-
-                {/* Agent Activity */}
-                <div className="space-y-4">
-                  {/* Current Task */}
-                  <div className="rounded-xl bg-black/40 p-4 border border-blue-400/20">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                      <span className="text-xs text-premium-silver/70">Huidige taak</span>
-                    </div>
-                    <div className="text-sm text-white">E-mail analyse & follow-up genereren</div>
-                  </div>
-
-                  {/* Recent Actions */}
-                  <div className="space-y-2">
-                    <div className="text-xs text-premium-silver/70 mb-3">Recente acties</div>
-                    
-                    <div className="flex items-center space-x-3 p-2 rounded-lg bg-black/20">
-                      <div className="w-2 h-2 bg-green-400 rounded-full" />
-                      <span className="text-xs text-premium-silver/80">CRM bijgewerkt - 14:32</span>
-                    </div>
-                    
-                    <div className="flex items-center space-x-3 p-2 rounded-lg bg-black/20">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full" />
-                      <span className="text-xs text-premium-silver/80">Afspraak ingepland - 14:28</span>
-                    </div>
-                    
-                    <div className="flex items-center space-x-3 p-2 rounded-lg bg-black/20">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full" />
-                      <span className="text-xs text-premium-silver/80">Lead gekwalificeerd - 14:15</span>
-                    </div>
-                  </div>
-
-                  {/* Agent Stats */}
-                  <div className="grid grid-cols-2 gap-4 pt-4">
-                    <div className="rounded-xl bg-black/40 p-3 border border-cyan-400/20">
-                      <div className="text-lg font-bold text-white">127</div>
-                      <div className="text-xs text-premium-silver/70">Taken voltooid</div>
-                    </div>
-                    <div className="rounded-xl bg-black/40 p-3 border border-emerald-400/20">
-                      <div className="text-lg font-bold text-white">98.5%</div>
-                      <div className="text-xs text-premium-silver/70">Nauwkeurigheid</div>
-                    </div>
+                  
+                  <div className="absolute inset-8 rounded-full border border-blue-400/10 animate-spin" style={{ animationDuration: '25s' }}>
+                    <div className="absolute bottom-0 left-1/4 w-1 h-1 -translate-x-1/2 translate-y-1/2 bg-blue-400/60 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
                   </div>
                 </div>
 
-                {/* Glow Effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 pointer-events-none" />
+                {/* Central brain icon */}
+                <div className="relative z-10 w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400/80 to-teal-500/80 flex items-center justify-center shadow-2xl animate-pulse" style={{ animationDuration: '3s' }}>
+                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+                  <Brain className="w-16 h-16 text-white drop-shadow-lg" />
+                  
+                  {/* Inner glow effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/30 to-teal-400/30 animate-pulse" style={{ animationDelay: '1s', animationDuration: '2s' }} />
+                </div>
+
+                {/* Orbiting particles */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {/* Large particle - top */}
+                  <div className="absolute top-4 left-1/2 w-3 h-3 -translate-x-1/2 bg-cyan-400/80 rounded-full animate-bounce shadow-lg shadow-cyan-400/50" style={{ animationDelay: '0s', animationDuration: '4s' }} />
+                  
+                  {/* Medium particle - right */}
+                  <div className="absolute top-1/3 right-6 w-2 h-2 bg-teal-400/80 rounded-full animate-pulse shadow-lg shadow-teal-400/50" style={{ animationDelay: '1s', animationDuration: '3s' }} />
+                  
+                  {/* Small particle - bottom left */}
+                  <div className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-blue-400/80 rounded-full animate-ping shadow-lg shadow-blue-400/50" style={{ animationDelay: '2s', animationDuration: '3.5s' }} />
+                  
+                  {/* Medium particle - top right */}
+                  <div className="absolute top-12 right-12 w-2 h-2 bg-cyan-300/80 rounded-full animate-bounce shadow-lg shadow-cyan-300/50" style={{ animationDelay: '0.5s', animationDuration: '5s' }} />
+                  
+                  {/* Small particle - bottom right */}
+                  <div className="absolute bottom-6 right-8 w-1 h-1 bg-teal-300/80 rounded-full animate-pulse shadow-lg shadow-teal-300/50" style={{ animationDelay: '3s', animationDuration: '2.5s' }} />
+                </div>
+
+                {/* Scanning beam effect */}
+                <div className="absolute inset-0 rounded-full bg-gradient-conic from-transparent via-cyan-400/10 to-transparent animate-spin opacity-50" style={{ animationDuration: '8s' }} />
+                
+                {/* Additional glow layers */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/5 to-teal-500/5 pointer-events-none" />
               </div>
 
-              {/* Floating Communication Bubbles */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30 backdrop-blur-md flex items-center justify-center">
-                <MessageSquare className="w-8 h-8 text-blue-400" />
+              {/* Floating connection nodes */}
+              <div className="absolute -top-6 -right-6 w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-400/30 backdrop-blur-md flex items-center justify-center animate-float" style={{ animationDuration: '3s' }}>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
               </div>
 
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20 border border-purple-400/30 backdrop-blur-md flex items-center justify-center">
-                <Cpu className="w-6 h-6 text-purple-400" />
+              <div className="absolute -bottom-6 -left-6 w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500/20 to-blue-500/20 border border-teal-400/30 backdrop-blur-md flex items-center justify-center animate-float" style={{ animationDelay: '1.5s', animationDuration: '4s' }}>
+                <div className="w-1.5 h-1.5 bg-teal-400 rounded-full animate-pulse" />
               </div>
             </div>
           </div>
