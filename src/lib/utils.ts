@@ -1,3 +1,4 @@
+
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -16,7 +17,9 @@ export function cn(...inputs: ClassValue[]) {
   // Limit cache size to prevent memory leaks
   if (classNameCache.size > 1000) {
     const firstKey = classNameCache.keys().next().value;
-    classNameCache.delete(firstKey);
+    if (firstKey) {
+      classNameCache.delete(firstKey);
+    }
   }
 
   classNameCache.set(key, result);
