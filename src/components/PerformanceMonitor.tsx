@@ -1,12 +1,6 @@
 
 import { useEffect } from 'react';
 
-interface PerformanceMetrics {
-  loadTime: number;
-  renderTime: number;
-  routeChangeTime: number;
-}
-
 const PerformanceMonitor = () => {
   useEffect(() => {
     // Monitor Core Web Vitals
@@ -20,7 +14,7 @@ const PerformanceMonitor = () => {
         console.log('Performance Metrics:', {
           loadTime: Math.round(loadTime),
           renderTime: Math.round(renderTime),
-          totalTime: Math.round(navigation.loadEventEnd - navigation.navigationStart),
+          totalTime: Math.round(navigation.loadEventEnd - navigation.fetchStart),
         });
       }
 

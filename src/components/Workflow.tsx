@@ -279,7 +279,7 @@ const Workflow = () => {
                 step={step}
                 delay={`${0.3 + index * 0.15}s`}
                 isLast={index === steps.length - 1}
-                verticalOffset={stepOffsets[index]}
+                verticalOffset={stepOffsets[index] || 0}
               />
             ))}
           </div>
