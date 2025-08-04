@@ -1,6 +1,4 @@
-
 import { Zap, Clock, Target, Workflow } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const WhyAutomations = () => {
   const benefits = [
@@ -20,7 +18,6 @@ const WhyAutomations = () => {
       description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.'
     }
   ];
-
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-premium-black via-indigo-950/10 to-premium-black">
       {/* Background Effects */}

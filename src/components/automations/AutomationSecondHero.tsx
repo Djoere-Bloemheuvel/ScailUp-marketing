@@ -1,5 +1,6 @@
-import { Settings, Zap, Shield, Users } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const AutomationSecondHero = () => {
   return <section className="relative py-16 md:py-20 lg:py-32 overflow-hidden">
       {/* Exact same background as first hero */}
@@ -141,4 +142,5 @@ const AutomationSecondHero = () => {
       </div>
     </section>;
 };
+
 export default AutomationSecondHero;
