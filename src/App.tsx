@@ -7,9 +7,16 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
-// Lazy load pages for code splitting
+// Lazy load pages for code splitting with priority loading for Contact
 const Index = lazy(() => import("./pages/Index"));
-const Contact = lazy(() => import("./pages/Contact"));
+const Contact = lazy(() => 
+  import("./pages/Contact").then(module => {
+    // Preload contact form components when Contact is loaded
+    import("./components/contact/FastContactPage");
+    import("./components/contact/OptimizedContactForm");
+    return module;
+  })
+);
 const AIAutomations = lazy(() => import("./pages/AIAutomations"));
 const CustomAISaaS = lazy(() => import("./pages/CustomAISaaS"));
 const Consultancy = lazy(() => import("./pages/Consultancy"));
@@ -35,10 +42,10 @@ const queryClient = new QueryClient({
   },
 });
 
-// Loading component for suspense fallback
+// Optimized loading component for suspense fallback
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-premium-black flex items-center justify-center">
-    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-premium-gold"></div>
+    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-premium-gold"></div>
   </div>
 );
 

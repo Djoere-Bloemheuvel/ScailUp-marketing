@@ -1,14 +1,18 @@
 
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
+import { useContactPreloader } from '@/hooks/useContactPreloader';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
 
 const Hero = () => {
-  const backgroundLoaded = useProgressiveLoad(100); // Load background after 100ms
+  const backgroundLoaded = useProgressiveLoad(100);
   const navigate = useNavigate();
+  
+  // Add preloading hook
+  useContactPreloader();
 
   const handleDeepDiveClick = () => {
     navigate('/contact');
@@ -39,13 +43,13 @@ const Hero = () => {
               </div>
 
               {/* Subtitle - Immediately visible */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
                 Wij bouwen AI-systemen die uw business
                 <br className="hidden sm:block" />
                 <span className="text-white font-medium bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">daadwerkelijk transformeren.</span>
               </p>
 
-              {/* Buttons - Immediately visible */}
+              {/* Buttons - Immediately visible with preload triggers */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
                 <Button
                   className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
@@ -67,6 +71,7 @@ const Hero = () => {
                     boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                   }}
                   onClick={handleDeepDiveClick}
+                  data-contact-trigger="true"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Plan een deepdive
@@ -94,7 +99,7 @@ const Hero = () => {
                 </div>
 
                 {/* Reflected Subtitle */}
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-premium-silver/90 mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
                   Wij bouwen AI-systemen die uw business
                   <br className="hidden sm:block" />
                   <span className="text-white font-medium bg-gradient-to-r from-white to-premium-silver bg-clip-text text-transparent">daadwerkelijk transformeren.</span>
@@ -121,6 +126,7 @@ const Hero = () => {
                     style={{
                       boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                     }}
+                    data-contact-trigger="true"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Plan een deepdive

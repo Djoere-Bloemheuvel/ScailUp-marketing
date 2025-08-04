@@ -1,3 +1,4 @@
+
 import react from "@vitejs/plugin-react-swc";
 import { componentTagger } from "lovable-tagger";
 import path from "path";
@@ -30,6 +31,8 @@ export default defineConfig(({ mode }) => ({
           'ui-vendor': ['@radix-ui/react-slot', '@radix-ui/react-toast', '@radix-ui/react-tooltip', '@radix-ui/react-dialog'],
           'animation-vendor': ['lucide-react', 'tailwind-merge', 'clsx', 'class-variance-authority'],
           'query-vendor': ['@tanstack/react-query'],
+          // Separate chunk for contact page components
+          'contact-vendor': ['@/components/contact/FastContactPage', '@/components/contact/OptimizedContactForm', '@/components/contact/LightweightBackground'],
         },
       },
     },
@@ -43,8 +46,15 @@ export default defineConfig(({ mode }) => ({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
+        drop_console: mode === 'production',
         drop_debugger: true,
+        // Remove unused code more aggressively
+        pure_funcs: ['console.log', 'console.info'],
+        passes: 2,
+      },
+      mangle: {
+        // Optimize variable names for smaller bundle
+        safari10: true,
       },
     },
   },
@@ -59,5 +69,7 @@ export default defineConfig(({ mode }) => ({
       'tailwind-merge',
       'clsx',
     ],
+    // Exclude contact components from optimization to allow lazy loading
+    exclude: ['@/components/contact/*'],
   },
 }));
