@@ -42,7 +42,8 @@ const Services = () => {
       background: 'from-premium-black via-blue-950/20 to-premium-black',
       accentColor: 'from-blue-500 to-purple-600',
       primaryButtonText: 'Meer informatie',
-      secondaryButtonText: 'Lees meer'
+      secondaryButtonText: 'Lees meer',
+      ariaLabel: 'AI Automatisering services - intelligente workflow automatisering'
     },
     {
       id: 'custom-saas',

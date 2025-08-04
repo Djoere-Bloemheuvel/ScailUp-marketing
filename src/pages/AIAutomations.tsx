@@ -1,13 +1,15 @@
 
-import { Users, FileText, Zap, CreditCard, BarChart, RefreshCw } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 import ScrollHeader from '@/components/ScrollHeader';
-import AutomationSecondHero from '@/components/automations/AutomationSecondHero';
-import AutomationHero from '@/components/automations/AutomationHero';
-import AutomationOverview from '@/components/automations/AutomationOverview';
+import StructuredData from '@/components/StructuredData';
 import AutomationExplained from '@/components/automations/AutomationExplained';
-import WhyBuildrs from '@/components/automations/WhyBuildrs';
 import AutomationFeaturePair from '@/components/automations/AutomationFeaturePair';
 import AutomationFinalCTA from '@/components/automations/AutomationFinalCTA';
+import AutomationHero from '@/components/automations/AutomationHero';
+import AutomationOverview from '@/components/automations/AutomationOverview';
+import AutomationSecondHero from '@/components/automations/AutomationSecondHero';
+import WhyBuildrs from '@/components/automations/WhyBuildrs';
+import { BarChart, CreditCard, FileText, RefreshCw, Users, Zap } from 'lucide-react';
 
 const AIAutomations = () => {
   const automationFeatures = [
@@ -74,45 +76,60 @@ const AIAutomations = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-premium-black">
-      <ScrollHeader />
-      
-      {/* New Second Hero Section - Above current hero */}
-      <AutomationSecondHero />
+    <>
+      <SEOHead
+        title="AI Automatisering | Intelligente Workflow Automatisering - Buildrs.AI"
+        description="Transformeer uw bedrijfsprocessen met geavanceerde AI automatisering. Van data-verwerking tot klantservice - automatiseer repetitieve taken en verhoog efficiëntie."
+        keywords="AI automatisering, workflow automatisering, proces automatisering, intelligent automation, RPA, machine learning automation, Nederland"
+        canonical="https://buildrs.ai/ai-automations"
+      />
+      <StructuredData
+        type="service"
+        data={{
+          name: "AI Automatisering Services",
+          description: "Geavanceerde AI automatisering voor bedrijfsprocessen en workflows"
+        }}
+      />
+      <div className="min-h-screen bg-premium-black">
+        <ScrollHeader />
+
+        {/* New Second Hero Section - Above current hero */}
+        <AutomationSecondHero />
 
       {/* Original Hero Section */}
       <AutomationHero />
 
       {/* Section 1 - Wat is AI Automatisering? */}
       <AutomationExplained />
-      
+
       {/* First 2 Feature Cards */}
-      <AutomationFeaturePair 
-        features={automationFeatures.slice(0, 2)} 
-        startIndex={0} 
+      <AutomationFeaturePair
+        features={automationFeatures.slice(0, 2)}
+        startIndex={0}
       />
 
       {/* Section 2 - Transformeer je processen */}
       <AutomationOverview />
-      
+
       {/* Next 2 Feature Cards */}
-      <AutomationFeaturePair 
-        features={automationFeatures.slice(2, 4)} 
-        startIndex={2} 
+      <AutomationFeaturePair
+        features={automationFeatures.slice(2, 4)}
+        startIndex={2}
       />
 
       {/* Section 3 - Waarom Buildrs? */}
       <WhyBuildrs />
-      
+
       {/* Final 2 Feature Cards */}
-      <AutomationFeaturePair 
-        features={automationFeatures.slice(4, 6)} 
-        startIndex={4} 
+      <AutomationFeaturePair
+        features={automationFeatures.slice(4, 6)}
+        startIndex={4}
       />
 
       {/* Enhanced Final CTA Section */}
       <AutomationFinalCTA />
     </div>
+    </>
   );
 };
 

@@ -1,13 +1,15 @@
 
-import { MessageSquare, Brain, Target, Lightbulb, BarChart, Shield } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 import ScrollHeader from '@/components/ScrollHeader';
-import ConsultancyHero from '@/components/consultancy/ConsultancyHero';
-import ConsultancySecondaryHero from '@/components/consultancy/ConsultancySecondaryHero';
+import StructuredData from '@/components/StructuredData';
 import ConsultancyExplained from '@/components/consultancy/ConsultancyExplained';
-import ConsultancyOverview from '@/components/consultancy/ConsultancyOverview';
-import WhyBuildrsConsultancy from '@/components/consultancy/WhyBuildrsConsultancy';
 import ConsultancyFeaturePair from '@/components/consultancy/ConsultancyFeaturePair';
 import ConsultancyFinalCTA from '@/components/consultancy/ConsultancyFinalCTA';
+import ConsultancyHero from '@/components/consultancy/ConsultancyHero';
+import ConsultancyOverview from '@/components/consultancy/ConsultancyOverview';
+import ConsultancySecondaryHero from '@/components/consultancy/ConsultancySecondaryHero';
+import WhyBuildrsConsultancy from '@/components/consultancy/WhyBuildrsConsultancy';
+import { BarChart, Brain, Lightbulb, MessageSquare, Shield, Target } from 'lucide-react';
 
 const Consultancy = () => {
   const consultancyFeatures = [
@@ -74,9 +76,23 @@ const Consultancy = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-premium-black">
-      <ScrollHeader />
-      
+    <>
+      <SEOHead
+        title="AI Consultancy | Strategische AI Advies & Implementatie - Buildrs.AI"
+        description="Expert AI consultancy voor enterprise transformatie. Strategisch advies, implementatie roadmaps en hands-on begeleiding voor succesvolle AI-adoptie in uw organisatie."
+        keywords="AI consultancy, AI advies, AI strategie, AI implementatie, digital transformation, AI consulting Nederland"
+        canonical="https://buildrs.ai/consultancy"
+      />
+      <StructuredData
+        type="service"
+        data={{
+          name: "AI Consultancy Services",
+          description: "Strategische AI consultancy en implementatie begeleiding voor enterprise klanten"
+        }}
+      />
+      <div className="min-h-screen bg-premium-black">
+        <ScrollHeader />
+
       {/* Primary Hero Section */}
       <ConsultancyHero />
 
@@ -85,34 +101,35 @@ const Consultancy = () => {
 
       {/* Section 1 - Wat doet onze AI-consultancy? */}
       <ConsultancyExplained />
-      
+
       {/* First 2 Feature Cards */}
-      <ConsultancyFeaturePair 
-        features={consultancyFeatures.slice(0, 2)} 
-        startIndex={0} 
+      <ConsultancyFeaturePair
+        features={consultancyFeatures.slice(0, 2)}
+        startIndex={0}
       />
 
       {/* Section 2 - Van analyse tot implementatie */}
       <ConsultancyOverview />
-      
+
       {/* Next 2 Feature Cards */}
-      <ConsultancyFeaturePair 
-        features={consultancyFeatures.slice(2, 4)} 
-        startIndex={2} 
+      <ConsultancyFeaturePair
+        features={consultancyFeatures.slice(2, 4)}
+        startIndex={2}
       />
 
       {/* Section 3 - Waarom Buildrs? */}
       <WhyBuildrsConsultancy />
-      
+
       {/* Final 2 Feature Cards */}
-      <ConsultancyFeaturePair 
-        features={consultancyFeatures.slice(4, 6)} 
-        startIndex={4} 
+      <ConsultancyFeaturePair
+        features={consultancyFeatures.slice(4, 6)}
+        startIndex={4}
       />
 
       {/* Enhanced Final CTA Section */}
       <ConsultancyFinalCTA />
     </div>
+    </>
   );
 };
 

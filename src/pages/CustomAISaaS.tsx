@@ -1,13 +1,15 @@
 
-import { Brain, Code, Layers, Zap, BarChart, Cog } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 import ScrollHeader from '@/components/ScrollHeader';
-import CustomSaaSNewHero from '@/components/saas/CustomSaaSNewHero';
-import CustomSaaSHero from '@/components/saas/CustomSaaSHero';
-import CustomSaaSExplained from '@/components/saas/CustomSaaSExplained';
-import CustomSaaSOverview from '@/components/saas/CustomSaaSOverview';
+import StructuredData from '@/components/StructuredData';
 import WhyBuildrsConsultancy from '@/components/consultancy/WhyBuildrsConsultancy';
+import CustomSaaSExplained from '@/components/saas/CustomSaaSExplained';
 import CustomSaaSFeaturePair from '@/components/saas/CustomSaaSFeaturePair';
 import CustomSaaSFinalCTA from '@/components/saas/CustomSaaSFinalCTA';
+import CustomSaaSHero from '@/components/saas/CustomSaaSHero';
+import CustomSaaSNewHero from '@/components/saas/CustomSaaSNewHero';
+import CustomSaaSOverview from '@/components/saas/CustomSaaSOverview';
+import { BarChart, Brain, Code, Cog, Layers, Zap } from 'lucide-react';
 
 const CustomAISaaS = () => {
   const saasFeatures = [
@@ -74,9 +76,23 @@ const CustomAISaaS = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-premium-black">
-      <ScrollHeader />
-      
+    <>
+      <SEOHead
+        title="Custom AI SaaS Development | Maatwerk AI Software Ontwikkeling - Buildrs.AI"
+        description="Bouw uw eigen AI-platform met onze custom SaaS development services. Van MVP tot schaalbaar product - volledig maatwerk AI-software voor enterprise klanten."
+        keywords="Custom AI SaaS, AI software development, maatwerk AI software, SaaS development, AI platform development, Nederland"
+        canonical="https://buildrs.ai/custom-ai-saas"
+      />
+      <StructuredData
+        type="service"
+        data={{
+          name: "Custom AI SaaS Development",
+          description: "Maatwerk AI SaaS ontwikkeling van MVP tot schaalbaar enterprise platform"
+        }}
+      />
+      <div className="min-h-screen bg-premium-black">
+        <ScrollHeader />
+
       {/* New Hero Section - Top of page */}
       <CustomSaaSNewHero />
 
@@ -85,34 +101,35 @@ const CustomAISaaS = () => {
 
       {/* Section 1 - Wat is Custom AI SaaS? */}
       <CustomSaaSExplained />
-      
+
       {/* First 2 Feature Cards */}
-      <CustomSaaSFeaturePair 
-        features={saasFeatures.slice(0, 2)} 
-        startIndex={0} 
+      <CustomSaaSFeaturePair
+        features={saasFeatures.slice(0, 2)}
+        startIndex={0}
       />
 
       {/* Section 2 - Van idee tot schaalbaar product */}
       <CustomSaaSOverview />
-      
+
       {/* Next 2 Feature Cards */}
-      <CustomSaaSFeaturePair 
-        features={saasFeatures.slice(2, 4)} 
-        startIndex={2} 
+      <CustomSaaSFeaturePair
+        features={saasFeatures.slice(2, 4)}
+        startIndex={2}
       />
 
       {/* Section 3 - Waarom Buildrs? */}
       <WhyBuildrsConsultancy />
-      
+
       {/* Final 2 Feature Cards */}
-      <CustomSaaSFeaturePair 
-        features={saasFeatures.slice(4, 6)} 
-        startIndex={4} 
+      <CustomSaaSFeaturePair
+        features={saasFeatures.slice(4, 6)}
+        startIndex={4}
       />
 
       {/* Enhanced Final CTA Section */}
       <CustomSaaSFinalCTA />
     </div>
+    </>
   );
 };
 

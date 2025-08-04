@@ -1,13 +1,15 @@
 
-import { Users, Zap, Shield, Cog, Brain, Network } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 import ScrollHeader from '@/components/ScrollHeader';
-import AgentPrimaryHero from '@/components/agents/AgentPrimaryHero';
-import AgentSecondaryHero from '@/components/agents/AgentSecondaryHero';
+import StructuredData from '@/components/StructuredData';
 import AgentExplained from '@/components/agents/AgentExplained';
-import AgentOverview from '@/components/agents/AgentOverview';
-import WhyBuildrsAgents from '@/components/agents/WhyBuildrsAgents';
 import AgentFeaturePair from '@/components/agents/AgentFeaturePair';
 import AgentFinalCTA from '@/components/agents/AgentFinalCTA';
+import AgentOverview from '@/components/agents/AgentOverview';
+import AgentPrimaryHero from '@/components/agents/AgentPrimaryHero';
+import AgentSecondaryHero from '@/components/agents/AgentSecondaryHero';
+import WhyBuildrsAgents from '@/components/agents/WhyBuildrsAgents';
+import { Brain, Cog, Network, Shield, Users, Zap } from 'lucide-react';
 
 const AutonomousAIAgents = () => {
   const agentFeatures = [
@@ -74,9 +76,23 @@ const AutonomousAIAgents = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-premium-black">
-      <ScrollHeader />
-      
+    <>
+      <SEOHead
+        title="Autonomous AI Agents | Zelfstandige AI Assistenten - Buildrs.AI"
+        description="Ontwikkel autonome AI agents die zelfstandig taken uitvoeren, met systemen communiceren en workflows automatiseren. Intelligente assistenten voor enterprise toepassingen."
+        keywords="Autonomous AI Agents, AI assistenten, zelfstandige AI, intelligent agents, AI automation, conversational AI, Nederland"
+        canonical="https://buildrs.ai/autonomous-ai-agents"
+      />
+      <StructuredData
+        type="service"
+        data={{
+          name: "Autonomous AI Agents Development",
+          description: "Ontwikkeling van zelfstandige AI agents voor enterprise automatisering"
+        }}
+      />
+      <div className="min-h-screen bg-premium-black">
+        <ScrollHeader />
+
       {/* New Primary Hero Section */}
       <AgentPrimaryHero />
 
@@ -87,34 +103,35 @@ const AutonomousAIAgents = () => {
       <div data-service-section="0">
         <AgentExplained />
       </div>
-      
+
       {/* First 2 Feature Cards */}
-      <AgentFeaturePair 
-        features={agentFeatures.slice(0, 2)} 
-        startIndex={0} 
+      <AgentFeaturePair
+        features={agentFeatures.slice(0, 2)}
+        startIndex={0}
       />
 
       {/* Section 2 - Jouw persoonlijke digitale assistent */}
       <AgentOverview />
-      
+
       {/* Next 2 Feature Cards */}
-      <AgentFeaturePair 
-        features={agentFeatures.slice(2, 4)} 
-        startIndex={2} 
+      <AgentFeaturePair
+        features={agentFeatures.slice(2, 4)}
+        startIndex={2}
       />
 
       {/* Section 3 - Waarom Buildrs? */}
       <WhyBuildrsAgents />
-      
+
       {/* Final 2 Feature Cards */}
-      <AgentFeaturePair 
-        features={agentFeatures.slice(4, 6)} 
-        startIndex={4} 
+      <AgentFeaturePair
+        features={agentFeatures.slice(4, 6)}
+        startIndex={4}
       />
 
       {/* Enhanced Final CTA Section */}
       <AgentFinalCTA />
     </div>
+    </>
   );
 };
 
