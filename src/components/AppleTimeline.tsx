@@ -90,8 +90,8 @@ const AppleTimeline = () => {
         ))}
       </div>
 
-      {/* Staggered timeline cards */}
-      <div className="relative z-10 space-y-16 lg:space-y-14">
+      {/* Staggered timeline cards - reduced spacing */}
+      <div className="relative z-10 space-y-8 lg:space-y-10">
         {steps.map((step, index) => (
           <AppleTimelineCard
             key={step.id}
