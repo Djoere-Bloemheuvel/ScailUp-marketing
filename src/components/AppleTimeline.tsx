@@ -10,8 +10,8 @@ const AppleTimeline = () => {
       title: "Snelheid zonder compromissen",
       subtitle: "Van idee naar werkende POC in dagen, niet maanden.",
       icon: Clock,
-      glowColor: "from-blue-500/25 to-cyan-400/15",
-      glowColorHover: "from-blue-500/40 to-cyan-400/25",
+      glowColor: "from-blue-500/20 to-cyan-400/15", // AI Automations blue
+      glowColorHover: "from-blue-500/35 to-cyan-400/25",
     },
     {
       id: 2,
@@ -19,8 +19,8 @@ const AppleTimeline = () => {
       title: "Ownership mentaliteit",
       subtitle: "Uw succes is ons succes. Wij denken mee als strategische partner.",
       icon: HandHeart,
-      glowColor: "from-purple-500/25 to-violet-400/15",
-      glowColorHover: "from-purple-500/40 to-violet-400/25",
+      glowColor: "from-purple-500/20 to-violet-400/15", // Custom SaaS purple
+      glowColorHover: "from-purple-500/35 to-violet-400/25",
     },
     {
       id: 3,
@@ -28,8 +28,8 @@ const AppleTimeline = () => {
       title: "Design-first filosofie", 
       subtitle: "Technologie moet intuïtief aanvoelen. Altijd.",
       icon: Layers,
-      glowColor: "from-pink-500/25 to-rose-400/15",
-      glowColorHover: "from-pink-500/40 to-rose-400/25",
+      glowColor: "from-purple-400/20 to-blue-500/15", // Consultancy purple-blue
+      glowColorHover: "from-purple-400/35 to-blue-500/25",
     },
     {
       id: 4,
@@ -37,30 +37,29 @@ const AppleTimeline = () => {
       title: "ROI-gedreven ontwikkeling",
       subtitle: "Elke feature wordt gemeten aan zakelijke impact.",
       icon: TrendingUp,
-      glowColor: "from-emerald-500/25 to-teal-400/15",
-      glowColorHover: "from-emerald-500/40 to-teal-400/25",
+      glowColor: "from-green-500/20 to-blue-600/15", // Autonomous Agents green-blue
+      glowColorHover: "from-green-500/35 to-blue-600/25",
     }
   ];
 
   return (
     <div className="relative max-w-5xl mx-auto">
-      {/* Central animated timeline line - Enhanced */}
+      {/* Enhanced central animated timeline line */}
       <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
-        {/* Base line with subtle gradient */}
-        <div className="w-full h-full bg-gradient-to-b from-transparent via-white/12 to-transparent" />
+        {/* Base line with enhanced gradient */}
+        <div className="w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent" />
         
-        {/* Animated glow pulse - More subtle and refined */}
+        {/* Enhanced animated glow pulse */}
         <div className="absolute inset-0 w-full h-full">
           <div 
-            className="w-full h-16 bg-gradient-to-b from-cyan-400/20 via-white/30 to-transparent blur-sm"
+            className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
             style={{
               animation: 'timelinePulse 12s ease-in-out infinite',
               transformOrigin: 'top'
             }}
           />
-          {/* Secondary pulse for depth */}
           <div 
-            className="w-full h-8 bg-gradient-to-b from-blue-400/15 via-white/20 to-transparent blur-md"
+            className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md"
             style={{
               animation: 'timelinePulse 15s ease-in-out infinite',
               animationDelay: '3s',
@@ -69,7 +68,7 @@ const AppleTimeline = () => {
           />
         </div>
         
-        {/* Timeline dots - More refined */}
+        {/* Enhanced timeline dots with better visibility */}
         {steps.map((step, index) => (
           <div 
             key={step.id}
@@ -81,17 +80,17 @@ const AppleTimeline = () => {
             }}
           >
             <div className="relative">
-              <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-white/60 to-white/20 shadow-lg shadow-white/5 border border-white/20">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/20 to-transparent animate-pulse" />
+              <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-white/70 to-white/30 shadow-lg shadow-white/10 border border-white/30">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent animate-pulse" />
               </div>
-              {/* Subtle outer glow */}
-              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-white/10 blur-sm scale-150 animate-pulse opacity-60" />
+              {/* Enhanced outer glow */}
+              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-white/15 blur-sm scale-150 animate-pulse opacity-70" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Compact staggered timeline cards */}
+      {/* Staggered timeline cards */}
       <div className="relative z-10 space-y-16 lg:space-y-14">
         {steps.map((step, index) => (
           <AppleTimelineCard
@@ -112,7 +111,7 @@ const AppleTimeline = () => {
               opacity: 0;
             }
             20% {
-              opacity: 0.3;
+              opacity: 0.4;
               transform: translateY(-50%) scaleY(0.5);
             }
             50% { 
@@ -132,7 +131,7 @@ const AppleTimeline = () => {
           @keyframes dotPulse {
             0%, 100% { 
               transform: translate(-50%, -50%) scale(1);
-              opacity: 0.4;
+              opacity: 0.5;
             }
             50% { 
               transform: translate(-50%, -50%) scale(1.4);

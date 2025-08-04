@@ -46,7 +46,43 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
       ref={cardRef}
       className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
-      {/* Floating Card Container - More compact */}
+      {/* Enhanced Background Ambient Glow - Multiple layers for depth */}
+      <div
+        className={`
+          absolute inset-0 transition-all duration-1000 ease-out pointer-events-none
+          ${isVisible ? 'opacity-100' : 'opacity-0'}
+        `}
+        style={{ transitionDelay: `${delay}ms` }}
+      >
+        {/* Primary ambient glow - Large and subtle */}
+        <div 
+          className={`
+            absolute w-96 h-96 rounded-full blur-3xl transition-all duration-1000
+            bg-gradient-to-br ${step.glowColor} opacity-30 scale-150
+            ${isLeft ? '-left-32 top-1/2 -translate-y-1/2' : '-right-32 top-1/2 -translate-y-1/2'}
+          `}
+        />
+        
+        {/* Secondary glow layer */}
+        <div 
+          className={`
+            absolute w-64 h-64 rounded-full blur-2xl transition-all duration-700
+            bg-gradient-to-br ${step.glowColor} opacity-20 scale-125
+            ${isLeft ? '-left-16 top-1/2 -translate-y-1/2' : '-right-16 top-1/2 -translate-y-1/2'}
+          `}
+        />
+
+        {/* Tertiary focused glow */}
+        <div 
+          className={`
+            absolute w-40 h-40 rounded-full blur-xl transition-all duration-500
+            bg-gradient-to-br ${step.glowColorHover} opacity-40
+            ${isLeft ? 'left-4 top-1/2 -translate-y-1/2' : 'right-4 top-1/2 -translate-y-1/2'}
+          `}
+        />
+      </div>
+
+      {/* Floating Card Container */}
       <div
         className={`
           relative w-full max-w-sm transition-all duration-1000 ease-out
@@ -57,103 +93,90 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         `}
         style={{ transitionDelay: `${delay}ms` }}
       >
-        {/* Enhanced Ambient Glow Aura - Multiple layers */}
-        <div 
-          className={`
-            absolute inset-0 rounded-3xl blur-2xl transition-all duration-700 
-            bg-gradient-to-br ${step.glowColor} opacity-40 scale-110
-          `}
-        />
-        <div 
-          className={`
-            absolute inset-0 rounded-3xl blur-xl transition-all duration-700 
-            bg-gradient-to-br ${step.glowColor} opacity-20 scale-105
-          `}
-        />
-
-        {/* Glassmorphic Card - More refined */}
+        {/* Enhanced Glassmorphic Card */}
         <div className={`
           relative z-10 group cursor-pointer
           ${isLeft ? 'mr-6 lg:mr-10' : 'ml-6 lg:ml-10'}
         `}>
           <div className={`
             relative p-6 lg:p-7 rounded-3xl
-            bg-white/[0.03] backdrop-blur-2xl
-            border border-white/[0.12]
-            shadow-2xl shadow-black/20
+            bg-white/[0.02] backdrop-blur-xl
+            border border-white/[0.08] shadow-2xl shadow-black/40
             transition-all duration-700 ease-out
-            hover:bg-white/[0.06] hover:border-white/[0.18]
-            hover:shadow-3xl hover:shadow-black/30
+            hover:bg-white/[0.04] hover:border-white/[0.12]
+            hover:shadow-3xl hover:shadow-black/60
             hover:-translate-y-2 hover:scale-[1.02]
-            hover:backdrop-blur-3xl
+            hover:backdrop-blur-2xl
           `}>
-            {/* Multi-layered glass effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.08] via-transparent to-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Enhanced multi-layered glass effect with more transparency */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.06] via-white/[0.01] to-white/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-transparent via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
-            {/* Step Number - Refined size */}
+            {/* Step Number - More prominent against glass */}
             <div className={`flex items-start justify-between mb-5 ${isLeft ? '' : 'flex-row-reverse'}`}>
               <div className="relative">
-                <div className="text-4xl lg:text-5xl font-black text-white/15 leading-none mb-2 font-mono">
+                <div className="text-4xl lg:text-5xl font-black text-white/10 leading-none mb-2 font-mono">
                   {step.number}
                 </div>
-                <div className="absolute top-0.5 left-0.5 text-4xl lg:text-5xl font-black bg-gradient-to-br from-white via-white/85 to-white/60 bg-clip-text text-transparent leading-none font-mono">
+                <div className="absolute top-0.5 left-0.5 text-4xl lg:text-5xl font-black bg-gradient-to-br from-white/90 via-white/70 to-white/50 bg-clip-text text-transparent leading-none font-mono">
                   {step.number}
                 </div>
               </div>
               
-              {/* Refined icon */}
-              <div className="w-5 h-5 text-white/30 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110">
+              {/* Enhanced icon with better visibility */}
+              <div className="w-5 h-5 text-white/40 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110">
                 <step.icon className="w-full h-full" />
               </div>
             </div>
 
-            {/* Content - Apple typography */}
+            {/* Content with enhanced readability */}
             <div className="space-y-3">
-              <h3 className={`text-lg lg:text-xl font-bold text-white leading-tight tracking-tight font-sans ${
+              <h3 className={`text-lg lg:text-xl font-bold text-white/95 leading-tight tracking-tight font-sans ${
                 isLeft ? 'text-left' : 'text-right'
               }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
                 {step.title}
               </h3>
               
-              <p className={`text-white/55 text-sm lg:text-base leading-relaxed font-light ${
+              <p className={`text-white/65 text-sm lg:text-base leading-relaxed font-light ${
                 isLeft ? 'text-left' : 'text-right'
               }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
                 {step.subtitle}
               </p>
             </div>
 
-            {/* Connection line to center timeline - Refined */}
+            {/* Enhanced connection line with better visibility */}
             <div className={`
               absolute top-1/2 w-6 lg:w-10 h-px -translate-y-0.5
-              bg-gradient-to-r from-white/15 to-transparent
+              bg-gradient-to-r from-white/20 to-transparent
               ${isLeft ? '-right-6 lg:-right-10' : '-left-6 lg:-left-10 rotate-180'}
               opacity-0 group-hover:opacity-100 transition-all duration-700
             `}>
-              <div className="absolute inset-0 w-1 h-full bg-gradient-to-r from-cyan-400/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" />
+              <div className="absolute inset-0 w-1 h-full bg-gradient-to-r from-cyan-400/40 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" />
             </div>
 
-            {/* Enhanced bottom highlight */}
-            <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Enhanced glassmorphic details */}
+            <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute top-4 left-0 w-px h-8 bg-gradient-to-b from-white/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute top-4 right-0 w-px h-8 bg-gradient-to-b from-white/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
-            {/* Side accent lines for depth */}
-            <div className="absolute top-4 left-0 w-px h-8 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute top-4 right-0 w-px h-8 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Additional glass reflection effects */}
+            <div className="absolute top-2 left-2 w-16 h-16 bg-gradient-to-br from-white/[0.08] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm" />
           </div>
 
-          {/* Enhanced hover glow with parallax effect */}
+          {/* Enhanced hover glow with service page colors */}
           <div 
             className={`
               absolute inset-0 rounded-3xl blur-2xl transition-all duration-700 opacity-0 
-              group-hover:opacity-60 scale-110 bg-gradient-to-br ${step.glowColorHover}
+              group-hover:opacity-70 scale-110 bg-gradient-to-br ${step.glowColorHover}
               group-hover:scale-115 group-hover:blur-3xl
             `}
           />
           
-          {/* Secondary glow layer for depth */}
+          {/* Secondary glow layer for enhanced depth */}
           <div 
             className={`
               absolute inset-0 rounded-3xl blur-xl transition-all duration-700 opacity-0 
-              group-hover:opacity-30 scale-105 bg-gradient-to-br ${step.glowColorHover}
+              group-hover:opacity-40 scale-105 bg-gradient-to-br ${step.glowColorHover}
             `}
           />
         </div>
