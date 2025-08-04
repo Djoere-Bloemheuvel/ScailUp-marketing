@@ -1,6 +1,6 @@
 
-import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
+import ContactModalTrigger from './ContactModalTrigger';
 
 const CTA = () => {
   return (
@@ -37,23 +37,25 @@ const CTA = () => {
             </p>
 
             <div className="apple-fade-in apple-stagger-4">
-              <Button
-                className="group relative button-hover-smooth cta-hover-smooth px-12 py-8 text-xl font-semibold rounded-xl overflow-hidden shadow-xl gpu-accelerated"
-                style={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%)',
-                  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
-                  transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                  willChange: 'transform, box-shadow, background'
-                }}
-              >
-                <span className="relative z-10 flex items-center text-black transition-colors duration-300 ease-out group-hover:text-gray-800">
-                  Start met een AI-verkenning
-                  <ArrowRight className="ml-3 h-6 w-6 transition-transform duration-400 ease-out group-hover:translate-x-3" />
-                </span>
+              <ContactModalTrigger variant="cta">
+                <div
+                  className="group relative button-hover-smooth cta-hover-smooth px-12 py-8 text-xl font-semibold rounded-xl overflow-hidden shadow-xl gpu-accelerated cursor-pointer inline-block"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%)',
+                    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
+                    transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    willChange: 'transform, box-shadow, background'
+                  }}
+                >
+                  <span className="relative z-10 flex items-center text-black transition-colors duration-300 ease-out group-hover:text-gray-800">
+                    Start met een AI-verkenning
+                    <ArrowRight className="ml-3 h-6 w-6 transition-transform duration-400 ease-out group-hover:translate-x-3" />
+                  </span>
 
-                {/* Enhanced shimmer effect with smooth animation */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out"></div>
-              </Button>
+                  {/* Enhanced shimmer effect with smooth animation */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out"></div>
+                </div>
+              </ContactModalTrigger>
             </div>
 
             <p className="text-premium-silver/60 text-base mt-6 italic apple-fade-in apple-stagger-5 text-hover-smooth hover:text-premium-silver/80">
