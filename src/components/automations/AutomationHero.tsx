@@ -1,4 +1,3 @@
-
 import { ChevronRight, Cog, Sparkles, Zap, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,10 +8,10 @@ const AutomationHero = () => {
     title: 'Snelheid',
     description: 'Processen die 8 uur duurden, voltooien wij in 3 minuten. Elke dag opnieuw.',
     accentColor: 'from-sky-400 to-blue-500',
-    glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.3)]', // Blue glow
-    hoverGlow: 'hover:shadow-[0_0_50px_rgba(59,130,246,0.5),0_0_80px_rgba(59,130,246,0.3)]', // Stronger blue glow on hover
-    radiantGlow: 'shadow-[0_0_60px_rgba(59,130,246,0.2),0_0_120px_rgba(59,130,246,0.1),0_0_200px_rgba(59,130,246,0.05)]', // Outward radiant glow
-    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(59,130,246,0.4),0_0_160px_rgba(59,130,246,0.2),0_0_300px_rgba(59,130,246,0.1)]', // Stronger radiant glow on hover
+    glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.3)]',
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(59,130,246,0.5),0_0_80px_rgba(59,130,246,0.3)]',
+    radiantGlow: 'shadow-[0_0_60px_rgba(59,130,246,0.2),0_0_120px_rgba(59,130,246,0.1),0_0_200px_rgba(59,130,246,0.05)]',
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(59,130,246,0.4),0_0_160px_rgba(59,130,246,0.2),0_0_300px_rgba(59,130,246,0.1)]',
     iconColor: 'text-blue-400',
     nativeColor: 'blue',
     borderColor: 'border-blue-500/20',
@@ -24,10 +23,10 @@ const AutomationHero = () => {
     title: '24/7 Operationeel',
     description: 'Uw automatisering stopt nooit. Weekenden, nachten — altijd actief.',
     accentColor: 'from-violet-400 to-indigo-600',
-    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.3)]', // Violet glow
-    hoverGlow: 'hover:shadow-[0_0_50px_rgba(139,92,246,0.5),0_0_80px_rgba(139,92,246,0.3)]', // Stronger violet glow on hover
-    radiantGlow: 'shadow-[0_0_60px_rgba(139,92,246,0.2),0_0_120px_rgba(139,92,246,0.1),0_0_200px_rgba(139,92,246,0.05)]', // Outward radiant glow
-    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(139,92,246,0.4),0_0_160px_rgba(139,92,246,0.2),0_0_300px_rgba(139,92,246,0.1)]', // Stronger radiant glow on hover
+    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.3)]',
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(139,92,246,0.5),0_0_80px_rgba(139,92,246,0.3)]',
+    radiantGlow: 'shadow-[0_0_60px_rgba(139,92,246,0.2),0_0_120px_rgba(139,92,246,0.1),0_0_200px_rgba(139,92,246,0.05)]',
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(139,92,246,0.4),0_0_160px_rgba(139,92,246,0.2),0_0_300px_rgba(139,92,246,0.1)]',
     iconColor: 'text-violet-400',
     nativeColor: 'violet',
     borderColor: 'border-violet-500/20',
@@ -39,10 +38,10 @@ const AutomationHero = () => {
     title: 'Precisie',
     description: 'Nul fouten. Elke handeling exact zoals bedoeld. Geen uitzonderingen.',
     accentColor: 'from-blue-400 to-purple-500',
-    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.3)]', // Blue-purple glow
-    hoverGlow: 'hover:shadow-[0_0_50px_rgba(99,102,241,0.5),0_0_80px_rgba(99,102,241,0.3)]', // Stronger blue-purple glow on hover
-    radiantGlow: 'shadow-[0_0_60px_rgba(99,102,241,0.2),0_0_120px_rgba(99,102,241,0.1),0_0_200px_rgba(99,102,241,0.05)]', // Outward radiant glow
-    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(99,102,241,0.4),0_0_160px_rgba(99,102,241,0.2),0_0_300px_rgba(99,102,241,0.1)]', // Stronger radiant glow on hover
+    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.3)]',
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(99,102,241,0.5),0_0_80px_rgba(99,102,241,0.3)]',
+    radiantGlow: 'shadow-[0_0_60px_rgba(99,102,241,0.2),0_0_120px_rgba(99,102,241,0.1),0_0_200px_rgba(99,102,241,0.05)]',
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(99,102,241,0.4),0_0_160px_rgba(99,102,241,0.2),0_0_300px_rgba(99,102,241,0.1)]',
     iconColor: 'text-indigo-400',
     nativeColor: 'indigo',
     borderColor: 'border-indigo-500/20',
@@ -83,22 +82,16 @@ const AutomationHero = () => {
         {/* Main Hero Content */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
-            Slim. Snel.{' '}
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent block">
-                Onzichtbaar.
-              </span>
-              {/* Light gradient glow behind "Onzichtbaar" */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-500/20 blur-2xl -z-10 scale-110" />
-            </span>
+            Van handmatig naar automatisch
           </h1>
           
-          <p className="text-xl md:text-2xl text-premium-silver/80 max-w-4xl mx-auto leading-relaxed mb-12">
-            Van repetitieve taken tot complexe besluitvorming — wij maken het naadloos. 
-            Uw processen draaien 24/7. Zonder ruis. Zonder vertraging.
-          </p>
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-premium-silver/90 leading-relaxed mb-8">
+            AI-automatisering die écht werkt. Slim, snel, onzichtbaar.
+          </h2>
 
-          
+          <p className="text-xl md:text-2xl text-premium-silver/80 max-w-4xl mx-auto leading-relaxed mb-12">
+            Van eenvoudige taken tot complexe workflows — wij automatiseren het. Zodat jij je kunt focussen op wat echt belangrijk is.
+          </p>
         </div>
 
         {/* Core Benefits Section - Enhanced with Full Native Color Integration */}
