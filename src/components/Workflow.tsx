@@ -1,12 +1,4 @@
 
-/**
- * Systeemprompt:
- * Je werkt aan een Apple-achtige premium dark mode website. Pas uitsluitend de "Onze werkwijze"-sectie aan. 
- * Optimaliseer voor performance, elegantie en diepte – zonder de huidige layout te breken. Gebruik subtiele 
- * micro-animaties, glows en schaduwen. UI en UX moeten perfect schalen op mobiel, laptop en 27" scherm. 
- * Alle tekst blijft onveranderd.
- */
-
 import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
 
@@ -64,46 +56,12 @@ const Workflow = () => {
         }
       }
 
-      /* New animated flow for connecting line */
-      @keyframes flow-pulse {
-        0%, 100% { 
-          opacity: 0.6;
-          transform: scaleX(1);
-        }
-        50% { 
-          opacity: 0.9;
-          transform: scaleX(1.02);
-        }
-      }
-
-      @keyframes flow-light {
-        0% { 
-          transform: translateX(-100px); 
-          opacity: 0; 
-        }
-        50% { 
-          opacity: 0.8; 
-        }
-        100% { 
-          transform: translateX(calc(100vw - 200px)); 
-          opacity: 0; 
-        }
-      }
-
       .floating-particle {
         animation: float-gentle 8s ease-in-out infinite;
       }
 
       .pulse-particle {
         animation: pulse-glow 4s ease-in-out infinite;
-      }
-
-      .animated-flow {
-        animation: flow-pulse 3s ease-in-out infinite;
-      }
-
-      .flow-light {
-        animation: flow-light 4s ease-in-out infinite;
       }
     `;
     document.head.appendChild(style);
@@ -132,11 +90,11 @@ const Workflow = () => {
     <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
       {/* Enhanced multi-layered background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
-        <div className="w-[900px] h-[720px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
+        <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
       </div>
       
       <div className="absolute inset-0 flex items-center justify-center opacity-15">
-        <div className="w-[540px] h-[360px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
+        <div className="w-[600px] h-[400px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
       </div>
 
       {/* Dynamic floating particles inspired by hero section */}
@@ -162,12 +120,12 @@ const Workflow = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Enhanced header with more visual interest - scaled down 10% */}
-        <div className="text-left mb-14 lg:mb-18 scale-[0.9] origin-left">
+        {/* Enhanced header with more visual interest */}
+        <div className="text-left mb-16 lg:mb-20">
           {/* Subtle accent line above title */}
-          <div className="w-22 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-5 apple-fade-in apple-stagger-1" />
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             In drie heldere stappen van{' '}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
@@ -187,9 +145,16 @@ const Workflow = () => {
             .
           </h2>
           
-          <p className="text-white/70 text-lg lg:text-xl font-light tracking-wide apple-fade-in apple-stagger-3 max-w-3xl leading-relaxed">
+          <p className="text-white/70 text-xl lg:text-2xl font-light tracking-wide apple-fade-in apple-stagger-3 max-w-4xl leading-relaxed">
             Onze bewezen aanpak voor succesvolle AI-implementatie.
           </p>
+
+          {/* Premium stats or badges */}
+          <div className="flex flex-wrap gap-4 mt-8 apple-fade-in apple-stagger-4">
+            
+            
+            
+          </div>
         </div>
 
         {/* Enhanced timeline with better visual hierarchy */}
@@ -197,52 +162,36 @@ const Workflow = () => {
           {/* Enhanced connecting line with animated flow */}
           <div className="hidden lg:block absolute top-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
             <div className="relative h-px">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent animated-flow" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/40 to-transparent animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/30 to-transparent animate-pulse" />
               
-              {/* Flowing light effect with enhanced animation */}
+              {/* Flowing light effect */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute w-20 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent flow-light" />
-                <div className="absolute w-16 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent flow-light" style={{
-                  animationDelay: '2s'
+                <div className="absolute w-20 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[slide-right_3s_ease-in-out_infinite]" style={{
+                  animation: 'slide-right 4s ease-in-out infinite',
+                  animationDelay: '1s'
                 }} />
               </div>
             </div>
           </div>
 
-          {/* Steps Grid with enhanced spacing and vertical offsets */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
+          {/* Steps Grid with enhanced spacing */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
             {steps.map((step, index) => (
-              <div 
-                key={step.number}
-                className={`transform transition-all duration-500 ${
-                  index === 0 ? 'lg:-translate-y-2.5' : 
-                  index === 1 ? '' : 
-                  'lg:-translate-y-2.5'
-                }`}
-                style={{ 
-                  marginBottom: index < steps.length - 1 ? '40px' : '0',
-                  transform: `scale(0.9) ${
-                    index === 0 ? 'translateY(-10px)' : 
-                    index === 2 ? 'translateY(-10px)' : 
-                    'translateY(0)'
-                  }`
-                }}
-              >
-                <WorkflowStep 
-                  step={step} 
-                  delay={`${0.3 + index * 0.15}s`} 
-                  isLast={index === steps.length - 1} 
-                />
-              </div>
+              <WorkflowStep 
+                key={step.number} 
+                step={step} 
+                delay={`${0.3 + index * 0.15}s`} 
+                isLast={index === steps.length - 1} 
+              />
             ))}
           </div>
         </div>
 
-        {/* Call-to-action area - scaled down 10% */}
-        <div className="text-center mt-18 lg:mt-22 scale-[0.9]">
-          <div className="inline-block px-7 py-3 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/10 apple-fade-in apple-stagger-6">
-            <p className="text-white/70 text-base">
+        {/* Call-to-action area */}
+        <div className="text-center mt-20 lg:mt-24">
+          <div className="inline-block px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/10 apple-fade-in apple-stagger-6">
+            <p className="text-white/70 text-lg">
               <span className="text-white font-medium">Klaar om te beginnen?</span> Laten we uw AI-journey starten.
             </p>
           </div>
@@ -252,10 +201,10 @@ const Workflow = () => {
       {/* Additional CSS for new animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @media (max-width: 1024px) {
-            .grid > div {
-              margin-bottom: 40px !important;
-            }
+          @keyframes slide-right {
+            0% { transform: translateX(-100px); opacity: 0; }
+            50% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(100px); opacity: 0; }
           }
         `
       }} />
