@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 
 interface WorkflowStepProps {
@@ -26,11 +27,92 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
       { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
     );
 
+    // Add premium glow animations
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Premium continuous glow animations */
+      @keyframes premium-glow-pulse {
+        0%, 100% { 
+          opacity: 0.3;
+          transform: scale(1);
+          filter: blur(8px);
+        }
+        50% { 
+          opacity: 0.7;
+          transform: scale(1.15);
+          filter: blur(12px);
+        }
+      }
+
+      @keyframes premium-glow-pulse-delayed {
+        0%, 100% { 
+          opacity: 0.2;
+          transform: scale(1);
+          filter: blur(10px);
+        }
+        50% { 
+          opacity: 0.6;
+          transform: scale(1.2);
+          filter: blur(15px);
+        }
+      }
+
+      @keyframes premium-glow-pulse-tertiary {
+        0%, 100% { 
+          opacity: 0.25;
+          transform: scale(1);
+          filter: blur(15px);
+        }
+        50% { 
+          opacity: 0.5;
+          transform: scale(1.3);
+          filter: blur(20px);
+        }
+      }
+
+      @keyframes premium-shimmer-sweep {
+        0% { 
+          transform: translateX(-100%) rotate(-10deg);
+          opacity: 0;
+        }
+        50% { 
+          opacity: 0.4;
+        }
+        100% { 
+          transform: translateX(200%) rotate(-10deg);
+          opacity: 0;
+        }
+      }
+
+      .premium-glow-pulse {
+        animation: premium-glow-pulse 4s ease-in-out infinite;
+      }
+
+      .premium-glow-pulse-delayed {
+        animation: premium-glow-pulse-delayed 6s ease-in-out infinite;
+        animation-delay: 1.5s;
+      }
+
+      .premium-glow-pulse-tertiary {
+        animation: premium-glow-pulse-tertiary 8s ease-in-out infinite;
+        animation-delay: 3s;
+      }
+
+      .premium-shimmer-sweep {
+        animation: premium-shimmer-sweep 12s ease-in-out infinite;
+        animation-delay: 2s;
+      }
+    `;
+    document.head.appendChild(style);
+
     if (stepRef.current) {
       observer.observe(stepRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      document.head.removeChild(style);
+    };
   }, []);
 
   return (
@@ -45,7 +127,7 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
     >
       <div className="relative flex flex-col items-center space-y-8 p-8 lg:p-12 transition-all duration-500 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer">
         
-        {/* Enhanced number circle with premium effects */}
+        {/* Enhanced number circle with premium continuous glow effects */}
         <div className="relative">
           <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-white via-white to-gray-100 flex items-center justify-center relative z-10 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-blue-500/30 group-hover:scale-110">
             <span className="text-3xl lg:text-4xl font-bold text-black tracking-tight relative">
@@ -55,12 +137,17 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
                 <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-white/40 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
               </div>
             </span>
+            
+            {/* Premium shimmer sweep effect */}
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              <div className="premium-shimmer-sweep absolute inset-0 w-full h-1 bg-gradient-to-r from-transparent via-white/60 to-transparent top-1/2 transform -translate-y-1/2" />
+            </div>
           </div>
           
-          {/* Multi-layered glow effects with enhanced intensity */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-purple-300/15 to-cyan-400/10 opacity-70 blur-lg scale-110 group-hover:opacity-90 group-hover:scale-125 transition-all duration-700" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/15 via-blue-200/10 to-purple-200/8 opacity-50 blur-xl scale-125 group-hover:opacity-80 group-hover:scale-140 transition-all duration-700" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/10 via-white/8 to-blue-300/8 opacity-60 blur-2xl scale-150 group-hover:opacity-90 group-hover:scale-175 transition-all duration-700" />
+          {/* Multi-layered continuous glow effects */}
+          <div className="premium-glow-pulse absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-purple-300/15 to-cyan-400/10 scale-110 group-hover:scale-125 transition-all duration-700" />
+          <div className="premium-glow-pulse-delayed absolute inset-0 rounded-full bg-gradient-to-br from-white/15 via-blue-200/10 to-purple-200/8 scale-125 group-hover:scale-140 transition-all duration-700" />
+          <div className="premium-glow-pulse-tertiary absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/10 via-white/8 to-blue-300/8 scale-150 group-hover:scale-175 transition-all duration-700" />
           
           {/* Pulsing ring effect */}
           <div className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-125 animate-pulse" />

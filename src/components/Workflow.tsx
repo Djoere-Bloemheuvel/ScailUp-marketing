@@ -56,12 +56,89 @@ const Workflow = () => {
         }
       }
 
+      /* Premium nebula background animations */
+      @keyframes nebula-drift-1 {
+        0%, 100% { 
+          transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+          opacity: 0.15;
+        }
+        25% { 
+          transform: translateX(-30px) translateY(-20px) scale(1.1) rotate(90deg);
+          opacity: 0.25;
+        }
+        50% { 
+          transform: translateX(40px) translateY(10px) scale(0.9) rotate(180deg);
+          opacity: 0.2;
+        }
+        75% { 
+          transform: translateX(-10px) translateY(30px) scale(1.05) rotate(270deg);
+          opacity: 0.18;
+        }
+      }
+
+      @keyframes nebula-drift-2 {
+        0%, 100% { 
+          transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+          opacity: 0.12;
+        }
+        33% { 
+          transform: translateX(50px) translateY(-30px) scale(1.2) rotate(120deg);
+          opacity: 0.22;
+        }
+        66% { 
+          transform: translateX(-40px) translateY(20px) scale(0.8) rotate(240deg);
+          opacity: 0.16;
+        }
+      }
+
+      @keyframes nebula-drift-3 {
+        0%, 100% { 
+          transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+          opacity: 0.1;
+        }
+        40% { 
+          transform: translateX(-60px) translateY(40px) scale(1.3) rotate(144deg);
+          opacity: 0.2;
+        }
+        80% { 
+          transform: translateX(30px) translateY(-50px) scale(0.7) rotate(288deg);
+          opacity: 0.15;
+        }
+      }
+
+      @keyframes stardust-float {
+        0%, 100% { 
+          transform: translateY(0px) translateX(0px);
+          opacity: 0.2;
+        }
+        50% { 
+          transform: translateY(-15px) translateX(10px);
+          opacity: 0.5;
+        }
+      }
+
       .floating-particle {
         animation: float-gentle 8s ease-in-out infinite;
       }
 
       .pulse-particle {
         animation: pulse-glow 4s ease-in-out infinite;
+      }
+
+      .nebula-drift-1 {
+        animation: nebula-drift-1 45s ease-in-out infinite;
+      }
+
+      .nebula-drift-2 {
+        animation: nebula-drift-2 60s ease-in-out infinite;
+      }
+
+      .nebula-drift-3 {
+        animation: nebula-drift-3 75s ease-in-out infinite;
+      }
+
+      .stardust-float {
+        animation: stardust-float 12s ease-in-out infinite;
       }
     `;
     document.head.appendChild(style);
@@ -91,6 +168,22 @@ const Workflow = () => {
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
+      {/* Premium nebula background with moving stardust */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Base nebula layers */}
+        <div className="nebula-drift-1 absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
+        <div className="nebula-drift-2 absolute top-1/2 right-1/3 w-80 h-80 bg-gradient-radial from-cyan-400/6 via-blue-500/3 to-transparent rounded-full blur-2xl" />
+        <div className="nebula-drift-3 absolute bottom-1/3 left-1/2 w-72 h-72 bg-gradient-radial from-purple-400/7 via-pink-500/3 to-transparent rounded-full blur-3xl" />
+        
+        {/* Stardust particles */}
+        <div className="stardust-float absolute top-20 left-20 w-1 h-1 bg-white/30 rounded-full blur-sm" style={{ animationDelay: '0s' }} />
+        <div className="stardust-float absolute top-40 right-32 w-0.5 h-0.5 bg-blue-300/40 rounded-full blur-sm" style={{ animationDelay: '3s' }} />
+        <div className="stardust-float absolute bottom-32 left-32 w-1 h-1 bg-purple-300/35 rounded-full blur-sm" style={{ animationDelay: '6s' }} />
+        <div className="stardust-float absolute bottom-20 right-20 w-0.5 h-0.5 bg-cyan-300/40 rounded-full blur-sm" style={{ animationDelay: '9s' }} />
+        <div className="stardust-float absolute top-3/4 left-3/4 w-1 h-1 bg-white/25 rounded-full blur-sm" style={{ animationDelay: '12s' }} />
+        <div className="stardust-float absolute top-1/3 right-1/4 w-0.5 h-0.5 bg-pink-300/30 rounded-full blur-sm" style={{ animationDelay: '15s' }} />
+      </div>
+
       {/* Enhanced multi-layered background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
         <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
