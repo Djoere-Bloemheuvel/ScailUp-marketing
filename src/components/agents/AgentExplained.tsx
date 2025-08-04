@@ -57,56 +57,57 @@ const AgentExplained = () => {
             </div>
           </div>
 
-          {/* AI Agent Network Visual - Completely redesigned */}
+          {/* AI Agent Network Visual - Subtle animations */}
           <div className="relative flex items-center justify-center">
             {/* Central Command Agent */}
             <div className="relative">
-              {/* Outer network ring */}
-              <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full border border-teal-400/20 animate-pulse" style={{
-                animationDuration: '6s'
+              {/* Outer network ring - very slow pulse */}
+              <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full border border-teal-400/15" style={{
+                animation: 'subtle-pulse 12s ease-in-out infinite'
               }} />
               
-              {/* Middle coordination ring */}
-              <div className="absolute inset-8 md:inset-12 rounded-full border border-blue-400/30 animate-pulse" style={{
-                animationDuration: '4s',
-                animationDelay: '-2s'
+              {/* Middle coordination ring - slower pulse */}
+              <div className="absolute inset-8 md:inset-12 rounded-full border border-blue-400/20" style={{
+                animation: 'subtle-pulse 10s ease-in-out infinite',
+                animationDelay: '-4s'
               }} />
               
               {/* Central AI Command Hub */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center" style={{
-                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, rgba(59, 130, 246, 0.08) 40%, rgba(16, 185, 129, 0.05) 70%, transparent 100%)',
+                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, rgba(59, 130, 246, 0.06) 40%, rgba(16, 185, 129, 0.03) 70%, transparent 100%)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(20, 184, 166, 0.3)',
+                border: '1px solid rgba(20, 184, 166, 0.25)',
                 boxShadow: `
-                  0 0 80px rgba(20, 184, 166, 0.25),
-                  0 0 160px rgba(59, 130, 246, 0.15),
-                  inset 0 0 80px rgba(16, 185, 129, 0.08)
-                `
+                  0 0 60px rgba(20, 184, 166, 0.15),
+                  0 0 120px rgba(59, 130, 246, 0.08),
+                  inset 0 0 60px rgba(16, 185, 129, 0.05)
+                `,
+                animation: 'gentle-glow 8s ease-in-out infinite'
               }}>
                 {/* Command Center Icon */}
                 <div className="relative">
-                  <Network className="w-24 h-24 md:w-32 md:h-32 text-teal-300 drop-shadow-2xl animate-pulse" style={{
-                    filter: 'drop-shadow(0 0 25px rgba(20, 184, 166, 0.7))',
-                    animationDuration: '8s'
+                  <Network className="w-24 h-24 md:w-32 md:h-32 text-teal-300 drop-shadow-2xl" style={{
+                    filter: 'drop-shadow(0 0 15px rgba(20, 184, 166, 0.4))',
+                    animation: 'gentle-breathe 6s ease-in-out infinite'
                   }} />
                   
                   {/* Central processing indicator */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-teal-400/60 rounded-full animate-pulse" style={{
-                    animationDuration: '2s'
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-teal-400/40 rounded-full" style={{
+                    animation: 'soft-pulse 4s ease-in-out infinite'
                   }} />
                 </div>
               </div>
               
-              {/* Autonomous Agent Satellites */}
+              {/* Autonomous Agent Satellites - Much slower movement */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 {/* Agent nodes with different capabilities */}
                 {[
                   { angle: 0, icon: Bot, color: 'teal', delay: 0 },
-                  { angle: 60, icon: MessageSquare, color: 'blue', delay: 1 },
-                  { angle: 120, icon: Cpu, color: 'cyan', delay: 2 },
-                  { angle: 180, icon: Eye, color: 'emerald', delay: 3 },
-                  { angle: 240, icon: Zap, color: 'indigo', delay: 4 },
-                  { angle: 300, icon: Brain, color: 'purple', delay: 5 }
+                  { angle: 60, icon: MessageSquare, color: 'blue', delay: 2 },
+                  { angle: 120, icon: Cpu, color: 'cyan', delay: 4 },
+                  { angle: 180, icon: Eye, color: 'emerald', delay: 6 },
+                  { angle: 240, icon: Zap, color: 'indigo', delay: 8 },
+                  { angle: 300, icon: Brain, color: 'purple', delay: 10 }
                 ].map((agent, i) => {
                   const x = Math.cos((agent.angle * Math.PI) / 180) * 110;
                   const y = Math.sin((agent.angle * Math.PI) / 180) * 110;
@@ -114,19 +115,19 @@ const AgentExplained = () => {
                   return (
                     <div
                       key={`agent-${i}`}
-                      className="absolute animate-spin"
+                      className="absolute"
                       style={{
-                        animationDuration: `${12 + i * 2}s`,
+                        animation: `gentle-orbit 45s linear infinite`,
                         transform: `rotate(${agent.angle}deg) translateY(-110px)`,
                         transformOrigin: '50% 110px'
                       }}
                     >
-                      <div className={`w-14 h-14 md:w-18 md:h-18 rounded-xl bg-gradient-to-br from-${agent.color}-500/30 to-${agent.color}-600/20 border border-${agent.color}-400/40 backdrop-blur-sm flex items-center justify-center animate-pulse`} style={{
+                      <div className={`w-14 h-14 md:w-18 md:h-18 rounded-xl bg-gradient-to-br from-${agent.color}-500/20 to-${agent.color}-600/15 border border-${agent.color}-400/30 backdrop-blur-sm flex items-center justify-center`} style={{
+                        animation: `soft-glow-${agent.color} 8s ease-in-out infinite`,
                         animationDelay: `${agent.delay}s`,
-                        boxShadow: `0 0 20px rgba(${agent.color === 'teal' ? '20, 184, 166' : agent.color === 'blue' ? '59, 130, 246' : agent.color === 'cyan' ? '34, 211, 238' : '16, 185, 129'}, 0.4)`
+                        boxShadow: `0 0 15px rgba(${agent.color === 'teal' ? '20, 184, 166' : agent.color === 'blue' ? '59, 130, 246' : agent.color === 'cyan' ? '34, 211, 238' : '16, 185, 129'}, 0.2)`
                       }}>
-                        <agent.icon className={`w-6 h-6 md:w-8 md:h-8 text-${agent.color}-300 transform -rotate-[${agent.angle}deg]`} style={{
-                          animation: 'none',
+                        <agent.icon className={`w-6 h-6 md:w-8 md:h-8 text-${agent.color}-300`} style={{
                           transform: `rotate(-${agent.angle}deg)`
                         }} />
                       </div>
@@ -136,62 +137,131 @@ const AgentExplained = () => {
               </div>
             </div>
 
-            {/* Data Flow Connections */}
+            {/* Data Flow Connections - More subtle */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {/* Dynamic data streams */}
-              {Array.from({ length: 8 }).map((_, i) => {
-                const angle = (i * 45) * Math.PI / 180;
-                const startRadius = 80;
-                const endRadius = 140;
-                const x1 = Math.cos(angle) * startRadius;
-                const y1 = Math.sin(angle) * startRadius;
-                const x2 = Math.cos(angle) * endRadius;
-                const y2 = Math.sin(angle) * endRadius;
-                
-                return (
-                  <div
-                    key={`flow-${i}`}
-                    className="absolute top-1/2 left-1/2 w-px bg-gradient-to-r from-transparent via-teal-400/60 to-transparent animate-pulse"
-                    style={{
-                      height: `${endRadius - startRadius}px`,
-                      transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-${(startRadius + endRadius) / 2}px)`,
-                      animationDelay: `${i * 0.3}s`,
-                      animationDuration: '3s'
-                    }}
-                  />
-                );
-              })}
-              
-              {/* Orbital connection rings */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full border-dashed border border-teal-400/20 animate-spin" style={{
-                animationDuration: '20s'
+              {/* Subtle orbital connection rings */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full border-dashed border border-teal-400/10" style={{
+                animation: 'slow-spin 60s linear infinite'
               }} />
               
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full border-dashed border border-blue-400/15 animate-spin" style={{
-                animationDuration: '25s',
-                animationDirection: 'reverse'
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full border-dashed border border-blue-400/8" style={{
+                animation: 'slow-spin 80s linear infinite reverse'
               }} />
             </div>
 
-            {/* Floating data particles */}
+            {/* Floating data particles - Very subtle */}
             <div className="absolute inset-0 pointer-events-none">
-              {Array.from({ length: 12 }).map((_, i) => {
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
+              {Array.from({ length: 6 }).map((_, i) => {
+                const x = 20 + Math.random() * 60;
+                const y = 20 + Math.random() * 60;
                 return (
                   <div
                     key={`particle-${i}`}
-                    className="absolute w-1 h-1 bg-teal-400/60 rounded-full animate-pulse"
+                    className="absolute w-1 h-1 bg-teal-400/30 rounded-full"
                     style={{
                       left: `${x}%`,
                       top: `${y}%`,
-                      animationDelay: `${i * 0.4}s`,
-                      animationDuration: `${2 + Math.random() * 2}s`
+                      animation: `gentle-float 6s ease-in-out infinite`,
+                      animationDelay: `${i * 1.5}s`
                     }}
                   />
                 );
               })}
             </div>
+
+            {/* Subtle Animation Styles */}
+            <style dangerouslySetInnerHTML={{
+              __html: `
+                @keyframes subtle-pulse {
+                  0%, 100% { opacity: 0.3; }
+                  50% { opacity: 0.5; }
+                }
+
+                @keyframes gentle-glow {
+                  0%, 100% { 
+                    filter: blur(20px);
+                    box-shadow: 
+                      0 0 60px rgba(20, 184, 166, 0.15),
+                      0 0 120px rgba(59, 130, 246, 0.08),
+                      inset 0 0 60px rgba(16, 185, 129, 0.05);
+                  }
+                  50% { 
+                    filter: blur(22px);
+                    box-shadow: 
+                      0 0 70px rgba(20, 184, 166, 0.2),
+                      0 0 140px rgba(59, 130, 246, 0.1),
+                      inset 0 0 70px rgba(16, 185, 129, 0.08);
+                  }
+                }
+
+                @keyframes gentle-breathe {
+                  0%, 100% { 
+                    transform: scale(1);
+                    filter: drop-shadow(0 0 15px rgba(20, 184, 166, 0.4));
+                  }
+                  50% { 
+                    transform: scale(1.02);
+                    filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.5));
+                  }
+                }
+
+                @keyframes soft-pulse {
+                  0%, 100% { opacity: 0.4; }
+                  50% { opacity: 0.6; }
+                }
+
+                @keyframes gentle-orbit {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+
+                @keyframes slow-spin {
+                  0% { transform: translate(-50%, -50%) rotate(0deg); }
+                  100% { transform: translate(-50%, -50%) rotate(360deg); }
+                }
+
+                @keyframes gentle-float {
+                  0%, 100% { 
+                    opacity: 0.2; 
+                    transform: translateY(0); 
+                  }
+                  50% { 
+                    opacity: 0.4; 
+                    transform: translateY(-8px); 
+                  }
+                }
+
+                @keyframes soft-glow-teal {
+                  0%, 100% { box-shadow: 0 0 15px rgba(20, 184, 166, 0.2); }
+                  50% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.3); }
+                }
+
+                @keyframes soft-glow-blue {
+                  0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+                  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+                }
+
+                @keyframes soft-glow-cyan {
+                  0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); }
+                  50% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
+                }
+
+                @keyframes soft-glow-emerald {
+                  0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+                  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+                }
+
+                @keyframes soft-glow-indigo {
+                  0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+                  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+                }
+
+                @keyframes soft-glow-purple {
+                  0%, 100% { box-shadow: 0 0 15px rgba(147, 51, 234, 0.2); }
+                  50% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
+                }
+              `
+            }} />
           </div>
         </div>
       </div>
