@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const ConsultancyHero = () => {
   return (
-    <section className="relative py-16 md:py-20 lg:py-32 overflow-hidden">
+    <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center overflow-hidden">
       {/* Dark background with blue gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
       
@@ -39,7 +39,7 @@ const ConsultancyHero = () => {
         }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 py-16 md:py-20 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left side - Content */}
           <div className="space-y-6 md:space-y-8 order-2 lg:order-1">

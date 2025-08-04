@@ -5,7 +5,7 @@ import CinematicBackground from './hero/CinematicBackground';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
+    <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
       {/* Cinematic Background with AI Core - Always visible */}
       <div className="absolute inset-0">
         <CinematicBackground />

@@ -1,3 +1,4 @@
+
 import { ChevronRight, Cog, Sparkles, Zap, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -50,7 +51,7 @@ const AutomationHero = () => {
     hoverBackgroundTint: 'rgba(99, 102, 241, 0.08)'
   }];
 
-  return <section className="relative py-20 lg:py-32 overflow-hidden">
+  return <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
       
@@ -78,7 +79,7 @@ const AutomationHero = () => {
       }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4">
+      <div className="relative max-w-6xl mx-auto px-4 py-20 lg:py-32">
         {/* Main Hero Content */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
