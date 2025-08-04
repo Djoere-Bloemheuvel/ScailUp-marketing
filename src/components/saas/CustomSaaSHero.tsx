@@ -93,7 +93,7 @@ const CustomSaaSHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-premium-silver/80 max-w-4xl mx-auto leading-relaxed mb-12">
-            Wij ontwikkelen schaalbare AI-software-oplossingen die volledig zijn afgestemd op jouw processen, workflows en klanten. Denk aan slimme platforms die zelfstandig leren, gepersonaliseerde gebruikerservaringen bieden en jouw bedrijf helpen sneller te groeien. Van idee tot een volwaardig AI SaaS product – zonder dat je een eigen ontwikkelteam nodig hebt.
+            Slimme AI-software op maat, gebouwd rond jouw workflows — zonder afhankelijk te zijn van developers.
           </p>
         </div>
 
