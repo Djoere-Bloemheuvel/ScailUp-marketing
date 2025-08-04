@@ -1,6 +1,7 @@
 
 import { Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import AutomationThreeFeatures from './AutomationThreeFeatures';
 
 const AutomationSecondHero = () => {
   return (
@@ -33,10 +34,10 @@ const AutomationSecondHero = () => {
         }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left side - Content */}
-          <div className="space-y-8">
+      <div className="relative max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left side - Content (takes up more space) */}
+          <div className="lg:col-span-5 space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
                 AI Automatisering
@@ -50,6 +51,11 @@ const AutomationSecondHero = () => {
             <p className="text-lg md:text-xl text-premium-silver/80 leading-relaxed max-w-2xl">
               Van repetitieve taken tot complexe besluitvorming — wij maken het naadloos. Uw processen draaien 24/7. Zonder ruis. Zonder vertraging.
             </p>
+
+            {/* Three Features Component */}
+            <div className="pt-8">
+              <AutomationThreeFeatures />
+            </div>
 
             <div className="pt-4">
               <Button 
@@ -75,7 +81,7 @@ const AutomationSecondHero = () => {
           </div>
 
           {/* Right side - AI Automation Visual with Cog Icon */}
-          <div className="relative flex items-center justify-center">
+          <div className="lg:col-span-7 relative flex items-center justify-center">
             {/* Central AI Automation Icon */}
             <div className="relative">
               {/* Outer glow ring */}
