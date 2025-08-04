@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 const AICoreCenter = () => {
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">

@@ -1,4 +1,5 @@
-import { Settings, Zap, Shield, Brain } from 'lucide-react';
+
+import { Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 const CustomSaaSNewHero = () => {
   return <section className="relative py-16 md:py-20 lg:py-32 overflow-hidden">
