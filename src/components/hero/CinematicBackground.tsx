@@ -30,7 +30,7 @@ const CinematicBackground = ({
       {/* Main content background boxes - Only show if hideGlassContainer is false */}
       {!hideGlassContainer && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[68vh] sm:h-[63vh] md:h-[58vh] lg:h-[61vh] xl:h-[65vh] transform -translate-y-4 sm:-translate-y-8 md:-translate-y-10 lg:-translate-y-12">
+          <div className="relative w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] h-[75vh] sm:h-[69vh] md:h-[64vh] lg:h-[67vh] xl:h-[72vh] transform -translate-y-4 sm:-translate-y-8 md:-translate-y-10 lg:-translate-y-12">
             {/* Glass container - immediately visible with teal/cyan colors */}
             <div className="absolute inset-0 rounded-3xl premium-glass-container-ambient" style={{
               background: `
