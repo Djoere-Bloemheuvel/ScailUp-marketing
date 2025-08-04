@@ -57,73 +57,67 @@ const AgentExplained = () => {
             </div>
           </div>
 
-          {/* Glowing Brain Visual */}
-          <div className="relative">
-            <div className="relative w-full max-w-lg mx-auto">
-              {/* Outer glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-teal-500/30 to-blue-500/20 rounded-full blur-3xl opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
+          {/* Neural AI Visual - Exact copy from AgentHero */}
+          <div className="relative flex items-center justify-center">
+            {/* Central AI Brain Icon */}
+            <div className="relative">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full animate-pulse" style={{
+                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
+                animationDuration: '4s'
+              }} />
               
-              {/* Main container */}
-              <div className="relative w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-slate-900/60 to-blue-950/40 border border-cyan-400/30 backdrop-blur-xl shadow-2xl flex items-center justify-center">
-                
-                {/* Inner glow circle */}
-                <div className="absolute inset-8 rounded-full bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/20">
-                  {/* Rotating orbital rings */}
-                  <div className="absolute inset-0 rounded-full border border-cyan-400/10 animate-spin" style={{ animationDuration: '20s' }}>
-                    <div className="absolute top-0 left-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-cyan-400/60 rounded-full animate-pulse" />
-                  </div>
-                  
-                  <div className="absolute inset-4 rounded-full border border-teal-400/10 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
-                    <div className="absolute top-1/4 right-0 w-1.5 h-1.5 translate-x-1/2 -translate-y-1/2 bg-teal-400/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                  </div>
-                  
-                  <div className="absolute inset-8 rounded-full border border-blue-400/10 animate-spin" style={{ animationDuration: '25s' }}>
-                    <div className="absolute bottom-0 left-1/4 w-1 h-1 -translate-x-1/2 translate-y-1/2 bg-blue-400/60 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-                  </div>
-                </div>
-
-                {/* Central brain icon */}
-                <div className="relative z-10 w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400/80 to-teal-500/80 flex items-center justify-center shadow-2xl animate-pulse" style={{ animationDuration: '3s' }}>
-                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
-                  <Brain className="w-16 h-16 text-white drop-shadow-lg" />
-                  
-                  {/* Inner glow effect */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/30 to-teal-400/30 animate-pulse" style={{ animationDelay: '1s', animationDuration: '2s' }} />
-                </div>
-
-                {/* Orbiting particles */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {/* Large particle - top */}
-                  <div className="absolute top-4 left-1/2 w-3 h-3 -translate-x-1/2 bg-cyan-400/80 rounded-full animate-bounce shadow-lg shadow-cyan-400/50" style={{ animationDelay: '0s', animationDuration: '4s' }} />
-                  
-                  {/* Medium particle - right */}
-                  <div className="absolute top-1/3 right-6 w-2 h-2 bg-teal-400/80 rounded-full animate-pulse shadow-lg shadow-teal-400/50" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-                  
-                  {/* Small particle - bottom left */}
-                  <div className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-blue-400/80 rounded-full animate-ping shadow-lg shadow-blue-400/50" style={{ animationDelay: '2s', animationDuration: '3.5s' }} />
-                  
-                  {/* Medium particle - top right */}
-                  <div className="absolute top-12 right-12 w-2 h-2 bg-cyan-300/80 rounded-full animate-bounce shadow-lg shadow-cyan-300/50" style={{ animationDelay: '0.5s', animationDuration: '5s' }} />
-                  
-                  {/* Small particle - bottom right */}
-                  <div className="absolute bottom-6 right-8 w-1 h-1 bg-teal-300/80 rounded-full animate-pulse shadow-lg shadow-teal-300/50" style={{ animationDelay: '3s', animationDuration: '2.5s' }} />
-                </div>
-
-                {/* Scanning beam effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-conic from-transparent via-cyan-400/10 to-transparent animate-spin opacity-50" style={{ animationDuration: '8s' }} />
-                
-                {/* Additional glow layers */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/5 to-teal-500/5 pointer-events-none" />
+              {/* Middle glow ring */}
+              <div className="absolute inset-8 md:inset-12 rounded-full animate-pulse" style={{
+                background: 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(34, 211, 238, 0.08) 50%, transparent 70%)',
+                animationDuration: '3s',
+                animationDelay: '-1s'
+              }} />
+              
+              {/* Inner core */}
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center" style={{
+                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, rgba(16, 185, 129, 0.05) 70%, transparent 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(20, 184, 166, 0.2)',
+                boxShadow: `
+                  0 0 60px rgba(20, 184, 166, 0.3),
+                  0 0 120px rgba(59, 130, 246, 0.2),
+                  inset 0 0 60px rgba(16, 185, 129, 0.1)
+                `
+              }}>
+                <Brain className="w-24 h-24 md:w-32 md:h-32 text-teal-300 drop-shadow-2xl" style={{
+                  filter: 'drop-shadow(0 0 20px rgba(20, 184, 166, 0.6))'
+                }} />
               </div>
-
-              {/* Floating connection nodes */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-400/30 backdrop-blur-md flex items-center justify-center animate-float" style={{ animationDuration: '3s' }}>
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+              
+              {/* Orbiting elements */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                {/* Orbiting dots */}
+                {[0, 1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className="absolute w-3 h-3 rounded-full animate-spin"
+                    style={{
+                      background: i % 2 === 0 ? 'rgba(20, 184, 166, 0.8)' : 'rgba(59, 130, 246, 0.8)',
+                      animationDuration: `${8 + i * 2}s`,
+                      transform: `rotate(${i * 60}deg) translateY(-${120 + i * 20}px)`,
+                      boxShadow: `0 0 10px ${i % 2 === 0 ? 'rgba(20, 184, 166, 0.8)' : 'rgba(59, 130, 246, 0.8)'}`
+                    }}
+                  />
+                ))}
               </div>
+            </div>
 
-              <div className="absolute -bottom-6 -left-6 w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500/20 to-blue-500/20 border border-teal-400/30 backdrop-blur-md flex items-center justify-center animate-float" style={{ animationDelay: '1.5s', animationDuration: '4s' }}>
-                <div className="w-1.5 h-1.5 bg-teal-400 rounded-full animate-pulse" />
-              </div>
+            {/* Neural network connections */}
+            <div className="absolute inset-0 pointer-events-none">
+              {/* Connection lines */}
+              <div className="absolute top-1/4 left-1/4 w-32 h-0.5 bg-gradient-to-r from-teal-400/40 to-transparent transform rotate-45 animate-pulse" />
+              <div className="absolute top-3/4 right-1/4 w-24 h-0.5 bg-gradient-to-l from-blue-400/40 to-transparent transform -rotate-45 animate-pulse" style={{
+                animationDelay: '1s'
+              }} />
+              <div className="absolute bottom-1/3 left-1/3 w-28 h-0.5 bg-gradient-to-r from-emerald-400/40 to-transparent transform rotate-12 animate-pulse" style={{
+                animationDelay: '2s'
+              }} />
             </div>
           </div>
         </div>
