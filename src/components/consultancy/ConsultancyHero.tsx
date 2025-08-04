@@ -1,3 +1,4 @@
+
 import { Brain, Target, Lightbulb, Users, Zap, Shield } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import CinematicBackground from '@/components/hero/CinematicBackground';
@@ -52,6 +53,27 @@ const ConsultancyHero = () => {
 
   return (
     <>
+      {/* Hero Section - Matching structure */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <CinematicBackground />
+        
+        <div className="relative max-w-7xl mx-auto px-4 py-20 text-center z-10">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
+            AI Consultancy
+          </h1>
+          
+          <p className="text-2xl md:text-3xl lg:text-4xl font-light mb-8 tracking-wide">
+            <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
+              Van strategie tot realisatie
+            </span>
+          </p>
+          
+          <p className="text-lg md:text-xl lg:text-2xl text-premium-silver/90 max-w-4xl mx-auto leading-relaxed font-light">
+            Strategisch advies en technologische realisatie in één. Wij helpen je bij het definiëren van AI-kansen, het selecteren van de juiste tools en het succesvol implementeren van slimme automatiseringen.
+          </p>
+        </div>
+      </section>
+
       {/* Benefits Section - Matching exact structure from other heroes */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         {/* Background gradient - blue focused */}
