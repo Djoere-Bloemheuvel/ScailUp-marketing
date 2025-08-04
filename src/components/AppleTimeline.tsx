@@ -1,4 +1,3 @@
-
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
@@ -17,7 +16,7 @@ const AppleTimeline = () => {
       id: 2,
       number: "02", 
       title: "Ownership mentaliteit",
-      subtitle: "Uw succes is ons succes. We bouwen voor jou alsof het ons eigen bedrijf is.",
+      subtitle: "Jullie succes is ons succes. We bouwen voor jullie alsof het ons eigen bedrijf is.",
       icon: HandHeart,
       glowColor: "from-purple-500/20 to-violet-400/15", // Custom SaaS purple
       glowColorHover: "from-purple-500/35 to-violet-400/25",
