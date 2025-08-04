@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { LucideIcon } from 'lucide-react';
 
@@ -112,10 +111,10 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         />
       </div>
 
-      {/* Enhanced Card Container with smoother entrance */}
+      {/* Enhanced Card Container with smoother entrance - increased max width */}
       <div
         className={`
-          relative w-full max-w-sm transition-all duration-[1000ms] ease-out
+          relative w-full max-w-md transition-all duration-[1000ms] ease-out
           ${isVisible 
             ? 'opacity-100 translate-y-0 scale-100' 
             : 'opacity-0 translate-y-8 scale-95'
@@ -132,7 +131,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
           ${isLeft ? 'mr-6 lg:mr-10' : 'ml-6 lg:ml-10'}
         `}>
           <div className={`
-            relative p-6 lg:p-7 rounded-3xl
+            relative p-6 lg:p-8 rounded-3xl
             bg-white/[0.02] backdrop-blur-xl
             border border-white/[0.08] shadow-2xl shadow-black/40
             transition-all duration-[800ms] ease-out
