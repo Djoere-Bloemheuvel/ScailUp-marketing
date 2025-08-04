@@ -1,6 +1,6 @@
 
 import { Sparkles } from 'lucide-react';
-import AppleGlassMorphicCards from './AppleGlassMorphicCards';
+import AppleTimeline from './AppleTimeline';
 import AppleNebulaBackground from './AppleNebulaBackground';
 
 const Approach = () => {
@@ -40,8 +40,8 @@ const Approach = () => {
           </p>
         </div>
 
-        {/* Apple-style glassmorphic cards */}
-        <AppleGlassMorphicCards />
+        {/* Apple-style vertical timeline */}
+        <AppleTimeline />
 
         {/* Bottom CTA - Apple inspired */}
         <div className="text-center mt-20 lg:mt-24">
