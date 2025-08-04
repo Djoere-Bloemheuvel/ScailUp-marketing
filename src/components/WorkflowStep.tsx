@@ -33,12 +33,12 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
       /* Premium continuous glow animations */
       @keyframes premium-glow-pulse {
         0%, 100% { 
-          opacity: 0.3;
+          opacity: 0.6;
           transform: scale(1);
           filter: blur(8px);
         }
         50% { 
-          opacity: 0.7;
+          opacity: 0.9;
           transform: scale(1.15);
           filter: blur(12px);
         }
@@ -46,12 +46,12 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
 
       @keyframes premium-glow-pulse-delayed {
         0%, 100% { 
-          opacity: 0.2;
+          opacity: 0.4;
           transform: scale(1);
           filter: blur(10px);
         }
         50% { 
-          opacity: 0.6;
+          opacity: 0.8;
           transform: scale(1.2);
           filter: blur(15px);
         }
@@ -59,12 +59,12 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
 
       @keyframes premium-glow-pulse-tertiary {
         0%, 100% { 
-          opacity: 0.25;
+          opacity: 0.5;
           transform: scale(1);
           filter: blur(15px);
         }
         50% { 
-          opacity: 0.5;
+          opacity: 0.7;
           transform: scale(1.3);
           filter: blur(20px);
         }
@@ -143,6 +143,11 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
               <div className="premium-shimmer-sweep absolute inset-0 w-full h-1 bg-gradient-to-r from-transparent via-white/60 to-transparent top-1/2 transform -translate-y-1/2" />
             </div>
           </div>
+          
+          {/* Always-visible base glow layers */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/30 via-purple-300/25 to-cyan-400/20 scale-110 transition-all duration-700 group-hover:scale-125" />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-blue-200/15 to-purple-200/12 scale-125 transition-all duration-700 group-hover:scale-140" />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/15 via-white/12 to-blue-300/12 scale-150 transition-all duration-700 group-hover:scale-175" />
           
           {/* Multi-layered continuous glow effects */}
           <div className="premium-glow-pulse absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-purple-300/15 to-cyan-400/10 scale-110 group-hover:scale-125 transition-all duration-700" />
