@@ -1,14 +1,17 @@
+
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
 
 const Hero = () => {
   const backgroundLoaded = useProgressiveLoad(100); // Load background after 100ms
+  const navigate = useNavigate();
 
   const handleDeepDiveClick = () => {
-    // Contact action placeholder
+    navigate('/contact');
   };
 
   return (
