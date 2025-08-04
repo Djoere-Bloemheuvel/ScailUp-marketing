@@ -1,3 +1,4 @@
+
 import { Brain, Zap, Shield } from 'lucide-react';
 
 const AgentSecondaryHero = () => {
@@ -6,8 +7,8 @@ const AgentSecondaryHero = () => {
       {/* Background gradient matching the first hero */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-teal-950/20 to-emerald-950/30" />
       
-      {/* Smooth vertical fade to black at bottom - 15% height */}
-      <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
+      {/* Smooth vertical fade to black at bottom - 30% height */}
+      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
       
       {/* Ambient lighting effects matching the first hero */}
       <div className="absolute top-10 left-10 md:top-20 md:left-20 w-48 h-48 md:w-96 md:h-96 bg-teal-500/10 rounded-full blur-3xl" />
