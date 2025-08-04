@@ -52,30 +52,39 @@ const AgentHero = () => {
 
   return (
     <section className="relative py-20 lg:py-32 overflow-hidden">
-      {/* Background gradient with green/blue tints */}
-      <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-emerald-950/20 to-premium-black" />
+      {/* Enhanced background gradient with subtle dark green tints */}
+      <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-emerald-950/15 through-teal-950/10 to-premium-black" />
       
-      {/* Ambient lighting effects with green/blue colors */}
-      <div className="absolute top-20 left-20 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
+      {/* Ambient lighting effects with enhanced green/blue colors */}
+      <div className="absolute top-20 left-20 w-96 h-96 bg-teal-500/12 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-500/12 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-green-600/8 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
 
-      {/* Subtle animated particles with green/blue colors */}
+      {/* Enhanced animated particles with green/blue colors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-teal-400/60 rounded-full animate-pulse" style={{
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-teal-400/70 rounded-full animate-pulse" style={{
           animationDelay: '0s',
           animationDuration: '4s'
         }} />
-        <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-emerald-400/40 rounded-full animate-pulse" style={{
+        <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-emerald-400/50 rounded-full animate-pulse" style={{
           animationDelay: '2s',
           animationDuration: '3s'
         }} />
-        <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse" style={{
+        <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-cyan-400/60 rounded-full animate-pulse" style={{
           animationDelay: '1s',
           animationDuration: '5s'
         }} />
-        <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-green-400/60 rounded-full animate-pulse" style={{
+        <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-green-400/70 rounded-full animate-pulse" style={{
           animationDelay: '3s',
           animationDuration: '4s'
+        }} />
+        <div className="absolute top-3/5 left-1/5 w-1 h-1 bg-teal-300/60 rounded-full animate-pulse" style={{
+          animationDelay: '1.5s',
+          animationDuration: '5s'
+        }} />
+        <div className="absolute bottom-1/4 right-2/3 w-0.5 h-0.5 bg-emerald-300/40 rounded-full animate-pulse" style={{
+          animationDelay: '4s',
+          animationDuration: '3.5s'
         }} />
       </div>
 
@@ -88,8 +97,8 @@ const AgentHero = () => {
               <span className="bg-gradient-to-r from-teal-400 to-emerald-500 bg-clip-text text-transparent block">
                 Onmisbaar.
               </span>
-              {/* Light gradient glow behind "Onmisbaar" */}
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-emerald-500/20 blur-2xl -z-10 scale-110" />
+              {/* Enhanced light gradient glow behind "Onmisbaar" */}
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-400/25 to-emerald-500/25 blur-2xl -z-10 scale-110" />
             </span>
           </h1>
           
