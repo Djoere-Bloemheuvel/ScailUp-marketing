@@ -8,7 +8,7 @@ const Services = () => {
 
   useEffect(() => {
     const observers = new Map();
-    
+
     const sections = document.querySelectorAll('[data-service-section]');
     sections.forEach((section, index) => {
       const observer = new IntersectionObserver(
@@ -17,12 +17,12 @@ const Services = () => {
             setVisibleSection(prev => Math.max(prev, index));
           }
         },
-        { 
-          threshold: 0.2,
-          rootMargin: '50px 0px -50px 0px'
+        {
+          threshold: 0.1,
+          rootMargin: '100px 0px -20px 0px'
         }
       );
-      
+
       observer.observe(section);
       observers.set(index, observer);
     });
@@ -90,7 +90,7 @@ const Services = () => {
   return (
     <div className="relative bg-premium-black">
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
-      
+
       {services.map((service, index) => (
         <ServiceSection
           key={service.id}

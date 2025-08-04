@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ScrollHeader = () => {
@@ -39,7 +39,7 @@ const ScrollHeader = () => {
       // This will be handled by React Router
       return;
     }
-    
+
     // For homepage sections, scroll to anchor if on homepage
     if (location.pathname === '/' && item.href.startsWith('#')) {
       const element = document.querySelector(item.href);
@@ -54,18 +54,18 @@ const ScrollHeader = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[400ms] ease-out ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+        isVisible
+          ? 'opacity-100 translate-y-0'
           : 'opacity-0 -translate-y-2 pointer-events-none'
       }`}
-      style={{ 
+      style={{
         willChange: 'opacity, transform',
         transform: isVisible ? 'translateY(0)' : 'translateY(-8px)'
       }}
     >
       {/* Glassmorphic container */}
-      <div 
+      <div
         className="w-full border-b border-white/10 backdrop-blur-md"
         style={{
           background: 'rgba(0, 0, 0, 0.4)',
@@ -90,8 +90,8 @@ const ScrollHeader = () => {
                       key={item.label}
                       href={item.href}
                       className={`transition-colors duration-200 text-sm font-medium ${
-                        isActive(item) 
-                          ? 'text-white border-b-2 border-white/50 pb-1' 
+                        isActive(item)
+                          ? 'text-white border-b-2 border-white/50 pb-1'
                           : 'text-premium-silver hover:text-white'
                       }`}
                     >
@@ -99,14 +99,14 @@ const ScrollHeader = () => {
                     </a>
                   );
                 }
-                
+
                 return (
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item)}
                     className={`transition-colors duration-200 text-sm font-medium cursor-pointer ${
-                      isActive(item) 
-                        ? 'text-white border-b-2 border-white/50 pb-1' 
+                      isActive(item)
+                        ? 'text-white border-b-2 border-white/50 pb-1'
                         : 'text-premium-silver hover:text-white'
                     }`}
                   >
@@ -114,7 +114,7 @@ const ScrollHeader = () => {
                   </button>
                 );
               })}
-              <Button 
+              <Button
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 text-sm px-4 py-2 rounded-lg backdrop-blur-sm transition-all duration-200"
                 variant="outline"
                 onClick={() => handleNavClick({ label: 'Contact', href: '#contact', path: '/' })}
@@ -137,7 +137,7 @@ const ScrollHeader = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div 
+          <div
             className={`md:hidden transition-all duration-300 ease-out overflow-hidden ${
               isMobileMenuOpen ? 'max-h-64 opacity-100 mt-4' : 'max-h-0 opacity-0'
             }`}
@@ -150,8 +150,8 @@ const ScrollHeader = () => {
                       key={item.label}
                       href={item.href}
                       className={`transition-colors duration-200 text-sm py-2 ${
-                        isActive(item) 
-                          ? 'text-white font-semibold' 
+                        isActive(item)
+                          ? 'text-white font-semibold'
                           : 'text-premium-silver hover:text-white'
                       }`}
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -160,7 +160,7 @@ const ScrollHeader = () => {
                     </a>
                   );
                 }
-                
+
                 return (
                   <button
                     key={item.label}
@@ -169,8 +169,8 @@ const ScrollHeader = () => {
                       setIsMobileMenuOpen(false);
                     }}
                     className={`transition-colors duration-200 text-sm py-2 text-left ${
-                      isActive(item) 
-                        ? 'text-white font-semibold' 
+                      isActive(item)
+                        ? 'text-white font-semibold'
                         : 'text-premium-silver hover:text-white'
                     }`}
                   >
@@ -178,7 +178,7 @@ const ScrollHeader = () => {
                   </button>
                 );
               })}
-              <Button 
+              <Button
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 text-sm px-4 py-2 rounded-lg backdrop-blur-sm transition-all duration-200 w-full mt-2"
                 variant="outline"
                 onClick={() => {

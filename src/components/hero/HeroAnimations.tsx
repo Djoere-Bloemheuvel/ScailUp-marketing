@@ -1,4 +1,3 @@
-import React from 'react';
 import SmoothHoverAnimations from './SmoothHoverAnimations';
 
 const HeroAnimations = () => {
@@ -90,11 +89,11 @@ const HeroAnimations = () => {
 
         /* Enhanced glow animations with smooth hover transitions */
         @keyframes premium-icon-glow-silver {
-          0%, 100% { 
+          0%, 100% {
             box-shadow: 0 0 20px rgba(192, 192, 192, 0.2), 0 0 40px rgba(192, 192, 192, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transform: scale(1);
           }
-          50% { 
+          50% {
             box-shadow: 0 0 30px rgba(192, 192, 192, 0.3), 0 0 60px rgba(192, 192, 192, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             transform: scale(1.02);
           }
@@ -328,19 +327,19 @@ const HeroAnimations = () => {
 
         /* Apply Premium Animations with enhanced smooth hover support */
         .premium-fade-in {
-          animation: premium-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: premium-fade-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
         .premium-stagger-1 {
-          animation-delay: 0.2s;
+          animation-delay: 0.1s;
         }
 
         .premium-stagger-2 {
-          animation-delay: 0.4s;
+          animation-delay: 0.2s;
         }
 
         .premium-stagger-3 {
-          animation-delay: 0.6s;
+          animation-delay: 0.3s;
         }
 
         /* Enhanced floating animations with smooth hover interaction */
@@ -394,8 +393,8 @@ const HeroAnimations = () => {
         }
 
         /* Enhanced icon animations with smooth hover support */
-        .premium-icon-float-1, .premium-icon-float-2, .premium-icon-float-3, 
-        .premium-icon-float-4, .premium-icon-float-5, .premium-icon-float-6, 
+        .premium-icon-float-1, .premium-icon-float-2, .premium-icon-float-3,
+        .premium-icon-float-4, .premium-icon-float-5, .premium-icon-float-6,
         .premium-icon-float-7, .premium-icon-float-8 {
           transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
           will-change: transform;

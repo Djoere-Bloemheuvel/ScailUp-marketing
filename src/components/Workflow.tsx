@@ -10,7 +10,7 @@ const Workflow = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const scrolled = window.scrollY;
-      const rate = scrolled * -0.02; // Very subtle parallax
+      const rate = scrolled * -0.01; // Even more subtle parallax for better performance
 
       if (rect.top <= window.innerHeight && rect.bottom >= 0) {
         sectionRef.current.style.transform = `translateY(${rate}px)`;
@@ -27,30 +27,30 @@ const Workflow = () => {
 
       /* Enhanced floating particles */
       @keyframes float-gentle {
-        0%, 100% { 
+        0%, 100% {
           transform: translateY(0px) translateX(0px) rotate(0deg);
           opacity: 0.3;
         }
-        25% { 
+        25% {
           transform: translateY(-8px) translateX(4px) rotate(90deg);
           opacity: 0.6;
         }
-        50% { 
+        50% {
           transform: translateY(-4px) translateX(-2px) rotate(180deg);
           opacity: 0.4;
         }
-        75% { 
+        75% {
           transform: translateY(-12px) translateX(6px) rotate(270deg);
           opacity: 0.7;
         }
       }
 
       @keyframes pulse-glow {
-        0%, 100% { 
+        0%, 100% {
           opacity: 0.4;
           transform: scale(1);
         }
-        50% { 
+        50% {
           opacity: 0.8;
           transform: scale(1.1);
         }
@@ -58,60 +58,60 @@ const Workflow = () => {
 
       /* Premium nebula background animations */
       @keyframes nebula-drift-1 {
-        0%, 100% { 
+        0%, 100% {
           transform: translateX(0) translateY(0) scale(1) rotate(0deg);
           opacity: 0.15;
         }
-        25% { 
+        25% {
           transform: translateX(-30px) translateY(-20px) scale(1.1) rotate(90deg);
           opacity: 0.25;
         }
-        50% { 
+        50% {
           transform: translateX(40px) translateY(10px) scale(0.9) rotate(180deg);
           opacity: 0.2;
         }
-        75% { 
+        75% {
           transform: translateX(-10px) translateY(30px) scale(1.05) rotate(270deg);
           opacity: 0.18;
         }
       }
 
       @keyframes nebula-drift-2 {
-        0%, 100% { 
+        0%, 100% {
           transform: translateX(0) translateY(0) scale(1) rotate(0deg);
           opacity: 0.12;
         }
-        33% { 
+        33% {
           transform: translateX(50px) translateY(-30px) scale(1.2) rotate(120deg);
           opacity: 0.22;
         }
-        66% { 
+        66% {
           transform: translateX(-40px) translateY(20px) scale(0.8) rotate(240deg);
           opacity: 0.16;
         }
       }
 
       @keyframes nebula-drift-3 {
-        0%, 100% { 
+        0%, 100% {
           transform: translateX(0) translateY(0) scale(1) rotate(0deg);
           opacity: 0.1;
         }
-        40% { 
+        40% {
           transform: translateX(-60px) translateY(40px) scale(1.3) rotate(144deg);
           opacity: 0.2;
         }
-        80% { 
+        80% {
           transform: translateX(30px) translateY(-50px) scale(0.7) rotate(288deg);
           opacity: 0.15;
         }
       }
 
       @keyframes stardust-float {
-        0%, 100% { 
+        0%, 100% {
           transform: translateY(0px) translateX(0px);
           opacity: 0.2;
         }
-        50% { 
+        50% {
           transform: translateY(-15px) translateX(10px);
           opacity: 0.5;
         }
@@ -174,7 +174,7 @@ const Workflow = () => {
         <div className="nebula-drift-1 absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
         <div className="nebula-drift-2 absolute top-1/2 right-1/3 w-80 h-80 bg-gradient-radial from-cyan-400/6 via-blue-500/3 to-transparent rounded-full blur-2xl" />
         <div className="nebula-drift-3 absolute bottom-1/3 left-1/2 w-72 h-72 bg-gradient-radial from-purple-400/7 via-pink-500/3 to-transparent rounded-full blur-3xl" />
-        
+
         {/* Stardust particles */}
         <div className="stardust-float absolute top-20 left-20 w-1 h-1 bg-white/30 rounded-full blur-sm" style={{ animationDelay: '0s' }} />
         <div className="stardust-float absolute top-40 right-32 w-0.5 h-0.5 bg-blue-300/40 rounded-full blur-sm" style={{ animationDelay: '3s' }} />
@@ -188,7 +188,7 @@ const Workflow = () => {
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
         <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
       </div>
-      
+
       <div className="absolute inset-0 flex items-center justify-center opacity-15">
         <div className="w-[600px] h-[400px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
       </div>
@@ -214,13 +214,13 @@ const Workflow = () => {
           animationDelay: '5s'
         }} />
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Enhanced header with more visual interest */}
         <div className="text-left mb-6 lg:mb-8">
           {/* Subtle accent line above title */}
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             In drie heldere stappen van{' '}
             <span className="relative inline-block">
@@ -240,16 +240,16 @@ const Workflow = () => {
             </span>
             .
           </h2>
-          
+
           <p className="text-white/70 text-xl lg:text-2xl font-light tracking-wide apple-fade-in apple-stagger-3 max-w-4xl leading-relaxed">
             Onze bewezen aanpak voor succesvolle AI-implementatie.
           </p>
 
           {/* Premium stats or badges */}
           <div className="flex flex-wrap gap-4 mt-8 apple-fade-in apple-stagger-4">
-            
-            
-            
+
+
+
           </div>
         </div>
 
@@ -260,7 +260,7 @@ const Workflow = () => {
             <div className="relative h-px">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/30 to-transparent animate-pulse" />
-              
+
               {/* Flowing light effect */}
               <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute w-20 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[slide-right_3s_ease-in-out_infinite]" style={{
@@ -274,10 +274,10 @@ const Workflow = () => {
           {/* Steps Grid with enhanced spacing and vertical offsets */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
             {steps.map((step, index) => (
-              <WorkflowStep 
-                key={step.number} 
-                step={step} 
-                delay={`${0.3 + index * 0.15}s`} 
+              <WorkflowStep
+                key={step.number}
+                step={step}
+                delay={`${0.3 + index * 0.15}s`}
                 isLast={index === steps.length - 1}
                 verticalOffset={stepOffsets[index]}
               />

@@ -5,33 +5,33 @@ const AnimatedHeadline = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
-  
+
   const words = ['denkt', 'bouwt', 'werkt'];
 
   useEffect(() => {
     if (animationComplete) return;
 
     const sequence = async () => {
-      // Wacht even voor de eerste transitie
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
+      // Snellere start - wacht minder
+      await new Promise(resolve => setTimeout(resolve, 100));
+
       for (let i = 0; i < words.length; i++) {
         if (i > 0) {
-          // Start glitch-animatie
+          // Snellere glitch-animatie
           setIsGlitching(true);
-          await new Promise(resolve => setTimeout(resolve, 200));
+          await new Promise(resolve => setTimeout(resolve, 120));
           setIsGlitching(false);
         }
-        
+
         // Toon het nieuwe woord
         setCurrentWordIndex(i);
-        
-        // Wacht voordat we naar het volgende woord gaan (behalve bij het laatste woord)
+
+        // Snellere overgang naar volgende woord
         if (i < words.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 300));
+          await new Promise(resolve => setTimeout(resolve, 180));
         }
       }
-      
+
       setAnimationComplete(true);
     };
 
@@ -41,25 +41,25 @@ const AnimatedHeadline = () => {
   const cssStyles = `
     /* RGB Split Animations */
     .glitch-rgb-red {
-      animation: glitch-rgb-red 200ms linear infinite;
+      animation: glitch-rgb-red 120ms linear infinite;
     }
-    
+
     .glitch-rgb-green {
-      animation: glitch-rgb-green 200ms linear infinite;
+      animation: glitch-rgb-green 120ms linear infinite;
     }
-    
+
     .glitch-rgb-blue {
-      animation: glitch-rgb-blue 200ms linear infinite;
+      animation: glitch-rgb-blue 120ms linear infinite;
     }
 
     /* Slice Animations */
     .glitch-slice-1 {
-      animation: glitch-slice-1 200ms linear infinite;
+      animation: glitch-slice-1 120ms linear infinite;
       clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 0% 45%);
     }
-    
+
     .glitch-slice-2 {
-      animation: glitch-slice-2 200ms linear infinite;
+      animation: glitch-slice-2 120ms linear infinite;
       clip-path: polygon(0% 55%, 100% 55%, 100% 100%, 0% 100%);
     }
 
@@ -130,24 +130,24 @@ const AnimatedHeadline = () => {
   return (
     <div className="relative">
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
-      
+
       <h1 className="font-bold tracking-tight leading-[0.9] text-center">
         <div className="text-6xl md:text-8xl lg:text-9xl text-white">
           AI die{' '}
           <span className="relative inline-block">
-            <span 
+            <span
               className={`relative z-20 transition-opacity duration-75 ${
                 isGlitching ? 'opacity-0' : 'opacity-100'
               }`}
             >
               {words[currentWordIndex]}.
             </span>
-            
+
             {/* Glitch Layers */}
             {isGlitching && (
               <>
                 {/* RGB Split Layers */}
-                <span 
+                <span
                   className="absolute top-0 left-0 z-10 text-red-500 glitch-rgb-red"
                   style={{
                     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
@@ -155,8 +155,8 @@ const AnimatedHeadline = () => {
                 >
                   {words[currentWordIndex]}.
                 </span>
-                
-                <span 
+
+                <span
                   className="absolute top-0 left-0 z-10 text-green-500 glitch-rgb-green"
                   style={{
                     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
@@ -164,8 +164,8 @@ const AnimatedHeadline = () => {
                 >
                   {words[currentWordIndex]}.
                 </span>
-                
-                <span 
+
+                <span
                   className="absolute top-0 left-0 z-10 text-blue-500 glitch-rgb-blue"
                   style={{
                     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
@@ -175,13 +175,13 @@ const AnimatedHeadline = () => {
                 </span>
 
                 {/* Slice Layers */}
-                <span 
+                <span
                   className="absolute top-0 left-0 z-15 text-white glitch-slice-1"
                 >
                   {words[currentWordIndex]}.
                 </span>
-                
-                <span 
+
+                <span
                   className="absolute top-0 left-0 z-15 text-white glitch-slice-2"
                 >
                   {words[currentWordIndex]}.

@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Import performance optimizations */
+@import './styles/performance.css';
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
@@ -142,24 +145,24 @@ All colors MUST be HSL.
     background-size: 200% 200%;
     animation: gradient-shift 4s ease-in-out infinite;
   }
-  
+
   .text-gradient-premium {
     @apply bg-gradient-to-r from-premium-silver via-white to-premium-silver bg-clip-text text-transparent;
     background-size: 300% 300%;
     animation: premium-gradient 6s ease-in-out infinite;
   }
-  
+
   .border-gradient {
     @apply relative;
   }
-  
+
   .border-gradient::before {
     content: '';
     @apply absolute inset-0 rounded-lg p-[1px] bg-gradient-to-r from-premium-silver/50 to-white/20 -z-10;
     background-size: 200% 200%;
     animation: border-glow 3s ease-in-out infinite;
   }
-  
+
   .border-gradient::after {
     content: '';
     @apply absolute inset-[1px] rounded-[7px] bg-black z-[-1];
@@ -176,7 +179,7 @@ All colors MUST be HSL.
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
     backdrop-filter: blur(15px);
     border: 1px solid rgba(192, 192, 192, 0.1);
-    box-shadow: 
+    box-shadow:
       0 20px 40px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
@@ -244,9 +247,9 @@ All colors MUST be HSL.
   }
 
   .text-shimmer {
-    background: linear-gradient(90deg, 
-      rgba(255, 255, 255, 0.8) 25%, 
-      rgba(255, 255, 255, 1) 50%, 
+    background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.8) 25%,
+      rgba(255, 255, 255, 1) 50%,
       rgba(255, 255, 255, 0.8) 75%);
     background-size: 200% 100%;
     background-clip: text;
@@ -274,7 +277,7 @@ All colors MUST be HSL.
   }
 
   .bg-grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(rgba(192, 192, 192, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(192, 192, 192, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -282,7 +285,7 @@ All colors MUST be HSL.
   }
 
   .bg-circuit-lines {
-    background-image: 
+    background-image:
       radial-gradient(circle at 25% 25%, rgba(192, 192, 192, 0.1) 1px, transparent 1px),
       radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(45deg, transparent 48%, rgba(192, 192, 192, 0.02) 50%, transparent 52%);
@@ -369,22 +372,22 @@ All colors MUST be HSL.
 }
 
 @keyframes appleGlow {
-  0%, 100% { 
+  0%, 100% {
     opacity: 0.3;
     transform: scale(1);
   }
-  50% { 
+  50% {
     opacity: 0.5;
     transform: scale(1.05);
   }
 }
 
 @keyframes appleScrollPulse {
-  0%, 100% { 
+  0%, 100% {
     opacity: 0.4;
     transform: translateY(0);
   }
-  50% { 
+  50% {
     opacity: 1;
     transform: translateY(8px);
   }
@@ -567,11 +570,11 @@ All colors MUST be HSL.
 }
 
 @keyframes border-glow {
-  0%, 100% { 
+  0%, 100% {
     background-position: 0% 50%;
     opacity: 0.5;
   }
-  50% { 
+  50% {
     background-position: 100% 50%;
     opacity: 1;
   }
@@ -621,12 +624,12 @@ All colors MUST be HSL.
 }
 
 @keyframes glow {
-  0%, 100% { 
+  0%, 100% {
     box-shadow: 0 0 20px rgba(192, 192, 192, 0.3),
                 0 0 40px rgba(192, 192, 192, 0.2),
                 0 0 60px rgba(192, 192, 192, 0.1);
   }
-  50% { 
+  50% {
     box-shadow: 0 0 30px rgba(192, 192, 192, 0.4),
                 0 0 60px rgba(192, 192, 192, 0.3),
                 0 0 90px rgba(192, 192, 192, 0.2);
@@ -668,29 +671,29 @@ html {
 }
 
 @keyframes circuit-flow {
-  0%, 100% { 
+  0%, 100% {
     background-position: 0% 0%, 0% 0%, 0% 0%;
     opacity: 0.3;
   }
-  50% { 
+  50% {
     background-position: 100% 100%, 50% 50%, 25% 25%;
     opacity: 0.6;
   }
 }
 
 @keyframes tech-pulse {
-  0%, 100% { 
+  0%, 100% {
     opacity: 0.4;
     transform: scale(1);
   }
-  50% { 
+  50% {
     opacity: 1;
     transform: scale(1.2);
   }
 }
 
 @keyframes data-flow {
-  0% { 
+  0% {
     transform: translateX(-100%);
     opacity: 0;
   }
@@ -700,7 +703,7 @@ html {
   90% {
     opacity: 1;
   }
-  100% { 
+  100% {
     transform: translateX(100%);
     opacity: 0;
   }
