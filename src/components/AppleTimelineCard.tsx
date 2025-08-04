@@ -46,7 +46,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
       ref={cardRef}
       className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
-      {/* Enhanced Background Ambient Glow - Multiple layers for depth */}
+      {/* Enhanced Background Ambient Glow - More intense with extended reach */}
       <div
         className={`
           absolute inset-0 transition-all duration-1000 ease-out pointer-events-none
@@ -54,30 +54,39 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         `}
         style={{ transitionDelay: `${delay}ms` }}
       >
-        {/* Primary ambient glow - Large and subtle */}
+        {/* Primary ambient glow - Larger and more intense */}
         <div 
           className={`
-            absolute w-96 h-96 rounded-full blur-3xl transition-all duration-1000
-            bg-gradient-to-br ${step.glowColor} opacity-30 scale-150
-            ${isLeft ? '-left-32 top-1/2 -translate-y-1/2' : '-right-32 top-1/2 -translate-y-1/2'}
+            absolute w-[32rem] h-[32rem] rounded-full blur-[4rem] transition-all duration-1000
+            bg-gradient-to-br ${step.glowColor} opacity-50 scale-200
+            ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
           `}
         />
         
-        {/* Secondary glow layer */}
+        {/* Secondary glow layer - Extended and more visible */}
         <div 
           className={`
-            absolute w-64 h-64 rounded-full blur-2xl transition-all duration-700
-            bg-gradient-to-br ${step.glowColor} opacity-20 scale-125
-            ${isLeft ? '-left-16 top-1/2 -translate-y-1/2' : '-right-16 top-1/2 -translate-y-1/2'}
+            absolute w-80 h-80 rounded-full blur-3xl transition-all duration-700
+            bg-gradient-to-br ${step.glowColor} opacity-35 scale-175
+            ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
           `}
         />
 
-        {/* Tertiary focused glow */}
+        {/* Tertiary focused glow - More prominent */}
         <div 
           className={`
-            absolute w-40 h-40 rounded-full blur-xl transition-all duration-500
-            bg-gradient-to-br ${step.glowColorHover} opacity-40
-            ${isLeft ? 'left-4 top-1/2 -translate-y-1/2' : 'right-4 top-1/2 -translate-y-1/2'}
+            absolute w-48 h-48 rounded-full blur-2xl transition-all duration-500
+            bg-gradient-to-br ${step.glowColorHover} opacity-60
+            ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
+          `}
+        />
+
+        {/* Additional outer glow for extended reach */}
+        <div 
+          className={`
+            absolute w-[40rem] h-[40rem] rounded-full blur-[5rem] transition-all duration-1200
+            bg-gradient-to-br ${step.glowColor} opacity-25 scale-150
+            ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
           `}
         />
       </div>
@@ -163,20 +172,20 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             <div className="absolute top-2 left-2 w-16 h-16 bg-gradient-to-br from-white/[0.08] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm" />
           </div>
 
-          {/* Enhanced hover glow with service page colors */}
+          {/* Enhanced hover glow with service page colors - More intense */}
           <div 
             className={`
               absolute inset-0 rounded-3xl blur-2xl transition-all duration-700 opacity-0 
-              group-hover:opacity-70 scale-110 bg-gradient-to-br ${step.glowColorHover}
-              group-hover:scale-115 group-hover:blur-3xl
+              group-hover:opacity-85 scale-110 bg-gradient-to-br ${step.glowColorHover}
+              group-hover:scale-125 group-hover:blur-3xl
             `}
           />
           
-          {/* Secondary glow layer for enhanced depth */}
+          {/* Secondary glow layer for enhanced depth - More visible */}
           <div 
             className={`
               absolute inset-0 rounded-3xl blur-xl transition-all duration-700 opacity-0 
-              group-hover:opacity-40 scale-105 bg-gradient-to-br ${step.glowColorHover}
+              group-hover:opacity-55 scale-105 bg-gradient-to-br ${step.glowColorHover}
             `}
           />
         </div>
