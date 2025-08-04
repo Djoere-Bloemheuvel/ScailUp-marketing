@@ -1,292 +1,153 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const AppleNebulaBackground = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Import the animations CSS
-    import('../styles/animations.css');
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Create enhanced stardust particles with more variety
+    const createStarDust = (size: string, position: { x: string; y: string }, opacity: number, duration: number, color: string) => {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full blur-[0.5px]';
+      particle.style.width = size;
+      particle.style.height = size;
+      particle.style.left = position.x;
+      particle.style.top = position.y;
+      particle.style.background = color;
+      particle.style.animation = `nebulaFloat ${duration}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * duration}s`;
+      particle.style.opacity = opacity.toString();
+      container.appendChild(particle);
+      return particle;
+    };
+
+    // Enhanced nebula particles with more density and variety
+    const particles = [
+      // Dense micro stardust layer
+      createStarDust('1px', { x: '12%', y: '18%' }, 0.7, 14, 'rgba(255,255,255,0.9)'),
+      createStarDust('1px', { x: '88%', y: '12%' }, 0.5, 16, 'rgba(59,130,246,0.7)'),
+      createStarDust('1px', { x: '28%', y: '72%' }, 0.8, 11, 'rgba(255,255,255,0.8)'),
+      createStarDust('1px', { x: '78%', y: '88%' }, 0.4, 19, 'rgba(147,51,234,0.6)'),
+      createStarDust('1px', { x: '42%', y: '32%' }, 0.6, 15, 'rgba(236,72,153,0.5)'),
+      createStarDust('1px', { x: '68%', y: '58%' }, 0.9, 12, 'rgba(255,255,255,0.7)'),
+      createStarDust('1px', { x: '8%', y: '62%' }, 0.5, 17, 'rgba(6,182,212,0.7)'),
+      createStarDust('1px', { x: '92%', y: '38%' }, 0.7, 13, 'rgba(255,255,255,0.6)'),
+      
+      // Medium particles for depth
+      createStarDust('1.5px', { x: '22%', y: '42%' }, 0.4, 18, 'rgba(59,130,246,0.4)'),
+      createStarDust('1.5px', { x: '72%', y: '28%' }, 0.3, 21, 'rgba(147,51,234,0.3)'),
+      createStarDust('1.5px', { x: '52%', y: '82%' }, 0.5, 16, 'rgba(236,72,153,0.4)'),
+      
+      // Larger ambient dots
+      createStarDust('2px', { x: '35%', y: '25%' }, 0.2, 22, 'rgba(59,130,246,0.3)'),
+      createStarDust('2px', { x: '65%', y: '75%' }, 0.15, 25, 'rgba(147,51,234,0.25)'),
+      createStarDust('2px', { x: '48%', y: '92%' }, 0.25, 20, 'rgba(236,72,153,0.2)'),
+      
+      // Additional micro particles for richness
+      createStarDust('0.5px', { x: '18%', y: '55%' }, 0.6, 10, 'rgba(255,255,255,0.8)'),
+      createStarDust('0.5px', { x: '82%', y: '65%' }, 0.4, 13, 'rgba(6,182,212,0.6)'),
+      createStarDust('0.5px', { x: '38%', y: '15%' }, 0.7, 11, 'rgba(255,255,255,0.9)'),
+      createStarDust('0.5px', { x: '62%', y: '45%' }, 0.5, 14, 'rgba(147,51,234,0.4)'),
+    ];
+
+    return () => {
+      particles.forEach(particle => {
+        if (container.contains(particle)) {
+          container.removeChild(particle);
+        }
+      });
+    };
   }, []);
 
   return (
     <>
-      {/* CSS-only stardust particles - Much better performance */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
-        {/* Dense micro stardust layer */}
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '12%', 
-            '--y': '18%', 
-            '--opacity': '0.7', 
-            '--duration': '14s',
-            '--color': 'rgba(255,255,255,0.9)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '88%', 
-            '--y': '12%', 
-            '--opacity': '0.5', 
-            '--duration': '16s',
-            '--color': 'rgba(59,130,246,0.7)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '28%', 
-            '--y': '72%', 
-            '--opacity': '0.8', 
-            '--duration': '11s',
-            '--color': 'rgba(255,255,255,0.8)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '78%', 
-            '--y': '88%', 
-            '--opacity': '0.4', 
-            '--duration': '19s',
-            '--color': 'rgba(147,51,234,0.6)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '42%', 
-            '--y': '32%', 
-            '--opacity': '0.6', 
-            '--duration': '15s',
-            '--color': 'rgba(236,72,153,0.5)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '68%', 
-            '--y': '58%', 
-            '--opacity': '0.9', 
-            '--duration': '12s',
-            '--color': 'rgba(255,255,255,0.7)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '8%', 
-            '--y': '62%', 
-            '--opacity': '0.5', 
-            '--duration': '17s',
-            '--color': 'rgba(6,182,212,0.7)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1px',
-            '--x': '92%', 
-            '--y': '38%', 
-            '--opacity': '0.7', 
-            '--duration': '13s',
-            '--color': 'rgba(255,255,255,0.6)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        
-        {/* Medium particles for depth */}
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1.5px',
-            '--x': '22%', 
-            '--y': '42%', 
-            '--opacity': '0.4', 
-            '--duration': '18s',
-            '--color': 'rgba(59,130,246,0.4)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1.5px',
-            '--x': '72%', 
-            '--y': '28%', 
-            '--opacity': '0.3', 
-            '--duration': '21s',
-            '--color': 'rgba(147,51,234,0.3)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '1.5px',
-            '--x': '52%', 
-            '--y': '82%', 
-            '--opacity': '0.5', 
-            '--duration': '16s',
-            '--color': 'rgba(236,72,153,0.4)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        
-        {/* Larger ambient dots */}
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '2px',
-            '--x': '35%', 
-            '--y': '25%', 
-            '--opacity': '0.2', 
-            '--duration': '22s',
-            '--color': 'rgba(59,130,246,0.3)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '2px',
-            '--x': '65%', 
-            '--y': '75%', 
-            '--opacity': '0.15', 
-            '--duration': '25s',
-            '--color': 'rgba(147,51,234,0.25)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '2px',
-            '--x': '48%', 
-            '--y': '92%', 
-            '--opacity': '0.25', 
-            '--duration': '20s',
-            '--color': 'rgba(236,72,153,0.2)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        
-        {/* Additional micro particles for richness */}
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '0.5px',
-            '--x': '18%', 
-            '--y': '55%', 
-            '--opacity': '0.6', 
-            '--duration': '10s',
-            '--color': 'rgba(255,255,255,0.8)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '0.5px',
-            '--x': '82%', 
-            '--y': '65%', 
-            '--opacity': '0.4', 
-            '--duration': '13s',
-            '--color': 'rgba(6,182,212,0.6)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '0.5px',
-            '--x': '38%', 
-            '--y': '15%', 
-            '--opacity': '0.7', 
-            '--duration': '11s',
-            '--color': 'rgba(255,255,255,0.9)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-        <div 
-          className="nebula-particle" 
-          style={{ 
-            '--size': '0.5px',
-            '--x': '62%', 
-            '--y': '45%', 
-            '--opacity': '0.5', 
-            '--duration': '14s',
-            '--color': 'rgba(147,51,234,0.4)',
-            '--blur': '0.5px'
-          } as React.CSSProperties} 
-        />
-      </div>
+      {/* Enhanced stardust container */}
+      <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none opacity-50" />
       
       {/* Dark fog gradient overlay for cinematic depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 pointer-events-none" />
       
-      {/* Enhanced ambient nebula clouds with CSS-only animations */}
+      {/* Enhanced ambient nebula clouds with more layers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-25">
         <div 
-          className="nebula-cloud" 
+          className="absolute w-[500px] h-[500px] rounded-full blur-3xl bg-gradient-to-br from-blue-500/12 to-cyan-400/8"
           style={{
-            '--size': '500px',
-            '--y': '5%',
-            '--x': '15%',
-            '--duration': '28s',
-            '--gradient': 'radial-gradient(circle, rgba(59,130,246,0.12), rgba(6,182,212,0.08))'
-          } as React.CSSProperties}
+            top: '5%',
+            left: '15%',
+            animation: 'nebulaCloud 28s ease-in-out infinite',
+          }}
         />
         <div 
-          className="nebula-cloud" 
+          className="absolute w-[400px] h-[400px] rounded-full blur-3xl bg-gradient-to-br from-purple-500/10 to-violet-400/6"
           style={{
-            '--size': '400px',
-            '--y': '55%',
-            '--x': '85%', // Changed from right: 10% to left: 85%
-            '--duration': '35s',
-            '--delay': '8s',
-            '--gradient': 'radial-gradient(circle, rgba(147,51,234,0.10), rgba(139,92,246,0.06))',
-            animationDirection: 'reverse'
-          } as React.CSSProperties}
+            top: '55%',
+            right: '10%',
+            animation: 'nebulaCloud 35s ease-in-out infinite reverse',
+            animationDelay: '8s'
+          }}
         />
         <div 
-          className="nebula-cloud" 
+          className="absolute w-[350px] h-[350px] rounded-full blur-3xl bg-gradient-to-br from-pink-500/8 to-rose-400/4"
           style={{
-            '--size': '350px',
-            '--y': '85%', // Changed from bottom: 15% to top: 85%
-            '--x': '55%',
-            '--duration': '40s',
-            '--delay': '12s',
-            '--gradient': 'radial-gradient(circle, rgba(236,72,153,0.08), rgba(244,63,94,0.04))'
-          } as React.CSSProperties}
+            bottom: '15%',
+            left: '55%',
+            animation: 'nebulaCloud 40s ease-in-out infinite',
+            animationDelay: '12s'
+          }}
         />
+        {/* Additional smaller clouds for richness */}
         <div 
-          className="nebula-cloud" 
+          className="absolute w-[300px] h-[300px] rounded-full blur-2xl bg-gradient-to-br from-emerald-500/6 to-teal-400/3"
           style={{
-            '--size': '300px',
-            '--y': '35%',
-            '--x': '75%',
-            '--duration': '32s',
-            '--delay': '15s',
-            '--gradient': 'radial-gradient(circle, rgba(16,185,129,0.06), rgba(6,182,212,0.03))'
-          } as React.CSSProperties}
+            top: '35%',
+            left: '75%',
+            animation: 'nebulaCloud 32s ease-in-out infinite',
+            animationDelay: '15s'
+          }}
         />
       </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes nebulaFloat {
+            0%, 100% { 
+              transform: translateY(0) translateX(0) scale(1);
+              opacity: 0.3;
+            }
+            25% { 
+              transform: translateY(-8px) translateX(3px) scale(1.05);
+              opacity: 0.7;
+            }
+            50% { 
+              transform: translateY(-12px) translateX(-2px) scale(1.1);
+              opacity: 1;
+            }
+            75% { 
+              transform: translateY(-6px) translateX(-5px) scale(0.95);
+              opacity: 0.6;
+            }
+          }
+          
+          @keyframes nebulaCloud {
+            0%, 100% { 
+              transform: translateY(0) translateX(0) scale(1);
+              opacity: 0.25;
+            }
+            33% { 
+              transform: translateY(-15px) translateX(8px) scale(1.05);
+              opacity: 0.15;
+            }
+            66% { 
+              transform: translateY(-25px) translateX(18px) scale(1.1);
+              opacity: 0.2;
+            }
+          }
+        `
+      }} />
     </>
   );
 };

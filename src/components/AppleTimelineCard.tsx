@@ -1,7 +1,6 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LucideIcon } from 'lucide-react';
-import { useOptimizedIntersectionObserver } from '../hooks/useOptimizedIntersectionObserver';
 
 interface AppleTimelineCardProps {
   step: {
@@ -18,73 +17,74 @@ interface AppleTimelineCardProps {
 }
 
 const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
-  const [isAnimated, setIsAnimated] = useState(false);
-  const { elementRef, isVisible } = useOptimizedIntersectionObserver({
-    threshold: 0.2,
-    rootMargin: '0px 0px -30px 0px',
-    triggerOnce: true,
-    delay: delay
-  });
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Import animations CSS
-    import('../styles/animations.css');
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setIsVisible(true);
+            }, delay);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -30px 0px' }
+    );
 
-  useEffect(() => {
-    if (isVisible) {
-      // Small delay for staggered animation
-      const timeout = setTimeout(() => {
-        setIsAnimated(true);
-      }, 50);
-      
-      return () => clearTimeout(timeout);
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
     }
-  }, [isVisible]);
+
+    return () => observer.disconnect();
+  }, [delay]);
 
   return (
     <div
-      ref={elementRef}
+      ref={cardRef}
       className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
-      {/* Enhanced Background Ambient Glow - Optimized with CSS custom properties */}
+      {/* Enhanced Background Ambient Glow - Reduced intensity by 20% */}
       <div
         className={`
-          absolute inset-0 transition-all duration-1000 ease-out pointer-events-none will-change-opacity
-          ${isAnimated ? 'opacity-100' : 'opacity-0'}
+          absolute inset-0 transition-all duration-1000 ease-out pointer-events-none
+          ${isVisible ? 'opacity-100' : 'opacity-0'}
         `}
+        style={{ transitionDelay: `${delay}ms` }}
       >
-        {/* Primary ambient glow - Using CSS custom properties for better performance */}
+        {/* Primary ambient glow - Reduced from opacity-50 to opacity-40 */}
         <div 
           className={`
-            absolute w-[32rem] h-[32rem] rounded-full blur-[4rem] transition-all duration-1000 will-change-transform
+            absolute w-[32rem] h-[32rem] rounded-full blur-[4rem] transition-all duration-1000
             bg-gradient-to-br ${step.glowColor} opacity-40 scale-200
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
           `}
         />
         
-        {/* Secondary glow layer */}
+        {/* Secondary glow layer - Reduced from opacity-35 to opacity-28 */}
         <div 
           className={`
-            absolute w-80 h-80 rounded-full blur-3xl transition-all duration-700 will-change-transform
+            absolute w-80 h-80 rounded-full blur-3xl transition-all duration-700
             bg-gradient-to-br ${step.glowColor} opacity-28 scale-175
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
           `}
         />
 
-        {/* Tertiary focused glow */}
+        {/* Tertiary focused glow - Reduced from opacity-60 to opacity-48 */}
         <div 
           className={`
-            absolute w-48 h-48 rounded-full blur-2xl transition-all duration-500 will-change-transform
+            absolute w-48 h-48 rounded-full blur-2xl transition-all duration-500
             bg-gradient-to-br ${step.glowColorHover} opacity-48
             ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
           `}
         />
 
-        {/* Additional outer glow */}
+        {/* Additional outer glow - Reduced from opacity-25 to opacity-20 */}
         <div 
           className={`
-            absolute w-[40rem] h-[40rem] rounded-full blur-[5rem] transition-all duration-1200 will-change-transform
+            absolute w-[40rem] h-[40rem] rounded-full blur-[5rem] transition-all duration-1200
             bg-gradient-to-br ${step.glowColor} opacity-20 scale-150
             ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
           `}
@@ -94,20 +94,21 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
       {/* Floating Card Container */}
       <div
         className={`
-          relative w-full max-w-sm transition-all duration-1000 ease-out will-change-transform
-          ${isAnimated 
+          relative w-full max-w-sm transition-all duration-1000 ease-out
+          ${isVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-6'
           }
         `}
+        style={{ transitionDelay: `${delay}ms` }}
       >
         {/* Enhanced Glassmorphic Card */}
         <div className={`
-          relative z-10 group cursor-pointer gpu-accelerated
+          relative z-10 group cursor-pointer
           ${isLeft ? 'mr-6 lg:mr-10' : 'ml-6 lg:ml-10'}
         `}>
           <div className={`
-            relative p-6 lg:p-7 rounded-3xl will-change-transform
+            relative p-6 lg:p-7 rounded-3xl
             bg-white/[0.02] backdrop-blur-xl
             border border-white/[0.08] shadow-2xl shadow-black/40
             transition-all duration-700 ease-out
@@ -116,11 +117,11 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             hover:-translate-y-2 hover:scale-[1.02]
             hover:backdrop-blur-2xl
           `}>
-            {/* Enhanced multi-layered glass effect */}
+            {/* Enhanced multi-layered glass effect with more transparency */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.06] via-white/[0.01] to-white/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-transparent via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
-            {/* Step Number */}
+            {/* Step Number - More prominent against glass */}
             <div className={`flex items-start justify-between mb-5 ${isLeft ? '' : 'flex-row-reverse'}`}>
               <div className="relative">
                 <div className="text-4xl lg:text-5xl font-black text-white/10 leading-none mb-2 font-mono">
@@ -131,13 +132,13 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                 </div>
               </div>
               
-              {/* Enhanced icon */}
-              <div className="w-5 h-5 text-white/40 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110 will-change-transform">
+              {/* Enhanced icon with better visibility */}
+              <div className="w-5 h-5 text-white/40 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-110">
                 <step.icon className="w-full h-full" />
               </div>
             </div>
 
-            {/* Content */}
+            {/* Content with enhanced readability */}
             <div className="space-y-3">
               <h3 className={`text-lg lg:text-xl font-bold text-white/95 leading-tight tracking-tight font-sans ${
                 isLeft ? 'text-left' : 'text-right'
@@ -152,7 +153,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               </p>
             </div>
 
-            {/* Enhanced connection line */}
+            {/* Enhanced connection line with better visibility */}
             <div className={`
               absolute top-1/2 w-6 lg:w-10 h-px -translate-y-0.5
               bg-gradient-to-r from-white/20 to-transparent
@@ -171,19 +172,19 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             <div className="absolute top-2 left-2 w-16 h-16 bg-gradient-to-br from-white/[0.08] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm" />
           </div>
 
-          {/* Enhanced hover glow - More intense with will-change for performance */}
+          {/* Enhanced hover glow with service page colors - More intense */}
           <div 
             className={`
-              absolute inset-0 rounded-3xl blur-2xl transition-all duration-700 opacity-0 will-change-transform
+              absolute inset-0 rounded-3xl blur-2xl transition-all duration-700 opacity-0 
               group-hover:opacity-85 scale-110 bg-gradient-to-br ${step.glowColorHover}
               group-hover:scale-125 group-hover:blur-3xl
             `}
           />
           
-          {/* Secondary glow layer for enhanced depth */}
+          {/* Secondary glow layer for enhanced depth - More visible */}
           <div 
             className={`
-              absolute inset-0 rounded-3xl blur-xl transition-all duration-700 opacity-0 will-change-transform
+              absolute inset-0 rounded-3xl blur-xl transition-all duration-700 opacity-0 
               group-hover:opacity-55 scale-105 bg-gradient-to-br ${step.glowColorHover}
             `}
           />
