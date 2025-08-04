@@ -7,6 +7,13 @@ const AgentSecondaryHero = () => {
       {/* Pure black background with very subtle teal/green accents */}
       <div className="absolute inset-0 bg-premium-black" />
       
+      {/* Top corner glows - subtle teal/green */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-teal-500/8 via-teal-500/3 to-transparent blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-emerald-500/8 via-emerald-500/3 to-transparent blur-3xl" />
+      
+      {/* Behind text glow - very subtle */}
+      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-radial from-teal-500/4 via-emerald-500/2 to-transparent blur-3xl" />
+      
       {/* Very subtle ambient lighting effects with teal/green colors - much more subtle */}
       <div className="absolute top-10 left-10 md:top-20 md:left-20 w-32 h-32 md:w-64 md:h-64 bg-teal-500/3 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-32 h-32 md:w-64 md:h-64 bg-emerald-500/3 rounded-full blur-3xl" />
@@ -29,16 +36,24 @@ const AgentSecondaryHero = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
+        {/* Header Section with subtle text glow */}
         <div className="text-center mb-12 md:mb-16 lg:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">
-            Autonoom. Intelligent. <span className="text-teal-300">Onmisbaar.</span>
-          </h2>
-          <p className="text-lg md:text-xl lg:text-2xl text-premium-silver/80 leading-relaxed max-w-4xl mx-auto">
-            Onze AI Agents voeren zelfstandig taken uit, communiceren met systemen én mensen,
-            <br className="hidden md:block" />
-            en automatiseren repetitieve workflows zonder handmatige input.
-          </p>
+          <div className="relative">
+            {/* Text background glow */}
+            <div className="absolute inset-0 bg-gradient-radial from-teal-500/6 via-emerald-500/3 to-transparent blur-2xl scale-110" />
+            <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">
+              Autonoom. Intelligent. <span className="text-teal-300">Onmisbaar.</span>
+            </h2>
+          </div>
+          <div className="relative">
+            {/* Subtitle background glow */}
+            <div className="absolute inset-0 bg-gradient-radial from-emerald-500/4 via-teal-500/2 to-transparent blur-2xl scale-105" />
+            <p className="relative text-lg md:text-xl lg:text-2xl text-premium-silver/80 leading-relaxed max-w-4xl mx-auto">
+              Onze AI Agents voeren zelfstandig taken uit, communiceren met systemen én mensen,
+              <br className="hidden md:block" />
+              en automatiseren repetitieve workflows zonder handmatige input.
+            </p>
+          </div>
         </div>
 
         {/* Three Feature Cards */}
