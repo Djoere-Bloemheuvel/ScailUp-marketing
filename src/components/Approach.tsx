@@ -1,76 +1,98 @@
 
 import { Sparkles, Clock, HandHeart, Layers, TrendingUp } from 'lucide-react';
-import ApproachCard from './ApproachCard';
-import ApproachAnimations from './ApproachAnimations';
+import PrincipleCard from './PrincipleCard';
 
 const Approach = () => {
   const principles = [
     {
       id: 1,
-      title: "Snelheid zonder concessies",
-      subtitle: "Van idee naar werkende oplossing in weken, niet maanden.",
+      title: "Snelheid zonder compromissen",
+      subtitle: "Van idee naar werkende POC in dagen, niet maanden.",
       icon: Clock,
-      delay: "0.1s"
+      color: "from-slate-400 to-blue-400",
+      glowColor: "shadow-blue-400/20",
+      hoverGlow: "group-hover:shadow-blue-400/40"
     },
     {
       id: 2,
-      title: "Eigenaarschap tot in detail", 
-      subtitle: "Uw succes is ons succes. Wij bouwen als strategisch verlengstuk van uw team.",
+      title: "Ownership mentaliteit", 
+      subtitle: "Uw succes is ons succes. Wij denken mee als strategische partner.",
       icon: HandHeart,
-      delay: "0.2s"
+      color: "from-blue-500 to-purple-500",
+      glowColor: "shadow-purple-500/20",
+      hoverGlow: "group-hover:shadow-purple-500/40"
     },
     {
       id: 3,
-      title: "Design als vertrekpunt",
-      subtitle: "Functie volgt vorm. Onze oplossingen voelen intuïtief vanaf de eerste klik.",
+      title: "Design-first filosofie",
+      subtitle: "Technologie moet intuïtief aanvoelen. Altijd.",
       icon: Layers,
-      delay: "0.3s"
+      color: "from-purple-400 to-pink-400",
+      glowColor: "shadow-purple-400/20",
+      hoverGlow: "group-hover:shadow-purple-400/40"
     },
     {
       id: 4,
-      title: "Gedreven door impact",
-      subtitle: "Iedere feature heeft een reden. Iedere lijn code levert rendement.",
+      title: "ROI-gedreven ontwikkeling",
+      subtitle: "Elke feature, elke functie wordt gemeten aan zakelijke impact.",
       icon: TrendingUp,
-      delay: "0.4s"
+      color: "from-slate-300 to-white",
+      glowColor: "shadow-slate-300/20",
+      hoverGlow: "group-hover:shadow-slate-300/40"
     }
   ];
 
   return (
     <>
-      <ApproachAnimations />
       <section className="py-24 lg:py-32 px-4 relative overflow-hidden bg-black">
-        <div className="relative max-w-7xl mx-auto z-10">
+        {/* Ambient background effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 right-1/6 w-80 lg:w-96 h-80 lg:h-96 bg-gradient-radial from-blue-500/5 to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-1/3 left-1/8 w-64 lg:w-80 h-64 lg:h-80 bg-gradient-radial from-purple-500/5 to-transparent rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative max-w-6xl mx-auto z-10">
           {/* Header Section */}
-          <div className="text-center mb-20 lg:mb-24">
-            <div className="inline-flex items-center px-4 py-2 rounded-full mb-8 relative overflow-hidden group">
+          <div className="text-center mb-16 lg:mb-20">
+            <div className="inline-flex items-center px-4 py-2 rounded-full mb-6 lg:mb-8 apple-fade-in relative overflow-hidden group">
               <div className="absolute inset-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full group-hover:bg-white/8 group-hover:border-white/15 transition-all duration-300" />
               <Sparkles className="w-4 h-4 text-white/70 mr-2 z-10 relative group-hover:text-white/90 transition-colors duration-300" />
               <span className="text-white/80 text-sm font-medium tracking-wide z-10 relative group-hover:text-white/95 transition-colors duration-300">Onze Filosofie</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 lg:mb-8 tracking-tight leading-none">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 lg:mb-8 apple-fade-in apple-stagger-2 tracking-tight">
               Onze aanpak: <br className="md:hidden" />
               <span className="bg-gradient-to-r from-white via-white/95 to-white/90 bg-clip-text text-transparent">
-                Elegant. Doeltreffend. Onzichtbaar.
+                Slim. Snel. Eigentijds.
               </span>
             </h2>
             
-            <p className="text-[#aaaaaa] text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto font-light leading-relaxed tracking-wide">
-              Door technologie onzichtbaar te maken, komt waarde naar voren.
+            <p className="text-white/60 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light leading-relaxed apple-fade-in apple-stagger-3 tracking-wide">
+              Vier principes die elk project tot succes maken.
             </p>
           </div>
 
-          {/* Apple-style Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-            {principles.map((principle) => (
-              <ApproachCard 
-                key={principle.id}
-                principle={principle}
-              />
+          {/* Optimized Grid Layout with Equal Heights */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto" style={{ gridAutoRows: '1fr' }}>
+            {principles.map((principle, index) => (
+              <div key={principle.id} className="w-full" style={{ aspectRatio: 'auto', minHeight: '280px' }}>
+                <PrincipleCard 
+                  principle={principle} 
+                  delay={`${0.1 + index * 0.1}s`}
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Optimized CSS using native styles instead of dangerouslySetInnerHTML */}
+      <style>{`
+        @keyframes sweep {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </>
   );
 };
