@@ -1,3 +1,4 @@
+
 import { Brain, Sparkles, Zap, Code, Layers, Target } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -54,8 +55,8 @@ const CustomSaaSHero = () => {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-purple-950/20 to-premium-black" />
       
-      {/* Smooth vertical fade to black at bottom - 25% height */}
-      <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
+      {/* Smooth vertical fade to black at bottom - 15% height */}
+      <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
       
       {/* Ambient lighting effects */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />

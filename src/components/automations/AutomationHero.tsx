@@ -54,6 +54,9 @@ const AutomationHero = () => {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
       
+      {/* Smooth vertical fade to black at bottom - 15% height */}
+      <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
+      
       {/* Ambient lighting effects */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
@@ -78,7 +81,7 @@ const AutomationHero = () => {
       }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4">
+      <div className="relative max-w-6xl mx-auto px-4 z-20">
         {/* Main Hero Content */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
