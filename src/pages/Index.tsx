@@ -2,6 +2,7 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Approach from '@/components/Approach';
+import Workflow from '@/components/Workflow';
 import Showcase from '@/components/Showcase';
 import Target from '@/components/Target';
 import CTA from '@/components/CTA';
@@ -15,6 +16,7 @@ const Index = () => {
       <Hero />
       <Services />
       <Approach />
+      <Workflow />
       <Showcase />
       <Target />
       <CTA />
