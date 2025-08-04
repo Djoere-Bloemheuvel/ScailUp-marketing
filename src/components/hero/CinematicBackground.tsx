@@ -5,10 +5,12 @@ import PremiumOrbs from './PremiumOrbs';
 
 interface CinematicBackgroundProps {
   hideGlassContainer?: boolean;
+  hideBrainVisual?: boolean;
 }
 
 const CinematicBackground = ({
-  hideGlassContainer = false
+  hideGlassContainer = false,
+  hideBrainVisual = false
 }: CinematicBackgroundProps) => {
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -21,8 +23,8 @@ const CinematicBackground = ({
       {/* Premium Orbs - Added to the background */}
       <PremiumOrbs />
 
-      {/* AI Core Center Component */}
-      <AICoreCenter />
+      {/* AI Core Center Component - Only show if hideBrainVisual is false */}
+      {!hideBrainVisual && <AICoreCenter />}
 
       {/* Main content background boxes - Only show if hideGlassContainer is false */}
       {!hideGlassContainer && (
