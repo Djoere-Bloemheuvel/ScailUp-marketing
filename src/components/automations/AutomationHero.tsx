@@ -1,6 +1,4 @@
-
-import { ChevronRight, Cog, Sparkles, Zap, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Cog, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const AutomationHero = () => {

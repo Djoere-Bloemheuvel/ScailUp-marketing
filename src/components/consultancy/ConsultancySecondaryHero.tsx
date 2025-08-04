@@ -1,5 +1,5 @@
 
-import { MessageSquare, Brain, Target, Lightbulb, BarChart, Shield } from 'lucide-react';
+import { Brain, Target, Lightbulb } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const ConsultancySecondaryHero = () => {

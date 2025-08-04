@@ -1,5 +1,6 @@
-import { Brain, Target, Lightbulb } from 'lucide-react';
+import { Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const ConsultancyHero = () => {
   return <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center overflow-hidden">
       {/* Dark background with blue gradient */}
@@ -141,4 +142,5 @@ const ConsultancyHero = () => {
       </div>
     </section>;
 };
+
 export default ConsultancyHero;
