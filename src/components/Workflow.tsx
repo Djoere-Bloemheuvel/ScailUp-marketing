@@ -48,15 +48,11 @@ const Workflow = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header Section */}
+        {/* Header Section - Promoted subheading as main title */}
         <div className="text-center mb-24 lg:mb-32">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
-            Onze werkwijze
-          </h2>
-          
-          <p className="text-white/60 text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto font-light leading-relaxed apple-fade-in apple-stagger-3 tracking-wide">
             In drie heldere stappen van idee naar impact.
-          </p>
+          </h2>
         </div>
 
         {/* Horizontal Timeline */}
