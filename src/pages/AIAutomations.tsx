@@ -1,10 +1,9 @@
-
 import { Users, FileText, Zap, CreditCard, BarChart, RefreshCw } from 'lucide-react';
 import ScrollHeader from '@/components/ScrollHeader';
 import AutomationHero from '@/components/automations/AutomationHero';
 import AutomationOverview from '@/components/automations/AutomationOverview';
 import AutomationExplained from '@/components/automations/AutomationExplained';
-import WhyBuildrsConsultancy from '@/components/consultancy/WhyBuildrsConsultancy';
+import WhyBuildrs from '@/components/automations/WhyBuildrs';
 import AutomationFeaturePair from '@/components/automations/AutomationFeaturePair';
 import AutomationFinalCTA from '@/components/automations/AutomationFinalCTA';
 
@@ -98,7 +97,7 @@ const AIAutomations = () => {
       />
 
       {/* Section 3 - Waarom Buildrs? */}
-      <WhyBuildrsConsultancy />
+      <WhyBuildrs />
       
       {/* Final 2 Feature Cards */}
       <AutomationFeaturePair 

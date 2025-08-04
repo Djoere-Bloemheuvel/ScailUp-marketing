@@ -21,15 +21,11 @@ const WhyBuildrs = () => {
             
             <div className="text-lg md:text-xl text-premium-silver/80 leading-relaxed font-light space-y-6">
               <p>
-                Bij Buildrs combineren we strategisch inzicht met technische slagkracht. Onze AI-consultants begrijpen zowel de businesskant als de technische realiteit.
+                Buildrs helpt bedrijven om repetitieve processen te automatiseren met slimme AI-oplossingen. We combineren strategisch inzicht met technische uitvoering en bouwen binnen weken een werkende oplossing – zonder complexiteit.
               </p>
               
               <p>
-                We denken mee over verdienmodellen, procesverbeteringen en productiviteit, en zorgen dat de technologie daarop aansluit. Onze aanpak is snel, schaalbaar en veilig.
-              </p>
-              
-              <p>
-                We bouwen geen dikke rapporten die in een la verdwijnen, maar zetten concrete stappen richting automatisering en groei. Of je nu een startup bent of een gevestigde speler: we leveren advies én implementatie – zonder dat je zelf een tech-team hoeft op te bouwen.
+                Ons team denkt mee over efficiëntie, veiligheid en schaalbaarheid, zodat jij je kunt focussen op groei. We zorgen dat de technologie precies aansluit op jouw bedrijfsprocessen.
               </p>
             </div>
 
@@ -40,8 +36,8 @@ const WhyBuildrs = () => {
                   <Zap className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Snelle resultaten</h3>
-                  <p className="text-premium-silver/70 leading-relaxed">Van strategie naar implementatie in weken, niet maanden</p>
+                  <h3 className="text-xl font-semibold text-white mb-2">Snelle implementatie</h3>
+                  <p className="text-premium-silver/70 leading-relaxed">Van idee naar werkende automatisering in 2-4 weken</p>
                 </div>
               </div>
 
@@ -50,8 +46,8 @@ const WhyBuildrs = () => {
                   <Shield className="w-6 h-6 text-indigo-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Veilig & compliant</h3>
-                  <p className="text-premium-silver/70 leading-relaxed">AI-implementaties die voldoen aan alle privacy- en beveiligingseisen</p>
+                  <h3 className="text-xl font-semibold text-white mb-2">Betrouwbaar & veilig</h3>
+                  <p className="text-premium-silver/70 leading-relaxed">Enterprise-grade beveiliging met volledige compliance</p>
                 </div>
               </div>
 
@@ -60,8 +56,8 @@ const WhyBuildrs = () => {
                   <Users className="w-6 h-6 text-purple-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Volledige ondersteuning</h3>
-                  <p className="text-premium-silver/70 leading-relaxed">Van advies tot implementatie tot doorlopende optimalisatie</p>
+                  <h3 className="text-xl font-semibold text-white mb-2">Persoonlijke begeleiding</h3>
+                  <p className="text-premium-silver/70 leading-relaxed">Dedicated support van strategie tot doorlopende optimalisatie</p>
                 </div>
               </div>
             </div>
@@ -79,14 +75,14 @@ const WhyBuildrs = () => {
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
                       <Shield className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-white font-medium">Business AI Dashboard</span>
+                    <span className="text-white font-medium">Automatisering Dashboard</span>
                   </div>
                   
                   {/* Status indicators */}
                   <div className="flex items-center space-x-2">
                     <div className="text-xs text-green-400 flex items-center space-x-1">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                      <span>Secure</span>
+                      <span>Actief</span>
                     </div>
                   </div>
                 </div>
@@ -98,56 +94,56 @@ const WhyBuildrs = () => {
                     <div className="rounded-xl bg-black/40 p-4 border border-blue-400/20">
                       <div className="flex items-center space-x-2 mb-2">
                         <Zap className="w-4 h-4 text-blue-400" />
-                        <span className="text-xs text-premium-silver/70">Efficiency</span>
+                        <span className="text-xs text-premium-silver/70">Efficiëntie</span>
                       </div>
-                      <div className="text-xl font-bold text-white">+73%</div>
+                      <div className="text-xl font-bold text-white">+85%</div>
                     </div>
                     <div className="rounded-xl bg-black/40 p-4 border border-purple-400/20">
                       <div className="flex items-center space-x-2 mb-2">
                         <Users className="w-4 h-4 text-purple-400" />
-                        <span className="text-xs text-premium-silver/70">Satisfaction</span>
+                        <span className="text-xs text-premium-silver/70">Tevredenheid</span>
                       </div>
-                      <div className="text-xl font-bold text-white">9.2/10</div>
+                      <div className="text-xl font-bold text-white">9.4/10</div>
                     </div>
                   </div>
 
-                  {/* Security & Compliance */}
+                  {/* Process Status */}
                   <div className="rounded-xl bg-black/40 p-4 border border-indigo-400/20">
                     <div className="flex items-center space-x-2 mb-3">
                       <Shield className="w-4 h-4 text-indigo-400" />
-                      <span className="text-xs text-premium-silver/70">Security Status</span>
+                      <span className="text-xs text-premium-silver/70">Proces Status</span>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-xs">
-                        <span className="text-premium-silver/60">GDPR Compliance</span>
-                        <span className="text-green-400">✓</span>
+                        <span className="text-premium-silver/60">Leadgeneratie</span>
+                        <span className="text-green-400">✓ Actief</span>
                       </div>
                       <div className="flex justify-between text-xs">
-                        <span className="text-premium-silver/60">Data Encryption</span>
-                        <span className="text-green-400">✓</span>
+                        <span className="text-premium-silver/60">Offertes</span>
+                        <span className="text-green-400">✓ Actief</span>
                       </div>
                       <div className="flex justify-between text-xs">
-                        <span className="text-premium-silver/60">Access Control</span>
-                        <span className="text-green-400">✓</span>
+                        <span className="text-premium-silver/60">Follow-up</span>
+                        <span className="text-green-400">✓ Actief</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Strategic Overview */}
+                  {/* Results Overview */}
                   <div className="rounded-xl bg-black/40 p-4 border border-cyan-400/20">
-                    <div className="text-xs text-premium-silver/70 mb-3">Strategic Implementation</div>
+                    <div className="text-xs text-premium-silver/70 mb-3">Resultaten deze maand</div>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                        <span className="text-xs text-premium-silver/70">Process optimization active</span>
+                        <span className="text-xs text-premium-silver/70">147 leads gegenereerd</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                        <span className="text-xs text-premium-silver/70">AI models learning</span>
+                        <span className="text-xs text-premium-silver/70">63 offertes verstuurd</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-                        <span className="text-xs text-premium-silver/70">ROI tracking enabled</span>
+                        <span className="text-xs text-premium-silver/70">28 nieuwe klanten</span>
                       </div>
                     </div>
                   </div>
