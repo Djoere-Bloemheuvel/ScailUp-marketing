@@ -1,81 +1,67 @@
 
 import { Sparkles } from 'lucide-react';
-import ApproachTimeline from './ApproachTimeline';
-import FlowingGradientBackground from './FlowingGradientBackground';
+import AppleTimeline from './AppleTimeline';
+import AppleAmbientBackground from './AppleAmbientBackground';
 
 const Approach = () => {
   return (
-    <section className="relative py-32 lg:py-40 px-4 overflow-hidden bg-black">
-      {/* Unique flowing gradient background */}
-      <FlowingGradientBackground />
+    <section className="relative py-40 lg:py-48 px-4 overflow-hidden bg-black">
+      {/* Apple-style ambient background */}
+      <AppleAmbientBackground />
       
-      {/* Additional atmospheric effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
-      
+      {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header with unique layout */}
-        <div className="text-center mb-20 lg:mb-28">
+        {/* Apple-inspired header */}
+        <div className="text-center mb-32 lg:mb-40">
           {/* Floating badge */}
-          <div className="inline-flex items-center px-6 py-3 mb-12 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 backdrop-blur-xl shadow-2xl">
-            <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mr-3 animate-pulse" />
-            <span className="text-white/90 font-medium tracking-wide">Onze Werkwijze</span>
-            <Sparkles className="w-4 h-4 text-cyan-400 ml-3" />
+          <div className="inline-flex items-center px-8 py-4 mb-16 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl">
+            <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mr-4 animate-pulse" />
+            <span className="text-white/90 font-medium tracking-wide text-lg">Onze Werkwijze</span>
+            <Sparkles className="w-5 h-5 text-cyan-400 ml-4" />
           </div>
           
-          {/* Split title design */}
-          <div className="mb-8">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-4">
+          {/* Hero title - Apple style */}
+          <div className="mb-12">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight tracking-tight mb-6">
               Vier principes.
             </h2>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-size-200 animate-gradient">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
                 Eén revolutie.
               </span>
             </h2>
           </div>
           
-          <p className="text-white/70 text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed">
-            Ontdek hoe wij elk project transformeren van concept naar 
+          {/* Subtitle */}
+          <p className="text-white/60 text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+            Ontdek hoe wij elk project transformeren van concept naar
             <br className="hidden md:block" />
             game-changing realiteit.
           </p>
         </div>
 
-        {/* Interactive timeline */}
-        <div className="mb-20">
-          <ApproachTimeline />
+        {/* Apple-style timeline */}
+        <div className="mb-32">
+          <AppleTimeline />
         </div>
 
-        {/* Bottom CTA section */}
+        {/* Bottom CTA - Apple inspired */}
         <div className="text-center">
-          <div className="inline-flex flex-col items-center p-8 lg:p-12 rounded-3xl bg-gradient-to-br from-white/8 to-white/4 border border-white/20 backdrop-blur-xl shadow-2xl max-w-2xl">
-            <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-              <Sparkles className="w-6 h-6 text-white" />
+          <div className="inline-flex flex-col items-center p-12 lg:p-16 rounded-3xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-xl max-w-2xl transition-all duration-700 hover:bg-white/[0.04] hover:border-white/[0.12] hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/[0.05]">
+            <div className="w-16 h-16 bg-gradient-to-br from-white/10 to-white/5 rounded-3xl flex items-center justify-center mb-8 border border-white/20 backdrop-blur-sm">
+              <Sparkles className="w-8 h-8 text-white" />
             </div>
             
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
               Klaar voor de volgende stap?
             </h3>
             
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-white/60 text-xl leading-relaxed font-light">
               Laten we samen uw visie tot leven brengen met onze bewezen aanpak.
             </p>
           </div>
         </div>
       </div>
-
-      {/* Enhanced CSS animations */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes animate-gradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-          
-          .bg-size-200 { background-size: 200% 200%; }
-          .animate-gradient { animation: animate-gradient 6s ease infinite; }
-        `
-      }} />
     </section>
   );
 };
