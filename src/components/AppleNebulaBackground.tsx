@@ -8,7 +8,7 @@ const AppleNebulaBackground = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Create floating stardust particles
+    // Create enhanced stardust particles with more variety
     const createStarDust = (size: string, position: { x: string; y: string }, opacity: number, duration: number, color: string) => {
       const particle = document.createElement('div');
       particle.className = 'absolute rounded-full blur-[0.5px]';
@@ -24,22 +24,33 @@ const AppleNebulaBackground = () => {
       return particle;
     };
 
-    // Create nebula-like particles
+    // Enhanced nebula particles with more density and variety
     const particles = [
-      // Micro stardust
-      createStarDust('1px', { x: '15%', y: '25%' }, 0.6, 12, 'rgba(255,255,255,0.8)'),
-      createStarDust('1px', { x: '85%', y: '15%' }, 0.4, 15, 'rgba(59,130,246,0.6)'),
-      createStarDust('1px', { x: '25%', y: '75%' }, 0.7, 10, 'rgba(255,255,255,0.9)'),
-      createStarDust('1px', { x: '75%', y: '85%' }, 0.3, 18, 'rgba(147,51,234,0.5)'),
-      createStarDust('1px', { x: '45%', y: '35%' }, 0.5, 14, 'rgba(236,72,153,0.4)'),
-      createStarDust('1px', { x: '65%', y: '55%' }, 0.8, 11, 'rgba(255,255,255,0.7)'),
-      createStarDust('1px', { x: '10%', y: '60%' }, 0.4, 16, 'rgba(6,182,212,0.6)'),
-      createStarDust('1px', { x: '90%', y: '40%' }, 0.6, 13, 'rgba(255,255,255,0.5)'),
+      // Dense micro stardust layer
+      createStarDust('1px', { x: '12%', y: '18%' }, 0.7, 14, 'rgba(255,255,255,0.9)'),
+      createStarDust('1px', { x: '88%', y: '12%' }, 0.5, 16, 'rgba(59,130,246,0.7)'),
+      createStarDust('1px', { x: '28%', y: '72%' }, 0.8, 11, 'rgba(255,255,255,0.8)'),
+      createStarDust('1px', { x: '78%', y: '88%' }, 0.4, 19, 'rgba(147,51,234,0.6)'),
+      createStarDust('1px', { x: '42%', y: '32%' }, 0.6, 15, 'rgba(236,72,153,0.5)'),
+      createStarDust('1px', { x: '68%', y: '58%' }, 0.9, 12, 'rgba(255,255,255,0.7)'),
+      createStarDust('1px', { x: '8%', y: '62%' }, 0.5, 17, 'rgba(6,182,212,0.7)'),
+      createStarDust('1px', { x: '92%', y: '38%' }, 0.7, 13, 'rgba(255,255,255,0.6)'),
       
-      // Larger nebula dots
-      createStarDust('2px', { x: '30%', y: '20%' }, 0.2, 20, 'rgba(59,130,246,0.3)'),
-      createStarDust('2px', { x: '70%', y: '70%' }, 0.15, 22, 'rgba(147,51,234,0.25)'),
-      createStarDust('2px', { x: '50%', y: '90%' }, 0.25, 17, 'rgba(236,72,153,0.2)'),
+      // Medium particles for depth
+      createStarDust('1.5px', { x: '22%', y: '42%' }, 0.4, 18, 'rgba(59,130,246,0.4)'),
+      createStarDust('1.5px', { x: '72%', y: '28%' }, 0.3, 21, 'rgba(147,51,234,0.3)'),
+      createStarDust('1.5px', { x: '52%', y: '82%' }, 0.5, 16, 'rgba(236,72,153,0.4)'),
+      
+      // Larger ambient dots
+      createStarDust('2px', { x: '35%', y: '25%' }, 0.2, 22, 'rgba(59,130,246,0.3)'),
+      createStarDust('2px', { x: '65%', y: '75%' }, 0.15, 25, 'rgba(147,51,234,0.25)'),
+      createStarDust('2px', { x: '48%', y: '92%' }, 0.25, 20, 'rgba(236,72,153,0.2)'),
+      
+      // Additional micro particles for richness
+      createStarDust('0.5px', { x: '18%', y: '55%' }, 0.6, 10, 'rgba(255,255,255,0.8)'),
+      createStarDust('0.5px', { x: '82%', y: '65%' }, 0.4, 13, 'rgba(6,182,212,0.6)'),
+      createStarDust('0.5px', { x: '38%', y: '15%' }, 0.7, 11, 'rgba(255,255,255,0.9)'),
+      createStarDust('0.5px', { x: '62%', y: '45%' }, 0.5, 14, 'rgba(147,51,234,0.4)'),
     ];
 
     return () => {
@@ -53,37 +64,48 @@ const AppleNebulaBackground = () => {
 
   return (
     <>
-      {/* Stardust container */}
-      <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none opacity-40" />
+      {/* Enhanced stardust container */}
+      <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none opacity-50" />
       
-      {/* Subtle gradient mesh overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 pointer-events-none" />
+      {/* Dark fog gradient overlay for cinematic depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 pointer-events-none" />
       
-      {/* Ambient nebula clouds */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+      {/* Enhanced ambient nebula clouds with more layers */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-25">
         <div 
-          className="absolute w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-blue-500/10 to-transparent"
+          className="absolute w-[500px] h-[500px] rounded-full blur-3xl bg-gradient-to-br from-blue-500/12 to-cyan-400/8"
           style={{
-            top: '10%',
-            left: '20%',
-            animation: 'nebulaCloud 25s ease-in-out infinite',
+            top: '5%',
+            left: '15%',
+            animation: 'nebulaCloud 28s ease-in-out infinite',
           }}
         />
         <div 
-          className="absolute w-80 h-80 rounded-full blur-3xl bg-gradient-to-br from-purple-500/8 to-transparent"
+          className="absolute w-[400px] h-[400px] rounded-full blur-3xl bg-gradient-to-br from-purple-500/10 to-violet-400/6"
           style={{
-            top: '60%',
-            right: '15%',
-            animation: 'nebulaCloud 30s ease-in-out infinite reverse',
-            animationDelay: '10s'
+            top: '55%',
+            right: '10%',
+            animation: 'nebulaCloud 35s ease-in-out infinite reverse',
+            animationDelay: '8s'
           }}
         />
         <div 
-          className="absolute w-72 h-72 rounded-full blur-3xl bg-gradient-to-br from-pink-500/6 to-transparent"
+          className="absolute w-[350px] h-[350px] rounded-full blur-3xl bg-gradient-to-br from-pink-500/8 to-rose-400/4"
           style={{
-            bottom: '20%',
-            left: '60%',
-            animation: 'nebulaCloud 35s ease-in-out infinite',
+            bottom: '15%',
+            left: '55%',
+            animation: 'nebulaCloud 40s ease-in-out infinite',
+            animationDelay: '12s'
+          }}
+        />
+        {/* Additional smaller clouds for richness */}
+        <div 
+          className="absolute w-[300px] h-[300px] rounded-full blur-2xl bg-gradient-to-br from-emerald-500/6 to-teal-400/3"
+          style={{
+            top: '35%',
+            left: '75%',
+            animation: 'nebulaCloud 32s ease-in-out infinite',
             animationDelay: '15s'
           }}
         />
@@ -96,12 +118,16 @@ const AppleNebulaBackground = () => {
               transform: translateY(0) translateX(0) scale(1);
               opacity: 0.3;
             }
-            33% { 
-              transform: translateY(-10px) translateX(5px) scale(1.1);
-              opacity: 0.8;
+            25% { 
+              transform: translateY(-8px) translateX(3px) scale(1.05);
+              opacity: 0.7;
             }
-            66% { 
-              transform: translateY(-5px) translateX(-8px) scale(0.9);
+            50% { 
+              transform: translateY(-12px) translateX(-2px) scale(1.1);
+              opacity: 1;
+            }
+            75% { 
+              transform: translateY(-6px) translateX(-5px) scale(0.95);
               opacity: 0.6;
             }
           }
@@ -109,11 +135,15 @@ const AppleNebulaBackground = () => {
           @keyframes nebulaCloud {
             0%, 100% { 
               transform: translateY(0) translateX(0) scale(1);
-              opacity: 0.2;
+              opacity: 0.25;
             }
-            50% { 
-              transform: translateY(-20px) translateX(15px) scale(1.1);
+            33% { 
+              transform: translateY(-15px) translateX(8px) scale(1.05);
               opacity: 0.15;
+            }
+            66% { 
+              transform: translateY(-25px) translateX(18px) scale(1.1);
+              opacity: 0.2;
             }
           }
         `
