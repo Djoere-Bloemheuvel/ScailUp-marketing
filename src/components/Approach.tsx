@@ -16,11 +16,11 @@ const Approach = () => {
           {/* Hero title - Apple style with refined fonts */}
           <div className="mb-8">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
-              Vier principes.
+              Gebouwd op principes.
             </h2>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
               <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-                Eén revolutie.
+                Gedreven door resultaat.
               </span>
             </h2>
           </div>
