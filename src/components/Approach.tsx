@@ -1,49 +1,40 @@
-
 import { Sparkles, Clock, HandHeart, Layers, TrendingUp } from 'lucide-react';
 import PrincipleCard from './PrincipleCard';
-
 const Approach = () => {
-  const principles = [
-    {
-      id: 1,
-      title: "Snelheid zonder compromissen",
-      subtitle: "Van idee naar werkende POC in dagen, niet maanden.",
-      icon: Clock,
-      color: "from-slate-400 to-blue-400",
-      glowColor: "shadow-blue-400/20",
-      hoverGlow: "group-hover:shadow-blue-400/40"
-    },
-    {
-      id: 2,
-      title: "Ownership mentaliteit", 
-      subtitle: "Uw succes is ons succes. Wij denken mee als strategische partner.",
-      icon: HandHeart,
-      color: "from-blue-500 to-purple-500",
-      glowColor: "shadow-purple-500/20",
-      hoverGlow: "group-hover:shadow-purple-500/40"
-    },
-    {
-      id: 3,
-      title: "Design-first filosofie",
-      subtitle: "Technologie moet intuïtief aanvoelen. Altijd.",
-      icon: Layers,
-      color: "from-purple-400 to-pink-400",
-      glowColor: "shadow-purple-400/20",
-      hoverGlow: "group-hover:shadow-purple-400/40"
-    },
-    {
-      id: 4,
-      title: "ROI-gedreven ontwikkeling",
-      subtitle: "Elke feature, elke functie wordt gemeten aan zakelijke impact.",
-      icon: TrendingUp,
-      color: "from-slate-300 to-white",
-      glowColor: "shadow-slate-300/20",
-      hoverGlow: "group-hover:shadow-slate-300/40"
-    }
-  ];
-
-  return (
-    <>
+  const principles = [{
+    id: 1,
+    title: "Snelheid zonder compromissen",
+    subtitle: "Van idee naar werkende POC in dagen, niet maanden.",
+    icon: Clock,
+    color: "from-slate-400 to-blue-400",
+    glowColor: "shadow-blue-400/20",
+    hoverGlow: "group-hover:shadow-blue-400/40"
+  }, {
+    id: 2,
+    title: "Ownership mentaliteit",
+    subtitle: "Uw succes is ons succes. Wij denken mee als strategische partner.",
+    icon: HandHeart,
+    color: "from-blue-500 to-purple-500",
+    glowColor: "shadow-purple-500/20",
+    hoverGlow: "group-hover:shadow-purple-500/40"
+  }, {
+    id: 3,
+    title: "Design-first filosofie",
+    subtitle: "Technologie moet intuïtief aanvoelen. Altijd.",
+    icon: Layers,
+    color: "from-purple-400 to-pink-400",
+    glowColor: "shadow-purple-400/20",
+    hoverGlow: "group-hover:shadow-purple-400/40"
+  }, {
+    id: 4,
+    title: "ROI-gedreven ontwikkeling",
+    subtitle: "Elke feature, elke functie wordt gemeten aan zakelijke impact.",
+    icon: TrendingUp,
+    color: "from-slate-300 to-white",
+    glowColor: "shadow-slate-300/20",
+    hoverGlow: "group-hover:shadow-slate-300/40"
+  }];
+  return <>
       <section className="py-24 lg:py-32 px-4 relative overflow-hidden bg-black">
         {/* Ambient background effects */}
         <div className="absolute inset-0 opacity-20">
@@ -54,11 +45,7 @@ const Approach = () => {
         <div className="relative max-w-6xl mx-auto z-10">
           {/* Header Section */}
           <div className="text-center mb-16 lg:mb-20">
-            <div className="inline-flex items-center px-4 py-2 rounded-full mb-6 lg:mb-8 apple-fade-in relative overflow-hidden group">
-              <div className="absolute inset-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full group-hover:bg-white/8 group-hover:border-white/15 transition-all duration-300" />
-              <Sparkles className="w-4 h-4 text-white/70 mr-2 z-10 relative group-hover:text-white/90 transition-colors duration-300" />
-              <span className="text-white/80 text-sm font-medium tracking-wide z-10 relative group-hover:text-white/95 transition-colors duration-300">Onze Filosofie</span>
-            </div>
+            
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 lg:mb-8 apple-fade-in apple-stagger-2 tracking-tight">
               Onze aanpak: <br className="md:hidden" />
@@ -73,15 +60,15 @@ const Approach = () => {
           </div>
 
           {/* Optimized Grid Layout with Equal Heights */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto" style={{ gridAutoRows: '1fr' }}>
-            {principles.map((principle, index) => (
-              <div key={principle.id} className="w-full" style={{ aspectRatio: 'auto', minHeight: '280px' }}>
-                <PrincipleCard 
-                  principle={principle} 
-                  delay={`${0.1 + index * 0.1}s`}
-                />
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto" style={{
+          gridAutoRows: '1fr'
+        }}>
+            {principles.map((principle, index) => <div key={principle.id} className="w-full" style={{
+            aspectRatio: 'auto',
+            minHeight: '280px'
+          }}>
+                <PrincipleCard principle={principle} delay={`${0.1 + index * 0.1}s`} />
+              </div>)}
           </div>
         </div>
       </section>
@@ -93,8 +80,6 @@ const Approach = () => {
           100% { transform: translateX(100%); }
         }
       `}</style>
-    </>
-  );
+    </>;
 };
-
 export default Approach;
