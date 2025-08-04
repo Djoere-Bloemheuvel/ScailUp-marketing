@@ -1,6 +1,7 @@
+
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -375,12 +376,49 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Contact Form - Apple Glass Morphism */}
+              {/* Enhanced Contact Form - Glassmorphic Design */}
               <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <div className="relative rounded-3xl p-8 md:p-10 backdrop-blur-2xl border border-white/10 shadow-2xl bg-gradient-to-br from-white/10 via-white/5 to-white/5">
+                <div className="relative rounded-[20px] p-8 md:p-10 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
+                     style={{
+                       background: `
+                         linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%),
+                         radial-gradient(ellipse 600px 400px at 50% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 70%),
+                         radial-gradient(ellipse 400px 300px at 100% 100%, rgba(147, 51, 234, 0.06) 0%, transparent 70%)
+                       `,
+                       backdropFilter: 'blur(20px) saturate(150%)',
+                       border: '1px solid rgba(139, 92, 246, 0.15)',
+                       boxShadow: `
+                         0 25px 50px rgba(0, 0, 0, 0.4),
+                         0 12px 24px rgba(0, 0, 0, 0.3),
+                         0 0 0 1px rgba(255, 255, 255, 0.05),
+                         inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                         inset 0 -1px 0 rgba(255, 255, 255, 0.02),
+                         0 0 120px rgba(79, 70, 229, 0.1),
+                         0 0 80px rgba(147, 51, 234, 0.08)
+                       `
+                     }}>
                   
-                  {/* Subtle inner glow */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-premium-silver/5 via-transparent to-premium-silver/3 pointer-events-none" />
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
+                       style={{
+                         background: 'linear-gradient(135deg, transparent, rgba(79, 70, 229, 0.2), rgba(147, 51, 234, 0.15), transparent)',
+                         filter: 'blur(1px)',
+                         zIndex: -1
+                       }} />
+
+                  {/* Subtle Inner Glow */}
+                  <div className="absolute inset-1 rounded-[19px] pointer-events-none"
+                       style={{
+                         background: `
+                           linear-gradient(135deg, 
+                             rgba(255, 255, 255, 0.03) 0%, 
+                             rgba(79, 70, 229, 0.04) 30%, 
+                             rgba(147, 51, 234, 0.03) 70%, 
+                             rgba(255, 255, 255, 0.02) 100%
+                           )
+                         `,
+                         opacity: 0.6
+                       }} />
                   
                   {!isSubmitted ? (
                     <>
@@ -426,11 +464,17 @@ const Contact = () => {
                                 value={formData.naam}
                                 onChange={(e) => handleChange('naam', e.target.value)}
                                 onBlur={() => handleBlur('naam')}
-                                className={`w-full bg-white/5 border rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-premium-silver/30 focus:bg-white/10 backdrop-blur-sm ${
+                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.naam 
-                                    ? 'border-red-500/50 focus:ring-red-500/30' 
-                                    : 'border-white/10 hover:border-white/20'
+                                    ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
+                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
+                                style={{
+                                  backdropFilter: 'blur(10px)',
+                                  boxShadow: errors.naam 
+                                    ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
+                                    : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
+                                }}
                                 placeholder="Uw volledige naam"
                                 aria-required="true"
                                 aria-invalid={errors.naam ? 'true' : 'false'}
@@ -462,11 +506,17 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
                                 onBlur={() => handleBlur('email')}
-                                className={`w-full bg-white/5 border rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-premium-silver/30 focus:bg-white/10 backdrop-blur-sm ${
+                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.email 
-                                    ? 'border-red-500/50 focus:ring-red-500/30' 
-                                    : 'border-white/10 hover:border-white/20'
+                                    ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
+                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
+                                style={{
+                                  backdropFilter: 'blur(10px)',
+                                  boxShadow: errors.email 
+                                    ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
+                                    : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
+                                }}
                                 placeholder="uw@email.nl"
                                 aria-required="true"
                                 aria-invalid={errors.email ? 'true' : 'false'}
@@ -498,11 +548,17 @@ const Contact = () => {
                                 value={formData.bedrijf}
                                 onChange={(e) => handleChange('bedrijf', e.target.value)}
                                 onBlur={() => handleBlur('bedrijf')}
-                                className={`w-full bg-white/5 border rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-premium-silver/30 focus:bg-white/10 backdrop-blur-sm ${
+                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.bedrijf 
-                                    ? 'border-red-500/50 focus:ring-red-500/30' 
-                                    : 'border-white/10 hover:border-white/20'
+                                    ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
+                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
+                                style={{
+                                  backdropFilter: 'blur(10px)',
+                                  boxShadow: errors.bedrijf 
+                                    ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
+                                    : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
+                                }}
                                 placeholder="Uw bedrijfsnaam"
                                 aria-required="true"
                                 aria-invalid={errors.bedrijf ? 'true' : 'false'}
@@ -534,11 +590,17 @@ const Contact = () => {
                                 value={formData.telefoon}
                                 onChange={(e) => handleChange('telefoon', e.target.value)}
                                 onBlur={() => handleBlur('telefoon')}
-                                className={`w-full bg-white/5 border rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-premium-silver/30 focus:bg-white/10 backdrop-blur-sm ${
+                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.telefoon 
-                                    ? 'border-red-500/50 focus:ring-red-500/30' 
-                                    : 'border-white/10 hover:border-white/20'
+                                    ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
+                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
+                                style={{
+                                  backdropFilter: 'blur(10px)',
+                                  boxShadow: errors.telefoon 
+                                    ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
+                                    : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
+                                }}
                                 placeholder="+31 6 12345678"
                                 aria-invalid={errors.telefoon ? 'true' : 'false'}
                                 aria-describedby={errors.telefoon ? 'telefoon-error' : undefined}
@@ -568,11 +630,17 @@ const Contact = () => {
                                 onChange={(e) => handleChange('bericht', e.target.value)}
                                 onBlur={() => handleBlur('bericht')}
                                 rows={5}
-                                className={`w-full bg-white/5 border rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-premium-silver/30 focus:bg-white/10 resize-none backdrop-blur-sm ${
+                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none resize-none transform-gpu ${
                                   errors.bericht 
-                                    ? 'border-red-500/50 focus:ring-red-500/30' 
-                                    : 'border-white/10 hover:border-white/20'
+                                    ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
+                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
+                                style={{
+                                  backdropFilter: 'blur(10px)',
+                                  boxShadow: errors.bericht 
+                                    ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
+                                    : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
+                                }}
                                 placeholder="Vertel ons over uw AI-uitdagingen, doelen en wat u hoopt te bereiken..."
                                 aria-required="true"
                                 aria-invalid={errors.bericht ? 'true' : 'false'}
@@ -594,21 +662,31 @@ const Contact = () => {
                           </div>
 
                           {/* Privacy notice */}
-                          <div className="text-xs text-white/60 bg-white/5 rounded-2xl p-4 border border-white/10">
+                          <div className="text-xs text-white/60 rounded-2xl p-4 border transition-all duration-300"
+                               style={{
+                                 background: 'rgba(255, 255, 255, 0.02)',
+                                 backdropFilter: 'blur(8px)',
+                                 borderColor: 'rgba(255, 255, 255, 0.08)'
+                               }}>
                             <p>
                               🔒 <strong>Privacy gegarandeerd:</strong> Uw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
                               Door dit formulier te versturen gaat u akkoord met onze verwerking van uw contactgegevens voor het beantwoorden van uw vraag.
                             </p>
                           </div>
 
-                          {/* Submit button - Apple Style */}
+                          {/* Enhanced Submit button */}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="group relative w-full bg-white text-black hover:bg-premium-silver transition-all duration-500 px-8 py-6 text-lg font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] shadow-2xl font-apple"
+                            className="group relative w-full text-black hover:text-black transition-all duration-700 px-8 py-6 text-lg font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] font-apple border-0"
                             style={{
                               background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
-                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                              boxShadow: `
+                                0 20px 40px rgba(0, 0, 0, 0.3), 
+                                inset 0 1px 0 rgba(255, 255, 255, 0.9), 
+                                0 0 0 1px rgba(255, 255, 255, 0.1),
+                                0 0 60px rgba(79, 70, 229, 0.1)
+                              `
                             }}
                           >
                             <span className="relative z-10 flex items-center justify-center">
@@ -627,20 +705,41 @@ const Contact = () => {
                             
                             {/* Enhanced shimmer effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out" aria-hidden="true" />
+                            
+                            {/* Hover glow effect */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
+                                 style={{
+                                   background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.08))',
+                                   filter: 'blur(20px)',
+                                   transform: 'scale(1.1)',
+                                   zIndex: -1
+                                 }} />
                           </Button>
                         </form>
                       </div>
                     </>
                   ) : (
-                    /* Success message - Apple Style */
+                    /* Success message - Enhanced Glass Style */
                     <div 
                       className="text-center"
                       role="status"
                       aria-live="polite"
                     >
-                      <div className="mb-8 h-20 w-20 rounded-full p-1 relative mx-auto backdrop-blur-xl border border-premium-silver/20 bg-gradient-to-br from-premium-silver/10 to-premium-silver/5">
-                        <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5">
-                          <CheckCircle className="h-10 w-10 text-premium-silver" aria-hidden="true" />
+                      <div className="mb-8 h-20 w-20 rounded-full p-1 relative mx-auto overflow-hidden"
+                           style={{
+                             background: `
+                               linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(147, 51, 234, 0.12)),
+                               radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)
+                             `,
+                             backdropFilter: 'blur(15px)',
+                             border: '1px solid rgba(139, 92, 246, 0.2)',
+                             boxShadow: '0 8px 32px rgba(79, 70, 229, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                           }}>
+                        <div className="flex h-full w-full items-center justify-center rounded-full"
+                             style={{
+                               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%)'
+                             }}>
+                          <CheckCircle className="h-10 w-10 text-green-400" aria-hidden="true" />
                         </div>
                       </div>
 
