@@ -18,22 +18,20 @@ interface AppleTimelineCardProps {
 
 const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShimmered, setHasShimmered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasShimmered) {
+          if (entry.isIntersecting) {
             setTimeout(() => {
               setIsVisible(true);
-              setHasShimmered(true);
             }, delay);
           }
         });
       },
-      { threshold: 0.3, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.2, rootMargin: '0px 0px -30px 0px' }
     );
 
     if (cardRef.current) {
@@ -41,7 +39,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
     }
 
     return () => observer.disconnect();
-  }, [delay, hasShimmered]);
+  }, [delay]);
 
   return (
     <div
@@ -56,7 +54,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         `}
         style={{ transitionDelay: `${delay}ms` }}
       >
-        {/* Glow layers */}
+        {/* Glow layers - removed hover effects */}
         <div 
           className={`
             absolute w-[32rem] h-[32rem] rounded-full blur-[4rem] 
@@ -101,32 +99,18 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         `}
         style={{ transitionDelay: `${delay}ms` }}
       >
-        {/* Glassmorphic Card */}
+        {/* Glassmorphic Card - removed all hover effects */}
         <div className={`
           relative z-10
           ${isLeft ? 'mr-6 lg:mr-10' : 'ml-6 lg:ml-10'}
         `}>
           <div className={`
-            relative p-6 lg:p-7 rounded-3xl overflow-hidden
+            relative p-6 lg:p-7 rounded-3xl
             bg-white/[0.02] backdrop-blur-xl
             border border-white/[0.08] shadow-2xl shadow-black/40
           `}>
             
-            {/* Scroll-triggered shimmer effect */}
-            {isVisible && (
-              <div 
-                className={`
-                  absolute inset-0 w-full h-32 bg-gradient-to-b 
-                  ${step.glowColorHover} opacity-25 blur-lg
-                `}
-                style={{
-                  animation: 'shimmerSweep 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-                  animationDelay: `${delay + 200}ms`
-                }}
-              />
-            )}
-            
-            {/* Step Number */}
+            {/* Step Number - removed hover effects */}
             <div className={`flex items-start justify-between mb-5 ${isLeft ? '' : 'flex-row-reverse'}`}>
               <div className="relative">
                 <div className="text-4xl lg:text-5xl font-black text-white/10 leading-none mb-2 font-mono">
@@ -137,14 +121,14 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                 </div>
               </div>
               
-              {/* Icon */}
+              {/* Icon - removed hover effects */}
               <div className="w-5 h-5 text-white/40">
                 <step.icon className="w-full h-full" />
               </div>
             </div>
 
-            {/* Content */}
-            <div className="space-y-3 relative z-10">
+            {/* Content - removed hover effects */}
+            <div className="space-y-3">
               <h3 className={`text-lg lg:text-xl font-bold text-white/95 leading-tight tracking-tight font-sans ${
                 isLeft ? 'text-left' : 'text-right'
               }`} style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
@@ -158,7 +142,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               </p>
             </div>
 
-            {/* Connection line */}
+            {/* Connection line - removed hover effects */}
             <div className={`
               absolute top-1/2 w-6 lg:w-10 h-px -translate-y-0.5
               bg-gradient-to-r from-white/20 to-transparent
@@ -167,7 +151,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               <div className="absolute inset-0 w-1 h-full bg-gradient-to-r from-cyan-400/40 to-transparent rounded-full animate-pulse" />
             </div>
 
-            {/* Static glassmorphic details */}
+            {/* Static glassmorphic details - removed hover effects */}
             <div className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
             <div className="absolute top-4 left-0 w-px h-8 bg-gradient-to-b from-white/25 to-transparent" />
             <div className="absolute top-4 right-0 w-px h-8 bg-gradient-to-b from-white/25 to-transparent" />
@@ -175,6 +159,22 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             {/* Static glass reflection effects */}
             <div className="absolute top-2 left-2 w-16 h-16 bg-gradient-to-br from-white/[0.08] to-transparent rounded-full blur-sm" />
           </div>
+
+          {/* Static glow - removed hover effects */}
+          <div 
+            className={`
+              absolute inset-0 rounded-3xl blur-2xl opacity-0 
+              scale-110 bg-gradient-to-br ${step.glowColorHover}
+            `}
+          />
+          
+          {/* Secondary glow layer - removed hover effects */}
+          <div 
+            className={`
+              absolute inset-0 rounded-3xl blur-xl opacity-0 
+              scale-105 bg-gradient-to-br ${step.glowColorHover}
+            `}
+          />
         </div>
       </div>
     </div>
