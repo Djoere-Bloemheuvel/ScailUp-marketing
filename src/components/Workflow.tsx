@@ -1,18 +1,14 @@
-
 import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
-
 const Workflow = () => {
   const sectionRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      
       const rect = sectionRef.current.getBoundingClientRect();
       const scrolled = window.scrollY;
       const rate = scrolled * -0.02; // Very subtle parallax
-      
+
       if (rect.top <= window.innerHeight && rect.bottom >= 0) {
         sectionRef.current.style.transform = `translateY(${rate}px)`;
       }
@@ -66,34 +62,26 @@ const Workflow = () => {
       }
     `;
     document.head.appendChild(style);
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.head.removeChild(style);
     };
   }, []);
-
-  const steps = [
-    {
-      number: "1",
-      title: "Strategie & Analyse",
-      subtitle: "Samen brengen we je businessdoelen, kansen en AI-potentieel in kaart."
-    },
-    {
-      number: "2", 
-      title: "Ontwerp & Bouw",
-      subtitle: "We ontwerpen en bouwen een eerste versie binnen 2–4 weken."
-    },
-    {
-      number: "3",
-      title: "Optimalisatie & Schaling", 
-      subtitle: "Samen perfectioneren we het product en koppelen het aan je systemen."
-    }
-  ];
-
-  return (
-    <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
+  const steps = [{
+    number: "1",
+    title: "Strategie & Analyse",
+    subtitle: "Samen brengen we je businessdoelen, kansen en AI-potentieel in kaart."
+  }, {
+    number: "2",
+    title: "Ontwerp & Bouw",
+    subtitle: "We ontwerpen en bouwen een eerste versie binnen 2–4 weken."
+  }, {
+    number: "3",
+    title: "Optimalisatie & Schaling",
+    subtitle: "Samen perfectioneren we het product en koppelen het aan je systemen."
+  }];
+  return <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
       {/* Enhanced multi-layered background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
         <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
@@ -105,30 +93,24 @@ const Workflow = () => {
 
       {/* Dynamic floating particles inspired by hero section */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div 
-          className="floating-particle absolute top-20 left-10 w-2 h-2 bg-blue-400/60 rounded-full" 
-          style={{ animationDelay: '0s' }} 
-        />
-        <div 
-          className="floating-particle absolute top-40 right-20 w-1 h-1 bg-purple-400/80 rounded-full" 
-          style={{ animationDelay: '2s' }} 
-        />
-        <div 
-          className="floating-particle absolute bottom-32 left-1/3 w-3 h-3 bg-cyan-400/50 rounded-full" 
-          style={{ animationDelay: '4s' }} 
-        />
-        <div 
-          className="floating-particle pulse-particle absolute bottom-20 right-1/4 w-1.5 h-1.5 bg-emerald-400/70 rounded-full" 
-          style={{ animationDelay: '1s' }} 
-        />
-        <div 
-          className="floating-particle absolute top-1/2 left-1/4 w-1 h-1 bg-violet-400/60 rounded-full" 
-          style={{ animationDelay: '3s' }} 
-        />
-        <div 
-          className="pulse-particle absolute top-3/4 right-1/3 w-2 h-2 bg-blue-300/40 rounded-full" 
-          style={{ animationDelay: '5s' }} 
-        />
+        <div className="floating-particle absolute top-20 left-10 w-2 h-2 bg-blue-400/60 rounded-full" style={{
+        animationDelay: '0s'
+      }} />
+        <div className="floating-particle absolute top-40 right-20 w-1 h-1 bg-purple-400/80 rounded-full" style={{
+        animationDelay: '2s'
+      }} />
+        <div className="floating-particle absolute bottom-32 left-1/3 w-3 h-3 bg-cyan-400/50 rounded-full" style={{
+        animationDelay: '4s'
+      }} />
+        <div className="floating-particle pulse-particle absolute bottom-20 right-1/4 w-1.5 h-1.5 bg-emerald-400/70 rounded-full" style={{
+        animationDelay: '1s'
+      }} />
+        <div className="floating-particle absolute top-1/2 left-1/4 w-1 h-1 bg-violet-400/60 rounded-full" style={{
+        animationDelay: '3s'
+      }} />
+        <div className="pulse-particle absolute top-3/4 right-1/3 w-2 h-2 bg-blue-300/40 rounded-full" style={{
+        animationDelay: '5s'
+      }} />
       </div>
       
       <div className="relative max-w-7xl mx-auto z-10">
@@ -150,7 +132,9 @@ const Workflow = () => {
               <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 impact
               </span>
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full animate-pulse" style={{
+              animationDelay: '0.5s'
+            }} />
             </span>
             .
           </h2>
@@ -162,18 +146,9 @@ const Workflow = () => {
 
           {/* Premium stats or badges */}
           <div className="flex flex-wrap gap-4 mt-8 apple-fade-in apple-stagger-4">
-            <div className="px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
-              <span className="text-cyan-400 font-medium">2-4 weken</span>
-              <span className="text-white/60 ml-2">delivery</span>
-            </div>
-            <div className="px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
-              <span className="text-purple-400 font-medium">100%</span>
-              <span className="text-white/60 ml-2">transparant</span>
-            </div>
-            <div className="px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
-              <span className="text-blue-400 font-medium">Enterprise</span>
-              <span className="text-white/60 ml-2">ready</span>
-            </div>
+            
+            
+            
           </div>
         </div>
 
@@ -187,25 +162,17 @@ const Workflow = () => {
               
               {/* Flowing light effect */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute w-20 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[slide-right_3s_ease-in-out_infinite]" 
-                     style={{
-                       animation: 'slide-right 4s ease-in-out infinite',
-                       animationDelay: '1s'
-                     }} />
+                <div className="absolute w-20 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[slide-right_3s_ease-in-out_infinite]" style={{
+                animation: 'slide-right 4s ease-in-out infinite',
+                animationDelay: '1s'
+              }} />
               </div>
             </div>
           </div>
 
           {/* Steps Grid with enhanced spacing */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
-            {steps.map((step, index) => (
-              <WorkflowStep 
-                key={step.number}
-                step={step} 
-                delay={`${0.3 + index * 0.15}s`}
-                isLast={index === steps.length - 1}
-              />
-            ))}
+            {steps.map((step, index) => <WorkflowStep key={step.number} step={step} delay={`${0.3 + index * 0.15}s`} isLast={index === steps.length - 1} />)}
           </div>
         </div>
 
@@ -221,16 +188,14 @@ const Workflow = () => {
 
       {/* Additional CSS for new animations */}
       <style dangerouslySetInnerHTML={{
-        __html: `
+      __html: `
           @keyframes slide-right {
             0% { transform: translateX(-100px); opacity: 0; }
             50% { transform: translateX(0); opacity: 1; }
             100% { transform: translateX(100px); opacity: 0; }
           }
         `
-      }} />
-    </section>
-  );
+    }} />
+    </section>;
 };
-
 export default Workflow;
