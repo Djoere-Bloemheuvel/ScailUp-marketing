@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 interface WorkflowStepProps {
@@ -87,8 +86,8 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
     >
       <div className="relative flex flex-col items-center space-y-8 transition-all duration-500 ease-out">
         
-        {/* Premium glassmorphism card container with more rounded corners */}
-        <div className={`relative rounded-[2.5rem] backdrop-blur-xl border ${colors.borderGlow} p-8 lg:p-12 transition-all duration-700 hover:scale-105 hover:-translate-y-4 ${colors.glowColor} shadow-2xl cursor-pointer`}
+        {/* Premium circular glassmorphism card container */}
+        <div className={`relative w-80 h-80 lg:w-96 lg:h-96 rounded-full backdrop-blur-xl border ${colors.borderGlow} flex flex-col items-center justify-center transition-all duration-700 hover:scale-105 hover:-translate-y-4 ${colors.glowColor} shadow-2xl cursor-pointer`}
              style={{
                background: `
                  linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.01) 100%),
@@ -114,8 +113,8 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
             <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.accent} blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500 scale-110`} />
           </div>
 
-          {/* Content with premium typography */}
-          <div className="space-y-6 max-w-sm">
+          {/* Content with premium typography - centered in circle */}
+          <div className="space-y-6 max-w-xs text-center px-8">
             <h3 className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight transition-all duration-500 relative group-hover:-translate-y-1">
               {step.title}
               
@@ -123,7 +122,7 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
               <div className={`absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${colors.accent} rounded-full transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100`} />
             </h3>
             
-            <p className="text-premium-silver/80 leading-relaxed text-lg lg:text-xl font-light tracking-wide transition-all duration-500 group-hover:text-premium-silver/95 group-hover:scale-105">
+            <p className="text-premium-silver/80 leading-relaxed text-base lg:text-lg font-light tracking-wide transition-all duration-500 group-hover:text-premium-silver/95 group-hover:scale-105">
               {step.subtitle}
             </p>
 
@@ -135,14 +134,14 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
             </div>
           </div>
 
-          {/* Premium accent elements - all with rounded styling */}
-          <div className={`absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent ${colors.iconGlow.replace('text-', 'via-')} to-transparent opacity-30 group-hover:opacity-60 transition-all duration-500`} />
-          <div className={`absolute top-4 right-4 w-3 h-3 rounded-full ${colors.iconGlow.replace('text-', 'bg-')} opacity-40 group-hover:opacity-80 transition-all duration-500`} />
+          {/* Premium accent elements - circular positioning */}
+          <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-px bg-gradient-to-r from-transparent ${colors.iconGlow.replace('text-', 'via-')} to-transparent opacity-30 group-hover:opacity-60 transition-all duration-500`} />
+          <div className={`absolute top-8 right-8 w-3 h-3 rounded-full ${colors.iconGlow.replace('text-', 'bg-')} opacity-40 group-hover:opacity-80 transition-all duration-500`} />
         </div>
 
         {/* Connection line for desktop */}
         {!isLast && (
-          <div className="hidden lg:block absolute top-20 -right-1/2 w-full h-px z-10">
+          <div className="hidden lg:block absolute top-40 -right-1/2 w-full h-px z-10">
             <div className={`w-full h-full bg-gradient-to-r ${colors.connectionColor} to-transparent transition-all duration-500`} />
             {/* Flowing light effect */}
             <div className="absolute inset-0 w-8 h-full bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-[slide-connection_2s_ease-in-out_infinite]" />
@@ -163,8 +162,8 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
         </div>
       </div>
 
-      {/* Enhanced floating shadow with premium depth - rounded */}
-      <div className="absolute inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-pink-500/6 opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10 blur-3xl transform translate-y-8 group-hover:translate-y-12 group-hover:scale-110" />
+      {/* Enhanced floating shadow with premium depth - circular */}
+      <div className="absolute inset-8 rounded-full bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-pink-500/6 opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10 blur-3xl transform translate-y-8 group-hover:translate-y-12 group-hover:scale-110" />
 
       {/* CSS animations */}
       <style dangerouslySetInnerHTML={{
