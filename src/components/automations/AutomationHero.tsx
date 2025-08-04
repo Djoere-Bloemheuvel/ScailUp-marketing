@@ -1,4 +1,5 @@
-import { Cog, Clock } from 'lucide-react';
+
+import { Cog, Clock, Zap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const AutomationHero = () => {

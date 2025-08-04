@@ -1,4 +1,4 @@
-import { Brain, Sparkles, Zap, Code, Layers, Target } from 'lucide-react';
+import { Code, Layers, Target } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const CustomSaaSHero = () => {
