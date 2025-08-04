@@ -123,7 +123,7 @@ const Workflow = () => {
       
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Enhanced header with more visual interest */}
-        <div className="text-left mb-16 lg:mb-20">
+        <div className="text-left mb-10 lg:mb-12">
           {/* Subtle accent line above title */}
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
           
