@@ -1,6 +1,7 @@
 
 import { Brain, Code, Layers, Zap, BarChart, Cog } from 'lucide-react';
 import ScrollHeader from '@/components/ScrollHeader';
+import CustomSaaSNewHero from '@/components/saas/CustomSaaSNewHero';
 import CustomSaaSHero from '@/components/saas/CustomSaaSHero';
 import CustomSaaSExplained from '@/components/saas/CustomSaaSExplained';
 import CustomSaaSOverview from '@/components/saas/CustomSaaSOverview';
@@ -76,7 +77,10 @@ const CustomAISaaS = () => {
     <div className="min-h-screen bg-premium-black">
       <ScrollHeader />
       
-      {/* Hero Section */}
+      {/* New Hero Section - Top of page */}
+      <CustomSaaSNewHero />
+
+      {/* Original Hero Section */}
       <CustomSaaSHero />
 
       {/* Section 1 - Wat is Custom AI SaaS? */}
