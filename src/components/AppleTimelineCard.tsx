@@ -46,7 +46,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
       ref={cardRef}
       className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
-      {/* Enhanced Background Ambient Glow - More intense with extended reach */}
+      {/* Enhanced Background Ambient Glow - Reduced intensity by 20% */}
       <div
         className={`
           absolute inset-0 transition-all duration-1000 ease-out pointer-events-none
@@ -54,38 +54,38 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         `}
         style={{ transitionDelay: `${delay}ms` }}
       >
-        {/* Primary ambient glow - Larger and more intense */}
+        {/* Primary ambient glow - Reduced from opacity-50 to opacity-40 */}
         <div 
           className={`
             absolute w-[32rem] h-[32rem] rounded-full blur-[4rem] transition-all duration-1000
-            bg-gradient-to-br ${step.glowColor} opacity-50 scale-200
+            bg-gradient-to-br ${step.glowColor} opacity-40 scale-200
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
           `}
         />
         
-        {/* Secondary glow layer - Extended and more visible */}
+        {/* Secondary glow layer - Reduced from opacity-35 to opacity-28 */}
         <div 
           className={`
             absolute w-80 h-80 rounded-full blur-3xl transition-all duration-700
-            bg-gradient-to-br ${step.glowColor} opacity-35 scale-175
+            bg-gradient-to-br ${step.glowColor} opacity-28 scale-175
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
           `}
         />
 
-        {/* Tertiary focused glow - More prominent */}
+        {/* Tertiary focused glow - Reduced from opacity-60 to opacity-48 */}
         <div 
           className={`
             absolute w-48 h-48 rounded-full blur-2xl transition-all duration-500
-            bg-gradient-to-br ${step.glowColorHover} opacity-60
+            bg-gradient-to-br ${step.glowColorHover} opacity-48
             ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
           `}
         />
 
-        {/* Additional outer glow for extended reach */}
+        {/* Additional outer glow - Reduced from opacity-25 to opacity-20 */}
         <div 
           className={`
             absolute w-[40rem] h-[40rem] rounded-full blur-[5rem] transition-all duration-1200
-            bg-gradient-to-br ${step.glowColor} opacity-25 scale-150
+            bg-gradient-to-br ${step.glowColor} opacity-20 scale-150
             ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
           `}
         />
