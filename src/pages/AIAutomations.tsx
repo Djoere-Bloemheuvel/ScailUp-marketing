@@ -1,5 +1,7 @@
+
 import { Users, FileText, Zap, CreditCard, BarChart, RefreshCw } from 'lucide-react';
 import ScrollHeader from '@/components/ScrollHeader';
+import AutomationSecondHero from '@/components/automations/AutomationSecondHero';
 import AutomationHero from '@/components/automations/AutomationHero';
 import AutomationOverview from '@/components/automations/AutomationOverview';
 import AutomationExplained from '@/components/automations/AutomationExplained';
@@ -75,7 +77,10 @@ const AIAutomations = () => {
     <div className="min-h-screen bg-premium-black">
       <ScrollHeader />
       
-      {/* Hero Section */}
+      {/* New Second Hero Section - Above current hero */}
+      <AutomationSecondHero />
+
+      {/* Original Hero Section */}
       <AutomationHero />
 
       {/* Section 1 - Wat is AI Automatisering? */}
