@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 interface WorkflowStepProps {
@@ -14,6 +13,78 @@ interface WorkflowStepProps {
 
 const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepProps) => {
   const stepRef = useRef<HTMLDivElement>(null);
+
+  // Get color scheme based on step number
+  const getColorScheme = (stepNumber: string) => {
+    switch (stepNumber) {
+      case "1":
+        return {
+          circle: "from-emerald-500 via-green-400 to-teal-400",
+          glowBase: [
+            "from-emerald-400/30 via-green-300/25 to-teal-400/20",
+            "from-emerald-200/20 via-green-200/15 to-teal-200/12",
+            "from-teal-300/15 via-emerald-300/12 to-green-300/12"
+          ],
+          glowAnimated: [
+            "from-emerald-400/20 via-green-300/15 to-teal-400/10",
+            "from-emerald-200/15 via-green-200/10 to-teal-200/8",
+            "from-teal-300/10 via-emerald-300/8 to-green-300/8"
+          ],
+          connection: "from-emerald-400/40 to-green-400/40",
+          connectionHover: "from-emerald-400/60 to-green-400/60"
+        };
+      case "2":
+        return {
+          circle: "from-blue-500 via-cyan-400 to-indigo-400",
+          glowBase: [
+            "from-blue-400/30 via-cyan-300/25 to-indigo-400/20",
+            "from-blue-200/20 via-cyan-200/15 to-indigo-200/12",
+            "from-indigo-300/15 via-blue-300/12 to-cyan-300/12"
+          ],
+          glowAnimated: [
+            "from-blue-400/20 via-cyan-300/15 to-indigo-400/10",
+            "from-blue-200/15 via-cyan-200/10 to-indigo-200/8",
+            "from-indigo-300/10 via-blue-300/8 to-cyan-300/8"
+          ],
+          connection: "from-blue-400/40 to-cyan-400/40",
+          connectionHover: "from-blue-400/60 to-cyan-400/60"
+        };
+      case "3":
+        return {
+          circle: "from-purple-500 via-violet-400 to-fuchsia-400",
+          glowBase: [
+            "from-purple-400/30 via-violet-300/25 to-fuchsia-400/20",
+            "from-purple-200/20 via-violet-200/15 to-fuchsia-200/12",
+            "from-fuchsia-300/15 via-purple-300/12 to-violet-300/12"
+          ],
+          glowAnimated: [
+            "from-purple-400/20 via-violet-300/15 to-fuchsia-400/10",
+            "from-purple-200/15 via-violet-200/10 to-fuchsia-200/8",
+            "from-fuchsia-300/10 via-purple-300/8 to-violet-300/8"
+          ],
+          connection: "from-purple-400/40 to-violet-400/40",
+          connectionHover: "from-purple-400/60 to-violet-400/60"
+        };
+      default:
+        return {
+          circle: "from-white via-white to-gray-100",
+          glowBase: [
+            "from-blue-400/30 via-purple-300/25 to-cyan-400/20",
+            "from-white/20 via-blue-200/15 to-purple-200/12",
+            "from-cyan-300/15 via-white/12 to-blue-300/12"
+          ],
+          glowAnimated: [
+            "from-blue-400/20 via-purple-300/15 to-cyan-400/10",
+            "from-white/15 via-blue-200/10 to-purple-200/8",
+            "from-cyan-300/10 via-white/8 to-blue-300/8"
+          ],
+          connection: "from-white/50 via-cyan-400/40",
+          connectionHover: "from-white/70 via-cyan-400/60"
+        };
+    }
+  };
+
+  const colors = getColorScheme(step.number);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -127,10 +198,10 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
     >
       <div className="relative flex flex-col items-center space-y-8 p-8 lg:p-12 transition-all duration-500 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer">
         
-        {/* Enhanced number circle with premium continuous glow effects */}
+        {/* Enhanced number circle with step-specific colors */}
         <div className="relative">
-          <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-white via-white to-gray-100 flex items-center justify-center relative z-10 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-blue-500/30 group-hover:scale-110">
-            <span className="text-3xl lg:text-4xl font-bold text-black tracking-tight relative">
+          <div className={`w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br ${colors.circle} flex items-center justify-center relative z-10 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-blue-500/30 group-hover:scale-110`}>
+            <span className="text-3xl lg:text-4xl font-bold text-white tracking-tight relative drop-shadow-lg">
               {step.number}
               {/* Subtle inner highlight */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -144,15 +215,15 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
             </div>
           </div>
           
-          {/* Always-visible base glow layers */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/30 via-purple-300/25 to-cyan-400/20 scale-110 transition-all duration-700 group-hover:scale-125" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-blue-200/15 to-purple-200/12 scale-125 transition-all duration-700 group-hover:scale-140" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/15 via-white/12 to-blue-300/12 scale-150 transition-all duration-700 group-hover:scale-175" />
+          {/* Always-visible base glow layers with step-specific colors */}
+          <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.glowBase[0]} scale-110 transition-all duration-700 group-hover:scale-125`} />
+          <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.glowBase[1]} scale-125 transition-all duration-700 group-hover:scale-140`} />
+          <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.glowBase[2]} scale-150 transition-all duration-700 group-hover:scale-175`} />
           
-          {/* Multi-layered continuous glow effects */}
-          <div className="premium-glow-pulse absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 via-purple-300/15 to-cyan-400/10 scale-110 group-hover:scale-125 transition-all duration-700" />
-          <div className="premium-glow-pulse-delayed absolute inset-0 rounded-full bg-gradient-to-br from-white/15 via-blue-200/10 to-purple-200/8 scale-125 group-hover:scale-140 transition-all duration-700" />
-          <div className="premium-glow-pulse-tertiary absolute inset-0 rounded-full bg-gradient-to-br from-cyan-300/10 via-white/8 to-blue-300/8 scale-150 group-hover:scale-175 transition-all duration-700" />
+          {/* Multi-layered continuous glow effects with step-specific colors */}
+          <div className={`premium-glow-pulse absolute inset-0 rounded-full bg-gradient-to-br ${colors.glowAnimated[0]} scale-110 group-hover:scale-125 transition-all duration-700`} />
+          <div className={`premium-glow-pulse-delayed absolute inset-0 rounded-full bg-gradient-to-br ${colors.glowAnimated[1]} scale-125 group-hover:scale-140 transition-all duration-700`} />
+          <div className={`premium-glow-pulse-tertiary absolute inset-0 rounded-full bg-gradient-to-br ${colors.glowAnimated[2]} scale-150 group-hover:scale-175 transition-all duration-700`} />
           
           {/* Pulsing ring effect */}
           <div className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-125 animate-pulse" />
@@ -160,10 +231,10 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
           {/* Premium orbital ring */}
           <div className="absolute inset-[-4px] rounded-full border border-gradient-to-r from-cyan-400/30 via-transparent to-purple-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-[spin_8s_linear_infinite]" />
           
-          {/* Connection line with enhanced styling */}
+          {/* Connection line with step-specific colors */}
           {!isLast && (
             <div className="hidden lg:block absolute top-1/2 -right-1/2 w-full h-px">
-              <div className="w-full h-full bg-gradient-to-r from-white/50 via-cyan-400/40 to-transparent group-hover:from-white/70 group-hover:via-cyan-400/60 transition-all duration-500" />
+              <div className={`w-full h-full bg-gradient-to-r ${colors.connection} to-transparent group-hover:${colors.connectionHover} transition-all duration-500`} />
               {/* Flowing accent */}
               <div className="absolute inset-0 w-8 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-[slide-connection_2s_ease-in-out_infinite]" />
             </div>
