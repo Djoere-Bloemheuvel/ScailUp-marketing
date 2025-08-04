@@ -75,7 +75,7 @@ const CustomSaaSFinalCTA = () => {
             
             {/* Enhanced subtitle */}
             <p className="text-lg md:text-xl text-premium-silver/90 leading-relaxed font-light max-w-2xl mx-auto">
-              Plan een gratis consult en ontdek wat er mogelijk is binnen jouw sector.
+              Plan een gratis strategiesessie en ontdek hoe een AI SaaS-oplossing op maat jouw organisatie kan helpen versnellen, schalen en concurreren in een datagedreven wereld.
             </p>
 
             {/* Premium CTA button with enhanced effects */}

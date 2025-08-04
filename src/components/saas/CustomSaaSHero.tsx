@@ -1,4 +1,3 @@
-
 import { Brain, Sparkles, Zap, Code, Layers, Target } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -94,8 +93,7 @@ const CustomSaaSHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-premium-silver/80 max-w-4xl mx-auto leading-relaxed mb-12">
-            Wij bouwen schaalbare AI-gedreven software-oplossingen, volledig afgestemd op jouw organisatie. 
-            Van prototype tot product – zonder afhankelijk te zijn van developers.
+            Wij ontwikkelen schaalbare AI-software-oplossingen die volledig zijn afgestemd op jouw processen, workflows en klanten. Denk aan slimme platforms die zelfstandig leren, gepersonaliseerde gebruikerservaringen bieden en jouw bedrijf helpen sneller te groeien. Van idee tot een volwaardig AI SaaS product – zonder dat je een eigen ontwikkelteam nodig hebt.
           </p>
         </div>
 

@@ -20,7 +20,7 @@ const CustomSaaSExplained = () => {
             </h2>
             
             <p className="text-lg md:text-xl text-premium-silver/80 leading-relaxed font-light">
-              Custom AI SaaS is software die speciaal is ontwikkeld voor jouw bedrijf, met AI als kernmotor. In plaats van standaardtools bieden wij maatwerkoplossingen die volledig aansluiten op je processen, workflows en klanten.
+              Custom AI SaaS is software die volledig op maat wordt gebouwd voor jouw bedrijf, waarbij kunstmatige intelligentie de motor vormt achter alle functionaliteiten. In tegenstelling tot generieke tools, creëren wij intelligente oplossingen die perfect aansluiten op jouw interne processen, klantinteracties en datastromen. Of het nu gaat om predictive analytics, AI-gedreven dashboards of automatisering van klantvragen: wij bouwen een AI-oplossing die past als een handschoen.
             </p>
 
             {/* Key Points */}

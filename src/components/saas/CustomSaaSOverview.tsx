@@ -95,7 +95,7 @@ const CustomSaaSOverview = () => {
             </h2>
             
             <p className="text-lg md:text-xl text-premium-silver/80 leading-relaxed font-light">
-              Of je nu een MVP nodig hebt, een AI-model wilt integreren in je SaaS of een complete nieuwe dienst wilt lanceren: wij begeleiden het hele traject. Met no-code en schaalbare architectuur.
+              Of je nu een eerste MVP (Minimum Viable Product) wilt ontwikkelen, een bestaand platform wilt verrijken met AI-functionaliteiten of een compleet nieuw AI SaaS product wilt lanceren – wij begeleiden je van start tot schaal. Dankzij onze no-code en low-code werkwijze kunnen we razendsnel prototypes opleveren, testen met echte gebruikers en direct doorontwikkelen naar een schaalbare oplossing. Alles wordt gebouwd op een flexibele en veilige AI-architectuur, klaar voor groei.
             </p>
 
             {/* Process Benefits */}
