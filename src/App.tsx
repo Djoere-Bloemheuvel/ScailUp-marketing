@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import AIAutomations from "./pages/AIAutomations";
 import CustomAISaaS from "./pages/CustomAISaaS";
 import Consultancy from "./pages/Consultancy";
+import AutonomousAIAgents from "./pages/AutonomousAIAgents";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/ai-automations" element={<AIAutomations />} />
           <Route path="/custom-ai-saas" element={<CustomAISaaS />} />
           <Route path="/consultancy" element={<Consultancy />} />
+          <Route path="/autonomous-ai-agents" element={<AutonomousAIAgents />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
