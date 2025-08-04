@@ -21,11 +21,11 @@ const WhyBuildrs = () => {
             
             <div className="text-lg md:text-xl text-premium-silver/80 leading-relaxed font-light space-y-6">
               <p>
-                Buildrs helpt bedrijven om repetitieve processen te automatiseren met slimme AI-oplossingen. We combineren strategisch inzicht met technische uitvoering en bouwen binnen weken een werkende oplossing – zonder complexiteit.
+                Buildrs helpt ambitieuze bedrijven bij het automatiseren van repetitieve bedrijfsprocessen met geavanceerde AI-oplossingen. Door strategisch inzicht te combineren met technische perfectie, realiseren we in slechts enkele weken werkende automatiseringen — zonder de gebruikelijke complexiteit of afhankelijkheid van IT-teams.
               </p>
               
               <p>
-                Ons team denkt mee over efficiëntie, veiligheid en schaalbaarheid, zodat jij je kunt focussen op groei. We zorgen dat de technologie precies aansluit op jouw bedrijfsprocessen.
+                Onze aanpak is ontworpen voor bedrijven die snelheid, schaalbaarheid en veiligheid eisen. We zorgen ervoor dat de technologie naadloos aansluit op jouw bestaande workflows, systemen en groeidoelstellingen. Van leadgeneratie en klantonboarding tot interne rapportage en facturatie: wij bouwen slimme automatiseringen die je organisatie structureel sneller en efficiënter laten werken.
               </p>
             </div>
 
@@ -37,7 +37,7 @@ const WhyBuildrs = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-2">Snelle implementatie</h3>
-                  <p className="text-premium-silver/70 leading-relaxed">Van idee naar werkende automatisering in 2-4 weken</p>
+                  <p className="text-premium-silver/70 leading-relaxed">Van idee naar werkende AI-automatisering in slechts 1-2 weken</p>
                 </div>
               </div>
 
@@ -47,7 +47,7 @@ const WhyBuildrs = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-2">Betrouwbaar & veilig</h3>
-                  <p className="text-premium-silver/70 leading-relaxed">Enterprise-grade beveiliging met volledige compliance</p>
+                  <p className="text-premium-silver/70 leading-relaxed">Enterprise-grade beveiliging, volledige datacompliance en bewezen infrastructuur</p>
                 </div>
               </div>
 
@@ -57,7 +57,7 @@ const WhyBuildrs = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-2">Persoonlijke begeleiding</h3>
-                  <p className="text-premium-silver/70 leading-relaxed">Dedicated support van strategie tot doorlopende optimalisatie</p>
+                  <p className="text-premium-silver/70 leading-relaxed">Dedicate support van strategie tot fine-tuning, met focus op duurzame groei</p>
                 </div>
               </div>
             </div>
