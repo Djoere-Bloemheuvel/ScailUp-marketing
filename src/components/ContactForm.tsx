@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Send, Loader2, AlertCircle } from 'lucide-react';
 
@@ -110,10 +110,13 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
     
     if (!validateForm()) {
       // Focus on first error field for accessibility
-      const firstErrorField = Object.keys(errors)[0] as keyof FormData;
+      const errorKeys = Object.keys(errors) as Array<keyof FormData>;
+      const firstErrorField = errorKeys[0];
       if (firstErrorField) {
         const element = document.getElementById(firstErrorField);
-        element?.focus();
+        if (element) {
+          element.focus();
+        }
       }
       return;
     }
@@ -128,8 +131,8 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         email: sanitizeInput(formData.email),
         bericht: sanitizeInput(formData.bericht),
         timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        referrer: document.referrer
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+        referrer: typeof document !== 'undefined' ? document.referrer : ''
       };
 
       console.log('Contact form submission:', sanitizedData);
@@ -322,7 +325,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         />
         <div id="bericht-help" className="text-xs text-white/50 flex justify-between">
           <span>Vertel ons over uw AI-uitdagingen en doelen (10-2000 tekens)</span>
-          <span aria-live="polite">{formData.bericht.length}/2000</span>
+          <span aria-live="polite">{formData.bericht?.length || 0}/2000</span>
         </div>
         {errors.bericht && (
           <p id="bericht-error" role="alert" className="text-sm text-red-400 flex items-center space-x-1">

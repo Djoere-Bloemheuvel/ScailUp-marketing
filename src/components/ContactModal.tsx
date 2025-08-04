@@ -25,12 +25,14 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     setIsSubmitted(true);
     
     // Focus management for accessibility
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       const successElement = document.getElementById('contact-success-message');
       if (successElement) {
         successElement.focus();
       }
     }, 100);
+    
+    return () => clearTimeout(timer);
     
     // Auto-close after 4 seconds
     setTimeout(() => {
