@@ -109,9 +109,6 @@ const AgentExplained = () => {
                   { angle: 240, icon: Zap, color: 'indigo', delay: 8 },
                   { angle: 300, icon: Brain, color: 'purple', delay: 10 }
                 ].map((agent, i) => {
-                  const x = Math.cos((agent.angle * Math.PI) / 180) * 110;
-                  const y = Math.sin((agent.angle * Math.PI) / 180) * 110;
-                  
                   return (
                     <div
                       key={`agent-${i}`}
