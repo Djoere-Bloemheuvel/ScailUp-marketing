@@ -1,8 +1,8 @@
-
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
+import SimpleGradientBackground from '@/components/hero/SimpleGradientBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
 
@@ -272,53 +272,61 @@ const Contact = () => {
       />
 
       <main id="main-content" role="main" className="min-h-screen bg-premium-black relative overflow-hidden">
-        {/* Cinematic Background */}
-        <div className="absolute inset-0">
-          <CinematicBackground hideGlassContainer={true} />
-        </div>
+        
+        {/* TOP SECTION - Now with Simple Background */}
+        <section className="relative min-h-[60vh] flex items-center justify-center px-4 py-20">
+          {/* Simple Gradient Background */}
+          <div className="absolute inset-0">
+            <SimpleGradientBackground />
+          </div>
 
-        {/* Premium Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-          {/* Main Content Container */}
-          <div className="relative w-full max-w-7xl mx-auto">
-            {/* Hero Text */}
-            <div className="text-center mb-20">
-              <div className="animate-fade-in">
-                <p className="text-lg md:text-xl text-premium-silver/70 mb-6 font-light tracking-wide">
-                  Klaar om te beginnen?
-                </p>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-apple">
-                  Laten we
-                  <br />
-                  <span className="bg-gradient-to-r from-premium-silver via-white to-premium-silver bg-clip-text text-transparent">
-                    praten
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl mx-auto leading-relaxed font-light">
-                  Een strategische verkenning van 60 minuten.
-                  <br />
-                  <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
-                </p>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="flex items-center justify-center space-x-8 mt-12 text-premium-silver/60">
-                <div className="flex items-center space-x-2">
-                  <Clock className="h-5 w-5" />
-                  <span className="text-sm font-medium">60 minuten gratis</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5" />
-                  <span className="text-sm font-medium">Concrete inzichten</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Sparkles className="h-5 w-5" />
-                  <span className="text-sm font-medium">Maatwerkvoorstel</span>
-                </div>
-              </div>
+          {/* Hero Content */}
+          <div className="relative w-full max-w-7xl mx-auto text-center">
+            <div className="animate-fade-in">
+              <p className="text-lg md:text-xl text-premium-silver/70 mb-6 font-light tracking-wide">
+                Klaar om te beginnen?
+              </p>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-apple">
+                Laten we
+                <br />
+                <span className="bg-gradient-to-r from-premium-silver via-white to-premium-silver bg-clip-text text-transparent">
+                  praten
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl mx-auto leading-relaxed font-light">
+                Een strategische verkenning van 60 minuten.
+                <br />
+                <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
+              </p>
             </div>
 
-            {/* Main Content Grid */}
+            {/* Trust Indicators */}
+            <div className="flex items-center justify-center space-x-8 mt-12 text-premium-silver/60">
+              <div className="flex items-center space-x-2">
+                <Clock className="h-5 w-5" />
+                <span className="text-sm font-medium">60 minuten gratis</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5" />
+                <span className="text-sm font-medium">Concrete inzichten</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Sparkles className="h-5 w-5" />
+                <span className="text-sm font-medium">Maatwerkvoorstel</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* BOTTOM SECTION - Now with Cinematic Background */}
+        <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+          {/* Cinematic Background */}
+          <div className="absolute inset-0">
+            <CinematicBackground hideGlassContainer={true} />
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="relative w-full max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-20 items-start">
               
               {/* Contact Information */}

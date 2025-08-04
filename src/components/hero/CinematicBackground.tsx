@@ -1,16 +1,13 @@
 
-import React from 'react';
 import AICoreCenter from './AICoreCenter';
 import AmbientLighting from './AmbientLighting';
 import PremiumOrbs from './PremiumOrbs';
 
 interface CinematicBackgroundProps {
-  isInitialLoadComplete?: boolean;
   hideGlassContainer?: boolean;
 }
 
 const CinematicBackground = ({
-  isInitialLoadComplete = false,
   hideGlassContainer = false
 }: CinematicBackgroundProps) => {
   return (
