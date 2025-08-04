@@ -26,10 +26,8 @@ const Approach = () => {
           </div>
           
           {/* Subtitle with Apple typography */}
-          <p className="text-white/55 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
-            Ontdek hoe wij elk project transformeren van concept naar
-            <br className="hidden md:block" />
-            game-changing realiteit.
+          <p className="text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+            Dit zijn de vier principes waarmee we elk project tot een succes maken.
           </p>
         </div>
 
