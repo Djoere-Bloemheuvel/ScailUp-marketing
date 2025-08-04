@@ -21,44 +21,45 @@ const Workflow = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 px-4 relative overflow-hidden bg-black">
-      {/* Ambient background effects */}
-      <div className="absolute inset-0 opacity-15">
-        <div className="absolute top-1/4 left-1/6 w-72 lg:w-96 h-72 lg:h-96 bg-gradient-radial from-white/3 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/8 w-64 lg:w-80 h-64 lg:h-80 bg-gradient-radial from-white/2 to-transparent rounded-full blur-3xl" />
+    <section className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black">
+      {/* Subtle radial gradient glow behind center */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="w-[800px] h-[600px] bg-gradient-radial from-white/5 via-white/2 to-transparent rounded-full blur-3xl" />
       </div>
       
-      <div className="relative max-w-6xl mx-auto z-10">
+      <div className="relative max-w-7xl mx-auto z-10">
         {/* Header Section */}
-        <div className="text-center mb-20 lg:mb-24">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 lg:mb-8 apple-fade-in apple-stagger-2 tracking-tight">
+        <div className="text-center mb-24 lg:mb-32">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             Onze werkwijze
           </h2>
           
-          <p className="text-white/60 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light leading-relaxed apple-fade-in apple-stagger-3 tracking-wide">
+          <p className="text-white/60 text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto font-light leading-relaxed apple-fade-in apple-stagger-3 tracking-wide">
             In drie heldere stappen van idee naar impact.
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 max-w-5xl mx-auto relative">
-          {steps.map((step, index) => (
-            <div key={step.number} className="relative">
-              <WorkflowStep 
-                step={step} 
-                delay={`${0.1 + index * 0.15}s`} 
-              />
-              
-              {/* Remove connecting line from last step */}
-              {index === steps.length - 1 && (
-                <style>{`
-                  .group:last-child .absolute.top-8.-right-1\\/2 {
-                    display: none;
-                  }
-                `}</style>
-              )}
+        {/* Horizontal Timeline */}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Connecting Line */}
+          <div className="hidden lg:block absolute top-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
+            <div className="relative h-px">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400/20 to-transparent animate-pulse" />
             </div>
-          ))}
+          </div>
+
+          {/* Steps Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8">
+            {steps.map((step, index) => (
+              <WorkflowStep 
+                key={step.number}
+                step={step} 
+                delay={`${0.2 + index * 0.15}s`}
+                isLast={index === steps.length - 1}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
