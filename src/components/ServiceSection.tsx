@@ -35,7 +35,9 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   
   // Determine layout order - Autonomous AI Agents should have text on right, visual on left
   const isAutonomousAgents = service.id === 'autonomous-agents';
-  const isEven = isAutonomousAgents ? false : (index % 2 === 1); // Force Autonomous AI Agents to left visual layout
+  // For Autonomous AI Agents: force isEven to true (visual left, text right)
+  // For others: use normal alternating pattern
+  const isEven = isAutonomousAgents ? true : (index % 2 === 1);
   const shouldShowContent = hasBeenVisible || isVisible;
 
   // Determine service type for routing
@@ -61,7 +63,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
       <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
-        {/* Content - Left for odd sections (1st, 3rd), Right for even sections (2nd, 4th) */}
+        {/* Content - Left for normal sections, Right for Autonomous AI Agents */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
           <div className={`transition-all duration-1000 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             
@@ -131,7 +133,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
           </div>
         </div>
 
-        {/* Visual Element - Right for odd sections (1st, 3rd), Left for even sections (2nd, 4th) */}
+        {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
           <div 
             className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
