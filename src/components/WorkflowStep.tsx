@@ -87,8 +87,8 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
     >
       <div className="relative flex flex-col items-center space-y-8 transition-all duration-500 ease-out">
         
-        {/* Premium glassmorphism card container inspired by services section */}
-        <div className={`relative rounded-3xl backdrop-blur-xl border ${colors.borderGlow} p-8 lg:p-12 transition-all duration-700 hover:scale-105 hover:-translate-y-4 ${colors.glowColor} shadow-2xl cursor-pointer`}
+        {/* Premium glassmorphism card container with more rounded corners */}
+        <div className={`relative rounded-[2.5rem] backdrop-blur-xl border ${colors.borderGlow} p-8 lg:p-12 transition-all duration-700 hover:scale-105 hover:-translate-y-4 ${colors.glowColor} shadow-2xl cursor-pointer`}
              style={{
                background: `
                  linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.01) 100%),
@@ -97,21 +97,21 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
                animation: `workflowCardEntrance 1s ease-out forwards ${delay}`
              }}>
           
-          {/* Icon container with premium styling */}
+          {/* Icon container with perfect circle styling */}
           <div className="relative mb-8">
-            <div className={`w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-gradient-to-br ${colors.accent} border ${colors.borderGlow} backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-all duration-500 ${colors.glowColor}`}>
+            <div className={`w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br ${colors.accent} border ${colors.borderGlow} backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-all duration-500 ${colors.glowColor}`}>
               <span className="text-3xl lg:text-4xl font-bold text-white tracking-tight relative drop-shadow-lg">
                 {step.number}
               </span>
               
-              {/* Subtle inner highlight */}
+              {/* Subtle inner highlight - perfect circle */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br from-white/30 to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-white/30 to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
               </div>
             </div>
             
-            {/* Ambient icon glow */}
-            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${colors.accent} blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500 scale-110`} />
+            {/* Ambient icon glow - perfect circle */}
+            <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.accent} blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500 scale-110`} />
           </div>
 
           {/* Content with premium typography */}
@@ -119,7 +119,7 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
             <h3 className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight transition-all duration-500 relative group-hover:-translate-y-1">
               {step.title}
               
-              {/* Premium accent line */}
+              {/* Premium accent line with rounded ends */}
               <div className={`absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${colors.accent} rounded-full transition-all duration-500 group-hover:w-full opacity-0 group-hover:opacity-100`} />
             </h3>
             
@@ -127,7 +127,7 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
               {step.subtitle}
             </p>
 
-            {/* Step indicator */}
+            {/* Step indicator with round elements */}
             <div className="flex items-center justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
               <div className={`w-2 h-2 bg-gradient-to-r ${colors.accent} rounded-full animate-pulse`} />
               <span className="text-premium-silver/60 text-sm font-medium">Stap {step.number}</span>
@@ -135,9 +135,9 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
             </div>
           </div>
 
-          {/* Premium accent elements */}
+          {/* Premium accent elements - all with rounded styling */}
           <div className={`absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent ${colors.iconGlow.replace('text-', 'via-')} to-transparent opacity-30 group-hover:opacity-60 transition-all duration-500`} />
-          <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${colors.iconGlow.replace('text-', 'bg-')} opacity-40 group-hover:opacity-80 transition-all duration-500`} />
+          <div className={`absolute top-4 right-4 w-3 h-3 rounded-full ${colors.iconGlow.replace('text-', 'bg-')} opacity-40 group-hover:opacity-80 transition-all duration-500`} />
         </div>
 
         {/* Connection line for desktop */}
@@ -156,15 +156,15 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
           </div>
         )}
 
-        {/* Floating ambient particles */}
+        {/* Floating ambient particles - all perfectly round */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className={`absolute top-1/4 -right-2 w-1 h-1 ${colors.iconGlow.replace('text-', 'bg-')} rounded-full animate-pulse opacity-60`} style={{ animationDelay: `1000ms` }} />
-          <div className={`absolute bottom-1/3 -left-2 w-1.5 h-1.5 ${colors.iconGlow.replace('text-', 'bg-')} rounded-full animate-pulse opacity-40`} style={{ animationDelay: `1500ms` }} />
+          <div className={`absolute top-1/4 -right-2 w-2 h-2 ${colors.iconGlow.replace('text-', 'bg-')} rounded-full animate-pulse opacity-60`} style={{ animationDelay: `1000ms` }} />
+          <div className={`absolute bottom-1/3 -left-2 w-3 h-3 ${colors.iconGlow.replace('text-', 'bg-')} rounded-full animate-pulse opacity-40`} style={{ animationDelay: `1500ms` }} />
         </div>
       </div>
 
-      {/* Enhanced floating shadow with premium depth */}
-      <div className="absolute inset-4 rounded-3xl bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-pink-500/6 opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10 blur-3xl transform translate-y-8 group-hover:translate-y-12 group-hover:scale-110" />
+      {/* Enhanced floating shadow with premium depth - rounded */}
+      <div className="absolute inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue-500/10 via-purple-500/8 to-pink-500/6 opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10 blur-3xl transform translate-y-8 group-hover:translate-y-12 group-hover:scale-110" />
 
       {/* CSS animations */}
       <style dangerouslySetInnerHTML={{
