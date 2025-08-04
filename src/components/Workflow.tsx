@@ -49,8 +49,8 @@ const Workflow = () => {
       
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Header Section - Promoted subheading as main title */}
-        <div className="text-center mb-24 lg:mb-32">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
+        <div className="text-left mb-24 lg:mb-32">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             In drie heldere stappen van idee naar impact.
           </h2>
         </div>
