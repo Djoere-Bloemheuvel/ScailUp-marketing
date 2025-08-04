@@ -87,7 +87,7 @@ const Workflow = () => {
   }];
 
   return (
-    <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
+    <section ref={sectionRef} className="py-30 lg:py-36 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
       {/* Enhanced multi-layered background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
         <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
@@ -121,7 +121,7 @@ const Workflow = () => {
       
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Enhanced header with more visual interest */}
-        <div className="text-left mb-16 lg:mb-20">
+        <div className="text-left mb-15 lg:mb-19">
           {/* Subtle accent line above title */}
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
           
@@ -176,7 +176,7 @@ const Workflow = () => {
           </div>
 
           {/* Steps Grid with enhanced spacing */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-19 lg:gap-11">
             {steps.map((step, index) => (
               <WorkflowStep 
                 key={step.number} 
@@ -189,7 +189,7 @@ const Workflow = () => {
         </div>
 
         {/* Call-to-action area */}
-        <div className="text-center mt-20 lg:mt-24">
+        <div className="text-center mt-19 lg:mt-22">
           <div className="inline-block px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/10 apple-fade-in apple-stagger-6">
             <p className="text-white/70 text-lg">
               <span className="text-white font-medium">Klaar om te beginnen?</span> Laten we uw AI-journey starten.
