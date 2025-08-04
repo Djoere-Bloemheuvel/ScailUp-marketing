@@ -1,9 +1,7 @@
 import { Settings, Zap, Shield, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const CustomSaaSNewHero = () => {
-  return (
-    <section className="relative py-16 md:py-20 lg:py-32 overflow-hidden">
+  return <section className="relative py-16 md:py-20 lg:py-32 overflow-hidden">
       {/* Dark background with purple/blue gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-purple-950/20 to-blue-950/30" />
       
@@ -19,23 +17,23 @@ const CustomSaaSNewHero = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Top and middle particles - full opacity */}
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-purple-400/60 rounded-full animate-pulse" style={{
-          animationDelay: '0s',
-          animationDuration: '4s'
-        }} />
+        animationDelay: '0s',
+        animationDuration: '4s'
+      }} />
         <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-blue-400/40 rounded-full animate-pulse" style={{
-          animationDelay: '2s',
-          animationDuration: '3s'
-        }} />
+        animationDelay: '2s',
+        animationDuration: '3s'
+      }} />
         <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-purple-400/60 rounded-full animate-pulse" style={{
-          animationDelay: '3s',
-          animationDuration: '4s'
-        }} />
+        animationDelay: '3s',
+        animationDuration: '4s'
+      }} />
         
         {/* Bottom particles - reduced opacity for fade effect */}
         <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-indigo-400/25 rounded-full animate-pulse" style={{
-          animationDelay: '1s',
-          animationDuration: '5s'
-        }} />
+        animationDelay: '1s',
+        animationDuration: '5s'
+      }} />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
@@ -57,62 +55,27 @@ const CustomSaaSNewHero = () => {
             </p>
 
             <div className="pt-2 md:pt-4">
-              <Button 
-                size="lg"
-                className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-700 hover:from-purple-700 hover:to-blue-800 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={() => {
-                  // Basic spam protection - simple rate limiting
-                  const lastClick = localStorage.getItem('cta-last-click');
-                  const now = Date.now();
-                  if (lastClick && now - parseInt(lastClick) < 2000) return;
-                  localStorage.setItem('cta-last-click', now.toString());
-                  
-                  // Scroll to next section
-                  const nextSection = document.querySelector('section:nth-of-type(3)');
-                  if (nextSection) {
-                    nextSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
+              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-700 hover:from-purple-700 hover:to-blue-800 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" onClick={() => {
+              // Basic spam protection - simple rate limiting
+              const lastClick = localStorage.getItem('cta-last-click');
+              const now = Date.now();
+              if (lastClick && now - parseInt(lastClick) < 2000) return;
+              localStorage.setItem('cta-last-click', now.toString());
+
+              // Scroll to next section
+              const nextSection = document.querySelector('section:nth-of-type(3)');
+              if (nextSection) {
+                nextSection.scrollIntoView({
+                  behavior: 'smooth'
+                });
+              }
+            }}>
                 Plan een verkenningsgesprek
               </Button>
             </div>
 
             {/* Bullet points section - responsive grid */}
-            <div className="grid grid-cols-1 gap-3 md:gap-4 pt-6 md:pt-8">
-              {/* Bullet 1 */}
-              <div className="flex items-center space-x-3 md:space-x-4 group">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                  <Settings className="w-5 h-5 md:w-6 md:h-6 text-purple-300" />
-                </div>
-                <div className="space-y-1 min-w-0">
-                  <h3 className="text-base md:text-lg font-semibold text-white">Volledig maatwerk</h3>
-                  <p className="text-xs md:text-sm text-premium-silver/70">Schaalbare backend & eigen data</p>
-                </div>
-              </div>
-
-              {/* Bullet 2 */}
-              <div className="flex items-center space-x-3 md:space-x-4 group">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                  <Brain className="w-5 h-5 md:w-6 md:h-6 text-blue-300" />
-                </div>
-                <div className="space-y-1 min-w-0">
-                  <h3 className="text-base md:text-lg font-semibold text-white">Autonoom denken</h3>
-                  <p className="text-xs md:text-sm text-premium-silver/70">Agents, acties & beslissingslogica</p>
-                </div>
-              </div>
-
-              {/* Bullet 3 */}
-              <div className="flex items-center space-x-3 md:space-x-4 group">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                  <Zap className="w-5 h-5 md:w-6 md:h-6 text-indigo-300" />
-                </div>
-                <div className="space-y-1 min-w-0">
-                  <h3 className="text-base md:text-lg font-semibold text-white">Supersnel live</h3>
-                  <p className="text-xs md:text-sm text-premium-silver/70">MVP in weken, niet maanden</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
 
           {/* Right side - AI Platform Visual with Brain/Network Icon */}
@@ -121,50 +84,44 @@ const CustomSaaSNewHero = () => {
             <div className="relative">
               {/* Outer glow ring - responsive */}
               <div className="absolute inset-0 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full animate-pulse" style={{
-                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
-                animationDuration: '4s'
-              }} />
+              background: 'radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
+              animationDuration: '4s'
+            }} />
               
               {/* Middle glow ring - responsive */}
               <div className="absolute inset-6 sm:inset-8 md:inset-10 lg:inset-12 rounded-full animate-pulse" style={{
-                background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(147, 51, 234, 0.08) 50%, transparent 70%)',
-                animationDuration: '3s',
-                animationDelay: '-1s'
-              }} />
+              background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(147, 51, 234, 0.08) 50%, transparent 70%)',
+              animationDuration: '3s',
+              animationDelay: '-1s'
+            }} />
               
               {/* Inner core - responsive */}
               <div className="relative w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center" style={{
-                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, rgba(99, 102, 241, 0.05) 70%, transparent 100%)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(147, 51, 234, 0.2)',
-                boxShadow: `
+              background: 'radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, rgba(99, 102, 241, 0.05) 70%, transparent 100%)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(147, 51, 234, 0.2)',
+              boxShadow: `
                   0 0 60px rgba(147, 51, 234, 0.3),
                   0 0 120px rgba(59, 130, 246, 0.2),
                   inset 0 0 60px rgba(99, 102, 241, 0.1)
                 `
-              }}>
+            }}>
                 <Brain className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 text-purple-300 drop-shadow-2xl animate-pulse" style={{
-                  filter: 'drop-shadow(0 0 20px rgba(147, 51, 234, 0.6))',
-                  animationDuration: '6s'
-                }} />
+                filter: 'drop-shadow(0 0 20px rgba(147, 51, 234, 0.6))',
+                animationDuration: '6s'
+              }} />
               </div>
               
               {/* Orbiting AI network elements - responsive */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 {/* Orbiting network nodes - responsive positioning */}
-                {[0, 1, 2, 3, 4, 5].map((i) => (
-                  <div
-                    key={i}
-                    className="absolute w-2.5 h-2.5 md:w-3 md:h-3 rounded-full animate-spin"
-                    style={{
-                      background: i % 2 === 0 ? 'rgba(147, 51, 234, 0.8)' : 'rgba(59, 130, 246, 0.8)',
-                      animationDuration: `${8 + i * 2}s`,
-                      transform: `rotate(${i * 60}deg) translateY(-${90 + i * 15}px)`,
-                      transformOrigin: '50% 50%',
-                      boxShadow: `0 0 10px ${i % 2 === 0 ? 'rgba(147, 51, 234, 0.8)' : 'rgba(59, 130, 246, 0.8)'}`
-                    }}
-                  />
-                ))}
+                {[0, 1, 2, 3, 4, 5].map(i => <div key={i} className="absolute w-2.5 h-2.5 md:w-3 md:h-3 rounded-full animate-spin" style={{
+                background: i % 2 === 0 ? 'rgba(147, 51, 234, 0.8)' : 'rgba(59, 130, 246, 0.8)',
+                animationDuration: `${8 + i * 2}s`,
+                transform: `rotate(${i * 60}deg) translateY(-${90 + i * 15}px)`,
+                transformOrigin: '50% 50%',
+                boxShadow: `0 0 10px ${i % 2 === 0 ? 'rgba(147, 51, 234, 0.8)' : 'rgba(59, 130, 246, 0.8)'}`
+              }} />)}
               </div>
             </div>
 
@@ -173,17 +130,15 @@ const CustomSaaSNewHero = () => {
               {/* AI network flow lines - responsive sizing and positioning */}
               <div className="absolute top-1/4 left-1/4 w-24 md:w-32 h-0.5 bg-gradient-to-r from-purple-400/40 to-transparent transform rotate-45 animate-pulse" />
               <div className="absolute top-3/4 right-1/4 w-18 md:w-24 h-0.5 bg-gradient-to-l from-blue-400/40 to-transparent transform -rotate-45 animate-pulse" style={{
-                animationDelay: '1s'
-              }} />
+              animationDelay: '1s'
+            }} />
               <div className="absolute bottom-1/3 left-1/3 w-20 md:w-28 h-0.5 bg-gradient-to-r from-indigo-400/40 to-transparent transform rotate-12 animate-pulse" style={{
-                animationDelay: '2s'
-              }} />
+              animationDelay: '2s'
+            }} />
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CustomSaaSNewHero;
