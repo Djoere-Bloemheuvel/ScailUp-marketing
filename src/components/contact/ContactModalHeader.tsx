@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 const ContactModalHeader = () => {
   return (
     <header className="mb-12 text-center relative">
