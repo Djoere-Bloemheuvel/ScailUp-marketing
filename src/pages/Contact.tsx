@@ -625,11 +625,7 @@ const Contact = () => {
                             className="group relative w-full bg-white text-black hover:bg-premium-silver transition-all duration-500 px-8 py-6 text-lg font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] shadow-2xl font-apple"
                             style={{
                               background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
-                              boxShadow: `
-                                0 20px 40px rgba(0, 0, 0, 0.3), 
-                                inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                                0 0 0 1px rgba(255, 255, 255, 0.1)
-                              `
+                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1)'
                             }}
                           >
                             <span className="relative z-10 flex items-center justify-center">
@@ -653,7 +649,7 @@ const Contact = () => {
                       </div>
                     </>
                   ) : (
-                    /* Success message - Apple Style */}
+                    /* Success message - Apple Style */
                     <div 
                       className="text-center"
                       role="status"
