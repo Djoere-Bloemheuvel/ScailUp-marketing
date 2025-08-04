@@ -1,5 +1,5 @@
 
-import { Brain } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const AutomationSecondHero = () => {
@@ -74,9 +74,9 @@ const AutomationSecondHero = () => {
             </div>
           </div>
 
-          {/* Right side - AI Automation Visual */}
+          {/* Right side - AI Automation Visual with Cog Icon */}
           <div className="relative flex items-center justify-center">
-            {/* Central AI Brain Icon */}
+            {/* Central AI Automation Icon */}
             <div className="relative">
               {/* Outer glow ring - blue/purple colors */}
               <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full animate-pulse" style={{
@@ -102,14 +102,15 @@ const AutomationSecondHero = () => {
                   inset 0 0 60px rgba(99, 102, 241, 0.1)
                 `
               }}>
-                <Brain className="w-24 h-24 md:w-32 md:h-32 text-blue-300 drop-shadow-2xl" style={{
-                  filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.6))'
+                <Settings className="w-24 h-24 md:w-32 md:h-32 text-blue-300 drop-shadow-2xl animate-spin" style={{
+                  filter: 'drop-shadow(0 0 20px rgba(59, 130, 246, 0.6))',
+                  animationDuration: '20s'
                 }} />
               </div>
               
-              {/* Orbiting elements - blue/purple colors */}
+              {/* Orbiting automation elements - blue/purple colors */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                {/* Orbiting dots */}
+                {/* Orbiting automation dots */}
                 {[0, 1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
@@ -125,9 +126,9 @@ const AutomationSecondHero = () => {
               </div>
             </div>
 
-            {/* Neural network connections - blue/purple colors */}
+            {/* Process flow connections - automation theme */}
             <div className="absolute inset-0 pointer-events-none">
-              {/* Connection lines */}
+              {/* Automation flow lines */}
               <div className="absolute top-1/4 left-1/4 w-32 h-0.5 bg-gradient-to-r from-blue-400/40 to-transparent transform rotate-45 animate-pulse" />
               <div className="absolute top-3/4 right-1/4 w-24 h-0.5 bg-gradient-to-l from-purple-400/40 to-transparent transform -rotate-45 animate-pulse" style={{
                 animationDelay: '1s'
