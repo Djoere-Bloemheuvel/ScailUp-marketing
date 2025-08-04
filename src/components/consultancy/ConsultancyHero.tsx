@@ -1,14 +1,14 @@
 
-import { Brain, Target, Lightbulb } from 'lucide-react';
+import { Brain, Target, Lightbulb, Users, Zap, Shield } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 
 const ConsultancyHero = () => {
   const benefits = [{
     icon: Brain,
-    title: 'Strategische AI-Planning',
-    description: 'Van visie naar concrete roadmap voor succesvolle AI-implementatie.',
-    accentColor: 'from-blue-400 to-indigo-600',
+    title: 'Strategische Planning',
+    description: 'AI-roadmaps die perfect aansluiten bij jouw bedrijfsdoelen. Van visie tot realisatie.',
+    accentColor: 'from-blue-400 to-cyan-500',
     glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.3)]',
     hoverGlow: 'hover:shadow-[0_0_50px_rgba(59,130,246,0.5),0_0_80px_rgba(59,130,246,0.3)]',
     radiantGlow: 'shadow-[0_0_60px_rgba(59,130,246,0.2),0_0_120px_rgba(59,130,246,0.1),0_0_200px_rgba(59,130,246,0.05)]',
@@ -22,78 +22,74 @@ const ConsultancyHero = () => {
   }, {
     icon: Target,
     title: 'Proces Optimalisatie',
-    description: 'Identificeer kansen voor automatisering en procesverbetering.',
-    accentColor: 'from-purple-400 to-indigo-600',
-    glowColor: 'shadow-[0_0_30px_rgba(147,51,234,0.3)]',
-    hoverGlow: 'hover:shadow-[0_0_50px_rgba(147,51,234,0.5),0_0_80px_rgba(147,51,234,0.3)]',
-    radiantGlow: 'shadow-[0_0_60px_rgba(147,51,234,0.2),0_0_120px_rgba(147,51,234,0.1),0_0_200px_rgba(147,51,234,0.05)]',
-    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(147,51,234,0.4),0_0_160px_rgba(147,51,234,0.2),0_0_300px_rgba(147,51,234,0.1)]',
-    iconColor: 'text-purple-400',
-    nativeColor: 'purple',
-    borderColor: 'border-purple-500/20',
-    hoverBorderColor: 'group-hover:border-purple-400/40',
-    backgroundTint: 'rgba(147, 51, 234, 0.03)',
-    hoverBackgroundTint: 'rgba(147, 51, 234, 0.08)'
+    description: 'Identificeer kansen voor automatisering. Maximale impact, minimale verstoring.',
+    accentColor: 'from-sky-400 to-blue-600',
+    glowColor: 'shadow-[0_0_30px_rgba(14,165,233,0.3)]',
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(14,165,233,0.5),0_0_80px_rgba(14,165,233,0.3)]',
+    radiantGlow: 'shadow-[0_0_60px_rgba(14,165,233,0.2),0_0_120px_rgba(14,165,233,0.1),0_0_200px_rgba(14,165,233,0.05)]',
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(14,165,233,0.4),0_0_160px_rgba(14,165,233,0.2),0_0_300px_rgba(14,165,233,0.1)]',
+    iconColor: 'text-sky-400',
+    nativeColor: 'sky',
+    borderColor: 'border-sky-500/20',
+    hoverBorderColor: 'group-hover:border-sky-400/40',
+    backgroundTint: 'rgba(14, 165, 233, 0.03)',
+    hoverBackgroundTint: 'rgba(14, 165, 233, 0.08)'
   }, {
     icon: Lightbulb,
     title: 'Technology Selectie',
-    description: 'De juiste AI-tools en platforms voor jouw organisatie.',
-    accentColor: 'from-emerald-400 to-teal-500',
-    glowColor: 'shadow-[0_0_30px_rgba(16,185,129,0.3)]',
-    hoverGlow: 'hover:shadow-[0_0_50px_rgba(16,185,129,0.5),0_0_80px_rgba(16,185,129,0.3)]',
-    radiantGlow: 'shadow-[0_0_60px_rgba(16,185,129,0.2),0_0_120px_rgba(16,185,129,0.1),0_0_200px_rgba(16,185,129,0.05)]',
-    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(16,185,129,0.4),0_0_160px_rgba(16,185,129,0.2),0_0_300px_rgba(16,185,129,0.1)]',
-    iconColor: 'text-emerald-400',
-    nativeColor: 'emerald',
-    borderColor: 'border-emerald-500/20',
-    hoverBorderColor: 'group-hover:border-emerald-400/40',
-    backgroundTint: 'rgba(16, 185, 129, 0.03)',
-    hoverBackgroundTint: 'rgba(16, 185, 129, 0.08)'
+    description: 'De juiste AI-tools voor jouw organisatie. Getest, bewezen, toekomstbestendig.',
+    accentColor: 'from-indigo-400 to-blue-500',
+    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.3)]',
+    hoverGlow: 'hover:shadow-[0_0_50px_rgba(99,102,241,0.5),0_0_80px_rgba(99,102,241,0.3)]',
+    radiantGlow: 'shadow-[0_0_60px_rgba(99,102,241,0.2),0_0_120px_rgba(99,102,241,0.1),0_0_200px_rgba(99,102,241,0.05)]',
+    hoverRadiantGlow: 'hover:shadow-[0_0_80px_rgba(99,102,241,0.4),0_0_160px_rgba(99,102,241,0.2),0_0_300px_rgba(99,102,241,0.1)]',
+    iconColor: 'text-indigo-400',
+    nativeColor: 'indigo',
+    borderColor: 'border-indigo-500/20',
+    hoverBorderColor: 'group-hover:border-indigo-400/40',
+    backgroundTint: 'rgba(99, 102, 241, 0.03)',
+    hoverBackgroundTint: 'rgba(99, 102, 241, 0.08)'
   }];
 
   return (
     <>
-      {/* Hero Section - Made smaller */}
+      {/* Hero Section - Matching structure */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Use the same cinematic background as other pages */}
         <CinematicBackground />
         
         <div className="relative max-w-7xl mx-auto px-4 py-20 text-center z-10">
-          {/* Main headline with consistent typography */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
             AI Consultancy
           </h1>
           
-          {/* Subtitle with gradient - matching other pages */}
           <p className="text-2xl md:text-3xl lg:text-4xl font-light mb-8 tracking-wide">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
               Van strategie tot realisatie
             </span>
           </p>
           
-          {/* Description with consistent styling */}
           <p className="text-lg md:text-xl lg:text-2xl text-premium-silver/90 max-w-4xl mx-auto leading-relaxed font-light">
             Strategisch advies en technologische realisatie in één. Wij helpen je bij het definiëren van AI-kansen, het selecteren van de juiste tools en het succesvol implementeren van slimme automatiseringen.
           </p>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits Section - Matching exact structure from other heroes */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-purple-950/20 to-premium-black" />
+        {/* Background gradient - blue focused */}
+        <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
         
-        {/* Ambient lighting effects */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        {/* Ambient lighting effects - blue focused */}
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl" />
 
-        {/* Subtle animated particles */}
+        {/* Subtle animated particles - blue tones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-purple-400/60 rounded-full animate-pulse" style={{
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/60 rounded-full animate-pulse" style={{
             animationDelay: '0s',
             animationDuration: '4s'
           }} />
-          <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-blue-400/40 rounded-full animate-pulse" style={{
+          <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-sky-400/40 rounded-full animate-pulse" style={{
             animationDelay: '2s',
             animationDuration: '3s'
           }} />
@@ -101,10 +97,33 @@ const ConsultancyHero = () => {
             animationDelay: '1s',
             animationDuration: '5s'
           }} />
+          <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-indigo-400/60 rounded-full animate-pulse" style={{
+            animationDelay: '3s',
+            animationDuration: '4s'
+          }} />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-4">
-          {/* Core Benefits Section */}
+          {/* Main Hero Content - Matching structure */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+              Smart. Strategisch.{' '}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-blue-400 to-sky-500 bg-clip-text text-transparent block">
+                  Succesvol.
+                </span>
+                {/* Light gradient glow behind "Succesvol" */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-sky-500/20 blur-2xl -z-10 scale-110" />
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-premium-silver/80 max-w-4xl mx-auto leading-relaxed mb-12">
+              Van analyse tot implementatie — wij begeleiden je stap voor stap naar AI-transformatie. 
+              Strategisch. Praktisch. Resultaatgericht.
+            </p>
+          </div>
+
+          {/* Core Benefits Section - Matching exact structure with blue colors */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <Card 
@@ -138,9 +157,9 @@ const ConsultancyHero = () => {
                     linear-gradient(135deg, 
                       ${benefit.hoverBackgroundTint} 0%, 
                       ${benefit.accentColor.replace('from-', 'rgba(').replace('to-', 'rgba(')
-                        .replace('blue-400', '59, 130, 246, 0.4').replace('indigo-600', '79, 70, 229, 0.4')
-                        .replace('purple-400', '147, 51, 234, 0.4')
-                        .replace('emerald-400', '52, 211, 153, 0.4').replace('teal-500', '20, 184, 166, 0.4')} 50%, 
+                        .replace('blue-400', '59, 130, 246, 0.4').replace('cyan-500', '6, 182, 212, 0.4')
+                        .replace('sky-400', '56, 189, 248, 0.4').replace('blue-600', '37, 99, 235, 0.4')
+                        .replace('indigo-400', '129, 140, 248, 0.4').replace('blue-500', '59, 130, 246, 0.4')} 50%, 
                       ${benefit.hoverBackgroundTint} 100%
                     )
                   `,
@@ -151,8 +170,8 @@ const ConsultancyHero = () => {
                 {/* Premium hover border enhancement with native colors */}
                 <div className={`absolute inset-0 rounded-2xl border opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out`} style={{
                   borderColor: benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.4)' : 
-                             benefit.nativeColor === 'purple' ? 'rgba(147, 51, 234, 0.4)' : 
-                             'rgba(16, 185, 129, 0.4)'
+                             benefit.nativeColor === 'sky' ? 'rgba(14, 165, 233, 0.4)' : 
+                             'rgba(99, 102, 241, 0.4)'
                 }} />
                 
                 {/* Dynamic ambient glow on hover with native colors */}
@@ -162,13 +181,13 @@ const ConsultancyHero = () => {
 
                 {/* Extended Outward Radiant Glow */}
                 <div className="absolute -inset-8 rounded-3xl opacity-0 group-hover:opacity-30 transition-all duration-1000 ease-out -z-20" style={{
-                  background: `radial-gradient(ellipse 200% 150% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.15)' : benefit.nativeColor === 'purple' ? 'rgba(147, 51, 234, 0.15)' : 'rgba(16, 185, 129, 0.15)'} 0%, transparent 60%)`,
+                  background: `radial-gradient(ellipse 200% 150% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.15)' : benefit.nativeColor === 'sky' ? 'rgba(14, 165, 233, 0.15)' : 'rgba(99, 102, 241, 0.15)'} 0%, transparent 60%)`,
                   filter: 'blur(40px)'
                 }} />
 
                 {/* Far Extended Radiant Glow */}
                 <div className="absolute -inset-16 rounded-full opacity-0 group-hover:opacity-20 transition-all duration-1500 ease-out -z-30" style={{
-                  background: `radial-gradient(ellipse 300% 200% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.08)' : benefit.nativeColor === 'purple' ? 'rgba(147, 51, 234, 0.08)' : 'rgba(16, 185, 129, 0.08)'} 0%, transparent 70%)`,
+                  background: `radial-gradient(ellipse 300% 200% at 50% 50%, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.08)' : benefit.nativeColor === 'sky' ? 'rgba(14, 165, 233, 0.08)' : 'rgba(99, 102, 241, 0.08)'} 0%, transparent 70%)`,
                   filter: 'blur(60px)'
                 }} />
                 
@@ -191,8 +210,8 @@ const ConsultancyHero = () => {
                         `,
                         backdropFilter: 'blur(10px)',
                         border: `1px solid ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.2)' : 
-                                benefit.nativeColor === 'purple' ? 'rgba(147, 51, 234, 0.2)' : 
-                                'rgba(16, 185, 129, 0.2)'}`
+                                benefit.nativeColor === 'sky' ? 'rgba(14, 165, 233, 0.2)' : 
+                                'rgba(99, 102, 241, 0.2)'}`
                       }}>
                         {/* Icon with native color */}
                         <benefit.icon className={`w-10 h-10 ${benefit.iconColor} relative z-10 drop-shadow-lg transition-all duration-500 group-hover:drop-shadow-2xl group-hover:scale-110`} />
@@ -226,12 +245,12 @@ const ConsultancyHero = () => {
                     {/* Orbiting particle effect on hover with native colors */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-500">
                       <div className="absolute top-1/2 left-1/2 w-1 h-1 rounded-full animate-spin" style={{
-                        background: benefit.nativeColor === 'blue' ? '#3b82f6' : benefit.nativeColor === 'purple' ? '#a855f7' : '#10b981',
+                        background: benefit.nativeColor === 'blue' ? '#3b82f6' : benefit.nativeColor === 'sky' ? '#0ea5e9' : '#6366f1',
                         transform: 'translate(-50%, -50%)',
                         animationDuration: '3s'
                       }}>
                         <div className="absolute w-2 h-2 rounded-full -top-8" style={{
-                          background: benefit.nativeColor === 'blue' ? '#60a5fa' : benefit.nativeColor === 'purple' ? '#c084fc' : '#34d399'
+                          background: benefit.nativeColor === 'blue' ? '#60a5fa' : benefit.nativeColor === 'sky' ? '#38bdf8' : '#818cf8'
                         }} />
                       </div>
                     </div>
@@ -240,8 +259,8 @@ const ConsultancyHero = () => {
                   {/* Typography with enhanced native color integration */}
                   <h3 className="text-xl font-bold mb-4 group-hover:scale-105 transition-all duration-500 transform" style={{
                     color: benefit.nativeColor === 'blue' ? '#dbeafe' : 
-                           benefit.nativeColor === 'purple' ? '#f3e8ff' : 
-                           '#d1fae5',
+                           benefit.nativeColor === 'sky' ? '#e0f2fe' : 
+                           '#e0e7ff',
                     textShadow: `0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px ${benefit.backgroundTint}`
                   }}>
                     {benefit.title}
@@ -255,7 +274,7 @@ const ConsultancyHero = () => {
 
                   {/* Subtle scanning line effect on hover with native colors */}
                   <div className="absolute top-0 left-0 w-full h-0.5 opacity-0 group-hover:opacity-80 transition-all duration-1000 ease-out transform -translate-y-full group-hover:translate-y-full" style={{
-                    background: `linear-gradient(to right, transparent, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.6)' : benefit.nativeColor === 'purple' ? 'rgba(147, 51, 234, 0.6)' : 'rgba(16, 185, 129, 0.6)'}, transparent)`,
+                    background: `linear-gradient(to right, transparent, ${benefit.nativeColor === 'blue' ? 'rgba(59, 130, 246, 0.6)' : benefit.nativeColor === 'sky' ? 'rgba(14, 165, 233, 0.6)' : 'rgba(99, 102, 241, 0.6)'}, transparent)`,
                     animationDelay: '0.2s'
                   }} />
                 </CardContent>
@@ -272,13 +291,6 @@ const ConsultancyHero = () => {
               </Card>
             ))}
           </div>
-        </div>
-
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-purple-400/40 rounded-full animate-pulse" />
-          <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-blue-400/40 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/6 w-1 h-1 bg-cyan-400/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
       </section>
     </>
