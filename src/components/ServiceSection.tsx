@@ -1,3 +1,4 @@
+
 import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
@@ -32,14 +33,15 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
     setHasBeenVisible(true);
   }
   
-  const isEven = index % 2 === 1; // 2nd and 4th sections (index 1 and 3)
+  // Determine layout order - Autonomous AI Agents should have text on right, visual on left
+  const isAutonomousAgents = service.id === 'autonomous-agents';
+  const isEven = isAutonomousAgents ? false : (index % 2 === 1); // Force Autonomous AI Agents to left visual layout
   const shouldShowContent = hasBeenVisible || isVisible;
 
-  // Determine if this is the AI Automations, Custom AI SaaS, Consultancy, or Autonomous AI Agents service
+  // Determine service type for routing
   const isAIAutomations = service.id === 'ai-automations';
   const isCustomSaaS = service.id === 'custom-saas';
   const isConsultancy = service.id === 'consultancy';
-  const isAutonomousAgents = service.id === 'autonomous-agents';
 
   return (
     <section 
@@ -59,7 +61,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
       <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
-        {/* Content - Left for odd sections (1st, 3rd, 5th), Right for even sections (2nd, 4th) */}
+        {/* Content - Left for odd sections (1st, 3rd), Right for even sections (2nd, 4th) */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
           <div className={`transition-all duration-1000 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             
@@ -129,7 +131,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
           </div>
         </div>
 
-        {/* Visual Element - Right for odd sections (1st, 3rd, 5th), Left for even sections (2nd, 4th) */}
+        {/* Visual Element - Right for odd sections (1st, 3rd), Left for even sections (2nd, 4th) */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
           <div 
             className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}

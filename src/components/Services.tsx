@@ -1,4 +1,5 @@
-import { Brain, Cog, MessageSquare, Server, Users } from 'lucide-react';
+
+import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ServiceSection from './ServiceSection';
 
@@ -64,18 +65,6 @@ const Services = () => {
       accentColor: 'from-purple-400 to-blue-500',
       primaryButtonText: 'Meer informatie',
       secondaryButtonText: 'Lees meer'
-    },
-    {
-      id: 'studio-service',
-      icon: Server,
-      title: 'AI Studio-as-a-Service',
-      subtitle: 'Wij blijven aan. Jouw AI ook.',
-      description: 'Buildrs.AI is geen eenmalige leverancier. We blijven je systemen beheren, verbeteren en schalen — als jouw externe AI-engineers.',
-      background: 'from-black via-blue-950/15 to-premium-black',
-      accentColor: 'from-blue-400 to-cyan-500',
-      isSpecial: true,
-      primaryButtonText: 'Plan een verkenning',
-      secondaryButtonText: 'Bekijk hoe het werkt'
     },
     {
       id: 'autonomous-agents',
