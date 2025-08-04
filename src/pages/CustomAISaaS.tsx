@@ -4,7 +4,7 @@ import ScrollHeader from '@/components/ScrollHeader';
 import CustomSaaSHero from '@/components/saas/CustomSaaSHero';
 import CustomSaaSExplained from '@/components/saas/CustomSaaSExplained';
 import CustomSaaSOverview from '@/components/saas/CustomSaaSOverview';
-import WhyBuildrs from '@/components/automations/WhyBuildrs';
+import WhyBuildrsConsultancy from '@/components/consultancy/WhyBuildrsConsultancy';
 import CustomSaaSFeaturePair from '@/components/saas/CustomSaaSFeaturePair';
 import CustomSaaSFinalCTA from '@/components/saas/CustomSaaSFinalCTA';
 
@@ -98,7 +98,7 @@ const CustomAISaaS = () => {
       />
 
       {/* Section 3 - Waarom Buildrs? */}
-      <WhyBuildrs />
+      <WhyBuildrsConsultancy />
       
       {/* Final 2 Feature Cards */}
       <CustomSaaSFeaturePair 
