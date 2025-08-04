@@ -90,8 +90,8 @@ const AppleTimeline = () => {
         ))}
       </div>
 
-      {/* Staggered timeline cards */}
-      <div className="relative z-10 space-y-16 lg:space-y-14">
+      {/* Staggered timeline cards with reduced spacing */}
+      <div className="relative z-10 space-y-12 lg:space-y-10">
         {steps.map((step, index) => (
           <AppleTimelineCard
             key={step.id}
@@ -136,6 +136,29 @@ const AppleTimeline = () => {
             50% { 
               transform: translate(-50%, -50%) scale(1.4);
               opacity: 1;
+            }
+          }
+
+          @keyframes shimmerSweep {
+            0% {
+              transform: translateY(-100%) scaleY(0);
+              opacity: 0;
+            }
+            20% {
+              opacity: 0.8;
+              transform: translateY(-50%) scaleY(0.6);
+            }
+            50% {
+              opacity: 1;
+              transform: translateY(0%) scaleY(1);
+            }
+            80% {
+              opacity: 0.6;
+              transform: translateY(50%) scaleY(0.8);
+            }
+            100% {
+              transform: translateY(100%) scaleY(0);
+              opacity: 0;
             }
           }
         `
