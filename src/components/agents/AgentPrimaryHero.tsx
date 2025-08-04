@@ -1,4 +1,3 @@
-
 import { Settings, Brain, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -8,13 +7,17 @@ const AgentPrimaryHero = () => {
       {/* Dark background with teal/green gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-teal-950/20 to-emerald-950/30" />
       
+      {/* Smooth vertical fade to black at bottom - 25% height */}
+      <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
+      
       {/* Ambient lighting effects with teal/green colors */}
       <div className="absolute top-10 left-10 md:top-20 md:left-20 w-48 h-48 md:w-96 md:h-96 bg-teal-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-emerald-500/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-60 md:w-[600px] md:h-[400px] bg-blue-500/5 rounded-full blur-3xl" />
 
-      {/* Animated particles with teal/green colors */}
+      {/* Animated particles with teal/green colors - with fade overlay */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Top and middle particles - full opacity */}
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-teal-400/60 rounded-full animate-pulse" style={{
           animationDelay: '0s',
           animationDuration: '4s'
@@ -23,17 +26,19 @@ const AgentPrimaryHero = () => {
           animationDelay: '2s',
           animationDuration: '3s'
         }} />
-        <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-blue-400/50 rounded-full animate-pulse" style={{
-          animationDelay: '1s',
-          animationDuration: '5s'
-        }} />
         <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-teal-400/60 rounded-full animate-pulse" style={{
           animationDelay: '3s',
           animationDuration: '4s'
         }} />
+        
+        {/* Bottom particles - reduced opacity for fade effect */}
+        <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-blue-400/25 rounded-full animate-pulse" style={{
+          animationDelay: '1s',
+          animationDuration: '5s'
+        }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left side - Content */}
           <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
