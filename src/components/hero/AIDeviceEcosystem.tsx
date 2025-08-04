@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Brain, MessageSquare, Server, Users } from 'lucide-react';
 
 const AIDeviceEcosystem = () => {
@@ -100,7 +99,7 @@ const AIDeviceEcosystem = () => {
               {/* Agent nodes */}
               {Array.from({ length: 6 }).map((_, i) => {
                 const angle = (i * 60) * Math.PI / 180;
-                const radius = window.innerWidth < 640 ? 20 : 30;
+                const radius = 30;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
                 

@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Brain, Cpu, Eye } from 'lucide-react';
 
 const AIRobotDevice = () => {
@@ -13,7 +12,7 @@ const AIRobotDevice = () => {
           <div className="absolute top-3 left-3 right-3 h-10 sm:top-6 sm:left-6 sm:right-6 sm:h-20 bg-black/40 rounded-lg sm:rounded-xl border border-gray-400/20 overflow-hidden">
             {/* Connection grid */}
             <div className="absolute inset-2 sm:inset-4 grid grid-cols-3 grid-rows-2 sm:grid-cols-4 sm:grid-rows-3 gap-1 sm:gap-2">
-              {Array.from({ length: window.innerWidth < 640 ? 6 : 12 }).map((_, i) => (
+              {Array.from({ length: 12 }).map((_, i) => (
                 <div
                   key={`connection-dot-${i}`}
                   className={`w-1 h-1 sm:w-2 sm:h-2 rounded-full ${i % 3 === 0 ? 'bg-blue-400/80' : i % 3 === 1 ? 'bg-gray-400/60' : 'bg-gray-400/40'} ai-robot-connection-pulse`}
