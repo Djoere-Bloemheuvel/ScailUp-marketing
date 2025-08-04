@@ -1,3 +1,4 @@
+
 import { Brain, Sparkles, Zap, Code, Layers, Target } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -16,8 +17,7 @@ const CustomSaaSHero = () => {
     borderColor: 'border-purple-500/20',
     hoverBorderColor: 'group-hover:border-purple-400/40',
     backgroundTint: 'rgba(147, 51, 234, 0.03)',
-    hoverBackgroundTint: 'rgba(147, 51, 234, 0.08)',
-    offsetClass: '-translate-y-8'
+    hoverBackgroundTint: 'rgba(147, 51, 234, 0.08)'
   }, {
     icon: Layers,
     title: 'Schaalbare Architectuur',
@@ -32,8 +32,7 @@ const CustomSaaSHero = () => {
     borderColor: 'border-blue-500/20',
     hoverBorderColor: 'group-hover:border-blue-400/40',
     backgroundTint: 'rgba(59, 130, 246, 0.03)',
-    hoverBackgroundTint: 'rgba(59, 130, 246, 0.08)',
-    offsetClass: '-translate-y-6'
+    hoverBackgroundTint: 'rgba(59, 130, 246, 0.08)'
   }, {
     icon: Target,
     title: 'AI-Gedreven Intelligentie',
@@ -48,8 +47,7 @@ const CustomSaaSHero = () => {
     borderColor: 'border-emerald-500/20',
     hoverBorderColor: 'group-hover:border-emerald-400/40',
     backgroundTint: 'rgba(16, 185, 129, 0.03)',
-    hoverBackgroundTint: 'rgba(16, 185, 129, 0.08)',
-    offsetClass: ''
+    hoverBackgroundTint: 'rgba(16, 185, 129, 0.08)'
   }];
 
   return (
@@ -101,12 +99,12 @@ const CustomSaaSHero = () => {
           </p>
         </div>
 
-        {/* Core Benefits Section - Enhanced with Full Native Color Integration and Staggered Layout */}
+        {/* Core Benefits Section - Enhanced with Full Native Color Integration */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <Card 
               key={index} 
-              className={`group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3 ${benefit.glowColor} ${benefit.hoverGlow} ${benefit.radiantGlow} ${benefit.hoverRadiantGlow} ${benefit.borderColor} ${benefit.hoverBorderColor} ${benefit.offsetClass}`} 
+              className={`group relative overflow-hidden cursor-default animate-fade-in transform transition-all duration-700 ease-out hover:scale-[1.02] hover:-translate-y-3 ${benefit.glowColor} ${benefit.hoverGlow} ${benefit.radiantGlow} ${benefit.hoverRadiantGlow} ${benefit.borderColor} ${benefit.hoverBorderColor}`} 
               style={{
                 animationDelay: `${index * 0.2}s`,
                 background: `
