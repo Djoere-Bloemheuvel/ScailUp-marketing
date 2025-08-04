@@ -1,7 +1,6 @@
-
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowRight, Sparkles, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -273,11 +272,11 @@ const Contact = () => {
 
       <main id="main-content" role="main" className="min-h-screen bg-premium-black relative overflow-hidden">
         
-        {/* MAIN SECTION - Now with Cinematic Background without brain visual */}
+        {/* MAIN SECTION - Now with Cinematic Background */}
         <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-          {/* Cinematic Background without brain visual */}
+          {/* Cinematic Background */}
           <div className="absolute inset-0">
-            <CinematicBackground hideGlassContainer={true} hideBrainVisual={true} />
+            <CinematicBackground hideGlassContainer={true} />
           </div>
 
           {/* Main Content Grid */}
