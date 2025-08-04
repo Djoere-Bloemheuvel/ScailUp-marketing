@@ -2,6 +2,7 @@
 import { MessageSquare, Brain, Target, Lightbulb, BarChart, Shield } from 'lucide-react';
 import ScrollHeader from '@/components/ScrollHeader';
 import ConsultancyHero from '@/components/consultancy/ConsultancyHero';
+import ConsultancySecondaryHero from '@/components/consultancy/ConsultancySecondaryHero';
 import ConsultancyExplained from '@/components/consultancy/ConsultancyExplained';
 import ConsultancyOverview from '@/components/consultancy/ConsultancyOverview';
 import WhyBuildrsConsultancy from '@/components/consultancy/WhyBuildrsConsultancy';
@@ -24,50 +25,50 @@ const Consultancy = () => {
       icon: Target,
       title: 'Proces Analyse',
       subtitle: 'Identificeer kansen voor automatisering en optimalisatie',
-      accent: 'from-purple-400/20 via-purple-500/30 to-indigo-400/20',
-      glowColor: 'shadow-purple-500/20',
-      borderGlow: 'border-purple-400/30',
-      iconGlow: 'text-purple-300',
+      accent: 'from-sky-400/20 via-sky-500/30 to-cyan-400/20',
+      glowColor: 'shadow-sky-500/20',
+      borderGlow: 'border-sky-400/30',
+      iconGlow: 'text-sky-300',
       delay: 100
     },
     {
       icon: Lightbulb,
       title: 'Technology Selection',
       subtitle: 'Selectie van de juiste AI-tools en platforms',
-      accent: 'from-indigo-400/20 via-blue-500/30 to-cyan-400/20',
-      glowColor: 'shadow-indigo-500/20',
-      borderGlow: 'border-indigo-400/30',
-      iconGlow: 'text-indigo-300',
+      accent: 'from-cyan-400/20 via-blue-500/30 to-sky-400/20',
+      glowColor: 'shadow-cyan-500/20',
+      borderGlow: 'border-cyan-400/30',
+      iconGlow: 'text-cyan-300',
       delay: 200
     },
     {
       icon: BarChart,
       title: 'Implementation Support',
       subtitle: 'Begeleiding van concept tot succesvolle uitrol',
-      accent: 'from-cyan-400/20 via-blue-500/30 to-purple-400/20',
-      glowColor: 'shadow-cyan-500/20',
-      borderGlow: 'border-cyan-400/30',
-      iconGlow: 'text-cyan-300',
+      accent: 'from-blue-400/20 via-cyan-500/30 to-sky-400/20',
+      glowColor: 'shadow-blue-500/20',
+      borderGlow: 'border-blue-400/30',
+      iconGlow: 'text-blue-300',
       delay: 300
     },
     {
       icon: MessageSquare,
       title: 'Training & Adoption',
       subtitle: 'Zorg voor succesvolle acceptatie binnen je team',
-      accent: 'from-blue-400/20 via-indigo-500/30 to-purple-400/20',
-      glowColor: 'shadow-blue-500/20',
-      borderGlow: 'border-blue-400/30',
-      iconGlow: 'text-blue-300',
+      accent: 'from-sky-400/20 via-blue-500/30 to-cyan-400/20',
+      glowColor: 'shadow-sky-500/20',
+      borderGlow: 'border-sky-400/30',
+      iconGlow: 'text-sky-300',
       delay: 400
     },
     {
       icon: Shield,
       title: 'Risk Assessment',
       subtitle: 'Veilige en compliance-gerichte AI-implementaties',
-      accent: 'from-purple-400/20 via-indigo-500/30 to-blue-400/20',
-      glowColor: 'shadow-purple-500/20',
-      borderGlow: 'border-purple-400/30',
-      iconGlow: 'text-purple-300',
+      accent: 'from-cyan-400/20 via-sky-500/30 to-blue-400/20',
+      glowColor: 'shadow-cyan-500/20',
+      borderGlow: 'border-cyan-400/30',
+      iconGlow: 'text-cyan-300',
       delay: 500
     }
   ];
@@ -76,8 +77,11 @@ const Consultancy = () => {
     <div className="min-h-screen bg-premium-black">
       <ScrollHeader />
       
-      {/* Hero Section */}
+      {/* Primary Hero Section */}
       <ConsultancyHero />
+
+      {/* Secondary Hero Section */}
+      <ConsultancySecondaryHero />
 
       {/* Section 1 - Wat doet onze AI-consultancy? */}
       <ConsultancyExplained />
