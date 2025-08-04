@@ -1,5 +1,5 @@
 
-import { Bot, MessageSquare, Cpu, Brain } from 'lucide-react';
+import { Bot, MessageSquare, Cpu, Brain, Network, Zap, Eye } from 'lucide-react';
 
 const AgentExplained = () => {
   return (
@@ -57,67 +57,140 @@ const AgentExplained = () => {
             </div>
           </div>
 
-          {/* Neural AI Visual - Exact copy from AgentHero */}
+          {/* AI Agent Network Visual - Completely redesigned */}
           <div className="relative flex items-center justify-center">
-            {/* Central AI Brain Icon */}
+            {/* Central Command Agent */}
             <div className="relative">
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full animate-pulse" style={{
-                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%)',
-                animationDuration: '4s'
+              {/* Outer network ring */}
+              <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full border border-teal-400/20 animate-pulse" style={{
+                animationDuration: '6s'
               }} />
               
-              {/* Middle glow ring */}
-              <div className="absolute inset-8 md:inset-12 rounded-full animate-pulse" style={{
-                background: 'radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(34, 211, 238, 0.08) 50%, transparent 70%)',
-                animationDuration: '3s',
-                animationDelay: '-1s'
+              {/* Middle coordination ring */}
+              <div className="absolute inset-8 md:inset-12 rounded-full border border-blue-400/30 animate-pulse" style={{
+                animationDuration: '4s',
+                animationDelay: '-2s'
               }} />
               
-              {/* Inner core */}
+              {/* Central AI Command Hub */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center" style={{
-                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, rgba(16, 185, 129, 0.05) 70%, transparent 100%)',
+                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, rgba(59, 130, 246, 0.08) 40%, rgba(16, 185, 129, 0.05) 70%, transparent 100%)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(20, 184, 166, 0.2)',
+                border: '1px solid rgba(20, 184, 166, 0.3)',
                 boxShadow: `
-                  0 0 60px rgba(20, 184, 166, 0.3),
-                  0 0 120px rgba(59, 130, 246, 0.2),
-                  inset 0 0 60px rgba(16, 185, 129, 0.1)
+                  0 0 80px rgba(20, 184, 166, 0.25),
+                  0 0 160px rgba(59, 130, 246, 0.15),
+                  inset 0 0 80px rgba(16, 185, 129, 0.08)
                 `
               }}>
-                <Brain className="w-24 h-24 md:w-32 md:h-32 text-teal-300 drop-shadow-2xl" style={{
-                  filter: 'drop-shadow(0 0 20px rgba(20, 184, 166, 0.6))'
-                }} />
+                {/* Command Center Icon */}
+                <div className="relative">
+                  <Network className="w-24 h-24 md:w-32 md:h-32 text-teal-300 drop-shadow-2xl animate-pulse" style={{
+                    filter: 'drop-shadow(0 0 25px rgba(20, 184, 166, 0.7))',
+                    animationDuration: '8s'
+                  }} />
+                  
+                  {/* Central processing indicator */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-teal-400/60 rounded-full animate-pulse" style={{
+                    animationDuration: '2s'
+                  }} />
+                </div>
               </div>
               
-              {/* Orbiting elements */}
+              {/* Autonomous Agent Satellites */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                {/* Orbiting dots */}
-                {[0, 1, 2, 3, 4, 5].map((i) => (
-                  <div
-                    key={i}
-                    className="absolute w-3 h-3 rounded-full animate-spin"
-                    style={{
-                      background: i % 2 === 0 ? 'rgba(20, 184, 166, 0.8)' : 'rgba(59, 130, 246, 0.8)',
-                      animationDuration: `${8 + i * 2}s`,
-                      transform: `rotate(${i * 60}deg) translateY(-${120 + i * 20}px)`,
-                      boxShadow: `0 0 10px ${i % 2 === 0 ? 'rgba(20, 184, 166, 0.8)' : 'rgba(59, 130, 246, 0.8)'}`
-                    }}
-                  />
-                ))}
+                {/* Agent nodes with different capabilities */}
+                {[
+                  { angle: 0, icon: Bot, color: 'teal', delay: 0 },
+                  { angle: 60, icon: MessageSquare, color: 'blue', delay: 1 },
+                  { angle: 120, icon: Cpu, color: 'cyan', delay: 2 },
+                  { angle: 180, icon: Eye, color: 'emerald', delay: 3 },
+                  { angle: 240, icon: Zap, color: 'indigo', delay: 4 },
+                  { angle: 300, icon: Brain, color: 'purple', delay: 5 }
+                ].map((agent, i) => {
+                  const x = Math.cos((agent.angle * Math.PI) / 180) * 110;
+                  const y = Math.sin((agent.angle * Math.PI) / 180) * 110;
+                  
+                  return (
+                    <div
+                      key={`agent-${i}`}
+                      className="absolute animate-spin"
+                      style={{
+                        animationDuration: `${12 + i * 2}s`,
+                        transform: `rotate(${agent.angle}deg) translateY(-110px)`,
+                        transformOrigin: '50% 110px'
+                      }}
+                    >
+                      <div className={`w-14 h-14 md:w-18 md:h-18 rounded-xl bg-gradient-to-br from-${agent.color}-500/30 to-${agent.color}-600/20 border border-${agent.color}-400/40 backdrop-blur-sm flex items-center justify-center animate-pulse`} style={{
+                        animationDelay: `${agent.delay}s`,
+                        boxShadow: `0 0 20px rgba(${agent.color === 'teal' ? '20, 184, 166' : agent.color === 'blue' ? '59, 130, 246' : agent.color === 'cyan' ? '34, 211, 238' : '16, 185, 129'}, 0.4)`
+                      }}>
+                        <agent.icon className={`w-6 h-6 md:w-8 md:h-8 text-${agent.color}-300 transform -rotate-[${agent.angle}deg]`} style={{
+                          animation: 'none',
+                          transform: `rotate(-${agent.angle}deg)`
+                        }} />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Neural network connections */}
+            {/* Data Flow Connections */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {/* Dynamic data streams */}
+              {Array.from({ length: 8 }).map((_, i) => {
+                const angle = (i * 45) * Math.PI / 180;
+                const startRadius = 80;
+                const endRadius = 140;
+                const x1 = Math.cos(angle) * startRadius;
+                const y1 = Math.sin(angle) * startRadius;
+                const x2 = Math.cos(angle) * endRadius;
+                const y2 = Math.sin(angle) * endRadius;
+                
+                return (
+                  <div
+                    key={`flow-${i}`}
+                    className="absolute top-1/2 left-1/2 w-px bg-gradient-to-r from-transparent via-teal-400/60 to-transparent animate-pulse"
+                    style={{
+                      height: `${endRadius - startRadius}px`,
+                      transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-${(startRadius + endRadius) / 2}px)`,
+                      animationDelay: `${i * 0.3}s`,
+                      animationDuration: '3s'
+                    }}
+                  />
+                );
+              })}
+              
+              {/* Orbital connection rings */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full border-dashed border border-teal-400/20 animate-spin" style={{
+                animationDuration: '20s'
+              }} />
+              
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full border-dashed border border-blue-400/15 animate-spin" style={{
+                animationDuration: '25s',
+                animationDirection: 'reverse'
+              }} />
+            </div>
+
+            {/* Floating data particles */}
             <div className="absolute inset-0 pointer-events-none">
-              {/* Connection lines */}
-              <div className="absolute top-1/4 left-1/4 w-32 h-0.5 bg-gradient-to-r from-teal-400/40 to-transparent transform rotate-45 animate-pulse" />
-              <div className="absolute top-3/4 right-1/4 w-24 h-0.5 bg-gradient-to-l from-blue-400/40 to-transparent transform -rotate-45 animate-pulse" style={{
-                animationDelay: '1s'
-              }} />
-              <div className="absolute bottom-1/3 left-1/3 w-28 h-0.5 bg-gradient-to-r from-emerald-400/40 to-transparent transform rotate-12 animate-pulse" style={{
-                animationDelay: '2s'
-              }} />
+              {Array.from({ length: 12 }).map((_, i) => {
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                return (
+                  <div
+                    key={`particle-${i}`}
+                    className="absolute w-1 h-1 bg-teal-400/60 rounded-full animate-pulse"
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                      animationDelay: `${i * 0.4}s`,
+                      animationDuration: `${2 + Math.random() * 2}s`
+                    }}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
