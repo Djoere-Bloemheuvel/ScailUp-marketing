@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
@@ -44,14 +43,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   const isAIAutomations = service.id === 'ai-automations';
   const isCustomSaaS = service.id === 'custom-saas';
   const isConsultancy = service.id === 'consultancy';
-
-  // Function to scroll to top when navigating
-  const handleNavigation = () => {
-    // Small delay to ensure navigation happens first
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
-  };
 
   return (
     <section 
@@ -102,7 +93,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               {isAIAutomations ? (
                 <Link 
                   to="/ai-automations"
-                  onClick={handleNavigation}
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
@@ -111,7 +101,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : isCustomSaaS ? (
                 <Link 
                   to="/custom-ai-saas"
-                  onClick={handleNavigation}
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
@@ -120,7 +109,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : isConsultancy ? (
                 <Link 
                   to="/consultancy"
-                  onClick={handleNavigation}
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
@@ -129,7 +117,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : isAutonomousAgents ? (
                 <Link 
                   to="/autonomous-ai-agents"
-                  onClick={handleNavigation}
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
