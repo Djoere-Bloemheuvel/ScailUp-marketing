@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
 
@@ -85,8 +86,8 @@ const Workflow = () => {
     subtitle: "Samen perfectioneren we het product en koppelen het aan je systemen."
   }];
 
-  // Vertical offsets for each step
-  const stepOffsets = [-10, 0, 10]; // Step 1: 10px higher, Step 2: standard, Step 3: 10px lower
+  // Vertical offsets for each step - made much more visible
+  const stepOffsets = [-60, 0, 60]; // Step 1: 60px higher, Step 2: standard, Step 3: 60px lower
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
