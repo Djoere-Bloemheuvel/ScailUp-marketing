@@ -1,5 +1,5 @@
 
-import { Settings } from 'lucide-react';
+import { Settings, Zap, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const AutomationSecondHero = () => {
@@ -71,6 +71,42 @@ const AutomationSecondHero = () => {
               >
                 Ontdek de mogelijkheden
               </Button>
+            </div>
+
+            {/* Subtiele benefits sectie */}
+            <div className="grid grid-cols-1 gap-4 pt-8">
+              {/* Benefit 1 */}
+              <div className="flex items-center space-x-4 group">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300">
+                  <Zap className="w-6 h-6 text-blue-300" />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-lg font-semibold text-white">Snelle implementatie</h3>
+                  <p className="text-sm text-premium-silver/70">Van idee naar werkende automatisering in 2-4 weken</p>
+                </div>
+              </div>
+
+              {/* Benefit 2 */}
+              <div className="flex items-center space-x-4 group">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300">
+                  <Shield className="w-6 h-6 text-purple-300" />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-lg font-semibold text-white">Betrouwbaar & veilig</h3>
+                  <p className="text-sm text-premium-silver/70">Enterprise-grade beveiliging met volledige compliance</p>
+                </div>
+              </div>
+
+              {/* Benefit 3 */}
+              <div className="flex items-center space-x-4 group">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300">
+                  <Users className="w-6 h-6 text-cyan-300" />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-lg font-semibold text-white">Persoonlijke begeleiding</h3>
+                  <p className="text-sm text-premium-silver/70">Dedicated support van strategie tot doorlopende optimalisatie</p>
+                </div>
+              </div>
             </div>
           </div>
 
