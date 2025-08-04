@@ -86,7 +86,7 @@ const Workflow = () => {
   }];
 
   // Vertical offsets for each step
-  const stepOffsets = [10, 0, -10]; // Step 1: 10px lower, Step 2: standard, Step 3: 10px higher
+  const stepOffsets = [-10, 0, 10]; // Step 1: 10px higher, Step 2: standard, Step 3: 10px lower
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
