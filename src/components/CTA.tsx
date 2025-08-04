@@ -38,6 +38,7 @@ const CTA = () => {
 
             <div className="apple-fade-in apple-stagger-4">
               <Button
+                onClick={() => window.location.href = '/contact'}
                 className="group relative button-hover-smooth cta-hover-smooth px-12 py-8 text-xl font-semibold rounded-xl overflow-hidden shadow-xl gpu-accelerated"
                 style={{
                   background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%)',

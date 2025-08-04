@@ -30,13 +30,14 @@ const AutomationCTA = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                className="group relative bg-white text-black hover:bg-premium-silver transition-all duration-300 px-12 py-6 text-lg font-semibold rounded-xl overflow-hidden transform hover:scale-105 hover:-translate-y-1 shadow-xl"
-                style={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%)',
-                  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
-                }}
-              >
+                             <Button 
+                 onClick={() => window.location.href = '/contact'}
+                 className="group relative bg-white text-black hover:bg-premium-silver transition-all duration-300 px-12 py-6 text-lg font-semibold rounded-xl overflow-hidden transform hover:scale-105 hover:-translate-y-1 shadow-xl"
+                 style={{
+                   background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%)',
+                   boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+                 }}
+               >
                 <span className="relative z-10 flex items-center">
                   Vraag een demo aan
                   <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
@@ -46,13 +47,14 @@ const AutomationCTA = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </Button>
 
-              <Button 
-                variant="outline" 
-                className="relative text-premium-silver hover:text-white px-12 py-6 text-lg font-semibold rounded-xl border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-300 group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12]"
-                style={{
-                  boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                }}
-              >
+                             <Button 
+                 onClick={() => window.location.href = '/contact'}
+                 variant="outline" 
+                 className="relative text-premium-silver hover:text-white px-12 py-6 text-lg font-semibold rounded-xl border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-300 group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12]"
+                 style={{
+                   boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                 }}
+               >
                 <span className="relative z-10 flex items-center">
                   <Calendar className="mr-3 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
                   Plan een AI Deepdive

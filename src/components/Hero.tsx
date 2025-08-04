@@ -10,12 +10,12 @@ import CinematicBackground from './hero/CinematicBackground';
 const Hero = () => {
   const backgroundLoaded = useProgressiveLoad(100);
   const navigate = useNavigate();
-  
+
   // Add preloading hook
 
 
   const handleDeepDiveClick = () => {
-    // Contact action placeholder
+    navigate('/contact');
   };
 
   return (
@@ -147,8 +147,8 @@ const Hero = () => {
         </div>
       </div>
 
-      
-      
+
+
 
       {/* Keep only hover and continuous animations */}
       <style dangerouslySetInnerHTML={{

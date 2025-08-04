@@ -80,19 +80,20 @@ const AutomationFinalCTA = () => {
 
             {/* Premium CTA button with enhanced effects */}
             <div className="pt-6">
-              <Button 
-                className="group relative bg-white text-black hover:bg-premium-silver transition-all duration-500 px-12 py-6 text-lg font-semibold rounded-2xl overflow-hidden transform hover:scale-105 hover:-translate-y-2 shadow-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
-                  boxShadow: `
-                    0 20px 60px rgba(0, 0, 0, 0.4), 
-                    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                    0 0 0 1px rgba(255, 255, 255, 0.1),
-                    0 0 20px rgba(59, 130, 246, 0.1),
-                    0 0 40px rgba(147, 51, 234, 0.05)
-                  `
-                }}
-              >
+                             <Button 
+                 onClick={() => window.location.href = '/contact'}
+                 className="group relative bg-white text-black hover:bg-premium-silver transition-all duration-500 px-12 py-6 text-lg font-semibold rounded-2xl overflow-hidden transform hover:scale-105 hover:-translate-y-2 shadow-2xl"
+                 style={{
+                   background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
+                   boxShadow: `
+                     0 20px 60px rgba(0, 0, 0, 0.4), 
+                     inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                     0 0 0 1px rgba(255, 255, 255, 0.1),
+                     0 0 20px rgba(59, 130, 246, 0.1),
+                     0 0 40px rgba(147, 51, 234, 0.05)
+                   `
+                 }}
+               >
                 <span className="relative z-10 flex items-center">
                   Plan een consult
                   <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-3 transition-transform duration-300" />
