@@ -44,65 +44,65 @@ const AppleTimeline = () => {
 
   return (
     <div className="relative max-w-5xl mx-auto">
-      {/* Enhanced central animated timeline line */}
+      {/* Enhanced central animated timeline line with smoother animation */}
       <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
         {/* Base line with enhanced gradient */}
         <div className="w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent" />
         
-        {/* Enhanced animated glow pulse */}
+        {/* Enhanced animated glow pulse with better timing */}
         <div className="absolute inset-0 w-full h-full">
           <div 
             className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
             style={{
-              animation: 'timelinePulse 12s ease-in-out infinite',
+              animation: 'timelinePulse 15s ease-in-out infinite', // Slower, smoother
               transformOrigin: 'top'
             }}
           />
           <div 
             className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md"
             style={{
-              animation: 'timelinePulse 15s ease-in-out infinite',
-              animationDelay: '3s',
+              animation: 'timelinePulse 18s ease-in-out infinite', // Even slower
+              animationDelay: '4s',
               transformOrigin: 'top'
             }}
           />
         </div>
         
-        {/* Enhanced timeline dots with better visibility */}
+        {/* Enhanced timeline dots with smoother pulsing */}
         {steps.map((step, index) => (
           <div 
             key={step.id}
             className="absolute left-1/2 transform -translate-x-1/2"
             style={{ 
               top: `${12 + (index * 20)}%`,
-              animation: `dotPulse 4s ease-in-out infinite`,
-              animationDelay: `${index * 0.5}s`
+              animation: `dotPulse 6s ease-in-out infinite`, // Slower pulse
+              animationDelay: `${index * 0.8}s` // More staggered
             }}
           >
             <div className="relative">
               <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-white/70 to-white/30 shadow-lg shadow-white/10 border border-white/30">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent animate-pulse" />
               </div>
-              {/* Enhanced outer glow */}
+              {/* Enhanced outer glow with smoother animation */}
               <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-white/15 blur-sm scale-150 animate-pulse opacity-70" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Staggered timeline cards - reduced spacing */}
+      {/* Staggered timeline cards with improved timing */}
       <div className="relative z-10 space-y-8 lg:space-y-10">
         {steps.map((step, index) => (
           <AppleTimelineCard
             key={step.id}
             step={step}
             isLeft={index % 2 === 0}
-            delay={index * 150}
+            delay={index * 200} // Slightly more spaced out timing
           />
         ))}
       </div>
 
-      {/* Enhanced timeline animations */}
+      {/* Enhanced timeline animations with smoother easing */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes timelinePulse {
@@ -110,17 +110,25 @@ const AppleTimeline = () => {
               transform: translateY(-100%) scaleY(0);
               opacity: 0;
             }
-            20% {
-              opacity: 0.4;
-              transform: translateY(-50%) scaleY(0.5);
+            15% {
+              opacity: 0.3;
+              transform: translateY(-70%) scaleY(0.3);
+            }
+            25% {
+              opacity: 0.5;
+              transform: translateY(-50%) scaleY(0.6);
             }
             50% { 
               opacity: 1;
               transform: translateY(0%) scaleY(1);
             }
-            80% {
-              opacity: 0.7;
-              transform: translateY(50%) scaleY(0.8);
+            75% {
+              opacity: 0.8;
+              transform: translateY(30%) scaleY(0.9);
+            }
+            85% {
+              opacity: 0.6;
+              transform: translateY(50%) scaleY(0.7);
             }
             100% { 
               transform: translateY(100vh) scaleY(0);
@@ -131,11 +139,19 @@ const AppleTimeline = () => {
           @keyframes dotPulse {
             0%, 100% { 
               transform: translate(-50%, -50%) scale(1);
-              opacity: 0.5;
+              opacity: 0.4;
+            }
+            25% { 
+              transform: translate(-50%, -50%) scale(1.1);
+              opacity: 0.6;
             }
             50% { 
-              transform: translate(-50%, -50%) scale(1.4);
+              transform: translate(-50%, -50%) scale(1.3);
               opacity: 1;
+            }
+            75% { 
+              transform: translate(-50%, -50%) scale(1.1);
+              opacity: 0.6;
             }
           }
         `
