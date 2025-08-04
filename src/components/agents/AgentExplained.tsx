@@ -1,5 +1,5 @@
-
 import { Bot, MessageSquare, Cpu, Brain } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const AgentExplained = () => {
   return (
@@ -13,17 +13,45 @@ const AgentExplained = () => {
       <div className="relative max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           
-          {/* Content */}
+          {/* Content - matching hero section exactly */}
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Wat zijn Autonomous AI Agents?
-            </h2>
-            
-            <p className="text-lg md:text-xl text-premium-silver/80 leading-relaxed font-light">
-              Een Autonomous AI Agent is een digitale assistent die zelfstandig kan denken, beslissen en handelen binnen vooraf gedefinieerde kaders. In plaats van een simpel script of chatbot werkt een agent doelgericht, met geheugen, en voert hij acties uit in tools zoals e-mail, CRM, agenda of API-integraties. Ideaal voor sales, klantenservice, administratie of interne coördinatie.
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
+                Autonomous AI Agents
+              </h1>
+              
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-light text-premium-silver/90 leading-relaxed">
+                Slimme assistenten. Volledig zelfstandig.
+              </h2>
+            </div>
+
+            <p className="text-lg md:text-xl text-premium-silver/80 leading-relaxed max-w-2xl">
+              Onze AI Agents voeren zelfstandig taken uit, communiceren met systemen én mensen, en automatiseren repetitieve workflows zonder handmatige input.
             </p>
 
-            {/* Key Points */}
+            <div className="pt-4">
+              <Button 
+                size="lg"
+                className="bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                onClick={() => {
+                  // Basic spam protection - simple rate limiting
+                  const lastClick = localStorage.getItem('cta-last-click');
+                  const now = Date.now();
+                  if (lastClick && now - parseInt(lastClick) < 2000) return;
+                  localStorage.setItem('cta-last-click', now.toString());
+                  
+                  // Scroll to next section or handle CTA action
+                  const nextSection = document.querySelector('[data-service-section="0"]');
+                  if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Ontdek de mogelijkheden
+              </Button>
+            </div>
+
+            {/* Key Points - kept from original */}
             <div className="space-y-6 pt-8">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-400/30 flex items-center justify-center">
@@ -57,7 +85,7 @@ const AgentExplained = () => {
             </div>
           </div>
 
-          {/* Glowing Brain Visual */}
+          {/* Glowing Brain Visual - kept existing visual */}
           <div className="relative">
             <div className="relative w-full max-w-lg mx-auto">
               {/* Outer glow effect */}
