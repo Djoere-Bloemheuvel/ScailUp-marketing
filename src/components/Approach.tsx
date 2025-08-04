@@ -1,80 +1,69 @@
-import { Sparkles, Clock, HandHeart, Layers, TrendingUp } from 'lucide-react';
-import PrincipleCard from './PrincipleCard';
+
+import { Sparkles } from 'lucide-react';
+import AppleTimeline from './AppleTimeline';
+import AppleNebulaBackground from './AppleNebulaBackground';
+
 const Approach = () => {
-  const principles = [{
-    id: 1,
-    title: "Snelheid zonder compromissen",
-    subtitle: "Van idee naar werkende POC in dagen, niet maanden.",
-    icon: Clock,
-    color: "from-slate-400 to-blue-400",
-    glowColor: "shadow-blue-400/20",
-    hoverGlow: "group-hover:shadow-blue-400/40"
-  }, {
-    id: 2,
-    title: "Ownership mentaliteit",
-    subtitle: "Uw succes is ons succes. Wij denken mee als strategische partner.",
-    icon: HandHeart,
-    color: "from-blue-500 to-purple-500",
-    glowColor: "shadow-purple-500/20",
-    hoverGlow: "group-hover:shadow-purple-500/40"
-  }, {
-    id: 3,
-    title: "Design-first filosofie",
-    subtitle: "Technologie moet intuïtief aanvoelen. Altijd.",
-    icon: Layers,
-    color: "from-purple-400 to-pink-400",
-    glowColor: "shadow-purple-400/20",
-    hoverGlow: "group-hover:shadow-purple-400/40"
-  }, {
-    id: 4,
-    title: "ROI-gedreven ontwikkeling",
-    subtitle: "Elke feature, elke functie wordt gemeten aan zakelijke impact.",
-    icon: TrendingUp,
-    color: "from-slate-300 to-white",
-    glowColor: "shadow-slate-300/20",
-    hoverGlow: "group-hover:shadow-slate-300/40"
-  }];
-  return <>
-      <section className="py-24 lg:py-32 px-4 relative overflow-hidden bg-black">
-        {/* Ambient background effects */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 right-1/6 w-80 lg:w-96 h-80 lg:h-96 bg-gradient-radial from-blue-500/5 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-1/3 left-1/8 w-64 lg:w-80 h-64 lg:h-80 bg-gradient-radial from-purple-500/5 to-transparent rounded-full blur-3xl" />
+  return (
+    <section className="relative py-20 lg:py-28 px-4 overflow-hidden bg-black">
+      {/* Enhanced nebula background */}
+      <AppleNebulaBackground />
+      
+      {/* Content container */}
+      <div className="relative max-w-6xl mx-auto z-10">
+        {/* Apple-inspired header with refined typography */}
+        <div className="text-center mb-16 lg:mb-20">
+          {/* Floating badge */}
+          <div className="inline-flex items-center px-6 py-3 mb-8 rounded-full bg-white/[0.05] border border-white/[0.15] backdrop-blur-2xl shadow-lg shadow-black/20">
+            <div className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mr-3 animate-pulse" />
+            <span className="text-white/90 font-medium tracking-wide text-sm" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+              Onze Werkwijze
+            </span>
+            <Sparkles className="w-4 h-4 text-cyan-400 ml-3" />
+          </div>
+          
+          {/* Hero title - Apple style with refined fonts */}
+          <div className="mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+              Vier principes.
+            </h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+                Eén revolutie.
+              </span>
+            </h2>
+          </div>
+          
+          {/* Subtitle with Apple typography */}
+          <p className="text-white/55 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+            Ontdek hoe wij elk project transformeren van concept naar
+            <br className="hidden md:block" />
+            game-changing realiteit.
+          </p>
         </div>
-        
-        <div className="relative max-w-6xl mx-auto z-10">
-          {/* Header Section */}
-          <div className="text-center mb-16 lg:mb-20">
+
+        {/* Refined Apple-style vertical timeline */}
+        <AppleTimeline />
+
+        {/* Bottom CTA - More refined */}
+        <div className="text-center mt-16 lg:mt-20">
+          <div className="inline-flex flex-col items-center p-8 lg:p-9 rounded-3xl bg-white/[0.04] border border-white/[0.12] backdrop-blur-2xl max-w-xl transition-all duration-700 hover:bg-white/[0.07] hover:border-white/[0.18] hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/[0.05] shadow-lg shadow-black/10">
+            <div className="w-12 h-12 bg-gradient-to-br from-white/12 to-white/6 rounded-2xl flex items-center justify-center mb-6 border border-white/20 backdrop-blur-sm transition-all duration-500 hover:scale-110 hover:bg-white/15">
+              <Sparkles className="w-6 h-6 text-white" />
+            </div>
             
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+              Klaar voor de volgende stap?
+            </h3>
             
-            
-            
-            <p className="text-white/60 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light leading-relaxed apple-fade-in apple-stagger-3 tracking-wide">
-              Vier principes die elk project tot succes maken.
+            <p className="text-white/55 text-lg leading-relaxed font-light" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+              Laten we samen uw visie tot leven brengen met onze bewezen aanpak.
             </p>
           </div>
-
-          {/* Optimized Grid Layout with Equal Heights */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto" style={{
-          gridAutoRows: '1fr'
-        }}>
-            {principles.map((principle, index) => <div key={principle.id} className="w-full" style={{
-            aspectRatio: 'auto',
-            minHeight: '280px'
-          }}>
-                <PrincipleCard principle={principle} delay={`${0.1 + index * 0.1}s`} />
-              </div>)}
-          </div>
         </div>
-      </section>
-
-      {/* Optimized CSS using native styles instead of dangerouslySetInnerHTML */}
-      <style>{`
-        @keyframes sweep {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
-    </>;
+      </div>
+    </section>
+  );
 };
+
 export default Approach;
