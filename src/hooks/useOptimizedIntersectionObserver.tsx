@@ -132,10 +132,10 @@ class IntersectionObserverManager {
 // Global instance
 const observerManager = new IntersectionObserverManager();
 
-export const useOptimizedIntersectionObserver = (
+export const useOptimizedIntersectionObserver = <T extends HTMLElement = HTMLDivElement>(
   options: UseOptimizedIntersectionObserverOptions = {}
 ) => {
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
   const idRef = useRef<string>(`observer_${Date.now()}_${Math.random()}`);
 
