@@ -1,15 +1,40 @@
 
-import { ArrowRight, Brain } from 'lucide-react';
+import { ArrowRight, Brain, Sparkles, Zap, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import CinematicBackground from '@/components/hero/CinematicBackground';
 
 const CustomSaaSHero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-premium-black">
-      <CinematicBackground />
+    <section className="relative py-20 lg:py-32 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-purple-950/20 to-premium-black" />
       
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        <div className="space-y-8 md:space-y-12">
+      {/* Ambient lighting effects */}
+      <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+
+      {/* Subtle animated particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-purple-400/60 rounded-full animate-pulse" style={{
+          animationDelay: '0s',
+          animationDuration: '4s'
+        }} />
+        <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-blue-400/40 rounded-full animate-pulse" style={{
+          animationDelay: '2s',
+          animationDuration: '3s'
+        }} />
+        <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-cyan-400/50 rounded-full animate-pulse" style={{
+          animationDelay: '1s',
+          animationDuration: '5s'
+        }} />
+        <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-pink-400/60 rounded-full animate-pulse" style={{
+          animationDelay: '3s',
+          animationDuration: '4s'
+        }} />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4">
+        {/* Main Hero Content */}
+        <div className="text-center mb-16">
           {/* Premium Badge */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-400/20 backdrop-blur-sm">
@@ -18,20 +43,20 @@ const CustomSaaSHero = () => {
             </div>
           </div>
 
-          {/* Main Headline */}
-          <div className="space-y-6">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
-              Custom AI SaaS
-            </h1>
-            
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-premium-silver/90 leading-relaxed max-w-4xl mx-auto">
-              Gebouwd voor schaal
-            </h2>
-          </div>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl lg:text-2xl text-premium-silver/80 font-light leading-relaxed max-w-4xl mx-auto">
-            Wij bouwen schaalbare AI-gedreven software-oplossingen, volledig afgestemd op jouw organisatie. Van prototype tot product – zonder afhankelijk te zijn van developers.
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+            Slim. Schaalbaar.{' '}
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent block">
+                Toekomstbestendig.
+              </span>
+              {/* Light gradient glow behind "Toekomstbestendig" */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-blue-500/20 blur-2xl -z-10 scale-110" />
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-premium-silver/80 max-w-4xl mx-auto leading-relaxed mb-12">
+            Wij bouwen schaalbare AI-gedreven software-oplossingen, volledig afgestemd op jouw organisatie. 
+            Van prototype tot product – zonder afhankelijk te zijn van developers.
           </p>
 
           {/* CTA Button */}
