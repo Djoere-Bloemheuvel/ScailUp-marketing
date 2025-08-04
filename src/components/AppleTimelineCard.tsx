@@ -19,7 +19,7 @@ interface AppleTimelineCardProps {
 
 const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
   const [isAnimated, setIsAnimated] = useState(false);
-  const { elementRef, isVisible } = useOptimizedIntersectionObserver({
+  const { elementRef, isVisible } = useOptimizedIntersectionObserver<HTMLDivElement>({
     threshold: 0.2,
     rootMargin: '0px 0px -30px 0px',
     triggerOnce: true,
