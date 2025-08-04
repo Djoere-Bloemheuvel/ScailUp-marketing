@@ -18,6 +18,7 @@ interface AppleTimelineCardProps {
 
 const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            setIsInView(true);
             // Smoother staggered animation with better timing
             setTimeout(() => {
               setIsVisible(true);

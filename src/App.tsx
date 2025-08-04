@@ -21,7 +21,7 @@ const queryClient = new QueryClient({
     queries: {
       // Prevent unnecessary refetches for better performance
       staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000, // 10 minutes (was cacheTime)
+      cacheTime: 10 * 60 * 1000, // 10 minutes
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: 'always',
