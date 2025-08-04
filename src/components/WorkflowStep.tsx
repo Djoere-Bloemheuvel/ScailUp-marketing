@@ -43,16 +43,16 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
         transform: `translateY(${verticalOffset}px)`
       } as React.CSSProperties}
     >
-      <div className="relative flex flex-col items-center space-y-7 p-7 lg:p-11 transition-all duration-500 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer">
+      <div className="relative flex flex-col items-center space-y-8 p-8 lg:p-12 transition-all duration-500 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer">
         
-        {/* Enhanced number circle with scaled dimensions */}
+        {/* Enhanced number circle with premium effects */}
         <div className="relative">
-          <div className="w-23 h-23 lg:w-27 lg:h-27 rounded-full bg-gradient-to-br from-white via-white to-gray-100 flex items-center justify-center relative z-10 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-blue-500/30 group-hover:scale-110">
+          <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-white via-white to-gray-100 flex items-center justify-center relative z-10 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-blue-500/30 group-hover:scale-110">
             <span className="text-3xl lg:text-4xl font-bold text-black tracking-tight relative">
               {step.number}
-              {/* Subtle inner highlight - scaled */}
+              {/* Subtle inner highlight */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-15 h-15 lg:w-19 lg:h-19 rounded-full bg-gradient-to-br from-white/40 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-white/40 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
               </div>
             </span>
           </div>
@@ -78,7 +78,7 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
           )}
         </div>
 
-        {/* Enhanced content with scaled spacing */}
+        {/* Enhanced content with premium styling */}
         <div className="space-y-6 max-w-sm transition-all duration-500 ease-out group-hover:-translate-y-2">
           <h3 className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight transition-all duration-500 relative group-hover:-translate-y-1 group-hover:text-white">
             {step.title}
