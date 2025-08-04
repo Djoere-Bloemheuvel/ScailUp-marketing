@@ -44,16 +44,16 @@ const AutomationSecondHero = () => {
           <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-                AI Automatisering
+                Zet je bedrijf op autopilot
               </h1>
               
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-premium-silver/90 leading-relaxed">
-                Slim. Snel. Onzichtbaar.
+                Van eerste contact tot factuur — volledig geautomatiseerd.
               </h2>
             </div>
 
             <p className="text-base sm:text-lg md:text-xl text-premium-silver/80 leading-relaxed max-w-2xl">
-              Van repetitieve taken tot complexe besluitvorming — wij maken het naadloos. Uw processen draaien 24/7. Zonder ruis. Zonder vertraging.
+              Wij bouwen intelligente automatiseringen die je dagelijkse processen naadloos laten verlopen. Geen handmatig werk meer — alleen slimme systemen die 24/7 voor je werken.
             </p>
 
             <div className="pt-2 md:pt-4">
