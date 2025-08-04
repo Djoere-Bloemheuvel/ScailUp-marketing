@@ -1,4 +1,4 @@
-import { Settings, Brain, TrendingUp } from 'lucide-react';
+import { Settings, Bot, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 const AgentPrimaryHero = () => {
   return <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center overflow-hidden">
@@ -106,7 +106,7 @@ const AgentPrimaryHero = () => {
                   inset 0 0 60px rgba(59, 130, 246, 0.1)
                 `
             }}>
-                <Brain className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 text-teal-300 drop-shadow-2xl animate-pulse" style={{
+                <Bot className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 text-teal-300 drop-shadow-2xl animate-pulse" style={{
                 filter: 'drop-shadow(0 0 20px rgba(20, 184, 166, 0.6))',
                 animationDuration: '6s'
               }} />
