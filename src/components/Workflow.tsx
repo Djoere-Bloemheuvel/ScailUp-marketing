@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
 
@@ -90,45 +89,45 @@ const Workflow = () => {
   const stepOffsets = [-40, 20, 80]; // Step 1: 40px higher, Step 2: 20px lower, Step 3: 80px lower
 
   return (
-    <section ref={sectionRef} className="py-30 lg:py-38 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
+    <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
       {/* Enhanced multi-layered background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
-        <div className="w-[950px] h-[760px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
+        <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
       </div>
       
       <div className="absolute inset-0 flex items-center justify-center opacity-15">
-        <div className="w-[570px] h-[380px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
+        <div className="w-[600px] h-[400px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
       </div>
 
       {/* Dynamic floating particles inspired by hero section */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="floating-particle absolute top-20 left-10 w-1.5 h-1.5 bg-blue-400/60 rounded-full" style={{
+        <div className="floating-particle absolute top-20 left-10 w-2 h-2 bg-blue-400/60 rounded-full" style={{
           animationDelay: '0s'
         }} />
         <div className="floating-particle absolute top-40 right-20 w-1 h-1 bg-purple-400/80 rounded-full" style={{
           animationDelay: '2s'
         }} />
-        <div className="floating-particle absolute bottom-32 left-1/3 w-2.5 h-2.5 bg-cyan-400/50 rounded-full" style={{
+        <div className="floating-particle absolute bottom-32 left-1/3 w-3 h-3 bg-cyan-400/50 rounded-full" style={{
           animationDelay: '4s'
         }} />
-        <div className="floating-particle pulse-particle absolute bottom-20 right-1/4 w-1 h-1 bg-emerald-400/70 rounded-full" style={{
+        <div className="floating-particle pulse-particle absolute bottom-20 right-1/4 w-1.5 h-1.5 bg-emerald-400/70 rounded-full" style={{
           animationDelay: '1s'
         }} />
         <div className="floating-particle absolute top-1/2 left-1/4 w-1 h-1 bg-violet-400/60 rounded-full" style={{
           animationDelay: '3s'
         }} />
-        <div className="pulse-particle absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-blue-300/40 rounded-full" style={{
+        <div className="pulse-particle absolute top-3/4 right-1/3 w-2 h-2 bg-blue-300/40 rounded-full" style={{
           animationDelay: '5s'
         }} />
       </div>
       
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Enhanced header with more visual interest */}
-        <div className="text-left mb-15 lg:mb-19">
+        <div className="text-left mb-16 lg:mb-20">
           {/* Subtle accent line above title */}
-          <div className="w-23 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 apple-fade-in apple-stagger-2 tracking-tight leading-tight" style={{ fontSize: '0.95em' }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             In drie heldere stappen van{' '}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
@@ -148,7 +147,7 @@ const Workflow = () => {
             .
           </h2>
           
-          <p className="text-white/70 text-xl lg:text-2xl font-light tracking-wide apple-fade-in apple-stagger-3 max-w-4xl leading-relaxed" style={{ fontSize: '0.95em' }}>
+          <p className="text-white/70 text-xl lg:text-2xl font-light tracking-wide apple-fade-in apple-stagger-3 max-w-4xl leading-relaxed">
             Onze bewezen aanpak voor succesvolle AI-implementatie.
           </p>
 
@@ -170,7 +169,7 @@ const Workflow = () => {
               
               {/* Flowing light effect */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute w-19 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[slide-right_3s_ease-in-out_infinite]" style={{
+                <div className="absolute w-20 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent animate-[slide-right_3s_ease-in-out_infinite]" style={{
                   animation: 'slide-right 4s ease-in-out infinite',
                   animationDelay: '1s'
                 }} />
@@ -179,7 +178,7 @@ const Workflow = () => {
           </div>
 
           {/* Steps Grid with enhanced spacing and vertical offsets */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-19 lg:gap-11">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
             {steps.map((step, index) => (
               <WorkflowStep 
                 key={step.number} 
@@ -193,9 +192,9 @@ const Workflow = () => {
         </div>
 
         {/* Call-to-action area */}
-        <div className="text-center mt-19 lg:mt-23">
+        <div className="text-center mt-20 lg:mt-24">
           <div className="inline-block px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/10 apple-fade-in apple-stagger-6">
-            <p className="text-white/70 text-lg" style={{ fontSize: '0.95em' }}>
+            <p className="text-white/70 text-lg">
               <span className="text-white font-medium">Klaar om te beginnen?</span> Laten we uw AI-journey starten.
             </p>
           </div>
