@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
-import { useContactPreloader } from '@/hooks/useContactPreloader';
+
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedHeadline from './AnimatedHeadline';
@@ -12,10 +12,10 @@ const Hero = () => {
   const navigate = useNavigate();
   
   // Add preloading hook
-  useContactPreloader();
+
 
   const handleDeepDiveClick = () => {
-    navigate('/contact');
+    // Contact action placeholder
   };
 
   return (
@@ -147,7 +147,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Contact Modal */}
+      
       
 
       {/* Keep only hover and continuous animations */}

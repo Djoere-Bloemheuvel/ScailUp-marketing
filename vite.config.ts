@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => ({
           'animation-vendor': ['lucide-react', 'tailwind-merge', 'clsx', 'class-variance-authority'],
           'query-vendor': ['@tanstack/react-query'],
           // Separate chunk for contact page components
-          'contact-vendor': ['@/components/contact/FastContactPage', '@/components/contact/OptimizedContactForm', '@/components/contact/LightweightBackground'],
+    
         },
       },
     },

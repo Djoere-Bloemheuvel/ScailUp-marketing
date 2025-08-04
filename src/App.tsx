@@ -7,16 +7,9 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
-// Lazy load pages for code splitting with priority loading for Contact
+// Lazy load pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
-const Contact = lazy(() => 
-  import("./pages/Contact").then(module => {
-    // Preload contact form components when Contact is loaded
-    import("./components/contact/FastContactPage");
-    import("./components/contact/OptimizedContactForm");
-    return module;
-  })
-);
+
 const AIAutomations = lazy(() => import("./pages/AIAutomations"));
 const CustomAISaaS = lazy(() => import("./pages/CustomAISaaS"));
 const Consultancy = lazy(() => import("./pages/Consultancy"));
@@ -59,7 +52,7 @@ const App = () => (
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/contact" element={<Contact />} />
+
             <Route path="/ai-automations" element={<AIAutomations />} />
             <Route path="/custom-ai-saas" element={<CustomAISaaS />} />
             <Route path="/consultancy" element={<Consultancy />} />
