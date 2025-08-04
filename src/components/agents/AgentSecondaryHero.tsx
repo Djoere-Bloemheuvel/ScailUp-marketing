@@ -4,34 +4,31 @@ import { Brain, Zap, Shield } from 'lucide-react';
 const AgentSecondaryHero = () => {
   return (
     <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
-      {/* Pure black background with very subtle teal/green accents */}
-      <div className="absolute inset-0 bg-premium-black" />
+      {/* Match AgentHero background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-teal-950/30 to-blue-950/40" />
       
-      {/* Top corner glows - subtle teal/green */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-teal-500/8 via-teal-500/3 to-transparent blur-3xl" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-emerald-500/8 via-emerald-500/3 to-transparent blur-3xl" />
-      
-      {/* Behind text glow - very subtle */}
-      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-radial from-teal-500/4 via-emerald-500/2 to-transparent blur-3xl" />
-      
-      {/* Very subtle ambient lighting effects with teal/green colors - much more subtle */}
-      <div className="absolute top-10 left-10 md:top-20 md:left-20 w-32 h-32 md:w-64 md:h-64 bg-teal-500/3 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-32 h-32 md:w-64 md:h-64 bg-emerald-500/3 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-48 md:w-[500px] md:h-[300px] bg-teal-500/2 rounded-full blur-3xl" />
+      {/* Match AgentHero ambient lighting effects */}
+      <div className="absolute top-10 left-10 md:top-20 md:left-20 w-48 h-48 md:w-96 md:h-96 bg-teal-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-60 md:w-[600px] md:h-[400px] bg-emerald-500/5 rounded-full blur-3xl" />
 
-      {/* Even more subtle animated particles */}
+      {/* Match AgentHero animated particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-0.5 h-0.5 bg-teal-400/20 rounded-full animate-pulse" style={{
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-teal-400/60 rounded-full animate-pulse" style={{
           animationDelay: '0s',
-          animationDuration: '5s'
-        }} />
-        <div className="absolute top-3/4 right-1/3 w-0.5 h-0.5 bg-emerald-400/15 rounded-full animate-pulse" style={{
-          animationDelay: '2s',
           animationDuration: '4s'
         }} />
-        <div className="absolute bottom-1/3 left-2/3 w-0.5 h-0.5 bg-teal-400/18 rounded-full animate-pulse" style={{
+        <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-blue-400/40 rounded-full animate-pulse" style={{
+          animationDelay: '2s',
+          animationDuration: '3s'
+        }} />
+        <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-emerald-400/50 rounded-full animate-pulse" style={{
           animationDelay: '1s',
-          animationDuration: '6s'
+          animationDuration: '5s'
+        }} />
+        <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-cyan-400/60 rounded-full animate-pulse" style={{
+          animationDelay: '3s',
+          animationDuration: '4s'
         }} />
       </div>
 
