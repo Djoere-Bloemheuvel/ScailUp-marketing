@@ -1,5 +1,4 @@
 
-import { Sparkles } from 'lucide-react';
 import AppleTimeline from './AppleTimeline';
 import AppleNebulaBackground from './AppleNebulaBackground';
 
