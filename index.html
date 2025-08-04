@@ -4,9 +4,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; object-src 'none'; base-uri 'self';" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/main.tsx" as="script" crossorigin />
+    <link rel="dns-prefetch" href="//lovable.dev" />
+
     <title>Buildrs.AI - Elite AI Engineering Studio</title>
     <meta name="description" content="Premium AI-oplossingen voor visionairs. Custom AI SaaS, automatisering en consultancy van de hoogste kwaliteit. Voor bedrijven die écht willen transformeren." />
     <meta name="author" content="Buildrs.AI" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
 
     <meta property="og:title" content="Buildrs.AI - Elite AI Engineering Studio" />
     <meta property="og:description" content="Premium AI-oplossingen voor visionairs. Custom AI SaaS, automatisering en consultancy van de hoogste kwaliteit." />
