@@ -1,7 +1,8 @@
 
 import { Users, Zap, Shield, Cog, Brain, Network } from 'lucide-react';
 import ScrollHeader from '@/components/ScrollHeader';
-import AgentHero from '@/components/agents/AgentHero';
+import AgentPrimaryHero from '@/components/agents/AgentPrimaryHero';
+import AgentSecondaryHero from '@/components/agents/AgentSecondaryHero';
 import AgentExplained from '@/components/agents/AgentExplained';
 import AgentOverview from '@/components/agents/AgentOverview';
 import WhyBuildrsAgents from '@/components/agents/WhyBuildrsAgents';
@@ -76,8 +77,11 @@ const AutonomousAIAgents = () => {
     <div className="min-h-screen bg-premium-black">
       <ScrollHeader />
       
-      {/* Hero Section */}
-      <AgentHero />
+      {/* New Primary Hero Section */}
+      <AgentPrimaryHero />
+
+      {/* New Secondary Hero Section */}
+      <AgentSecondaryHero />
 
       {/* Section 1 - Wat zijn Autonomous AI Agents? */}
       <div data-service-section="0">
