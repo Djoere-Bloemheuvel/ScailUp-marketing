@@ -1,5 +1,5 @@
 
-import { Zap, Brain, Cog } from 'lucide-react';
+import { Brain, Zap, Shield } from 'lucide-react';
 
 const AgentSecondaryHero = () => {
   return (
@@ -31,82 +31,102 @@ const AgentSecondaryHero = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-12 md:mb-16 lg:mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
-            Waarom autonome AI-agenten?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">
+            Autonoom. Intelligent. <span className="text-teal-300">Onmisbaar.</span>
           </h2>
+          <p className="text-lg md:text-xl lg:text-2xl text-premium-silver/80 leading-relaxed max-w-4xl mx-auto">
+            Onze AI Agents voeren zelfstandig taken uit, communiceren met systemen én mensen,
+            <br className="hidden md:block" />
+            en automatiseren repetitieve workflows zonder handmatige input.
+          </p>
         </div>
 
-        {/* Three USP columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
-          {/* USP 1 - Sneller schakelen */}
-          <div className="text-center space-y-6">
-            {/* Icon with glow effect */}
-            <div className="flex justify-center">
-              <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-2xl bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-teal-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300" style={{
-                boxShadow: '0 0 40px rgba(20, 184, 166, 0.2), inset 0 0 20px rgba(20, 184, 166, 0.1)'
-              }}>
-                <Zap className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-teal-300" style={{
-                  filter: 'drop-shadow(0 0 10px rgba(20, 184, 166, 0.6))'
-                }} />
+        {/* Three Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8">
+          {/* Card 1 - Zelfstandig beslissen */}
+          <div className="group">
+            <div className="relative p-8 md:p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 backdrop-blur-sm border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:transform hover:scale-105">
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="relative z-10 text-center space-y-6">
+                {/* Icon */}
+                <div className="flex justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-teal-400/30 backdrop-blur-sm flex items-center justify-center">
+                    <Brain className="w-8 h-8 md:w-10 md:h-10 text-teal-300" style={{
+                      filter: 'drop-shadow(0 0 8px rgba(20, 184, 166, 0.5))'
+                    }} />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
+                    Zelfstandig beslissen
+                  </h3>
+                  <p className="text-sm md:text-base text-premium-silver/70 leading-relaxed">
+                    AI-agents die denken, redeneren en handelen zonder menselijke tussenkomst.
+                  </p>
+                </div>
               </div>
-            </div>
-            
-            {/* Content */}
-            <div className="space-y-4">
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white">
-                Sneller schakelen zonder menselijke tussenkomst
-              </h3>
-              <p className="text-sm md:text-base text-premium-silver/80 leading-relaxed max-w-sm mx-auto">
-                Agents kunnen direct reageren op triggers en context.
-              </p>
             </div>
           </div>
 
-          {/* USP 2 - Altijd beschikbaar */}
-          <div className="text-center space-y-6">
-            {/* Icon with glow effect */}
-            <div className="flex justify-center">
-              <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-emerald-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300" style={{
-                boxShadow: '0 0 40px rgba(16, 185, 129, 0.2), inset 0 0 20px rgba(16, 185, 129, 0.1)'
-              }}>
-                <Brain className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-emerald-300" style={{
-                  filter: 'drop-shadow(0 0 10px rgba(16, 185, 129, 0.6))'
-                }} />
+          {/* Card 2 - 24/7 operationeel */}
+          <div className="group">
+            <div className="relative p-8 md:p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 backdrop-blur-sm border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:transform hover:scale-105">
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="relative z-10 text-center space-y-6">
+                {/* Icon */}
+                <div className="flex justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-teal-400/30 backdrop-blur-sm flex items-center justify-center">
+                    <Zap className="w-8 h-8 md:w-10 md:h-10 text-teal-300" style={{
+                      filter: 'drop-shadow(0 0 8px rgba(20, 184, 166, 0.5))'
+                    }} />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
+                    24/7 operationeel
+                  </h3>
+                  <p className="text-sm md:text-base text-premium-silver/70 leading-relaxed">
+                    Altijd alert, altijd actief - geen pauzes, geen fouten, maximale efficiëntie.
+                  </p>
+                </div>
               </div>
-            </div>
-            
-            {/* Content */}
-            <div className="space-y-4">
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white">
-                Altijd beschikbaar, altijd lerend
-              </h3>
-              <p className="text-sm md:text-base text-premium-silver/80 leading-relaxed max-w-sm mx-auto">
-                Ze draaien 24/7 en passen zich aan op basis van data.
-              </p>
             </div>
           </div>
 
-          {/* USP 3 - Volledig aanpasbaar */}
-          <div className="text-center space-y-6">
-            {/* Icon with glow effect */}
-            <div className="flex justify-center">
-              <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-2xl bg-gradient-to-br from-blue-500/20 to-teal-500/20 border border-blue-400/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-105 transition-all duration-300" style={{
-                boxShadow: '0 0 40px rgba(59, 130, 246, 0.2), inset 0 0 20px rgba(59, 130, 246, 0.1)'
-              }}>
-                <Cog className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-blue-300" style={{
-                  filter: 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.6))'
-                }} />
+          {/* Card 3 - Veilig & compliant */}
+          <div className="group">
+            <div className="relative p-8 md:p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 backdrop-blur-sm border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:transform hover:scale-105">
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="relative z-10 text-center space-y-6">
+                {/* Icon */}
+                <div className="flex justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-teal-400/30 backdrop-blur-sm flex items-center justify-center">
+                    <Shield className="w-8 h-8 md:w-10 md:h-10 text-teal-300" style={{
+                      filter: 'drop-shadow(0 0 8px rgba(20, 184, 166, 0.5))'
+                    }} />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-white">
+                    Veilig & compliant
+                  </h3>
+                  <p className="text-sm md:text-base text-premium-silver/70 leading-relaxed">
+                    Werkt binnen veilige kaders met volledige audit-logs en toegangscontrole.
+                  </p>
+                </div>
               </div>
-            </div>
-            
-            {/* Content */}
-            <div className="space-y-4">
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white">
-                Volledig aanpasbaar aan jouw organisatie
-              </h3>
-              <p className="text-sm md:text-base text-premium-silver/80 leading-relaxed max-w-sm mx-auto">
-                Gebouwd rondom jouw processen, systemen en use cases.
-              </p>
             </div>
           </div>
         </div>
