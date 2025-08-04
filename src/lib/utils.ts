@@ -1,3 +1,4 @@
+
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -8,7 +9,8 @@ export function cn(...inputs: ClassValue[]) {
   const key = JSON.stringify(inputs);
 
   if (classNameCache.has(key)) {
-    return classNameCache.get(key)!;
+    const cachedResult = classNameCache.get(key);
+    return cachedResult || "";
   }
 
   const result = twMerge(clsx(inputs));

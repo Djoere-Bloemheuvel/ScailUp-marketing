@@ -13,7 +13,7 @@ const Services = () => {
     sections.forEach((section, index) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          if (entry && entry.isIntersecting) {
             setVisibleSection(prev => Math.max(prev, index));
           }
         },

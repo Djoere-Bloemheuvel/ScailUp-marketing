@@ -1,6 +1,4 @@
 
-import { CheckCircle } from 'lucide-react';
-
 const AutomationIntro = () => {
   return (
     <section className="py-16 relative overflow-hidden">
