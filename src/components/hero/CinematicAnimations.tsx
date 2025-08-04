@@ -1,5 +1,4 @@
 
-
 const CinematicAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{

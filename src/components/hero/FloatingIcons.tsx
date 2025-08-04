@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Brain, Zap, Target, Shield, Cpu, Network, Sparkles, Bot } from 'lucide-react';
 
 const FloatingIcons = () => {

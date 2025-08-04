@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 const AppleStyleBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">

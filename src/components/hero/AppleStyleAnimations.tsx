@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 const AppleStyleAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{
