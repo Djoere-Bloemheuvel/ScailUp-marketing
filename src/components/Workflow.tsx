@@ -85,18 +85,18 @@ const Workflow = () => {
     subtitle: "Samen perfectioneren we het product en koppelen het aan je systemen."
   }];
 
-  // Vertical offsets for each step - positioned slightly lower
-  const stepOffsets = [-40, 20, 80]; // Step 1: 40px higher, Step 2: 20px lower, Step 3: 80px lower
+  // Vertical offsets scaled down by 5%
+  const stepOffsets = [-38, 19, 76]; // Scaled from [-40, 20, 80]
 
   return (
-    <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
-      {/* Enhanced multi-layered background */}
+    <section ref={sectionRef} className="py-30 lg:py-38 px-8 lg:px-12 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
+      {/* Enhanced multi-layered background - scaled down 5% */}
       <div className="absolute inset-0 flex items-center justify-center opacity-25">
-        <div className="w-[1000px] h-[800px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
+        <div className="w-[950px] h-[760px] bg-gradient-radial from-blue-500/8 via-purple-500/4 to-transparent rounded-full blur-3xl" />
       </div>
       
       <div className="absolute inset-0 flex items-center justify-center opacity-15">
-        <div className="w-[600px] h-[400px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
+        <div className="w-[570px] h-[380px] bg-gradient-radial from-cyan-400/6 via-white/3 to-transparent rounded-full blur-2xl" />
       </div>
 
       {/* Dynamic floating particles inspired by hero section */}
@@ -122,10 +122,10 @@ const Workflow = () => {
       </div>
       
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Enhanced header with more visual interest */}
-        <div className="text-left mb-16 lg:mb-20">
+        {/* Enhanced header with scaled down spacing */}
+        <div className="text-left mb-15 lg:mb-19">
           {/* Subtle accent line above title */}
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
+          <div className="w-23 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 apple-fade-in apple-stagger-2 tracking-tight leading-tight">
             In drie heldere stappen van{' '}
@@ -152,14 +152,14 @@ const Workflow = () => {
           </p>
 
           {/* Premium stats or badges */}
-          <div className="flex flex-wrap gap-4 mt-8 apple-fade-in apple-stagger-4">
+          <div className="flex flex-wrap gap-4 mt-7 apple-fade-in apple-stagger-4">
             
             
             
           </div>
         </div>
 
-        {/* Enhanced timeline with better visual hierarchy */}
+        {/* Enhanced timeline with scaled spacing */}
         <div className="relative max-w-6xl mx-auto">
           {/* Enhanced connecting line with animated flow */}
           <div className="hidden lg:block absolute top-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
@@ -177,8 +177,8 @@ const Workflow = () => {
             </div>
           </div>
 
-          {/* Steps Grid with enhanced spacing and vertical offsets */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
+          {/* Steps Grid with scaled spacing */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-19 lg:gap-11">
             {steps.map((step, index) => (
               <WorkflowStep 
                 key={step.number} 
@@ -191,8 +191,8 @@ const Workflow = () => {
           </div>
         </div>
 
-        {/* Call-to-action area */}
-        <div className="text-center mt-20 lg:mt-24">
+        {/* Call-to-action area with scaled spacing */}
+        <div className="text-center mt-19 lg:mt-23">
           <div className="inline-block px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/10 apple-fade-in apple-stagger-6">
             <p className="text-white/70 text-lg">
               <span className="text-white font-medium">Klaar om te beginnen?</span> Laten we uw AI-journey starten.
