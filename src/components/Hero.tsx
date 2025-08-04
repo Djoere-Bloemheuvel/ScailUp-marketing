@@ -1,21 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { useState } from 'react';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
-import ContactModal from './ContactModal';
 
 const Hero = () => {
   const backgroundLoaded = useProgressiveLoad(100); // Load background after 100ms
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const handleDeepDiveClick = () => {
-    setIsContactModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsContactModalOpen(false);
+    // Contact action placeholder
   };
 
   return (
@@ -146,10 +139,7 @@ const Hero = () => {
       </div>
 
       {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={handleCloseModal} 
-      />
+      
 
       {/* Keep only hover and continuous animations */}
       <style dangerouslySetInnerHTML={{
