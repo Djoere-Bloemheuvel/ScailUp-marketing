@@ -1,5 +1,7 @@
-import { Settings, Bot, TrendingUp } from 'lucide-react';
+
+import { Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const AgentPrimaryHero = () => {
   return <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center overflow-hidden">
       {/* Dark background with teal/green gradient */}
@@ -141,4 +143,5 @@ const AgentPrimaryHero = () => {
       </div>
     </section>;
 };
+
 export default AgentPrimaryHero;
