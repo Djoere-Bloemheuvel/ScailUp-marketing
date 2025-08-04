@@ -14,56 +14,59 @@ interface WorkflowStepProps {
 const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepProps) => {
   const stepRef = useRef<HTMLDivElement>(null);
 
-  // Get color scheme based on step number
+  // Get color scheme based on step number - darker colors matching "impact" gradient
   const getColorScheme = (stepNumber: string) => {
     switch (stepNumber) {
       case "1":
+        // IM - Blue tones (darker)
         return {
-          circle: "from-emerald-500 via-green-400 to-teal-400",
+          circle: "from-blue-700 via-blue-600 to-blue-500",
           glowBase: [
-            "from-emerald-400/30 via-green-300/25 to-teal-400/20",
-            "from-emerald-200/20 via-green-200/15 to-teal-200/12",
-            "from-teal-300/15 via-emerald-300/12 to-green-300/12"
+            "from-blue-600/35 via-blue-500/30 to-blue-400/25",
+            "from-blue-500/25 via-blue-400/20 to-blue-300/15",
+            "from-blue-400/20 via-blue-500/15 to-blue-600/15"
           ],
           glowAnimated: [
-            "from-emerald-400/20 via-green-300/15 to-teal-400/10",
-            "from-emerald-200/15 via-green-200/10 to-teal-200/8",
-            "from-teal-300/10 via-emerald-300/8 to-green-300/8"
+            "from-blue-600/25 via-blue-500/20 to-blue-400/15",
+            "from-blue-500/20 via-blue-400/15 to-blue-300/10",
+            "from-blue-400/15 via-blue-500/10 to-blue-600/10"
           ],
-          connection: "from-emerald-400/40 to-green-400/40",
-          connectionHover: "from-emerald-400/60 to-green-400/60"
+          connection: "from-blue-600/50 to-blue-500/50",
+          connectionHover: "from-blue-600/70 to-blue-500/70"
         };
       case "2":
+        // PA - Purple tones (darker)
         return {
-          circle: "from-blue-500 via-cyan-400 to-indigo-400",
+          circle: "from-purple-700 via-purple-600 to-purple-500",
           glowBase: [
-            "from-blue-400/30 via-cyan-300/25 to-indigo-400/20",
-            "from-blue-200/20 via-cyan-200/15 to-indigo-200/12",
-            "from-indigo-300/15 via-blue-300/12 to-cyan-300/12"
+            "from-purple-600/35 via-purple-500/30 to-purple-400/25",
+            "from-purple-500/25 via-purple-400/20 to-purple-300/15",
+            "from-purple-400/20 via-purple-500/15 to-purple-600/15"
           ],
           glowAnimated: [
-            "from-blue-400/20 via-cyan-300/15 to-indigo-400/10",
-            "from-blue-200/15 via-cyan-200/10 to-indigo-200/8",
-            "from-indigo-300/10 via-blue-300/8 to-cyan-300/8"
+            "from-purple-600/25 via-purple-500/20 to-purple-400/15",
+            "from-purple-500/20 via-purple-400/15 to-purple-300/10",
+            "from-purple-400/15 via-purple-500/10 to-purple-600/10"
           ],
-          connection: "from-blue-400/40 to-cyan-400/40",
-          connectionHover: "from-blue-400/60 to-cyan-400/60"
+          connection: "from-purple-600/50 to-purple-500/50",
+          connectionHover: "from-purple-600/70 to-purple-500/70"
         };
       case "3":
+        // CT - Pink tones (darker)
         return {
-          circle: "from-purple-500 via-violet-400 to-fuchsia-400",
+          circle: "from-pink-700 via-pink-600 to-pink-500",
           glowBase: [
-            "from-purple-400/30 via-violet-300/25 to-fuchsia-400/20",
-            "from-purple-200/20 via-violet-200/15 to-fuchsia-200/12",
-            "from-fuchsia-300/15 via-purple-300/12 to-violet-300/12"
+            "from-pink-600/35 via-pink-500/30 to-pink-400/25",
+            "from-pink-500/25 via-pink-400/20 to-pink-300/15",
+            "from-pink-400/20 via-pink-500/15 to-pink-600/15"
           ],
           glowAnimated: [
-            "from-purple-400/20 via-violet-300/15 to-fuchsia-400/10",
-            "from-purple-200/15 via-violet-200/10 to-fuchsia-200/8",
-            "from-fuchsia-300/10 via-purple-300/8 to-violet-300/8"
+            "from-pink-600/25 via-pink-500/20 to-pink-400/15",
+            "from-pink-500/20 via-pink-400/15 to-pink-300/10",
+            "from-pink-400/15 via-pink-500/10 to-pink-600/10"
           ],
-          connection: "from-purple-400/40 to-violet-400/40",
-          connectionHover: "from-purple-400/60 to-violet-400/60"
+          connection: "from-pink-600/50 to-pink-500/50",
+          connectionHover: "from-pink-600/70 to-pink-500/70"
         };
       default:
         return {
