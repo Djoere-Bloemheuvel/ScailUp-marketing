@@ -1,7 +1,27 @@
 
+import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
 
 const Workflow = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrolled = window.scrollY;
+      const rate = scrolled * -0.02; // Very subtle parallax
+      
+      if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        sectionRef.current.style.transform = `translateY(${rate}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const steps = [
     {
       number: "1",
@@ -21,7 +41,7 @@ const Workflow = () => {
   ];
 
   return (
-    <section className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black">
+    <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
       {/* Subtle radial gradient glow behind center */}
       <div className="absolute inset-0 flex items-center justify-center opacity-20">
         <div className="w-[800px] h-[600px] bg-gradient-radial from-white/5 via-white/2 to-transparent rounded-full blur-3xl" />
