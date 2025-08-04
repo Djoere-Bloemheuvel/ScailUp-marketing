@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
 
@@ -123,7 +124,7 @@ const Workflow = () => {
       
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Enhanced header with more visual interest */}
-        <div className="text-left mb-10 lg:mb-12">
+        <div className="text-left mb-6 lg:mb-8">
           {/* Subtle accent line above title */}
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full mb-6 apple-fade-in apple-stagger-1" />
           
