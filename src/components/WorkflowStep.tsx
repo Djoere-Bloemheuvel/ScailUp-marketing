@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 
 interface WorkflowStepProps {
@@ -113,8 +114,8 @@ const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepP
             <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${colors.accent} blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500 scale-110`} />
           </div>
 
-          {/* Content container with rounded corners and premium styling */}
-          <div className="relative rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent backdrop-blur-sm border border-white/[0.15] p-6 lg:p-8 space-y-6 max-w-sm transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:via-white/[0.06] group-hover:to-white/[0.02]">
+          {/* Content with premium typography */}
+          <div className="space-y-6 max-w-sm">
             <h3 className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight transition-all duration-500 relative group-hover:-translate-y-1">
               {step.title}
               
