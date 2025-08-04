@@ -1,5 +1,4 @@
-
-import { Clock, HandHeart, Layers, TrendingUp } from 'lucide-react';
+import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
 const AppleTimeline = () => {
@@ -25,9 +24,9 @@ const AppleTimeline = () => {
     {
       id: 3,
       number: "03",
-      title: "Design-first filosofie", 
-      subtitle: "Technologie moet intuïtief aanvoelen. Altijd.",
-      icon: Layers,
+      title: "High Standards",
+      subtitle: "Perfect is het vertrekpunt. Pixelprecies design, razendsnelle code, scherpe prompts. We zijn pas tevreden als jij onder de indruk bent.",
+      icon: Target,
       glowColor: "from-purple-400/20 to-blue-500/15", // Consultancy purple-blue
       glowColorHover: "from-purple-400/35 to-blue-500/25",
     },
