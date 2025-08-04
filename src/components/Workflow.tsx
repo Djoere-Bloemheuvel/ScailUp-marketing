@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import WorkflowStep from './WorkflowStep';
 
@@ -85,6 +84,9 @@ const Workflow = () => {
     title: "Optimalisatie & Schaling",
     subtitle: "Samen perfectioneren we het product en koppelen het aan je systemen."
   }];
+
+  // Vertical offsets for each step
+  const stepOffsets = [10, 0, -10]; // Step 1: 10px lower, Step 2: standard, Step 3: 10px higher
 
   return (
     <section ref={sectionRef} className="py-32 lg:py-40 px-4 relative overflow-hidden bg-black transition-transform duration-75 ease-out">
@@ -175,14 +177,15 @@ const Workflow = () => {
             </div>
           </div>
 
-          {/* Steps Grid with enhanced spacing */}
+          {/* Steps Grid with enhanced spacing and vertical offsets */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-12">
             {steps.map((step, index) => (
               <WorkflowStep 
                 key={step.number} 
                 step={step} 
                 delay={`${0.3 + index * 0.15}s`} 
-                isLast={index === steps.length - 1} 
+                isLast={index === steps.length - 1}
+                verticalOffset={stepOffsets[index]}
               />
             ))}
           </div>

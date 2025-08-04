@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 interface WorkflowStepProps {
@@ -9,9 +8,10 @@ interface WorkflowStepProps {
   };
   delay: string;
   isLast?: boolean;
+  verticalOffset?: number;
 }
 
-const WorkflowStep = ({ step, delay, isLast }: WorkflowStepProps) => {
+const WorkflowStep = ({ step, delay, isLast, verticalOffset = 0 }: WorkflowStepProps) => {
   const stepRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +39,8 @@ const WorkflowStep = ({ step, delay, isLast }: WorkflowStepProps) => {
       className="group relative text-center opacity-0 translate-y-12 transition-all duration-1000 ease-out"
       style={{ 
         transitionDelay: delay,
-        '--animate-delay': delay 
+        '--animate-delay': delay,
+        transform: `translateY(${verticalOffset}px)`
       } as React.CSSProperties}
     >
       <div className="relative flex flex-col items-center space-y-8 p-8 lg:p-12 transition-all duration-500 ease-out group-hover:transform group-hover:[transform:perspective(1200px)_rotateX(3deg)_rotateY(3deg)_translateY(-12px)] cursor-pointer">
