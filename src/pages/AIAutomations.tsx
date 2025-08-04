@@ -77,39 +77,41 @@ const AIAutomations = () => {
     <div className="min-h-screen bg-premium-black">
       <ScrollHeader />
       
+      {/* New Second Hero Section - Above current hero */}
+      <AutomationSecondHero />
+
       {/* Original Hero Section */}
       <AutomationHero />
 
       {/* Section 1 - Wat is AI Automatisering? */}
       <AutomationExplained />
       
-      {/* Section 2 - Transformeer je processen */}
-      <AutomationOverview />
-
-      {/* Section 3 - Waarom Buildrs? */}
-      <WhyBuildrs />
-
-      {/* Enhanced Final CTA Section */}
-      <AutomationFinalCTA />
-
-      {/* Moved sections: Second Hero + All Feature Cards */}
-      <AutomationSecondHero />
-      
-      {/* All Feature Cards moved to bottom */}
+      {/* First 2 Feature Cards */}
       <AutomationFeaturePair 
         features={automationFeatures.slice(0, 2)} 
         startIndex={0} 
       />
+
+      {/* Section 2 - Transformeer je processen */}
+      <AutomationOverview />
       
+      {/* Next 2 Feature Cards */}
       <AutomationFeaturePair 
         features={automationFeatures.slice(2, 4)} 
         startIndex={2} 
       />
+
+      {/* Section 3 - Waarom Buildrs? */}
+      <WhyBuildrs />
       
+      {/* Final 2 Feature Cards */}
       <AutomationFeaturePair 
         features={automationFeatures.slice(4, 6)} 
         startIndex={4} 
       />
+
+      {/* Enhanced Final CTA Section */}
+      <AutomationFinalCTA />
     </div>
   );
 };
