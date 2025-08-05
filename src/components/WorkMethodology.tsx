@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, CheckCircle, Play } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
-import WorkMethodologyBackground from './WorkMethodologyBackground';
 
 interface MethodologyStep {
   id: number;
