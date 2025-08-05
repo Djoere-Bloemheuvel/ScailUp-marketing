@@ -1,5 +1,4 @@
-
-import { ArrowRight, Brain, Code, Zap, Shield, Target, Cpu, Network } from 'lucide-react';
+import { ArrowRight, Brain, Zap, Shield, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
