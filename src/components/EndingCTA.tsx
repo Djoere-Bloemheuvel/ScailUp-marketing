@@ -1,4 +1,5 @@
-import { ArrowRight, Brain, Zap, Target, Users, Sparkles } from 'lucide-react';
+
+import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import CinematicBackground from './hero/CinematicBackground';
@@ -9,33 +10,6 @@ const EndingCTA = () => {
   const handleContactClick = () => {
     navigate('/contact');
   };
-
-  const coreStrengths = [
-    {
-      icon: Brain,
-      title: "Elite engineering",
-      iconColor: "text-blue-400",
-      glowColor: "rgba(59, 130, 246, 0.2)"
-    },
-    {
-      icon: Zap,
-      title: "2-4 weken levering", 
-      iconColor: "text-emerald-400",
-      glowColor: "rgba(16, 185, 129, 0.2)"
-    },
-    {
-      icon: Target,
-      title: "Strategisch meedenken",
-      iconColor: "text-purple-400", 
-      glowColor: "rgba(147, 51, 234, 0.2)"
-    },
-    {
-      icon: Users,
-      title: "Volledige ontzorging",
-      iconColor: "text-cyan-400",
-      glowColor: "rgba(34, 211, 238, 0.2)"
-    }
-  ];
 
   return (
     <section className="relative min-h-[80vh] overflow-hidden bg-premium-black flex items-center justify-center py-12">
@@ -110,50 +84,6 @@ const EndingCTA = () => {
                       <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 transition-transform duration-500" />
                     </div>
                   </Button>
-                </div>
-
-                {/* Glassmorphic Core Strengths */}
-                <div className="grid grid-cols-2 gap-4 pt-6">
-                  {coreStrengths.map((item, index) => (
-                    <div 
-                      key={index} 
-                      className="premium-strength-card group"
-                      style={{
-                        animationDelay: `${0.8 + index * 0.15}s`
-                      }}
-                    >
-                      <div className="flex items-center space-x-3 relative z-10">
-                        <div 
-                          className="w-8 h-8 rounded-lg premium-icon-container flex items-center justify-center group-hover:scale-110 transition-all duration-500"
-                          style={{
-                            boxShadow: `0 0 20px ${item.glowColor}, inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-                          }}
-                        >
-                          <item.icon className={`w-4 h-4 ${item.iconColor} drop-shadow-lg`} />
-                        </div>
-                        <span className="text-premium-silver/80 font-medium tracking-wide group-hover:text-white transition-colors duration-300 text-sm">
-                          {item.title}
-                        </span>
-                      </div>
-                      
-                      {/* Hover glow effect */}
-                      <div 
-                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
-                        style={{
-                          background: `radial-gradient(ellipse at center, ${item.glowColor} 0%, transparent 70%)`,
-                          filter: 'blur(20px)'
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Premium Disclaimer */}
-                <div className="pt-6 border-t border-white/10 premium-disclaimer-entrance">
-                  <p className="text-premium-silver/60 text-sm italic flex items-center">
-                    <Sparkles className="w-4 h-4 mr-2 text-premium-silver/40" />
-                    Gratis kennismaking • Concrete strategie • Geen verplichtingen
-                  </p>
                 </div>
               </div>
 
@@ -368,21 +298,6 @@ const EndingCTA = () => {
             pointer-events: none;
           }
 
-          /* Premium Gradient Text */
-          .premium-gradient-text {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 35%, #06b6d4 70%, #3b82f6 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: premium-gradient-shift 8s ease-in-out infinite;
-          }
-
-          @keyframes premium-gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-
           /* Premium Button */
           .premium-cta-button {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
@@ -416,37 +331,6 @@ const EndingCTA = () => {
               rgba(255, 255, 255, 0.4) 50%, 
               transparent 100%);
             animation: premium-shimmer 3s ease-in-out infinite;
-          }
-
-          /* Core Strength Cards */
-          .premium-strength-card {
-            background: linear-gradient(135deg,
-              rgba(255, 255, 255, 0.06) 0%,
-              rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            padding: 0.75rem;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            animation: premium-entrance-fade 0.8s ease-out forwards;
-            opacity: 0;
-          }
-
-          .premium-strength-card:hover {
-            transform: translateY(-1px);
-            border-color: rgba(255, 255, 255, 0.15);
-            background: linear-gradient(135deg,
-              rgba(255, 255, 255, 0.10) 0%,
-              rgba(255, 255, 255, 0.04) 100%);
-          }
-
-          .premium-icon-container {
-            background: linear-gradient(135deg,
-              rgba(255, 255, 255, 0.10) 0%,
-              rgba(255, 255, 255, 0.02) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
           }
 
           /* Visual Elements */
@@ -502,11 +386,6 @@ const EndingCTA = () => {
             opacity: 0;
           }
 
-          .premium-disclaimer-entrance {
-            animation: premium-entrance-fade 1s ease-out 1s forwards;
-            opacity: 0;
-          }
-
           .premium-footer-entrance {
             animation: premium-entrance-fade 1s ease-out 1.2s forwards;
             opacity: 0;
@@ -539,15 +418,13 @@ const EndingCTA = () => {
             .premium-quantum-field,
             .premium-brain-pulse,
             .premium-neural-ring,
-            .premium-orbit-node,
-            .premium-gradient-text {
+            .premium-orbit-node {
               animation: none;
             }
           }
 
           /* Performance Optimizations */
           .premium-glass-main-container,
-          .premium-strength-card,
           .premium-cta-button {
             will-change: transform;
             backface-visibility: hidden;
