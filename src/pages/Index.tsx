@@ -11,6 +11,8 @@ const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
 const WhyBuildrs = lazy(() => import('@/components/WhyBuildrs'));
+const WhyBuildrsCards = lazy(() => import('@/components/WhyBuildrsCards'));
+const WhyBuildrsMinimal = lazy(() => import('@/components/WhyBuildrsMinimal'));
 const Showcase = lazy(() => import('@/components/Showcase'));
 const Target = lazy(() => import('@/components/Target'));
 const Workflow = lazy(() => import('@/components/Workflow'));
@@ -101,6 +103,14 @@ const Index = () => {
         
         <Suspense fallback={<LoadingSpinner />}>
           <WhyBuildrs />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <WhyBuildrsCards />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <WhyBuildrsMinimal />
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
