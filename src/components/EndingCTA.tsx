@@ -35,13 +35,47 @@ const EndingCTA = () => {
 
   return (
     <footer className="relative bg-premium-black border-t border-premium-silver/5 overflow-hidden">
-      {/* Premium background with ultra-subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-premium-black via-gray-900/5 to-premium-black" />
+      {/* Premium background with subtle gradient and enhanced ambient lighting */}
+      <div className="absolute inset-0 bg-gradient-to-b from-premium-black via-gray-900/10 to-premium-black" />
       
-      {/* Extremely subtle ambient lighting */}
+      {/* Enhanced ambient lighting similar to consultancy page */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/2 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '16s', animationDelay: '-8s' }} />
+        {/* Primary ambient glow - Blue */}
+        <div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/8 rounded-full blur-3xl animate-pulse" 
+          style={{ animationDuration: '12s' }} 
+        />
+        
+        {/* Secondary ambient glow - Purple */}
+        <div 
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-500/6 rounded-full blur-3xl animate-pulse" 
+          style={{ animationDuration: '16s', animationDelay: '-8s' }} 
+        />
+        
+        {/* Tertiary ambient glow - Cyan */}
+        <div 
+          className="absolute top-1/2 right-1/3 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl animate-pulse" 
+          style={{ animationDuration: '14s', animationDelay: '-4s' }} 
+        />
+        
+        {/* Additional accent glow - Emerald */}
+        <div 
+          className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-emerald-500/4 rounded-full blur-3xl animate-pulse" 
+          style={{ animationDuration: '18s', animationDelay: '-12s' }} 
+        />
+
+        {/* Subtle grain texture overlay for premium feel */}
+        <div 
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 2%),
+              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 2%),
+              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 0%, transparent 1.5%)
+            `,
+            backgroundSize: '400px 400px, 300px 300px, 500px 500px',
+          }}
+        />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
@@ -51,10 +85,7 @@ const EndingCTA = () => {
             {/* Primary Headlines */}
             <div className="space-y-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-                Klaar voor{' '}
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
-                  AI transformatie?
-                </span>
+                Klaar voor AI transformatie?
               </h1>
               
               <p className="text-xl md:text-2xl font-light text-premium-silver/80 leading-relaxed max-w-2xl">
@@ -98,43 +129,51 @@ const EndingCTA = () => {
             </p>
           </div>
 
-          {/* Right side - Premium Visual Element */}
+          {/* Right side - Enhanced Premium Visual Element */}
           <div className="relative flex items-center justify-center order-1 lg:order-2 py-16">
-            {/* Refined AI Brain Visual */}
+            {/* Enhanced AI Brain Visual with more premium glow */}
             <div className="relative">
-              {/* Outer premium glow - very subtle */}
+              {/* Outer premium glow - enhanced and more subtle */}
               <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full" style={{
-                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.04) 50%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(147, 51, 234, 0.08) 35%, rgba(16, 185, 129, 0.04) 60%, transparent 80%)',
                 animation: 'premium-glow 8s ease-in-out infinite'
               }} />
               
-              {/* Core brain container */}
+              {/* Core brain container with enhanced backdrop */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center" style={{
-                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, rgba(59, 130, 246, 0.04) 40%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, rgba(59, 130, 246, 0.08) 40%, rgba(16, 185, 129, 0.04) 60%, transparent 80%)',
                 backdropFilter: 'blur(30px)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                boxShadow: '0 0 100px rgba(59, 130, 246, 0.1), inset 0 0 50px rgba(147, 51, 234, 0.05)'
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 0 120px rgba(59, 130, 246, 0.15), inset 0 0 60px rgba(147, 51, 234, 0.08)'
               }}>
-                <Brain className="w-20 h-20 md:w-24 md:h-24 text-white/80 animate-pulse" style={{
-                  filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))',
+                <Brain className="w-20 h-20 md:w-24 md:h-24 text-white/90 animate-pulse" style={{
+                  filter: 'drop-shadow(0 0 40px rgba(255, 255, 255, 0.25))',
                   animationDuration: '8s'
                 }} />
               </div>
               
-              {/* Elegant orbiting elements */}
+              {/* Enhanced orbiting elements */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 {[0, 1, 2].map(i => (
                   <div 
                     key={i} 
                     className="absolute w-2 h-2 rounded-full" 
                     style={{
-                      background: i === 0 ? 'rgba(59, 130, 246, 0.4)' : i === 1 ? 'rgba(147, 51, 234, 0.4)' : 'rgba(16, 185, 129, 0.4)',
+                      background: i === 0 ? 'rgba(59, 130, 246, 0.6)' : i === 1 ? 'rgba(147, 51, 234, 0.5)' : 'rgba(16, 185, 129, 0.5)',
+                      boxShadow: i === 0 ? '0 0 20px rgba(59, 130, 246, 0.4)' : i === 1 ? '0 0 20px rgba(147, 51, 234, 0.3)' : '0 0 20px rgba(16, 185, 129, 0.3)',
                       animation: `elegant-orbit ${20 + i * 6}s linear infinite`,
                       transform: `rotate(${i * 120}deg) translateY(-${120 + i * 15}px)`,
                       transformOrigin: '50% 50%'
                     }} 
                   />
                 ))}
+              </div>
+
+              {/* Additional floating particles for premium effect */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/4 -right-4 w-1 h-1 bg-blue-400/60 rounded-full animate-pulse opacity-80" style={{ animationDelay: '2s' }} />
+                <div className="absolute bottom-1/3 -left-4 w-1.5 h-1.5 bg-purple-400/50 rounded-full animate-pulse opacity-70" style={{ animationDelay: '4s' }} />
+                <div className="absolute top-2/3 right-8 w-1 h-1 bg-cyan-400/60 rounded-full animate-pulse opacity-60" style={{ animationDelay: '6s' }} />
               </div>
             </div>
           </div>
@@ -162,7 +201,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles */}
+      {/* Enhanced Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-glow {
@@ -170,9 +209,13 @@ const EndingCTA = () => {
               opacity: 0.8;
               transform: scale(1);
             }
-            50% { 
+            33% {
               opacity: 1;
               transform: scale(1.05);
+            }
+            66% {
+              opacity: 0.6;
+              transform: scale(0.98);
             }
           }
 
@@ -181,12 +224,34 @@ const EndingCTA = () => {
               transform: rotate(0deg) translateY(var(--orbit-radius)) rotate(0deg);
               opacity: 0.4;
             }
-            50% {
+            25% {
               opacity: 0.8;
+            }
+            50% {
+              opacity: 1;
+            }
+            75% {
+              opacity: 0.6;
             }
             100% { 
               transform: rotate(360deg) translateY(var(--orbit-radius)) rotate(-360deg);
               opacity: 0.4;
+            }
+          }
+
+          /* Mobile optimizations */
+          @media (max-width: 768px) {
+            .animate-pulse {
+              animation-duration: 4s;
+            }
+          }
+
+          /* Reduced motion preferences */
+          @media (prefers-reduced-motion: reduce) {
+            * {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
             }
           }
         `
