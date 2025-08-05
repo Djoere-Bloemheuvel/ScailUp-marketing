@@ -29,7 +29,7 @@ interface WorkMethodologyProcessProps {
 
 /**
  * Horizontal Process Flow Component
- * - Fixed collapsed (185px) and expanded (500px) heights
+ * - Fixed collapsed (185px) and expanded (450px) heights
  * - Fast, responsive animations (200-250ms, ease-out)
  * - Glassmorphism overlay on hover
  * - Enhanced with unique accent colors per step
@@ -145,11 +145,11 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with fixed heights - COLLAPSED: 185px, EXPANDED: 500px */}
+              {/* Step card with fixed heights - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
                   isActive 
-                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[500px]` 
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[450px]` 
                     : isHovered
                       ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[185px] scale-[1.02]`
                       : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 h-[185px]`
