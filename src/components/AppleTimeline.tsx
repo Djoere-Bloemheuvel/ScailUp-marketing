@@ -1,5 +1,3 @@
-
-
 import { Clock, HandHeart, Target, TrendingUp, ArrowDown } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
@@ -103,32 +101,41 @@ const AppleTimeline = () => {
         ))}
       </div>
 
-      {/* Floating transition text element - positioned after step 04 */}
+      {/* Enhanced floating transition text element with ambient backlight glow */}
       <div className="relative z-20 mt-16 mb-12">
         <div className="flex justify-start">
           <div className="relative max-w-md mr-6 lg:mr-10">
-            {/* Subtle background glow for text separation */}
-            <div className="absolute -inset-8 bg-gradient-to-r from-white/[0.02] via-white/[0.01] to-transparent rounded-2xl blur-xl opacity-80" />
+            {/* Multiple layered ambient glow effects for backlight */}
+            <div className="absolute -inset-12 blur-3xl opacity-25">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/15 via-blue-500/10 to-purple-500/15 rounded-full" />
+            </div>
+            <div className="absolute -inset-16 blur-2xl opacity-15">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-cyan-300/8 to-blue-400/10 rounded-full" />
+            </div>
+            <div className="absolute -inset-8 blur-xl opacity-35">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/12 to-blue-500/8 rounded-lg" />
+            </div>
             
-            {/* Main transition text container */}
-            <div className="relative backdrop-blur-sm">
-              {/* Main title with premium typography */}
+            {/* Main transition text container with enhanced glow */}
+            <div className="relative backdrop-blur-sm z-10">
+              {/* Main title with premium typography and enhanced text shadow */}
               <h3 
                 className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight mb-3"
                 style={{ 
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-                  textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+                  textShadow: '0 0 25px rgba(96, 165, 250, 0.4), 0 0 50px rgba(34, 211, 238, 0.25), 0 2px 15px rgba(0,0,0,0.5)'
                 }}
               >
                 Van visie naar uitvoering
               </h3>
               
-              {/* Subtitle with lighter styling */}
+              {/* Subtitle with lighter styling and enhanced glow */}
               <p 
                 className="text-white/60 text-sm lg:text-base font-light leading-relaxed max-w-xs"
                 style={{ 
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-                  color: '#888888'
+                  color: '#888888',
+                  textShadow: '0 0 15px rgba(96, 165, 250, 0.25), 0 1px 8px rgba(0,0,0,0.4)'
                 }}
               >
                 Zo brengen we de principes tot leven om van elk project een succes te maken.
@@ -203,4 +210,3 @@ const AppleTimeline = () => {
 };
 
 export default AppleTimeline;
-
