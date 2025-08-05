@@ -126,9 +126,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with accent color theming - fixed height */}
+              {/* Step card with accent color theming - FIXED HEIGHT 500px */}
               <div 
-                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 h-[400px] flex flex-col ${
+                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 h-[500px] flex flex-col overflow-hidden ${
                   isActive 
                     ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl` 
                     : isHovered
@@ -144,7 +144,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 }}
               >
                 {/* Phase badge with subtle accent */}
-                <div className="mb-4">
+                <div className="mb-4 flex-shrink-0">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-colors duration-300 ${
                     isActive 
                       ? `bg-gradient-to-r ${accentColor.primary} text-white ${accentColor.border}`
@@ -154,56 +154,67 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   </span>
                 </div>
 
-                {/* Title and subtitle */}
-                <h3 className="text-xl font-bold text-white mb-3 leading-tight">
-                  {step.title}
-                </h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  {step.subtitle}
-                </p>
+                {/* Title and subtitle - fixed space */}
+                <div className="flex-shrink-0 mb-4">
+                  <h3 className="text-xl font-bold text-white mb-3 leading-tight">
+                    {step.title}
+                  </h3>
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    {step.subtitle}
+                  </p>
+                </div>
 
-                {/* Expandable description for active step */}
-                <div className={`overflow-hidden transition-all duration-500 flex-1 ${
-                  isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className={`pt-4 border-t transition-colors duration-300 ${
-                    isActive ? accentColor.border : 'border-white/10'
-                  }`}>
-                    <p className="text-white/60 text-sm leading-relaxed mb-4">
-                      {step.description}
-                    </p>
-                    
-                    {/* Deliverables with accent color bullets */}
-                    <div className="space-y-2">
-                      <h4 className="text-white/90 font-semibold text-xs uppercase tracking-wide">
-                        Deliverables:
-                      </h4>
-                      {step.deliverables.map((deliverable, idx) => (
-                        <div key={idx} className="flex items-center text-xs text-white/70">
-                          <div 
-                            className="w-1 h-1 rounded-full mr-2"
-                            style={{
-                              background: `linear-gradient(135deg, rgba(${glowColor}, 1), rgba(${glowColor}, 0.8))`
-                            }}
-                          />
-                          <span>{deliverable}</span>
+                {/* Scrollable content area for expanded details */}
+                <div className="flex-1 relative">
+                  {/* Always visible content preview */}
+                  <div className="absolute inset-0">
+                    <div className={`transition-all duration-500 ${
+                      isActive ? 'opacity-0 transform translate-y-2' : 'opacity-100'
+                    }`}>
+                      <div className="text-white/50 text-sm italic">
+                        Klik voor details...
+                      </div>
+                    </div>
+
+                    {/* Expanded content with custom scrollbar */}
+                    <div className={`transition-all duration-500 ${
+                      isActive ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2 pointer-events-none'
+                    }`}>
+                      <div className="h-full overflow-y-auto pr-2 custom-scrollbar">
+                        <div className={`pt-4 border-t transition-colors duration-300 ${
+                          isActive ? accentColor.border : 'border-white/10'
+                        }`}>
+                          <p className="text-white/60 text-sm leading-relaxed mb-6">
+                            {step.description}
+                          </p>
+                          
+                          {/* Deliverables with accent color bullets */}
+                          <div className="space-y-3">
+                            <h4 className="text-white/90 font-semibold text-xs uppercase tracking-wide">
+                              Deliverables:
+                            </h4>
+                            {step.deliverables.map((deliverable, idx) => (
+                              <div key={idx} className="flex items-start text-xs text-white/70">
+                                <div 
+                                  className="w-1 h-1 rounded-full mr-2 mt-2 flex-shrink-0"
+                                  style={{
+                                    background: `linear-gradient(135deg, rgba(${glowColor}, 1), rgba(${glowColor}, 0.8))`
+                                  }}
+                                />
+                                <span className="leading-relaxed">{deliverable}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Hover indicator */}
-                {isHovered && !isActive && (
-                  <div className="absolute bottom-4 right-4 text-white/40 text-xs">
-                    Klik voor details
-                  </div>
-                )}
-
                 {/* Accent line at bottom for active cards */}
                 {isActive && (
                   <div 
-                    className="absolute bottom-0 left-4 right-4 h-px opacity-60"
+                    className="absolute bottom-0 left-4 right-4 h-px opacity-60 flex-shrink-0"
                     style={{
                       background: `linear-gradient(to right, transparent, rgba(${glowColor}, 0.8), transparent)`
                     }}
@@ -219,6 +230,24 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           );
         })}
       </div>
+
+      {/* Custom scrollbar styles */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+      `}</style>
     </div>
   );
 };
