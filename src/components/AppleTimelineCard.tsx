@@ -1,3 +1,4 @@
+
 import { LucideIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -24,6 +25,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Smoother staggered animation with better timing
             setTimeout(() => {
               setIsVisible(true);
             }, delay);
@@ -31,8 +33,8 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '100px 0px -50px 0px'
+        threshold: 0.1, // Trigger earlier
+        rootMargin: '100px 0px -50px 0px' // More generous margins for smoother loading
       }
     );
 
@@ -62,6 +64,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
           transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >
+        {/* Enhanced glow layers with smoother scaling */}
         <div
           className={`
             absolute w-[32rem] h-[32rem] rounded-full blur-[4rem]
@@ -203,6 +206,19 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               }}>
                 {step.subtitle}
               </p>
+            </div>
+
+            {/* Enhanced Connection line with smoother appearance */}
+            <div className={`
+              absolute top-1/2 w-6 lg:w-10 h-px -translate-y-0.5
+              bg-gradient-to-r from-white/20 to-transparent
+              transition-all duration-200 ease-out
+              ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}
+              ${isLeft ? '-right-6 lg:-right-10 origin-left' : '-left-6 lg:-left-10 rotate-180 origin-right'}
+            `}
+            style={{ transitionDelay: `${delay + 700}ms` }}
+            >
+              <div className="absolute inset-0 w-1 h-full bg-gradient-to-r from-cyan-400/40 to-transparent rounded-full animate-pulse" />
             </div>
 
             {/* Enhanced glassmorphic details with smoother reveal */}
