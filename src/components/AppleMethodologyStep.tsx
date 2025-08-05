@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { LucideIcon, ChevronRight } from 'lucide-react';
 
@@ -46,7 +45,7 @@ const AppleMethodologyStep = ({
   const [isHovered, setIsHovered] = useState(false);
   const isLeft = index % 2 === 0;
   
-  // Get accent color values
+  // Get accent color values with proper null checking
   const getGlowColor = () => {
     const colorMap: { [key: string]: string } = {
       'from-blue-500': '59, 130, 246',
@@ -55,9 +54,17 @@ const AppleMethodologyStep = ({
       'from-orange-500': '249, 115, 22'
     };
     
-    const primaryGradient = step.accentColor.primary;
+    const primaryGradient = step.accentColor?.primary;
+    if (!primaryGradient || typeof primaryGradient !== 'string') {
+      return '59, 130, 246'; // Default blue color
+    }
+    
     const primaryColor = primaryGradient.split(' ')[0];
-    return colorMap[primaryColor] || '59, 130, 246';
+    if (!primaryColor) {
+      return '59, 130, 246'; // Default blue color
+    }
+    
+    return colorMap[primaryColor] || '59, 130, 246'; // Default blue color if not found
   };
 
   const glowColor = getGlowColor();
