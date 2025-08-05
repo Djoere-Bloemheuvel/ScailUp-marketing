@@ -12,9 +12,12 @@ const EndingCTA = () => {
   };
 
   return (
-    <section className="relative min-h-[80vh] overflow-hidden bg-premium-black flex items-center justify-center py-12">
+    <section className="relative min-h-[100vh] overflow-hidden bg-premium-black flex items-center justify-center py-16">
       {/* Enhanced Cinematic Background with Custom Colors */}
       <CinematicBackground hideGlassContainer={true} />
+      
+      {/* Smooth vertical fade from black at top - 25% height */}
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
       {/* Additional Premium Background Layers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
@@ -54,7 +57,7 @@ const EndingCTA = () => {
         <div className="relative">
           {/* Main Glass Container */}
           <div className="premium-glass-main-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16 lg:py-20">
               {/* Left Content */}
               <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
@@ -154,7 +157,7 @@ const EndingCTA = () => {
           </div>
 
           {/* Premium Footer Section */}
-          <div className="mt-10 pt-8 border-t border-white/10 premium-footer-entrance">
+          <div className="mt-12 pt-10 border-t border-white/10 premium-footer-entrance">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div>
                 <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
