@@ -1,4 +1,5 @@
 
+
 import { Clock, HandHeart, Target, TrendingUp, ArrowDown } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
@@ -39,16 +40,6 @@ const AppleTimeline = () => {
       icon: TrendingUp,
       glowColor: "from-green-500/20 to-blue-600/15", // Autonomous Agents green-blue
       glowColorHover: "from-green-500/35 to-blue-600/25",
-    },
-    {
-      id: 5,
-      number: "05",
-      title: "Van principes naar praktijk",
-      subtitle: "Onze waarden komen tot leven in elke stap van het proces.",
-      icon: null, // No icon for transition step
-      glowColor: "from-gray-400/15 to-white/10", // Subtle white/grey glow
-      glowColorHover: "from-gray-400/20 to-white/15",
-      isTransition: true, // Special flag for transition styling
     }
   ];
 
@@ -78,33 +69,23 @@ const AppleTimeline = () => {
           />
         </div>
         
-        {/* Enhanced timeline dots with smoother pulsing */}
+        {/* Enhanced timeline dots with smoother pulsing - only for actual steps */}
         {steps.map((step, index) => (
           <div 
             key={step.id}
             className="absolute left-1/2 transform -translate-x-1/2"
             style={{ 
-              top: `${12 + (index * 20)}%`,
+              top: `${12 + (index * 18)}%`,
               animation: `dotPulse 6s ease-in-out infinite`, // Slower pulse
               animationDelay: `${index * 0.8}s` // More staggered
             }}
           >
             <div className="relative">
-              <div className={`w-2.5 h-2.5 rounded-full shadow-lg border ${
-                step.isTransition 
-                  ? 'bg-gradient-to-br from-white/40 to-white/20 shadow-white/5 border-white/20'
-                  : 'bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30'
-              }`}>
-                <div className={`absolute inset-0 rounded-full animate-pulse ${
-                  step.isTransition 
-                    ? 'bg-gradient-to-br from-gray-400/20 to-transparent'
-                    : 'bg-gradient-to-br from-cyan-400/30 to-transparent'
-                }`} />
+              <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
+                <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-br from-cyan-400/30 to-transparent" />
               </div>
               {/* Enhanced outer glow with smoother animation */}
-              <div className={`absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 animate-pulse opacity-70 ${
-                step.isTransition ? 'bg-white/10' : 'bg-white/15'
-              }`} />
+              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 animate-pulse opacity-70 bg-white/15" />
             </div>
           </div>
         ))}
@@ -122,43 +103,44 @@ const AppleTimeline = () => {
         ))}
       </div>
 
-      {/* Transition flow indicator from step 05 */}
-      <div className="relative z-20 mt-12 mb-8">
-        <div className="flex justify-start ml-8">
-          <div className="relative">
-            {/* Floating transition line with glow */}
-            <div className="w-32 h-px bg-gradient-to-r from-white/30 via-white/15 to-transparent relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent blur-sm" />
+      {/* Floating transition text element - positioned after step 04 */}
+      <div className="relative z-20 mt-16 mb-12">
+        <div className="flex justify-start">
+          <div className="relative max-w-md mr-6 lg:mr-10">
+            {/* Subtle background glow for text separation */}
+            <div className="absolute -inset-8 bg-gradient-to-r from-white/[0.02] via-white/[0.01] to-transparent rounded-2xl blur-xl opacity-80" />
+            
+            {/* Main transition text container */}
+            <div className="relative backdrop-blur-sm">
+              {/* Main title with premium typography */}
+              <h3 
+                className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight mb-3"
+                style={{ 
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+                }}
+              >
+                Van visie naar uitvoering
+              </h3>
               
-              {/* Animated flow particles */}
-              <div 
-                className="absolute top-1/2 left-0 w-1 h-1 bg-white/60 rounded-full blur-sm -translate-y-1/2"
-                style={{
-                  animation: 'flowParticle 3s ease-in-out infinite'
+              {/* Subtitle with lighter styling */}
+              <p 
+                className="text-white/60 text-sm lg:text-base font-light leading-relaxed max-w-xs"
+                style={{ 
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
+                  color: '#888888'
                 }}
-              />
-              <div 
-                className="absolute top-1/2 left-0 w-0.5 h-0.5 bg-cyan-400/40 rounded-full blur-sm -translate-y-1/2"
-                style={{
-                  animation: 'flowParticle 3s ease-in-out infinite',
-                  animationDelay: '1s'
-                }}
-              />
+              >
+                Zo brengen we de principes tot leven om van elk project een succes te maken.
+              </p>
+              
+              {/* Subtle connecting element to indicate flow */}
+              <div className="mt-6 flex items-center text-white/30">
+                <div className="w-8 h-px bg-gradient-to-r from-white/20 to-transparent" />
+                <ArrowDown className="w-3 h-3 ml-2 transform rotate-45 opacity-40" />
+              </div>
             </div>
-            
-            {/* Arrow indicator */}
-            <div className="absolute -right-2 -top-1.5 text-white/40">
-              <ArrowDown className="w-3 h-3 transform rotate-45" />
-            </div>
-            
-            {/* Subtle glow around the flow indicator */}
-            <div className="absolute -inset-4 bg-white/5 rounded-full blur-xl opacity-50 animate-pulse" />
           </div>
-        </div>
-        
-        {/* Transition text */}
-        <div className="mt-6 ml-8 text-white/50 text-sm font-light">
-          Nu gaan we aan de slag...
         </div>
       </div>
 
@@ -214,23 +196,6 @@ const AppleTimeline = () => {
               opacity: 0.6;
             }
           }
-
-          @keyframes flowParticle {
-            0% { 
-              transform: translateX(0) translateY(-50%);
-              opacity: 0;
-            }
-            20% {
-              opacity: 1;
-            }
-            80% {
-              opacity: 1;
-            }
-            100% { 
-              transform: translateX(128px) translateY(-50%);
-              opacity: 0;
-            }
-          }
         `
       }} />
     </div>
@@ -238,3 +203,4 @@ const AppleTimeline = () => {
 };
 
 export default AppleTimeline;
+
