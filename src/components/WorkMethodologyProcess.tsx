@@ -55,9 +55,15 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           const isHovered = hoveredStep === step.id;
           const isCompleted = activeStep > step.id;
           
-          // Safe access to glow color with fallback
-          const glowColor = step.accentColor?.glow || 'blue-500/20';
-          const glowColorValue = glowColor.replace('/20', '');
+          // Safe access to accent color properties with fallbacks
+          const accentColor = step.accentColor || {
+            primary: 'from-blue-500 to-cyan-600',
+            glow: 'blue-500/20',
+            border: 'border-blue-500/30',
+            subtle: 'blue-500/5'
+          };
+          
+          const glowColorValue = accentColor.glow.replace('/20', '');
           
           return (
             <div
@@ -72,9 +78,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 <div 
                   className={`relative w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                     isActive 
-                      ? `${step.accentColor.border} bg-gradient-to-br ${step.accentColor.primary} text-white scale-110 shadow-lg shadow-${step.accentColor.glow}` 
+                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110 shadow-lg shadow-${accentColor.glow}` 
                       : isCompleted 
-                        ? `${step.accentColor.border} bg-gradient-to-br ${step.accentColor.primary} text-white shadow-md`
+                        ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white shadow-md`
                         : 'border-white/30 bg-transparent text-white hover:border-white/60'
                   }`}
                   style={{
@@ -87,7 +93,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   
                   {/* Enhanced glow effect for active step */}
                   {isActive && (
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.accentColor.primary} blur-lg opacity-60 animate-pulse -z-10`} />
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${accentColor.primary} blur-lg opacity-60 animate-pulse -z-10`} />
                   )}
                 </div>
               </div>
@@ -96,10 +102,10 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 ${
                   isActive 
-                    ? `bg-gradient-to-br from-${step.accentColor.subtle} to-${step.accentColor.subtle}/50 ${step.accentColor.border} shadow-2xl shadow-${step.accentColor.glow}` 
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl shadow-${accentColor.glow}` 
                     : isHovered
-                      ? `bg-gradient-to-br from-${step.accentColor.subtle} to-transparent border-${step.accentColor.glow}`
-                      : `bg-white/[0.02] border-white/10 hover:bg-gradient-to-br hover:from-${step.accentColor.subtle} hover:to-transparent`
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-${accentColor.glow}`
+                      : `bg-white/[0.02] border-white/10 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent`
                 } border`}
                 style={{
                   transform: isActive ? 'translateY(-8px)' : isHovered ? 'translateY(-4px)' : 'translateY(0)',
@@ -112,8 +118,8 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 <div className="mb-4">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-colors duration-300 ${
                     isActive 
-                      ? `bg-gradient-to-r ${step.accentColor.primary} text-white ${step.accentColor.border}`
-                      : `bg-white/10 text-white/80 border-white/20 hover:bg-${step.accentColor.subtle} hover:${step.accentColor.border}`
+                      ? `bg-gradient-to-r ${accentColor.primary} text-white ${accentColor.border}`
+                      : `bg-white/10 text-white/80 border-white/20 hover:bg-${accentColor.subtle} hover:${accentColor.border}`
                   }`}>
                     {step.phase}
                   </span>
@@ -132,7 +138,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}>
                   <div className={`pt-4 border-t transition-colors duration-300 ${
-                    isActive ? step.accentColor.border : 'border-white/10'
+                    isActive ? accentColor.border : 'border-white/10'
                   }`}>
                     <p className="text-white/60 text-sm leading-relaxed mb-4">
                       {step.description}
@@ -145,7 +151,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                       </h4>
                       {step.deliverables.map((deliverable, idx) => (
                         <div key={idx} className="flex items-center text-xs text-white/70">
-                          <div className={`w-1 h-1 rounded-full mr-2 bg-gradient-to-r ${step.accentColor.primary}`} />
+                          <div className={`w-1 h-1 rounded-full mr-2 bg-gradient-to-r ${accentColor.primary}`} />
                           <span>{deliverable}</span>
                         </div>
                       ))}
@@ -162,7 +168,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
                 {/* Accent line at bottom for active cards */}
                 {isActive && (
-                  <div className={`absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-${step.accentColor.primary.split(' ')[0].replace('from-', '')} to-transparent opacity-60`} />
+                  <div className={`absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-${accentColor.primary.split(' ')[0].replace('from-', '')} to-transparent opacity-60`} />
                 )}
               </div>
 
