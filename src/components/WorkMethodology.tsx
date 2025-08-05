@@ -1,6 +1,7 @@
+
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Clock, Target, Zap, Users, ArrowRight, CheckCircle } from 'lucide-react';
-import WorkMethodologyCard from './WorkMethodologyCard';
+import { Clock, Target, Zap, Users, ArrowRight, CheckCircle, Play } from 'lucide-react';
+import WorkMethodologyProcess from './WorkMethodologyProcess';
 import WorkMethodologyBackground from './WorkMethodologyBackground';
 
 interface MethodologyStep {
@@ -17,240 +18,166 @@ interface MethodologyStep {
 }
 
 /**
- * Work Methodology Section - Premium Apple-inspired Design
- * - Performance optimized with memoization and intersection observer
- * - Security hardened with input validation and XSS prevention
- * - Responsive design for mobile, desktop, and laptop screens
- * - Follows Apple design language with glassmorphism and smooth animations
+ * Work Methodology Section - Horizontal Process Flow Design
+ * - Completely different from Approach section with horizontal workflow
+ * - Interactive process steps with hover animations
+ * - Modern card-based design instead of timeline
+ * - Focus on process flow rather than principles
  */
 const WorkMethodology = () => {
-  const [activePhase, setActivePhase] = useState<number | null>(null);
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const [activeStep, setActiveStep] = useState<number>(1);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Memoized methodology steps for performance optimization
+  // Methodology steps focused on practical workflow
   const methodologySteps: MethodologyStep[] = useMemo(() => [
     {
       id: 1,
-      phase: "Fase 1",
-      title: "Strategische Analyse",
-      subtitle: "Diepgaand begrip van jullie uitdagingen en doelen.",
-      description: "We beginnen met een grondige analyse van jullie bedrijfsprocessen, identificeren AI-kansen en stellen een strategisch plan op dat direct waarde creëert.",
+      phase: "Week 1-2",
+      title: "Discovery & Strategie",
+      subtitle: "Van gesprek tot concreet plan",
+      description: "We starten met een diepgaande analyse van jullie bedrijfsprocessen. Geen lange documenten, maar direct bruikbare inzichten en een helder implementatieplan.",
       icon: Target,
-      color: "from-blue-500 to-cyan-400",
-      glowColor: "from-blue-500/20 to-cyan-400/15",
+      color: "from-emerald-400 to-teal-500",
+      glowColor: "emerald-400/25",
       duration: "1-2 weken",
-      deliverables: ["AI-opportuniteitsanalyse", "Strategisch implementatieplan", "ROI-projecties"]
+      deliverables: ["Strategisch plan", "Technische architectuur", "ROI projectie"]
     },
     {
       id: 2,
-      phase: "Fase 2", 
-      title: "Rapid Prototyping",
-      subtitle: "Van concept naar werkende proof-of-concept in dagen.",
-      description: "Binnen 48-72 uur bouwen we een eerste werkende versie die de kernfunctionaliteit demonstreert en directe feedback mogelijk maakt.",
+      phase: "Dag 1-3", 
+      title: "Rapid Prototype",
+      subtitle: "Zichtbaar resultaat binnen 72 uur",
+      description: "Binnen drie dagen hebben jullie een werkende proof-of-concept in handen. Zo kunnen jullie direct ervaren hoe de oplossing werkt en feedback geven.",
       icon: Zap,
-      color: "from-purple-500 to-pink-500",
-      glowColor: "from-purple-500/20 to-pink-400/15",
-      duration: "3-5 dagen",
-      deliverables: ["Werkende POC", "Technische architectuur", "Gebruikerstests"]
+      color: "from-yellow-400 to-orange-500",
+      glowColor: "yellow-400/25",
+      duration: "3 dagen",
+      deliverables: ["Werkende demo", "User interface", "Feedback sessie"]
     },
     {
       id: 3,
-      phase: "Fase 3",
-      title: "Iteratieve Ontwikkeling", 
-      subtitle: "Stapsgewijs uitbreiden met continue feedback.",
-      description: "We ontwikkelen in korte sprints met regelmatige demos, zodat jullie direct kunnen zien hoe de oplossing evolueert en feedback kunnen geven.",
+      phase: "Week 2-6",
+      title: "Iteratieve Bouw", 
+      subtitle: "Weekly demos, continue verbetering",
+      description: "Elke week zien jullie nieuwe functionaliteiten. We bouwen stapsgewijs uit met jullie feedback, zodat het eindresultaat perfect aansluit bij jullie wensen.",
       icon: Users,
-      color: "from-emerald-500 to-teal-400",
-      glowColor: "from-emerald-500/20 to-teal-400/15", 
-      duration: "2-8 weken",
-      deliverables: ["Volledige MVP", "Gebruikersinterface", "Integraties"]
+      color: "from-blue-400 to-indigo-500",
+      glowColor: "blue-400/25",
+      duration: "2-4 weken",
+      deliverables: ["Weekly updates", "Live demonstraties", "Gebruikerstests"]
     },
     {
       id: 4,
-      phase: "Fase 4",
-      title: "Implementatie & Optimalisatie",
-      subtitle: "Naadloze integratie in jullie bestaande workflow.",
-      description: "We implementeren de oplossing in jullie productieomgeving, trainen jullie team en optimaliseren continu op basis van real-world data.",
+      phase: "Week 6-8",
+      title: "Live & Optimalisatie",
+      subtitle: "Van test naar productie",
+      description: "We gaan live en optimaliseren direct op basis van echte data. Jullie team krijgt volledige training en we blijven monitoren voor perfecte prestaties.",
       icon: CheckCircle,
-      color: "from-orange-500 to-red-400",
-      glowColor: "from-orange-500/20 to-red-400/15",
-      duration: "1-3 weken",
-      deliverables: ["Live implementatie", "Team training", "Monitoring setup"]
+      color: "from-purple-400 to-pink-500",
+      glowColor: "purple-400/25",
+      duration: "1-2 weken",
+      deliverables: ["Live deployment", "Team training", "Performance monitoring"]
     }
   ], []);
 
-  // Performance optimized intersection observer
+  // Auto-play functionality
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!isPlaying) return;
 
-    const observerOptions = {
-      root: null,
-      rootMargin: '50px 0px -50px 0px',
-      threshold: 0.1
-    };
+    const interval = setInterval(() => {
+      setActiveStep(current => current >= methodologySteps.length ? 1 : current + 1);
+    }, 4000);
 
-    observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const cardId = parseInt(entry.target.getAttribute('data-card-id') || '0');
-        
-        if (entry.isIntersecting) {
-          setVisibleCards(prev => new Set([...prev, cardId]));
-        }
-      });
-    }, observerOptions);
+    return () => clearInterval(interval);
+  }, [isPlaying, methodologySteps.length]);
 
-    // Observe all methodology cards
-    const cards = sectionRef.current.querySelectorAll('[data-card-id]');
-    cards.forEach(card => {
-      if (observerRef.current) {
-        observerRef.current.observe(card);
-      }
-    });
+  const handleStepSelect = (stepId: number) => {
+    setActiveStep(stepId);
+    setIsPlaying(false);
+  };
 
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []);
-
-  // Security: Sanitized click handler
-  const handlePhaseToggle = (phaseId: number) => {
-    // Input validation for security
-    if (typeof phaseId !== 'number' || phaseId < 1 || phaseId > methodologySteps.length) {
-      console.warn('Invalid phase ID:', phaseId);
-      return;
-    }
-    
-    setActivePhase(current => current === phaseId ? null : phaseId);
+  const toggleAutoPlay = () => {
+    setIsPlaying(prev => !prev);
   };
 
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 lg:py-28 px-4 overflow-hidden bg-black"
-      aria-label="Onze werk wijze - AI development methodologie"
+      className="relative py-24 lg:py-32 px-4 overflow-hidden bg-gradient-to-b from-black via-gray-950 to-black"
+      aria-label="Onze werk methodologie - stap voor stap proces"
     >
-      {/* Enhanced background with performance optimizations */}
+      {/* Different background than Approach section */}
       <WorkMethodologyBackground />
       
-      {/* Content container with semantic HTML */}
+      {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Apple-inspired header with accessibility */}
-        <header className="text-center mb-16 lg:mb-24">
-          <div className="mb-8">
-            {/* Badge removed for cleaner Apple aesthetic */}
-            <h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" 
-              style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}
-            >
-              Zo werken wij.
-            </h2>
-            <h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight"
-              style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}
-            >
-              <span className="bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
-                Resultaat gegarandeerd.
+        {/* Header with different styling than Approach */}
+        <header className="text-center mb-20 lg:mb-24">
+          <div className="mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+              <span className="text-white/70 text-sm font-medium">Onze Methodologie</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-none tracking-tighter mb-6">
+              <span className="block">Van idee</span>
+              <span className="block bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                naar realiteit
               </span>
             </h2>
           </div>
           
-          <p 
-            className="text-white/70 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed"
-            style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}
-          >
-            Van eerste gesprek tot live implementatie. Dit is onze bewezen methodologie 
-            die elk AI-project tot een succes maakt.
+          <p className="text-white/60 text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-8">
+            4 stappen. 4-8 weken. Gegarandeerd resultaat.
           </p>
+
+          {/* Play controls */}
+          <div className="flex items-center justify-center space-x-4">
+            <button
+              onClick={toggleAutoPlay}
+              className="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full border border-white/20 transition-all duration-300"
+            >
+              <Play className={`w-4 h-4 mr-2 ${isPlaying ? 'animate-pulse' : ''}`} />
+              <span className="text-white text-sm font-medium">
+                {isPlaying ? 'Auto-play actief' : 'Start demo'}
+              </span>
+            </button>
+          </div>
         </header>
 
-        {/* Enhanced methodology timeline with better performance */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Central timeline with improved animations */}
-          <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px z-0">
-            <div className="w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent" />
-            
-            {/* Animated glow effect with better performance */}
-            <div className="absolute inset-0 w-full h-full">
-              <div 
-                className="w-full h-20 bg-gradient-to-b from-purple-400/20 via-white/30 to-transparent blur-sm"
-                style={{
-                  animation: 'methodologyPulse 12s ease-in-out infinite',
-                  transformOrigin: 'top'
-                }}
-              />
-            </div>
-          </div>
+        {/* Horizontal process flow */}
+        <WorkMethodologyProcess 
+          steps={methodologySteps}
+          activeStep={activeStep}
+          onStepSelect={handleStepSelect}
+        />
 
-          {/* Methodology steps with staggered animations */}
-          <div className="space-y-8 lg:space-y-12">
-            {methodologySteps.map((step, index) => (
-              <WorkMethodologyCard
-                key={`methodology-${step.id}`}
-                step={step}
-                isLeft={index % 2 === 0}
-                isVisible={visibleCards.has(step.id)}
-                isActive={activePhase === step.id}
-                onToggle={() => handlePhaseToggle(step.id)}
-                delay={index * 200}
-              />
-            ))}
+        {/* Bottom statistics */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-white mb-2">72h</div>
+            <div className="text-white/60">Eerste prototype</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-white mb-2">100%</div>
+            <div className="text-white/60">Tevredenheidsgarantie</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-white mb-2">24/7</div>
+            <div className="text-white/60">Support na oplevering</div>
           </div>
         </div>
 
-        {/* Call to action with Apple styling */}
-        <div className="text-center mt-16 lg:mt-20">
-          <div className="inline-flex items-center space-x-3 text-white/60 mb-6">
-            <Clock className="w-5 h-5" aria-hidden="true" />
-            <span className="text-sm font-medium">
-              Gemiddelde doorlooptijd: 4-12 weken
-            </span>
-          </div>
-          
+        {/* CTA different from Approach */}
+        <div className="text-center mt-16">
           <button
-            className="group inline-flex items-center px-8 py-4 text-lg font-semibold text-black rounded-2xl transition-all duration-300 hover:scale-105 transform"
-            style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
-              boxShadow: '0 12px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-            }}
-            aria-label="Start jouw AI-project vandaag"
+            className="group inline-flex items-center px-8 py-4 text-lg font-semibold text-black rounded-2xl transition-all duration-300 hover:scale-105 transform bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-300 hover:to-blue-400"
           >
-            Start Jouw Project
-            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+            Start Jouw Project Nu
+            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </button>
         </div>
       </div>
-
-      {/* Enhanced CSS animations with better performance */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes methodologyPulse {
-            0% { 
-              transform: translateY(-100%) scaleY(0);
-              opacity: 0;
-            }
-            20% {
-              opacity: 0.4;
-              transform: translateY(-60%) scaleY(0.4);
-            }
-            50% { 
-              opacity: 1;
-              transform: translateY(0%) scaleY(1);
-            }
-            80% {
-              opacity: 0.6;
-              transform: translateY(40%) scaleY(0.8);
-            }
-            100% { 
-              transform: translateY(100vh) scaleY(0);
-              opacity: 0;
-            }
-          }
-        `
-      }} />
     </section>
   );
 };

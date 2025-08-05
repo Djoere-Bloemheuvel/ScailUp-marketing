@@ -1,78 +1,109 @@
 
 /**
  * Work Methodology Background Component
- * - Performance optimized with CSS transforms and GPU acceleration
- * - Apple-inspired nebula background with subtle animations
- * - Responsive design optimized for all screen sizes
- * - Security: No external dependencies or unsafe operations
+ * - Completely different from Approach background
+ * - Dynamic geometric patterns instead of nebula
+ * - More tech-focused and process-oriented
+ * - Animated grid and flowing lines
  */
 const WorkMethodologyBackground = () => {
   return (
     <>
-      {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-purple-950/15 to-premium-black" />
+      {/* Base gradient - different from Approach */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-900" />
       
-      {/* Bottom fade overlay */}
-      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
-      
-      {/* Ambient light orbs with performance optimization */}
-      <div className="absolute top-10 left-10 md:top-20 md:left-20 w-48 h-48 md:w-80 md:h-80 bg-purple-500/8 rounded-full blur-3xl will-change-transform" />
-      <div className="absolute bottom-20 right-10 md:bottom-32 md:right-20 w-64 h-64 md:w-96 md:h-96 bg-blue-500/6 rounded-full blur-3xl will-change-transform" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[32rem] md:h-[32rem] bg-indigo-500/4 rounded-full blur-3xl will-change-transform" />
-      
-      {/* Subtle animated particles */}
+      {/* Animated grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          animation: 'grid-flow 30s linear infinite'
+        }}
+      />
+
+      {/* Flowing geometric shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Optimized particle system */}
+        {/* Hexagonal shapes */}
         <div 
-          className="absolute top-1/4 left-1/4 w-1 h-1 bg-purple-400/40 rounded-full animate-pulse will-change-transform" 
+          className="absolute top-20 left-20 w-32 h-32 opacity-10"
           style={{
-            animationDelay: '0s',
-            animationDuration: '4s'
-          }} 
+            background: 'linear-gradient(45deg, transparent 30%, rgba(52, 211, 153, 0.3) 50%, transparent 70%)',
+            clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+            animation: 'float-hexagon 15s ease-in-out infinite'
+          }}
+        />
+        
+        <div 
+          className="absolute bottom-32 right-32 w-24 h-24 opacity-15"
+          style={{
+            background: 'linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.4) 50%, transparent 70%)',
+            clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+            animation: 'float-hexagon 12s ease-in-out infinite reverse'
+          }}
+        />
+
+        {/* Circuit-like lines */}
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent opacity-60" />
+        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent opacity-40" />
+        
+        {/* Floating particles with different pattern than Approach */}
+        <div 
+          className="absolute top-1/3 right-1/4 w-2 h-2 bg-emerald-400/60 rounded-full animate-pulse"
+          style={{ animationDelay: '0s', animationDuration: '3s' }}
         />
         <div 
-          className="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-blue-400/30 rounded-full animate-pulse will-change-transform" 
-          style={{
-            animationDelay: '2s',
-            animationDuration: '3.5s'
-          }} 
+          className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-blue-400/50 rounded-full animate-pulse"
+          style={{ animationDelay: '1.5s', animationDuration: '4s' }}
         />
         <div 
-          className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-indigo-400/50 rounded-full animate-pulse will-change-transform" 
-          style={{
-            animationDelay: '3s',
-            animationDuration: '4.5s'
-          }} 
-        />
-        <div 
-          className="absolute bottom-1/3 left-3/4 w-1 h-1 bg-purple-400/20 rounded-full animate-pulse will-change-transform" 
-          style={{
-            animationDelay: '1s',
-            animationDuration: '5s'
-          }} 
-        />
-        <div 
-          className="absolute top-3/4 left-1/2 w-0.5 h-0.5 bg-blue-400/40 rounded-full animate-pulse will-change-transform" 
-          style={{
-            animationDelay: '4s',
-            animationDuration: '3s'
-          }} 
+          className="absolute top-1/2 left-1/4 w-1 h-1 bg-purple-400/40 rounded-full animate-pulse"
+          style={{ animationDelay: '3s', animationDuration: '2.5s' }}
         />
       </div>
 
-      {/* Gradient mesh overlay for added depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10" />
-      
-      {/* Subtle noise texture for Apple-like finish */}
+      {/* Ambient corner glows - different colors and positions than Approach */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-3xl" />
+
+      {/* Tech-inspired overlay pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.02] mix-blend-soft-light pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] mix-blend-screen"
         style={{
-          backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                           radial-gradient(circle at 80% 50%, white 1px, transparent 1px),
-                           radial-gradient(circle at 40% 80%, white 1px, transparent 1px)`,
-          backgroundSize: '100px 100px, 80px 80px, 120px 120px'
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, rgba(52, 211, 153, 0.8) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.6) 1px, transparent 1px),
+            radial-gradient(circle at 50% 25%, rgba(168, 85, 247, 0.4) 1px, transparent 1px),
+            radial-gradient(circle at 25% 75%, rgba(52, 211, 153, 0.5) 1px, transparent 1px)
+          `,
+          backgroundSize: '100px 100px, 120px 120px, 80px 80px, 140px 140px'
         }}
       />
+
+      {/* CSS Animations */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes grid-flow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+          }
+
+          @keyframes float-hexagon {
+            0%, 100% { 
+              transform: rotate(0deg) translateY(0px) scale(1);
+              opacity: 0.1;
+            }
+            50% { 
+              transform: rotate(180deg) translateY(-20px) scale(1.1);
+              opacity: 0.2;
+            }
+          }
+        `
+      }} />
     </>
   );
 };
