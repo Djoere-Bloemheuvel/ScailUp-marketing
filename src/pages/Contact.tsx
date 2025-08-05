@@ -1,7 +1,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle, FileText } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -299,54 +299,10 @@ const Contact = () => {
                     <br />
                     <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
                   </p>
-                  
-                  {/* Premium AI Impactscan Highlight Card */}
-                  <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                    <div 
-                      className="relative rounded-2xl p-8 backdrop-blur-xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] transition-all duration-700 hover:from-white/[0.12] hover:via-white/[0.06] hover:to-white/[0.03] hover:border-white/15"
-                      style={{
-                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)'
-                      }}
-                    >
-                      {/* Optional document icon in top-right */}
-                      <div className="absolute top-6 right-6 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-                        <FileText className="w-4 h-4 text-blue-300/80" />
-                      </div>
-
-                      {/* Content */}
-                      <div className="space-y-6">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-apple">
-                          Jouw AI Impactscan
-                        </h3>
-                        
-                        <p className="text-lg text-premium-silver/90 font-light leading-relaxed mb-6">
-                          Na het gesprek ontvang je een visueel rapport met:
-                        </p>
-                        
-                        <div className="space-y-4 mb-6">
-                          <div className="flex items-start space-x-3">
-                            <div className="w-1.5 h-1.5 bg-blue-400/60 rounded-full mt-2.5 flex-shrink-0"></div>
-                            <span className="text-premium-silver/80 font-light leading-relaxed">Inzichten op maat voor jouw organisatie</span>
-                          </div>
-                          <div className="flex items-start space-x-3">
-                            <div className="w-1.5 h-1.5 bg-blue-400/60 rounded-full mt-2.5 flex-shrink-0"></div>
-                            <span className="text-premium-silver/80 font-light leading-relaxed">Concrete AI-kansen en quick wins</span>
-                          </div>
-                          <div className="flex items-start space-x-3">
-                            <div className="w-1.5 h-1.5 bg-blue-400/60 rounded-full mt-2.5 flex-shrink-0"></div>
-                            <span className="text-premium-silver/80 font-light leading-relaxed">Een routekaart voor implementatie</span>
-                          </div>
-                        </div>
-
-                        <p className="text-base text-white/90 font-medium leading-relaxed">
-                          Toepasbaar. Compact. Geen verkooppraat – alleen waarde.
-                        </p>
-                      </div>
-
-                      {/* Subtle accent line */}
-                      <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
-                    </div>
-                  </div>
+                  <p className="text-lg text-premium-silver/80 leading-relaxed mb-10 font-light">
+                    Wij zijn gespecialiseerd in het bouwen van AI-systemen die uw business daadwerkelijk transformeren. 
+                    Van strategie tot implementatie - wij maken AI werkend voor uw organisatie.
+                  </p>
                 </div>
 
                 {/* Trust Indicators */}
@@ -402,12 +358,12 @@ const Contact = () => {
 
                 {/* Benefits List */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white mb-6">Wat krijg je?</h3>
+                  <h3 className="text-xl font-semibold text-white mb-6">Wat krijgt u?</h3>
                   <div className="space-y-4">
                     {[
                       'Gratis strategische verkenning van 60 minuten',
-                      'Concrete inzichten over jouw AI-mogelijkheden', 
-                      'Maatwerkvoorstel op basis van jullie uitdagingen',
+                      'Concrete inzichten over uw AI-mogelijkheden', 
+                      'Maatwerkvoorstel op basis van uw uitdagingen',
                       'Geen sales pitch - alleen waardevolle inzichten',
                       'Direct implementeerbare aanbevelingen'
                     ].map((benefit, index) => (
@@ -455,7 +411,7 @@ const Contact = () => {
                     <>
                       <div className="relative z-10">
                         <h3 className="text-xl md:text-2xl font-bold text-white mb-6 font-apple">
-                          Start jouw AI-verkenning
+                          Start uw AI-verkenning
                         </h3>
                         
                         <form 
@@ -506,7 +462,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Jouw volledige naam"
+                                placeholder="Uw volledige naam"
                                 aria-required="true"
                                 aria-invalid={errors.naam ? 'true' : 'false'}
                                 aria-describedby={errors.naam ? 'naam-error' : undefined}
@@ -548,7 +504,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="jouw@email.nl"
+                                placeholder="uw@email.nl"
                                 aria-required="true"
                                 aria-invalid={errors.email ? 'true' : 'false'}
                                 aria-describedby={errors.email ? 'email-error' : undefined}
@@ -590,7 +546,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Jouw bedrijfsnaam"
+                                placeholder="Uw bedrijfsnaam"
                                 aria-required="true"
                                 aria-invalid={errors.bedrijf ? 'true' : 'false'}
                                 aria-describedby={errors.bedrijf ? 'bedrijf-error' : undefined}
@@ -652,7 +608,7 @@ const Contact = () => {
                                 className="block text-sm font-medium text-white/90 mb-2"
                                 id="bericht-label"
                               >
-                                Jouw uitdagingen en doelen *
+                                Uw uitdagingen en doelen *
                               </label>
                               <textarea
                                 id="bericht"
@@ -672,7 +628,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Vertel ons over jullie AI-uitdagingen, doelen en wat je hoopt te bereiken..."
+                                placeholder="Vertel ons over uw AI-uitdagingen, doelen en wat u hoopt te bereiken..."
                                 aria-required="true"
                                 aria-invalid={errors.bericht ? 'true' : 'false'}
                                 aria-describedby={errors.bericht ? 'bericht-error' : 'bericht-help'}
@@ -680,7 +636,7 @@ const Contact = () => {
                                 spellCheck="true"
                               />
                               <div id="bericht-help" className="text-xs text-white/50 flex justify-between mt-2">
-                                <span>Vertel ons over jullie AI-uitdagingen en doelen (10-2000 tekens)</span>
+                                <span>Vertel ons over uw AI-uitdagingen en doelen (10-2000 tekens)</span>
                                 <span aria-live="polite">{formData.bericht?.length || 0}/2000</span>
                               </div>
                               {errors.bericht && (
@@ -702,8 +658,8 @@ const Contact = () => {
                             }}
                           >
                             <p>
-                              🔒 <strong>Privacy gegarandeerd:</strong> Jouw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
-                              Door dit formulier te versturen ga je akkoord met onze verwerking van je contactgegevens voor het beantwoorden van jouw vraag.
+                              🔒 <strong>Privacy gegarandeerd:</strong> Uw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
+                              Door dit formulier te versturen gaat u akkoord met onze verwerking van uw contactgegevens voor het beantwoorden van uw vraag.
                             </p>
                           </div>
 
@@ -725,7 +681,7 @@ const Contact = () => {
                                 </>
                               ) : (
                                 <>
-                                  Start jouw AI-verkenning
+                                  Start uw AI-verkenning
                                   <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                                 </>
                               )}
@@ -775,13 +731,13 @@ const Contact = () => {
                       </div>
 
                       <h3 className="text-xl font-bold text-white mb-3 font-apple">
-                        Bedankt voor je bericht!
+                        Bedankt voor uw bericht!
                       </h3>
                       <p className="text-base text-premium-silver/80 mb-4 font-light">
-                        We nemen binnen 24 uur contact met je op om jouw AI-mogelijkheden te bespreken.
+                        We nemen binnen 24 uur contact met u op om uw AI-mogelijkheden te bespreken.
                       </p>
                       <p className="text-sm text-premium-silver/60">
-                        Je ontvangt ook een bevestiging per e-mail.
+                        U ontvangt ook een bevestiging per e-mail.
                       </p>
                     </div>
                   )}
