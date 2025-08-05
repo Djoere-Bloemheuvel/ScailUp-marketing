@@ -1,4 +1,5 @@
 
+
 const HorizontalLightFlareAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{
@@ -57,6 +58,22 @@ const HorizontalLightFlareAnimations = () => {
           }
         }
 
+        /* NEW: Subtle ambient glow animation */
+        @keyframes ambient-glow-pulse {
+          0%, 100% {
+            opacity: 0.15;
+            transform: translateX(-50%) scaleY(1) scaleX(1);
+          }
+          33% {
+            opacity: 0.18;
+            transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
+          }
+          66% {
+            opacity: 0.12;
+            transform: translateX(-50%) scaleY(0.98) scaleX(0.99);
+          }
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
           .horizontal-light-flare {
@@ -84,6 +101,17 @@ const HorizontalLightFlareAnimations = () => {
               transform: translateX(-50%) scaleY(1.08);
             }
           }
+
+          @keyframes ambient-glow-pulse {
+            0%, 100% {
+              opacity: 0.12;
+              transform: translateX(-50%) scaleY(1) scaleX(1);
+            }
+            50% {
+              opacity: 0.15;
+              transform: translateX(-50%) scaleY(1.01) scaleX(1.005);
+            }
+          }
         }
       `
     }} />
@@ -91,3 +119,4 @@ const HorizontalLightFlareAnimations = () => {
 };
 
 export default HorizontalLightFlareAnimations;
+

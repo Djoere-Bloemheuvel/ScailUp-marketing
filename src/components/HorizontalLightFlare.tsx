@@ -116,6 +116,24 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
           }}
         />
         
+        {/* NEW: Subtle ambient downward glow - underneath the flare for all positions */}
+        <div 
+          className={`absolute left-1/2 transform -translate-x-1/2 w-full opacity-15 z-20 ${position === 'top' ? 'top-0' : 'bottom-0'}`}
+          style={{
+            height: '300px',
+            background: `radial-gradient(ellipse 90% 100% at 50% ${position === 'top' ? '0%' : '0%'}, 
+              rgba(34, 211, 238, 0.4) 0%, 
+              rgba(59, 130, 246, 0.3) 20%, 
+              rgba(34, 211, 238, 0.2) 40%, 
+              rgba(59, 130, 246, 0.1) 60%, 
+              transparent 100%
+            )`,
+            filter: 'blur(80px)',
+            animation: 'ambient-glow-pulse 12s ease-in-out infinite',
+            ...(position === 'top' ? { top: '0px' } : { bottom: '0px' })
+          }}
+        />
+        
         {/* Downward aura glow - only show when position is bottom, made wider */}
         {position === 'bottom' && (
           <>
