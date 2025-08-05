@@ -2,7 +2,6 @@
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import CinematicBackground from './hero/CinematicBackground';
 
 const EndingCTA = () => {
   const navigate = useNavigate();
@@ -16,57 +15,47 @@ const EndingCTA = () => {
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-30" />
       
-      {/* Main Content Container */}
+      {/* Background Effects Layer - Behind glass container */}
+      <div className="absolute inset-0 z-5">
+        {/* Central focal glow */}
+        <div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
+            filter: 'blur(120px)',
+            animation: 'premium-focal-glow 12s ease-in-out infinite'
+          }}
+        />
+        
+        {/* Particle system */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={`particle-${i}`}
+              className="absolute w-1 h-1 rounded-full"
+              style={{
+                background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
+                           i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
+                           'rgba(34, 211, 238, 0.7)',
+                left: `${15 + (i * 9) % 70}%`,
+                top: `${25 + (i * 11) % 50}%`,
+                animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
+                animationDelay: `${i * 0.8}s`,
+                filter: 'blur(0.5px)'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Main Content Container with proper glassmorphism */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
-          {/* Glass Container with confined background effects */}
-          <div className="premium-glass-main-container relative">
-            {/* Confined Background Effects Layer - clipped to container shape */}
-            <div 
-              className="absolute inset-0 rounded-[24px] overflow-hidden"
-              style={{
-                clipPath: 'inset(0 round 24px)'
-              }}
-            >
-              {/* CinematicBackground - confined within glass container */}
-              <div className="absolute inset-0 opacity-60">
-                <CinematicBackground hideGlassContainer={true} />
-              </div>
-              
-              {/* Premium Background Layers - confined within container */}
-              <div className="absolute inset-0 pointer-events-none">
-                {/* Central focal glow */}
-                <div 
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
-                    filter: 'blur(120px)',
-                    animation: 'premium-focal-glow 12s ease-in-out infinite'
-                  }}
-                />
-                
-                {/* Particle system */}
-                <div className="absolute inset-0">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={`particle-${i}`}
-                      className="absolute w-1 h-1 rounded-full"
-                      style={{
-                        background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
-                                   i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
-                                   'rgba(34, 211, 238, 0.7)',
-                        left: `${15 + (i * 9) % 70}%`,
-                        top: `${25 + (i * 11) % 50}%`,
-                        animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
-                        animationDelay: `${i * 0.8}s`,
-                        filter: 'blur(0.5px)'
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
+          {/* Glass Container with restored glassmorphism effect */}
+          <div className="premium-glass-container relative">
+            {/* Darkening overlay for better glass effect */}
+            <div className="absolute inset-0 bg-black/20 rounded-[24px] z-0" />
+            
             {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24 relative z-10">
               {/* Left Content */}
@@ -280,36 +269,38 @@ const EndingCTA = () => {
             100% { transform: translateX(400%) rotate(35deg); }
           }
 
-          /* Premium Glass Container */
-          .premium-glass-main-container {
+          /* Premium Glass Container with restored glassmorphism */
+          .premium-glass-container {
             background: linear-gradient(135deg, 
-              rgba(255, 255, 255, 0.08) 0%, 
-              rgba(255, 255, 255, 0.02) 50%, 
-              rgba(255, 255, 255, 0.05) 100%);
+              rgba(255, 255, 255, 0.10) 0%, 
+              rgba(255, 255, 255, 0.05) 50%, 
+              rgba(255, 255, 255, 0.08) 100%);
             backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 24px;
             box-shadow: 
-              0 24px 48px rgba(0, 0, 0, 0.4),
-              0 12px 24px rgba(59, 130, 246, 0.1),
-              0 6px 12px rgba(147, 51, 234, 0.08),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15),
-              inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+              0 24px 48px rgba(0, 0, 0, 0.5),
+              0 12px 24px rgba(59, 130, 246, 0.15),
+              0 6px 12px rgba(147, 51, 234, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.20),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.08);
             padding: 1.5rem;
             position: relative;
             overflow: hidden;
           }
 
-          .premium-glass-main-container::before {
+          .premium-glass-container::before {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg,
-              rgba(59, 130, 246, 0.03) 0%,
-              rgba(147, 51, 234, 0.02) 50%,
-              rgba(34, 211, 238, 0.03) 100%);
+              rgba(59, 130, 246, 0.04) 0%,
+              rgba(147, 51, 234, 0.03) 50%,
+              rgba(34, 211, 238, 0.04) 100%);
             border-radius: 24px;
             pointer-events: none;
+            z-index: 1;
           }
 
           /* Premium Button */
@@ -407,9 +398,10 @@ const EndingCTA = () => {
 
           /* Mobile Optimizations */
           @media (max-width: 768px) {
-            .premium-glass-main-container {
+            .premium-glass-container {
               border-radius: 20px;
               padding: 1rem;
+              backdrop-filter: blur(30px);
             }
             
             .premium-quantum-field {
@@ -438,7 +430,7 @@ const EndingCTA = () => {
           }
 
           /* Performance Optimizations */
-          .premium-glass-main-container,
+          .premium-glass-container,
           .premium-cta-button {
             will-change: transform;
             backface-visibility: hidden;
