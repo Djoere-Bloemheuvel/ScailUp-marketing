@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, ArrowRight, CheckCircle, Play } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -209,6 +208,9 @@ const WorkMethodology = () => {
           </button>
         </div>
       </div>
+
+      {/* Gradient fade to black effect at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-20" />
     </section>
   );
 };
