@@ -1,3 +1,4 @@
+
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Phone, MapPin, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
@@ -248,7 +249,7 @@ const Contact = () => {
     <>
       <SEOHead
         title="Contact - Buildrs.AI | AI Consultancy & Development"
-        description="Neem contact op met Buildrs.AI voor AI consultancy, custom AI SaaS development en AI automatisering. Gratis strategische verkenning van 60 minuten."
+        description="Neem contact op met Buildrs.AI voor AI consultancy, custom AI SaaS development en AI automatisering. Gratis strategische verkenning van 30 minuten."
         keywords="contact, AI consultancy, AI development, custom AI SaaS, AI automatisering, Buildrs.AI"
         canonical="/contact"
       />
@@ -294,27 +295,76 @@ const Contact = () => {
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-10">
-                    In 30 minuten verkennen we hoe AI écht waarde kan toevoegen aan uw organisatie.
+                    Een strategische verkenning van 30 minuten.
                     <br />
-                    Na afloop ontvangt u een compact rapport met inzichten, aanbevelingen en een slimme route naar implementatie.
+                    Geen sales pitch. Wel concrete inzichten.
                     <br />
-                    <span className="text-white/90">Geen verkooppraatje – wél concrete waarde.</span>
+                    <br />
+                    Wij zijn gespecialiseerd in het bouwen van AI-systemen die jouw business daadwerkelijk transformeren. Van strategie tot implementatie - wij maken AI werkend voor jouw organisatie.
                   </p>
                 </div>
 
-                {/* Premium Bullet Section - Moved below paragraph */}
+                {/* Premium Glassmorphic Bullet Section */}
                 <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                  <h3 className="text-2xl font-semibold text-white font-apple">Wat krijgt u?</h3>
-                  <div className="space-y-3">
+                  <h3 className="text-2xl font-semibold text-white font-apple mb-8">Wat krijg je?</h3>
+                  <div className="grid gap-4">
                     {[
                       'Een strategisch AI-gesprek van 30 minuten',
                       'Een compact, persoonlijk rapport met aanbevelingen', 
-                      'Inzichten afgestemd op uw organisatie en uitdagingen',
+                      'Inzichten afgestemd op jouw organisatie en uitdagingen',
                       'Geen salespitch – alleen inhoudelijke waarde',
-                      'Advies dat u direct kunt toepassen'
+                      'Advies dat je direct kunt toepassen'
                     ].map((benefit, index) => (
-                      <div key={index} className="flex items-start">
-                        <span className="text-premium-silver/80 font-light leading-relaxed text-lg">{benefit}</span>
+                      <div 
+                        key={index} 
+                        className="group relative p-4 rounded-2xl transition-all duration-500 hover:scale-[1.02] transform-gpu"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.02) 100%)',
+                          backdropFilter: 'blur(20px) saturate(150%)',
+                          border: '1px solid rgba(255, 255, 255, 0.12)',
+                          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.05)'
+                        }}
+                      >
+                        {/* Animated border glow on hover */}
+                        <div 
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out -z-10"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.10))',
+                            filter: 'blur(1px)'
+                          }} 
+                        />
+                        
+                        {/* Subtle inner glow */}
+                        <div 
+                          className="absolute inset-1 rounded-2xl pointer-events-none opacity-60"
+                          style={{
+                            background: 'radial-gradient(ellipse at top, rgba(255, 255, 255, 0.06) 0%, transparent 70%)'
+                          }} 
+                        />
+                        
+                        <div className="relative flex items-start space-x-4">
+                          {/* Premium dot indicator */}
+                          <div 
+                            className="flex-shrink-0 w-2 h-2 rounded-full mt-3 transition-all duration-300 group-hover:scale-125"
+                            style={{
+                              background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)',
+                              boxShadow: '0 0 12px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
+                            }}
+                          />
+                          
+                          <p className="text-premium-silver/90 font-light leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
+                            {benefit}
+                          </p>
+                        </div>
+                        
+                        {/* Sparkle effect on hover */}
+                        <div 
+                          className="absolute top-2 right-2 w-1 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"
+                          style={{
+                            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%)',
+                            animation: 'pulse 2s ease-in-out infinite'
+                          }}
+                        />
                       </div>
                     ))}
                   </div>
@@ -404,7 +454,7 @@ const Contact = () => {
                     <>
                       <div className="relative z-10">
                         <h3 className="text-xl md:text-2xl font-bold text-white mb-6 font-apple">
-                          Start uw AI-verkenning
+                          Start jouw AI-verkenning
                         </h3>
                         
                         <form 
@@ -455,7 +505,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Uw volledige naam"
+                                placeholder="Jouw volledige naam"
                                 aria-required="true"
                                 aria-invalid={errors.naam ? 'true' : 'false'}
                                 aria-describedby={errors.naam ? 'naam-error' : undefined}
@@ -497,7 +547,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="uw@email.nl"
+                                placeholder="jouw@email.nl"
                                 aria-required="true"
                                 aria-invalid={errors.email ? 'true' : 'false'}
                                 aria-describedby={errors.email ? 'email-error' : undefined}
@@ -539,7 +589,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Uw bedrijfsnaam"
+                                placeholder="Jouw bedrijfsnaam"
                                 aria-required="true"
                                 aria-invalid={errors.bedrijf ? 'true' : 'false'}
                                 aria-describedby={errors.bedrijf ? 'bedrijf-error' : undefined}
@@ -601,7 +651,7 @@ const Contact = () => {
                                 className="block text-sm font-medium text-white/90 mb-2"
                                 id="bericht-label"
                               >
-                                Uw uitdagingen en doelen *
+                                Jouw uitdagingen en doelen *
                               </label>
                               <textarea
                                 id="bericht"
@@ -621,7 +671,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Vertel ons over uw AI-uitdagingen, doelen en wat u hoopt te bereiken..."
+                                placeholder="Vertel ons over jouw AI-uitdagingen, doelen en wat je hoopt te bereiken..."
                                 aria-required="true"
                                 aria-invalid={errors.bericht ? 'true' : 'false'}
                                 aria-describedby={errors.bericht ? 'bericht-error' : 'bericht-help'}
@@ -629,7 +679,7 @@ const Contact = () => {
                                 spellCheck="true"
                               />
                               <div id="bericht-help" className="text-xs text-white/50 flex justify-between mt-2">
-                                <span>Vertel ons over uw AI-uitdagingen en doelen (10-2000 tekens)</span>
+                                <span>Vertel ons over jouw AI-uitdagingen en doelen (10-2000 tekens)</span>
                                 <span aria-live="polite">{formData.bericht?.length || 0}/2000</span>
                               </div>
                               {errors.bericht && (
@@ -651,8 +701,8 @@ const Contact = () => {
                             }}
                           >
                             <p>
-                              🔒 <strong>Privacy gegarandeerd:</strong> Uw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
-                              Door dit formulier te versturen gaat u akkoord met onze verwerking van uw contactgegevens voor het beantwoorden van uw vraag.
+                              🔒 <strong>Privacy gegarandeerd:</strong> Jouw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
+                              Door dit formulier te versturen ga je akkoord met onze verwerking van jouw contactgegevens voor het beantwoorden van jouw vraag.
                             </p>
                           </div>
 
@@ -724,13 +774,13 @@ const Contact = () => {
                       </div>
 
                       <h3 className="text-xl font-bold text-white mb-3 font-apple">
-                        Bedankt voor uw bericht!
+                        Bedankt voor jouw bericht!
                       </h3>
                       <p className="text-base text-premium-silver/80 mb-4 font-light">
-                        We nemen binnen 24 uur contact met u op om uw AI-mogelijkheden te bespreken.
+                        We nemen binnen 24 uur contact met je op om jouw AI-mogelijkheden te bespreken.
                       </p>
                       <p className="text-sm text-premium-silver/60">
-                        U ontvangt ook een bevestiging per e-mail.
+                        Je ontvangt ook een bevestiging per e-mail.
                       </p>
                     </div>
                   )}
