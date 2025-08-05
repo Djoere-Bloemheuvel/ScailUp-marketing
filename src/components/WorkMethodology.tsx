@@ -149,34 +149,10 @@ const WorkMethodology = () => {
 
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header with full-width glow effect like reference image */}
-        <div className="relative text-center mb-16 lg:mb-20">
-          {/* Full-width horizontal glow lines background */}
-          <div className="absolute inset-0 w-screen left-1/2 transform -translate-x-1/2 pointer-events-none z-0">
-            {/* Top glow line */}
-            <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent blur-sm" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-xs" />
-            </div>
-            
-            {/* Middle glow line - brighter */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent transform -translate-y-1/2">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent blur-md scale-y-[3]" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent blur-sm scale-y-[2]" />
-            </div>
-            
-            {/* Bottom glow line */}
-            <div className="absolute bottom-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/25 to-transparent blur-sm" />
-            </div>
-            
-            {/* Additional ambient glow layers */}
-            <div className="absolute top-1/2 left-0 right-0 h-32 bg-gradient-to-r from-transparent via-cyan-400/5 to-transparent transform -translate-y-1/2 blur-3xl" />
-            <div className="absolute top-1/2 left-0 right-0 h-16 bg-gradient-to-r from-transparent via-white/3 to-transparent transform -translate-y-1/2 blur-2xl" />
-          </div>
-
-          {/* Hero title - Apple style with refined fonts, positioned above glow */}
-          <div className="relative z-10 mb-8">
+        {/* Header styled exactly like Approach section */}
+        <div className="text-center mb-16 lg:mb-20">
+          {/* Hero title - Apple style with refined fonts, 15% larger than current */}
+          <div className="mb-8">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
               Van visie naar uitvoering.
             </h2>
@@ -188,7 +164,7 @@ const WorkMethodology = () => {
           </div>
           
           {/* Subtitle with Apple typography */}
-          <p className="relative z-10 text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+          <p className="text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
             Van eerste gesprek tot live deployment: dit is hoe we elke week meetbare vooruitgang boeken.
           </p>
         </div>
