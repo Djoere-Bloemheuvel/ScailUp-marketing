@@ -137,12 +137,12 @@ const WorkMethodology = () => {
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Header styled exactly like Approach section */}
         <div className="text-center mb-16 lg:mb-20">
-          {/* Hero title - Apple style with refined fonts, exact same styling as Approach */}
+          {/* Hero title - Apple style with refined fonts, 15% larger than current */}
           <div className="mb-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
               Van visie naar uitvoering.
             </h2>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
               <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
                 Zo brengen we de principes tot leven.
               </span>
