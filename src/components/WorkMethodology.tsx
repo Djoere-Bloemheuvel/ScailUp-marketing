@@ -135,55 +135,55 @@ const WorkMethodology = () => {
     >
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Enhanced header with refined spotlight glow */}
+        {/* Enhanced header with much more subtle spotlight glow */}
         <header className="text-left mb-20 lg:mb-24">
           <div className="mb-8 relative">
-            {/* Refined spotlight glow with blue-to-purple gradient */}
+            {/* Much more subtle spotlight glow with reduced opacity and blur */}
             <div className="absolute -inset-16 -z-10">
-              {/* Main vertical spotlight glow */}
+              {/* Main vertical spotlight glow - much more subtle */}
               <div 
-                className="absolute inset-0 rounded-full opacity-20"
+                className="absolute inset-0 rounded-full opacity-6"
                 style={{
                   background: 'radial-gradient(ellipse 250px 350px at center, #4484FF 0%, #AA66FF 100%)',
-                  filter: 'blur(100px)',
+                  filter: 'blur(120px)',
                   mixBlendMode: 'screen'
                 }}
               />
               
-              {/* Secondary softer glow layer for depth */}
+              {/* Secondary softer glow layer - very subtle */}
               <div 
-                className="absolute inset-0 rounded-full opacity-15"
+                className="absolute inset-0 rounded-full opacity-4"
                 style={{
                   background: 'radial-gradient(ellipse 180px 280px at center, #4484FF 0%, #AA66FF 100%)',
-                  filter: 'blur(80px)',
+                  filter: 'blur(100px)',
                   mixBlendMode: 'soft-light'
                 }}
               />
               
-              {/* Subtle ambient layer */}
+              {/* Subtle ambient layer - barely visible */}
               <div 
-                className="absolute inset-0 rounded-full opacity-10"
+                className="absolute inset-0 rounded-full opacity-3"
                 style={{
                   background: 'linear-gradient(180deg, #4484FF 0%, #AA66FF 100%)',
-                  filter: 'blur(120px)',
+                  filter: 'blur(140px)',
                   mixBlendMode: 'screen'
                 }}
               />
             </div>
             
-            {/* Main content with enhanced glow */}
+            {/* Main content with much more subtle glow */}
             <div className="relative z-10">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 drop-shadow-2xl" 
                   style={{ 
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-                    textShadow: '0 0 30px rgba(96, 165, 250, 0.3), 0 0 60px rgba(34, 211, 238, 0.2), 0 4px 20px rgba(0,0,0,0.4)'
+                    textShadow: '0 0 10px rgba(96, 165, 250, 0.1), 0 0 20px rgba(34, 211, 238, 0.06), 0 4px 15px rgba(0,0,0,0.3)'
                   }}>
                 Van visie naar uitvoering
               </h2>
               <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed drop-shadow-lg" 
                  style={{ 
                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-                   textShadow: '0 0 20px rgba(96, 165, 250, 0.2), 0 2px 10px rgba(0,0,0,0.3)'
+                   textShadow: '0 0 6px rgba(96, 165, 250, 0.08), 0 2px 8px rgba(0,0,0,0.25)'
                  }}>
                 Zo brengen we de principes tot leven
               </p>

@@ -102,38 +102,38 @@ const AppleTimeline = () => {
         ))}
       </div>
 
-      {/* Enhanced floating transition text element with refined spotlight glow */}
+      {/* Enhanced floating transition text element with much more subtle spotlight glow */}
       <div className="relative z-20 mt-16 mb-12">
         <div className="flex justify-start">
           <div className="relative max-w-md mr-6 lg:mr-10">
-            {/* Refined spotlight glow with blue-to-purple gradient */}
+            {/* Much more subtle spotlight glow with reduced opacity and blur */}
             <div className="absolute -inset-16 -z-10">
-              {/* Main vertical spotlight glow */}
+              {/* Main vertical spotlight glow - much more subtle */}
               <div 
-                className="absolute inset-0 rounded-full opacity-20"
+                className="absolute inset-0 rounded-full opacity-6"
                 style={{
                   background: 'radial-gradient(ellipse 200px 300px at center, #4484FF 0%, #AA66FF 100%)',
-                  filter: 'blur(100px)',
+                  filter: 'blur(120px)',
                   mixBlendMode: 'screen'
                 }}
               />
               
-              {/* Secondary softer glow layer for depth */}
+              {/* Secondary softer glow layer - very subtle */}
               <div 
-                className="absolute inset-0 rounded-full opacity-15"
+                className="absolute inset-0 rounded-full opacity-4"
                 style={{
                   background: 'radial-gradient(ellipse 150px 250px at center, #4484FF 0%, #AA66FF 100%)',
-                  filter: 'blur(80px)',
+                  filter: 'blur(100px)',
                   mixBlendMode: 'soft-light'
                 }}
               />
               
-              {/* Subtle ambient layer */}
+              {/* Subtle ambient layer - barely visible */}
               <div 
-                className="absolute inset-0 rounded-full opacity-10"
+                className="absolute inset-0 rounded-full opacity-3"
                 style={{
                   background: 'linear-gradient(180deg, #4484FF 0%, #AA66FF 100%)',
-                  filter: 'blur(120px)',
+                  filter: 'blur(140px)',
                   mixBlendMode: 'screen'
                 }}
               />
@@ -141,24 +141,24 @@ const AppleTimeline = () => {
             
             {/* Main transition text container */}
             <div className="relative z-10">
-              {/* Main title with premium typography and enhanced text shadow */}
+              {/* Main title with premium typography and much more subtle text shadow */}
               <h3 
                 className="text-2xl lg:text-3xl font-bold text-white leading-tight tracking-tight mb-3"
                 style={{ 
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-                  textShadow: '0 0 25px rgba(96, 165, 250, 0.4), 0 0 50px rgba(34, 211, 238, 0.25), 0 2px 15px rgba(0,0,0,0.5)'
+                  textShadow: '0 0 8px rgba(96, 165, 250, 0.15), 0 0 15px rgba(34, 211, 238, 0.08), 0 2px 10px rgba(0,0,0,0.3)'
                 }}
               >
                 Van visie naar uitvoering
               </h3>
               
-              {/* Subtitle with lighter styling and enhanced glow */}
+              {/* Subtitle with lighter styling and very subtle glow */}
               <p 
                 className="text-white/60 text-sm lg:text-base font-light leading-relaxed max-w-xs"
                 style={{ 
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
                   color: '#888888',
-                  textShadow: '0 0 15px rgba(96, 165, 250, 0.25), 0 1px 8px rgba(0,0,0,0.4)'
+                  textShadow: '0 0 5px rgba(96, 165, 250, 0.08), 0 1px 6px rgba(0,0,0,0.25)'
                 }}
               >
                 Zo brengen we de principes tot leven om van elk project een succes te maken.
