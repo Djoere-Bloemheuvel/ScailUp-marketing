@@ -130,7 +130,7 @@ const WorkMethodology = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-16 lg:py-20 px-4 overflow-hidden bg-black"
+      className="relative py-14 lg:py-18 px-4 overflow-hidden bg-black"
       aria-label="Onze werk methodologie - stap voor stap proces"
     >
       {/* Horizontal light flare at top for section separation */}
