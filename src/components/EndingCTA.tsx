@@ -1,4 +1,3 @@
-
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -15,48 +14,80 @@ const EndingCTA = () => {
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
 
-      {/* Blue Ambient Glow Container - Moved outside and behind everything */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-5">
-        {/* Large outer glow - bottom left */}
+      {/* Enhanced Blue Ambient Glow Container - Behind everything with proper layering */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
+        {/* Primary large glow - bottom left quadrant */}
         <div 
-          className="absolute -bottom-1/3 -left-1/4 w-[40rem] h-[40rem] rounded-full opacity-30 animate-pulse"
+          className="absolute -bottom-1/2 -left-1/3 w-[50rem] h-[50rem] rounded-full opacity-50 animate-pulse"
           style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(34, 211, 238, 0.18) 35%, rgba(37, 99, 235, 0.08) 60%, transparent 85%)',
-            filter: 'blur(120px)',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(34, 211, 238, 0.28) 30%, rgba(37, 99, 235, 0.16) 50%, rgba(59, 130, 246, 0.08) 75%, transparent 90%)',
+            filter: 'blur(80px)',
             animationDuration: '12s'
           }}
         />
         
-        {/* Medium glow - top right */}
+        {/* Secondary glow - top right quadrant */}
         <div 
-          className="absolute -top-1/4 -right-1/4 w-96 h-96 rounded-full opacity-35 animate-pulse"
+          className="absolute -top-1/3 -right-1/3 w-[35rem] h-[35rem] rounded-full opacity-45 animate-pulse"
           style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(99, 102, 241, 0.15) 40%, rgba(59, 130, 246, 0.06) 70%, transparent 90%)',
-            filter: 'blur(100px)',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(99, 102, 241, 0.22) 35%, rgba(59, 130, 246, 0.12) 60%, rgba(147, 51, 234, 0.06) 80%, transparent 95%)',
+            filter: 'blur(70px)',
             animationDuration: '8s',
             animationDelay: '-4s'
           }}
         />
         
-        {/* Center accent glow */}
+        {/* Center ambient glow */}
         <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-25 animate-pulse"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full opacity-35 animate-pulse"
           style={{
-            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, rgba(16, 185, 129, 0.12) 50%, rgba(59, 130, 246, 0.05) 80%, transparent 95%)',
-            filter: 'blur(90px)',
+            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(16, 185, 129, 0.18) 40%, rgba(59, 130, 246, 0.1) 70%, rgba(34, 211, 238, 0.04) 90%, transparent 100%)',
+            filter: 'blur(60px)',
             animationDuration: '15s',
             animationDelay: '-7s'
           }}
         />
         
-        {/* Small focused glow - bottom right */}
+        {/* Focused accent glow - bottom right */}
         <div 
-          className="absolute -bottom-1/4 -right-1/3 w-64 h-64 rounded-full opacity-40 animate-pulse"
+          className="absolute -bottom-1/4 -right-1/4 w-[25rem] h-[25rem] rounded-full opacity-55 animate-pulse"
           style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.28) 0%, rgba(34, 211, 238, 0.16) 45%, rgba(147, 51, 234, 0.04) 75%, transparent 90%)',
-            filter: 'blur(70px)',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(34, 211, 238, 0.28) 40%, rgba(147, 51, 234, 0.15) 65%, rgba(59, 130, 246, 0.06) 85%, transparent 100%)',
+            filter: 'blur(50px)',
             animationDuration: '10s',
             animationDelay: '-2s'
+          }}
+        />
+
+        {/* Additional wide coverage glow - full screen */}
+        <div 
+          className="absolute inset-0 w-full h-full rounded-full opacity-25 animate-pulse"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15) 0%, rgba(34, 211, 238, 0.08) 35%, rgba(37, 99, 235, 0.04) 60%, transparent 85%)',
+            filter: 'blur(120px)',
+            animationDuration: '20s',
+            animationDelay: '-10s'
+          }}
+        />
+
+        {/* Subtle edge enhancement glows */}
+        <div 
+          className="absolute top-0 left-0 w-[20rem] h-[20rem] rounded-full opacity-30 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 80%)',
+            filter: 'blur(40px)',
+            animationDuration: '14s',
+            animationDelay: '-6s'
+          }}
+        />
+        
+        <div 
+          className="absolute bottom-0 right-0 w-[18rem] h-[18rem] rounded-full opacity-35 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(16, 185, 129, 0.15) 45%, transparent 75%)',
+            filter: 'blur(45px)',
+            animationDuration: '16s',
+            animationDelay: '-8s'
           }}
         />
       </div>
