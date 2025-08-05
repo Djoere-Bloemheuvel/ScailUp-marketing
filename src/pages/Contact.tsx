@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
