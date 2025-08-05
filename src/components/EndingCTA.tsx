@@ -1,3 +1,4 @@
+
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -12,9 +13,6 @@ const EndingCTA = () => {
 
   return (
     <section className="relative min-h-[80vh] overflow-hidden bg-premium-black flex items-center justify-center py-12">
-      {/* Top gradient overlay for smooth transition */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent z-30 pointer-events-none" />
-
       {/* Enhanced Cinematic Background with Custom Colors */}
       <CinematicBackground hideGlassContainer={true} />
       
@@ -173,9 +171,6 @@ const EndingCTA = () => {
           </div>
         </div>
       </div>
-
-      {/* Bottom gradient overlay for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-30 pointer-events-none" />
 
       {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
