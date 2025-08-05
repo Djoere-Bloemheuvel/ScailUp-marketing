@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from 'react';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -10,7 +9,7 @@ const Hero = lazy(() => import('@/components/Hero'));
 const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
-const WhyChooseBuildrs = lazy(() => import('@/components/WhyChooseBuildrs'));
+const EndingCTA = lazy(() => import('@/components/EndingCTA'));
 const Showcase = lazy(() => import('@/components/Showcase'));
 const Target = lazy(() => import('@/components/Target'));
 const Workflow = lazy(() => import('@/components/Workflow'));
@@ -92,15 +91,15 @@ const Index = () => {
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
-          <WhyChooseBuildrs />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
           <Approach />
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
           <WorkMethodology />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <EndingCTA />
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>

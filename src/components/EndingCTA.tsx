@@ -1,9 +1,8 @@
-
 import { ArrowRight, Zap, Shield, Target, Users, Code, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
-const WhyChooseBuildrs = () => {
+const EndingCTA = () => {
   const navigate = useNavigate();
 
   const handleContactClick = () => {
@@ -208,4 +207,4 @@ const WhyChooseBuildrs = () => {
   );
 };
 
-export default WhyChooseBuildrs;
+export default EndingCTA;
