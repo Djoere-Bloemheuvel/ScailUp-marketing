@@ -106,45 +106,48 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           
           const glowColor = getGlowColor();
 
-          // Enhanced icon container styles with solid black background and inward glow
+          // Enhanced icon container styles with solid black background and inner/outer glow
           const getIconContainerStyles = () => {
             const baseStyles = {
               backgroundColor: '#000000',
               backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
             };
 
             if (isActive) {
-              // Active state: More prominent inward glow
+              // Active state: Enhanced inner and outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 20px rgba(${glowColor}, 0.25)`, // Inner glow - medium spread
-                  `inset 0 0 8px rgba(${glowColor}, 0.4)`, // Inner core glow
-                  `0 0 0 1px rgba(${glowColor}, 0.2)`, // Outer border accent
-                  `0 2px 8px rgba(0, 0, 0, 0.3)` // Drop shadow for depth
+                  `inset 0 0 24px rgba(${glowColor}, 0.3)`, // Inner glow - enhanced spread
+                  `inset 0 0 12px rgba(${glowColor}, 0.5)`, // Inner core glow
+                  `0 0 32px rgba(${glowColor}, 0.25)`, // Outer halo - larger spread
+                  `0 0 16px rgba(${glowColor}, 0.4)`, // Outer core glow
+                  `0 4px 12px rgba(0, 0, 0, 0.4)` // Drop shadow for depth
                 ].join(', ')
               };
             } else if (isHovered) {
-              // Hover state: Slightly enhanced inward glow
+              // Hover state: Increased glow intensity and spread
+              return {
+                ...baseStyles,
+                boxShadow: [
+                  `inset 0 0 20px rgba(${glowColor}, 0.25)`, // Inner glow - increased spread
+                  `inset 0 0 10px rgba(${glowColor}, 0.4)`, // Inner core glow
+                  `0 0 28px rgba(${glowColor}, 0.2)`, // Outer halo - increased spread
+                  `0 0 14px rgba(${glowColor}, 0.35)`, // Outer core glow
+                  `0 3px 10px rgba(0, 0, 0, 0.3)` // Drop shadow for depth
+                ].join(', ')
+              };
+            } else {
+              // Default state: Subtle inner and outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
                   `inset 0 0 16px rgba(${glowColor}, 0.2)`, // Inner glow - subtle spread
-                  `inset 0 0 6px rgba(${glowColor}, 0.35)`, // Inner core glow
-                  `0 0 0 1px rgba(${glowColor}, 0.15)`, // Outer border accent
-                  `0 2px 6px rgba(0, 0, 0, 0.25)` // Drop shadow for depth
-                ].join(', ')
-              };
-            } else {
-              // Default state: Minimal inward glow
-              return {
-                ...baseStyles,
-                boxShadow: [
-                  `inset 0 0 12px rgba(${glowColor}, 0.15)`, // Inner glow - minimal spread
-                  `inset 0 0 4px rgba(${glowColor}, 0.25)`, // Inner core glow
-                  `0 0 0 1px rgba(${glowColor}, 0.1)`, // Outer border accent
-                  `0 2px 4px rgba(0, 0, 0, 0.2)` // Drop shadow for depth
+                  `inset 0 0 8px rgba(${glowColor}, 0.3)`, // Inner core glow
+                  `0 0 24px rgba(${glowColor}, 0.15)`, // Outer halo - subtle spread
+                  `0 0 12px rgba(${glowColor}, 0.25)`, // Outer core glow
+                  `0 2px 8px rgba(0, 0, 0, 0.25)` // Drop shadow for depth
                 ].join(', ')
               };
             }
@@ -158,18 +161,17 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
-              {/* Step number indicator with solid black background and inward glow */}
+              {/* Step number indicator with solid black background and enhanced glow effects */}
               <div className="flex items-center justify-center mb-6">
                 <div 
                   className="relative w-12 h-12 rounded-full transition-all duration-200 ease-out"
                   style={getIconContainerStyles()}
                 >
                   <step.icon 
-                    className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" 
+                    className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-200 ease-out" 
                     strokeWidth={2}
                     style={{ 
-                      color: isActive || isHovered ? '#FFFFFF' : '#E5E7EB',
-                      filter: `drop-shadow(0 0 2px rgba(${glowColor}, 0.3))`
+                      color: isActive || isHovered ? '#FFFFFF' : '#E5E7EB'
                     }}
                   />
                 </div>
