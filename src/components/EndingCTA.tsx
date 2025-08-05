@@ -35,53 +35,80 @@ const EndingCTA = () => {
 
   return (
     <footer className="relative bg-premium-black border-t border-premium-silver/5 overflow-hidden">
-      {/* Subtle Background Glow - Similar to Consultancy Page */}
+      {/* Enhanced Background Glow - More Visible */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Top-left ambient glow */}
+        {/* Top-left large ambient glow */}
         <div 
-          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-40 md:opacity-50"
+          className="absolute -top-1/3 -left-1/3 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] lg:w-[1000px] lg:h-[1000px] rounded-full opacity-60 md:opacity-70"
           style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.10) 30%, rgba(29, 78, 216, 0.06) 50%, rgba(30, 64, 175, 0.03) 70%, transparent 85%)',
-            filter: 'blur(80px)',
-            animation: 'subtle-glow-blue 14s ease-in-out infinite'
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(37, 99, 235, 0.18) 30%, rgba(29, 78, 216, 0.12) 50%, rgba(30, 64, 175, 0.06) 70%, transparent 85%)',
+            filter: 'blur(120px)',
+            animation: 'enhanced-glow-blue 15s ease-in-out infinite'
           }}
         />
         
-        {/* Bottom-right ambient glow */}
+        {/* Bottom-right large ambient glow */}
         <div 
-          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-35 md:opacity-45"
+          className="absolute -bottom-1/3 -right-1/3 w-[450px] h-[450px] sm:w-[650px] sm:h-[650px] lg:w-[900px] lg:h-[900px] rounded-full opacity-55 md:opacity-65"
           style={{
-            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(79, 70, 229, 0.08) 35%, rgba(67, 56, 202, 0.05) 55%, rgba(55, 48, 163, 0.02) 75%, transparent 90%)',
-            filter: 'blur(90px)',
-            animation: 'subtle-glow-purple 16s ease-in-out infinite',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(79, 70, 229, 0.16) 35%, rgba(67, 56, 202, 0.10) 55%, rgba(55, 48, 163, 0.05) 75%, transparent 90%)',
+            filter: 'blur(130px)',
+            animation: 'enhanced-glow-purple 18s ease-in-out infinite',
             animationDelay: '-5s'
           }}
         />
         
-        {/* Additional accent glow */}
+        {/* Center accent glow */}
         <div 
-          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-25 md:opacity-35"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-40 md:opacity-50"
           style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.10) 0%, rgba(37, 99, 235, 0.08) 40%, rgba(79, 70, 229, 0.04) 60%, rgba(29, 78, 216, 0.02) 80%, transparent 95%)',
-            filter: 'blur(70px)',
-            animation: 'subtle-glow-blend 12s ease-in-out infinite',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.12) 40%, rgba(79, 70, 229, 0.08) 60%, rgba(29, 78, 216, 0.04) 80%, transparent 95%)',
+            filter: 'blur(100px)',
+            animation: 'enhanced-glow-center 14s ease-in-out infinite',
             animationDelay: '-8s'
           }}
         />
 
-        {/* Premium grain texture layer */}
+        {/* Additional side accent glow */}
         <div 
-          className="absolute inset-0 opacity-[0.015]"
+          className="absolute top-1/4 -right-1/4 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full opacity-35 md:opacity-45"
+          style={{
+            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(59, 130, 246, 0.12) 40%, rgba(79, 70, 229, 0.06) 70%, transparent 90%)',
+            filter: 'blur(110px)',
+            animation: 'enhanced-glow-accent 16s ease-in-out infinite',
+            animationDelay: '-3s'
+          }}
+        />
+
+        {/* Enhanced grain texture layer */}
+        <div 
+          className="absolute inset-0 opacity-[0.025]"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 2%),
-              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 2%),
-              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.04) 0%, transparent 1.5%),
-              radial-gradient(circle at 60% 90%, rgba(255, 255, 255, 0.03) 0%, transparent 1.5%),
-              radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.04) 0%, transparent 1%),
-              radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 1%)
+              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.12) 0%, transparent 2%),
+              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.10) 0%, transparent 2%),
+              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 1.5%),
+              radial-gradient(circle at 60% 90%, rgba(255, 255, 255, 0.06) 0%, transparent 1.5%),
+              radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 1%),
+              radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 1%)
             `,
             backgroundSize: '400px 400px, 300px 300px, 500px 500px, 350px 350px, 450px 450px, 280px 280px',
+          }}
+        />
+
+        {/* Starfield layer */}
+        <div 
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `
+              radial-gradient(1px 1px at 15% 25%, rgba(255, 255, 255, 0.9), transparent),
+              radial-gradient(1px 1px at 35% 65%, rgba(59, 130, 246, 0.8), transparent),
+              radial-gradient(1px 1px at 65% 15%, rgba(255, 255, 255, 0.7), transparent),
+              radial-gradient(1px 1px at 85% 75%, rgba(99, 102, 241, 0.6), transparent),
+              radial-gradient(1px 1px at 25% 85%, rgba(37, 99, 235, 0.5), transparent),
+              radial-gradient(1px 1px at 75% 35%, rgba(255, 255, 255, 0.8), transparent)
+            `,
+            backgroundSize: '600px 600px, 400px 400px, 500px 500px, 550px 550px, 450px 450px, 650px 650px',
           }}
         />
       </div>
@@ -90,7 +117,7 @@ const EndingCTA = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Main CTA Content */}
           <div className="space-y-10 order-2 lg:order-1">
-            {/* Primary Headlines - Removed gradient from title */}
+            {/* Primary Headlines - Clean white title without gradient */}
             <div className="space-y-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
                 Klaar voor AI transformatie?
@@ -139,20 +166,20 @@ const EndingCTA = () => {
 
           {/* Right side - Premium Visual Element */}
           <div className="relative flex items-center justify-center order-1 lg:order-2 py-16">
-            {/* Refined AI Brain Visual */}
+            {/* Enhanced AI Brain Visual */}
             <div className="relative">
-              {/* Outer premium glow - very subtle */}
+              {/* Outer premium glow - more visible */}
               <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full" style={{
-                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.04) 50%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 50%, transparent 70%)',
                 animation: 'premium-glow 8s ease-in-out infinite'
               }} />
               
               {/* Core brain container */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center" style={{
-                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, rgba(59, 130, 246, 0.04) 40%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%)',
                 backdropFilter: 'blur(30px)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                boxShadow: '0 0 100px rgba(59, 130, 246, 0.1), inset 0 0 50px rgba(147, 51, 234, 0.05)'
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 0 120px rgba(59, 130, 246, 0.15), inset 0 0 60px rgba(147, 51, 234, 0.08)'
               }}>
                 <Brain className="w-20 h-20 md:w-24 md:h-24 text-white/80 animate-pulse" style={{
                   filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.2))',
@@ -167,7 +194,7 @@ const EndingCTA = () => {
                     key={i} 
                     className="absolute w-2 h-2 rounded-full" 
                     style={{
-                      background: i === 0 ? 'rgba(59, 130, 246, 0.4)' : i === 1 ? 'rgba(147, 51, 234, 0.4)' : 'rgba(16, 185, 129, 0.4)',
+                      background: i === 0 ? 'rgba(59, 130, 246, 0.6)' : i === 1 ? 'rgba(147, 51, 234, 0.6)' : 'rgba(16, 185, 129, 0.6)',
                       animation: `elegant-orbit ${20 + i * 6}s linear infinite`,
                       transform: `rotate(${i * 120}deg) translateY(-${120 + i * 15}px)`,
                       transformOrigin: '50% 50%'
@@ -201,55 +228,73 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles */}
+      {/* Enhanced Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes subtle-glow-blue {
+          @keyframes enhanced-glow-blue {
             0%, 100% { 
-              opacity: 0.40;
+              opacity: 0.60;
               transform: scale(1) rotate(0deg);
-              filter: blur(80px);
+              filter: blur(120px);
             }
             33% { 
-              opacity: 0.55;
-              transform: scale(1.08) rotate(2deg);
-              filter: blur(85px);
+              opacity: 0.75;
+              transform: scale(1.05) rotate(1deg);
+              filter: blur(125px);
             }
             66% { 
-              opacity: 0.35;
-              transform: scale(0.95) rotate(-1deg);
-              filter: blur(75px);
+              opacity: 0.50;
+              transform: scale(0.98) rotate(-0.5deg);
+              filter: blur(115px);
             }
           }
 
-          @keyframes subtle-glow-purple {
+          @keyframes enhanced-glow-purple {
             0%, 100% { 
-              opacity: 0.35;
+              opacity: 0.55;
               transform: scale(1) rotate(0deg);
-              filter: blur(90px);
+              filter: blur(130px);
             }
             50% { 
-              opacity: 0.50;
-              transform: scale(1.12) rotate(-3deg);
+              opacity: 0.70;
+              transform: scale(1.08) rotate(-2deg);
+              filter: blur(135px);
+            }
+          }
+
+          @keyframes enhanced-glow-center {
+            0%, 100% { 
+              opacity: 0.40;
+              transform: scale(1) rotate(0deg);
+              filter: blur(100px);
+            }
+            40% { 
+              opacity: 0.55;
+              transform: scale(1.03) rotate(0.8deg);
+              filter: blur(105px);
+            }
+            80% { 
+              opacity: 0.35;
+              transform: scale(0.97) rotate(-1.2deg);
               filter: blur(95px);
             }
           }
 
-          @keyframes subtle-glow-blend {
+          @keyframes enhanced-glow-accent {
             0%, 100% { 
-              opacity: 0.25;
+              opacity: 0.35;
               transform: scale(1) rotate(0deg);
-              filter: blur(70px);
+              filter: blur(110px);
             }
-            40% { 
-              opacity: 0.40;
-              transform: scale(1.05) rotate(1deg);
-              filter: blur(75px);
+            30% { 
+              opacity: 0.50;
+              transform: scale(1.06) rotate(1.5deg);
+              filter: blur(115px);
             }
-            80% { 
-              opacity: 0.20;
-              transform: scale(0.98) rotate(-2deg);
-              filter: blur(65px);
+            70% { 
+              opacity: 0.25;
+              transform: scale(0.94) rotate(-1deg);
+              filter: blur(105px);
             }
           }
 
@@ -280,18 +325,20 @@ const EndingCTA = () => {
 
           /* Mobile optimizations */
           @media (max-width: 768px) {
-            .subtle-glow-blue,
-            .subtle-glow-purple,
-            .subtle-glow-blend {
+            .enhanced-glow-blue,
+            .enhanced-glow-purple,
+            .enhanced-glow-center,
+            .enhanced-glow-accent {
               animation-duration: 20s;
             }
           }
 
           /* Reduced motion preferences */
           @media (prefers-reduced-motion: reduce) {
-            .subtle-glow-blue,
-            .subtle-glow-purple,
-            .subtle-glow-blend {
+            .enhanced-glow-blue,
+            .enhanced-glow-purple,
+            .enhanced-glow-center,
+            .enhanced-glow-accent {
               animation: none;
             }
           }
