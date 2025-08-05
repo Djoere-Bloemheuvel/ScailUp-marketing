@@ -21,32 +21,32 @@ const EndingCTA = () => {
         <CinematicBackground />
       </div>
 
-      {/* Premium Background Layers - confined to content area with new color scheme */}
+      {/* Premium Background Layers - confined to content area */}
       <div className="absolute inset-0 z-6">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="relative w-full">
-            {/* Premium Background Layers - now with orange/amber/red color scheme */}
+            {/* Premium Background Layers - now properly confined */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-              {/* Central focal glow - changed to warm amber/orange tones */}
+              {/* Central focal glow */}
               <div 
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
                 style={{
-                  background: 'radial-gradient(circle, rgba(251, 146, 60, 0.15) 0%, rgba(249, 115, 22, 0.10) 40%, rgba(234, 88, 12, 0.05) 70%, transparent 85%)',
+                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
                   filter: 'blur(120px)',
                   animation: 'premium-focal-glow 12s ease-in-out infinite'
                 }}
               />
               
-              {/* Particle system - updated with warm colors */}
+              {/* Particle system */}
               <div className="absolute inset-0">
                 {Array.from({ length: 8 }).map((_, i) => (
                   <div
                     key={`particle-${i}`}
                     className="absolute w-1 h-1 rounded-full"
                     style={{
-                      background: i % 3 === 0 ? 'rgba(251, 146, 60, 0.8)' : 
-                                 i % 3 === 1 ? 'rgba(249, 115, 22, 0.6)' : 
-                                 'rgba(239, 68, 68, 0.7)',
+                      background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
+                                 i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
+                                 'rgba(34, 211, 238, 0.7)',
                       left: `${15 + (i * 9) % 70}%`,
                       top: `${25 + (i * 11) % 50}%`,
                       animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
@@ -99,21 +99,21 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element - updated with warm color scheme */}
+              {/* Right Visual Element */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
-                {/* Premium AI Visualization with warm colors */}
+                {/* Premium AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field - changed to warm orange/amber */}
+                  {/* Outer quantum field */}
                   <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
-                  {/* Core visualization container - updated colors */}
+                  {/* Core visualization container */}
                   <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
                     {/* Central brain element */}
                     <div className="relative z-10">
                       <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Orbiting intelligence nodes - updated with warm gradient colors */}
+                    {/* Orbiting intelligence nodes */}
                     <div className="absolute inset-0">
                       {[0, 1, 2, 3].map(i => (
                         <div 
@@ -121,18 +121,18 @@ const EndingCTA = () => {
                           className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
                           style={{
                             background: i % 2 === 0 ? 
-                              'linear-gradient(45deg, rgba(251, 146, 60, 1), rgba(249, 115, 22, 1))' : 
-                              'linear-gradient(45deg, rgba(239, 68, 68, 1), rgba(220, 38, 127, 1))',
+                              'linear-gradient(45deg, rgba(59, 130, 246, 1), rgba(6, 182, 212, 1))' : 
+                              'linear-gradient(45deg, rgba(139, 92, 246, 1), rgba(236, 72, 153, 1))',
                             animation: `premium-orbit ${20 + i * 4}s linear infinite`,
                             transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
                             transformOrigin: '50% 50%',
-                            boxShadow: '0 0 15px rgba(251, 146, 60, 0.5), 0 0 30px rgba(249, 115, 22, 0.3)'
+                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)'
                           }} 
                         />
                       ))}
                     </div>
                     
-                    {/* Neural network connections - updated gradient */}
+                    {/* Neural network connections */}
                     <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
                       {[0, 1, 2].map(i => (
                         <circle
@@ -141,7 +141,7 @@ const EndingCTA = () => {
                           cy="50%"
                           r={50 + i * 20}
                           fill="none"
-                          stroke="url(#neuralGradientWarm)"
+                          stroke="url(#neuralGradient)"
                           strokeWidth="1"
                           strokeDasharray="4 8"
                           className="premium-neural-ring"
@@ -152,10 +152,10 @@ const EndingCTA = () => {
                       ))}
                       
                       <defs>
-                        <linearGradient id="neuralGradientWarm" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="rgba(251, 146, 60, 0)" />
-                          <stop offset="50%" stopColor="rgba(249, 115, 22, 0.8)" />
-                          <stop offset="100%" stopColor="rgba(239, 68, 68, 0)" />
+                        <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.8)" />
+                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -184,7 +184,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles - updated color values */}
+      {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-focal-glow {
@@ -255,7 +255,7 @@ const EndingCTA = () => {
               transform: scale(1);
             }
             50% { 
-              filter: drop-shadow(0 0 50px rgba(251, 146, 60, 0.6));
+              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.6));
               transform: scale(1.05);
             }
           }
@@ -278,7 +278,7 @@ const EndingCTA = () => {
             100% { transform: translateX(400%) rotate(35deg); }
           }
 
-          /* Premium Glass Container - updated background tints */}
+          /* Premium Glass Container */
           .premium-glass-main-container {
             background: linear-gradient(135deg, 
               rgba(255, 255, 255, 0.08) 0%, 
@@ -289,8 +289,8 @@ const EndingCTA = () => {
             border-radius: 24px;
             box-shadow: 
               0 24px 48px rgba(0, 0, 0, 0.4),
-              0 12px 24px rgba(251, 146, 60, 0.1),
-              0 6px 12px rgba(249, 115, 22, 0.08),
+              0 12px 24px rgba(59, 130, 246, 0.1),
+              0 6px 12px rgba(147, 51, 234, 0.08),
               inset 0 1px 0 rgba(255, 255, 255, 0.15),
               inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
@@ -303,9 +303,9 @@ const EndingCTA = () => {
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg,
-              rgba(251, 146, 60, 0.03) 0%,
-              rgba(249, 115, 22, 0.02) 50%,
-              rgba(239, 68, 68, 0.03) 100%);
+              rgba(59, 130, 246, 0.03) 0%,
+              rgba(147, 51, 234, 0.02) 50%,
+              rgba(34, 211, 238, 0.03) 100%);
             border-radius: 24px;
             pointer-events: none;
           }
@@ -317,7 +317,7 @@ const EndingCTA = () => {
             border-radius: 12px;
             box-shadow: 
               0 6px 24px rgba(0, 0, 0, 0.3),
-              0 3px 12px rgba(251, 146, 60, 0.2),
+              0 3px 12px rgba(59, 130, 246, 0.2),
               inset 0 1px 0 rgba(255, 255, 255, 0.8),
               inset 0 -1px 0 rgba(0, 0, 0, 0.1);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -328,8 +328,8 @@ const EndingCTA = () => {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 
               0 12px 36px rgba(0, 0, 0, 0.4),
-              0 6px 18px rgba(251, 146, 60, 0.3),
-              0 3px 9px rgba(249, 115, 22, 0.2);
+              0 6px 18px rgba(59, 130, 246, 0.3),
+              0 3px 9px rgba(147, 51, 234, 0.2);
           }
 
           .premium-button-shimmer {
@@ -345,12 +345,12 @@ const EndingCTA = () => {
             animation: premium-shimmer 3s ease-in-out infinite;
           }
 
-          /* Visual Elements - updated with warm color scheme */}
+          /* Visual Elements */
           .premium-quantum-field {
             background: radial-gradient(circle,
-              rgba(251, 146, 60, 0.15) 0%,
-              rgba(249, 115, 22, 0.10) 35%,
-              rgba(239, 68, 68, 0.08) 70%,
+              rgba(59, 130, 246, 0.15) 0%,
+              rgba(147, 51, 234, 0.10) 35%,
+              rgba(34, 211, 238, 0.08) 70%,
               transparent 85%);
             filter: blur(50px);
             animation: premium-focal-glow 15s ease-in-out infinite;
@@ -358,14 +358,14 @@ const EndingCTA = () => {
 
           .premium-core-container {
             background: radial-gradient(circle,
-              rgba(251, 146, 60, 0.08) 0%,
-              rgba(249, 115, 22, 0.04) 50%,
+              rgba(59, 130, 246, 0.08) 0%,
+              rgba(147, 51, 234, 0.04) 50%,
               transparent 70%);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-              0 0 40px rgba(251, 146, 60, 0.2),
-              0 0 80px rgba(249, 115, 22, 0.1),
+              0 0 40px rgba(59, 130, 246, 0.2),
+              0 0 80px rgba(147, 51, 234, 0.1),
               inset 0 0 30px rgba(255, 255, 255, 0.05);
           }
 
