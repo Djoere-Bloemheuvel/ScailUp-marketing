@@ -378,47 +378,34 @@ const Contact = () => {
 
               {/* Enhanced Contact Form - Glassmorphic Design - Made 20% smaller */}
               <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <div className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
-                     style={{
-                       background: `
-                         linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%),
-                         radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%),
-                         radial-gradient(ellipse 400px 300px at 100% 100%, rgba(99, 102, 241, 0.06) 0%, transparent 70%)
-                       `,
-                       backdropFilter: 'blur(20px) saturate(150%)',
-                       border: '1px solid rgba(59, 130, 246, 0.15)',
-                       boxShadow: `
-                         0 25px 50px rgba(0, 0, 0, 0.4),
-                         0 12px 24px rgba(0, 0, 0, 0.3),
-                         0 0 0 1px rgba(255, 255, 255, 0.05),
-                         inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                         inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-                         0 0 120px rgba(59, 130, 246, 0.1),
-                         0 0 80px rgba(99, 102, 241, 0.08)
-                       `
-                     }}>
+                <div 
+                  className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%), radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%), radial-gradient(ellipse 400px 300px at 100% 100%, rgba(99, 102, 241, 0.06) 0%, transparent 70%)',
+                    backdropFilter: 'blur(20px) saturate(150%)',
+                    border: '1px solid rgba(59, 130, 246, 0.15)',
+                    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.02), 0 0 120px rgba(59, 130, 246, 0.1), 0 0 80px rgba(99, 102, 241, 0.08)'
+                  }}
+                >
                   
                   {/* Animated Border Glow - Changed to blue */}
-                  <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
-                       style={{
-                         background: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15), transparent)',
-                         filter: 'blur(1px)',
-                         zIndex: -1
-                       }} />
+                  <div 
+                    className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
+                    style={{
+                      background: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15), transparent)',
+                      filter: 'blur(1px)',
+                      zIndex: -1
+                    }} 
+                  />
 
                   {/* Subtle Inner Glow - Changed to blue */}
-                  <div className="absolute inset-1 rounded-[19px] pointer-events-none"
-                       style={{
-                         background: `
-                           linear-gradient(135deg, 
-                             rgba(255, 255, 255, 0.03) 0%, 
-                             rgba(59, 130, 246, 0.04) 30%, 
-                             rgba(99, 102, 241, 0.03) 70%, 
-                             rgba(255, 255, 255, 0.02) 100%
-                           )
-                         `,
-                         opacity: 0.6
-                       }} />
+                  <div 
+                    className="absolute inset-1 rounded-[19px] pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(59, 130, 246, 0.04) 30%, rgba(99, 102, 241, 0.03) 70%, rgba(255, 255, 255, 0.02) 100%)',
+                      opacity: 0.6
+                    }} 
+                  />
                   
                   {!isSubmitted ? (
                     <>
@@ -662,12 +649,14 @@ const Contact = () => {
                           </div>
 
                           {/* Privacy notice */}
-                          <div className="text-xs text-white/60 rounded-2xl p-3 border transition-all duration-300"
-                               style={{
-                                 background: 'rgba(255, 255, 255, 0.02)',
-                                 backdropFilter: 'blur(8px)',
-                                 borderColor: 'rgba(255, 255, 255, 0.08)'
-                               }}>
+                          <div 
+                            className="text-xs text-white/60 rounded-2xl p-3 border transition-all duration-300"
+                            style={{
+                              background: 'rgba(255, 255, 255, 0.02)',
+                              backdropFilter: 'blur(8px)',
+                              borderColor: 'rgba(255, 255, 255, 0.08)'
+                            }}
+                          >
                             <p>
                               🔒 <strong>Privacy gegarandeerd:</strong> Uw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
                               Door dit formulier te versturen gaat u akkoord met onze verwerking van uw contactgegevens voor het beantwoorden van uw vraag.
@@ -681,12 +670,7 @@ const Contact = () => {
                             className="group relative w-full text-black hover:text-black transition-all duration-700 px-6 py-4 text-base font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] font-apple border-0"
                             style={{
                               background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
-                              boxShadow: `
-                                0 20px 40px rgba(0, 0, 0, 0.3), 
-                                inset 0 1px 0 rgba(255, 255, 255, 0.9), 
-                                0 0 0 1px rgba(255, 255, 255, 0.1),
-                                0 0 60px rgba(59, 130, 246, 0.1)
-                              `
+                              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 60px rgba(59, 130, 246, 0.1)'
                             }}
                           >
                             <span className="relative z-10 flex items-center justify-center">
@@ -707,38 +691,41 @@ const Contact = () => {
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out" aria-hidden="true" />
                             
                             {/* Hover glow effect - Changed to blue */}
-                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
-                                 style={{
-                                   background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.08))',
-                                   filter: 'blur(20px)',
-                                   transform: 'scale(1.1)',
-                                   zIndex: -1
-                                 }} />
+                            <div 
+                              className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
+                              style={{
+                                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.08))',
+                                filter: 'blur(20px)',
+                                transform: 'scale(1.1)',
+                                zIndex: -1
+                              }} 
+                            />
                           </Button>
                         </form>
                       </div>
                     </>
                   ) : (
-                    /* Success message - Enhanced Glass Style */}
+                    /* Success message - Enhanced Glass Style */
                     <div 
                       className="text-center"
                       role="status"
                       aria-live="polite"
                     >
-                      <div className="mb-6 h-16 w-16 rounded-full p-1 relative mx-auto overflow-hidden"
-                           style={{
-                             background: `
-                               linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.12)),
-                               radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)
-                             `,
-                             backdropFilter: 'blur(15px)',
-                             border: '1px solid rgba(59, 130, 246, 0.2)',
-                             boxShadow: '0 8px 32px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                           }}>
-                        <div className="flex h-full w-full items-center justify-center rounded-full"
-                             style={{
-                               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%)'
-                             }}>
+                      <div 
+                        className="mb-6 h-16 w-16 rounded-full p-1 relative mx-auto overflow-hidden"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.12)), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
+                          backdropFilter: 'blur(15px)',
+                          border: '1px solid rgba(59, 130, 246, 0.2)',
+                          boxShadow: '0 8px 32px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                        }}
+                      >
+                        <div 
+                          className="flex h-full w-full items-center justify-center rounded-full"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%)'
+                          }}
+                        >
                           <CheckCircle className="h-8 w-8 text-green-400" aria-hidden="true" />
                         </div>
                       </div>
