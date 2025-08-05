@@ -297,7 +297,7 @@ const Contact = () => {
                   <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-10">
                     Een strategische verkenning van 30 minuten.
                     <br />
-                    Geen sales pitch. Wel concrete inzichten.
+                    <span className="font-bold text-white">Geen sales pitch. Wel concrete inzichten.</span>
                     <br />
                     <br />
                     Wij zijn gespecialiseerd in het bouwen van AI-systemen die jouw business daadwerkelijk transformeren. Van strategie tot implementatie - wij maken AI werkend voor jouw organisatie.
