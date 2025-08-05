@@ -55,7 +55,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           const isHovered = hoveredStep === step.id;
           const isCompleted = activeStep > step.id;
           
-          // Safe access to accent color properties with fallbacks
+          // Safe access to accent color properties with explicit fallbacks
           const accentColor = step.accentColor || {
             primary: 'from-blue-500 to-cyan-600',
             glow: 'blue-500/20',
@@ -63,7 +63,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             subtle: 'blue-500/5'
           };
           
-          const glowColorValue = accentColor.glow.replace('/20', '');
+          // Ensure glow color is properly defined before using it
+          const safeGlowColor = accentColor.glow || 'blue-500/20';
+          const glowColorValue = safeGlowColor.replace('/20', '');
           
           return (
             <div
@@ -78,7 +80,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 <div 
                   className={`relative w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                     isActive 
-                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110 shadow-lg shadow-${accentColor.glow}` 
+                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110 shadow-lg shadow-${safeGlowColor}` 
                       : isCompleted 
                         ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white shadow-md`
                         : 'border-white/30 bg-transparent text-white hover:border-white/60'
@@ -102,9 +104,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 ${
                   isActive 
-                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl shadow-${accentColor.glow}` 
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl shadow-${safeGlowColor}` 
                     : isHovered
-                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-${accentColor.glow}`
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-${safeGlowColor}`
                       : `bg-white/[0.02] border-white/10 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent`
                 } border`}
                 style={{
