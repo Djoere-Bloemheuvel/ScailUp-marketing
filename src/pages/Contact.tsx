@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
@@ -294,33 +293,40 @@ const Contact = () => {
                       praten
                     </span>
                   </h1>
-                  <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-6">
-                    Een strategische verkenning van 60 minuten.
+                  <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-10">
+                    In 30 minuten verkennen we hoe AI écht waarde kan toevoegen aan uw organisatie.
                     <br />
-                    <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
-                  </p>
-                  <p className="text-lg text-premium-silver/80 leading-relaxed mb-10 font-light">
-                    Wij zijn gespecialiseerd in het bouwen van AI-systemen die uw business daadwerkelijk transformeren. 
-                    Van strategie tot implementatie - wij maken AI werkend voor uw organisatie.
+                    Na afloop ontvangt u een compact rapport met inzichten, aanbevelingen en een slimme route naar implementatie.
+                    <br />
+                    <span className="text-white/90">Geen verkooppraatje – wél concrete waarde.</span>
                   </p>
                 </div>
 
-                {/* Trust Indicators */}
-                <div className="flex items-center justify-start space-x-8 mb-10 text-premium-silver/60">
-                  <div className="flex items-center space-x-2">
-                    <Clock className="h-5 w-5" />
-                    <span className="text-sm font-medium">60 minuten gratis</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5" />
-                    <span className="text-sm font-medium">Concrete inzichten</span>
+                {/* Premium Bullet Section - Moved below paragraph */}
+                <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                  <h3 className="text-2xl font-semibold text-white font-apple">Wat krijgt u?</h3>
+                  <div className="space-y-3">
+                    {[
+                      'Een strategisch AI-gesprek van 30 minuten',
+                      'Een compact, persoonlijk rapport met aanbevelingen', 
+                      'Inzichten afgestemd op uw organisatie en uitdagingen',
+                      'Geen salespitch – alleen inhoudelijke waarde',
+                      'Advies dat u direct kunt toepassen'
+                    ].map((benefit, index) => (
+                      <div key={index} className="flex items-start">
+                        <span className="text-premium-silver/80 font-light leading-relaxed text-lg">{benefit}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Contact Details - Apple Style Cards */}
-                <div className="space-y-6">
-                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
-                    <div className="flex items-start space-x-4">
+                {/* Contact Details - Horizontal Layout */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5"
+                    style={{
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+                    }}>
+                    <div className="flex flex-col items-center text-center space-y-3">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
                         <Mail className="h-6 w-6 text-premium-silver" />
                       </div>
@@ -331,8 +337,11 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
-                    <div className="flex items-start space-x-4">
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5"
+                    style={{
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+                    }}>
+                    <div className="flex flex-col items-center text-center space-y-3">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
                         <Phone className="h-6 w-6 text-premium-silver" />
                       </div>
@@ -343,8 +352,11 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
-                    <div className="flex items-start space-x-4">
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5"
+                    style={{
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+                    }}>
+                    <div className="flex flex-col items-center text-center space-y-3">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
                         <MapPin className="h-6 w-6 text-premium-silver" />
                       </div>
@@ -355,29 +367,10 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Benefits List */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white mb-6">Wat krijgt u?</h3>
-                  <div className="space-y-4">
-                    {[
-                      'Gratis strategische verkenning van 60 minuten',
-                      'Concrete inzichten over uw AI-mogelijkheden', 
-                      'Maatwerkvoorstel op basis van uw uitdagingen',
-                      'Geen sales pitch - alleen waardevolle inzichten',
-                      'Direct implementeerbare aanbevelingen'
-                    ].map((benefit, index) => (
-                      <div key={index} className="flex items-start space-x-3">
-                        <CheckCircle className="h-5 w-5 text-premium-silver flex-shrink-0 mt-0.5" />
-                        <span className="text-premium-silver/80 font-light leading-relaxed">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
 
-              {/* Enhanced Contact Form - Glassmorphic Design - Made 20% smaller */}
-              <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              {/* Enhanced Contact Form - Glassmorphic Design */}
+              <div className="relative animate-fade-in" style={{ animationDelay: '0.5s' }}>
                 <div 
                   className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
                   style={{
@@ -433,7 +426,7 @@ const Contact = () => {
                             </div>
                           )}
 
-                          {/* Form Fields - Made smaller */}
+                          {/* Form Fields */}
                           <div className="space-y-5">
                             {/* Name field */}
                             <div className="space-y-2">
@@ -663,7 +656,7 @@ const Contact = () => {
                             </p>
                           </div>
 
-                          {/* Enhanced Submit button - Smaller */}
+                          {/* Enhanced Submit button */}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
@@ -681,7 +674,7 @@ const Contact = () => {
                                 </>
                               ) : (
                                 <>
-                                  Start uw AI-verkenning
+                                  Plan mijn AI Impactscan
                                   <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                                 </>
                               )}
@@ -705,7 +698,7 @@ const Contact = () => {
                       </div>
                     </>
                   ) : (
-                    /* Success message - Enhanced Glass Style */
+                    /* Success message - Enhanced Glass Style */}
                     <div 
                       className="text-center"
                       role="status"
