@@ -46,7 +46,7 @@ const AppleMethodologyStep = ({
   const [isHovered, setIsHovered] = useState(false);
   const isLeft = index % 2 === 0;
   
-  // Get accent color values
+  // Get accent color values with safe fallbacks
   const getGlowColor = () => {
     const colorMap: { [key: string]: string } = {
       'from-blue-500': '59, 130, 246',
@@ -55,9 +55,9 @@ const AppleMethodologyStep = ({
       'from-orange-500': '249, 115, 22'
     };
     
-    const primaryGradient = step.accentColor.primary;
+    const primaryGradient = step.accentColor?.primary || 'from-blue-500';
     const primaryColor = primaryGradient.split(' ')[0];
-    return colorMap[primaryColor] || '59, 130, 246';
+    return colorMap[primaryColor as keyof typeof colorMap] || '59, 130, 246';
   };
 
   const glowColor = getGlowColor();
@@ -151,7 +151,7 @@ const AppleMethodologyStep = ({
             <div className="mb-6">
               <span className={`inline-flex items-center px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all duration-500 ${
                 isActive 
-                  ? `bg-gradient-to-r ${step.accentColor.primary} text-white ${step.accentColor.border} shadow-lg`
+                  ? `bg-gradient-to-r ${step.accentColor?.primary || 'from-blue-500'} text-white ${step.accentColor?.border || 'border-blue-500/20'} shadow-lg`
                   : `bg-white/[0.02] text-white/60 border border-white/[0.08] hover:bg-white/[0.04] hover:text-white/80`
               } backdrop-blur-sm`}>
                 {step.phase}
@@ -179,7 +179,7 @@ const AppleMethodologyStep = ({
             <div className={`overflow-hidden transition-all duration-700 ease-out ${
               isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}>
-              <div className={`${step.accentColor.border} border-t pt-8 ${
+              <div className={`${step.accentColor?.border || 'border-blue-500/20'} border-t pt-8 ${
                 isLeft ? '' : 'lg:text-right'
               }`}>
                 <p className="text-white/70 text-base lg:text-lg leading-relaxed mb-8 font-light">
