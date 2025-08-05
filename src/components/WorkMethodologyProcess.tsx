@@ -41,7 +41,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
   return (
     <div className="relative">
       {/* Progress connector */}
-      <div className="absolute top-16 left-0 right-0 h-0.5 bg-white/10 hidden lg:block">
+      <div className="absolute top-16 left-0 right-0 h-0.5 bg-white/10 hidden lg:block z-10">
         <div 
           className="h-full bg-gradient-to-r from-emerald-400 to-purple-400 transition-all duration-1000 ease-out"
           style={{ width: `${((activeStep - 1) / (steps.length - 1)) * 100}%` }}
@@ -62,14 +62,21 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             border: 'border-blue-500/30',
             subtle: 'blue-500/5'
           };
-          
-          // Create safe glow effect with proper fallback
-          const createBoxShadow = () => {
-            if (isActive || isCompleted) {
-              return '0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.3)';
-            }
-            return undefined;
+
+          // Extract base color from primary gradient for glow effects
+          const getGlowColor = () => {
+            const colorMap: { [key: string]: string } = {
+              'from-blue-500': '59, 130, 246',
+              'from-purple-500': '139, 92, 246', 
+              'from-emerald-400': '52, 211, 153',
+              'from-orange-500': '249, 115, 22'
+            };
+            
+            const primaryColor = accentColor.primary.split(' ')[0];
+            return colorMap[primaryColor] || '59, 130, 246';
           };
+          
+          const glowColor = getGlowColor();
           
           return (
             <div
@@ -84,14 +91,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 <div 
                   className={`relative w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                     isActive 
-                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110 shadow-lg` 
+                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110` 
                       : isCompleted 
-                        ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white shadow-md`
-                        : 'border-white/30 bg-transparent text-white hover:border-white/60'
+                        ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white`
+                        : `${accentColor.border} bg-gradient-to-br ${accentColor.primary} opacity-30 text-white hover:opacity-50`
                   }`}
                   style={{
                     boxShadow: (isActive || isCompleted) 
-                      ? '0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2)'
+                      ? `0 0 20px rgba(${glowColor}, 0.4), 0 0 40px rgba(${glowColor}, 0.2)`
                       : undefined
                   }}
                 >
@@ -99,23 +106,31 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   
                   {/* Enhanced glow effect for active step */}
                   {isActive && (
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${accentColor.primary} blur-lg opacity-60 animate-pulse -z-10`} />
+                    <div 
+                      className="absolute inset-0 rounded-full blur-lg opacity-60 animate-pulse -z-10"
+                      style={{
+                        background: `linear-gradient(135deg, rgba(${glowColor}, 0.6), rgba(${glowColor}, 0.3))`
+                      }}
+                    />
                   )}
                 </div>
               </div>
 
-              {/* Step card with accent color theming */}
+              {/* Step card with accent color theming - fixed height */}
               <div 
-                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 ${
+                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 h-[400px] flex flex-col ${
                   isActive 
                     ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl` 
                     : isHovered
                       ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20`
-                      : `bg-white/[0.02] border-white/10 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent`
+                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent`
                 } border`}
                 style={{
-                  transform: isActive ? 'translateY(-8px)' : isHovered ? 'translateY(-4px)' : 'translateY(0)',
-                  boxShadow: createBoxShadow()
+                  boxShadow: isActive 
+                    ? `0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${glowColor}, 0.3)`
+                    : isHovered 
+                      ? `0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(${glowColor}, 0.2)`
+                      : undefined
                 }}
               >
                 {/* Phase badge with subtle accent */}
@@ -123,7 +138,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-colors duration-300 ${
                     isActive 
                       ? `bg-gradient-to-r ${accentColor.primary} text-white ${accentColor.border}`
-                      : `bg-white/10 text-white/80 border-white/20 hover:bg-${accentColor.subtle} hover:${accentColor.border}`
+                      : `bg-gradient-to-r ${accentColor.primary} opacity-60 text-white ${accentColor.border} hover:opacity-80`
                   }`}>
                     {step.phase}
                   </span>
@@ -138,7 +153,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </p>
 
                 {/* Expandable description for active step */}
-                <div className={`overflow-hidden transition-all duration-500 ${
+                <div className={`overflow-hidden transition-all duration-500 flex-1 ${
                   isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}>
                   <div className={`pt-4 border-t transition-colors duration-300 ${
@@ -155,7 +170,12 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                       </h4>
                       {step.deliverables.map((deliverable, idx) => (
                         <div key={idx} className="flex items-center text-xs text-white/70">
-                          <div className={`w-1 h-1 rounded-full mr-2 bg-gradient-to-r ${accentColor.primary}`} />
+                          <div 
+                            className="w-1 h-1 rounded-full mr-2"
+                            style={{
+                              background: `linear-gradient(135deg, rgba(${glowColor}, 1), rgba(${glowColor}, 0.8))`
+                            }}
+                          />
                           <span>{deliverable}</span>
                         </div>
                       ))}
@@ -172,7 +192,12 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
                 {/* Accent line at bottom for active cards */}
                 {isActive && (
-                  <div className={`absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60`} />
+                  <div 
+                    className="absolute bottom-0 left-4 right-4 h-px opacity-60"
+                    style={{
+                      background: `linear-gradient(to right, transparent, rgba(${glowColor}, 0.8), transparent)`
+                    }}
+                  />
                 )}
               </div>
 
