@@ -1,16 +1,76 @@
 
+import { useEffect, useRef } from 'react';
+
 /**
  * Work Methodology Background Component
  * - Completely different from Approach background
- * - Dynamic geometric patterns instead of nebula
+ * - Dynamic geometric patterns with ambient lighting
  * - More tech-focused and process-oriented
- * - Animated grid and flowing lines
+ * - Animated grid, flowing lines, and subtle background lights
+ * - Colors inspired by diensten pages (emerald, blue, purple)
  */
 const WorkMethodologyBackground = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Create ambient particles with diensten colors
+    const createAmbientParticle = (size: string, position: { x: string; y: string }, opacity: number, duration: number, color: string) => {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full blur-[0.5px]';
+      particle.style.width = size;
+      particle.style.height = size;
+      particle.style.left = position.x;
+      particle.style.top = position.y;
+      particle.style.background = color;
+      particle.style.animation = `methodologyFloat ${duration}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * duration}s`;
+      particle.style.opacity = opacity.toString();
+      container.appendChild(particle);
+      return particle;
+    };
+
+    // Ambient particles with diensten colors (emerald, blue, purple)
+    const particles = [
+      // Emerald particles (automation/AI focus)
+      createAmbientParticle('1px', { x: '15%', y: '20%' }, 0.6, 16, 'rgba(52, 211, 153, 0.8)'),
+      createAmbientParticle('1px', { x: '25%', y: '60%' }, 0.7, 14, 'rgba(52, 211, 153, 0.9)'),
+      createAmbientParticle('1px', { x: '35%', y: '80%' }, 0.5, 18, 'rgba(16, 185, 129, 0.6)'),
+      
+      // Blue particles (consultancy/strategy focus)
+      createAmbientParticle('1px', { x: '85%', y: '15%' }, 0.6, 15, 'rgba(59, 130, 246, 0.7)'),
+      createAmbientParticle('1px', { x: '75%', y: '45%' }, 0.8, 17, 'rgba(59, 130, 246, 0.8)'),
+      createAmbientParticle('1px', { x: '65%', y: '75%' }, 0.4, 13, 'rgba(37, 99, 235, 0.5)'),
+      
+      // Purple particles (custom SaaS focus)
+      createAmbientParticle('1px', { x: '45%', y: '25%' }, 0.5, 19, 'rgba(147, 51, 234, 0.6)'),
+      createAmbientParticle('1px', { x: '55%', y: '65%' }, 0.6, 12, 'rgba(147, 51, 234, 0.7)'),
+      createAmbientParticle('1px', { x: '85%', y: '85%' }, 0.7, 16, 'rgba(126, 34, 206, 0.5)'),
+      
+      // Additional micro particles for depth
+      createAmbientParticle('0.5px', { x: '20%', y: '40%' }, 0.4, 11, 'rgba(52, 211, 153, 0.6)'),
+      createAmbientParticle('0.5px', { x: '80%', y: '30%' }, 0.5, 14, 'rgba(59, 130, 246, 0.5)'),
+      createAmbientParticle('0.5px', { x: '60%', y: '90%' }, 0.3, 13, 'rgba(147, 51, 234, 0.4)'),
+    ];
+
+    return () => {
+      particles.forEach(particle => {
+        if (container.contains(particle)) {
+          container.removeChild(particle);
+        }
+      });
+    };
+  }, []);
+
   return (
     <>
       {/* Base gradient - different from Approach */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-900" />
+      
+      {/* Ambient particle container */}
+      <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none opacity-40" />
       
       {/* Animated grid pattern */}
       <div 
@@ -24,6 +84,52 @@ const WorkMethodologyBackground = () => {
           animation: 'grid-flow 30s linear infinite'
         }}
       />
+
+      {/* Subtle ambient light clouds with diensten colors */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15">
+        {/* Emerald ambient glow (automation/AI) */}
+        <div 
+          className="absolute w-[400px] h-[400px] rounded-full blur-3xl bg-gradient-to-br from-emerald-500/8 to-emerald-400/4"
+          style={{
+            top: '10%',
+            left: '20%',
+            animation: 'methodologyAmbient 25s ease-in-out infinite',
+          }}
+        />
+        
+        {/* Blue ambient glow (consultancy) */}
+        <div 
+          className="absolute w-[450px] h-[450px] rounded-full blur-3xl bg-gradient-to-br from-blue-500/10 to-blue-400/6"
+          style={{
+            top: '40%',
+            right: '15%',
+            animation: 'methodologyAmbient 30s ease-in-out infinite reverse',
+            animationDelay: '10s'
+          }}
+        />
+        
+        {/* Purple ambient glow (custom SaaS) */}
+        <div 
+          className="absolute w-[380px] h-[380px] rounded-full blur-3xl bg-gradient-to-br from-purple-500/7 to-purple-400/3"
+          style={{
+            bottom: '20%',
+            left: '50%',
+            animation: 'methodologyAmbient 35s ease-in-out infinite',
+            animationDelay: '15s'
+          }}
+        />
+
+        {/* Additional smaller ambient glows for depth */}
+        <div 
+          className="absolute w-[250px] h-[250px] rounded-full blur-2xl bg-gradient-to-br from-emerald-400/6 to-teal-400/3"
+          style={{
+            top: '70%',
+            left: '10%',
+            animation: 'methodologyAmbient 28s ease-in-out infinite',
+            animationDelay: '5s'
+          }}
+        />
+      </div>
 
       {/* Flowing geometric shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -65,7 +171,7 @@ const WorkMethodologyBackground = () => {
         />
       </div>
 
-      {/* Ambient corner glows - different colors and positions than Approach */}
+      {/* Enhanced corner glows with diensten colors */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-3xl" />
@@ -77,7 +183,7 @@ const WorkMethodologyBackground = () => {
           backgroundImage: `
             radial-gradient(circle at 25% 25%, rgba(52, 211, 153, 0.8) 1px, transparent 1px),
             radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.6) 1px, transparent 1px),
-            radial-gradient(circle at 50% 25%, rgba(168, 85, 247, 0.4) 1px, transparent 1px),
+            radial-gradient(circle at 50% 25%, rgba(147, 51, 234, 0.4) 1px, transparent 1px),
             radial-gradient(circle at 25% 75%, rgba(52, 211, 153, 0.5) 1px, transparent 1px)
           `,
           backgroundSize: '100px 100px, 120px 120px, 80px 80px, 140px 140px'
@@ -100,6 +206,40 @@ const WorkMethodologyBackground = () => {
             50% { 
               transform: rotate(180deg) translateY(-20px) scale(1.1);
               opacity: 0.2;
+            }
+          }
+
+          @keyframes methodologyFloat {
+            0%, 100% { 
+              transform: translateY(0) translateX(0) scale(1);
+              opacity: 0.3;
+            }
+            25% { 
+              transform: translateY(-6px) translateX(2px) scale(1.05);
+              opacity: 0.7;
+            }
+            50% { 
+              transform: translateY(-10px) translateX(-1px) scale(1.1);
+              opacity: 1;
+            }
+            75% { 
+              transform: translateY(-4px) translateX(-3px) scale(0.95);
+              opacity: 0.6;
+            }
+          }
+
+          @keyframes methodologyAmbient {
+            0%, 100% { 
+              transform: translateY(0) translateX(0) scale(1);
+              opacity: 0.15;
+            }
+            33% { 
+              transform: translateY(-12px) translateX(6px) scale(1.05);
+              opacity: 0.10;
+            }
+            66% { 
+              transform: translateY(-18px) translateX(12px) scale(1.08);
+              opacity: 0.12;
             }
           }
         `
