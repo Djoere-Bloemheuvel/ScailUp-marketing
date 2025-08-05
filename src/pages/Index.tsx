@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from 'react';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -10,9 +9,7 @@ const Hero = lazy(() => import('@/components/Hero'));
 const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
-const WhyBuildrs = lazy(() => import('@/components/WhyBuildrs'));
-const WhyBuildrsCards = lazy(() => import('@/components/WhyBuildrsCards'));
-const WhyBuildrsMinimal = lazy(() => import('@/components/WhyBuildrsMinimal'));
+const WhyChooseBuildrs = lazy(() => import('@/components/WhyChooseBuildrs'));
 const Showcase = lazy(() => import('@/components/Showcase'));
 const Target = lazy(() => import('@/components/Target'));
 const Workflow = lazy(() => import('@/components/Workflow'));
@@ -102,15 +99,7 @@ const Index = () => {
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
-          <WhyBuildrs />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <WhyBuildrsCards />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <WhyBuildrsMinimal />
+          <WhyChooseBuildrs />
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
