@@ -1,8 +1,9 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Target, Zap, Users, CheckCircle, Play, Pause } from 'lucide-react';
-import WorkMethodologyBackground from './WorkMethodologyBackground';
-import AppleMethodologyStep from './AppleMethodologyStep';
+import { Target, Zap, Users, CheckCircle } from 'lucide-react';
+import CinematicGlassmorphicBackground from './cinematic/CinematicGlassmorphicBackground';
+import CinematicMethodologyStep from './cinematic/CinematicMethodologyStep';
+import CinematicHeader from './cinematic/CinematicHeader';
 
 interface MethodologyStep {
   id: number;
@@ -22,19 +23,24 @@ interface MethodologyStep {
 }
 
 /**
- * Apple.com-Inspired Work Methodology Section
- * - Ultra-premium minimalist design
- * - Subtle animations and interactions
- * - Elegant typography and spacing
- * - Refined glassmorphism effects
+ * CINEMATIC MASTERPIECE - Work Methodology Section
+ * Apple-surpassing premium design with revolutionary interactions
+ * - Ultra-premium glassmorphic background system
+ * - 3D holographic step components
+ * - Neural network visualization
+ * - Volumetric lighting effects
+ * - Magnetic interactions with depth
+ * - Color-breathing orchestration
+ * - Performance-optimized animations
  */
 const WorkMethodology = () => {
   const [activeStep, setActiveStep] = useState<number>(1);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Premium methodology steps with refined Apple-style approach
+  // Enhanced methodology steps with cinematic accent colors
   const methodologySteps: MethodologyStep[] = [
     {
       id: 1,
@@ -45,7 +51,7 @@ const WorkMethodology = () => {
       icon: Target,
       duration: "1-2 weken",
       deliverables: [
-        "Strategisch implementatieplan", 
+        "Strategisch implementatieplan met concrete stappen", 
         "Technische architectuur roadmap", 
         "ROI projectie en KPI framework",
         "Stakeholder alignment sessies"
@@ -66,10 +72,10 @@ const WorkMethodology = () => {
       icon: Zap,
       duration: "3 dagen",
       deliverables: [
-        "Werkende interactive demo", 
+        "Werkende interactive demo applicatie", 
         "User interface prototype", 
-        "Stakeholder feedback sessie",
-        "Iteratie planning"
+        "Stakeholder feedback sessie met live demonstratie",
+        "Iteratie planning voor volgende fase"
       ],
       accentColor: {
         primary: "from-purple-500 to-violet-600",
@@ -87,10 +93,10 @@ const WorkMethodology = () => {
       icon: Users,
       duration: "2-4 weken",
       deliverables: [
-        "Weekly sprint demonstraties", 
+        "Weekly sprint demonstraties met nieuwe features", 
         "Live functionaliteit updates", 
         "Gebruikerstests en feedback loops",
-        "Performance monitoring"
+        "Performance monitoring en optimalisatie"
       ],
       accentColor: {
         primary: "from-emerald-400 to-teal-500",
@@ -108,10 +114,10 @@ const WorkMethodology = () => {
       icon: CheckCircle,
       duration: "1-2 weken",
       deliverables: [
-        "Production deployment", 
-        "Comprehensive team training", 
-        "24/7 performance monitoring",
-        "Success metrics tracking"
+        "Production deployment met monitoring", 
+        "Comprehensive team training sessies", 
+        "24/7 performance monitoring dashboard",
+        "Success metrics tracking en rapportage"
       ],
       accentColor: {
         primary: "from-orange-500 to-amber-600",
@@ -122,18 +128,21 @@ const WorkMethodology = () => {
     }
   ];
 
-  // Auto-play functionality
+  // Advanced auto-play with cinematic transitions
   useEffect(() => {
     if (!isPlaying) return;
 
     const interval = setInterval(() => {
-      setActiveStep(current => current >= methodologySteps.length ? 1 : current + 1);
-    }, 4500);
+      setActiveStep(current => {
+        const nextStep = current >= methodologySteps.length ? 1 : current + 1;
+        return nextStep;
+      });
+    }, 5500); // Slightly longer for better experience
 
     return () => clearInterval(interval);
   }, [isPlaying, methodologySteps.length]);
 
-  // Intersection observer for step visibility
+  // Enhanced intersection observer for visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -145,8 +154,8 @@ const WorkMethodology = () => {
         });
       },
       { 
-        threshold: 0.2,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
       }
     );
 
@@ -154,6 +163,18 @@ const WorkMethodology = () => {
     stepElements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  // Global mouse tracking for interactive effects
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const handleStepSelect = (stepId: number) => {
@@ -168,98 +189,148 @@ const WorkMethodology = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-32 lg:py-40 px-4 overflow-hidden bg-black"
-      aria-label="Onze werk methodologie - Apple-geïnspireerde aanpak"
+      className="relative py-40 lg:py-48 px-4 overflow-hidden min-h-screen"
+      aria-label="Onze werk methodologie - Cinematic Apple-geïnspireerde aanpak"
+      style={{
+        background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.95) 0%, rgba(0,0,0,1) 100%)'
+      }}
     >
-      <WorkMethodologyBackground />
+      {/* Revolutionary Glassmorphic Background System */}
+      <CinematicGlassmorphicBackground 
+        activeStep={activeStep} 
+        totalSteps={methodologySteps.length}
+      />
       
-      {/* Content container with Apple-style spacing */}
-      <div className="relative max-w-6xl mx-auto z-10">
-        {/* Apple-inspired header with refined typography */}
-        <header className="text-center mb-24 lg:mb-32">
-          <div className="mb-12">
-            {/* Subtle phase indicator */}
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.05] backdrop-blur-sm mb-8">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 mr-3 animate-pulse" />
-              <span className="text-white/60 text-sm font-medium tracking-wide">Onze Werkwijze</span>
-            </div>
-            
-            {/* Main headline with Apple-style typography */}
-            <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-8">
-              <span className="block mb-2">In drie heldere</span>
-              <span className="block bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent mb-2">
-                stappen van idee
-              </span>
-              <span className="block text-white/90">naar impact.</span>
-            </h2>
-          </div>
-          
-          {/* Refined subtitle */}
-          <p className="text-white/50 text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto font-light leading-relaxed mb-12 tracking-wide">
-            Onze bewezen aanpak voor succesvolle AI-implementatie.
-          </p>
+      {/* Content container with premium spacing */}
+      <div className="relative max-w-7xl mx-auto z-20">
+        
+        {/* Cinematic Header Component */}
+        <CinematicHeader
+          isPlaying={isPlaying}
+          onTogglePlay={toggleAutoPlay}
+          activeStep={activeStep}
+          totalSteps={methodologySteps.length}
+        />
 
-          {/* Premium play controls */}
-          <div className="flex items-center justify-center">
-            <button
-              onClick={toggleAutoPlay}
-              className="group inline-flex items-center px-8 py-4 bg-white/[0.03] hover:bg-white/[0.06] rounded-full border border-white/[0.08] hover:border-white/[0.12] transition-all duration-500 backdrop-blur-sm"
-            >
-              {isPlaying ? (
-                <Pause className="w-4 h-4 mr-3 text-white/80 group-hover:text-white transition-colors duration-300" />
-              ) : (
-                <Play className="w-4 h-4 mr-3 text-white/80 group-hover:text-white transition-colors duration-300" />
-              )}
-              <span className="text-white/80 group-hover:text-white text-sm font-medium transition-colors duration-300">
-                {isPlaying ? 'Pauzeer demo' : 'Start interactive demo'}
-              </span>
-            </button>
-          </div>
-        </header>
-
-        {/* Apple-style methodology steps */}
-        <div className="space-y-20 lg:space-y-24 mb-24">
+        {/* Revolutionary 3D Methodology Steps */}
+        <div className="space-y-32 lg:space-y-40 mb-32">
           {methodologySteps.map((step, index) => (
-            <AppleMethodologyStep
-              key={step.id}
-              step={step}
-              index={index}
-              isActive={activeStep === step.id}
-              isVisible={visibleSteps.includes(step.id)}
-              onSelect={handleStepSelect}
-              totalSteps={methodologySteps.length}
+            <div key={step.id} data-step-id={step.id}>
+              <CinematicMethodologyStep
+                step={step}
+                index={index}
+                isActive={activeStep === step.id}
+                isVisible={visibleSteps.includes(step.id)}
+                onSelect={handleStepSelect}
+                totalSteps={methodologySteps.length}
+                mousePosition={mousePosition}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Premium CTA with magnetic hover */}
+        <div className="text-center relative">
+          <div className="relative inline-block group">
+            <button 
+              className="relative px-16 py-6 text-xl font-bold text-black rounded-3xl overflow-hidden transition-all duration-700 hover:scale-105 backdrop-blur-sm"
+              style={{
+                background: `
+                  linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.95) 0%, 
+                    rgba(255, 255, 255, 0.85) 50%, 
+                    rgba(255, 255, 255, 0.9) 100%
+                  )
+                `,
+                boxShadow: `
+                  0 20px 60px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(255, 255, 255, 0.1),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.8)
+                `
+              }}
+            >
+              <span className="relative z-10 tracking-wide">Start Jouw AI Transformatie</span>
+              
+              {/* Magnetic hover effect */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+                style={{
+                  background: `
+                    radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
+                      rgba(59, 130, 246, 0.1) 0%, 
+                      rgba(139, 92, 246, 0.05) 50%, 
+                      transparent 100%
+                    )
+                  `
+                }}
+              />
+              
+              {/* Flowing light effect */}
+              <div className="absolute inset-0 -z-10 rounded-3xl group-hover:animate-pulse">
+                <div 
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                    animation: 'cta-light-sweep 2s ease-in-out infinite'
+                  }}
+                />
+              </div>
+            </button>
+            
+            {/* Floating accent elements */}
+            <div className="absolute -top-4 -right-4 w-3 h-3 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+              style={{
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(34, 211, 238, 0.6))',
+                animation: 'cta-accent-float-1 4s ease-in-out infinite',
+                boxShadow: '0 0 12px rgba(59, 130, 246, 0.6)'
+              }}
             />
-          ))}
-        </div>
-
-        {/* Apple-style statistics with refined design */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16 max-w-5xl mx-auto mb-20">
-          {[
-            { value: "72h", label: "Eerste prototype klaar" },
-            { value: "100%", label: "Tevredenheidsgarantie" },
-            { value: "24/7", label: "Support na oplevering" }
-          ].map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="text-5xl lg:text-6xl font-black text-white mb-4 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-700">
-                {stat.value}
-              </div>
-              <div className="text-white/40 text-lg font-light tracking-wide group-hover:text-white/70 transition-colors duration-500">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Refined CTA */}
-        <div className="text-center">
-          <button className="group inline-flex items-center px-12 py-5 text-lg font-semibold text-black rounded-2xl transition-all duration-500 hover:scale-[1.02] transform bg-gradient-to-r from-white via-blue-50 to-purple-50 hover:from-blue-50 hover:via-white hover:to-blue-50 shadow-xl hover:shadow-2xl">
-            <span>Start Jouw Project</span>
-            <div className="ml-4 w-6 h-6 rounded-full bg-black/10 group-hover:bg-black/20 flex items-center justify-center transition-all duration-300 group-hover:translate-x-1">
-              <div className="w-2 h-2 border-r-2 border-b-2 border-black/60 transform rotate-[-45deg] translate-x-[-1px]" />
-            </div>
-          </button>
+            <div className="absolute -bottom-3 -left-3 w-2 h-2 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-500"
+              style={{
+                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(168, 85, 247, 0.6))',
+                animation: 'cta-accent-float-2 3s ease-in-out infinite',
+                boxShadow: '0 0 8px rgba(139, 92, 246, 0.6)'
+              }}
+            />
+          </div>
         </div>
       </div>
+
+      {/* Global Animation Keyframes */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes cta-light-sweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+          }
+
+          @keyframes cta-accent-float-1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+            33% { transform: translate(-6px, -8px) rotate(120deg); opacity: 1; }
+            66% { transform: translate(4px, -2px) rotate(240deg); opacity: 0.8; }
+          }
+
+          @keyframes cta-accent-float-2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+            50% { transform: translate(6px, -6px) rotate(180deg); opacity: 0.8; }
+          }
+
+          /* GPU acceleration for all animated elements */
+          * {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+          }
+
+          /* Reduced motion support */
+          @media (prefers-reduced-motion: reduce) {
+            * {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+            }
+          }
+        `
+      }} />
     </section>
   );
 };
