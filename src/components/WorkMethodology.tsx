@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, CheckCircle, Play } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -139,7 +138,7 @@ const WorkMethodology = () => {
       aria-label="Onze werk methodologie - stap voor stap proces"
     >
       {/* Use dedicated background component only */}
-      <WorkMethodologyBackground />
+      
       
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
