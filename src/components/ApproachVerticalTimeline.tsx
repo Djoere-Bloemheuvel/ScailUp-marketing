@@ -146,15 +146,6 @@ const ApproachVerticalTimeline = () => {
           mixBlendMode: 'soft-light'
         }}
       />
-
-      {/* Mobile breakpoint fade out */}
-      <style jsx>{`
-        @media (max-width: 1023px) {
-          .timeline-container {
-            display: none;
-          }
-        }
-      `}</style>
     </div>
   );
 };
