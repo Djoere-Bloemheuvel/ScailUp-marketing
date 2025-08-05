@@ -153,13 +153,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             }
           };
 
-          // Subtle, widespread card glow with less intensity but more reach
+          // Combined inner and outer glow with subtle, widespread effects
           const getCardBoxShadow = () => {
             if (isActive) {
               return [
                 `0 25px 50px rgba(0, 0, 0, 0.4)`, // Main drop shadow
-                `0 0 80px rgba(${glowColor}, 0.08)`, // Very wide outer glow - subtle
-                `0 0 120px rgba(${glowColor}, 0.05)`, // Ultra-wide ambient glow
+                `0 0 80px rgba(${glowColor}, 0.12)`, // Wide outer glow - more visible
+                `0 0 120px rgba(${glowColor}, 0.08)`, // Ultra-wide ambient outer glow
+                `0 0 160px rgba(${glowColor}, 0.05)`, // Maximum reach outer glow
                 `inset 0 0 100px rgba(${glowColor}, 0.06)`, // Large, subtle inner glow throughout card
                 `inset 0 0 60px rgba(${glowColor}, 0.08)`, // Inner mid-range glow
                 `inset 0 0 30px rgba(${glowColor}, 0.12)`, // Inner core glow
@@ -168,8 +169,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             } else if (isHovered) {
               return [
                 `0 12px 24px rgba(0, 0, 0, 0.3)`, // Main drop shadow
-                `0 0 60px rgba(${glowColor}, 0.06)`, // Wide outer glow - very subtle
-                `0 0 100px rgba(${glowColor}, 0.04)`, // Ultra-wide ambient glow
+                `0 0 60px rgba(${glowColor}, 0.08)`, // Wide outer glow - subtle but visible
+                `0 0 100px rgba(${glowColor}, 0.05)`, // Ultra-wide ambient outer glow
+                `0 0 140px rgba(${glowColor}, 0.03)`, // Maximum reach outer glow
                 `inset 0 0 80px rgba(${glowColor}, 0.05)`, // Large, subtle inner glow throughout card
                 `inset 0 0 50px rgba(${glowColor}, 0.07)`, // Inner mid-range glow
                 `inset 0 0 25px rgba(${glowColor}, 0.10)`, // Inner core glow
@@ -177,8 +179,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               ].join(', ');
             } else {
               return [
-                `0 0 40px rgba(${glowColor}, 0.03)`, // Subtle outer glow
-                `0 0 80px rgba(${glowColor}, 0.02)`, // Very wide ambient glow
+                `0 0 40px rgba(${glowColor}, 0.05)`, // Subtle outer glow - slightly more visible
+                `0 0 80px rgba(${glowColor}, 0.03)`, // Wide ambient outer glow
+                `0 0 120px rgba(${glowColor}, 0.02)`, // Very wide ambient outer glow
                 `inset 0 0 60px rgba(${glowColor}, 0.04)`, // Large, very subtle inner glow
                 `inset 0 0 40px rgba(${glowColor}, 0.05)`, // Inner mid-range glow
                 `inset 0 0 20px rgba(${glowColor}, 0.06)`, // Inner core glow
@@ -211,7 +214,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with fixed heights and subtle widespread glow - COLLAPSED: 185px, EXPANDED: 450px */}
+              {/* Step card with fixed heights and combined inner/outer glow - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
                   isActive 
