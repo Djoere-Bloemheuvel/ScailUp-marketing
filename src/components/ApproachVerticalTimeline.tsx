@@ -55,6 +55,11 @@ const ApproachVerticalTimeline = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Helper function to safely get step glow color
+  const getStepGlowColor = (index: number): string => {
+    return steps[index]?.glowColor || 'rgba(59, 130, 246, 0.25)';
+  };
+
   return (
     <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-1/2 pointer-events-none z-20 hidden lg:block">
       {/* Subtler central vertical line */}
@@ -65,10 +70,10 @@ const ApproachVerticalTimeline = () => {
         style={{
           background: `linear-gradient(to bottom, 
             transparent 10%, 
-            ${steps[0].glowColor} 17%, 
-            ${steps[1].glowColor} 39%, 
-            ${steps[2].glowColor} 61%, 
-            ${steps[3].glowColor} 83%, 
+            ${getStepGlowColor(0)} 17%, 
+            ${getStepGlowColor(1)} 39%, 
+            ${getStepGlowColor(2)} 61%, 
+            ${getStepGlowColor(3)} 83%, 
             transparent 90%)`,
           left: '50%',
           transform: 'translateX(-50%)',
