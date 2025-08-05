@@ -376,44 +376,44 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Enhanced Contact Form - Glassmorphic Design */}
+              {/* Enhanced Contact Form - Glassmorphic Design - Made 20% smaller */}
               <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <div className="relative rounded-[20px] p-8 md:p-10 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
+                <div className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
                      style={{
                        background: `
                          linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%),
-                         radial-gradient(ellipse 600px 400px at 50% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 70%),
-                         radial-gradient(ellipse 400px 300px at 100% 100%, rgba(147, 51, 234, 0.06) 0%, transparent 70%)
+                         radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%),
+                         radial-gradient(ellipse 400px 300px at 100% 100%, rgba(99, 102, 241, 0.06) 0%, transparent 70%)
                        `,
                        backdropFilter: 'blur(20px) saturate(150%)',
-                       border: '1px solid rgba(139, 92, 246, 0.15)',
+                       border: '1px solid rgba(59, 130, 246, 0.15)',
                        boxShadow: `
                          0 25px 50px rgba(0, 0, 0, 0.4),
                          0 12px 24px rgba(0, 0, 0, 0.3),
                          0 0 0 1px rgba(255, 255, 255, 0.05),
                          inset 0 1px 0 rgba(255, 255, 255, 0.1),
                          inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-                         0 0 120px rgba(79, 70, 229, 0.1),
-                         0 0 80px rgba(147, 51, 234, 0.08)
+                         0 0 120px rgba(59, 130, 246, 0.1),
+                         0 0 80px rgba(99, 102, 241, 0.08)
                        `
                      }}>
                   
-                  {/* Animated Border Glow */}
+                  {/* Animated Border Glow - Changed to blue */}
                   <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
                        style={{
-                         background: 'linear-gradient(135deg, transparent, rgba(79, 70, 229, 0.2), rgba(147, 51, 234, 0.15), transparent)',
+                         background: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15), transparent)',
                          filter: 'blur(1px)',
                          zIndex: -1
                        }} />
 
-                  {/* Subtle Inner Glow */}
+                  {/* Subtle Inner Glow - Changed to blue */}
                   <div className="absolute inset-1 rounded-[19px] pointer-events-none"
                        style={{
                          background: `
                            linear-gradient(135deg, 
                              rgba(255, 255, 255, 0.03) 0%, 
-                             rgba(79, 70, 229, 0.04) 30%, 
-                             rgba(147, 51, 234, 0.03) 70%, 
+                             rgba(59, 130, 246, 0.04) 30%, 
+                             rgba(99, 102, 241, 0.03) 70%, 
                              rgba(255, 255, 255, 0.02) 100%
                            )
                          `,
@@ -423,13 +423,13 @@ const Contact = () => {
                   {!isSubmitted ? (
                     <>
                       <div className="relative z-10">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 font-apple">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-6 font-apple">
                           Start uw AI-verkenning
                         </h3>
                         
                         <form 
                           onSubmit={handleSubmit}
-                          className="space-y-6"
+                          className="space-y-5"
                           noValidate
                           role="form"
                           aria-label="Contact formulier"
@@ -439,20 +439,20 @@ const Contact = () => {
                             <div 
                               role="alert" 
                               aria-live="polite"
-                              className="flex items-center space-x-3 rounded-2xl bg-red-500/10 border border-red-500/20 px-6 py-4 text-red-400"
+                              className="flex items-center space-x-3 rounded-2xl bg-red-500/10 border border-red-500/20 px-5 py-3 text-red-400"
                             >
-                              <AlertCircle className="h-5 w-5 flex-shrink-0" />
-                              <span>{errors.submit}</span>
+                              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                              <span className="text-sm">{errors.submit}</span>
                             </div>
                           )}
 
-                          {/* Form Fields */}
-                          <div className="space-y-6">
+                          {/* Form Fields - Made smaller */}
+                          <div className="space-y-5">
                             {/* Name field */}
                             <div className="space-y-2">
                               <label 
                                 htmlFor="naam" 
-                                className="block text-sm font-medium text-white/90 mb-3"
+                                className="block text-sm font-medium text-white/90 mb-2"
                                 id="naam-label"
                               >
                                 Naam *
@@ -464,10 +464,10 @@ const Contact = () => {
                                 value={formData.naam}
                                 onChange={(e) => handleChange('naam', e.target.value)}
                                 onBlur={() => handleBlur('naam')}
-                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.naam 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
-                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
+                                    : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
                                 style={{
                                   backdropFilter: 'blur(10px)',
@@ -494,7 +494,7 @@ const Contact = () => {
                             <div className="space-y-2">
                               <label 
                                 htmlFor="email" 
-                                className="block text-sm font-medium text-white/90 mb-3"
+                                className="block text-sm font-medium text-white/90 mb-2"
                                 id="email-label"
                               >
                                 E-mail *
@@ -506,10 +506,10 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
                                 onBlur={() => handleBlur('email')}
-                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.email 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
-                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
+                                    : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
                                 style={{
                                   backdropFilter: 'blur(10px)',
@@ -536,7 +536,7 @@ const Contact = () => {
                             <div className="space-y-2">
                               <label 
                                 htmlFor="bedrijf" 
-                                className="block text-sm font-medium text-white/90 mb-3"
+                                className="block text-sm font-medium text-white/90 mb-2"
                                 id="bedrijf-label"
                               >
                                 Bedrijfsnaam *
@@ -548,10 +548,10 @@ const Contact = () => {
                                 value={formData.bedrijf}
                                 onChange={(e) => handleChange('bedrijf', e.target.value)}
                                 onBlur={() => handleBlur('bedrijf')}
-                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.bedrijf 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
-                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
+                                    : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
                                 style={{
                                   backdropFilter: 'blur(10px)',
@@ -578,7 +578,7 @@ const Contact = () => {
                             <div className="space-y-2">
                               <label 
                                 htmlFor="telefoon" 
-                                className="block text-sm font-medium text-white/90 mb-3"
+                                className="block text-sm font-medium text-white/90 mb-2"
                                 id="telefoon-label"
                               >
                                 Telefoonnummer
@@ -590,10 +590,10 @@ const Contact = () => {
                                 value={formData.telefoon}
                                 onChange={(e) => handleChange('telefoon', e.target.value)}
                                 onBlur={() => handleBlur('telefoon')}
-                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.telefoon 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
-                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
+                                    : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
                                 style={{
                                   backdropFilter: 'blur(10px)',
@@ -618,7 +618,7 @@ const Contact = () => {
                             <div className="space-y-2">
                               <label 
                                 htmlFor="bericht" 
-                                className="block text-sm font-medium text-white/90 mb-3"
+                                className="block text-sm font-medium text-white/90 mb-2"
                                 id="bericht-label"
                               >
                                 Uw uitdagingen en doelen *
@@ -629,11 +629,11 @@ const Contact = () => {
                                 value={formData.bericht}
                                 onChange={(e) => handleChange('bericht', e.target.value)}
                                 onBlur={() => handleBlur('bericht')}
-                                rows={5}
-                                className={`w-full rounded-2xl px-6 py-4 text-white placeholder-white/40 transition-all duration-500 focus:outline-none resize-none transform-gpu ${
+                                rows={4}
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none resize-none transform-gpu ${
                                   errors.bericht 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
-                                    : 'border border-white/10 hover:border-purple-500/30 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
+                                    : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
                                 }`}
                                 style={{
                                   backdropFilter: 'blur(10px)',
@@ -662,7 +662,7 @@ const Contact = () => {
                           </div>
 
                           {/* Privacy notice */}
-                          <div className="text-xs text-white/60 rounded-2xl p-4 border transition-all duration-300"
+                          <div className="text-xs text-white/60 rounded-2xl p-3 border transition-all duration-300"
                                style={{
                                  background: 'rgba(255, 255, 255, 0.02)',
                                  backdropFilter: 'blur(8px)',
@@ -674,31 +674,31 @@ const Contact = () => {
                             </p>
                           </div>
 
-                          {/* Enhanced Submit button */}
+                          {/* Enhanced Submit button - Smaller */}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="group relative w-full text-black hover:text-black transition-all duration-700 px-8 py-6 text-lg font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] font-apple border-0"
+                            className="group relative w-full text-black hover:text-black transition-all duration-700 px-6 py-4 text-base font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] font-apple border-0"
                             style={{
                               background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
                               boxShadow: `
                                 0 20px 40px rgba(0, 0, 0, 0.3), 
                                 inset 0 1px 0 rgba(255, 255, 255, 0.9), 
                                 0 0 0 1px rgba(255, 255, 255, 0.1),
-                                0 0 60px rgba(79, 70, 229, 0.1)
+                                0 0 60px rgba(59, 130, 246, 0.1)
                               `
                             }}
                           >
                             <span className="relative z-10 flex items-center justify-center">
                               {isSubmitting ? (
                                 <>
-                                  <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                                  <Loader2 className="mr-3 h-4 w-4 animate-spin" />
                                   Versturen...
                                 </>
                               ) : (
                                 <>
                                   Start uw AI-verkenning
-                                  <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                                  <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                                 </>
                               )}
                             </span>
@@ -706,10 +706,10 @@ const Contact = () => {
                             {/* Enhanced shimmer effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out" aria-hidden="true" />
                             
-                            {/* Hover glow effect */}
+                            {/* Hover glow effect - Changed to blue */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
                                  style={{
-                                   background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.08))',
+                                   background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.08))',
                                    filter: 'blur(20px)',
                                    transform: 'scale(1.1)',
                                    zIndex: -1
@@ -719,34 +719,34 @@ const Contact = () => {
                       </div>
                     </>
                   ) : (
-                    /* Success message - Enhanced Glass Style */
+                    /* Success message - Enhanced Glass Style */}
                     <div 
                       className="text-center"
                       role="status"
                       aria-live="polite"
                     >
-                      <div className="mb-8 h-20 w-20 rounded-full p-1 relative mx-auto overflow-hidden"
+                      <div className="mb-6 h-16 w-16 rounded-full p-1 relative mx-auto overflow-hidden"
                            style={{
                              background: `
-                               linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(147, 51, 234, 0.12)),
+                               linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.12)),
                                radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)
                              `,
                              backdropFilter: 'blur(15px)',
-                             border: '1px solid rgba(139, 92, 246, 0.2)',
-                             boxShadow: '0 8px 32px rgba(79, 70, 229, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                             border: '1px solid rgba(59, 130, 246, 0.2)',
+                             boxShadow: '0 8px 32px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                            }}>
                         <div className="flex h-full w-full items-center justify-center rounded-full"
                              style={{
                                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%)'
                              }}>
-                          <CheckCircle className="h-10 w-10 text-green-400" aria-hidden="true" />
+                          <CheckCircle className="h-8 w-8 text-green-400" aria-hidden="true" />
                         </div>
                       </div>
 
-                      <h3 className="text-2xl font-bold text-white mb-4 font-apple">
+                      <h3 className="text-xl font-bold text-white mb-3 font-apple">
                         Bedankt voor uw bericht!
                       </h3>
-                      <p className="text-lg text-premium-silver/80 mb-6 font-light">
+                      <p className="text-base text-premium-silver/80 mb-4 font-light">
                         We nemen binnen 24 uur contact met u op om uw AI-mogelijkheden te bespreken.
                       </p>
                       <p className="text-sm text-premium-silver/60">
