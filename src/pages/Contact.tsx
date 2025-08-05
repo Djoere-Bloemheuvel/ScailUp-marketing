@@ -273,170 +273,92 @@ const Contact = () => {
 
       <main id="main-content" role="main" className="min-h-screen bg-premium-black relative overflow-hidden">
         
-        {/* MAIN SECTION - Now with Cinematic Background - 10% smaller */}
-        <section className="relative min-h-screen flex items-center justify-center px-4 py-18">
+        {/* MAIN SECTION - Now with Cinematic Background */}
+        <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
           {/* Cinematic Background */}
           <div className="absolute inset-0">
             <CinematicBackground hideGlassContainer={true} />
           </div>
 
-          {/* Main Content Grid - 10% smaller */}
-          <div className="relative w-full max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-18 items-start">
+          {/* Main Content Grid */}
+          <div className="relative w-full max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-20 items-start">
               
-              {/* Contact Information - 10% smaller */}
-              <div className="space-y-11 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              {/* Contact Information */}
+              <div className="space-y-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 <div>
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-7 leading-[0.9] tracking-tight font-apple">
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[0.9] tracking-tight font-apple">
                     Laten we
                     <br />
                     <span className="bg-gradient-to-r from-premium-silver via-white to-premium-silver bg-clip-text text-transparent">
                       praten
                     </span>
                   </h1>
-                  <p className="text-lg md:text-xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-5">
+                  <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-6">
                     Een strategische verkenning van 60 minuten.
                     <br />
                     <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
                   </p>
-                  <p className="text-base text-premium-silver/80 leading-relaxed mb-9 font-light">
+                  <p className="text-lg text-premium-silver/80 leading-relaxed mb-10 font-light">
                     Wij zijn gespecialiseerd in het bouwen van AI-systemen die uw business daadwerkelijk transformeren. 
                     Van strategie tot implementatie - wij maken AI werkend voor uw organisatie.
                   </p>
                 </div>
 
-                {/* Trust Indicators - 10% smaller */}
-                <div className="flex items-center justify-start space-x-7 mb-9 text-premium-silver/60">
+                {/* Trust Indicators */}
+                <div className="flex items-center justify-start space-x-8 mb-10 text-premium-silver/60">
                   <div className="flex items-center space-x-2">
-                    <Clock className="h-4 w-4" />
-                    <span className="text-xs font-medium">60 minuten gratis</span>
+                    <Clock className="h-5 w-5" />
+                    <span className="text-sm font-medium">60 minuten gratis</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4" />
-                    <span className="text-xs font-medium">Concrete inzichten</span>
+                    <CheckCircle className="h-5 w-5" />
+                    <span className="text-sm font-medium">Concrete inzichten</span>
                   </div>
                 </div>
 
-                {/* Contact Details - Apple Style Cards with Glassmorphic Hover Effect - 10% smaller */}
-                <div className="space-y-5">
-                  <div 
-                    className="group relative p-5 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-700 hover:border-white/20 hover:bg-white/5 overflow-hidden transform hover:scale-[1.01] transform-gpu"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%), radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-                      backdropFilter: 'blur(20px) saturate(150%)',
-                      boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.02), 0 0 120px rgba(59, 130, 246, 0.1), 0 0 80px rgba(99, 102, 241, 0.08)'
-                    }}
-                  >
-                    {/* Animated Border Glow */}
-                    <div 
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
-                      style={{
-                        background: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15), transparent)',
-                        filter: 'blur(1px)',
-                        zIndex: -1
-                      }} 
-                    />
-                    
-                    {/* Subtle Inner Glow */}
-                    <div 
-                      className="absolute inset-1 rounded-[19px] pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(59, 130, 246, 0.04) 30%, rgba(99, 102, 241, 0.03) 70%, rgba(255, 255, 255, 0.02) 100%)',
-                        opacity: 0.6
-                      }} 
-                    />
-                    
-                    <div className="flex items-start space-x-4 relative z-10">
-                      <div className="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
-                        <Mail className="h-5 w-5 text-premium-silver" />
+                {/* Contact Details - Apple Style Cards */}
+                <div className="space-y-6">
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
+                        <Mail className="h-6 w-6 text-premium-silver" />
                       </div>
                       <div>
-                        <h3 className="text-base font-semibold text-white mb-1">E-mail</h3>
-                        <p className="text-sm text-premium-silver/80">info@buildrs.ai</p>
+                        <h3 className="text-lg font-semibold text-white mb-1">E-mail</h3>
+                        <p className="text-premium-silver/80">info@buildrs.ai</p>
                       </div>
                     </div>
                   </div>
 
-                  <div 
-                    className="group relative p-5 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-700 hover:border-white/20 hover:bg-white/5 overflow-hidden transform hover:scale-[1.01] transform-gpu"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%), radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-                      backdropFilter: 'blur(20px) saturate(150%)',
-                      boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.02), 0 0 120px rgba(59, 130, 246, 0.1), 0 0 80px rgba(99, 102, 241, 0.08)'
-                    }}
-                  >
-                    {/* Animated Border Glow */}
-                    <div 
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
-                      style={{
-                        background: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15), transparent)',
-                        filter: 'blur(1px)',
-                        zIndex: -1
-                      }} 
-                    />
-                    
-                    {/* Subtle Inner Glow */}
-                    <div 
-                      className="absolute inset-1 rounded-[19px] pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(59, 130, 246, 0.04) 30%, rgba(99, 102, 241, 0.03) 70%, rgba(255, 255, 255, 0.02) 100%)',
-                        opacity: 0.6
-                      }} 
-                    />
-                    
-                    <div className="flex items-start space-x-4 relative z-10">
-                      <div className="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
-                        <Phone className="h-5 w-5 text-premium-silver" />
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
+                        <Phone className="h-6 w-6 text-premium-silver" />
                       </div>
                       <div>
-                        <h3 className="text-base font-semibold text-white mb-1">Telefoon</h3>
-                        <p className="text-sm text-premium-silver/80">+31 (0)6 12345678</p>
+                        <h3 className="text-lg font-semibold text-white mb-1">Telefoon</h3>
+                        <p className="text-premium-silver/80">+31 (0)6 12345678</p>
                       </div>
                     </div>
                   </div>
 
-                  <div 
-                    className="group relative p-5 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-700 hover:border-white/20 hover:bg-white/5 overflow-hidden transform hover:scale-[1.01] transform-gpu"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%), radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-                      backdropFilter: 'blur(20px) saturate(150%)',
-                      boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.02), 0 0 120px rgba(59, 130, 246, 0.1), 0 0 80px rgba(99, 102, 241, 0.08)'
-                    }}
-                  >
-                    {/* Animated Border Glow */}
-                    <div 
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
-                      style={{
-                        background: 'linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15), transparent)',
-                        filter: 'blur(1px)',
-                        zIndex: -1
-                      }} 
-                    />
-                    
-                    {/* Subtle Inner Glow */}
-                    <div 
-                      className="absolute inset-1 rounded-[19px] pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(59, 130, 246, 0.04) 30%, rgba(99, 102, 241, 0.03) 70%, rgba(255, 255, 255, 0.02) 100%)',
-                        opacity: 0.6
-                      }} 
-                    />
-                    
-                    <div className="flex items-start space-x-4 relative z-10">
-                      <div className="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
-                        <MapPin className="h-5 w-5 text-premium-silver" />
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
+                        <MapPin className="h-6 w-6 text-premium-silver" />
                       </div>
                       <div>
-                        <h3 className="text-base font-semibold text-white mb-1">Locatie</h3>
-                        <p className="text-sm text-premium-silver/80">Amsterdam, Nederland</p>
+                        <h3 className="text-lg font-semibold text-white mb-1">Locatie</h3>
+                        <p className="text-premium-silver/80">Amsterdam, Nederland</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Benefits List - 10% smaller */}
+                {/* Benefits List */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-white mb-5">Wat krijgt u?</h3>
+                  <h3 className="text-xl font-semibold text-white mb-6">Wat krijgt u?</h3>
                   <div className="space-y-4">
                     {[
                       'Gratis strategische verkenning van 60 minuten',
@@ -446,18 +368,18 @@ const Contact = () => {
                       'Direct implementeerbare aanbevelingen'
                     ].map((benefit, index) => (
                       <div key={index} className="flex items-start space-x-3">
-                        <CheckCircle className="h-4 w-4 text-premium-silver flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-premium-silver/80 font-light leading-relaxed">{benefit}</span>
+                        <CheckCircle className="h-5 w-5 text-premium-silver flex-shrink-0 mt-0.5" />
+                        <span className="text-premium-silver/80 font-light leading-relaxed">{benefit}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Enhanced Contact Form - Glassmorphic Design - Now 10% smaller than the already reduced size */}
+              {/* Enhanced Contact Form - Glassmorphic Design - Made 20% smaller */}
               <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <div 
-                  className="relative rounded-[20px] p-5 md:p-7 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
+                  className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
                   style={{
                     background: 'linear-gradient(135deg, rgba(15, 15, 25, 0.85) 0%, rgba(10, 10, 20, 0.8) 50%, rgba(8, 8, 18, 0.85) 100%), radial-gradient(ellipse 600px 400px at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%), radial-gradient(ellipse 400px 300px at 100% 100%, rgba(99, 102, 241, 0.06) 0%, transparent 70%)',
                     backdropFilter: 'blur(20px) saturate(150%)',
@@ -466,7 +388,7 @@ const Contact = () => {
                   }}
                 >
                   
-                  {/* Animated Border Glow */}
+                  {/* Animated Border Glow - Changed to blue */}
                   <div 
                     className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
                     style={{
@@ -476,7 +398,7 @@ const Contact = () => {
                     }} 
                   />
 
-                  {/* Subtle Inner Glow */}
+                  {/* Subtle Inner Glow - Changed to blue */}
                   <div 
                     className="absolute inset-1 rounded-[19px] pointer-events-none"
                     style={{
@@ -488,13 +410,13 @@ const Contact = () => {
                   {!isSubmitted ? (
                     <>
                       <div className="relative z-10">
-                        <h3 className="text-lg md:text-xl font-bold text-white mb-5 font-apple">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-6 font-apple">
                           Start uw AI-verkenning
                         </h3>
                         
                         <form 
                           onSubmit={handleSubmit}
-                          className="space-y-4"
+                          className="space-y-5"
                           noValidate
                           role="form"
                           aria-label="Contact formulier"
@@ -504,15 +426,15 @@ const Contact = () => {
                             <div 
                               role="alert" 
                               aria-live="polite"
-                              className="flex items-center space-x-3 rounded-2xl bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-400"
+                              className="flex items-center space-x-3 rounded-2xl bg-red-500/10 border border-red-500/20 px-5 py-3 text-red-400"
                             >
                               <AlertCircle className="h-4 w-4 flex-shrink-0" />
                               <span className="text-sm">{errors.submit}</span>
                             </div>
                           )}
 
-                          {/* Form Fields - Made 10% smaller */}
-                          <div className="space-y-4">
+                          {/* Form Fields - Made smaller */}
+                          <div className="space-y-5">
                             {/* Name field */}
                             <div className="space-y-2">
                               <label 
@@ -529,7 +451,7 @@ const Contact = () => {
                                 value={formData.naam}
                                 onChange={(e) => handleChange('naam', e.target.value)}
                                 onBlur={() => handleBlur('naam')}
-                                className={`w-full rounded-2xl px-4 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.naam 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
                                     : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
@@ -571,7 +493,7 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
                                 onBlur={() => handleBlur('email')}
-                                className={`w-full rounded-2xl px-4 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.email 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
                                     : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
@@ -613,7 +535,7 @@ const Contact = () => {
                                 value={formData.bedrijf}
                                 onChange={(e) => handleChange('bedrijf', e.target.value)}
                                 onBlur={() => handleBlur('bedrijf')}
-                                className={`w-full rounded-2xl px-4 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.bedrijf 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
                                     : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
@@ -655,7 +577,7 @@ const Contact = () => {
                                 value={formData.telefoon}
                                 onChange={(e) => handleChange('telefoon', e.target.value)}
                                 onBlur={() => handleBlur('telefoon')}
-                                className={`w-full rounded-2xl px-4 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none transform-gpu ${
                                   errors.telefoon 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
                                     : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
@@ -695,7 +617,7 @@ const Contact = () => {
                                 onChange={(e) => handleChange('bericht', e.target.value)}
                                 onBlur={() => handleBlur('bericht')}
                                 rows={4}
-                                className={`w-full rounded-2xl px-4 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none resize-none transform-gpu ${
+                                className={`w-full rounded-2xl px-5 py-3 text-white placeholder-white/40 transition-all duration-500 focus:outline-none resize-none transform-gpu ${
                                   errors.bericht 
                                     ? 'border border-red-500/50 focus:ring-2 focus:ring-red-500/30 bg-red-500/5' 
                                     : 'border border-white/10 hover:border-blue-500/30 focus:border-blue-400/40 focus:ring-2 focus:ring-blue-400/20 bg-white/5 hover:bg-white/8 focus:bg-white/10'
@@ -726,7 +648,7 @@ const Contact = () => {
                             </div>
                           </div>
 
-                          {/* Privacy notice - 10% smaller */}
+                          {/* Privacy notice */}
                           <div 
                             className="text-xs text-white/60 rounded-2xl p-3 border transition-all duration-300"
                             style={{
@@ -741,11 +663,11 @@ const Contact = () => {
                             </p>
                           </div>
 
-                          {/* Enhanced Submit button - 10% smaller */}
+                          {/* Enhanced Submit button - Smaller */}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="group relative w-full text-black hover:text-black transition-all duration-700 px-5 py-3 text-sm font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] font-apple border-0"
+                            className="group relative w-full text-black hover:text-black transition-all duration-700 px-6 py-4 text-base font-semibold rounded-2xl overflow-hidden transform hover:scale-[1.02] font-apple border-0"
                             style={{
                               background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #f0f0f0 70%, #e8e8e8 100%)',
                               boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 60px rgba(59, 130, 246, 0.1)'
@@ -754,13 +676,13 @@ const Contact = () => {
                             <span className="relative z-10 flex items-center justify-center">
                               {isSubmitting ? (
                                 <>
-                                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                  <Loader2 className="mr-3 h-4 w-4 animate-spin" />
                                   Versturen...
                                 </>
                               ) : (
                                 <>
                                   Start uw AI-verkenning
-                                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                                  <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                                 </>
                               )}
                             </span>
@@ -768,7 +690,7 @@ const Contact = () => {
                             {/* Enhanced shimmer effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out" aria-hidden="true" />
                             
-                            {/* Hover glow effect */}
+                            {/* Hover glow effect - Changed to blue */}
                             <div 
                               className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
                               style={{
@@ -783,14 +705,14 @@ const Contact = () => {
                       </div>
                     </>
                   ) : (
-                    /* Success message - Enhanced Glass Style - 10% smaller */}
+                    /* Success message - Enhanced Glass Style */
                     <div 
                       className="text-center"
                       role="status"
                       aria-live="polite"
                     >
                       <div 
-                        className="mb-5 h-14 w-14 rounded-full p-1 relative mx-auto overflow-hidden"
+                        className="mb-6 h-16 w-16 rounded-full p-1 relative mx-auto overflow-hidden"
                         style={{
                           background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.12)), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
                           backdropFilter: 'blur(15px)',
@@ -804,17 +726,17 @@ const Contact = () => {
                             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%)'
                           }}
                         >
-                          <CheckCircle className="h-7 w-7 text-green-400" aria-hidden="true" />
+                          <CheckCircle className="h-8 w-8 text-green-400" aria-hidden="true" />
                         </div>
                       </div>
 
-                      <h3 className="text-lg font-bold text-white mb-3 font-apple">
+                      <h3 className="text-xl font-bold text-white mb-3 font-apple">
                         Bedankt voor uw bericht!
                       </h3>
-                      <p className="text-sm text-premium-silver/80 mb-4 font-light">
+                      <p className="text-base text-premium-silver/80 mb-4 font-light">
                         We nemen binnen 24 uur contact met u op om uw AI-mogelijkheden te bespreken.
                       </p>
-                      <p className="text-xs text-premium-silver/60">
+                      <p className="text-sm text-premium-silver/60">
                         U ontvangt ook een bevestiging per e-mail.
                       </p>
                     </div>
