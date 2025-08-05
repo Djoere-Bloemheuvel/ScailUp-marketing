@@ -89,7 +89,7 @@ const HorizontalMethodologyFlow = () => {
     }
   ];
 
-  // Handle scroll snap
+  // Handle scroll snap - Fixed to ensure all code paths return a value
   useEffect(() => {
     const handleScroll = () => {
       if (!stepsRef.current) return;
@@ -109,7 +109,7 @@ const HorizontalMethodologyFlow = () => {
     }
   }, [steps.length]);
 
-  // Auto-animate elements per step
+  // Auto-animate elements per step - Fixed ease types
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (delay: number) => ({
@@ -118,7 +118,7 @@ const HorizontalMethodologyFlow = () => {
       transition: {
         duration: 0.8,
         delay: delay * 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     })
   };
@@ -130,7 +130,7 @@ const HorizontalMethodologyFlow = () => {
       scale: 1,
       transition: {
         duration: 1,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     }
   };
@@ -184,7 +184,7 @@ const HorizontalMethodologyFlow = () => {
               }}
             />
             
-            {/* Step-specific ambient animations */}
+            {/* Step-specific ambient animations - Fixed ease values */}
             {step.id === 1 && (
               <motion.div 
                 className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full"
@@ -198,7 +198,7 @@ const HorizontalMethodologyFlow = () => {
                 transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: [0.4, 0, 0.6, 1]
+                  ease: "easeInOut"
                 }}
               />
             )}
@@ -214,7 +214,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: [0.4, 0, 0.6, 1]
+                    ease: "easeInOut"
                   }}
                 />
                 <motion.div 
@@ -226,7 +226,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 3.5,
                     repeat: Infinity,
-                    ease: [0.4, 0, 0.6, 1],
+                    ease: "easeInOut",
                     delay: 1
                   }}
                 />
@@ -244,7 +244,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: [0.4, 0, 0.6, 1]
+                    ease: "easeInOut"
                   }}
                 />
                 <motion.div 
@@ -256,7 +256,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 3.5,
                     repeat: Infinity,
-                    ease: [0.4, 0, 0.6, 1],
+                    ease: "easeInOut",
                     delay: 1.5
                   }}
                 />
@@ -272,7 +272,7 @@ const HorizontalMethodologyFlow = () => {
                 transition={{
                   duration: 5,
                   repeat: Infinity,
-                  ease: [0.4, 0, 0.6, 1]
+                  ease: "easeInOut"
                 }}
               />
             )}
