@@ -118,7 +118,7 @@ const HorizontalMethodologyFlow = () => {
       transition: {
         duration: 0.8,
         delay: delay * 0.1,
-        ease: "easeOut"
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     })
   };
@@ -130,7 +130,7 @@ const HorizontalMethodologyFlow = () => {
       scale: 1,
       transition: {
         duration: 1,
-        ease: "easeOut"
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
@@ -198,7 +198,7 @@ const HorizontalMethodologyFlow = () => {
                 transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: [0.4, 0, 0.6, 1]
                 }}
               />
             )}
@@ -214,7 +214,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: [0.4, 0, 0.6, 1]
                   }}
                 />
                 <motion.div 
@@ -226,7 +226,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 3.5,
                     repeat: Infinity,
-                    ease: "easeInOut",
+                    ease: [0.4, 0, 0.6, 1],
                     delay: 1
                   }}
                 />
@@ -244,7 +244,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: [0.4, 0, 0.6, 1]
                   }}
                 />
                 <motion.div 
@@ -256,7 +256,7 @@ const HorizontalMethodologyFlow = () => {
                   transition={{
                     duration: 3.5,
                     repeat: Infinity,
-                    ease: "easeInOut",
+                    ease: [0.4, 0, 0.6, 1],
                     delay: 1.5
                   }}
                 />
@@ -272,7 +272,7 @@ const HorizontalMethodologyFlow = () => {
                 transition={{
                   duration: 5,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: [0.4, 0, 0.6, 1]
                 }}
               />
             )}
