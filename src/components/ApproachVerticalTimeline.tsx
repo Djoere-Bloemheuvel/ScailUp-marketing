@@ -14,7 +14,7 @@ const ApproachVerticalTimeline = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
-  // Extracted colors from AppleTimeline cards to match exactly
+  // Adjusted positions to align with the AppleTimelineCard components
   const steps: TimelineStep[] = [
     { 
       id: 1, 
@@ -22,7 +22,7 @@ const ApproachVerticalTimeline = () => {
       gradientFrom: 'rgb(59, 130, 246)', // blue-500
       gradientTo: 'rgb(34, 211, 238)', // cyan-400
       glowColor: 'rgba(59, 130, 246, 0.25)',
-      position: 17 
+      position: 12 
     },
     { 
       id: 2, 
@@ -30,7 +30,7 @@ const ApproachVerticalTimeline = () => {
       gradientFrom: 'rgb(139, 92, 246)', // purple-500
       gradientTo: 'rgb(167, 139, 250)', // violet-400
       glowColor: 'rgba(139, 92, 246, 0.25)',
-      position: 39 
+      position: 37 
     },
     { 
       id: 3, 
@@ -38,7 +38,7 @@ const ApproachVerticalTimeline = () => {
       gradientFrom: 'rgb(168, 85, 247)', // purple-400
       gradientTo: 'rgb(59, 130, 246)', // blue-500
       glowColor: 'rgba(168, 85, 247, 0.25)',
-      position: 61 
+      position: 62 
     },
     { 
       id: 4, 
@@ -46,7 +46,7 @@ const ApproachVerticalTimeline = () => {
       gradientFrom: 'rgb(34, 197, 94)', // green-500
       gradientTo: 'rgb(37, 99, 235)', // blue-600
       glowColor: 'rgba(34, 197, 94, 0.25)',
-      position: 83 
+      position: 87 
     }
   ];
 
@@ -70,10 +70,10 @@ const ApproachVerticalTimeline = () => {
         style={{
           background: `linear-gradient(to bottom, 
             transparent 10%, 
-            ${getStepGlowColor(0)} 17%, 
-            ${getStepGlowColor(1)} 39%, 
-            ${getStepGlowColor(2)} 61%, 
-            ${getStepGlowColor(3)} 83%, 
+            ${getStepGlowColor(0)} 12%, 
+            ${getStepGlowColor(1)} 37%, 
+            ${getStepGlowColor(2)} 62%, 
+            ${getStepGlowColor(3)} 87%, 
             transparent 90%)`,
           left: '50%',
           transform: 'translateX(-50%)',
