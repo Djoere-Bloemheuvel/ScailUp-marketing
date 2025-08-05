@@ -34,6 +34,7 @@ interface WorkMethodologyProcessProps {
  * - Glassmorphism overlay on hover
  * - Enhanced with unique accent colors per step
  * - Added subtle glows behind each card for visual clarity
+ * - Intensified "lit from behind" spotlight effect
  */
 const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodologyProcessProps) => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -208,38 +209,38 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
-              {/* Background glow layers - positioned behind the card */}
+              {/* Background glow layers - positioned behind the card with intensified effect */}
               <div className="absolute inset-0 pointer-events-none z-0">
-                {/* Primary glow - wide and soft */}
+                {/* Primary glow - wide and soft with increased intensity */}
                 <div 
                   className="absolute inset-0 rounded-3xl transition-all duration-500 ease-out"
                   style={{
-                    background: `radial-gradient(ellipse 150% 120% at center, ${stepGlowColor}15 0%, ${stepGlowColor}08 40%, transparent 70%)`,
-                    opacity: isActive ? 0.6 : isHovered ? 0.4 : 0.25,
-                    transform: isActive ? 'scale(1.1)' : isHovered ? 'scale(1.05)' : 'scale(1)',
-                    filter: 'blur(8px)'
+                    background: `radial-gradient(ellipse 150% 120% at center, ${stepGlowColor}25 0%, ${stepGlowColor}15 40%, transparent 70%)`,
+                    opacity: isActive ? 0.9 : isHovered ? 0.65 : 0.45,
+                    transform: isActive ? 'scale(1.15)' : isHovered ? 'scale(1.08)' : 'scale(1.02)',
+                    filter: 'blur(10px)'
                   }}
                 />
                 
-                {/* Secondary glow - more focused */}
+                {/* Secondary glow - more focused with increased intensity */}
                 <div 
                   className="absolute inset-4 rounded-3xl transition-all duration-400 ease-out"
                   style={{
-                    background: `radial-gradient(ellipse 120% 100% at center, ${stepGlowColor}20 0%, ${stepGlowColor}10 50%, transparent 80%)`,
-                    opacity: isActive ? 0.5 : isHovered ? 0.3 : 0.2,
-                    transform: isActive ? 'scale(1.08)' : isHovered ? 'scale(1.04)' : 'scale(1)',
-                    filter: 'blur(4px)'
+                    background: `radial-gradient(ellipse 120% 100% at center, ${stepGlowColor}35 0%, ${stepGlowColor}18 50%, transparent 80%)`,
+                    opacity: isActive ? 0.8 : isHovered ? 0.55 : 0.35,
+                    transform: isActive ? 'scale(1.12)' : isHovered ? 'scale(1.06)' : 'scale(1.01)',
+                    filter: 'blur(6px)'
                   }}
                 />
                 
-                {/* Accent glow - inner highlight */}
+                {/* Accent glow - inner highlight with increased intensity */}
                 <div 
                   className="absolute inset-8 rounded-3xl transition-all duration-300 ease-out"
                   style={{
-                    background: `radial-gradient(ellipse 100% 80% at center, ${stepGlowColor}25 0%, ${stepGlowColor}12 40%, transparent 70%)`,
-                    opacity: isActive ? 0.4 : isHovered ? 0.25 : 0.15,
-                    transform: isActive ? 'scale(1.06)' : isHovered ? 'scale(1.03)' : 'scale(1)',
-                    filter: 'blur(2px)'
+                    background: `radial-gradient(ellipse 100% 80% at center, ${stepGlowColor}40 0%, ${stepGlowColor}22 40%, transparent 70%)`,
+                    opacity: isActive ? 0.7 : isHovered ? 0.45 : 0.25,
+                    transform: isActive ? 'scale(1.08)' : isHovered ? 'scale(1.04)' : 'scale(1)',
+                    filter: 'blur(3px)'
                   }}
                 />
               </div>
