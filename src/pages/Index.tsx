@@ -10,6 +10,7 @@ const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
 const EndingCTA = lazy(() => import('@/components/EndingCTA'));
+const TechCommandCenterCTA = lazy(() => import('@/components/TechCommandCenterCTA'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-premium-black flex items-center justify-center">
@@ -95,6 +96,10 @@ const Index = () => {
         
         <Suspense fallback={<LoadingSpinner />}>
           <EndingCTA />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <TechCommandCenterCTA />
         </Suspense>
       </main>
     </>
