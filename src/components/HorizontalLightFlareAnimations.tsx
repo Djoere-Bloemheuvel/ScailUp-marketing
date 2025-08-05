@@ -1,80 +1,79 @@
 
-
 const HorizontalLightFlareAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{
       __html: `
-        /* Horizontal Light Flare Animations */
+        /* Horizontal Light Flare Animations - Enhanced 50% more intense */
         @keyframes horizontal-flare-pulse {
           0%, 100% {
-            opacity: 0.6;
+            opacity: 0.9;
             transform: scaleX(1);
           }
           50% {
             opacity: 1;
-            transform: scaleX(1.02);
+            transform: scaleX(1.03);
           }
         }
 
         @keyframes horizontal-flare-shimmer {
           0%, 100% {
-            opacity: 0.8;
+            opacity: 1;
             transform: scaleX(1);
           }
           33% {
             opacity: 1;
-            transform: scaleX(1.05);
+            transform: scaleX(1.08);
           }
           66% {
-            opacity: 0.9;
-            transform: scaleX(0.98);
+            opacity: 1;
+            transform: scaleX(0.97);
           }
         }
 
-        /* NEW: Downward aura glow animations */
+        /* Enhanced downward aura glow animations - 50% more intense */
         @keyframes aura-pulse {
           0%, 100% {
-            opacity: 0.3;
+            opacity: 0.45;
             transform: translateX(-50%) scaleY(1);
           }
           50% {
-            opacity: 0.5;
-            transform: translateX(-50%) scaleY(1.1);
+            opacity: 0.75;
+            transform: translateX(-50%) scaleY(1.15);
           }
         }
 
         @keyframes aura-shimmer {
           0%, 100% {
-            opacity: 0.25;
+            opacity: 0.4;
             transform: translateX(-50%) scaleX(1);
           }
           33% {
-            opacity: 0.4;
-            transform: translateX(-50%) scaleX(1.05);
+            opacity: 0.6;
+            transform: translateX(-50%) scaleX(1.08);
           }
           66% {
-            opacity: 0.3;
-            transform: translateX(-50%) scaleX(0.95);
+            opacity: 0.45;
+            transform: translateX(-50%) scaleX(0.93);
           }
         }
 
-        /* NEW: Subtle ambient glow animation */
+        /* Enhanced ambient glow animation - 50% more intense */
         @keyframes ambient-glow-pulse {
           0%, 100% {
-            opacity: 0.15;
+            opacity: 0.25;
             transform: translateX(-50%) scaleY(1) scaleX(1);
           }
           33% {
-            opacity: 0.18;
-            transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
+            opacity: 0.3;
+            transform: translateX(-50%) scaleY(1.03) scaleX(1.02);
           }
           66% {
-            opacity: 0.12;
-            transform: translateX(-50%) scaleY(0.98) scaleX(0.99);
+            opacity: 0.2;
+            transform: translateX(-50%) scaleY(0.97) scaleX(0.98);
           }
         }
 
-        /* Mobile optimizations */
+        /* Mobile optimizations - enhanced */
         @media (max-width: 768px) {
           .horizontal-light-flare {
             width: 90%;
@@ -82,34 +81,34 @@ const HorizontalLightFlareAnimations = () => {
           
           @keyframes horizontal-flare-pulse {
             0%, 100% {
-              opacity: 0.5;
+              opacity: 0.75;
               transform: scaleX(1);
             }
             50% {
-              opacity: 0.8;
-              transform: scaleX(1.01);
+              opacity: 1;
+              transform: scaleX(1.02);
             }
           }
           
           @keyframes aura-pulse {
             0%, 100% {
-              opacity: 0.2;
+              opacity: 0.3;
               transform: translateX(-50%) scaleY(1);
             }
             50% {
-              opacity: 0.35;
-              transform: translateX(-50%) scaleY(1.08);
+              opacity: 0.55;
+              transform: translateX(-50%) scaleY(1.12);
             }
           }
 
           @keyframes ambient-glow-pulse {
             0%, 100% {
-              opacity: 0.12;
+              opacity: 0.18;
               transform: translateX(-50%) scaleY(1) scaleX(1);
             }
             50% {
-              opacity: 0.15;
-              transform: translateX(-50%) scaleY(1.01) scaleX(1.005);
+              opacity: 0.25;
+              transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
             }
           }
         }
@@ -119,4 +118,3 @@ const HorizontalLightFlareAnimations = () => {
 };
 
 export default HorizontalLightFlareAnimations;
-
