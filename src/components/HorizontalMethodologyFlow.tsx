@@ -118,7 +118,7 @@ const HorizontalMethodologyFlow = () => {
       transition: {
         duration: 0.8,
         delay: delay * 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     })
   };
@@ -130,7 +130,7 @@ const HorizontalMethodologyFlow = () => {
       scale: 1,
       transition: {
         duration: 1,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     }
   };
