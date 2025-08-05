@@ -33,6 +33,7 @@ interface WorkMethodologyProcessProps {
  * - Fast, responsive animations (200-250ms, ease-out)
  * - Glassmorphism overlay on hover
  * - Enhanced with unique accent colors per step
+ * - Added subtle glows behind each card for visual clarity
  */
 const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodologyProcessProps) => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -55,6 +56,17 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
     }
   `;
 
+  // Define specific glow colors for each step
+  const getStepGlowColor = (stepId: number) => {
+    const glowMap: { [key: number]: string } = {
+      1: '#4484FF', // Blue for Discovery & Strategy
+      2: '#AA66FF', // Purple for Rapid Prototype
+      3: '#33FFAA', // Green for Iterative Build
+      4: '#FF9944'  // Orange for Live & Optimization
+    };
+    return glowMap[stepId] || '#4484FF';
+  };
+
   return (
     <div className="relative">
       {/* Custom scrollbar styles */}
@@ -73,6 +85,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
         {steps.map((step, index) => {
           const isActive = activeStep === step.id;
           const isHovered = hoveredStep === step.id;
+          const stepGlowColor = getStepGlowColor(step.id);
           
           // Safe access to accent color properties with explicit fallbacks
           const accentColor = step.accentColor || {
@@ -195,8 +208,44 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
+              {/* Background glow layers - positioned behind the card */}
+              <div className="absolute inset-0 pointer-events-none z-0">
+                {/* Primary glow - wide and soft */}
+                <div 
+                  className="absolute inset-0 rounded-3xl transition-all duration-500 ease-out"
+                  style={{
+                    background: `radial-gradient(ellipse 150% 120% at center, ${stepGlowColor}15 0%, ${stepGlowColor}08 40%, transparent 70%)`,
+                    opacity: isActive ? 0.6 : isHovered ? 0.4 : 0.25,
+                    transform: isActive ? 'scale(1.1)' : isHovered ? 'scale(1.05)' : 'scale(1)',
+                    filter: 'blur(8px)'
+                  }}
+                />
+                
+                {/* Secondary glow - more focused */}
+                <div 
+                  className="absolute inset-4 rounded-3xl transition-all duration-400 ease-out"
+                  style={{
+                    background: `radial-gradient(ellipse 120% 100% at center, ${stepGlowColor}20 0%, ${stepGlowColor}10 50%, transparent 80%)`,
+                    opacity: isActive ? 0.5 : isHovered ? 0.3 : 0.2,
+                    transform: isActive ? 'scale(1.08)' : isHovered ? 'scale(1.04)' : 'scale(1)',
+                    filter: 'blur(4px)'
+                  }}
+                />
+                
+                {/* Accent glow - inner highlight */}
+                <div 
+                  className="absolute inset-8 rounded-3xl transition-all duration-300 ease-out"
+                  style={{
+                    background: `radial-gradient(ellipse 100% 80% at center, ${stepGlowColor}25 0%, ${stepGlowColor}12 40%, transparent 70%)`,
+                    opacity: isActive ? 0.4 : isHovered ? 0.25 : 0.15,
+                    transform: isActive ? 'scale(1.06)' : isHovered ? 'scale(1.03)' : 'scale(1)',
+                    filter: 'blur(2px)'
+                  }}
+                />
+              </div>
+
               {/* Step number indicator with solid black background and enhanced glow effects */}
-              <div className="flex items-center justify-center mb-6">
+              <div className="flex items-center justify-center mb-6 relative z-10">
                 <div 
                   className="relative w-12 h-12 rounded-full transition-all duration-200 ease-out"
                   style={getIconContainerStyles()}
@@ -213,7 +262,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
               {/* Step card with fixed heights and subtle widespread glow - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
-                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
+                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden z-10 ${
                   isActive 
                     ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[450px]` 
                     : isHovered
