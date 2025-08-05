@@ -783,7 +783,7 @@ const Contact = () => {
                       </div>
                     </>
                   ) : (
-                    /* Success message - Enhanced Glass Style - 10% smaller */}
+                    /* Success message - Enhanced Glass Style - 10% smaller */
                     <div 
                       className="text-center"
                       role="status"
