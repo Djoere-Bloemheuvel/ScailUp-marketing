@@ -29,7 +29,8 @@ interface WorkMethodologyProcessProps {
 
 /**
  * Horizontal Process Flow Component
- * - Completely different design from timeline approach
+ * - Fixed collapsed (300px) and expanded (500px) heights
+ * - Smooth animations between states
  * - Interactive step cards with hover effects
  * - Progress connector between steps
  * - Modern, dynamic animations
@@ -147,14 +148,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with accent color theming - FIXED HEIGHT 500px */}
+              {/* Step card with fixed heights - COLLAPSED: 300px, EXPANDED: 500px */}
               <div 
-                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 h-[500px] flex flex-col overflow-hidden ${
+                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 flex flex-col overflow-hidden ${
                   isActive 
-                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl` 
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[500px]` 
                     : isHovered
-                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20`
-                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent`
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[300px]`
+                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent h-[300px]`
                 } border`}
                 style={{
                   boxShadow: isActive 
@@ -185,22 +186,20 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   </p>
                 </div>
 
-                {/* Scrollable content area for expanded details */}
+                {/* Content area - different behavior for collapsed vs expanded */}
                 <div className="flex-1 relative">
-                  {/* Always visible content preview */}
-                  <div className="absolute inset-0">
-                    <div className={`transition-all duration-500 ${
-                      isActive ? 'opacity-0 transform translate-y-2' : 'opacity-100'
-                    }`}>
-                      <div className="text-white/50 text-sm italic">
+                  {/* Collapsed state content */}
+                  {!isActive && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-white/50 text-sm italic text-center">
                         Klik voor details...
                       </div>
                     </div>
+                  )}
 
-                    {/* Expanded content with custom scrollbar */}
-                    <div className={`transition-all duration-500 ${
-                      isActive ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2 pointer-events-none'
-                    }`}>
+                  {/* Expanded state content with scrollable area */}
+                  {isActive && (
+                    <div className="absolute inset-0">
                       <div className="h-full overflow-y-auto pr-2 custom-scrollbar">
                         <div className={`pt-4 border-t transition-colors duration-300 ${
                           isActive ? accentColor.border : 'border-white/10'
@@ -229,7 +228,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                         </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Accent line at bottom for active cards */}
