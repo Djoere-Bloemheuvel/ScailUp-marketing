@@ -1,7 +1,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle, FileText } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -300,24 +300,51 @@ const Contact = () => {
                     <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
                   </p>
                   
-                  {/* New bullet points */}
-                  <div className="mb-10">
-                    <p className="text-lg text-premium-silver/80 leading-relaxed mb-4 font-light">
-                      Na het gesprek ontvang je een visueel rapport met:
-                    </p>
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-premium-silver/60 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-premium-silver/80 font-light leading-relaxed">Inzichten op maat voor jouw organisatie</span>
+                  {/* Premium AI Impactscan Highlight Card */}
+                  <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                    <div 
+                      className="relative rounded-2xl p-8 backdrop-blur-xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] transition-all duration-700 hover:from-white/[0.12] hover:via-white/[0.06] hover:to-white/[0.03] hover:border-white/15"
+                      style={{
+                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+                      }}
+                    >
+                      {/* Optional document icon in top-right */}
+                      <div className="absolute top-6 right-6 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                        <FileText className="w-4 h-4 text-blue-300/80" />
                       </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-premium-silver/60 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-premium-silver/80 font-light leading-relaxed">Concrete AI-kansen en quick wins</span>
+
+                      {/* Content */}
+                      <div className="space-y-6">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-apple">
+                          Jouw AI Impactscan
+                        </h3>
+                        
+                        <p className="text-lg text-premium-silver/90 font-light leading-relaxed mb-6">
+                          Na het gesprek ontvang je een visueel rapport met:
+                        </p>
+                        
+                        <div className="space-y-4 mb-6">
+                          <div className="flex items-start space-x-3">
+                            <div className="w-1.5 h-1.5 bg-blue-400/60 rounded-full mt-2.5 flex-shrink-0"></div>
+                            <span className="text-premium-silver/80 font-light leading-relaxed">Inzichten op maat voor jouw organisatie</span>
+                          </div>
+                          <div className="flex items-start space-x-3">
+                            <div className="w-1.5 h-1.5 bg-blue-400/60 rounded-full mt-2.5 flex-shrink-0"></div>
+                            <span className="text-premium-silver/80 font-light leading-relaxed">Concrete AI-kansen en quick wins</span>
+                          </div>
+                          <div className="flex items-start space-x-3">
+                            <div className="w-1.5 h-1.5 bg-blue-400/60 rounded-full mt-2.5 flex-shrink-0"></div>
+                            <span className="text-premium-silver/80 font-light leading-relaxed">Een routekaart voor implementatie</span>
+                          </div>
+                        </div>
+
+                        <p className="text-base text-white/90 font-medium leading-relaxed">
+                          Toepasbaar. Compact. Geen verkooppraat – alleen waarde.
+                        </p>
                       </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-premium-silver/60 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-premium-silver/80 font-light leading-relaxed">Een routekaart voor implementatie</span>
-                      </div>
+
+                      {/* Subtle accent line */}
+                      <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
                     </div>
                   </div>
                 </div>
