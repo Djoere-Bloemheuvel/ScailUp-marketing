@@ -73,7 +73,6 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
         {steps.map((step, index) => {
           const isActive = activeStep === step.id;
           const isHovered = hoveredStep === step.id;
-          const isCompleted = activeStep > step.id;
           
           // Safe access to accent color properties with explicit fallbacks
           const accentColor = step.accentColor || {
