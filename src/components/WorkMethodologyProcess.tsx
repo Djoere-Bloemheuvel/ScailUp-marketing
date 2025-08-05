@@ -152,6 +152,33 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               };
             }
           };
+
+          // Enhanced card box shadow styles with more prominent inward glow
+          const getCardBoxShadow = () => {
+            if (isActive) {
+              return [
+                `0 25px 50px rgba(0, 0, 0, 0.4)`, // Main drop shadow
+                `0 0 30px rgba(${glowColor}, 0.3)`, // Outer glow
+                `inset 0 0 60px rgba(${glowColor}, 0.15)`, // Large inner glow to fill card
+                `inset 0 0 30px rgba(${glowColor}, 0.25)`, // Inner core glow
+                `inset 0 1px 0 rgba(255, 255, 255, 0.1)` // Top highlight
+              ].join(', ');
+            } else if (isHovered) {
+              return [
+                `0 12px 24px rgba(0, 0, 0, 0.3)`, // Main drop shadow
+                `0 0 15px rgba(${glowColor}, 0.2)`, // Outer glow
+                `inset 0 0 50px rgba(${glowColor}, 0.12)`, // Large inner glow
+                `inset 0 0 25px rgba(${glowColor}, 0.2)`, // Inner core glow
+                `inset 0 1px 0 rgba(255, 255, 255, 0.08)` // Top highlight
+              ].join(', ');
+            } else {
+              return [
+                `inset 0 0 40px rgba(${glowColor}, 0.08)`, // Subtle inner glow
+                `inset 0 0 20px rgba(${glowColor}, 0.12)`, // Inner core glow
+                `inset 0 1px 0 rgba(255, 255, 255, 0.05)` // Top highlight
+              ].join(', ');
+            }
+          };
           
           return (
             <div
@@ -177,7 +204,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with fixed heights - COLLAPSED: 185px, EXPANDED: 450px */}
+              {/* Step card with fixed heights and enhanced inward glow - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
                   isActive 
@@ -187,11 +214,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                       : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 h-[185px]`
                 } border`}
                 style={{
-                  boxShadow: isActive 
-                    ? `0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${glowColor}, 0.3)`
-                    : isHovered 
-                      ? `0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(${glowColor}, 0.2)`
-                      : undefined
+                  boxShadow: getCardBoxShadow()
                 }}
               >
                 {/* Glassmorphism overlay on hover */}
