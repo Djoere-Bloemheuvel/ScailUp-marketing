@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Target, Zap, Users, ArrowRight, CheckCircle, Play } from 'lucide-react';
+import { Clock, Target, Zap, Users, ArrowRight, CheckCircle, Play } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
 import WorkMethodologyBackground from './WorkMethodologyBackground';
 
