@@ -18,6 +18,52 @@ const EndingCTA = () => {
       {/* Premium Glass Container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
+          {/* Blue Ambient Glow Container */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Large outer glow - bottom left */}
+            <div 
+              className="absolute -bottom-1/3 -left-1/4 w-[40rem] h-[40rem] rounded-full opacity-30 animate-pulse"
+              style={{
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(34, 211, 238, 0.18) 35%, rgba(37, 99, 235, 0.08) 60%, transparent 85%)',
+                filter: 'blur(120px)',
+                animationDuration: '12s'
+              }}
+            />
+            
+            {/* Medium glow - top right */}
+            <div 
+              className="absolute -top-1/4 -right-1/4 w-96 h-96 rounded-full opacity-35 animate-pulse"
+              style={{
+                background: 'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(99, 102, 241, 0.15) 40%, rgba(59, 130, 246, 0.06) 70%, transparent 90%)',
+                filter: 'blur(100px)',
+                animationDuration: '8s',
+                animationDelay: '-4s'
+              }}
+            />
+            
+            {/* Center accent glow */}
+            <div 
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-25 animate-pulse"
+              style={{
+                background: 'radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, rgba(16, 185, 129, 0.12) 50%, rgba(59, 130, 246, 0.05) 80%, transparent 95%)',
+                filter: 'blur(90px)',
+                animationDuration: '15s',
+                animationDelay: '-7s'
+              }}
+            />
+            
+            {/* Small focused glow - bottom right */}
+            <div 
+              className="absolute -bottom-1/4 -right-1/3 w-64 h-64 rounded-full opacity-40 animate-pulse"
+              style={{
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.28) 0%, rgba(34, 211, 238, 0.16) 45%, rgba(147, 51, 234, 0.04) 75%, transparent 90%)',
+                filter: 'blur(70px)',
+                animationDuration: '10s',
+                animationDelay: '-2s'
+              }}
+            />
+          </div>
+
           {/* Main Glass Container */}
           <div className="premium-glass-main-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
