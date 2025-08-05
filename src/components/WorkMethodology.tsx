@@ -168,11 +168,6 @@ const WorkMethodology = () => {
               </span>
             </h2>
           </div>
-          
-          {/* Subtitle with Apple typography */}
-          <p className="text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
-            Van eerste gesprek tot live deployment: dit is hoe we elke week meetbare vooruitgang boeken.
-          </p>
         </div>
 
         {/* Horizontal process flow with enhanced accent colors */}
