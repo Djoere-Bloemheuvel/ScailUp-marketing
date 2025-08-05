@@ -1,3 +1,5 @@
+
+
 interface HorizontalLightFlareProps {
   position?: 'top' | 'bottom';
   className?: string;
@@ -96,7 +98,7 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
           }}
         />
         
-        {/* Ultra-wide base glow for maximum width */}
+        {/* NEW: Ultra-wide base glow for maximum width */}
         <div 
           className="absolute inset-0 w-full h-full opacity-50"
           style={{
@@ -114,40 +116,20 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
           }}
         />
         
-        {/* INTENSIFIED: Much stronger ambient downward glow - underneath the flare for all positions */}
+        {/* NEW: Subtle ambient downward glow - underneath the flare for all positions */}
         <div 
-          className={`absolute left-1/2 transform -translate-x-1/2 w-full opacity-35 z-20 ${position === 'top' ? 'top-0' : 'bottom-0'}`}
+          className={`absolute left-1/2 transform -translate-x-1/2 w-full opacity-15 z-20 ${position === 'top' ? 'top-0' : 'bottom-0'}`}
           style={{
-            height: '400px',
-            background: `radial-gradient(ellipse 95% 100% at 50% ${position === 'top' ? '0%' : '0%'}, 
-              rgba(34, 211, 238, 0.7) 0%, 
-              rgba(59, 130, 246, 0.6) 15%, 
-              rgba(34, 211, 238, 0.5) 30%, 
-              rgba(147, 51, 234, 0.4) 45%, 
-              rgba(59, 130, 246, 0.3) 60%, 
-              rgba(34, 211, 238, 0.2) 75%, 
+            height: '300px',
+            background: `radial-gradient(ellipse 90% 100% at 50% ${position === 'top' ? '0%' : '0%'}, 
+              rgba(34, 211, 238, 0.4) 0%, 
+              rgba(59, 130, 246, 0.3) 20%, 
+              rgba(34, 211, 238, 0.2) 40%, 
+              rgba(59, 130, 246, 0.1) 60%, 
               transparent 100%
             )`,
-            filter: 'blur(60px)',
+            filter: 'blur(80px)',
             animation: 'ambient-glow-pulse 12s ease-in-out infinite',
-            ...(position === 'top' ? { top: '0px' } : { bottom: '0px' })
-          }}
-        />
-        
-        {/* NEW: Additional intense ambient layer for maximum impact */}
-        <div 
-          className={`absolute left-1/2 transform -translate-x-1/2 w-[80%] opacity-25 z-19 ${position === 'top' ? 'top-0' : 'bottom-0'}`}
-          style={{
-            height: '350px',
-            background: `radial-gradient(ellipse 100% 100% at 50% ${position === 'top' ? '0%' : '0%'}, 
-              rgba(147, 51, 234, 0.8) 0%, 
-              rgba(34, 211, 238, 0.7) 25%, 
-              rgba(59, 130, 246, 0.5) 50%, 
-              rgba(34, 211, 238, 0.3) 75%, 
-              transparent 100%
-            )`,
-            filter: 'blur(40px)',
-            animation: 'ambient-glow-pulse 8s ease-in-out infinite reverse',
             ...(position === 'top' ? { top: '0px' } : { bottom: '0px' })
           }}
         />
@@ -206,3 +188,4 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
 };
 
 export default HorizontalLightFlare;
+

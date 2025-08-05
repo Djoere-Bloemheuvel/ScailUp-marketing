@@ -1,3 +1,5 @@
+
+
 const HorizontalLightFlareAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{
@@ -29,7 +31,7 @@ const HorizontalLightFlareAnimations = () => {
           }
         }
 
-        /* Downward aura glow animations */
+        /* NEW: Downward aura glow animations */
         @keyframes aura-pulse {
           0%, 100% {
             opacity: 0.3;
@@ -56,23 +58,19 @@ const HorizontalLightFlareAnimations = () => {
           }
         }
 
-        /* INTENSIFIED: Much stronger ambient glow animation */
+        /* NEW: Subtle ambient glow animation */
         @keyframes ambient-glow-pulse {
           0%, 100% {
-            opacity: 0.35;
+            opacity: 0.15;
             transform: translateX(-50%) scaleY(1) scaleX(1);
           }
-          25% {
-            opacity: 0.45;
-            transform: translateX(-50%) scaleY(1.03) scaleX(1.02);
-          }
-          50% {
-            opacity: 0.50;
-            transform: translateX(-50%) scaleY(1.05) scaleX(1.03);
-          }
-          75% {
-            opacity: 0.40;
+          33% {
+            opacity: 0.18;
             transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
+          }
+          66% {
+            opacity: 0.12;
+            transform: translateX(-50%) scaleY(0.98) scaleX(0.99);
           }
         }
 
@@ -106,12 +104,12 @@ const HorizontalLightFlareAnimations = () => {
 
           @keyframes ambient-glow-pulse {
             0%, 100% {
-              opacity: 0.25;
+              opacity: 0.12;
               transform: translateX(-50%) scaleY(1) scaleX(1);
             }
             50% {
-              opacity: 0.35;
-              transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
+              opacity: 0.15;
+              transform: translateX(-50%) scaleY(1.01) scaleX(1.005);
             }
           }
         }
@@ -121,3 +119,4 @@ const HorizontalLightFlareAnimations = () => {
 };
 
 export default HorizontalLightFlareAnimations;
+
