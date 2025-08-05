@@ -16,66 +16,45 @@ const EndingCTA = () => {
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
-      {/* Masked colored elements container - confined to glass shape */}
-      <div className="absolute inset-0 z-10">
+      {/* CinematicBackground - positioned behind main content */}
+      <div className="absolute inset-0 z-5">
+        <CinematicBackground />
+      </div>
+
+      {/* Premium Background Layers - confined to content area */}
+      <div className="absolute inset-0 z-6">
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="relative w-full">
-            {/* Mask shape that matches the glass container */}
-            <div 
-              className="absolute inset-0 opacity-0 pointer-events-none"
-              style={{
-                maskImage: `
-                  radial-gradient(
-                    ellipse 90% 85% at center center,
-                    black 0%,
-                    black 45%,
-                    transparent 65%
-                  )
-                `,
-                WebkitMaskImage: `
-                  radial-gradient(
-                    ellipse 90% 85% at center center,
-                    black 0%,
-                    black 45%,
-                    transparent 65%
-                  )
-                `
-              }}
-            >
-              {/* Enhanced Cinematic Background - now masked */}
-              <CinematicBackground hideGlassContainer={true} />
+            {/* Premium Background Layers - now properly confined */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+              {/* Central focal glow */}
+              <div 
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
+                  filter: 'blur(120px)',
+                  animation: 'premium-focal-glow 12s ease-in-out infinite'
+                }}
+              />
               
-              {/* Premium Background Layers - now masked */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Central focal glow - 30% dimmed */}
-                <div 
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-28"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(59, 130, 246, 0.105) 0%, rgba(147, 51, 234, 0.07) 40%, rgba(34, 211, 238, 0.035) 70%, transparent 85%)',
-                    filter: 'blur(120px)',
-                    animation: 'premium-focal-glow 12s ease-in-out infinite'
-                  }}
-                />
-                
-                {/* Particle system - 30% dimmed */}
-                <div className="absolute inset-0">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                      key={`particle-${i}`}
-                      className="absolute w-1 h-1 rounded-full opacity-42"
-                      style={{
-                        background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.56)' : 
-                                   i % 3 === 1 ? 'rgba(147, 51, 234, 0.42)' : 
-                                   'rgba(34, 211, 238, 0.49)',
-                        left: `${15 + (i * 9) % 70}%`,
-                        top: `${25 + (i * 11) % 50}%`,
-                        animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
-                        animationDelay: `${i * 0.8}s`,
-                        filter: 'blur(0.5px)'
-                      }}
-                    />
-                  ))}
-                </div>
+              {/* Particle system */}
+              <div className="absolute inset-0">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div
+                    key={`particle-${i}`}
+                    className="absolute w-1 h-1 rounded-full"
+                    style={{
+                      background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
+                                 i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
+                                 'rgba(34, 211, 238, 0.7)',
+                      left: `${15 + (i * 9) % 70}%`,
+                      top: `${25 + (i * 11) % 50}%`,
+                      animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
+                      animationDelay: `${i * 0.8}s`,
+                      filter: 'blur(0.5px)'
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -120,11 +99,11 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element - 30% dimmed colors */}
+              {/* Right Visual Element */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
                 {/* Premium AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field - 30% dimmed */}
+                  {/* Outer quantum field */}
                   <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
                   {/* Core visualization container */}
@@ -134,7 +113,7 @@ const EndingCTA = () => {
                       <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Orbiting intelligence nodes - 30% dimmed */}
+                    {/* Orbiting intelligence nodes */}
                     <div className="absolute inset-0">
                       {[0, 1, 2, 3].map(i => (
                         <div 
@@ -142,19 +121,19 @@ const EndingCTA = () => {
                           className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
                           style={{
                             background: i % 2 === 0 ? 
-                              'linear-gradient(45deg, rgba(59, 130, 246, 0.7), rgba(6, 182, 212, 0.7))' : 
-                              'linear-gradient(45deg, rgba(139, 92, 246, 0.7), rgba(236, 72, 153, 0.7))',
+                              'linear-gradient(45deg, rgba(59, 130, 246, 1), rgba(6, 182, 212, 1))' : 
+                              'linear-gradient(45deg, rgba(139, 92, 246, 1), rgba(236, 72, 153, 1))',
                             animation: `premium-orbit ${20 + i * 4}s linear infinite`,
                             transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
                             transformOrigin: '50% 50%',
-                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.35), 0 0 30px rgba(59, 130, 246, 0.21)'
+                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)'
                           }} 
                         />
                       ))}
                     </div>
                     
-                    {/* Neural network connections - 30% dimmed */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-21">
+                    {/* Neural network connections */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
                       {[0, 1, 2].map(i => (
                         <circle
                           key={`connection-${i}`}
@@ -175,7 +154,7 @@ const EndingCTA = () => {
                       <defs>
                         <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                           <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.56)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.8)" />
                           <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
                         </linearGradient>
                       </defs>
@@ -205,22 +184,22 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles - 30% dimmed colors */}
+      {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-focal-glow {
             0%, 100% { 
-              opacity: 0.28;
+              opacity: 0.4;
               transform: translate(-50%, -50%) scale(1) rotate(0deg);
               filter: blur(120px);
             }
             33% { 
-              opacity: 0.385;
+              opacity: 0.55;
               transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
               filter: blur(125px);
             }
             66% { 
-              opacity: 0.21;
+              opacity: 0.3;
               transform: translate(-50%, -50%) scale(0.95) rotate(-1deg);
               filter: blur(115px);
             }
@@ -228,19 +207,19 @@ const EndingCTA = () => {
 
           @keyframes premium-particle-float {
             0%, 100% { 
-              opacity: 0.42;
+              opacity: 0.6;
               transform: translateY(0px) translateX(0px);
             }
             25% { 
-              opacity: 0.7;
+              opacity: 1;
               transform: translateY(-10px) translateX(5px);
             }
             50% { 
-              opacity: 0.28;
+              opacity: 0.4;
               transform: translateY(-5px) translateX(-3px);
             }
             75% { 
-              opacity: 0.56;
+              opacity: 0.8;
               transform: translateY(8px) translateX(7px);
             }
           }
@@ -248,35 +227,35 @@ const EndingCTA = () => {
           @keyframes premium-orbit {
             0% { 
               transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
-              opacity: 0.42;
+              opacity: 0.6;
             }
             50% {
-              opacity: 0.7;
+              opacity: 1;
             }
             100% { 
               transform: rotate(360deg) translateY(var(--orbit-distance)) rotate(-360deg);
-              opacity: 0.42;
+              opacity: 0.6;
             }
           }
 
           @keyframes premium-neural-ring {
             0%, 100% { 
-              opacity: 0.21;
+              opacity: 0.3;
               transform: rotate(0deg);
             }
             50% { 
-              opacity: 0.42;
+              opacity: 0.6;
               transform: rotate(180deg);
             }
           }
 
           @keyframes premium-brain-pulse {
             0%, 100% { 
-              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.21));
+              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
               transform: scale(1);
             }
             50% { 
-              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.42));
+              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.6));
               transform: scale(1.05);
             }
           }
@@ -310,8 +289,8 @@ const EndingCTA = () => {
             border-radius: 24px;
             box-shadow: 
               0 24px 48px rgba(0, 0, 0, 0.4),
-              0 12px 24px rgba(59, 130, 246, 0.07),
-              0 6px 12px rgba(147, 51, 234, 0.056),
+              0 12px 24px rgba(59, 130, 246, 0.1),
+              0 6px 12px rgba(147, 51, 234, 0.08),
               inset 0 1px 0 rgba(255, 255, 255, 0.15),
               inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
@@ -324,9 +303,9 @@ const EndingCTA = () => {
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg,
-              rgba(59, 130, 246, 0.021) 0%,
-              rgba(147, 51, 234, 0.014) 50%,
-              rgba(34, 211, 238, 0.021) 100%);
+              rgba(59, 130, 246, 0.03) 0%,
+              rgba(147, 51, 234, 0.02) 50%,
+              rgba(34, 211, 238, 0.03) 100%);
             border-radius: 24px;
             pointer-events: none;
           }
@@ -338,7 +317,7 @@ const EndingCTA = () => {
             border-radius: 12px;
             box-shadow: 
               0 6px 24px rgba(0, 0, 0, 0.3),
-              0 3px 12px rgba(59, 130, 246, 0.14),
+              0 3px 12px rgba(59, 130, 246, 0.2),
               inset 0 1px 0 rgba(255, 255, 255, 0.8),
               inset 0 -1px 0 rgba(0, 0, 0, 0.1);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -349,8 +328,8 @@ const EndingCTA = () => {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 
               0 12px 36px rgba(0, 0, 0, 0.4),
-              0 6px 18px rgba(59, 130, 246, 0.21),
-              0 3px 9px rgba(147, 51, 234, 0.14);
+              0 6px 18px rgba(59, 130, 246, 0.3),
+              0 3px 9px rgba(147, 51, 234, 0.2);
           }
 
           .premium-button-shimmer {
@@ -366,12 +345,12 @@ const EndingCTA = () => {
             animation: premium-shimmer 3s ease-in-out infinite;
           }
 
-          /* Visual Elements - 30% dimmed */
+          /* Visual Elements */
           .premium-quantum-field {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.105) 0%,
-              rgba(147, 51, 234, 0.07) 35%,
-              rgba(34, 211, 238, 0.056) 70%,
+              rgba(59, 130, 246, 0.15) 0%,
+              rgba(147, 51, 234, 0.10) 35%,
+              rgba(34, 211, 238, 0.08) 70%,
               transparent 85%);
             filter: blur(50px);
             animation: premium-focal-glow 15s ease-in-out infinite;
@@ -379,14 +358,14 @@ const EndingCTA = () => {
 
           .premium-core-container {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.056) 0%,
-              rgba(147, 51, 234, 0.028) 50%,
+              rgba(59, 130, 246, 0.08) 0%,
+              rgba(147, 51, 234, 0.04) 50%,
               transparent 70%);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-              0 0 40px rgba(59, 130, 246, 0.14),
-              0 0 80px rgba(147, 51, 234, 0.07),
+              0 0 40px rgba(59, 130, 246, 0.2),
+              0 0 80px rgba(147, 51, 234, 0.1),
               inset 0 0 30px rgba(255, 255, 255, 0.05);
           }
 
