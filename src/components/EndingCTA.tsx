@@ -1,5 +1,4 @@
-
-import { ArrowRight, Brain, Zap, Target, Users } from 'lucide-react';
+import { ArrowRight, Brain, Zap, Target, Users, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import CinematicBackground from './hero/CinematicBackground';
@@ -39,7 +38,7 @@ const EndingCTA = () => {
   ];
 
   return (
-    <section className="relative min-h-[70vh] overflow-hidden bg-premium-black flex items-center justify-center py-8">
+    <section className="relative min-h-[80vh] overflow-hidden bg-premium-black flex items-center justify-center py-12">
       {/* Enhanced Cinematic Background with Custom Colors */}
       <CinematicBackground hideGlassContainer={true} />
       
@@ -81,11 +80,11 @@ const EndingCTA = () => {
         <div className="relative">
           {/* Main Glass Container */}
           <div className="premium-glass-main-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-8 lg:py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12 lg:py-16">
               {/* Left Content */}
-              <div className="space-y-6 order-2 lg:order-1">
+              <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight premium-title-entrance">
                     <span className="block text-white mb-3">Klaar voor</span>
                     <span className="text-white block">
@@ -114,7 +113,7 @@ const EndingCTA = () => {
                 </div>
 
                 {/* Glassmorphic Core Strengths */}
-                <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="grid grid-cols-2 gap-4 pt-6">
                   {coreStrengths.map((item, index) => (
                     <div 
                       key={index} 
@@ -148,133 +147,102 @@ const EndingCTA = () => {
                     </div>
                   ))}
                 </div>
+
+                {/* Premium Disclaimer */}
+                <div className="pt-6 border-t border-white/10 premium-disclaimer-entrance">
+                  <p className="text-premium-silver/60 text-sm italic flex items-center">
+                    <Sparkles className="w-4 h-4 mr-2 text-premium-silver/40" />
+                    Gratis kennismaking • Concrete strategie • Geen verplichtingen
+                  </p>
+                </div>
               </div>
 
-              {/* Right Visual Element - Enhanced Brain */}
+              {/* Right Visual Element */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
-                {/* Premium AI Brain Visualization */}
+                {/* Premium AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field - Enhanced */}
-                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field-enhanced" />
+                  {/* Outer quantum field */}
+                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
-                  {/* Core visualization container - Enhanced */}
-                  <div className="relative w-64 h-64 rounded-full premium-core-container-enhanced flex items-center justify-center">
-                    {/* Central brain element - More dynamic */}
+                  {/* Core visualization container */}
+                  <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
+                    {/* Central brain element */}
                     <div className="relative z-10">
-                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse-enhanced" />
-                      
-                      {/* Brain synapses - New animated elements */}
-                      <div className="absolute inset-0">
-                        {[0, 1, 2, 3, 4, 5].map(i => (
-                          <div 
-                            key={`synapse-${i}`} 
-                            className="absolute w-0.5 h-8 premium-synapse-flash"
-                            style={{
-                              background: 'linear-gradient(0deg, transparent, #3b82f6, transparent)',
-                              transform: `rotate(${i * 60}deg)`,
-                              transformOrigin: 'center 40px',
-                              animation: `premium-synapse-fire ${2 + i * 0.5}s ease-in-out infinite`,
-                              animationDelay: `${i * 0.3}s`
-                            }} 
-                          />
-                        ))}
-                      </div>
+                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Orbiting intelligence nodes - Enhanced */}
+                    {/* Orbiting intelligence nodes */}
                     <div className="absolute inset-0">
                       {[0, 1, 2, 3].map(i => (
                         <div 
                           key={`node-${i}`} 
-                          className="absolute w-3 h-3 rounded-full premium-orbit-node-enhanced"
+                          className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
                           style={{
                             background: i % 2 === 0 ? 
                               'linear-gradient(45deg, #3b82f6, #06b6d4)' : 
                               'linear-gradient(45deg, #8b5cf6, #ec4899)',
-                            animation: `premium-orbit-enhanced ${15 + i * 3}s linear infinite`,
-                            transform: `rotate(${i * 90}deg) translateY(-${120 + i * 10}px)`,
+                            animation: `premium-orbit ${20 + i * 4}s linear infinite`,
+                            transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
                             transformOrigin: '50% 50%',
-                            boxShadow: '0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.4)'
+                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)'
                           }} 
                         />
                       ))}
                     </div>
                     
-                    {/* Neural network connections - Enhanced */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
-                      {[0, 1, 2, 3].map(i => (
+                    {/* Neural network connections */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                      {[0, 1, 2].map(i => (
                         <circle
                           key={`connection-${i}`}
                           cx="50%"
                           cy="50%"
-                          r={40 + i * 25}
+                          r={50 + i * 20}
                           fill="none"
-                          stroke="url(#neuralGradientEnhanced)"
-                          strokeWidth="2"
-                          strokeDasharray="6 12"
-                          className="premium-neural-ring-enhanced"
-                          style={{
-                            animationDelay: `${i * 0.7}s`
-                          }}
-                        />
-                      ))}
-                      
-                      {/* Enhanced neural connections */}
-                      {[0, 1, 2, 3, 4].map(i => (
-                        <line
-                          key={`neural-line-${i}`}
-                          x1="50%"
-                          y1="50%"
-                          x2={`${50 + Math.cos(i * 72) * 30}%`}
-                          y2={`${50 + Math.sin(i * 72) * 30}%`}
-                          stroke="url(#neuralLineGradient)"
+                          stroke="url(#neuralGradient)"
                           strokeWidth="1"
-                          className="premium-neural-line-pulse"
+                          strokeDasharray="4 8"
+                          className="premium-neural-ring"
                           style={{
-                            animationDelay: `${i * 0.4}s`
+                            animationDelay: `${i * 0.5}s`
                           }}
                         />
                       ))}
                       
                       <defs>
-                        <linearGradient id="neuralGradientEnhanced" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                           <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.9)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.8)" />
                           <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
-                        </linearGradient>
-                        <linearGradient id="neuralLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="rgba(139, 92, 246, 0.8)" />
-                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0.8)" />
                         </linearGradient>
                       </defs>
                     </svg>
-                    
-                    {/* Thought bubbles - New animated elements */}
-                    <div className="absolute inset-0">
-                      {[0, 1, 2].map(i => (
-                        <div 
-                          key={`thought-${i}`}
-                          className="absolute w-2 h-2 rounded-full premium-thought-bubble"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.6)',
-                            left: `${30 + i * 20}%`,
-                            top: `${20 + i * 15}%`,
-                            animation: `premium-thought-rise ${4 + i}s ease-in-out infinite`,
-                            animationDelay: `${i * 1.2}s`,
-                            boxShadow: '0 0 10px rgba(255, 255, 255, 0.5)'
-                          }}
-                        />
-                      ))}
-                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Premium Footer Section */}
+          <div className="mt-10 pt-8 border-t border-white/10 premium-footer-entrance">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
+                <p className="text-premium-silver/70 italic text-sm max-w-md">
+                  Elite AI Engineering. Exclusief voor visionairs die de toekomst vormgeven.
+                </p>
+              </div>
+              
+              <div className="text-center md:text-right">
+                <p className="text-premium-silver/50 text-sm mb-1">© 2024 Buildrs.AI</p>
+                <p className="text-premium-silver/40 text-xs italic">Designed for disruption</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Premium Animation Styles */}
+      {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-focal-glow {
@@ -314,105 +282,39 @@ const EndingCTA = () => {
             }
           }
 
-          @keyframes premium-orbit-enhanced {
+          @keyframes premium-orbit {
             0% { 
               transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
-              opacity: 0.7;
-              filter: blur(0px);
-            }
-            25% {
-              opacity: 1;
-              filter: blur(1px);
+              opacity: 0.6;
             }
             50% {
-              opacity: 0.9;
-              filter: blur(0px);
-            }
-            75% {
               opacity: 1;
-              filter: blur(0.5px);
             }
             100% { 
               transform: rotate(360deg) translateY(var(--orbit-distance)) rotate(-360deg);
-              opacity: 0.7;
-              filter: blur(0px);
+              opacity: 0.6;
             }
           }
 
-          @keyframes premium-neural-ring-enhanced {
-            0%, 100% { 
-              opacity: 0.4;
-              transform: rotate(0deg) scale(1);
-              filter: blur(1px);
-            }
-            50% { 
-              opacity: 0.8;
-              transform: rotate(180deg) scale(1.02);
-              filter: blur(0px);
-            }
-          }
-
-          @keyframes premium-neural-line-pulse {
+          @keyframes premium-neural-ring {
             0%, 100% { 
               opacity: 0.3;
-              strokeWidth: 1;
+              transform: rotate(0deg);
             }
             50% { 
-              opacity: 0.9;
-              strokeWidth: 2;
+              opacity: 0.6;
+              transform: rotate(180deg);
             }
           }
 
-          @keyframes premium-brain-pulse-enhanced {
+          @keyframes premium-brain-pulse {
             0%, 100% { 
-              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(59, 130, 246, 0.3));
+              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
               transform: scale(1);
-            }
-            25% { 
-              filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 80px rgba(139, 92, 246, 0.4));
-              transform: scale(1.03);
             }
             50% { 
-              filter: drop-shadow(0 0 50px rgba(139, 92, 246, 0.7)) drop-shadow(0 0 100px rgba(236, 72, 153, 0.3));
-              transform: scale(1.06);
-            }
-            75% { 
-              filter: drop-shadow(0 0 45px rgba(16, 185, 129, 0.5)) drop-shadow(0 0 90px rgba(59, 130, 246, 0.4));
-              transform: scale(1.02);
-            }
-          }
-
-          @keyframes premium-synapse-fire {
-            0%, 90%, 100% { 
-              opacity: 0;
-              transform: scale(1);
-            }
-            10%, 80% { 
-              opacity: 1;
-              transform: scale(1.5);
-            }
-            45% { 
-              opacity: 0.8;
-              transform: scale(2);
-            }
-          }
-
-          @keyframes premium-thought-rise {
-            0% { 
-              opacity: 0;
-              transform: translateY(0px) scale(0.5);
-            }
-            20% { 
-              opacity: 1;
-              transform: translateY(-10px) scale(1);
-            }
-            80% { 
-              opacity: 0.8;
-              transform: translateY(-40px) scale(0.8);
-            }
-            100% { 
-              opacity: 0;
-              transform: translateY(-60px) scale(0.3);
+              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.6));
+              transform: scale(1.05);
             }
           }
 
@@ -464,6 +366,21 @@ const EndingCTA = () => {
               rgba(34, 211, 238, 0.03) 100%);
             border-radius: 24px;
             pointer-events: none;
+          }
+
+          /* Premium Gradient Text */
+          .premium-gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 35%, #06b6d4 70%, #3b82f6 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: premium-gradient-shift 8s ease-in-out infinite;
+          }
+
+          @keyframes premium-gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
           }
 
           /* Premium Button */
@@ -532,53 +449,36 @@ const EndingCTA = () => {
             border: 1px solid rgba(255, 255, 255, 0.12);
           }
 
-          /* Enhanced Visual Elements */
-          .premium-quantum-field-enhanced {
+          /* Visual Elements */
+          .premium-quantum-field {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.2) 0%,
-              rgba(147, 51, 234, 0.15) 35%,
-              rgba(34, 211, 238, 0.12) 70%,
+              rgba(59, 130, 246, 0.15) 0%,
+              rgba(147, 51, 234, 0.10) 35%,
+              rgba(34, 211, 238, 0.08) 70%,
               transparent 85%);
-            filter: blur(60px);
-            animation: premium-focal-glow 12s ease-in-out infinite;
+            filter: blur(50px);
+            animation: premium-focal-glow 15s ease-in-out infinite;
           }
 
-          .premium-core-container-enhanced {
+          .premium-core-container {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.12) 0%,
-              rgba(147, 51, 234, 0.08) 50%,
+              rgba(59, 130, 246, 0.08) 0%,
+              rgba(147, 51, 234, 0.04) 50%,
               transparent 70%);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-              0 0 60px rgba(59, 130, 246, 0.3),
-              0 0 120px rgba(147, 51, 234, 0.15),
-              inset 0 0 40px rgba(255, 255, 255, 0.08);
+              0 0 40px rgba(59, 130, 246, 0.2),
+              0 0 80px rgba(147, 51, 234, 0.1),
+              inset 0 0 30px rgba(255, 255, 255, 0.05);
           }
 
-          .premium-brain-pulse-enhanced {
-            animation: premium-brain-pulse-enhanced 3s ease-in-out infinite;
+          .premium-brain-pulse {
+            animation: premium-brain-pulse 4s ease-in-out infinite;
           }
 
-          .premium-neural-ring-enhanced {
-            animation: premium-neural-ring-enhanced 15s linear infinite;
-          }
-
-          .premium-neural-line-pulse {
-            animation: premium-neural-line-pulse 2s ease-in-out infinite;
-          }
-
-          .premium-orbit-node-enhanced {
-            --orbit-distance: -120px;
-            animation: premium-orbit-enhanced 15s linear infinite;
-          }
-
-          .premium-synapse-flash {
-            animation: premium-synapse-fire 2s ease-in-out infinite;
-          }
-
-          .premium-thought-bubble {
-            animation: premium-thought-rise 4s ease-in-out infinite;
+          .premium-neural-ring {
+            animation: premium-neural-ring 20s linear infinite;
           }
 
           /* Entrance Animations */
@@ -602,6 +502,16 @@ const EndingCTA = () => {
             opacity: 0;
           }
 
+          .premium-disclaimer-entrance {
+            animation: premium-entrance-fade 1s ease-out 1s forwards;
+            opacity: 0;
+          }
+
+          .premium-footer-entrance {
+            animation: premium-entrance-fade 1s ease-out 1.2s forwards;
+            opacity: 0;
+          }
+
           /* Mobile Optimizations */
           @media (max-width: 768px) {
             .premium-glass-main-container {
@@ -609,29 +519,28 @@ const EndingCTA = () => {
               padding: 1rem;
             }
             
-            .premium-quantum-field-enhanced {
+            .premium-quantum-field {
               width: 240px;
               height: 240px;
             }
             
-            .premium-core-container-enhanced {
+            .premium-core-container {
               width: 200px;
               height: 200px;
             }
             
-            .premium-orbit-node-enhanced {
-              --orbit-distance: -80px;
+            .premium-orbit-node {
+              --orbit-distance: -60px;
             }
           }
 
           /* Reduced Motion */
           @media (prefers-reduced-motion: reduce) {
-            .premium-quantum-field-enhanced,
-            .premium-brain-pulse-enhanced,
-            .premium-neural-ring-enhanced,
-            .premium-orbit-node-enhanced,
-            .premium-synapse-flash,
-            .premium-thought-bubble {
+            .premium-quantum-field,
+            .premium-brain-pulse,
+            .premium-neural-ring,
+            .premium-orbit-node,
+            .premium-gradient-text {
               animation: none;
             }
           }
@@ -639,8 +548,7 @@ const EndingCTA = () => {
           /* Performance Optimizations */
           .premium-glass-main-container,
           .premium-strength-card,
-          .premium-cta-button,
-          .premium-core-container-enhanced {
+          .premium-cta-button {
             will-change: transform;
             backface-visibility: hidden;
             transform: translateZ(0);
