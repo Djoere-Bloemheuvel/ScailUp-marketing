@@ -55,6 +55,10 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           const isHovered = hoveredStep === step.id;
           const isCompleted = activeStep > step.id;
           
+          // Safe access to glow color with fallback
+          const glowColor = step.accentColor?.glow || 'blue-500/20';
+          const glowColorValue = glowColor.replace('/20', '');
+          
           return (
             <div
               key={step.id}
@@ -75,7 +79,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   }`}
                   style={{
                     boxShadow: isActive || isCompleted 
-                      ? `0 0 20px rgba(${step.accentColor.glow.replace('/20', '')}, 0.4), 0 0 40px rgba(${step.accentColor.glow.replace('/20', '')}, 0.2)`
+                      ? `0 0 20px rgba(${glowColorValue}, 0.4), 0 0 40px rgba(${glowColorValue}, 0.2)`
                       : undefined
                   }}
                 >
@@ -100,7 +104,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 style={{
                   transform: isActive ? 'translateY(-8px)' : isHovered ? 'translateY(-4px)' : 'translateY(0)',
                   boxShadow: isActive 
-                    ? `0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${step.accentColor.glow.replace('/20', '')}, 0.3)`
+                    ? `0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${glowColorValue}, 0.3)`
                     : undefined
                 }}
               >
