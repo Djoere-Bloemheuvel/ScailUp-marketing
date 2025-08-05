@@ -1,3 +1,4 @@
+
 import { lazy, Suspense } from 'react';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -91,15 +92,15 @@ const Index = () => {
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
+          <WhyChooseBuildrs />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
           <Approach />
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
           <WorkMethodology />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <WhyChooseBuildrs />
         </Suspense>
         
         <Suspense fallback={<LoadingSpinner />}>
