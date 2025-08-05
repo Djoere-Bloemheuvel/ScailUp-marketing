@@ -134,8 +134,8 @@ const WorkMethodology = () => {
     >
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Enhanced header with ambient backlight glow */}
-        <header className="text-left mb-20 lg:mb-24">
+        {/* Enhanced header with ambient backlight glow - now centered */}
+        <header className="text-center mb-20 lg:mb-24">
           <div className="mb-8 relative">
             {/* Multiple layered ambient glow effects */}
             <div className="absolute -inset-8 blur-3xl opacity-30">
