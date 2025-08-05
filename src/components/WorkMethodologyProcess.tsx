@@ -63,9 +63,13 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             subtle: 'blue-500/5'
           };
           
-          // Ensure glow color is properly defined before using it
-          const safeGlowColor = accentColor.glow || 'blue-500/20';
-          const glowColorValue = safeGlowColor.replace('/20', '');
+          // Create safe glow effect with proper fallback
+          const createBoxShadow = () => {
+            if (isActive || isCompleted) {
+              return '0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.3)';
+            }
+            return undefined;
+          };
           
           return (
             <div
@@ -80,14 +84,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 <div 
                   className={`relative w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                     isActive 
-                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110 shadow-lg shadow-${safeGlowColor}` 
+                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110 shadow-lg` 
                       : isCompleted 
                         ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white shadow-md`
                         : 'border-white/30 bg-transparent text-white hover:border-white/60'
                   }`}
                   style={{
-                    boxShadow: isActive || isCompleted 
-                      ? `0 0 20px rgba(${glowColorValue}, 0.4), 0 0 40px rgba(${glowColorValue}, 0.2)`
+                    boxShadow: (isActive || isCompleted) 
+                      ? '0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2)'
                       : undefined
                   }}
                 >
@@ -104,16 +108,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 ${
                   isActive 
-                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl shadow-${safeGlowColor}` 
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl` 
                     : isHovered
-                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-${safeGlowColor}`
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20`
                       : `bg-white/[0.02] border-white/10 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent`
                 } border`}
                 style={{
                   transform: isActive ? 'translateY(-8px)' : isHovered ? 'translateY(-4px)' : 'translateY(0)',
-                  boxShadow: isActive 
-                    ? `0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${glowColorValue}, 0.3)`
-                    : undefined
+                  boxShadow: createBoxShadow()
                 }}
               >
                 {/* Phase badge with subtle accent */}
@@ -170,7 +172,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
                 {/* Accent line at bottom for active cards */}
                 {isActive && (
-                  <div className={`absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-${accentColor.primary.split(' ')[0].replace('from-', '')} to-transparent opacity-60`} />
+                  <div className={`absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60`} />
                 )}
               </div>
 
