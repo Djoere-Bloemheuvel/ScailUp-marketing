@@ -1,7 +1,7 @@
+
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import CinematicBackground from './hero/CinematicBackground';
 
 const EndingCTA = () => {
   const navigate = useNavigate();
@@ -11,45 +11,9 @@ const EndingCTA = () => {
   };
 
   return (
-    <section className="relative min-h-[120vh] overflow-hidden bg-premium-black flex items-center justify-center py-20">
-      {/* Enhanced Cinematic Background with Custom Colors */}
-      <CinematicBackground hideGlassContainer={true} />
-      
+    <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
-      
-      {/* Additional Premium Background Layers - 30% dimmed */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-        {/* Central focal glow - 30% dimmed */}
-        <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-28"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.105) 0%, rgba(147, 51, 234, 0.07) 40%, rgba(34, 211, 238, 0.035) 70%, transparent 85%)',
-            filter: 'blur(120px)',
-            animation: 'premium-focal-glow 12s ease-in-out infinite'
-          }}
-        />
-        
-        {/* Particle system - 30% dimmed */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={`particle-${i}`}
-              className="absolute w-1 h-1 rounded-full opacity-42"
-              style={{
-                background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.56)' : 
-                           i % 3 === 1 ? 'rgba(147, 51, 234, 0.42)' : 
-                           'rgba(34, 211, 238, 0.49)',
-                left: `${15 + (i * 9) % 70}%`,
-                top: `${25 + (i * 11) % 50}%`,
-                animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
-                animationDelay: `${i * 0.8}s`,
-                filter: 'blur(0.5px)'
-              }}
-            />
-          ))}
-        </div>
-      </div>
 
       {/* Premium Glass Container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
@@ -89,11 +53,11 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element - 30% dimmed colors */}
+              {/* Right Visual Element */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
                 {/* Premium AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field - 30% dimmed */}
+                  {/* Outer quantum field */}
                   <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
                   {/* Core visualization container */}
@@ -103,7 +67,7 @@ const EndingCTA = () => {
                       <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Orbiting intelligence nodes - 30% dimmed */}
+                    {/* Orbiting intelligence nodes */}
                     <div className="absolute inset-0">
                       {[0, 1, 2, 3].map(i => (
                         <div 
@@ -122,7 +86,7 @@ const EndingCTA = () => {
                       ))}
                     </div>
                     
-                    {/* Neural network connections - 30% dimmed */}
+                    {/* Neural network connections */}
                     <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-21">
                       {[0, 1, 2].map(i => (
                         <circle
@@ -174,46 +138,9 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles - 30% dimmed colors */}
+      {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes premium-focal-glow {
-            0%, 100% { 
-              opacity: 0.28;
-              transform: translate(-50%, -50%) scale(1) rotate(0deg);
-              filter: blur(120px);
-            }
-            33% { 
-              opacity: 0.385;
-              transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
-              filter: blur(125px);
-            }
-            66% { 
-              opacity: 0.21;
-              transform: translate(-50%, -50%) scale(0.95) rotate(-1deg);
-              filter: blur(115px);
-            }
-          }
-
-          @keyframes premium-particle-float {
-            0%, 100% { 
-              opacity: 0.42;
-              transform: translateY(0px) translateX(0px);
-            }
-            25% { 
-              opacity: 0.7;
-              transform: translateY(-10px) translateX(5px);
-            }
-            50% { 
-              opacity: 0.28;
-              transform: translateY(-5px) translateX(-3px);
-            }
-            75% { 
-              opacity: 0.56;
-              transform: translateY(8px) translateX(7px);
-            }
-          }
-
           @keyframes premium-orbit {
             0% { 
               transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
@@ -335,7 +262,7 @@ const EndingCTA = () => {
             animation: premium-shimmer 3s ease-in-out infinite;
           }
 
-          /* Visual Elements - 30% dimmed */
+          /* Visual Elements */
           .premium-quantum-field {
             background: radial-gradient(circle,
               rgba(59, 130, 246, 0.105) 0%,
