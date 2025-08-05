@@ -77,10 +77,6 @@ const EndingCTA = () => {
                       AI transformatie?
                     </span>
                   </h1>
-                  
-                  <p className="text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance">
-                    Van strategie tot implementatie. Elite engineers leveren tastbare resultaten in 2-4 weken.
-                  </p>
                 </div>
 
                 {/* Premium CTA Button */}
