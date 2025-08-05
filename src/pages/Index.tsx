@@ -1,41 +1,122 @@
-
-import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
-import Approach from '@/components/Approach';
-import CTA from '@/components/CTA';
-import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
-import ScrollHeader from '@/components/ScrollHeader';
+import { lazy, Suspense } from 'react';
 import SEOHead from '@/components/SEOHead';
-import Services from '@/components/Services';
-import Showcase from '@/components/Showcase';
 import StructuredData from '@/components/StructuredData';
-import Target from '@/components/Target';
-import Workflow from '@/components/Workflow';
+import PerformanceMonitor from '@/components/PerformanceMonitor';
+import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
+
+// Lazy loading for better performance - keep existing imports
+const Hero = lazy(() => import('@/components/Hero'));
+const Services = lazy(() => import('@/components/Services'));
+const Approach = lazy(() => import('@/components/Approach'));
+const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
+const Showcase = lazy(() => import('@/components/Showcase'));
+const Target = lazy(() => import('@/components/Target'));
+const Workflow = lazy(() => import('@/components/Workflow'));
+const CTA = lazy(() => import('@/components/CTA'));
+const Footer = lazy(() => import('@/components/Footer'));
+
+const LoadingSpinner = () => (
+  <div className="min-h-screen bg-premium-black flex items-center justify-center">
+    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-premium-gold"></div>
+  </div>
+);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Buildrs.AI",
+  "description": "Premium AI consultancy en development services. Custom AI SaaS, automatisering en strategische AI consultancy.",
+  "url": "https://buildrs.ai",
+  "logo": "https://buildrs.ai/logo.png",
+  "sameAs": [
+    "https://linkedin.com/company/buildrs-ai"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+31-6-12345678",
+    "contactType": "customer service",
+    "availableLanguage": "Dutch"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "NL",
+    "addressLocality": "Amsterdam"
+  },
+  "service": [
+    {
+      "@type": "Service",
+      "name": "AI Automations",
+      "description": "Intelligente workflow automatisering met AI"
+    },
+    {
+      "@type": "Service", 
+      "name": "Custom AI SaaS",
+      "description": "Op maat gemaakte AI software oplossingen"
+    },
+    {
+      "@type": "Service",
+      "name": "AI Consultancy",
+      "description": "Strategische AI consultancy en implementatie"
+    },
+    {
+      "@type": "Service",
+      "name": "Autonomous AI Agents",
+      "description": "Zelfstandige AI agents voor bedrijfsprocessen"
+    }
+  ]
+};
 
 const Index = () => {
   return (
     <>
       <SEOHead
-        title="Buildrs.AI - Elite AI Engineering Studio | Custom AI SaaS & Automatisering"
-        description="Premium AI-oplossingen voor visionairs: Custom AI SaaS, intelligente automatisering en strategische AI-consultancy. Transformeer uw business met autonome AI-systemen van de hoogste kwaliteit."
-        keywords="AI automatisering, Custom AI SaaS, AI consultancy, Autonomous AI Agents, AI engineering, machine learning, Nederland, business transformation, artificial intelligence"
+        title="Buildrs.AI | Premium AI Consultancy & Development"
+        description="Premium AI consultancy en development services. Custom AI SaaS, automatisering en strategische AI consultancy. Van idee tot implementatie."
+        keywords="AI consultancy, AI development, custom AI SaaS, AI automatisering, machine learning, artificial intelligence, Netherlands"
+        canonical="/"
       />
-      <StructuredData type="organization" />
-      <StructuredData type="website" />
+      
+      <StructuredData type="organization" data={structuredData} />
+      <PerformanceMonitor />
       <AccessibilitySkipLink />
-      <div className="min-h-screen bg-premium-black">
-        <ScrollHeader />
-        <main id="main-content" role="main">
+
+      <main id="main-content" role="main" className="min-h-screen">
+        <Suspense fallback={<LoadingSpinner />}>
           <Hero />
-        <Services />
-        <Approach />
-        <Workflow />
-        <Showcase />
-        <Target />
-        <CTA />
-        </main>
-        <Footer />
-      </div>
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <Services />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <Approach />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <WorkMethodology />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <Showcase />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <Target />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <Workflow />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <CTA />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <Footer />
+        </Suspense>
+      </main>
     </>
   );
 };
