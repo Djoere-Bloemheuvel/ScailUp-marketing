@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { LucideIcon, ArrowRight } from 'lucide-react';
 
@@ -29,7 +28,7 @@ interface WorkMethodologyProcessProps {
 
 /**
  * Horizontal Process Flow Component
- * - Fixed collapsed (150px) and expanded (500px) heights
+ * - Fixed collapsed (185px) and expanded (500px) heights
  * - Smooth animations between states
  * - Interactive step cards with hover effects
  * - Progress connector between steps
@@ -148,14 +147,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with fixed heights - COLLAPSED: 150px, EXPANDED: 500px */}
+              {/* Step card with fixed heights - COLLAPSED: 185px, EXPANDED: 500px */}
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 flex flex-col overflow-hidden ${
                   isActive 
                     ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[500px]` 
                     : isHovered
-                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[150px]`
-                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent h-[150px]`
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[185px]`
+                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent h-[185px]`
                 } border`}
                 style={{
                   boxShadow: isActive 
@@ -196,19 +195,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                         <div 
                           className={`text-xs transition-all duration-200 ease-out ${
                             isHovered 
-                              ? 'opacity-100 translate-x-0' 
+                              ? 'opacity-40 translate-x-0' 
                               : 'opacity-0 translate-x-2'
                           }`}
-                          style={{ color: '#999' }}
+                          style={{ color: '#666' }}
                         >
-                          <span 
-                            className={`${isHovered ? 'underline decoration-1 underline-offset-2' : ''}`}
-                          >
+                          <span>
                             Klik voor details
                           </span>
-                          {isActive && isHovered && (
-                            <ArrowRight className="inline-block w-3 h-3 ml-1" />
-                          )}
                         </div>
                       </div>
                     </div>
