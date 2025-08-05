@@ -31,7 +31,7 @@ interface WorkMethodologyProcessProps {
  * Horizontal Process Flow Component
  * - Fixed collapsed (185px) and expanded (450px) heights
  * - Fast, responsive animations (200-250ms, ease-out)
- * - Solid black card backgrounds with soft accent glows
+ * - Glassmorphism overlay on hover
  * - Enhanced with unique accent colors per step
  */
 const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodologyProcessProps) => {
@@ -73,6 +73,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
         {steps.map((step, index) => {
           const isActive = activeStep === step.id;
           const isHovered = hoveredStep === step.id;
+          const isCompleted = activeStep > step.id;
           
           // Safe access to accent color properties with explicit fallbacks
           const accentColor = step.accentColor || {
@@ -105,88 +106,6 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           };
           
           const glowColor = getGlowColor();
-
-          // Enhanced icon container styles with solid black background and inner/outer glow
-          const getIconContainerStyles = () => {
-            const baseStyles = {
-              backgroundColor: '#000000',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-            };
-
-            if (isActive) {
-              // Active state: Enhanced inner and outer glow
-              return {
-                ...baseStyles,
-                boxShadow: [
-                  `inset 0 0 24px rgba(${glowColor}, 0.3)`, // Inner glow - enhanced spread
-                  `inset 0 0 12px rgba(${glowColor}, 0.5)`, // Inner core glow
-                  `0 0 32px rgba(${glowColor}, 0.25)`, // Outer halo - larger spread
-                  `0 0 16px rgba(${glowColor}, 0.4)`, // Outer core glow
-                  `0 4px 12px rgba(0, 0, 0, 0.4)` // Drop shadow for depth
-                ].join(', ')
-              };
-            } else if (isHovered) {
-              // Hover state: Increased glow intensity and spread
-              return {
-                ...baseStyles,
-                boxShadow: [
-                  `inset 0 0 20px rgba(${glowColor}, 0.25)`, // Inner glow - increased spread
-                  `inset 0 0 10px rgba(${glowColor}, 0.4)`, // Inner core glow
-                  `0 0 28px rgba(${glowColor}, 0.2)`, // Outer halo - increased spread
-                  `0 0 14px rgba(${glowColor}, 0.35)`, // Outer core glow
-                  `0 3px 10px rgba(0, 0, 0, 0.3)` // Drop shadow for depth
-                ].join(', ')
-              };
-            } else {
-              // Default state: Subtle inner and outer glow
-              return {
-                ...baseStyles,
-                boxShadow: [
-                  `inset 0 0 16px rgba(${glowColor}, 0.2)`, // Inner glow - subtle spread
-                  `inset 0 0 8px rgba(${glowColor}, 0.3)`, // Inner core glow
-                  `0 0 24px rgba(${glowColor}, 0.15)`, // Outer halo - subtle spread
-                  `0 0 12px rgba(${glowColor}, 0.25)`, // Outer core glow
-                  `0 2px 8px rgba(0, 0, 0, 0.25)` // Drop shadow for depth
-                ].join(', ')
-              };
-            }
-          };
-
-          // Card glow styles matching core values section
-          const getCardGlowStyles = () => {
-            if (isActive) {
-              return {
-                boxShadow: [
-                  `inset 0 0 32px rgba(${glowColor}, 0.15)`, // Inner ambient glow
-                  `inset 0 0 16px rgba(${glowColor}, 0.25)`, // Inner core glow
-                  `0 0 40px rgba(${glowColor}, 0.3)`, // Outer halo - enhanced
-                  `0 0 80px rgba(${glowColor}, 0.15)`, // Extended outer glow
-                  `0 8px 32px rgba(0, 0, 0, 0.4)` // Drop shadow for depth
-                ].join(', ')
-              };
-            } else if (isHovered) {
-              return {
-                boxShadow: [
-                  `inset 0 0 24px rgba(${glowColor}, 0.12)`, // Inner ambient glow
-                  `inset 0 0 12px rgba(${glowColor}, 0.2)`, // Inner core glow
-                  `0 0 32px rgba(${glowColor}, 0.25)`, // Outer halo - increased
-                  `0 0 64px rgba(${glowColor}, 0.12)`, // Extended outer glow
-                  `0 6px 24px rgba(0, 0, 0, 0.3)` // Drop shadow for depth
-                ].join(', ')
-              };
-            } else {
-              return {
-                boxShadow: [
-                  `inset 0 0 20px rgba(${glowColor}, 0.08)`, // Inner ambient glow - subtle
-                  `inset 0 0 10px rgba(${glowColor}, 0.15)`, // Inner core glow
-                  `0 0 24px rgba(${glowColor}, 0.18)`, // Outer halo - soft
-                  `0 0 48px rgba(${glowColor}, 0.08)`, // Extended outer glow
-                  `0 4px 16px rgba(0, 0, 0, 0.25)` // Drop shadow for depth
-                ].join(', ')
-              };
-            }
-          };
           
           return (
             <div
@@ -196,40 +115,71 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
-              {/* Step number indicator with solid black background and enhanced glow effects */}
+              {/* Step number indicator with unique accent colors */}
               <div className="flex items-center justify-center mb-6">
                 <div 
-                  className="relative w-12 h-12 rounded-full transition-all duration-200 ease-out"
-                  style={getIconContainerStyles()}
+                  className={`relative w-12 h-12 rounded-full border-2 transition-all duration-200 ease-out ${
+                    isActive 
+                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110` 
+                      : isCompleted 
+                        ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white`
+                        : `${accentColor.border} bg-gradient-to-br ${accentColor.primary} opacity-30 text-white hover:opacity-50`
+                  }`}
+                  style={{
+                    boxShadow: (isActive || isCompleted) 
+                      ? `0 0 20px rgba(${glowColor}, 0.4), 0 0 40px rgba(${glowColor}, 0.2)`
+                      : undefined
+                  }}
                 >
-                  <step.icon 
-                    className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-200 ease-out" 
-                    strokeWidth={2}
-                    style={{ 
-                      color: isActive || isHovered ? '#FFFFFF' : '#E5E7EB'
-                    }}
-                  />
+                  <step.icon className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                  
+                  {/* Enhanced glow effect for active step */}
+                  {isActive && (
+                    <div 
+                      className="absolute inset-0 rounded-full blur-lg opacity-60 animate-pulse -z-10"
+                      style={{
+                        background: `linear-gradient(135deg, rgba(${glowColor}, 0.6), rgba(${glowColor}, 0.3))`
+                      }}
+                    />
+                  )}
                 </div>
               </div>
 
-              {/* Step card with solid black background and soft glows - COLLAPSED: 185px, EXPANDED: 450px */}
+              {/* Step card with fixed heights - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
-                className={`
-                  relative p-6 rounded-2xl backdrop-blur-sm transition-all duration-200 ease-out 
-                  flex flex-col overflow-hidden border border-white/[0.08]
-                  ${isActive ? 'h-[450px]' : 'h-[185px]'}
-                `}
+                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
+                  isActive 
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[450px]` 
+                    : isHovered
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[185px] scale-[1.02]`
+                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 h-[185px]`
+                } border`}
                 style={{
-                  backgroundColor: '#000000', // Solid black background
-                  ...getCardGlowStyles()
+                  boxShadow: isActive 
+                    ? `0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${glowColor}, 0.3)`
+                    : isHovered 
+                      ? `0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(${glowColor}, 0.2)`
+                      : undefined
                 }}
               >
+                {/* Glassmorphism overlay on hover */}
+                {isHovered && !isActive && (
+                  <div 
+                    className="absolute inset-0 rounded-3xl backdrop-blur-sm border transition-all duration-200 ease-out"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(${glowColor}, 0.05))`,
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      boxShadow: `inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(${glowColor}, 0.1)`
+                    }}
+                  />
+                )}
+
                 {/* Phase badge with subtle accent */}
                 <div className="mb-4 flex-shrink-0 relative z-10">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-all duration-200 ease-out ${
                     isActive 
-                      ? `bg-gradient-to-r ${accentColor.primary} text-white border-white/20`
-                      : `bg-gradient-to-r ${accentColor.primary} opacity-60 text-white border-white/10 hover:opacity-80`
+                      ? `bg-gradient-to-r ${accentColor.primary} text-white ${accentColor.border}`
+                      : `bg-gradient-to-r ${accentColor.primary} opacity-60 text-white ${accentColor.border} hover:opacity-80`
                   }`}>
                     {step.phase}
                   </span>
@@ -275,7 +225,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   {isActive && (
                     <div className="absolute inset-0">
                       <div className="h-full overflow-y-auto pr-2 custom-scrollbar">
-                        <div className="pt-4 border-t border-white/10">
+                        <div className={`pt-4 border-t transition-colors duration-200 ${
+                          isActive ? accentColor.border : 'border-white/10'
+                        }`}>
                           <p className="text-white/60 text-sm leading-relaxed mb-6">
                             {step.description}
                           </p>
