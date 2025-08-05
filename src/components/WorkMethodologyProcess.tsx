@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LucideIcon, ArrowRight } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 interface MethodologyStep {
   id: number;
