@@ -1,3 +1,4 @@
+
 import AppleTimeline from './AppleTimeline';
 import AppleNebulaBackground from './AppleNebulaBackground';
 import HorizontalLightFlare from './HorizontalLightFlare';
@@ -5,7 +6,7 @@ import HorizontalLightFlareAnimations from './HorizontalLightFlareAnimations';
 
 const Approach = () => {
   return (
-    <section className="relative py-20 lg:py-28 pb-36 lg:pb-44 px-4 overflow-hidden bg-black">
+    <section className="relative py-20 lg:py-28 pb-32 lg:pb-40 px-4 overflow-hidden bg-black">
       {/* Include light flare animations */}
       <HorizontalLightFlareAnimations />
       
