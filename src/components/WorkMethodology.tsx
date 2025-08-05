@@ -140,16 +140,19 @@ const WorkMethodology = () => {
           {/* Hero title - Apple style with refined fonts, exact same styling as Approach */}
           <div className="mb-8">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
-              Van Visie Naar Uitvoering.
+              Van visie naar uitvoering.
             </h2>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
               <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
                 Zo brengen we de principes tot leven.
               </span>
             </h2>
           </div>
           
-          {/* Subtitle with Apple typography - removed previous subtitle */}
+          {/* Subtitle with Apple typography */}
+          <p className="text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+            Van eerste gesprek tot live deployment: dit is hoe we elke week meetbare vooruitgang boeken.
+          </p>
         </div>
 
         {/* Horizontal process flow with enhanced accent colors */}
