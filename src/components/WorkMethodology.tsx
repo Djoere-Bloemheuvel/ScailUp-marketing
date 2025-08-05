@@ -1,5 +1,6 @@
+
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Target, Zap, Users, CheckCircle, Play } from 'lucide-react';
+import { Target, Zap, Users, CheckCircle } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
 
 interface MethodologyStep {
@@ -126,10 +127,6 @@ const WorkMethodology = () => {
     setIsPlaying(false);
   };
 
-  const toggleAutoPlay = () => {
-    setIsPlaying(prev => !prev);
-  };
-
   return (
     <section 
       ref={sectionRef}
@@ -141,36 +138,15 @@ const WorkMethodology = () => {
       
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header with different styling than Approach */}
-        <header className="text-center mb-20 lg:mb-24">
-          <div className="mb-6">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
-              <span className="text-white/70 text-sm font-medium">Onze Methodologie</span>
-            </div>
-            
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-none tracking-tighter mb-6">
-              <span className="block">Van idee</span>
-              <span className="block bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                naar realiteit
-              </span>
+        {/* Simplified header matching Services section style */}
+        <header className="text-left mb-20 lg:mb-24">
+          <div className="mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+              Van visie naar uitvoering
             </h2>
-          </div>
-          
-          <p className="text-white/60 text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-8">
-            4 stappen. 4-8 weken. Gegarandeerd resultaat.
-          </p>
-
-          {/* Play controls */}
-          <div className="flex items-center justify-center space-x-4">
-            <button
-              onClick={toggleAutoPlay}
-              className="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full border border-white/20 transition-all duration-300"
-            >
-              <Play className={`w-4 h-4 mr-2 ${isPlaying ? 'animate-pulse' : ''}`} />
-              <span className="text-white text-sm font-medium">
-                {isPlaying ? 'Auto-play actief' : 'Start demo'}
-              </span>
-            </button>
+            <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif' }}>
+              Zo brengen we de principes tot leven
+            </p>
           </div>
         </header>
 
