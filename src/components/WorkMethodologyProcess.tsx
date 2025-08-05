@@ -119,7 +119,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           
           const glowColor = getGlowColor();
 
-          // Enhanced icon container styles with solid black background and full inner fill glow
+          // Enhanced icon container styles with solid black background and slightly more intense inner fill glow
           const getIconContainerStyles = () => {
             const baseStyles = {
               backgroundColor: '#000000',
@@ -128,37 +128,37 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             };
 
             if (isActive) {
-              // Active state: Full inner fill glow that covers entire circle + outer glow
+              // Active state: Slightly more intense inner fill glow that covers entire circle + outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 48px rgba(${glowColor}, 0.6)`, // Large inner glow to fill entire circle
-                  `inset 0 0 24px rgba(${glowColor}, 0.8)`, // Inner core glow for intensity
-                  `0 0 32px rgba(${glowColor}, 0.25)`, // Outer halo - larger spread
+                  `inset 0 0 50px rgba(${glowColor}, 0.65)`, // Slightly larger inner glow to fill entire circle
+                  `inset 0 0 26px rgba(${glowColor}, 0.85)`, // Slightly more intense inner core glow
+                  `0 0 32px rgba(${glowColor}, 0.25)`, // Outer halo - same spread
                   `0 0 16px rgba(${glowColor}, 0.4)`, // Outer core glow
                   `0 4px 12px rgba(0, 0, 0, 0.4)` // Drop shadow for depth
                 ].join(', ')
               };
             } else if (isHovered) {
-              // Hover state: Enhanced inner fill glow + outer glow
+              // Hover state: Slightly enhanced inner fill glow + outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 40px rgba(${glowColor}, 0.5)`, // Large inner glow to fill circle
-                  `inset 0 0 20px rgba(${glowColor}, 0.7)`, // Inner core glow
-                  `0 0 28px rgba(${glowColor}, 0.2)`, // Outer halo - increased spread
+                  `inset 0 0 42px rgba(${glowColor}, 0.55)`, // Slightly larger inner glow to fill circle
+                  `inset 0 0 22px rgba(${glowColor}, 0.75)`, // Slightly more intense inner core glow
+                  `0 0 28px rgba(${glowColor}, 0.2)`, // Outer halo - same spread
                   `0 0 14px rgba(${glowColor}, 0.35)`, // Outer core glow
                   `0 3px 10px rgba(0, 0, 0, 0.3)` // Drop shadow for depth
                 ].join(', ')
               };
             } else {
-              // Default state: Moderate inner fill glow + outer glow
+              // Default state: Slightly more intense inner fill glow + outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 32px rgba(${glowColor}, 0.4)`, // Inner glow to fill most of circle
-                  `inset 0 0 16px rgba(${glowColor}, 0.6)`, // Inner core glow
-                  `0 0 24px rgba(${glowColor}, 0.15)`, // Outer halo - subtle spread
+                  `inset 0 0 34px rgba(${glowColor}, 0.45)`, // Slightly larger inner glow to fill most of circle
+                  `inset 0 0 18px rgba(${glowColor}, 0.65)`, // Slightly more intense inner core glow
+                  `0 0 24px rgba(${glowColor}, 0.15)`, // Outer halo - same spread
                   `0 0 12px rgba(${glowColor}, 0.25)`, // Outer core glow
                   `0 2px 8px rgba(0, 0, 0, 0.25)` // Drop shadow for depth
                 ].join(', ')
@@ -166,35 +166,29 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             }
           };
 
-          // Subtle, widespread card glow with less intensity but more reach
+          // Contained card glow - slightly more intense but stays within card boundaries
           const getCardBoxShadow = () => {
             if (isActive) {
               return [
                 `0 25px 50px rgba(0, 0, 0, 0.4)`, // Main drop shadow
-                `0 0 80px rgba(${glowColor}, 0.08)`, // Very wide outer glow - subtle
-                `0 0 120px rgba(${glowColor}, 0.05)`, // Ultra-wide ambient glow
-                `inset 0 0 100px rgba(${glowColor}, 0.06)`, // Large, subtle inner glow throughout card
-                `inset 0 0 60px rgba(${glowColor}, 0.08)`, // Inner mid-range glow
-                `inset 0 0 30px rgba(${glowColor}, 0.12)`, // Inner core glow
+                `inset 0 0 110px rgba(${glowColor}, 0.08)`, // Slightly larger, contained inner glow throughout card
+                `inset 0 0 70px rgba(${glowColor}, 0.10)`, // Slightly more intense inner mid-range glow
+                `inset 0 0 35px rgba(${glowColor}, 0.14)`, // Slightly more intense inner core glow
                 `inset 0 1px 0 rgba(255, 255, 255, 0.1)` // Top highlight
               ].join(', ');
             } else if (isHovered) {
               return [
                 `0 12px 24px rgba(0, 0, 0, 0.3)`, // Main drop shadow
-                `0 0 60px rgba(${glowColor}, 0.06)`, // Wide outer glow - very subtle
-                `0 0 100px rgba(${glowColor}, 0.04)`, // Ultra-wide ambient glow
-                `inset 0 0 80px rgba(${glowColor}, 0.05)`, // Large, subtle inner glow throughout card
-                `inset 0 0 50px rgba(${glowColor}, 0.07)`, // Inner mid-range glow
-                `inset 0 0 25px rgba(${glowColor}, 0.10)`, // Inner core glow
+                `inset 0 0 90px rgba(${glowColor}, 0.07)`, // Slightly larger, contained inner glow throughout card
+                `inset 0 0 55px rgba(${glowColor}, 0.09)`, // Slightly more intense inner mid-range glow
+                `inset 0 0 28px rgba(${glowColor}, 0.12)`, // Slightly more intense inner core glow
                 `inset 0 1px 0 rgba(255, 255, 255, 0.08)` // Top highlight
               ].join(', ');
             } else {
               return [
-                `0 0 40px rgba(${glowColor}, 0.03)`, // Subtle outer glow
-                `0 0 80px rgba(${glowColor}, 0.02)`, // Very wide ambient glow
-                `inset 0 0 60px rgba(${glowColor}, 0.04)`, // Large, very subtle inner glow
-                `inset 0 0 40px rgba(${glowColor}, 0.05)`, // Inner mid-range glow
-                `inset 0 0 20px rgba(${glowColor}, 0.06)`, // Inner core glow
+                `inset 0 0 70px rgba(${glowColor}, 0.05)`, // Slightly larger, contained inner glow
+                `inset 0 0 45px rgba(${glowColor}, 0.06)`, // Slightly more intense inner mid-range glow
+                `inset 0 0 22px rgba(${glowColor}, 0.08)`, // Slightly more intense inner core glow
                 `inset 0 1px 0 rgba(255, 255, 255, 0.05)` // Top highlight
               ].join(', ');
             }
@@ -208,43 +202,43 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
-              {/* Background glow layers - positioned behind the card */}
-              <div className="absolute inset-0 pointer-events-none z-0">
-                {/* Primary glow - wide and soft */}
+              {/* Contained background glow layers - positioned behind the card but contained within boundaries */}
+              <div className="absolute inset-2 pointer-events-none z-0 overflow-hidden rounded-3xl">
+                {/* Primary glow - contained within card area */}
                 <div 
                   className="absolute inset-0 rounded-3xl transition-all duration-500 ease-out"
                   style={{
-                    background: `radial-gradient(ellipse 150% 120% at center, ${stepGlowColor}15 0%, ${stepGlowColor}08 40%, transparent 70%)`,
-                    opacity: isActive ? 0.6 : isHovered ? 0.4 : 0.25,
-                    transform: isActive ? 'scale(1.1)' : isHovered ? 'scale(1.05)' : 'scale(1)',
-                    filter: 'blur(8px)'
+                    background: `radial-gradient(ellipse 130% 100% at center, ${stepGlowColor}18 0%, ${stepGlowColor}09 40%, transparent 70%)`,
+                    opacity: isActive ? 0.65 : isHovered ? 0.45 : 0.28,
+                    transform: isActive ? 'scale(1.05)' : isHovered ? 'scale(1.02)' : 'scale(1)',
+                    filter: 'blur(6px)'
                   }}
                 />
                 
-                {/* Secondary glow - more focused */}
+                {/* Secondary glow - more focused and contained */}
                 <div 
                   className="absolute inset-4 rounded-3xl transition-all duration-400 ease-out"
                   style={{
-                    background: `radial-gradient(ellipse 120% 100% at center, ${stepGlowColor}20 0%, ${stepGlowColor}10 50%, transparent 80%)`,
-                    opacity: isActive ? 0.5 : isHovered ? 0.3 : 0.2,
-                    transform: isActive ? 'scale(1.08)' : isHovered ? 'scale(1.04)' : 'scale(1)',
-                    filter: 'blur(4px)'
+                    background: `radial-gradient(ellipse 100% 80% at center, ${stepGlowColor}22 0%, ${stepGlowColor}12 50%, transparent 80%)`,
+                    opacity: isActive ? 0.55 : isHovered ? 0.35 : 0.22,
+                    transform: isActive ? 'scale(1.04)' : isHovered ? 'scale(1.02)' : 'scale(1)',
+                    filter: 'blur(3px)'
                   }}
                 />
                 
-                {/* Accent glow - inner highlight */}
+                {/* Accent glow - inner highlight, fully contained */}
                 <div 
                   className="absolute inset-8 rounded-3xl transition-all duration-300 ease-out"
                   style={{
-                    background: `radial-gradient(ellipse 100% 80% at center, ${stepGlowColor}25 0%, ${stepGlowColor}12 40%, transparent 70%)`,
-                    opacity: isActive ? 0.4 : isHovered ? 0.25 : 0.15,
-                    transform: isActive ? 'scale(1.06)' : isHovered ? 'scale(1.03)' : 'scale(1)',
-                    filter: 'blur(2px)'
+                    background: `radial-gradient(ellipse 80% 60% at center, ${stepGlowColor}28 0%, ${stepGlowColor}15 40%, transparent 70%)`,
+                    opacity: isActive ? 0.45 : isHovered ? 0.28 : 0.18,
+                    transform: isActive ? 'scale(1.03)' : isHovered ? 'scale(1.01)' : 'scale(1)',
+                    filter: 'blur(1px)'
                   }}
                 />
               </div>
 
-              {/* Step number indicator with solid black background and enhanced glow effects */}
+              {/* Step number indicator with solid black background and slightly enhanced glow effects */}
               <div className="flex items-center justify-center mb-6 relative z-10">
                 <div 
                   className="relative w-12 h-12 rounded-full transition-all duration-200 ease-out"
@@ -260,7 +254,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with fixed heights and subtle widespread glow - COLLAPSED: 185px, EXPANDED: 450px */}
+              {/* Step card with fixed heights and contained subtle glow - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden z-10 ${
                   isActive 
@@ -280,7 +274,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                     style={{
                       background: `linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(${glowColor}, 0.05))`,
                       border: '1px solid rgba(255, 255, 255, 0.08)',
-                      boxShadow: `inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(${glowColor}, 0.1)`
+                      boxShadow: `inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(${glowColor}, 0.1)`
                     }}
                   />
                 )}
