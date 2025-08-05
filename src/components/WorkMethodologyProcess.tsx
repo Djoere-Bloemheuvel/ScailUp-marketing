@@ -72,7 +72,17 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               'from-orange-500': '249, 115, 22'
             };
             
-            const primaryColor = accentColor.primary.split(' ')[0];
+            // Add null check and ensure primaryColor is defined
+            const primaryGradient = accentColor.primary;
+            if (!primaryGradient || typeof primaryGradient !== 'string') {
+              return '59, 130, 246'; // Default blue color
+            }
+            
+            const primaryColor = primaryGradient.split(' ')[0];
+            if (!primaryColor) {
+              return '59, 130, 246'; // Default blue color
+            }
+            
             return colorMap[primaryColor] || '59, 130, 246';
           };
           
