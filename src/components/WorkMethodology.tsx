@@ -20,7 +20,6 @@ interface MethodologyStep {
     glow: string;
     border: string;
     subtle: string;
-    rgb: string;
   };
 }
 
@@ -54,8 +53,7 @@ const WorkMethodology = () => {
         primary: "from-blue-500 to-cyan-600", // Consultancy page hero color
         glow: "blue-500/20",
         border: "border-blue-500/30",
-        subtle: "blue-500/5",
-        rgb: "59, 130, 246"
+        subtle: "blue-500/5"
       }
     },
     {
@@ -73,8 +71,7 @@ const WorkMethodology = () => {
         primary: "from-purple-500 to-violet-600", // Custom AI SaaS hero color
         glow: "purple-500/20",
         border: "border-purple-500/30",
-        subtle: "purple-500/5",
-        rgb: "139, 92, 246"
+        subtle: "purple-500/5"
       }
     },
     {
@@ -92,8 +89,7 @@ const WorkMethodology = () => {
         primary: "from-emerald-400 to-teal-500", // Autonomous AI Agents hero color (mint green)
         glow: "emerald-400/20",
         border: "border-emerald-400/30",
-        subtle: "emerald-400/5",
-        rgb: "52, 211, 153"
+        subtle: "emerald-400/5"
       }
     },
     {
@@ -111,8 +107,7 @@ const WorkMethodology = () => {
         primary: "from-orange-500 to-amber-600", // New orange variant
         glow: "orange-500/20",
         border: "border-orange-500/30",
-        subtle: "orange-500/5",
-        rgb: "251, 146, 60"
+        subtle: "orange-500/5"
       }
     }
   ], []);
