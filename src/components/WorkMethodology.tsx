@@ -136,19 +136,19 @@ const WorkMethodology = () => {
       {/* Horizontal light flare at top for section separation */}
       <HorizontalLightFlare position="top" className="-top-8" />
 
-      {/* Custom ambient glow underneath the flare line - scoped to this section only - 20% MORE INTENSE */}
+      {/* Custom ambient glow underneath the flare line - scoped to this section only - 25% MORE INTENSE */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-80 pointer-events-none z-5">
         <div 
-          className="w-full h-full opacity-24"
+          className="w-full h-full opacity-25"
           style={{
             background: `radial-gradient(ellipse 100% 100% at 50% 0%, 
-              rgba(34, 211, 238, 0.85) 0%, 
-              rgba(59, 130, 246, 0.71) 30%, 
-              rgba(147, 51, 234, 0.48) 50%, 
-              rgba(34, 211, 238, 0.24) 70%, 
+              rgba(34, 211, 238, 0.9) 0%, 
+              rgba(59, 130, 246, 0.75) 30%, 
+              rgba(147, 51, 234, 0.5) 50%, 
+              rgba(34, 211, 238, 0.25) 70%, 
               transparent 100%
             )`,
-            filter: 'blur(95px)'
+            filter: 'blur(100px)'
           }}
         />
       </div>
