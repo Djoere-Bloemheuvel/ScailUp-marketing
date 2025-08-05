@@ -15,6 +15,12 @@ interface MethodologyStep {
   glowColor: string;
   duration: string;
   deliverables: string[];
+  accentColor: {
+    primary: string;
+    glow: string;
+    border: string;
+    subtle: string;
+  };
 }
 
 /**
@@ -23,13 +29,14 @@ interface MethodologyStep {
  * - Interactive process steps with hover animations
  * - Modern card-based design instead of timeline
  * - Focus on process flow rather than principles
+ * - Unique accent colors per step for enhanced visual branding
  */
 const WorkMethodology = () => {
   const [activeStep, setActiveStep] = useState<number>(1);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Methodology steps focused on practical workflow
+  // Methodology steps focused on practical workflow with unique accent colors
   const methodologySteps: MethodologyStep[] = useMemo(() => [
     {
       id: 1,
@@ -38,10 +45,16 @@ const WorkMethodology = () => {
       subtitle: "Van gesprek tot concreet plan",
       description: "We starten met een diepgaande analyse van jullie bedrijfsprocessen. Geen lange documenten, maar direct bruikbare inzichten en een helder implementatieplan.",
       icon: Target,
-      color: "from-emerald-400 to-teal-500",
-      glowColor: "emerald-400/25",
+      color: "from-emerald-400 to-teal-500", // Keep original for fallback
+      glowColor: "emerald-400/25", // Keep original for fallback
       duration: "1-2 weken",
-      deliverables: ["Strategisch plan", "Technische architectuur", "ROI projectie"]
+      deliverables: ["Strategisch plan", "Technische architectuur", "ROI projectie"],
+      accentColor: {
+        primary: "from-blue-500 to-cyan-600", // Consultancy page hero color
+        glow: "blue-500/20",
+        border: "border-blue-500/30",
+        subtle: "blue-500/5"
+      }
     },
     {
       id: 2,
@@ -50,10 +63,16 @@ const WorkMethodology = () => {
       subtitle: "Zichtbaar resultaat binnen 72 uur",
       description: "Binnen drie dagen hebben jullie een werkende proof-of-concept in handen. Zo kunnen jullie direct ervaren hoe de oplossing werkt en feedback geven.",
       icon: Zap,
-      color: "from-yellow-400 to-orange-500",
-      glowColor: "yellow-400/25",
+      color: "from-yellow-400 to-orange-500", // Keep original for fallback
+      glowColor: "yellow-400/25", // Keep original for fallback
       duration: "3 dagen",
-      deliverables: ["Werkende demo", "User interface", "Feedback sessie"]
+      deliverables: ["Werkende demo", "User interface", "Feedback sessie"],
+      accentColor: {
+        primary: "from-purple-500 to-violet-600", // Custom AI SaaS hero color
+        glow: "purple-500/20",
+        border: "border-purple-500/30",
+        subtle: "purple-500/5"
+      }
     },
     {
       id: 3,
@@ -62,10 +81,16 @@ const WorkMethodology = () => {
       subtitle: "Weekly demos, continue verbetering",
       description: "Elke week zien jullie nieuwe functionaliteiten. We bouwen stapsgewijs uit met jullie feedback, zodat het eindresultaat perfect aansluit bij jullie wensen.",
       icon: Users,
-      color: "from-blue-400 to-indigo-500",
-      glowColor: "blue-400/25",
+      color: "from-blue-400 to-indigo-500", // Keep original for fallback
+      glowColor: "blue-400/25", // Keep original for fallback
       duration: "2-4 weken",
-      deliverables: ["Weekly updates", "Live demonstraties", "Gebruikerstests"]
+      deliverables: ["Weekly updates", "Live demonstraties", "Gebruikerstests"],
+      accentColor: {
+        primary: "from-emerald-400 to-teal-500", // Autonomous AI Agents hero color (mint green)
+        glow: "emerald-400/20",
+        border: "border-emerald-400/30",
+        subtle: "emerald-400/5"
+      }
     },
     {
       id: 4,
@@ -74,10 +99,16 @@ const WorkMethodology = () => {
       subtitle: "Van test naar productie",
       description: "We gaan live en optimaliseren direct op basis van echte data. Jullie team krijgt volledige training en we blijven monitoren voor perfecte prestaties.",
       icon: CheckCircle,
-      color: "from-purple-400 to-pink-500",
-      glowColor: "purple-400/25",
+      color: "from-purple-400 to-pink-500", // Keep original for fallback
+      glowColor: "purple-400/25", // Keep original for fallback
       duration: "1-2 weken",
-      deliverables: ["Live deployment", "Team training", "Performance monitoring"]
+      deliverables: ["Live deployment", "Team training", "Performance monitoring"],
+      accentColor: {
+        primary: "from-orange-500 to-amber-600", // New orange variant
+        glow: "orange-500/20",
+        border: "border-orange-500/30",
+        subtle: "orange-500/5"
+      }
     }
   ], []);
 
@@ -145,7 +176,7 @@ const WorkMethodology = () => {
           </div>
         </header>
 
-        {/* Horizontal process flow */}
+        {/* Horizontal process flow with enhanced accent colors */}
         <WorkMethodologyProcess 
           steps={methodologySteps}
           activeStep={activeStep}
