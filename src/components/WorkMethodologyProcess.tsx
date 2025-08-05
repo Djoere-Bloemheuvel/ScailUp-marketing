@@ -106,7 +106,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           
           const glowColor = getGlowColor();
 
-          // Enhanced icon container styles with solid black background and inner/outer glow
+          // Enhanced icon container styles with solid black background and full inner fill glow
           const getIconContainerStyles = () => {
             const baseStyles = {
               backgroundColor: '#000000',
@@ -115,36 +115,36 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             };
 
             if (isActive) {
-              // Active state: Enhanced inner and outer glow
+              // Active state: Full inner fill glow that covers entire circle + outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 24px rgba(${glowColor}, 0.3)`, // Inner glow - enhanced spread
-                  `inset 0 0 12px rgba(${glowColor}, 0.5)`, // Inner core glow
+                  `inset 0 0 48px rgba(${glowColor}, 0.6)`, // Large inner glow to fill entire circle
+                  `inset 0 0 24px rgba(${glowColor}, 0.8)`, // Inner core glow for intensity
                   `0 0 32px rgba(${glowColor}, 0.25)`, // Outer halo - larger spread
                   `0 0 16px rgba(${glowColor}, 0.4)`, // Outer core glow
                   `0 4px 12px rgba(0, 0, 0, 0.4)` // Drop shadow for depth
                 ].join(', ')
               };
             } else if (isHovered) {
-              // Hover state: Increased glow intensity and spread
+              // Hover state: Enhanced inner fill glow + outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 20px rgba(${glowColor}, 0.25)`, // Inner glow - increased spread
-                  `inset 0 0 10px rgba(${glowColor}, 0.4)`, // Inner core glow
+                  `inset 0 0 40px rgba(${glowColor}, 0.5)`, // Large inner glow to fill circle
+                  `inset 0 0 20px rgba(${glowColor}, 0.7)`, // Inner core glow
                   `0 0 28px rgba(${glowColor}, 0.2)`, // Outer halo - increased spread
                   `0 0 14px rgba(${glowColor}, 0.35)`, // Outer core glow
                   `0 3px 10px rgba(0, 0, 0, 0.3)` // Drop shadow for depth
                 ].join(', ')
               };
             } else {
-              // Default state: Subtle inner and outer glow
+              // Default state: Moderate inner fill glow + outer glow
               return {
                 ...baseStyles,
                 boxShadow: [
-                  `inset 0 0 16px rgba(${glowColor}, 0.2)`, // Inner glow - subtle spread
-                  `inset 0 0 8px rgba(${glowColor}, 0.3)`, // Inner core glow
+                  `inset 0 0 32px rgba(${glowColor}, 0.4)`, // Inner glow to fill most of circle
+                  `inset 0 0 16px rgba(${glowColor}, 0.6)`, // Inner core glow
                   `0 0 24px rgba(${glowColor}, 0.15)`, // Outer halo - subtle spread
                   `0 0 12px rgba(${glowColor}, 0.25)`, // Outer core glow
                   `0 2px 8px rgba(0, 0, 0, 0.25)` // Drop shadow for depth
