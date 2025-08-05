@@ -1,12 +1,16 @@
 
 import AppleTimeline from './AppleTimeline';
 import AppleNebulaBackground from './AppleNebulaBackground';
+import ApproachVerticalTimeline from './ApproachVerticalTimeline';
 
 const Approach = () => {
   return (
     <section className="relative py-20 lg:py-28 px-4 overflow-hidden bg-black">
       {/* Enhanced nebula background */}
       <AppleNebulaBackground />
+      
+      {/* Vertical timeline with connecting lines */}
+      <ApproachVerticalTimeline />
       
       {/* Content container */}
       <div className="relative max-w-6xl mx-auto z-10">
