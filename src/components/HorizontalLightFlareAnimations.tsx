@@ -1,5 +1,3 @@
-
-
 const HorizontalLightFlareAnimations = () => {
   return (
     <style dangerouslySetInnerHTML={{
@@ -31,7 +29,7 @@ const HorizontalLightFlareAnimations = () => {
           }
         }
 
-        /* NEW: Downward aura glow animations */
+        /* Downward aura glow animations */
         @keyframes aura-pulse {
           0%, 100% {
             opacity: 0.3;
@@ -58,19 +56,23 @@ const HorizontalLightFlareAnimations = () => {
           }
         }
 
-        /* NEW: Subtle ambient glow animation */
+        /* INTENSIFIED: Much stronger ambient glow animation */
         @keyframes ambient-glow-pulse {
           0%, 100% {
-            opacity: 0.15;
+            opacity: 0.35;
             transform: translateX(-50%) scaleY(1) scaleX(1);
           }
-          33% {
-            opacity: 0.18;
-            transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
+          25% {
+            opacity: 0.45;
+            transform: translateX(-50%) scaleY(1.03) scaleX(1.02);
           }
-          66% {
-            opacity: 0.12;
-            transform: translateX(-50%) scaleY(0.98) scaleX(0.99);
+          50% {
+            opacity: 0.50;
+            transform: translateX(-50%) scaleY(1.05) scaleX(1.03);
+          }
+          75% {
+            opacity: 0.40;
+            transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
           }
         }
 
@@ -104,12 +106,12 @@ const HorizontalLightFlareAnimations = () => {
 
           @keyframes ambient-glow-pulse {
             0%, 100% {
-              opacity: 0.12;
+              opacity: 0.25;
               transform: translateX(-50%) scaleY(1) scaleX(1);
             }
             50% {
-              opacity: 0.15;
-              transform: translateX(-50%) scaleY(1.01) scaleX(1.005);
+              opacity: 0.35;
+              transform: translateX(-50%) scaleY(1.02) scaleX(1.01);
             }
           }
         }
@@ -119,4 +121,3 @@ const HorizontalLightFlareAnimations = () => {
 };
 
 export default HorizontalLightFlareAnimations;
-
