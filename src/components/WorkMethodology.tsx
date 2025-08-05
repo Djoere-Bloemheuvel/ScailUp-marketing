@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Clock, Target, Zap, Users, ArrowRight, CheckCircle } from 'lucide-react';
 import WorkMethodologyCard from './WorkMethodologyCard';
@@ -192,7 +191,6 @@ const WorkMethodology = () => {
               <WorkMethodologyCard
                 key={`methodology-${step.id}`}
                 step={step}
-                index={index}
                 isLeft={index % 2 === 0}
                 isVisible={visibleCards.has(step.id)}
                 isActive={activePhase === step.id}

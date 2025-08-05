@@ -1,4 +1,3 @@
-
 import { LucideIcon } from 'lucide-react';
 import { ChevronDown, Clock, ArrowRight } from 'lucide-react';
 
@@ -17,7 +16,6 @@ interface MethodologyStep {
 
 interface WorkMethodologyCardProps {
   step: MethodologyStep;
-  index: number;
   isLeft: boolean;
   isVisible: boolean;
   isActive: boolean;
@@ -34,7 +32,6 @@ interface WorkMethodologyCardProps {
  */
 const WorkMethodologyCard = ({ 
   step, 
-  index, 
   isLeft, 
   isVisible, 
   isActive, 
