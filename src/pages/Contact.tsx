@@ -1,7 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
-import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
 
@@ -270,17 +269,47 @@ const Contact = () => {
         }}
       />
 
-      <main id="main-content" role="main" className="min-h-screen bg-premium-black relative overflow-hidden">
+      <main id="main-content" role="main" className="min-h-screen relative overflow-hidden">
         
-        {/* MAIN SECTION - Now with Cinematic Background */}
+        {/* MAIN SECTION - With ConsultancyHero Background */}
         <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-          {/* Cinematic Background */}
-          <div className="absolute inset-0">
-            <CinematicBackground hideGlassContainer={true} />
+          
+          {/* Dark background with blue gradient - from ConsultancyHero */}
+          <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
+          
+          {/* Smooth vertical fade to black at bottom - 25% height */}
+          <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
+          
+          {/* Ambient lighting effects with blue colors */}
+          <div className="absolute top-10 left-10 md:top-20 md:left-20 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-sky-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-60 md:w-[600px] md:h-[400px] bg-cyan-500/5 rounded-full blur-3xl" />
+
+          {/* Animated particles with blue colors - with fade overlay */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Top and middle particles - full opacity */}
+            <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/60 rounded-full animate-pulse" style={{
+              animationDelay: '0s',
+              animationDuration: '4s'
+            }} />
+            <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-sky-400/40 rounded-full animate-pulse" style={{
+              animationDelay: '2s',
+              animationDuration: '3s'
+            }} />
+            <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-cyan-400/60 rounded-full animate-pulse" style={{
+              animationDelay: '3s',
+              animationDuration: '4s'
+            }} />
+            
+            {/* Bottom particles - reduced opacity for fade effect */}
+            <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-blue-400/25 rounded-full animate-pulse" style={{
+              animationDelay: '1s',
+              animationDuration: '5s'
+            }} />
           </div>
 
           {/* Main Content Grid */}
-          <div className="relative w-full max-w-7xl mx-auto">
+          <div className="relative w-full max-w-7xl mx-auto z-20">
             <div className="grid lg:grid-cols-2 gap-20 items-start">
               
               {/* Contact Information */}
@@ -374,7 +403,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Enhanced Contact Form - Glassmorphic Design - Made 20% smaller */}
+              {/* Enhanced Contact Form - Glassmorphic Design */}
               <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <div 
                   className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
