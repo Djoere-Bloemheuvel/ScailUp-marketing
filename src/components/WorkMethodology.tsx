@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, CheckCircle } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -134,18 +135,40 @@ const WorkMethodology = () => {
     >
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Enhanced header with ambient backlight glow */}
+        {/* Enhanced header with refined spotlight glow */}
         <header className="text-left mb-20 lg:mb-24">
           <div className="mb-8 relative">
-            {/* Multiple layered ambient glow effects */}
-            <div className="absolute -inset-8 blur-3xl opacity-30">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/15 to-purple-500/20 rounded-full" />
-            </div>
-            <div className="absolute -inset-12 blur-2xl opacity-20">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-cyan-300/10 to-blue-400/15 rounded-full" />
-            </div>
-            <div className="absolute -inset-6 blur-xl opacity-40">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/15 to-blue-500/10 rounded-lg" />
+            {/* Refined spotlight glow with blue-to-purple gradient */}
+            <div className="absolute -inset-16 -z-10">
+              {/* Main vertical spotlight glow */}
+              <div 
+                className="absolute inset-0 rounded-full opacity-20"
+                style={{
+                  background: 'radial-gradient(ellipse 250px 350px at center, #4484FF 0%, #AA66FF 100%)',
+                  filter: 'blur(100px)',
+                  mixBlendMode: 'screen'
+                }}
+              />
+              
+              {/* Secondary softer glow layer for depth */}
+              <div 
+                className="absolute inset-0 rounded-full opacity-15"
+                style={{
+                  background: 'radial-gradient(ellipse 180px 280px at center, #4484FF 0%, #AA66FF 100%)',
+                  filter: 'blur(80px)',
+                  mixBlendMode: 'soft-light'
+                }}
+              />
+              
+              {/* Subtle ambient layer */}
+              <div 
+                className="absolute inset-0 rounded-full opacity-10"
+                style={{
+                  background: 'linear-gradient(180deg, #4484FF 0%, #AA66FF 100%)',
+                  filter: 'blur(120px)',
+                  mixBlendMode: 'screen'
+                }}
+              />
             </div>
             
             {/* Main content with enhanced glow */}
