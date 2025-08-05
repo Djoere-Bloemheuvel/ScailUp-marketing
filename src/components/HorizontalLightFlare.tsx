@@ -1,4 +1,5 @@
 
+
 interface HorizontalLightFlareProps {
   position?: 'top' | 'bottom';
   className?: string;
@@ -11,7 +12,7 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
     : 'bottom-0';
 
   return (
-    <div className={`absolute left-1/2 transform -translate-x-1/2 w-full max-w-none h-px pointer-events-none z-30 ${positionClasses} ${className}`}>
+    <div className={`absolute left-1/2 transform -translate-x-1/2 w-[90%] max-w-none h-px pointer-events-none z-30 ${positionClasses} ${className}`}>
       {/* Primary horizontal light flare - made much wider */}
       <div className="relative w-full h-full">
         {/* Main glow strip - bluish/purple with enhanced intensity and wider spread */}
@@ -169,3 +170,4 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
 };
 
 export default HorizontalLightFlare;
+
