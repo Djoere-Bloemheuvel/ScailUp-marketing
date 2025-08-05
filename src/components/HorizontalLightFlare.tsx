@@ -96,6 +96,55 @@ const HorizontalLightFlare = ({ position = 'bottom', className = '' }: Horizonta
             animation: 'horizontal-flare-shimmer 4s ease-in-out infinite'
           }}
         />
+        
+        {/* NEW: Downward aura glow - only show when position is bottom */}
+        {position === 'bottom' && (
+          <>
+            {/* Primary downward aura */}
+            <div 
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[60%] h-32 opacity-30"
+              style={{
+                background: `radial-gradient(ellipse 100% 100% at 50% 0%, 
+                  rgba(147, 51, 234, 0.15) 0%, 
+                  rgba(34, 211, 238, 0.1) 30%, 
+                  rgba(59, 130, 246, 0.05) 60%, 
+                  transparent 100%
+                )`,
+                filter: 'blur(8px)',
+                animation: 'aura-pulse 10s ease-in-out infinite'
+              }}
+            />
+            
+            {/* Secondary wider aura */}
+            <div 
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[80%] h-40 opacity-20"
+              style={{
+                background: `radial-gradient(ellipse 100% 100% at 50% 0%, 
+                  rgba(34, 211, 238, 0.08) 0%, 
+                  rgba(147, 51, 234, 0.06) 40%, 
+                  rgba(59, 130, 246, 0.03) 70%, 
+                  transparent 100%
+                )`,
+                filter: 'blur(12px)',
+                animation: 'aura-pulse 14s ease-in-out infinite reverse'
+              }}
+            />
+            
+            {/* Subtle particle-like glow points */}
+            <div 
+              className="absolute top-4 left-1/2 transform -translate-x-1/2 w-[40%] h-24 opacity-25"
+              style={{
+                background: `radial-gradient(ellipse 100% 100% at 50% 0%, 
+                  rgba(34, 211, 238, 0.12) 0%, 
+                  rgba(147, 51, 234, 0.08) 50%, 
+                  transparent 100%
+                )`,
+                filter: 'blur(4px)',
+                animation: 'aura-shimmer 8s ease-in-out infinite'
+              }}
+            />
+          </>
+        )}
       </div>
     </div>
   );
