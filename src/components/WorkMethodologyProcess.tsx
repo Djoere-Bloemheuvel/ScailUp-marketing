@@ -115,30 +115,32 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
-              {/* Step number indicator with unique accent colors */}
+              {/* Step number indicator with dark glassmorphism design */}
               <div className="flex items-center justify-center mb-6">
                 <div 
-                  className={`relative w-12 h-12 rounded-full border-2 transition-all duration-200 ease-out ${
-                    isActive 
-                      ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110` 
-                      : isCompleted 
-                        ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white`
-                        : `${accentColor.border} bg-gradient-to-br ${accentColor.primary} opacity-30 text-white hover:opacity-50`
-                  }`}
+                  className={`relative w-12 h-12 rounded-full transition-all duration-200 ease-out backdrop-blur-md`}
                   style={{
-                    boxShadow: (isActive || isCompleted) 
-                      ? `0 0 20px rgba(${glowColor}, 0.4), 0 0 40px rgba(${glowColor}, 0.2)`
-                      : undefined
+                    backgroundColor: isActive || isCompleted 
+                      ? '#101827' 
+                      : 'rgba(16, 24, 39, 0.6)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: isActive 
+                      ? `0 0 0 2px rgba(${glowColor}, 0.3), 0 0 16px rgba(${glowColor}, 0.4), 0 0 32px rgba(${glowColor}, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
+                      : isCompleted
+                        ? `0 0 0 1px rgba(${glowColor}, 0.2), 0 0 12px rgba(${glowColor}, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08)`
+                        : isHovered
+                          ? `0 0 0 1px rgba(${glowColor}, 0.15), 0 0 8px rgba(${glowColor}, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)`
+                          : `inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 8px rgba(0, 0, 0, 0.15)`
                   }}
                 >
-                  <step.icon className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                  <step.icon className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" />
                   
-                  {/* Enhanced glow effect for active step */}
+                  {/* Ambient glow layer for active state */}
                   {isActive && (
                     <div 
-                      className="absolute inset-0 rounded-full blur-lg opacity-60 animate-pulse -z-10"
+                      className="absolute inset-0 rounded-full opacity-40 animate-pulse -z-10"
                       style={{
-                        background: `linear-gradient(135deg, rgba(${glowColor}, 0.6), rgba(${glowColor}, 0.3))`
+                        background: `radial-gradient(circle, rgba(${glowColor}, 0.3) 0%, rgba(${glowColor}, 0.1) 50%, transparent 70%)`
                       }}
                     />
                   )}
