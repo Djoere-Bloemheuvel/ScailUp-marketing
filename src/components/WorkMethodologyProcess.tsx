@@ -38,8 +38,29 @@ interface WorkMethodologyProcessProps {
 const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodologyProcessProps) => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
+  // Custom scrollbar styles as CSS string
+  const scrollbarStyles = `
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 2px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  `;
+
   return (
     <div className="relative">
+      {/* Custom scrollbar styles */}
+      <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
+
       {/* Progress connector */}
       <div className="absolute top-16 left-0 right-0 h-0.5 bg-white/10 hidden lg:block z-10">
         <div 
@@ -230,24 +251,6 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           );
         })}
       </div>
-
-      {/* Custom scrollbar styles */}
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 2px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 2px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.3);
-        }
-      `}</style>
     </div>
   );
 };
