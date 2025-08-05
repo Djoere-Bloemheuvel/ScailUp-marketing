@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, CheckCircle } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -136,20 +137,20 @@ const WorkMethodology = () => {
       {/* Horizontal light flare at top for section separation */}
       <HorizontalLightFlare position="top" className="-top-8" />
 
-      {/* Enhanced ambient glow underneath the flare line - 30% more intense with extended reach */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-96 pointer-events-none z-5">
+      {/* Balanced ambient glow underneath the flare line - moderate intensity */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] h-80 pointer-events-none z-5">
         <div 
-          className="w-full h-full opacity-20"
+          className="w-full h-full opacity-17"
           style={{
-            background: `radial-gradient(ellipse 100% 120% at 50% 0%, 
-              rgba(34, 211, 238, 1.0) 0%, 
-              rgba(59, 130, 246, 0.8) 25%, 
-              rgba(147, 51, 234, 0.6) 45%, 
-              rgba(34, 211, 238, 0.4) 65%, 
-              rgba(59, 130, 246, 0.2) 80%, 
+            background: `radial-gradient(ellipse 100% 110% at 50% 0%, 
+              rgba(34, 211, 238, 0.9) 0%, 
+              rgba(59, 130, 246, 0.7) 30%, 
+              rgba(147, 51, 234, 0.5) 50%, 
+              rgba(34, 211, 238, 0.3) 70%, 
+              rgba(59, 130, 246, 0.15) 85%, 
               transparent 100%
             )`,
-            filter: 'blur(90px)'
+            filter: 'blur(85px)'
           }}
         />
       </div>
