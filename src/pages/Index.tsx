@@ -10,11 +10,6 @@ const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
 const EndingCTA = lazy(() => import('@/components/EndingCTA'));
-const Showcase = lazy(() => import('@/components/Showcase'));
-const Target = lazy(() => import('@/components/Target'));
-const Workflow = lazy(() => import('@/components/Workflow'));
-const CTA = lazy(() => import('@/components/CTA'));
-const Footer = lazy(() => import('@/components/Footer'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-premium-black flex items-center justify-center">
@@ -100,26 +95,6 @@ const Index = () => {
         
         <Suspense fallback={<LoadingSpinner />}>
           <EndingCTA />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <Showcase />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <Target />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <Workflow />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <CTA />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <Footer />
         </Suspense>
       </main>
     </>
