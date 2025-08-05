@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, ArrowRight, CheckCircle, Play } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -103,10 +104,10 @@ const WorkMethodology = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-24 lg:py-32 px-4 overflow-hidden bg-gradient-to-b from-black via-gray-950 to-black"
+      className="relative py-24 lg:py-32 px-4 overflow-hidden bg-black"
       aria-label="Onze werk methodologie - stap voor stap proces"
     >
-      {/* Different background than Approach section */}
+      {/* Use dedicated background component only */}
       <WorkMethodologyBackground />
       
       {/* Content container */}
