@@ -12,8 +12,8 @@ const EndingCTA = () => {
 
   return (
     <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
-      {/* Smooth vertical fade from black at top - 25% height */}
-      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-30" />
+      {/* Smooth vertical fade from black at top - 25% height - moved to lower z-index */}
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
       {/* Background Effects Layer - Behind glass container */}
       <div className="absolute inset-0 z-5">
@@ -48,8 +48,8 @@ const EndingCTA = () => {
         </div>
       </div>
       
-      {/* Main Content Container with proper glassmorphism */}
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+      {/* Main Content Container with proper glassmorphism - increased z-index */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-40">
         <div className="relative">
           {/* Glass Container with restored glassmorphism effect */}
           <div className="premium-glass-container relative">
