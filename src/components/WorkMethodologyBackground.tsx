@@ -5,12 +5,80 @@
  * - Dynamic geometric patterns instead of nebula
  * - More tech-focused and process-oriented
  * - Animated grid and flowing lines
+ * - Enhanced with subtle ambient nebula clouds behind steps
  */
 const WorkMethodologyBackground = () => {
   return (
     <>
       {/* Base gradient - different from Approach */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-900" />
+      
+      {/* Enhanced ambient nebula clouds behind steps - subtle and positioned differently than Approach */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15">
+        {/* Step 1 - Discovery & Strategy - Emerald glow */}
+        <div 
+          className="absolute w-[300px] h-[300px] rounded-full blur-3xl bg-gradient-to-br from-emerald-500/8 to-teal-400/4"
+          style={{
+            top: '20%',
+            left: '8%',
+            animation: 'nebulaCloudWork 32s ease-in-out infinite',
+          }}
+        />
+        
+        {/* Step 2 - Rapid Prototype - Yellow/Orange glow */}
+        <div 
+          className="absolute w-[280px] h-[280px] rounded-full blur-3xl bg-gradient-to-br from-yellow-500/10 to-orange-400/6"
+          style={{
+            top: '15%',
+            left: '33%',
+            animation: 'nebulaCloudWork 28s ease-in-out infinite reverse',
+            animationDelay: '8s'
+          }}
+        />
+        
+        {/* Step 3 - Iterative Build - Blue glow */}
+        <div 
+          className="absolute w-[320px] h-[320px] rounded-full blur-3xl bg-gradient-to-br from-blue-500/9 to-indigo-400/5"
+          style={{
+            top: '18%',
+            left: '58%',
+            animation: 'nebulaCloudWork 35s ease-in-out infinite',
+            animationDelay: '12s'
+          }}
+        />
+        
+        {/* Step 4 - Live & Optimization - Purple glow */}
+        <div 
+          className="absolute w-[290px] h-[290px] rounded-full blur-3xl bg-gradient-to-br from-purple-500/8 to-pink-400/4"
+          style={{
+            top: '16%',
+            left: '83%',
+            animation: 'nebulaCloudWork 30s ease-in-out infinite reverse',
+            animationDelay: '15s'
+          }}
+        />
+        
+        {/* Additional subtle accent clouds for richness */}
+        <div 
+          className="absolute w-[200px] h-[200px] rounded-full blur-2xl bg-gradient-to-br from-emerald-400/6 to-blue-400/3"
+          style={{
+            bottom: '25%',
+            left: '20%',
+            animation: 'nebulaCloudWork 25s ease-in-out infinite',
+            animationDelay: '18s'
+          }}
+        />
+        
+        <div 
+          className="absolute w-[220px] h-[220px] rounded-full blur-2xl bg-gradient-to-br from-purple-400/7 to-indigo-400/4"
+          style={{
+            bottom: '20%',
+            right: '25%',
+            animation: 'nebulaCloudWork 27s ease-in-out infinite reverse',
+            animationDelay: '22s'
+          }}
+        />
+      </div>
       
       {/* Animated grid pattern */}
       <div 
@@ -100,6 +168,21 @@ const WorkMethodologyBackground = () => {
             50% { 
               transform: rotate(180deg) translateY(-20px) scale(1.1);
               opacity: 0.2;
+            }
+          }
+
+          @keyframes nebulaCloudWork {
+            0%, 100% { 
+              transform: translateY(0) translateX(0) scale(1);
+              opacity: 0.15;
+            }
+            33% { 
+              transform: translateY(-10px) translateX(5px) scale(1.03);
+              opacity: 0.08;
+            }
+            66% { 
+              transform: translateY(-18px) translateX(12px) scale(1.06);
+              opacity: 0.12;
             }
           }
         `
