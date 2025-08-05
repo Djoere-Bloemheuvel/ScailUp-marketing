@@ -1,3 +1,4 @@
+
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -89,12 +90,12 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element - 30% dimmed colors */}
+              {/* Right Visual Element - New Teal/Emerald/Cyan color scheme for orbiting nodes */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
                 {/* Premium AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field - 30% dimmed */}
-                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
+                  {/* Outer quantum field - Updated with teal/emerald gradient */}
+                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field-updated" />
                   
                   {/* Core visualization container */}
                   <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
@@ -103,26 +104,32 @@ const EndingCTA = () => {
                       <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Orbiting intelligence nodes - 30% dimmed */}
+                    {/* Orbiting intelligence nodes - Updated with teal/emerald/cyan colors */}
                     <div className="absolute inset-0">
                       {[0, 1, 2, 3].map(i => (
                         <div 
                           key={`node-${i}`} 
-                          className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
+                          className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node-updated"
                           style={{
-                            background: i % 2 === 0 ? 
-                              'linear-gradient(45deg, rgba(59, 130, 246, 0.7), rgba(6, 182, 212, 0.7))' : 
-                              'linear-gradient(45deg, rgba(139, 92, 246, 0.7), rgba(236, 72, 153, 0.7))',
+                            background: i % 3 === 0 ? 
+                              'linear-gradient(45deg, rgba(20, 184, 166, 0.8), rgba(16, 185, 129, 0.8))' : 
+                              i % 3 === 1 ?
+                              'linear-gradient(45deg, rgba(34, 211, 238, 0.8), rgba(6, 182, 212, 0.8))' :
+                              'linear-gradient(45deg, rgba(16, 185, 129, 0.8), rgba(34, 211, 238, 0.8))',
                             animation: `premium-orbit ${20 + i * 4}s linear infinite`,
                             transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
                             transformOrigin: '50% 50%',
-                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.35), 0 0 30px rgba(59, 130, 246, 0.21)'
+                            boxShadow: i % 3 === 0 ? 
+                              '0 0 15px rgba(20, 184, 166, 0.4), 0 0 30px rgba(20, 184, 166, 0.25)' :
+                              i % 3 === 1 ?
+                              '0 0 15px rgba(34, 211, 238, 0.4), 0 0 30px rgba(34, 211, 238, 0.25)' :
+                              '0 0 15px rgba(16, 185, 129, 0.4), 0 0 30px rgba(16, 185, 129, 0.25)'
                           }} 
                         />
                       ))}
                     </div>
                     
-                    {/* Neural network connections - 30% dimmed */}
+                    {/* Neural network connections - Updated with teal gradient */}
                     <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-21">
                       {[0, 1, 2].map(i => (
                         <circle
@@ -131,7 +138,7 @@ const EndingCTA = () => {
                           cy="50%"
                           r={50 + i * 20}
                           fill="none"
-                          stroke="url(#neuralGradient)"
+                          stroke="url(#neuralGradientUpdated)"
                           strokeWidth="1"
                           strokeDasharray="4 8"
                           className="premium-neural-ring"
@@ -142,10 +149,10 @@ const EndingCTA = () => {
                       ))}
                       
                       <defs>
-                        <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.56)" />
-                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                        <linearGradient id="neuralGradientUpdated" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(20, 184, 166, 0)" />
+                          <stop offset="50%" stopColor="rgba(20, 184, 166, 0.6)" />
+                          <stop offset="100%" stopColor="rgba(20, 184, 166, 0)" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -174,7 +181,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles - 30% dimmed colors */}
+      {/* Premium Animation Styles - Updated with teal/emerald colors */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-focal-glow {
@@ -245,7 +252,7 @@ const EndingCTA = () => {
               transform: scale(1);
             }
             50% { 
-              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.42));
+              filter: drop-shadow(0 0 50px rgba(20, 184, 166, 0.42));
               transform: scale(1.05);
             }
           }
@@ -335,11 +342,11 @@ const EndingCTA = () => {
             animation: premium-shimmer 3s ease-in-out infinite;
           }
 
-          /* Visual Elements - 30% dimmed */
-          .premium-quantum-field {
+          /* Updated Visual Elements - Teal/Emerald color scheme */
+          .premium-quantum-field-updated {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.105) 0%,
-              rgba(147, 51, 234, 0.07) 35%,
+              rgba(20, 184, 166, 0.105) 0%,
+              rgba(16, 185, 129, 0.07) 35%,
               rgba(34, 211, 238, 0.056) 70%,
               transparent 85%);
             filter: blur(50px);
@@ -348,14 +355,14 @@ const EndingCTA = () => {
 
           .premium-core-container {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.056) 0%,
-              rgba(147, 51, 234, 0.028) 50%,
+              rgba(20, 184, 166, 0.056) 0%,
+              rgba(16, 185, 129, 0.028) 50%,
               transparent 70%);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-              0 0 40px rgba(59, 130, 246, 0.14),
-              0 0 80px rgba(147, 51, 234, 0.07),
+              0 0 40px rgba(20, 184, 166, 0.14),
+              0 0 80px rgba(16, 185, 129, 0.07),
               inset 0 0 30px rgba(255, 255, 255, 0.05);
           }
 
@@ -400,7 +407,7 @@ const EndingCTA = () => {
               padding: 1rem;
             }
             
-            .premium-quantum-field {
+            .premium-quantum-field-updated {
               width: 240px;
               height: 240px;
             }
@@ -410,17 +417,17 @@ const EndingCTA = () => {
               height: 200px;
             }
             
-            .premium-orbit-node {
+            .premium-orbit-node-updated {
               --orbit-distance: -60px;
             }
           }
 
           /* Reduced Motion */
           @media (prefers-reduced-motion: reduce) {
-            .premium-quantum-field,
+            .premium-quantum-field-updated,
             .premium-brain-pulse,
             .premium-neural-ring,
-            .premium-orbit-node {
+            .premium-orbit-node-updated {
               animation: none;
             }
           }
