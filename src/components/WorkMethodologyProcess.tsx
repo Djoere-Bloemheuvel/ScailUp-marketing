@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon, ArrowUpRight } from 'lucide-react';
 
 interface MethodologyStep {
   id: number;
@@ -29,10 +30,8 @@ interface WorkMethodologyProcessProps {
 /**
  * Horizontal Process Flow Component
  * - Fixed collapsed (185px) and expanded (500px) heights
- * - Smooth animations between states
- * - Interactive step cards with hover effects
- * - Progress connector between steps
- * - Modern, dynamic animations
+ * - Fast, responsive animations (200-250ms, ease-out)
+ * - Glassmorphism overlay on hover
  * - Enhanced with unique accent colors per step
  */
 const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodologyProcessProps) => {
@@ -93,15 +92,14 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               'from-orange-500': '249, 115, 22'
             };
             
-            // Add null check and ensure primaryColor is defined
             const primaryGradient = accentColor.primary;
             if (!primaryGradient || typeof primaryGradient !== 'string') {
-              return '59, 130, 246'; // Default blue color
+              return '59, 130, 246';
             }
             
             const primaryColor = primaryGradient.split(' ')[0];
             if (!primaryColor) {
-              return '59, 130, 246'; // Default blue color
+              return '59, 130, 246';
             }
             
             return colorMap[primaryColor] || '59, 130, 246';
@@ -120,7 +118,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               {/* Step number indicator with unique accent colors */}
               <div className="flex items-center justify-center mb-6">
                 <div 
-                  className={`relative w-12 h-12 rounded-full border-2 transition-all duration-300 ${
+                  className={`relative w-12 h-12 rounded-full border-2 transition-all duration-200 ease-out ${
                     isActive 
                       ? `${accentColor.border} bg-gradient-to-br ${accentColor.primary} text-white scale-110` 
                       : isCompleted 
@@ -149,12 +147,12 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
               {/* Step card with fixed heights - COLLAPSED: 185px, EXPANDED: 500px */}
               <div 
-                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 flex flex-col overflow-hidden ${
+                className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
                   isActive 
                     ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[500px]` 
                     : isHovered
-                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[185px]`
-                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 hover:bg-gradient-to-br hover:from-${accentColor.subtle} hover:to-transparent h-[185px]`
+                      ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[185px] scale-[1.02]`
+                      : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 h-[185px]`
                 } border`}
                 style={{
                   boxShadow: isActive 
@@ -164,9 +162,21 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                       : undefined
                 }}
               >
+                {/* Glassmorphism overlay on hover */}
+                {isHovered && !isActive && (
+                  <div 
+                    className="absolute inset-0 rounded-3xl backdrop-blur-sm border transition-all duration-200 ease-out"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(${glowColor}, 0.05))`,
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      boxShadow: `inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(${glowColor}, 0.1)`
+                    }}
+                  />
+                )}
+
                 {/* Phase badge with subtle accent */}
-                <div className="mb-4 flex-shrink-0">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-colors duration-300 ${
+                <div className="mb-4 flex-shrink-0 relative z-10">
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-all duration-200 ease-out ${
                     isActive 
                       ? `bg-gradient-to-r ${accentColor.primary} text-white ${accentColor.border}`
                       : `bg-gradient-to-r ${accentColor.primary} opacity-60 text-white ${accentColor.border} hover:opacity-80`
@@ -176,11 +186,11 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
 
                 {/* Title and subtitle - fixed space */}
-                <div className="flex-shrink-0 mb-4">
+                <div className="flex-shrink-0 mb-4 relative z-10">
                   <h3 className="text-xl font-bold text-white mb-3 leading-tight">
                     {step.title}
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed">
+                  <p className="text-white/70 text-sm leading-snug">
                     {step.subtitle}
                   </p>
                 </div>
@@ -190,19 +200,22 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   {/* Collapsed state content with bottom-right hover text */}
                   {!isActive && (
                     <div className="absolute inset-0">
-                      {/* Bottom right hover text */}
+                      {/* Bottom right hover text with ArrowUpRight icon */}
                       <div className="absolute bottom-0 right-0 flex items-center">
                         <div 
-                          className={`text-xs transition-all duration-200 ease-out ${
+                          className={`flex items-center text-xs transition-all duration-250 ease-out ${
                             isHovered 
-                              ? 'opacity-40 translate-x-0' 
-                              : 'opacity-0 translate-x-2'
+                              ? 'opacity-60 translate-y-0' 
+                              : 'opacity-0 translate-y-1'
                           }`}
-                          style={{ color: '#666' }}
+                          style={{ color: '#9CA3AF' }}
                         >
-                          <span>
-                            Klik voor details
-                          </span>
+                          <span className="mr-1">Klik voor details</span>
+                          <ArrowUpRight 
+                            className={`w-3 h-3 transition-all duration-200 ease-out ${
+                              isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-1'
+                            }`}
+                          />
                         </div>
                       </div>
                     </div>
@@ -212,7 +225,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                   {isActive && (
                     <div className="absolute inset-0">
                       <div className="h-full overflow-y-auto pr-2 custom-scrollbar">
-                        <div className={`pt-4 border-t transition-colors duration-300 ${
+                        <div className={`pt-4 border-t transition-colors duration-200 ${
                           isActive ? accentColor.border : 'border-white/10'
                         }`}>
                           <p className="text-white/60 text-sm leading-relaxed mb-6">
@@ -221,7 +234,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                           
                           {/* Deliverables with accent color bullets */}
                           <div className="space-y-3">
-                            <h4 className="text-white/90 font-semibold text-xs uppercase tracking-wide">
+                            <h4 className="text-white/90 font-medium text-xs uppercase tracking-wider">
                               Deliverables:
                             </h4>
                             {step.deliverables.map((deliverable, idx) => (
@@ -232,7 +245,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                                     background: `linear-gradient(135deg, rgba(${glowColor}, 1), rgba(${glowColor}, 0.8))`
                                   }}
                                 />
-                                <span className="leading-relaxed">{deliverable}</span>
+                                <span className="leading-relaxed font-light">{deliverable}</span>
                               </div>
                             ))}
                           </div>
