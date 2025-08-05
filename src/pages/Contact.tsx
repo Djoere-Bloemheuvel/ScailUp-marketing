@@ -1,7 +1,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, MapPin, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import CinematicBackground from '@/components/hero/CinematicBackground';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
@@ -249,7 +249,7 @@ const Contact = () => {
     <>
       <SEOHead
         title="Contact - Buildrs.AI | AI Consultancy & Development"
-        description="Neem contact op met Buildrs.AI voor AI consultancy, custom AI SaaS development en AI automatisering. Gratis strategische verkenning van 30 minuten."
+        description="Neem contact op met Buildrs.AI voor AI consultancy, custom AI SaaS development en AI automatisering. Gratis strategische verkenning van 60 minuten."
         keywords="contact, AI consultancy, AI development, custom AI SaaS, AI automatisering, Buildrs.AI"
         canonical="/contact"
       />
@@ -294,89 +294,33 @@ const Contact = () => {
                       praten
                     </span>
                   </h1>
-                  <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-10">
-                    Een strategische verkenning van 30 minuten.
+                  <p className="text-xl md:text-2xl text-premium-silver/80 max-w-3xl leading-relaxed font-light mb-6">
+                    Een strategische verkenning van 60 minuten.
                     <br />
-                    <span className="font-bold text-white">Geen sales pitch. Wel concrete inzichten.</span>
-                    <br />
-                    <br />
-                    Wij zijn gespecialiseerd in het bouwen van AI-systemen die jouw business daadwerkelijk transformeren. Van strategie tot implementatie - wij maken AI werkend voor jouw organisatie.
+                    <span className="text-white/90">Geen sales pitch. Wel concrete inzichten.</span>
+                  </p>
+                  <p className="text-lg text-premium-silver/80 leading-relaxed mb-10 font-light">
+                    Wij zijn gespecialiseerd in het bouwen van AI-systemen die uw business daadwerkelijk transformeren. 
+                    Van strategie tot implementatie - wij maken AI werkend voor uw organisatie.
                   </p>
                 </div>
 
-                {/* Premium Glassmorphic Bullet Section */}
-                <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                  <h3 className="text-2xl font-semibold text-white font-apple mb-8">Wat krijg je?</h3>
-                  <div className="grid gap-4">
-                    {[
-                      'Een strategisch AI-gesprek van 30 minuten',
-                      'Een compact, persoonlijk rapport met aanbevelingen', 
-                      'Inzichten afgestemd op jouw organisatie en uitdagingen',
-                      'Geen salespitch – alleen inhoudelijke waarde',
-                      'Advies dat je direct kunt toepassen'
-                    ].map((benefit, index) => (
-                      <div 
-                        key={index} 
-                        className="group relative p-4 rounded-2xl transition-all duration-500 hover:scale-[1.02] transform-gpu"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.02) 100%)',
-                          backdropFilter: 'blur(20px) saturate(150%)',
-                          border: '1px solid rgba(255, 255, 255, 0.12)',
-                          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
-                        {/* Animated border glow on hover */}
-                        <div 
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out -z-10"
-                          style={{
-                            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.10))',
-                            filter: 'blur(1px)'
-                          }} 
-                        />
-                        
-                        {/* Subtle inner glow */}
-                        <div 
-                          className="absolute inset-1 rounded-2xl pointer-events-none opacity-60"
-                          style={{
-                            background: 'radial-gradient(ellipse at top, rgba(255, 255, 255, 0.06) 0%, transparent 70%)'
-                          }} 
-                        />
-                        
-                        <div className="relative flex items-start space-x-4">
-                          {/* Premium dot indicator */}
-                          <div 
-                            className="flex-shrink-0 w-2 h-2 rounded-full mt-3 transition-all duration-300 group-hover:scale-125"
-                            style={{
-                              background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)',
-                              boxShadow: '0 0 12px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
-                            }}
-                          />
-                          
-                          <p className="text-premium-silver/90 font-light leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
-                            {benefit}
-                          </p>
-                        </div>
-                        
-                        {/* Sparkle effect on hover */}
-                        <div 
-                          className="absolute top-2 right-2 w-1 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"
-                          style={{
-                            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%)',
-                            animation: 'pulse 2s ease-in-out infinite'
-                          }}
-                        />
-                      </div>
-                    ))}
+                {/* Trust Indicators */}
+                <div className="flex items-center justify-start space-x-8 mb-10 text-premium-silver/60">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="h-5 w-5" />
+                    <span className="text-sm font-medium">60 minuten gratis</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5" />
+                    <span className="text-sm font-medium">Concrete inzichten</span>
                   </div>
                 </div>
 
-                {/* Contact Details - Horizontal Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5"
-                    style={{
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
-                    }}>
-                    <div className="flex flex-col items-center text-center space-y-3">
+                {/* Contact Details - Apple Style Cards */}
+                <div className="space-y-6">
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
+                    <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
                         <Mail className="h-6 w-6 text-premium-silver" />
                       </div>
@@ -387,11 +331,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5"
-                    style={{
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
-                    }}>
-                    <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
+                    <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
                         <Phone className="h-6 w-6 text-premium-silver" />
                       </div>
@@ -402,11 +343,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5"
-                    style={{
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
-                    }}>
-                    <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="group relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 transition-all duration-500 hover:border-white/20 hover:bg-white/5">
+                    <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-premium-silver/20 to-premium-silver/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
                         <MapPin className="h-6 w-6 text-premium-silver" />
                       </div>
@@ -417,10 +355,29 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Benefits List */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-white mb-6">Wat krijgt u?</h3>
+                  <div className="space-y-4">
+                    {[
+                      'Gratis strategische verkenning van 60 minuten',
+                      'Concrete inzichten over uw AI-mogelijkheden', 
+                      'Maatwerkvoorstel op basis van uw uitdagingen',
+                      'Geen sales pitch - alleen waardevolle inzichten',
+                      'Direct implementeerbare aanbevelingen'
+                    ].map((benefit, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <CheckCircle className="h-5 w-5 text-premium-silver flex-shrink-0 mt-0.5" />
+                        <span className="text-premium-silver/80 font-light leading-relaxed">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              {/* Enhanced Contact Form - Glassmorphic Design */}
-              <div className="relative animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              {/* Enhanced Contact Form - Glassmorphic Design - Made 20% smaller */}
+              <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <div 
                   className="relative rounded-[20px] p-6 md:p-8 overflow-hidden group transition-all duration-700 ease-out hover:scale-[1.01] transform-gpu"
                   style={{
@@ -454,7 +411,7 @@ const Contact = () => {
                     <>
                       <div className="relative z-10">
                         <h3 className="text-xl md:text-2xl font-bold text-white mb-6 font-apple">
-                          Start jouw AI-verkenning
+                          Start uw AI-verkenning
                         </h3>
                         
                         <form 
@@ -476,7 +433,7 @@ const Contact = () => {
                             </div>
                           )}
 
-                          {/* Form Fields */}
+                          {/* Form Fields - Made smaller */}
                           <div className="space-y-5">
                             {/* Name field */}
                             <div className="space-y-2">
@@ -505,7 +462,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Jouw volledige naam"
+                                placeholder="Uw volledige naam"
                                 aria-required="true"
                                 aria-invalid={errors.naam ? 'true' : 'false'}
                                 aria-describedby={errors.naam ? 'naam-error' : undefined}
@@ -547,7 +504,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="jouw@email.nl"
+                                placeholder="uw@email.nl"
                                 aria-required="true"
                                 aria-invalid={errors.email ? 'true' : 'false'}
                                 aria-describedby={errors.email ? 'email-error' : undefined}
@@ -589,7 +546,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Jouw bedrijfsnaam"
+                                placeholder="Uw bedrijfsnaam"
                                 aria-required="true"
                                 aria-invalid={errors.bedrijf ? 'true' : 'false'}
                                 aria-describedby={errors.bedrijf ? 'bedrijf-error' : undefined}
@@ -651,7 +608,7 @@ const Contact = () => {
                                 className="block text-sm font-medium text-white/90 mb-2"
                                 id="bericht-label"
                               >
-                                Jouw uitdagingen en doelen *
+                                Uw uitdagingen en doelen *
                               </label>
                               <textarea
                                 id="bericht"
@@ -671,7 +628,7 @@ const Contact = () => {
                                     ? '0 0 0 1px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)' 
                                     : '0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.1)'
                                 }}
-                                placeholder="Vertel ons over jouw AI-uitdagingen, doelen en wat je hoopt te bereiken..."
+                                placeholder="Vertel ons over uw AI-uitdagingen, doelen en wat u hoopt te bereiken..."
                                 aria-required="true"
                                 aria-invalid={errors.bericht ? 'true' : 'false'}
                                 aria-describedby={errors.bericht ? 'bericht-error' : 'bericht-help'}
@@ -679,7 +636,7 @@ const Contact = () => {
                                 spellCheck="true"
                               />
                               <div id="bericht-help" className="text-xs text-white/50 flex justify-between mt-2">
-                                <span>Vertel ons over jouw AI-uitdagingen en doelen (10-2000 tekens)</span>
+                                <span>Vertel ons over uw AI-uitdagingen en doelen (10-2000 tekens)</span>
                                 <span aria-live="polite">{formData.bericht?.length || 0}/2000</span>
                               </div>
                               {errors.bericht && (
@@ -701,12 +658,12 @@ const Contact = () => {
                             }}
                           >
                             <p>
-                              🔒 <strong>Privacy gegarandeerd:</strong> Jouw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
-                              Door dit formulier te versturen ga je akkoord met onze verwerking van jouw contactgegevens voor het beantwoorden van jouw vraag.
+                              🔒 <strong>Privacy gegarandeerd:</strong> Uw gegevens worden veilig verwerkt en nooit gedeeld met derden. 
+                              Door dit formulier te versturen gaat u akkoord met onze verwerking van uw contactgegevens voor het beantwoorden van uw vraag.
                             </p>
                           </div>
 
-                          {/* Enhanced Submit button */}
+                          {/* Enhanced Submit button - Smaller */}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
@@ -724,7 +681,7 @@ const Contact = () => {
                                 </>
                               ) : (
                                 <>
-                                  Plan mijn AI Impactscan
+                                  Start uw AI-verkenning
                                   <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                                 </>
                               )}
@@ -774,13 +731,13 @@ const Contact = () => {
                       </div>
 
                       <h3 className="text-xl font-bold text-white mb-3 font-apple">
-                        Bedankt voor jouw bericht!
+                        Bedankt voor uw bericht!
                       </h3>
                       <p className="text-base text-premium-silver/80 mb-4 font-light">
-                        We nemen binnen 24 uur contact met je op om jouw AI-mogelijkheden te bespreken.
+                        We nemen binnen 24 uur contact met u op om uw AI-mogelijkheden te bespreken.
                       </p>
                       <p className="text-sm text-premium-silver/60">
-                        Je ontvangt ook een bevestiging per e-mail.
+                        U ontvangt ook een bevestiging per e-mail.
                       </p>
                     </div>
                   )}
