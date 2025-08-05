@@ -274,20 +274,13 @@ const Contact = () => {
         {/* MAIN SECTION - With ConsultancyHero Background */}
         <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
           
-          {/* Dark background with blue gradient - from ConsultancyHero */}
           <div className="absolute inset-0 bg-gradient-to-br from-premium-black via-blue-950/20 to-premium-black" />
-          
-          {/* Smooth vertical fade to black at bottom - 25% height */}
           <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
-          
-          {/* Ambient lighting effects with blue colors */}
           <div className="absolute top-10 left-10 md:top-20 md:left-20 w-48 h-48 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-sky-500/10 rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-60 md:w-[600px] md:h-[400px] bg-cyan-500/5 rounded-full blur-3xl" />
 
-          {/* Animated particles with blue colors - with fade overlay */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Top and middle particles - full opacity */}
             <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/60 rounded-full animate-pulse" style={{
               animationDelay: '0s',
               animationDuration: '4s'
@@ -300,8 +293,6 @@ const Contact = () => {
               animationDelay: '3s',
               animationDuration: '4s'
             }} />
-            
-            {/* Bottom particles - reduced opacity for fade effect */}
             <div className="absolute bottom-1/3 left-2/3 w-1 h-1 bg-blue-400/25 rounded-full animate-pulse" style={{
               animationDelay: '1s',
               animationDuration: '5s'
@@ -382,25 +373,6 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Benefits List */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white mb-6">Wat krijg je?</h3>
-                  <div className="space-y-4">
-                    {[
-                      'Gratis strategische verkenning van 30 minuten',
-                      'Concrete inzichten over jouw AI-mogelijkheden', 
-                      'Maatwerkvoorstel op basis van jouw uitdagingen',
-                      'Geen sales pitch - alleen waardevolle inzichten',
-                      'Direct implementeerbare aanbevelingen'
-                    ].map((benefit, index) => (
-                      <div key={index} className="flex items-start space-x-3">
-                        <CheckCircle className="h-5 w-5 text-premium-silver flex-shrink-0 mt-0.5" />
-                        <span className="text-premium-silver/80 font-light leading-relaxed">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Enhanced Contact Form - Glassmorphic Design */}
@@ -415,7 +387,6 @@ const Contact = () => {
                   }}
                 >
                   
-                  {/* Animated Border Glow - Changed to blue */}
                   <div 
                     className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
                     style={{
@@ -425,7 +396,6 @@ const Contact = () => {
                     }} 
                   />
 
-                  {/* Subtle Inner Glow - Changed to blue */}
                   <div 
                     className="absolute inset-1 rounded-[19px] pointer-events-none"
                     style={{
@@ -448,7 +418,6 @@ const Contact = () => {
                           role="form"
                           aria-label="Contact formulier"
                         >
-                          {/* Form-level error message */}
                           {errors.submit && (
                             <div 
                               role="alert" 
@@ -460,9 +429,7 @@ const Contact = () => {
                             </div>
                           )}
 
-                          {/* Form Fields - Made smaller */}
                           <div className="space-y-5">
-                            {/* Name field */}
                             <div className="space-y-2">
                               <label 
                                 htmlFor="naam" 
@@ -504,7 +471,6 @@ const Contact = () => {
                               )}
                             </div>
 
-                            {/* Email field */}
                             <div className="space-y-2">
                               <label 
                                 htmlFor="email" 
@@ -546,7 +512,6 @@ const Contact = () => {
                               )}
                             </div>
 
-                            {/* Company field */}
                             <div className="space-y-2">
                               <label 
                                 htmlFor="bedrijf" 
@@ -588,7 +553,6 @@ const Contact = () => {
                               )}
                             </div>
 
-                            {/* Phone field */}
                             <div className="space-y-2">
                               <label 
                                 htmlFor="telefoon" 
@@ -628,7 +592,6 @@ const Contact = () => {
                               )}
                             </div>
 
-                            {/* Message field */}
                             <div className="space-y-2">
                               <label 
                                 htmlFor="bericht" 
@@ -675,7 +638,6 @@ const Contact = () => {
                             </div>
                           </div>
 
-                          {/* Privacy notice */}
                           <div 
                             className="text-xs text-white/60 rounded-2xl p-3 border transition-all duration-300"
                             style={{
@@ -690,7 +652,6 @@ const Contact = () => {
                             </p>
                           </div>
 
-                          {/* Enhanced Submit button - Smaller */}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
@@ -714,10 +675,8 @@ const Contact = () => {
                               )}
                             </span>
                             
-                            {/* Enhanced shimmer effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out" aria-hidden="true" />
                             
-                            {/* Hover glow effect - Changed to blue */}
                             <div 
                               className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
                               style={{
@@ -732,7 +691,6 @@ const Contact = () => {
                       </div>
                     </>
                   ) : (
-                    /* Success message - Enhanced Glass Style */
                     <div 
                       className="text-center"
                       role="status"
