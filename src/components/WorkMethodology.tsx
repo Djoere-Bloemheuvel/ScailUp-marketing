@@ -181,32 +181,6 @@ const WorkMethodology = () => {
           activeStep={activeStep}
           onStepSelect={handleStepSelect}
         />
-
-        {/* Bottom statistics */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">72h</div>
-            <div className="text-white/60">Eerste prototype</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">100%</div>
-            <div className="text-white/60">Tevredenheidsgarantie</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2">24/7</div>
-            <div className="text-white/60">Support na oplevering</div>
-          </div>
-        </div>
-
-        {/* CTA different from Approach */}
-        <div className="text-center mt-16">
-          <button
-            className="group inline-flex items-center px-8 py-4 text-lg font-semibold text-black rounded-2xl transition-all duration-300 hover:scale-105 transform bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-300 hover:to-blue-400"
-          >
-            Start Jouw Project Nu
-            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
-        </div>
       </div>
 
       {/* Gradient fade to black effect at bottom */}
