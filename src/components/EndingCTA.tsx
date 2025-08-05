@@ -1,4 +1,3 @@
-
 import { ArrowRight, Brain, Zap, Target, Users, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -20,14 +19,14 @@ const EndingCTA = () => {
     },
     {
       icon: Zap,
-      title: "2-4 weken levering",
+      title: "2-4 weken levering", 
       iconColor: "text-emerald-400",
       glowColor: "rgba(16, 185, 129, 0.2)"
     },
     {
       icon: Target,
       title: "Strategisch meedenken",
-      iconColor: "text-purple-400",
+      iconColor: "text-purple-400", 
       glowColor: "rgba(147, 51, 234, 0.2)"
     },
     {
@@ -39,7 +38,7 @@ const EndingCTA = () => {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-premium-black flex items-center justify-center py-20">
+    <section className="relative min-h-[80vh] overflow-hidden bg-premium-black flex items-center justify-center py-12">
       {/* Enhanced Cinematic Background with Custom Colors */}
       <CinematicBackground hideGlassContainer={true} />
       
@@ -47,7 +46,7 @@ const EndingCTA = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         {/* Central focal glow */}
         <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-40"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-40"
           style={{
             background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
             filter: 'blur(120px)',
@@ -57,7 +56,7 @@ const EndingCTA = () => {
         
         {/* Particle system */}
         <div className="absolute inset-0">
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={`particle-${i}`}
               className="absolute w-1 h-1 rounded-full opacity-60"
@@ -65,8 +64,8 @@ const EndingCTA = () => {
                 background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
                            i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
                            'rgba(34, 211, 238, 0.7)',
-                left: `${15 + (i * 7) % 70}%`,
-                top: `${20 + (i * 11) % 60}%`,
+                left: `${15 + (i * 9) % 70}%`,
+                top: `${25 + (i * 11) % 50}%`,
                 animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
                 animationDelay: `${i * 0.8}s`,
                 filter: 'blur(0.5px)'
@@ -77,44 +76,44 @@ const EndingCTA = () => {
       </div>
 
       {/* Premium Glass Container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
           {/* Main Glass Container */}
           <div className="premium-glass-main-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-16 lg:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12 lg:py-16">
               {/* Left Content */}
-              <div className="space-y-10 order-2 lg:order-1">
+              <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
-                <div className="space-y-8">
-                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight premium-title-entrance">
-                    <span className="block text-white mb-4">Klaar voor</span>
-                    <span className="premium-gradient-text block">
+                <div className="space-y-6">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight premium-title-entrance">
+                    <span className="block text-white mb-3">Klaar voor</span>
+                    <span className="text-white block">
                       AI transformatie?
                     </span>
                   </h1>
                   
-                  <p className="text-xl md:text-2xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance">
+                  <p className="text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance">
                     Van strategie tot implementatie. Elite engineers leveren tastbare resultaten in 2-4 weken.
                   </p>
                 </div>
 
                 {/* Premium CTA Button */}
-                <div className="pt-6 premium-button-entrance">
+                <div className="pt-4 premium-button-entrance">
                   <Button 
                     onClick={handleContactClick}
                     size="lg" 
                     className="premium-cta-button group relative overflow-hidden"
                   >
                     <div className="premium-button-shimmer" />
-                    <div className="relative z-10 flex items-center px-8 py-4">
+                    <div className="relative z-10 flex items-center px-6 py-3">
                       <span className="text-lg font-semibold text-black">Start het gesprek</span>
-                      <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform duration-500" />
+                      <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 transition-transform duration-500" />
                     </div>
                   </Button>
                 </div>
 
                 {/* Glassmorphic Core Strengths */}
-                <div className="grid grid-cols-2 gap-6 pt-8">
+                <div className="grid grid-cols-2 gap-4 pt-6">
                   {coreStrengths.map((item, index) => (
                     <div 
                       key={index} 
@@ -123,16 +122,16 @@ const EndingCTA = () => {
                         animationDelay: `${0.8 + index * 0.15}s`
                       }}
                     >
-                      <div className="flex items-center space-x-4 relative z-10">
+                      <div className="flex items-center space-x-3 relative z-10">
                         <div 
-                          className="w-10 h-10 rounded-xl premium-icon-container flex items-center justify-center group-hover:scale-110 transition-all duration-500"
+                          className="w-8 h-8 rounded-lg premium-icon-container flex items-center justify-center group-hover:scale-110 transition-all duration-500"
                           style={{
                             boxShadow: `0 0 20px ${item.glowColor}, inset 0 1px 0 rgba(255, 255, 255, 0.1)`
                           }}
                         >
-                          <item.icon className={`w-5 h-5 ${item.iconColor} drop-shadow-lg`} />
+                          <item.icon className={`w-4 h-4 ${item.iconColor} drop-shadow-lg`} />
                         </div>
-                        <span className="text-premium-silver/80 font-medium tracking-wide group-hover:text-white transition-colors duration-300">
+                        <span className="text-premium-silver/80 font-medium tracking-wide group-hover:text-white transition-colors duration-300 text-sm">
                           {item.title}
                         </span>
                       </div>
@@ -150,7 +149,7 @@ const EndingCTA = () => {
                 </div>
 
                 {/* Premium Disclaimer */}
-                <div className="pt-8 border-t border-white/10 premium-disclaimer-entrance">
+                <div className="pt-6 border-t border-white/10 premium-disclaimer-entrance">
                   <p className="text-premium-silver/60 text-sm italic flex items-center">
                     <Sparkles className="w-4 h-4 mr-2 text-premium-silver/40" />
                     Gratis kennismaking • Concrete strategie • Geen verplichtingen
@@ -163,27 +162,27 @@ const EndingCTA = () => {
                 {/* Premium AI Visualization */}
                 <div className="relative">
                   {/* Outer quantum field */}
-                  <div className="absolute inset-0 w-96 h-96 rounded-full premium-quantum-field" />
+                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
                   {/* Core visualization container */}
-                  <div className="relative w-80 h-80 rounded-full premium-core-container flex items-center justify-center">
+                  <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
                     {/* Central brain element */}
                     <div className="relative z-10">
-                      <Brain className="w-28 h-28 text-white/90 premium-brain-pulse" />
+                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
                     {/* Orbiting intelligence nodes */}
                     <div className="absolute inset-0">
-                      {[0, 1, 2, 3, 4].map(i => (
+                      {[0, 1, 2, 3].map(i => (
                         <div 
                           key={`node-${i}`} 
-                          className="absolute w-3 h-3 rounded-full premium-orbit-node"
+                          className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
                           style={{
                             background: i % 2 === 0 ? 
                               'linear-gradient(45deg, #3b82f6, #06b6d4)' : 
                               'linear-gradient(45deg, #8b5cf6, #ec4899)',
                             animation: `premium-orbit ${20 + i * 4}s linear infinite`,
-                            transform: `rotate(${i * 72}deg) translateY(-${140 + i * 10}px)`,
+                            transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
                             transformOrigin: '50% 50%',
                             boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)'
                           }} 
@@ -193,12 +192,12 @@ const EndingCTA = () => {
                     
                     {/* Neural network connections */}
                     <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
-                      {[0, 1, 2, 3].map(i => (
+                      {[0, 1, 2].map(i => (
                         <circle
                           key={`connection-${i}`}
                           cx="50%"
                           cy="50%"
-                          r={60 + i * 25}
+                          r={50 + i * 20}
                           fill="none"
                           stroke="url(#neuralGradient)"
                           strokeWidth="1"
@@ -225,17 +224,17 @@ const EndingCTA = () => {
           </div>
 
           {/* Premium Footer Section */}
-          <div className="mt-16 pt-12 border-t border-white/10 premium-footer-entrance">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="mt-10 pt-8 border-t border-white/10 premium-footer-entrance">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">Buildrs.AI</h3>
+                <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
                 <p className="text-premium-silver/70 italic text-sm max-w-md">
                   Elite AI Engineering. Exclusief voor visionairs die de toekomst vormgeven.
                 </p>
               </div>
               
               <div className="text-center md:text-right">
-                <p className="text-premium-silver/50 text-sm mb-2">© 2024 Buildrs.AI</p>
+                <p className="text-premium-silver/50 text-sm mb-1">© 2024 Buildrs.AI</p>
                 <p className="text-premium-silver/40 text-xs italic">Designed for disruption</p>
               </div>
             </div>
@@ -345,14 +344,14 @@ const EndingCTA = () => {
               rgba(255, 255, 255, 0.05) 100%);
             backdrop-filter: blur(40px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 32px;
+            border-radius: 24px;
             box-shadow: 
-              0 32px 64px rgba(0, 0, 0, 0.4),
-              0 16px 32px rgba(59, 130, 246, 0.1),
-              0 8px 16px rgba(147, 51, 234, 0.08),
+              0 24px 48px rgba(0, 0, 0, 0.4),
+              0 12px 24px rgba(59, 130, 246, 0.1),
+              0 6px 12px rgba(147, 51, 234, 0.08),
               inset 0 1px 0 rgba(255, 255, 255, 0.15),
               inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-            padding: 2rem;
+            padding: 1.5rem;
             position: relative;
             overflow: hidden;
           }
@@ -365,7 +364,7 @@ const EndingCTA = () => {
               rgba(59, 130, 246, 0.03) 0%,
               rgba(147, 51, 234, 0.02) 50%,
               rgba(34, 211, 238, 0.03) 100%);
-            border-radius: 32px;
+            border-radius: 24px;
             pointer-events: none;
           }
 
@@ -388,10 +387,10 @@ const EndingCTA = () => {
           .premium-cta-button {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
+            border-radius: 12px;
             box-shadow: 
-              0 8px 32px rgba(0, 0, 0, 0.3),
-              0 4px 16px rgba(59, 130, 246, 0.2),
+              0 6px 24px rgba(0, 0, 0, 0.3),
+              0 3px 12px rgba(59, 130, 246, 0.2),
               inset 0 1px 0 rgba(255, 255, 255, 0.8),
               inset 0 -1px 0 rgba(0, 0, 0, 0.1);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -399,11 +398,11 @@ const EndingCTA = () => {
           }
 
           .premium-cta-button:hover {
-            transform: translateY(-4px) scale(1.02);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 
-              0 16px 48px rgba(0, 0, 0, 0.4),
-              0 8px 24px rgba(59, 130, 246, 0.3),
-              0 4px 12px rgba(147, 51, 234, 0.2);
+              0 12px 36px rgba(0, 0, 0, 0.4),
+              0 6px 18px rgba(59, 130, 246, 0.3),
+              0 3px 9px rgba(147, 51, 234, 0.2);
           }
 
           .premium-button-shimmer {
@@ -426,8 +425,8 @@ const EndingCTA = () => {
               rgba(255, 255, 255, 0.02) 100%);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 1rem;
+            border-radius: 10px;
+            padding: 0.75rem;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -436,7 +435,7 @@ const EndingCTA = () => {
           }
 
           .premium-strength-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             border-color: rgba(255, 255, 255, 0.15);
             background: linear-gradient(135deg,
               rgba(255, 255, 255, 0.10) 0%,
@@ -457,7 +456,7 @@ const EndingCTA = () => {
               rgba(147, 51, 234, 0.10) 35%,
               rgba(34, 211, 238, 0.08) 70%,
               transparent 85%);
-            filter: blur(60px);
+            filter: blur(50px);
             animation: premium-focal-glow 15s ease-in-out infinite;
           }
 
@@ -469,9 +468,9 @@ const EndingCTA = () => {
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-              0 0 60px rgba(59, 130, 246, 0.2),
-              0 0 120px rgba(147, 51, 234, 0.1),
-              inset 0 0 40px rgba(255, 255, 255, 0.05);
+              0 0 40px rgba(59, 130, 246, 0.2),
+              0 0 80px rgba(147, 51, 234, 0.1),
+              inset 0 0 30px rgba(255, 255, 255, 0.05);
           }
 
           .premium-brain-pulse {
@@ -516,22 +515,22 @@ const EndingCTA = () => {
           /* Mobile Optimizations */
           @media (max-width: 768px) {
             .premium-glass-main-container {
-              border-radius: 24px;
-              padding: 1.5rem;
+              border-radius: 20px;
+              padding: 1rem;
             }
             
             .premium-quantum-field {
-              width: 300px;
-              height: 300px;
+              width: 240px;
+              height: 240px;
             }
             
             .premium-core-container {
-              width: 250px;
-              height: 250px;
+              width: 200px;
+              height: 200px;
             }
             
             .premium-orbit-node {
-              --orbit-distance: -80px;
+              --orbit-distance: -60px;
             }
           }
 
