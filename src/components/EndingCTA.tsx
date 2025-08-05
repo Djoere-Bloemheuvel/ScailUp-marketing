@@ -1,3 +1,4 @@
+
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -88,6 +89,52 @@ const EndingCTA = () => {
             filter: 'blur(45px)',
             animationDuration: '16s',
             animationDelay: '-8s'
+          }}
+        />
+      </div>
+
+      {/* NEW: Bright Blue Ambient Orb - Positioned behind glass container */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 5 }}>
+        {/* Core bright blue orb - centered behind glass container */}
+        <div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full opacity-80 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.6) 20%, rgba(29, 78, 216, 0.4) 40%, rgba(59, 130, 246, 0.25) 60%, rgba(34, 211, 238, 0.15) 75%, rgba(59, 130, 246, 0.08) 85%, transparent 95%)',
+            filter: 'blur(120px)',
+            animationDuration: '8s'
+          }}
+        />
+        
+        {/* Inner intense core */}
+        <div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full opacity-90 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 1) 0%, rgba(37, 99, 235, 0.8) 25%, rgba(29, 78, 216, 0.6) 45%, rgba(59, 130, 246, 0.4) 65%, rgba(34, 211, 238, 0.2) 80%, transparent 90%)',
+            filter: 'blur(80px)',
+            animationDuration: '6s',
+            animationDelay: '-2s'
+          }}
+        />
+        
+        {/* Radiating light rays */}
+        <div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[25rem] h-[25rem] rounded-full opacity-95 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 1) 0%, rgba(37, 99, 235, 0.9) 30%, rgba(29, 78, 216, 0.7) 50%, rgba(59, 130, 246, 0.5) 70%, rgba(34, 211, 238, 0.3) 85%, transparent 95%)',
+            filter: 'blur(60px)',
+            animationDuration: '4s',
+            animationDelay: '-1s'
+          }}
+        />
+        
+        {/* Outer glow expansion */}
+        <div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80rem] h-[80rem] rounded-full opacity-60 animate-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(37, 99, 235, 0.4) 15%, rgba(29, 78, 216, 0.25) 30%, rgba(59, 130, 246, 0.15) 50%, rgba(34, 211, 238, 0.08) 70%, rgba(59, 130, 246, 0.04) 85%, transparent 95%)',
+            filter: 'blur(140px)',
+            animationDuration: '10s',
+            animationDelay: '-3s'
           }}
         />
       </div>
