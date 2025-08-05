@@ -133,6 +133,12 @@ const WorkMethodology = () => {
       className="relative py-24 lg:py-32 px-4 overflow-hidden bg-black"
       aria-label="Onze werk methodologie - stap voor stap proces"
     >
+      {/* Subtle ambient glow at top for seamless transition from Approach */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-32 pointer-events-none z-5">
+        <div className="w-full h-full bg-gradient-to-b from-transparent via-cyan-400/8 to-transparent blur-[60px] opacity-60" />
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-purple-500/5 to-transparent blur-[80px] opacity-40" />
+      </div>
+
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Header styled exactly like Approach section */}

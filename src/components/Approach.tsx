@@ -35,6 +35,12 @@ const Approach = () => {
 
         {/* Removed bottom CTA section */}
       </div>
+
+      {/* Subtle ambient glow at bottom for seamless transition to WorkMethodology */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-32 pointer-events-none z-5">
+        <div className="w-full h-full bg-gradient-to-t from-transparent via-cyan-400/8 to-transparent blur-[60px] opacity-60" />
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-transparent via-purple-500/5 to-transparent blur-[80px] opacity-40" />
+      </div>
     </section>
   );
 };
