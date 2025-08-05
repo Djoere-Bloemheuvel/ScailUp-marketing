@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, CheckCircle } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -134,39 +135,22 @@ const WorkMethodology = () => {
     >
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Enhanced header with ambient backlight glow - now centered */}
-        <header className="text-center mb-20 lg:mb-24">
-          <div className="mb-8 relative">
-            {/* Multiple layered ambient glow effects */}
-            <div className="absolute -inset-8 blur-3xl opacity-30">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/15 to-purple-500/20 rounded-full" />
-            </div>
-            <div className="absolute -inset-12 blur-2xl opacity-20">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-cyan-300/10 to-blue-400/15 rounded-full" />
-            </div>
-            <div className="absolute -inset-6 blur-xl opacity-40">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/15 to-blue-500/10 rounded-lg" />
-            </div>
-            
-            {/* Main content with enhanced glow */}
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 drop-shadow-2xl" 
-                  style={{ 
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-                    textShadow: '0 0 30px rgba(96, 165, 250, 0.3), 0 0 60px rgba(34, 211, 238, 0.2), 0 4px 20px rgba(0,0,0,0.4)'
-                  }}>
-                Van visie naar uitvoering
-              </h2>
-              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed drop-shadow-lg" 
-                 style={{ 
-                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-                   textShadow: '0 0 20px rgba(96, 165, 250, 0.2), 0 2px 10px rgba(0,0,0,0.3)'
-                 }}>
-                Zo brengen we de principes tot leven
-              </p>
-            </div>
+        {/* Header styled exactly like Approach section */}
+        <div className="text-center mb-16 lg:mb-20">
+          {/* Hero title - Apple style with refined fonts, exact same styling as Approach */}
+          <div className="mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+              Van Visie Naar Uitvoering.
+            </h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+                Zo brengen we de principes tot leven.
+              </span>
+            </h2>
           </div>
-        </header>
+          
+          {/* Subtitle with Apple typography - removed previous subtitle */}
+        </div>
 
         {/* Horizontal process flow with enhanced accent colors */}
         <WorkMethodologyProcess 
