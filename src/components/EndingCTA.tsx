@@ -1,98 +1,449 @@
 
+import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import CinematicBackground from './hero/CinematicBackground';
 
 const EndingCTA = () => {
   const navigate = useNavigate();
 
-  const handleDeepDiveClick = () => {
+  const handleContactClick = () => {
     navigate('/contact');
   };
 
-  const handleDiscoverClick = () => {
-    navigate('/consultancy');
-  };
-
   return (
-    <section className="relative min-h-[50vh] bg-black flex items-center justify-center py-20 overflow-hidden">
-      {/* Smooth vertical fade from previous section */}
-      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
+    <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
+      {/* Smooth vertical fade from black at top - 25% height */}
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
-      {/* Soft ambient glow behind the card - positioned at lower z-index */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-5">
-        <div 
-          className="w-[800px] h-[600px] rounded-full opacity-20"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(147, 51, 234, 0.2) 40%, rgba(16, 24, 40, 0.1) 70%, transparent 85%)',
-            filter: 'blur(80px)',
-          }}
-        />
+      {/* CinematicBackground - positioned behind main content */}
+      <div className="absolute inset-0 z-5">
+        <CinematicBackground />
       </div>
 
-      {/* Main content container */}
-      <div className="relative max-w-2xl mx-auto px-6 z-20">
-        {/* Floating glassmorphic card */}
-        <div 
-          className="relative rounded-2xl p-12 md:p-16 text-center backdrop-blur-xl border border-white/10 shadow-2xl transition-transform duration-500 ease-out hover:scale-[1.02] hover:-translate-y-2"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.02) 100%)',
-            boxShadow: '0 32px 64px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
-          }}
-        >
-          {/* Subtle card glow effect */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 blur-lg opacity-60 -z-10" />
-          
-          {/* Content */}
-          <div className="relative z-10 space-y-8">
-            {/* Strong headline */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
-              Klaar om het verschil te maken?
-            </h2>
-            
-            {/* Subtitle */}
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light max-w-lg mx-auto">
-              Plan een deepdive met ons team. We denken strategisch met je mee.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button 
-                onClick={handleDeepDiveClick}
-                className="bg-white text-black hover:bg-gray-100 transition-all duration-300 px-8 py-3 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1"
-              >
-                Plan een deepdive
-              </Button>
+      {/* Premium Background Layers - confined to content area */}
+      <div className="absolute inset-0 z-6">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div className="relative w-full">
+            {/* Premium Background Layers - now properly confined */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+              {/* Central focal glow */}
+              <div 
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
+                  filter: 'blur(120px)',
+                  animation: 'premium-focal-glow 12s ease-in-out infinite'
+                }}
+              />
               
-              <Button 
-                onClick={handleDiscoverClick}
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300 px-8 py-3 text-base font-semibold rounded-xl backdrop-blur-sm hover:-translate-y-1"
-              >
-                Ontdek de mogelijkheden
-              </Button>
+              {/* Particle system */}
+              <div className="absolute inset-0">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div
+                    key={`particle-${i}`}
+                    className="absolute w-1 h-1 rounded-full"
+                    style={{
+                      background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
+                                 i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
+                                 'rgba(34, 211, 238, 0.7)',
+                      left: `${15 + (i * 9) % 70}%`,
+                      top: `${25 + (i * 11) % 50}%`,
+                      animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
+                      animationDelay: `${i * 0.8}s`,
+                      filter: 'blur(0.5px)'
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer section */}
-      <div className="absolute bottom-8 left-0 right-0 z-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-1">Buildrs.AI</h3>
-              <p className="text-white/60 italic text-sm">
-                Elite AI Engineering voor visionairs
-              </p>
+      {/* Premium Glass Container */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+        <div className="relative">
+          {/* Main Glass Container */}
+          <div className="premium-glass-main-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
+              {/* Left Content */}
+              <div className="space-y-8 order-2 lg:order-1">
+                {/* Statement Title */}
+                <div className="space-y-6">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight premium-title-entrance">
+                    <span className="block text-white mb-3">Klaar voor</span>
+                    <span className="text-white block">
+                      AI transformatie?
+                    </span>
+                  </h1>
+                  
+                  <p className="text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance">
+                    Van strategie tot implementatie. Elite engineers leveren tastbare resultaten in 2-4 weken.
+                  </p>
+                </div>
+
+                {/* Premium CTA Button */}
+                <div className="pt-4 premium-button-entrance">
+                  <Button 
+                    onClick={handleContactClick}
+                    size="lg" 
+                    className="premium-cta-button group relative overflow-hidden"
+                  >
+                    <div className="premium-button-shimmer" />
+                    <div className="relative z-10 flex items-center px-6 py-3">
+                      <span className="text-lg font-semibold text-black">Start het gesprek</span>
+                      <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 transition-transform duration-500" />
+                    </div>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right Visual Element */}
+              <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
+                {/* Premium AI Visualization */}
+                <div className="relative">
+                  {/* Outer quantum field */}
+                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
+                  
+                  {/* Core visualization container */}
+                  <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
+                    {/* Central brain element */}
+                    <div className="relative z-10">
+                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
+                    </div>
+                    
+                    {/* Orbiting intelligence nodes */}
+                    <div className="absolute inset-0">
+                      {[0, 1, 2, 3].map(i => (
+                        <div 
+                          key={`node-${i}`} 
+                          className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
+                          style={{
+                            background: i % 2 === 0 ? 
+                              'linear-gradient(45deg, rgba(59, 130, 246, 1), rgba(6, 182, 212, 1))' : 
+                              'linear-gradient(45deg, rgba(139, 92, 246, 1), rgba(236, 72, 153, 1))',
+                            animation: `premium-orbit ${20 + i * 4}s linear infinite`,
+                            transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
+                            transformOrigin: '50% 50%',
+                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)'
+                          }} 
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Neural network connections */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                      {[0, 1, 2].map(i => (
+                        <circle
+                          key={`connection-${i}`}
+                          cx="50%"
+                          cy="50%"
+                          r={50 + i * 20}
+                          fill="none"
+                          stroke="url(#neuralGradient)"
+                          strokeWidth="1"
+                          strokeDasharray="4 8"
+                          className="premium-neural-ring"
+                          style={{
+                            animationDelay: `${i * 0.5}s`
+                          }}
+                        />
+                      ))}
+                      
+                      <defs>
+                        <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.8)" />
+                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            <div className="text-center md:text-right">
-              <p className="text-white/40 text-sm mb-1">© 2024 Buildrs.AI</p>
-              <p className="text-white/30 text-xs italic">Designed for disruption</p>
+          </div>
+
+          {/* Premium Footer Section */}
+          <div className="mt-16 pt-12 border-t border-white/10 premium-footer-entrance">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
+                <p className="text-premium-silver/70 italic text-sm max-w-md">
+                  Elite AI Engineering. Exclusief voor visionairs die de toekomst vormgeven.
+                </p>
+              </div>
+              
+              <div className="text-center md:text-right">
+                <p className="text-premium-silver/50 text-sm mb-1">© 2024 Buildrs.AI</p>
+                <p className="text-premium-silver/40 text-xs italic">Designed for disruption</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Premium Animation Styles */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes premium-focal-glow {
+            0%, 100% { 
+              opacity: 0.4;
+              transform: translate(-50%, -50%) scale(1) rotate(0deg);
+              filter: blur(120px);
+            }
+            33% { 
+              opacity: 0.55;
+              transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
+              filter: blur(125px);
+            }
+            66% { 
+              opacity: 0.3;
+              transform: translate(-50%, -50%) scale(0.95) rotate(-1deg);
+              filter: blur(115px);
+            }
+          }
+
+          @keyframes premium-particle-float {
+            0%, 100% { 
+              opacity: 0.6;
+              transform: translateY(0px) translateX(0px);
+            }
+            25% { 
+              opacity: 1;
+              transform: translateY(-10px) translateX(5px);
+            }
+            50% { 
+              opacity: 0.4;
+              transform: translateY(-5px) translateX(-3px);
+            }
+            75% { 
+              opacity: 0.8;
+              transform: translateY(8px) translateX(7px);
+            }
+          }
+
+          @keyframes premium-orbit {
+            0% { 
+              transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
+              opacity: 0.6;
+            }
+            50% {
+              opacity: 1;
+            }
+            100% { 
+              transform: rotate(360deg) translateY(var(--orbit-distance)) rotate(-360deg);
+              opacity: 0.6;
+            }
+          }
+
+          @keyframes premium-neural-ring {
+            0%, 100% { 
+              opacity: 0.3;
+              transform: rotate(0deg);
+            }
+            50% { 
+              opacity: 0.6;
+              transform: rotate(180deg);
+            }
+          }
+
+          @keyframes premium-brain-pulse {
+            0%, 100% { 
+              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+              transform: scale(1);
+            }
+            50% { 
+              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.6));
+              transform: scale(1.05);
+            }
+          }
+
+          @keyframes premium-entrance-fade {
+            0% { 
+              opacity: 0;
+              transform: translateY(30px) scale(0.95);
+              filter: blur(10px);
+            }
+            100% { 
+              opacity: 1;
+              transform: translateY(0) scale(1);
+              filter: blur(0);
+            }
+          }
+
+          @keyframes premium-shimmer {
+            0% { transform: translateX(-100%) rotate(35deg); }
+            100% { transform: translateX(400%) rotate(35deg); }
+          }
+
+          /* Premium Glass Container */
+          .premium-glass-main-container {
+            background: linear-gradient(135deg, 
+              rgba(255, 255, 255, 0.08) 0%, 
+              rgba(255, 255, 255, 0.02) 50%, 
+              rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            box-shadow: 
+              0 24px 48px rgba(0, 0, 0, 0.4),
+              0 12px 24px rgba(59, 130, 246, 0.1),
+              0 6px 12px rgba(147, 51, 234, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .premium-glass-main-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+              rgba(59, 130, 246, 0.03) 0%,
+              rgba(147, 51, 234, 0.02) 50%,
+              rgba(34, 211, 238, 0.03) 100%);
+            border-radius: 24px;
+            pointer-events: none;
+          }
+
+          /* Premium Button */
+          .premium-cta-button {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 
+              0 6px 24px rgba(0, 0, 0, 0.3),
+              0 3px 12px rgba(59, 130, 246, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+          }
+
+          .premium-cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+              0 12px 36px rgba(0, 0, 0, 0.4),
+              0 6px 18px rgba(59, 130, 246, 0.3),
+              0 3px 9px rgba(147, 51, 234, 0.2);
+          }
+
+          .premium-button-shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+              transparent 0%, 
+              rgba(255, 255, 255, 0.4) 50%, 
+              transparent 100%);
+            animation: premium-shimmer 3s ease-in-out infinite;
+          }
+
+          /* Visual Elements */
+          .premium-quantum-field {
+            background: radial-gradient(circle,
+              rgba(59, 130, 246, 0.15) 0%,
+              rgba(147, 51, 234, 0.10) 35%,
+              rgba(34, 211, 238, 0.08) 70%,
+              transparent 85%);
+            filter: blur(50px);
+            animation: premium-focal-glow 15s ease-in-out infinite;
+          }
+
+          .premium-core-container {
+            background: radial-gradient(circle,
+              rgba(59, 130, 246, 0.08) 0%,
+              rgba(147, 51, 234, 0.04) 50%,
+              transparent 70%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+              0 0 40px rgba(59, 130, 246, 0.2),
+              0 0 80px rgba(147, 51, 234, 0.1),
+              inset 0 0 30px rgba(255, 255, 255, 0.05);
+          }
+
+          .premium-brain-pulse {
+            animation: premium-brain-pulse 4s ease-in-out infinite;
+          }
+
+          .premium-neural-ring {
+            animation: premium-neural-ring 20s linear infinite;
+          }
+
+          /* Entrance Animations */
+          .premium-title-entrance {
+            animation: premium-entrance-fade 1s ease-out 0.2s forwards;
+            opacity: 0;
+          }
+
+          .premium-subtitle-entrance {
+            animation: premium-entrance-fade 1s ease-out 0.4s forwards;
+            opacity: 0;
+          }
+
+          .premium-button-entrance {
+            animation: premium-entrance-fade 1s ease-out 0.6s forwards;
+            opacity: 0;
+          }
+
+          .premium-visual-entrance {
+            animation: premium-entrance-fade 1.2s ease-out 0.3s forwards;
+            opacity: 0;
+          }
+
+          .premium-footer-entrance {
+            animation: premium-entrance-fade 1s ease-out 1.2s forwards;
+            opacity: 0;
+          }
+
+          /* Mobile Optimizations */
+          @media (max-width: 768px) {
+            .premium-glass-main-container {
+              border-radius: 20px;
+              padding: 1rem;
+            }
+            
+            .premium-quantum-field {
+              width: 240px;
+              height: 240px;
+            }
+            
+            .premium-core-container {
+              width: 200px;
+              height: 200px;
+            }
+            
+            .premium-orbit-node {
+              --orbit-distance: -60px;
+            }
+          }
+
+          /* Reduced Motion */
+          @media (prefers-reduced-motion: reduce) {
+            .premium-quantum-field,
+            .premium-brain-pulse,
+            .premium-neural-ring,
+            .premium-orbit-node {
+              animation: none;
+            }
+          }
+
+          /* Performance Optimizations */
+          .premium-glass-main-container,
+          .premium-cta-button {
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+          }
+        `
+      }} />
     </section>
   );
 };
