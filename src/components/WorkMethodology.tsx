@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Target, Zap, Users, CheckCircle } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
@@ -133,10 +132,19 @@ const WorkMethodology = () => {
       className="relative py-24 lg:py-32 px-4 overflow-hidden bg-black"
       aria-label="Onze werk methodologie - stap voor stap proces"
     >
-      {/* Subtle ambient glow at top for seamless transition from Approach */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-32 pointer-events-none z-5">
-        <div className="w-full h-full bg-gradient-to-b from-transparent via-cyan-400/8 to-transparent blur-[60px] opacity-60" />
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-purple-500/5 to-transparent blur-[80px] opacity-40" />
+      {/* Enhanced ambient glow at top for seamless transition from Approach */}
+      <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-[600px] h-64 pointer-events-none z-30">
+        {/* Primary enhanced glow layer with higher opacity and sharper blur */}
+        <div className="w-full h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent blur-[40px] opacity-90" />
+        
+        {/* Secondary glow layer for depth */}
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-purple-500/15 to-transparent blur-[50px] opacity-80" />
+        
+        {/* Additional sharp accent layer for visibility */}
+        <div className="absolute inset-0 w-3/4 h-3/4 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-blue-400/12 to-transparent blur-[30px] opacity-95" />
+        
+        {/* Soft outer glow for seamless blending */}
+        <div className="absolute inset-0 w-[120%] h-[120%] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-cyan-300/8 to-transparent blur-[70px] opacity-70" />
       </div>
 
       {/* Content container */}
