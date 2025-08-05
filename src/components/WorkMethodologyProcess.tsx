@@ -106,6 +106,42 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           };
           
           const glowColor = getGlowColor();
+
+          // Enhanced glow styles based on state
+          const getIconGlowStyles = () => {
+            if (isActive) {
+              // Active state: Most prominent glow (spread 35-45px, opacity 45-55%, blur 12-15px)
+              return {
+                boxShadow: [
+                  `0 0 0 2px rgba(${glowColor}, 0.4)`, // Border ring
+                  `0 0 40px rgba(${glowColor}, 0.55)`, // Primary glow
+                  `0 0 80px rgba(${glowColor}, 0.3)`, // Extended glow
+                  `inset 0 1px 0 rgba(255, 255, 255, 0.15)` // Inner highlight
+                ].join(', ')
+              };
+            } else if (isHovered) {
+              // Hover state: Medium glow (spread 25-30px, opacity 35-40%, blur 10px)
+              return {
+                boxShadow: [
+                  `0 0 0 1px rgba(${glowColor}, 0.25)`, // Border ring
+                  `0 0 25px rgba(${glowColor}, 0.4)`, // Primary glow
+                  `0 0 50px rgba(${glowColor}, 0.2)`, // Extended glow
+                  `inset 0 1px 0 rgba(255, 255, 255, 0.1)` // Inner highlight
+                ].join(', ')
+              };
+            } else {
+              // Inactive state: Subtle static glow (spread 15-20px, opacity 20-25%, blur 6-8px)
+              return {
+                boxShadow: [
+                  `0 0 0 1px rgba(${glowColor}, 0.15)`, // Border ring
+                  `0 0 18px rgba(${glowColor}, 0.25)`, // Primary glow
+                  `0 0 35px rgba(${glowColor}, 0.15)`, // Extended glow
+                  `inset 0 1px 0 rgba(255, 255, 255, 0.08)`, // Inner highlight
+                  `0 2px 8px rgba(0, 0, 0, 0.15)` // Drop shadow
+                ].join(', ')
+              };
+            }
+          };
           
           return (
             <div
@@ -115,35 +151,28 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               onMouseLeave={() => setHoveredStep(null)}
               onClick={() => onStepSelect(step.id)}
             >
-              {/* Step number indicator with dark glassmorphism design */}
+              {/* Step number indicator with enhanced glow visibility */}
               <div className="flex items-center justify-center mb-6">
                 <div 
-                  className={`relative w-12 h-12 rounded-full transition-all duration-200 ease-out backdrop-blur-md`}
+                  className="relative w-12 h-12 rounded-full transition-all duration-200 ease-out backdrop-blur-md"
                   style={{
                     backgroundColor: isActive || isCompleted 
-                      ? '#101827' 
-                      : 'rgba(16, 24, 39, 0.6)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    boxShadow: isActive 
-                      ? `0 0 0 2px rgba(${glowColor}, 0.3), 0 0 16px rgba(${glowColor}, 0.4), 0 0 32px rgba(${glowColor}, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-                      : isCompleted
-                        ? `0 0 0 1px rgba(${glowColor}, 0.2), 0 0 12px rgba(${glowColor}, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08)`
-                        : isHovered
-                          ? `0 0 0 1px rgba(${glowColor}, 0.15), 0 0 8px rgba(${glowColor}, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)`
-                          : `inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 8px rgba(0, 0, 0, 0.15)`
+                      ? 'rgba(16, 24, 39, 0.9)' // Slightly more opaque for active/completed
+                      : 'rgba(16, 24, 39, 0.7)', // More opaque for better visibility
+                    border: '1px solid rgba(255, 255, 255, 0.15)', // Slightly more visible border
+                    ...getIconGlowStyles()
                   }}
                 >
                   <step.icon className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" />
                   
-                  {/* Ambient glow layer for active state */}
-                  {isActive && (
-                    <div 
-                      className="absolute inset-0 rounded-full opacity-40 animate-pulse -z-10"
-                      style={{
-                        background: `radial-gradient(circle, rgba(${glowColor}, 0.3) 0%, rgba(${glowColor}, 0.1) 50%, transparent 70%)`
-                      }}
-                    />
-                  )}
+                  {/* Ambient background glow layer for enhanced visibility */}
+                  <div 
+                    className="absolute inset-0 rounded-full opacity-30 -z-10"
+                    style={{
+                      background: `radial-gradient(circle, rgba(${glowColor}, ${isActive ? '0.4' : isHovered ? '0.25' : '0.15'}) 0%, rgba(${glowColor}, ${isActive ? '0.2' : isHovered ? '0.1' : '0.05'}) 50%, transparent 70%)`,
+                      transform: 'scale(1.5)' // Slightly larger background glow
+                    }}
+                  />
                 </div>
               </div>
 
