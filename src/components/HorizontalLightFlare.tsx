@@ -5,8 +5,13 @@ interface HorizontalLightFlareProps {
 }
 
 const HorizontalLightFlare = ({ position = 'bottom', className = '' }: HorizontalLightFlareProps) => {
+  // Determine positioning classes based on the position prop
+  const positionClasses = position === 'top' 
+    ? 'top-0' 
+    : 'bottom-0';
+
   return (
-    <div className={`absolute left-1/2 transform -translate-x-1/2 w-[85%] max-w-6xl h-px pointer-events-none z-30 ${className}`}>
+    <div className={`absolute left-1/2 transform -translate-x-1/2 w-[85%] max-w-6xl h-px pointer-events-none z-30 ${positionClasses} ${className}`}>
       {/* Primary horizontal light flare */}
       <div className="relative w-full h-full">
         {/* Main glow strip - bluish/purple with soft falloff */}
