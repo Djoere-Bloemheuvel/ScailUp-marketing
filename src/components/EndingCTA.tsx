@@ -1,7 +1,7 @@
-
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import CinematicBackground from './hero/CinematicBackground';
 
 const EndingCTA = () => {
   const navigate = useNavigate();
@@ -11,132 +11,44 @@ const EndingCTA = () => {
   };
 
   return (
-    <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
+    <section className="relative min-h-[120vh] overflow-hidden bg-premium-black flex items-center justify-center py-20">
+      {/* Enhanced Cinematic Background with Custom Colors */}
+      <CinematicBackground hideGlassContainer={true} />
+      
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
-
-      {/* Enhanced Blue Ambient Glow Container - Behind everything with proper layering */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
-        {/* Primary large glow - bottom left quadrant */}
+      
+      {/* Additional Premium Background Layers - 30% dimmed */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        {/* Central focal glow - 30% dimmed */}
         <div 
-          className="absolute -bottom-1/2 -left-1/3 w-[50rem] h-[50rem] rounded-full opacity-50 animate-pulse"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-28"
           style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(34, 211, 238, 0.28) 30%, rgba(37, 99, 235, 0.16) 50%, rgba(59, 130, 246, 0.08) 75%, transparent 90%)',
-            filter: 'blur(80px)',
-            animationDuration: '12s'
-          }}
-        />
-        
-        {/* Secondary glow - top right quadrant */}
-        <div 
-          className="absolute -top-1/3 -right-1/3 w-[35rem] h-[35rem] rounded-full opacity-45 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(99, 102, 241, 0.22) 35%, rgba(59, 130, 246, 0.12) 60%, rgba(147, 51, 234, 0.06) 80%, transparent 95%)',
-            filter: 'blur(70px)',
-            animationDuration: '8s',
-            animationDelay: '-4s'
-          }}
-        />
-        
-        {/* Center ambient glow */}
-        <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full opacity-35 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(16, 185, 129, 0.18) 40%, rgba(59, 130, 246, 0.1) 70%, rgba(34, 211, 238, 0.04) 90%, transparent 100%)',
-            filter: 'blur(60px)',
-            animationDuration: '15s',
-            animationDelay: '-7s'
-          }}
-        />
-        
-        {/* Focused accent glow - bottom right */}
-        <div 
-          className="absolute -bottom-1/4 -right-1/4 w-[25rem] h-[25rem] rounded-full opacity-55 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(34, 211, 238, 0.28) 40%, rgba(147, 51, 234, 0.15) 65%, rgba(59, 130, 246, 0.06) 85%, transparent 100%)',
-            filter: 'blur(50px)',
-            animationDuration: '10s',
-            animationDelay: '-2s'
-          }}
-        />
-
-        {/* Additional wide coverage glow - full screen */}
-        <div 
-          className="absolute inset-0 w-full h-full rounded-full opacity-25 animate-pulse"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15) 0%, rgba(34, 211, 238, 0.08) 35%, rgba(37, 99, 235, 0.04) 60%, transparent 85%)',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.105) 0%, rgba(147, 51, 234, 0.07) 40%, rgba(34, 211, 238, 0.035) 70%, transparent 85%)',
             filter: 'blur(120px)',
-            animationDuration: '20s',
-            animationDelay: '-10s'
-          }}
-        />
-
-        {/* Subtle edge enhancement glows */}
-        <div 
-          className="absolute top-0 left-0 w-[20rem] h-[20rem] rounded-full opacity-30 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 80%)',
-            filter: 'blur(40px)',
-            animationDuration: '14s',
-            animationDelay: '-6s'
+            animation: 'premium-focal-glow 12s ease-in-out infinite'
           }}
         />
         
-        <div 
-          className="absolute bottom-0 right-0 w-[18rem] h-[18rem] rounded-full opacity-35 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.28) 0%, rgba(16, 185, 129, 0.15) 45%, transparent 75%)',
-            filter: 'blur(45px)',
-            animationDuration: '16s',
-            animationDelay: '-8s'
-          }}
-        />
-      </div>
-
-      {/* Reduced Intensity Blue Ambient Orb - Positioned behind glass container */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 5 }}>
-        {/* Core blue orb - reduced opacity and saturation */}
-        <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full opacity-40 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, rgba(37, 99, 235, 0.25) 20%, rgba(29, 78, 216, 0.18) 40%, rgba(59, 130, 246, 0.12) 60%, rgba(34, 211, 238, 0.08) 75%, rgba(59, 130, 246, 0.04) 85%, transparent 95%)',
-            filter: 'blur(120px)',
-            animationDuration: '8s'
-          }}
-        />
-        
-        {/* Inner core - reduced intensity */}
-        <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full opacity-50 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.45) 0%, rgba(37, 99, 235, 0.35) 25%, rgba(29, 78, 216, 0.25) 45%, rgba(59, 130, 246, 0.18) 65%, rgba(34, 211, 238, 0.1) 80%, transparent 90%)',
-            filter: 'blur(80px)',
-            animationDuration: '6s',
-            animationDelay: '-2s'
-          }}
-        />
-        
-        {/* Radiating light rays - much softer */}
-        <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[25rem] h-[25rem] rounded-full opacity-35 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(37, 99, 235, 0.3) 30%, rgba(29, 78, 216, 0.22) 50%, rgba(59, 130, 246, 0.15) 70%, rgba(34, 211, 238, 0.08) 85%, transparent 95%)',
-            filter: 'blur(60px)',
-            animationDuration: '4s',
-            animationDelay: '-1s'
-          }}
-        />
-        
-        {/* Outer glow expansion - reduced opacity */}
-        <div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80rem] h-[80rem] rounded-full opacity-25 animate-pulse"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(37, 99, 235, 0.18) 15%, rgba(29, 78, 216, 0.12) 30%, rgba(59, 130, 246, 0.08) 50%, rgba(34, 211, 238, 0.04) 70%, rgba(59, 130, 246, 0.02) 85%, transparent 95%)',
-            filter: 'blur(140px)',
-            animationDuration: '10s',
-            animationDelay: '-3s'
-          }}
-        />
+        {/* Particle system - 30% dimmed */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={`particle-${i}`}
+              className="absolute w-1 h-1 rounded-full opacity-42"
+              style={{
+                background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.56)' : 
+                           i % 3 === 1 ? 'rgba(147, 51, 234, 0.42)' : 
+                           'rgba(34, 211, 238, 0.49)',
+                left: `${15 + (i * 9) % 70}%`,
+                top: `${25 + (i * 11) % 50}%`,
+                animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
+                animationDelay: `${i * 0.8}s`,
+                filter: 'blur(0.5px)'
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Premium Glass Container */}
@@ -177,11 +89,11 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element */}
+              {/* Right Visual Element - 30% dimmed colors */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
                 {/* Premium AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field */}
+                  {/* Outer quantum field - 30% dimmed */}
                   <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
                   {/* Core visualization container */}
@@ -191,7 +103,7 @@ const EndingCTA = () => {
                       <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Orbiting intelligence nodes */}
+                    {/* Orbiting intelligence nodes - 30% dimmed */}
                     <div className="absolute inset-0">
                       {[0, 1, 2, 3].map(i => (
                         <div 
@@ -210,7 +122,7 @@ const EndingCTA = () => {
                       ))}
                     </div>
                     
-                    {/* Neural network connections */}
+                    {/* Neural network connections - 30% dimmed */}
                     <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-21">
                       {[0, 1, 2].map(i => (
                         <circle
@@ -262,9 +174,46 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles */}
+      {/* Premium Animation Styles - 30% dimmed colors */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          @keyframes premium-focal-glow {
+            0%, 100% { 
+              opacity: 0.28;
+              transform: translate(-50%, -50%) scale(1) rotate(0deg);
+              filter: blur(120px);
+            }
+            33% { 
+              opacity: 0.385;
+              transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
+              filter: blur(125px);
+            }
+            66% { 
+              opacity: 0.21;
+              transform: translate(-50%, -50%) scale(0.95) rotate(-1deg);
+              filter: blur(115px);
+            }
+          }
+
+          @keyframes premium-particle-float {
+            0%, 100% { 
+              opacity: 0.42;
+              transform: translateY(0px) translateX(0px);
+            }
+            25% { 
+              opacity: 0.7;
+              transform: translateY(-10px) translateX(5px);
+            }
+            50% { 
+              opacity: 0.28;
+              transform: translateY(-5px) translateX(-3px);
+            }
+            75% { 
+              opacity: 0.56;
+              transform: translateY(8px) translateX(7px);
+            }
+          }
+
           @keyframes premium-orbit {
             0% { 
               transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
@@ -386,7 +335,7 @@ const EndingCTA = () => {
             animation: premium-shimmer 3s ease-in-out infinite;
           }
 
-          /* Visual Elements */
+          /* Visual Elements - 30% dimmed */
           .premium-quantum-field {
             background: radial-gradient(circle,
               rgba(59, 130, 246, 0.105) 0%,
