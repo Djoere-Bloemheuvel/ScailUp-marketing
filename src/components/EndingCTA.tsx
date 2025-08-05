@@ -14,59 +14,61 @@ const EndingCTA = () => {
   return (
     <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
       {/* Smooth vertical fade from black at top - 25% height */}
-      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-30" />
       
-      {/* CinematicBackground - positioned behind main content */}
-      <div className="absolute inset-0 z-5">
-        <CinematicBackground />
-      </div>
-
-      {/* Premium Background Layers - confined to content area */}
-      <div className="absolute inset-0 z-6">
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="relative w-full">
-            {/* Premium Background Layers - now properly confined */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-              {/* Central focal glow */}
-              <div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-                style={{
-                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
-                  filter: 'blur(120px)',
-                  animation: 'premium-focal-glow 12s ease-in-out infinite'
-                }}
-              />
-              
-              {/* Particle system */}
-              <div className="absolute inset-0">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div
-                    key={`particle-${i}`}
-                    className="absolute w-1 h-1 rounded-full"
-                    style={{
-                      background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
-                                 i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
-                                 'rgba(34, 211, 238, 0.7)',
-                      left: `${15 + (i * 9) % 70}%`,
-                      top: `${25 + (i * 11) % 50}%`,
-                      animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
-                      animationDelay: `${i * 0.8}s`,
-                      filter: 'blur(0.5px)'
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Premium Glass Container */}
+      {/* Main Content Container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
-          {/* Main Glass Container */}
-          <div className="premium-glass-main-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
+          {/* Glass Container with confined background effects */}
+          <div className="premium-glass-main-container relative">
+            {/* Confined Background Effects Layer - clipped to container shape */}
+            <div 
+              className="absolute inset-0 rounded-[24px] overflow-hidden"
+              style={{
+                clipPath: 'inset(0 round 24px)'
+              }}
+            >
+              {/* CinematicBackground - confined within glass container */}
+              <div className="absolute inset-0 opacity-60">
+                <CinematicBackground hideGlassContainer={true} />
+              </div>
+              
+              {/* Premium Background Layers - confined within container */}
+              <div className="absolute inset-0 pointer-events-none">
+                {/* Central focal glow */}
+                <div 
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
+                    filter: 'blur(120px)',
+                    animation: 'premium-focal-glow 12s ease-in-out infinite'
+                  }}
+                />
+                
+                {/* Particle system */}
+                <div className="absolute inset-0">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div
+                      key={`particle-${i}`}
+                      className="absolute w-1 h-1 rounded-full"
+                      style={{
+                        background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
+                                   i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
+                                   'rgba(34, 211, 238, 0.7)',
+                        left: `${15 + (i * 9) % 70}%`,
+                        top: `${25 + (i * 11) % 50}%`,
+                        animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
+                        animationDelay: `${i * 0.8}s`,
+                        filter: 'blur(0.5px)'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24 relative z-10">
               {/* Left Content */}
               <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
