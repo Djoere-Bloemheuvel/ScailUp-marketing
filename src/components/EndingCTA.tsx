@@ -1,5 +1,5 @@
 
-import { ArrowRight, Brain, Sparkles, Zap } from 'lucide-react';
+import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
@@ -144,147 +144,87 @@ const EndingCTA = () => {
         <div className="relative">
           {/* Main Glass Container */}
           <div className="premium-glass-main-container">
-            {/* Floating Particles inside container */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[24px]">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-60 animate-float"
-                  style={{
-                    left: `${20 + i * 12}%`,
-                    top: `${15 + i * 10}%`,
-                    animationDelay: `${i * 0.8}s`,
-                    animationDuration: `${4 + i * 0.5}s`
-                  }}
-                />
-              ))}
-            </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
-              <div className="space-y-8 order-2 lg:order-1 relative">
-                {/* Animated accent lines */}
-                <div className="absolute -left-6 top-8 w-1 h-20 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent rounded-full opacity-60 animate-pulse" />
-                
-                {/* Statement Title with enhanced animations */}
+              <div className="space-y-8 order-2 lg:order-1">
+                {/* Statement Title */}
                 <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight premium-title-entrance">
-                    <span className="block text-white mb-3 relative overflow-hidden">
-                      <span className="inline-block animate-slide-up">Klaar voor</span>
-                      <Sparkles className="inline-block ml-3 w-8 h-8 text-yellow-400 animate-twinkle" />
-                    </span>
-                    <span className="text-white block relative overflow-hidden">
-                      <span className="inline-block animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                        AI transformatie?
-                      </span>
-                      <Zap className="inline-block ml-3 w-8 h-8 text-blue-400 animate-electric" />
+                    <span className="block text-white mb-3">Klaar voor</span>
+                    <span className="text-white block">
+                      AI transformatie?
                     </span>
                   </h1>
                   
-                  <p className="text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance relative">
-                    <span className="animate-typewriter">
-                      Van strategie tot implementatie. Elite engineers leveren tastbare resultaten in 2-4 weken.
-                    </span>
-                    {/* Animated cursor */}
-                    <span className="inline-block w-0.5 h-6 bg-blue-400 ml-1 animate-blink" />
+                  <p className="text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance">
+                    Van strategie tot implementatie. Elite engineers leveren tastbare resultaten in 2-4 weken.
                   </p>
                 </div>
 
-                {/* Premium CTA Button with enhanced effects */}
+                {/* Premium CTA Button */}
                 <div className="pt-4 premium-button-entrance">
                   <Button 
                     onClick={handleContactClick}
                     size="lg" 
-                    className="premium-cta-button group relative overflow-hidden hover:scale-105 transition-all duration-300"
+                    className="premium-cta-button group relative overflow-hidden"
                   >
                     <div className="premium-button-shimmer" />
                     <div className="relative z-10 flex items-center px-6 py-3">
                       <span className="text-lg font-semibold text-black">Start het gesprek</span>
-                      <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-500" />
-                      {/* Animated dots */}
-                      <div className="flex ml-3 space-x-1">
-                        {[0, 1, 2].map(i => (
-                          <div 
-                            key={i}
-                            className="w-1 h-1 bg-black/40 rounded-full animate-bounce"
-                            style={{ animationDelay: `${i * 0.1}s` }}
-                          />
-                        ))}
-                      </div>
+                      <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 transition-transform duration-500" />
                     </div>
                   </Button>
                 </div>
-
-                {/* Animated stats or badges */}
-                <div className="flex flex-wrap gap-4 pt-6 premium-stats-entrance">
-                  <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10 animate-fade-in-up">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-sm text-white/80">100% op maat</span>
-                  </div>
-                  <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                    <span className="text-sm text-white/80">2-4 weken</span>
-                  </div>
-                  <div className="flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
-                    <span className="text-sm text-white/80">Elite engineers</span>
-                  </div>
-                </div>
               </div>
 
-              {/* Right Visual Element with enhanced interactivity */}
+              {/* Right Visual Element */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
                 {/* Premium AI Visualization */}
-                <div className="relative group cursor-pointer">
-                  {/* Outer quantum field with hover effect */}
-                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field group-hover:scale-110 transition-transform duration-700" />
+                <div className="relative">
+                  {/* Outer quantum field */}
+                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
                   {/* Core visualization container */}
-                  <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center group-hover:shadow-2xl transition-all duration-500">
-                    {/* Central brain element with enhanced animations */}
-                    <div className="relative z-10 group-hover:scale-125 transition-transform duration-500">
-                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse group-hover:text-blue-300 transition-colors duration-500" />
-                      {/* Pulsing rings around brain */}
-                      <div className="absolute inset-0 rounded-full border border-white/20 animate-ping" />
-                      <div className="absolute inset-0 rounded-full border border-blue-400/30 animate-ping" style={{ animationDelay: '0.5s' }} />
+                  <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
+                    {/* Central brain element */}
+                    <div className="relative z-10">
+                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
                     </div>
                     
-                    {/* Enhanced orbiting intelligence nodes */}
+                    {/* Orbiting intelligence nodes */}
                     <div className="absolute inset-0">
-                      {[0, 1, 2, 3, 4, 5].map(i => (
+                      {[0, 1, 2, 3].map(i => (
                         <div 
                           key={`node-${i}`} 
-                          className="absolute w-3 h-3 rounded-full premium-orbit-node group-hover:w-4 group-hover:h-4 transition-all duration-300"
+                          className="absolute w-2.5 h-2.5 rounded-full premium-orbit-node"
                           style={{
-                            background: i % 3 === 0 ? 
-                              'linear-gradient(45deg, rgba(59, 130, 246, 0.8), rgba(6, 182, 212, 0.8))' : 
-                              i % 3 === 1 ?
-                              'linear-gradient(45deg, rgba(139, 92, 246, 0.8), rgba(236, 72, 153, 0.8))' :
-                              'linear-gradient(45deg, rgba(16, 185, 129, 0.8), rgba(34, 211, 238, 0.8))',
-                            animation: `premium-orbit ${15 + i * 3}s linear infinite`,
-                            transform: `rotate(${i * 60}deg) translateY(-${100 + i * 6}px)`,
+                            background: i % 2 === 0 ? 
+                              'linear-gradient(45deg, rgba(59, 130, 246, 0.7), rgba(6, 182, 212, 0.7))' : 
+                              'linear-gradient(45deg, rgba(139, 92, 246, 0.7), rgba(236, 72, 153, 0.7))',
+                            animation: `premium-orbit ${20 + i * 4}s linear infinite`,
+                            transform: `rotate(${i * 90}deg) translateY(-${110 + i * 8}px)`,
                             transformOrigin: '50% 50%',
-                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3)'
+                            boxShadow: '0 0 15px rgba(59, 130, 246, 0.35), 0 0 30px rgba(59, 130, 246, 0.21)'
                           }} 
                         />
                       ))}
                     </div>
                     
-                    {/* Enhanced neural network connections */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-500">
-                      {[0, 1, 2, 3].map(i => (
+                    {/* Neural network connections */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-21">
+                      {[0, 1, 2].map(i => (
                         <circle
                           key={`connection-${i}`}
                           cx="50%"
                           cy="50%"
-                          r={40 + i * 15}
+                          r={50 + i * 20}
                           fill="none"
                           stroke="url(#neuralGradient)"
-                          strokeWidth="2"
-                          strokeDasharray="6 12"
+                          strokeWidth="1"
+                          strokeDasharray="4 8"
                           className="premium-neural-ring"
                           style={{
-                            animationDelay: `${i * 0.3}s`
+                            animationDelay: `${i * 0.5}s`
                           }}
                         />
                       ))}
@@ -292,49 +232,28 @@ const EndingCTA = () => {
                       <defs>
                         <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                           <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
-                          <stop offset="25%" stopColor="rgba(59, 130, 246, 0.4)" />
-                          <stop offset="50%" stopColor="rgba(139, 92, 246, 0.8)" />
-                          <stop offset="75%" stopColor="rgba(34, 211, 238, 0.4)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.56)" />
                           <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
                         </linearGradient>
                       </defs>
                     </svg>
-
-                    {/* Data flow particles */}
-                    <div className="absolute inset-0 pointer-events-none">
-                      {[...Array(8)].map((_, i) => (
-                        <div
-                          key={`particle-${i}`}
-                          className="absolute w-0.5 h-0.5 bg-blue-400 rounded-full animate-flow-particle"
-                          style={{
-                            left: `${50 + Math.cos(i * 45 * Math.PI / 180) * 80}%`,
-                            top: `${50 + Math.sin(i * 45 * Math.PI / 180) * 80}%`,
-                            animationDelay: `${i * 0.3}s`,
-                            animationDuration: '3s'
-                          }}
-                        />
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Premium Footer Section with enhanced animations */}
+          {/* Premium Footer Section */}
           <div className="mt-16 pt-12 border-t border-white/10 premium-footer-entrance">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="animate-slide-in-left">
-                <h3 className="text-xl font-bold text-white mb-1 tracking-tight relative">
-                  Buildrs.AI
-                  <div className="absolute -top-1 -right-8 w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                </h3>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
                 <p className="text-premium-silver/70 italic text-sm max-w-md">
                   Elite AI Engineering. Exclusief voor visionairs die de toekomst vormgeven.
                 </p>
               </div>
               
-              <div className="text-center md:text-right animate-slide-in-right">
+              <div className="text-center md:text-right">
                 <p className="text-premium-silver/50 text-sm mb-1">© 2024 Buildrs.AI</p>
                 <p className="text-premium-silver/40 text-xs italic">Designed for disruption</p>
               </div>
@@ -343,7 +262,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Enhanced Premium Animation Styles */}
+      {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-orbit {
@@ -352,7 +271,7 @@ const EndingCTA = () => {
               opacity: 0.42;
             }
             50% {
-              opacity: 0.8;
+              opacity: 0.7;
             }
             100% { 
               transform: rotate(360deg) translateY(var(--orbit-distance)) rotate(-360deg);
@@ -362,23 +281,23 @@ const EndingCTA = () => {
 
           @keyframes premium-neural-ring {
             0%, 100% { 
-              opacity: 0.3;
+              opacity: 0.21;
               transform: rotate(0deg);
             }
             50% { 
-              opacity: 0.7;
+              opacity: 0.42;
               transform: rotate(180deg);
             }
           }
 
           @keyframes premium-brain-pulse {
             0%, 100% { 
-              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+              filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.21));
               transform: scale(1);
             }
             50% { 
-              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.6));
-              transform: scale(1.08);
+              filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.42));
+              transform: scale(1.05);
             }
           }
 
@@ -398,112 +317,6 @@ const EndingCTA = () => {
           @keyframes premium-shimmer {
             0% { transform: translateX(-100%) rotate(35deg); }
             100% { transform: translateX(400%) rotate(35deg); }
-          }
-
-          @keyframes animate-float {
-            0%, 100% { 
-              transform: translateY(0px) rotate(0deg);
-              opacity: 0.6;
-            }
-            33% { 
-              transform: translateY(-10px) rotate(120deg);
-              opacity: 0.8;
-            }
-            66% { 
-              transform: translateY(5px) rotate(240deg);
-              opacity: 0.4;
-            }
-          }
-
-          @keyframes slide-up {
-            0% { 
-              transform: translateY(100%);
-              opacity: 0;
-            }
-            100% { 
-              transform: translateY(0);
-              opacity: 1;
-            }
-          }
-
-          @keyframes twinkle {
-            0%, 100% { 
-              opacity: 0.6;
-              transform: scale(1) rotate(0deg);
-            }
-            50% { 
-              opacity: 1;
-              transform: scale(1.2) rotate(180deg);
-            }
-          }
-
-          @keyframes electric {
-            0%, 100% { 
-              opacity: 0.7;
-              filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
-            }
-            50% { 
-              opacity: 1;
-              filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8));
-            }
-          }
-
-          @keyframes typewriter {
-            0% { width: 0; }
-            100% { width: 100%; }
-          }
-
-          @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-          }
-
-          @keyframes fade-in-up {
-            0% {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes slide-in-left {
-            0% {
-              opacity: 0;
-              transform: translateX(-30px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-
-          @keyframes slide-in-right {
-            0% {
-              opacity: 0;
-              transform: translateX(30px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-
-          @keyframes flow-particle {
-            0% {
-              opacity: 0;
-              transform: scale(0);
-            }
-            50% {
-              opacity: 1;
-              transform: scale(1);
-            }
-            100% {
-              opacity: 0;
-              transform: scale(0) rotate(360deg);
-            }
           }
 
           /* Premium Glass Container */
@@ -538,7 +351,7 @@ const EndingCTA = () => {
             pointer-events: none;
           }
 
-          /* Enhanced Premium Button */
+          /* Premium Button */
           .premium-cta-button {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -548,16 +361,16 @@ const EndingCTA = () => {
               0 3px 12px rgba(59, 130, 246, 0.14),
               inset 0 1px 0 rgba(255, 255, 255, 0.8),
               inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             transform-style: preserve-3d;
           }
 
           .premium-cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 
               0 12px 36px rgba(0, 0, 0, 0.4),
-              0 6px 18px rgba(59, 130, 246, 0.3),
-              0 3px 9px rgba(147, 51, 234, 0.2);
+              0 6px 18px rgba(59, 130, 246, 0.21),
+              0 3px 9px rgba(147, 51, 234, 0.14);
           }
 
           .premium-button-shimmer {
@@ -568,118 +381,67 @@ const EndingCTA = () => {
             height: 100%;
             background: linear-gradient(90deg, 
               transparent 0%, 
-              rgba(255, 255, 255, 0.6) 50%, 
+              rgba(255, 255, 255, 0.4) 50%, 
               transparent 100%);
-            animation: premium-shimmer 2s ease-in-out infinite;
+            animation: premium-shimmer 3s ease-in-out infinite;
           }
 
-          /* Enhanced Visual Elements */
+          /* Visual Elements */
           .premium-quantum-field {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.15) 0%,
-              rgba(147, 51, 234, 0.1) 35%,
-              rgba(34, 211, 238, 0.08) 70%,
+              rgba(59, 130, 246, 0.105) 0%,
+              rgba(147, 51, 234, 0.07) 35%,
+              rgba(34, 211, 238, 0.056) 70%,
               transparent 85%);
             filter: blur(50px);
-            animation: premium-focal-glow 12s ease-in-out infinite;
+            animation: premium-focal-glow 15s ease-in-out infinite;
           }
 
           .premium-core-container {
             background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.08) 0%,
-              rgba(147, 51, 234, 0.04) 50%,
+              rgba(59, 130, 246, 0.056) 0%,
+              rgba(147, 51, 234, 0.028) 50%,
               transparent 70%);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-              0 0 40px rgba(59, 130, 246, 0.2),
-              0 0 80px rgba(147, 51, 234, 0.1),
-              inset 0 0 30px rgba(255, 255, 255, 0.08);
+              0 0 40px rgba(59, 130, 246, 0.14),
+              0 0 80px rgba(147, 51, 234, 0.07),
+              inset 0 0 30px rgba(255, 255, 255, 0.05);
           }
 
           .premium-brain-pulse {
-            animation: premium-brain-pulse 3s ease-in-out infinite;
+            animation: premium-brain-pulse 4s ease-in-out infinite;
           }
 
           .premium-neural-ring {
-            animation: premium-neural-ring 15s linear infinite;
+            animation: premium-neural-ring 20s linear infinite;
           }
 
-          /* Enhanced Entrance Animations */
+          /* Entrance Animations */
           .premium-title-entrance {
-            animation: premium-entrance-fade 1.2s ease-out 0.2s forwards;
+            animation: premium-entrance-fade 1s ease-out 0.2s forwards;
             opacity: 0;
           }
 
           .premium-subtitle-entrance {
-            animation: premium-entrance-fade 1.2s ease-out 0.5s forwards;
+            animation: premium-entrance-fade 1s ease-out 0.4s forwards;
             opacity: 0;
           }
 
           .premium-button-entrance {
-            animation: premium-entrance-fade 1.2s ease-out 0.8s forwards;
+            animation: premium-entrance-fade 1s ease-out 0.6s forwards;
             opacity: 0;
           }
 
           .premium-visual-entrance {
-            animation: premium-entrance-fade 1.5s ease-out 0.3s forwards;
+            animation: premium-entrance-fade 1.2s ease-out 0.3s forwards;
             opacity: 0;
           }
 
           .premium-footer-entrance {
-            animation: premium-entrance-fade 1.2s ease-out 1.5s forwards;
+            animation: premium-entrance-fade 1s ease-out 1.2s forwards;
             opacity: 0;
-          }
-
-          .premium-stats-entrance {
-            animation: premium-entrance-fade 1.2s ease-out 1.1s forwards;
-            opacity: 0;
-          }
-
-          /* New Animation Classes */
-          .animate-float {
-            animation: animate-float 4s ease-in-out infinite;
-          }
-
-          .animate-slide-up {
-            animation: slide-up 0.8s ease-out forwards;
-          }
-
-          .animate-twinkle {
-            animation: twinkle 2s ease-in-out infinite;
-          }
-
-          .animate-electric {
-            animation: electric 1.5s ease-in-out infinite;
-          }
-
-          .animate-typewriter {
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typewriter 3s steps(40) 1s forwards;
-          }
-
-          .animate-blink {
-            animation: blink 1s infinite;
-          }
-
-          .animate-fade-in-up {
-            animation: fade-in-up 0.8s ease-out forwards;
-            opacity: 0;
-          }
-
-          .animate-slide-in-left {
-            animation: slide-in-left 1s ease-out 1.8s forwards;
-            opacity: 0;
-          }
-
-          .animate-slide-in-right {
-            animation: slide-in-right 1s ease-out 2s forwards;
-            opacity: 0;
-          }
-
-          .animate-flow-particle {
-            animation: flow-particle 3s ease-in-out infinite;
           }
 
           /* Mobile Optimizations */
@@ -702,12 +464,6 @@ const EndingCTA = () => {
             .premium-orbit-node {
               --orbit-distance: -60px;
             }
-
-            .animate-typewriter {
-              white-space: normal;
-              overflow: visible;
-              animation: none;
-            }
           }
 
           /* Reduced Motion */
@@ -715,11 +471,7 @@ const EndingCTA = () => {
             .premium-quantum-field,
             .premium-brain-pulse,
             .premium-neural-ring,
-            .premium-orbit-node,
-            .animate-float,
-            .animate-twinkle,
-            .animate-electric,
-            .animate-flow-particle {
+            .premium-orbit-node {
               animation: none;
             }
           }
