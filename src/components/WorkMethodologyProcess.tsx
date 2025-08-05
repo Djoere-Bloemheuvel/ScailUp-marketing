@@ -153,28 +153,35 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
             }
           };
 
-          // Enhanced card box shadow styles with more prominent inward glow
+          // Subtle, widespread card glow with less intensity but more reach
           const getCardBoxShadow = () => {
             if (isActive) {
               return [
                 `0 25px 50px rgba(0, 0, 0, 0.4)`, // Main drop shadow
-                `0 0 30px rgba(${glowColor}, 0.3)`, // Outer glow
-                `inset 0 0 60px rgba(${glowColor}, 0.15)`, // Large inner glow to fill card
-                `inset 0 0 30px rgba(${glowColor}, 0.25)`, // Inner core glow
+                `0 0 80px rgba(${glowColor}, 0.08)`, // Very wide outer glow - subtle
+                `0 0 120px rgba(${glowColor}, 0.05)`, // Ultra-wide ambient glow
+                `inset 0 0 100px rgba(${glowColor}, 0.06)`, // Large, subtle inner glow throughout card
+                `inset 0 0 60px rgba(${glowColor}, 0.08)`, // Inner mid-range glow
+                `inset 0 0 30px rgba(${glowColor}, 0.12)`, // Inner core glow
                 `inset 0 1px 0 rgba(255, 255, 255, 0.1)` // Top highlight
               ].join(', ');
             } else if (isHovered) {
               return [
                 `0 12px 24px rgba(0, 0, 0, 0.3)`, // Main drop shadow
-                `0 0 15px rgba(${glowColor}, 0.2)`, // Outer glow
-                `inset 0 0 50px rgba(${glowColor}, 0.12)`, // Large inner glow
-                `inset 0 0 25px rgba(${glowColor}, 0.2)`, // Inner core glow
+                `0 0 60px rgba(${glowColor}, 0.06)`, // Wide outer glow - very subtle
+                `0 0 100px rgba(${glowColor}, 0.04)`, // Ultra-wide ambient glow
+                `inset 0 0 80px rgba(${glowColor}, 0.05)`, // Large, subtle inner glow throughout card
+                `inset 0 0 50px rgba(${glowColor}, 0.07)`, // Inner mid-range glow
+                `inset 0 0 25px rgba(${glowColor}, 0.10)`, // Inner core glow
                 `inset 0 1px 0 rgba(255, 255, 255, 0.08)` // Top highlight
               ].join(', ');
             } else {
               return [
-                `inset 0 0 40px rgba(${glowColor}, 0.08)`, // Subtle inner glow
-                `inset 0 0 20px rgba(${glowColor}, 0.12)`, // Inner core glow
+                `0 0 40px rgba(${glowColor}, 0.03)`, // Subtle outer glow
+                `0 0 80px rgba(${glowColor}, 0.02)`, // Very wide ambient glow
+                `inset 0 0 60px rgba(${glowColor}, 0.04)`, // Large, very subtle inner glow
+                `inset 0 0 40px rgba(${glowColor}, 0.05)`, // Inner mid-range glow
+                `inset 0 0 20px rgba(${glowColor}, 0.06)`, // Inner core glow
                 `inset 0 1px 0 rgba(255, 255, 255, 0.05)` // Top highlight
               ].join(', ');
             }
@@ -204,7 +211,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 </div>
               </div>
 
-              {/* Step card with fixed heights and enhanced inward glow - COLLAPSED: 185px, EXPANDED: 450px */}
+              {/* Step card with fixed heights and subtle widespread glow - COLLAPSED: 185px, EXPANDED: 450px */}
               <div 
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden ${
                   isActive 
