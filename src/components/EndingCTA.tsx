@@ -35,26 +35,65 @@ const EndingCTA = () => {
 
   return (
     <footer className="relative bg-premium-black border-t border-premium-silver/5 overflow-hidden">
-      {/* Premium background with ultra-subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-premium-black via-gray-900/5 to-premium-black" />
-      
-      {/* Extremely subtle ambient lighting */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/2 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '16s', animationDelay: '-8s' }} />
+      {/* Subtle Background Glow - Similar to Consultancy Page */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Top-left ambient glow */}
+        <div 
+          className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-40 md:opacity-50"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.10) 30%, rgba(29, 78, 216, 0.06) 50%, rgba(30, 64, 175, 0.03) 70%, transparent 85%)',
+            filter: 'blur(80px)',
+            animation: 'subtle-glow-blue 14s ease-in-out infinite'
+          }}
+        />
+        
+        {/* Bottom-right ambient glow */}
+        <div 
+          className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-35 md:opacity-45"
+          style={{
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(79, 70, 229, 0.08) 35%, rgba(67, 56, 202, 0.05) 55%, rgba(55, 48, 163, 0.02) 75%, transparent 90%)',
+            filter: 'blur(90px)',
+            animation: 'subtle-glow-purple 16s ease-in-out infinite',
+            animationDelay: '-5s'
+          }}
+        />
+        
+        {/* Additional accent glow */}
+        <div 
+          className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-25 md:opacity-35"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.10) 0%, rgba(37, 99, 235, 0.08) 40%, rgba(79, 70, 229, 0.04) 60%, rgba(29, 78, 216, 0.02) 80%, transparent 95%)',
+            filter: 'blur(70px)',
+            animation: 'subtle-glow-blend 12s ease-in-out infinite',
+            animationDelay: '-8s'
+          }}
+        />
+
+        {/* Premium grain texture layer */}
+        <div 
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 2%),
+              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 2%),
+              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.04) 0%, transparent 1.5%),
+              radial-gradient(circle at 60% 90%, rgba(255, 255, 255, 0.03) 0%, transparent 1.5%),
+              radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.04) 0%, transparent 1%),
+              radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 1%)
+            `,
+            backgroundSize: '400px 400px, 300px 300px, 500px 500px, 350px 350px, 450px 450px, 280px 280px',
+          }}
+        />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Main CTA Content */}
           <div className="space-y-10 order-2 lg:order-1">
-            {/* Primary Headlines */}
+            {/* Primary Headlines - Removed gradient from title */}
             <div className="space-y-8">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
-                Klaar voor{' '}
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
-                  AI transformatie?
-                </span>
+                Klaar voor AI transformatie?
               </h1>
               
               <p className="text-xl md:text-2xl font-light text-premium-silver/80 leading-relaxed max-w-2xl">
@@ -165,6 +204,55 @@ const EndingCTA = () => {
       {/* Premium Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          @keyframes subtle-glow-blue {
+            0%, 100% { 
+              opacity: 0.40;
+              transform: scale(1) rotate(0deg);
+              filter: blur(80px);
+            }
+            33% { 
+              opacity: 0.55;
+              transform: scale(1.08) rotate(2deg);
+              filter: blur(85px);
+            }
+            66% { 
+              opacity: 0.35;
+              transform: scale(0.95) rotate(-1deg);
+              filter: blur(75px);
+            }
+          }
+
+          @keyframes subtle-glow-purple {
+            0%, 100% { 
+              opacity: 0.35;
+              transform: scale(1) rotate(0deg);
+              filter: blur(90px);
+            }
+            50% { 
+              opacity: 0.50;
+              transform: scale(1.12) rotate(-3deg);
+              filter: blur(95px);
+            }
+          }
+
+          @keyframes subtle-glow-blend {
+            0%, 100% { 
+              opacity: 0.25;
+              transform: scale(1) rotate(0deg);
+              filter: blur(70px);
+            }
+            40% { 
+              opacity: 0.40;
+              transform: scale(1.05) rotate(1deg);
+              filter: blur(75px);
+            }
+            80% { 
+              opacity: 0.20;
+              transform: scale(0.98) rotate(-2deg);
+              filter: blur(65px);
+            }
+          }
+
           @keyframes premium-glow {
             0%, 100% { 
               opacity: 0.8;
@@ -187,6 +275,24 @@ const EndingCTA = () => {
             100% { 
               transform: rotate(360deg) translateY(var(--orbit-radius)) rotate(-360deg);
               opacity: 0.4;
+            }
+          }
+
+          /* Mobile optimizations */
+          @media (max-width: 768px) {
+            .subtle-glow-blue,
+            .subtle-glow-purple,
+            .subtle-glow-blend {
+              animation-duration: 20s;
+            }
+          }
+
+          /* Reduced motion preferences */
+          @media (prefers-reduced-motion: reduce) {
+            .subtle-glow-blue,
+            .subtle-glow-purple,
+            .subtle-glow-blend {
+              animation: none;
             }
           }
         `
