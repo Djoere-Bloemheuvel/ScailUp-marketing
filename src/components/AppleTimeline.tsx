@@ -7,10 +7,26 @@ const AppleTimeline = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Set visible after component mounts for animation
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '100px 0px -20px 0px'
+      }
+    );
+
+    // Observe the timeline container to trigger animations
+    const timelineContainer = document.querySelector('[data-timeline-container]');
+    if (timelineContainer) observer.observe(timelineContainer);
+
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   const steps = [
     {
@@ -52,25 +68,35 @@ const AppleTimeline = () => {
   ];
 
   return (
-    <div className="relative max-w-5xl mx-auto">
+    <div className="relative max-w-5xl mx-auto" data-timeline-container>
       {/* Enhanced central animated timeline line with smoother animation */}
       <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
         {/* Base line with enhanced gradient */}
-        <div className="w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+        <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-700 ease-out ${
+          isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
+        }`} 
+        style={{ 
+          transformOrigin: 'top',
+          transitionDelay: '200ms'
+        }} />
         
         {/* Enhanced animated glow pulse with better timing */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-out ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ transitionDelay: '400ms' }}
+        >
           <div 
             className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
             style={{
-              animation: 'timelinePulse 15s ease-in-out infinite', // Slower, smoother
+              animation: isVisible ? 'timelinePulse 15s ease-in-out infinite' : 'none',
               transformOrigin: 'top'
             }}
           />
           <div 
             className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md"
             style={{
-              animation: 'timelinePulse 18s ease-in-out infinite', // Even slower
+              animation: isVisible ? 'timelinePulse 18s ease-in-out infinite' : 'none',
               animationDelay: '4s',
               transformOrigin: 'top'
             }}
@@ -84,11 +110,16 @@ const AppleTimeline = () => {
             className="absolute left-1/2 transform -translate-x-1/2"
             style={{ 
               top: `${12 + (index * 18)}%`,
-              animation: `dotPulse 6s ease-in-out infinite`, // Slower pulse
-              animationDelay: `${index * 0.8}s` // More staggered
             }}
           >
-            <div className="relative">
+            <div className={`relative transition-all duration-400 ease-out ${
+              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+            }`}
+            style={{ 
+              transitionDelay: `${600 + (index * 100)}ms`,
+              animation: isVisible ? `dotPulse 6s ease-in-out infinite ${index * 0.8}s` : 'none'
+            }}
+            >
               <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
                 <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-br from-cyan-400/30 to-transparent" />
               </div>
@@ -102,13 +133,24 @@ const AppleTimeline = () => {
       {/* Staggered timeline cards with improved timing */}
       <div className="relative z-10 space-y-8 lg:space-y-10">
         {steps.map((step, index) => (
-          <AppleTimelineCard
+          <div
             key={step.id}
-            step={step}
-            isLeft={index % 2 === 0}
-            isVisible={isVisible}
-            delay={index * 200} // Slightly more spaced out timing
-          />
+            className={`transition-all duration-600 ease-out ${
+              isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-12'
+            }`}
+            style={{ 
+              transitionDelay: `${800 + (index * 150)}ms`
+            }}
+          >
+            <AppleTimelineCard
+              step={step}
+              isLeft={index % 2 === 0}
+              isVisible={isVisible}
+              delay={index * 150}
+            />
+          </div>
         ))}
       </div>
 
