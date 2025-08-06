@@ -24,7 +24,7 @@ const EndingCTA = () => {
       {/* Main Content Container - Only one glass container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
-          {/* Main Glass Container - The only one containing text with cinematic backlight glow */}
+          {/* Main Glass Container - The only one containing text */}
           <div className="premium-glass-main-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
@@ -141,7 +141,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Simplified Animation Styles - Only essential animations with cinematic backlight glow */}
+      {/* Simplified Animation Styles - Only essential animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-orbit {
@@ -198,7 +198,7 @@ const EndingCTA = () => {
             100% { transform: translateX(400%) rotate(35deg); }
           }
 
-          /* Premium Glass Container with Cinematic Backlight Glow */
+          /* Premium Glass Container - Only one main container */
           .premium-glass-main-container {
             background: linear-gradient(135deg, 
               rgba(255, 255, 255, 0.08) 0%, 
@@ -215,31 +215,10 @@ const EndingCTA = () => {
               inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
             position: relative;
-            overflow: visible;
-            z-index: 2;
+            overflow: hidden;
           }
 
           .premium-glass-main-container::before {
-            content: '';
-            position: absolute;
-            bottom: -40%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120%;
-            height: 80%;
-            background: radial-gradient(
-              ellipse 100% 60% at center bottom,
-              rgba(59, 130, 246, 0.12) 0%,
-              rgba(147, 51, 234, 0.08) 25%,
-              rgba(34, 211, 238, 0.06) 50%,
-              transparent 80%
-            );
-            opacity: 0.6;
-            z-index: -1;
-            pointer-events: none;
-          }
-
-          .premium-glass-main-container::after {
             content: '';
             position: absolute;
             inset: 0;
@@ -249,7 +228,6 @@ const EndingCTA = () => {
               rgba(34, 211, 238, 0.03) 100%);
             border-radius: 24px;
             pointer-events: none;
-            z-index: 1;
           }
 
           /* Premium Button */
@@ -327,14 +305,6 @@ const EndingCTA = () => {
             .premium-glass-main-container {
               border-radius: 20px;
               padding: 1rem;
-              overflow: visible;
-            }
-            
-            .premium-glass-main-container::before {
-              width: 140%;
-              height: 70%;
-              bottom: -30%;
-              opacity: 0.4;
             }
             
             .premium-orbit-node {
