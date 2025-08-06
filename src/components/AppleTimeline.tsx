@@ -2,7 +2,11 @@
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
-const AppleTimeline = () => {
+interface AppleTimelineProps {
+  isVisible: boolean;
+}
+
+const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
   const steps = [
     {
       id: 1,
@@ -47,21 +51,32 @@ const AppleTimeline = () => {
       {/* Enhanced central animated timeline line with smoother animation */}
       <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
         {/* Base line with enhanced gradient */}
-        <div className="w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+        <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-800 ease-out ${
+          isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
+        }`}
+        style={{
+          transformOrigin: 'top',
+          transitionDelay: '300ms',
+          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+        }} />
         
         {/* Enhanced animated glow pulse with better timing */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className={`absolute inset-0 w-full h-full transition-opacity duration-800 ease-out ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ transitionDelay: '400ms' }}
+        >
           <div 
             className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
             style={{
-              animation: 'timelinePulse 15s ease-in-out infinite', // Slower, smoother
+              animation: isVisible ? 'timelinePulse 15s ease-in-out infinite' : 'none',
               transformOrigin: 'top'
             }}
           />
           <div 
             className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md"
             style={{
-              animation: 'timelinePulse 18s ease-in-out infinite', // Even slower
+              animation: isVisible ? 'timelinePulse 18s ease-in-out infinite' : 'none',
               animationDelay: '4s',
               transformOrigin: 'top'
             }}
@@ -75,30 +90,52 @@ const AppleTimeline = () => {
             className="absolute left-1/2 transform -translate-x-1/2"
             style={{ 
               top: `${12 + (index * 18)}%`,
-              animation: `dotPulse 6s ease-in-out infinite`, // Slower pulse
-              animationDelay: `${index * 0.8}s` // More staggered
             }}
           >
-            <div className="relative">
+            <div className={`relative transition-all duration-500 ease-out ${
+              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+            }`}
+            style={{
+              transitionDelay: `${500 + (index * 50)}ms`,
+              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+            >
               <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
-                <div className="absolute inset-0 rounded-full animate-pulse bg-gradient-to-br from-cyan-400/30 to-transparent" />
+                <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent ${
+                  isVisible ? 'animate-pulse' : ''
+                }`} />
               </div>
               {/* Enhanced outer glow with smoother animation */}
-              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 animate-pulse opacity-70 bg-white/15" />
+              <div className={`absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 opacity-70 bg-white/15 ${
+                isVisible ? 'animate-pulse' : ''
+              }`} />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Staggered timeline cards with improved timing */}
+      {/* Staggered timeline cards with unified animation sequence */}
       <div className="relative z-10 space-y-8 lg:space-y-10">
         {steps.map((step, index) => (
-          <AppleTimelineCard
+          <div
             key={step.id}
-            step={step}
-            isLeft={index % 2 === 0}
-            delay={index * 200} // Slightly more spaced out timing
-          />
+            className={`transition-all duration-600 ease-out ${
+              isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-6'
+            }`}
+            style={{
+              transitionDelay: `${600 + (index * 80)}ms`,
+              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+          >
+            <AppleTimelineCard
+              step={step}
+              isLeft={index % 2 === 0}
+              delay={0}
+              isVisible={isVisible}
+            />
+          </div>
         ))}
       </div>
 
@@ -133,25 +170,6 @@ const AppleTimeline = () => {
             100% { 
               transform: translateY(100vh) scaleY(0);
               opacity: 0;
-            }
-          }
-          
-          @keyframes dotPulse {
-            0%, 100% { 
-              transform: translate(-50%, -50%) scale(1);
-              opacity: 0.4;
-            }
-            25% { 
-              transform: translate(-50%, -50%) scale(1.1);
-              opacity: 0.6;
-            }
-            50% { 
-              transform: translate(-50%, -50%) scale(1.3);
-              opacity: 1;
-            }
-            75% { 
-              transform: translate(-50%, -50%) scale(1.1);
-              opacity: 0.6;
             }
           }
         `
