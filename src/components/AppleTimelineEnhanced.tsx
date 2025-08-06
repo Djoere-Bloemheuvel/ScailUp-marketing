@@ -69,42 +69,41 @@ const AppleTimelineEnhanced = () => {
 
   return (
     <div className="relative max-w-5xl mx-auto">
-      {/* Title with Services-style animation */}
+      {/* Enhanced Title with subtle animation */}
       <div className="mb-16 text-center">
-        <div className="mb-8">
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 transition-all duration-700 ease-out ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-12'
-          }`} 
-          style={{ 
-            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' 
-          }}>
-            Gebouwd op principes.
-          </h2>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight transition-all duration-700 ease-out ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-12'
-          }`} 
-          style={{ 
-            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-            transitionDelay: '200ms'
-          }}>
-            <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-              Gedreven door resultaat.
-            </span>
-          </h2>
-        </div>
-        
-        <p className={`text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed transition-all duration-700 ease-out ${
+        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-1000 ease-out ${
           isVisible 
             ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-12'
+            : 'opacity-0 translate-y-6'
+        }`}>
+          <span 
+            className={`inline-block transition-all duration-800 ease-out ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+            }`}
+            style={{ transitionDelay: '200ms' }}
+          >
+            Gebouwd op principes.
+          </span>
+        </h2>
+        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight transition-all duration-1000 ease-out ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-6'
+        }`}
+        style={{ transitionDelay: '400ms' }}
+        >
+          <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+            Gedreven door resultaat.
+          </span>
+        </h2>
+        <p className={`text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed mt-6 transition-all duration-1000 ease-out ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-4'
         }`}
         style={{ 
           fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-          transitionDelay: '400ms'
+          transitionDelay: '600ms'
         }}
         >
           Dit zijn de vier principes waarmee we elk project tot een succes maken.
@@ -121,14 +120,14 @@ const AppleTimelineEnhanced = () => {
           }`} 
           style={{ 
             transformOrigin: 'top',
-            transitionDelay: '600ms'
+            transitionDelay: '800ms'
           }} />
           
           {/* Enhanced animated glow pulse */}
           <div className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-out ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ transitionDelay: '700ms' }}
+          style={{ transitionDelay: '900ms' }}
           >
             <div 
               className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
@@ -160,7 +159,7 @@ const AppleTimelineEnhanced = () => {
                 isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
               }`}
               style={{ 
-                transitionDelay: `${800 + (index * 50)}ms`
+                transitionDelay: `${1000 + (index * 100)}ms`
               }}
               >
                 <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
@@ -177,7 +176,7 @@ const AppleTimelineEnhanced = () => {
           ))}
         </div>
 
-        {/* Timeline cards with faster synchronized animation */}
+        {/* Timeline cards with synchronized animation */}
         <div className="relative z-10 space-y-8 lg:space-y-10">
           {steps.map((step, index) => (
             <div
@@ -188,15 +187,14 @@ const AppleTimelineEnhanced = () => {
                   : 'opacity-0 translate-y-12'
               }`}
               style={{ 
-                transitionDelay: `${1000 + (index * 100)}ms`
+                transitionDelay: `${1200 + (index * 150)}ms`
               }}
               {...(index === 0 ? { 'data-timeline-trigger': 'true' } : {})}
             >
               <AppleTimelineCard
                 step={step}
                 isLeft={index % 2 === 0}
-                isVisible={isVisible}
-                delay={index * 50}
+                delay={0}
               />
             </div>
           ))}
