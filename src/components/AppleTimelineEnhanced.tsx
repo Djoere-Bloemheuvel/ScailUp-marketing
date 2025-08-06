@@ -1,4 +1,3 @@
-
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import AppleTimelineCard from './AppleTimelineCard';
@@ -194,7 +193,6 @@ const AppleTimelineEnhanced = () => {
               <AppleTimelineCard
                 step={step}
                 isLeft={index % 2 === 0}
-                delay={0}
                 isVisible={isVisible}
               />
             </div>

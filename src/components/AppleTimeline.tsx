@@ -1,4 +1,3 @@
-
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
@@ -117,7 +116,7 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
       {/* Staggered timeline cards with unified animation sequence */}
       <div className="relative z-10 space-y-8 lg:space-y-10">
         {steps.map((step, index) => (
-                      <div
+          <div
             key={step.id}
             className={`transition-all duration-1000 ease-out ${
               isVisible
@@ -132,7 +131,6 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
             <AppleTimelineCard
               step={step}
               isLeft={index % 2 === 0}
-              delay={0}
               isVisible={isVisible}
             />
           </div>
