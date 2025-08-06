@@ -1,5 +1,5 @@
 
-import { Brain } from 'lucide-react';
+import { ArrowRight, Brain } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import CinematicBackground from './hero/CinematicBackground';
