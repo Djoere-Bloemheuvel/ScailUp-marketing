@@ -48,6 +48,9 @@ const EndingCTA = () => {
         <CinematicBackground hideGlassContainer={true} />
       </div>
 
+      {/* Repositioned background glow - moved to the right side */}
+      <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2 w-[30rem] h-[30rem] bg-gradient-radial from-cyan-500/8 via-violet-500/4 to-transparent opacity-40 blur-3xl" />
+
       {/* Main Content Container - Only one glass container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
@@ -56,14 +59,15 @@ const EndingCTA = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
               <div className="space-y-8 order-2 lg:order-1">
-                {/* Statement Title */}
+                {/* Statement Title with split styling */}
                 <div className="space-y-6">
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight text-white whitespace-nowrap transition-all duration-1000 ease-out ${
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight whitespace-nowrap transition-all duration-1000 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
                   }`}>
-                    Zonder AI loop je achter.
+                    <span className="text-white font-bold tracking-wide">Zonder AI</span>
+                    <span className="text-gray-300 font-medium"> loop je achter.</span>
                   </h1>
                   
                   <p className={`text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl transition-all duration-1000 ease-out delay-200 ${
@@ -75,7 +79,7 @@ const EndingCTA = () => {
                   </p>
                 </div>
 
-                {/* Premium CTA Button */}
+                {/* Premium CTA Button with enhanced glow */}
                 <div className={`pt-4 transition-all duration-1000 ease-out delay-400 ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
@@ -84,7 +88,7 @@ const EndingCTA = () => {
                   <button
                     onClick={handleContactClick}
                     aria-label="Plan mijn AI Scan - Start een gesprek met Buildrs.AI"
-                    className="premium-ai-scan-button group relative overflow-hidden"
+                    className="premium-ai-scan-button group relative overflow-hidden shadow-md shadow-white/10"
                   >
                     <div className="relative z-10 flex items-center px-6 py-3">
                       <span className="text-lg font-semibold text-white">Plan mijn AI Scan</span>
@@ -184,7 +188,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Enhanced Animation Styles with new AI Scan button */}
+      {/* Enhanced Animation Styles with enhanced AI Scan button */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-orbit {
@@ -268,7 +272,7 @@ const EndingCTA = () => {
             pointer-events: none;
           }
 
-          /* New AI Scan Button Design */
+          /* Enhanced AI Scan Button Design with subtle glow */
           .premium-ai-scan-button {
             background: transparent;
             border: 1px solid white;
@@ -291,7 +295,8 @@ const EndingCTA = () => {
             background: rgba(255, 255, 255, 0.1);
             box-shadow: 
               0 0 20px rgba(255, 255, 255, 0.3),
-              0 0 40px rgba(255, 255, 255, 0.1);
+              0 0 40px rgba(255, 255, 255, 0.1),
+              0 4px 8px rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
           }
 
