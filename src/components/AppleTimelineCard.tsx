@@ -1,6 +1,6 @@
 
 import { LucideIcon } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 
 interface AppleTimelineCardProps {
   step: {
@@ -21,65 +21,84 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Smoother staggered animation with better timing
-            setTimeout(() => {
-              setIsVisible(true);
-            }, delay);
-          }
+  // Optimized intersection observer callback
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Use requestAnimationFrame for smoother timing
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            setIsVisible(true);
+          }, delay);
         });
-      },
-      {
-        threshold: 0.1, // Trigger earlier
-        rootMargin: '100px 0px -50px 0px' // More generous margins for smoother loading
       }
-    );
+    });
+  }, [delay]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.2, // More conservative threshold for better performance
+      rootMargin: '50px 0px -30px 0px' // Optimized margins
+    });
 
     if (cardRef.current) {
       observer.observe(cardRef.current);
     }
 
     return () => observer.disconnect();
-  }, [delay]);
+  }, [handleIntersection]);
 
-  // Special styling for transition step
-  const isTransitionStep = step.isTransition;
-  const cardWidth = isTransitionStep ? 'max-w-xs' : 'max-w-sm'; // Smaller width for transition
-  const cardScale = isTransitionStep ? 'scale-90' : 'scale-100'; // Slightly smaller scale
+  // Memoized styling calculations for better performance
+  const cardStyles = useMemo(() => {
+    const isTransitionStep = step.isTransition;
+    return {
+      isTransitionStep,
+      cardWidth: isTransitionStep ? 'max-w-xs' : 'max-w-sm',
+      cardScale: isTransitionStep ? 'scale-90' : 'scale-100'
+    };
+  }, [step.isTransition]);
+
+  // Memoized animation styles with hardware acceleration
+  const animationStyles = useMemo(() => ({
+    transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    backfaceVisibility: 'hidden' as const,
+    willChange: 'transform, opacity' as const
+  }), []);
 
   return (
     <div
       ref={cardRef}
       className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
-      {/* Enhanced Ambient Glow with smoother transitions */}
+      {/* Enhanced Ambient Glow with hardware acceleration */}
       <div
         className={`
-          absolute inset-0 transition-all duration-500 ease-out pointer-events-none
+          absolute inset-0 transition-all duration-600 pointer-events-none
           ${isVisible
             ? 'opacity-100 scale-100'
             : 'opacity-0 scale-95'
           }
         `}
         style={{
-          transitionDelay: `${delay + 200}ms`,
-          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+          transitionDelay: `${delay + 150}ms`,
+          ...animationStyles,
+          transform: isVisible ? 'translate3d(0, 0, 0) scale(1)' : 'translate3d(0, 0, 0) scale(0.95)'
         }}
       >
         {/* Enhanced glow layers with smoother scaling - adjusted for transition step */}
         <div
           className={`
             absolute rounded-full blur-[4rem]
-            bg-gradient-to-br ${step.glowColor} transition-all duration-600 ease-out
+            bg-gradient-to-br ${step.glowColor} transition-all duration-700
             ${isVisible ? 'scale-100' : 'scale-75'}
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
+            ${cardStyles.isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
           `}
-          style={{ transitionDelay: `${delay + 300}ms` }}
+          style={{ 
+            transitionDelay: `${delay + 200}ms`,
+            ...animationStyles,
+            transform: isVisible ? 'translate3d(0, 0, 0) scale(1)' : 'translate3d(0, 0, 0) scale(0.75)'
+          }}
         />
 
         <div
@@ -88,7 +107,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             bg-gradient-to-br ${step.glowColor} transition-all duration-500 ease-out
             ${isVisible ? 'scale-100' : 'scale-80'}
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-64 h-64 opacity-20' : 'w-80 h-80 opacity-28'}
+            ${cardStyles.isTransitionStep ? 'w-64 h-64 opacity-20' : 'w-80 h-80 opacity-28'}
           `}
           style={{ transitionDelay: `${delay + 400}ms` }}
         />
@@ -99,12 +118,12 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             bg-gradient-to-br ${step.glowColorHover} transition-all duration-400 ease-out
             ${isVisible ? 'scale-100' : 'scale-85'}
             ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-32 h-32 opacity-30' : 'w-48 h-48 opacity-48'}
+            ${cardStyles.isTransitionStep ? 'w-32 h-32 opacity-30' : 'w-48 h-48 opacity-48'}
           `}
           style={{ transitionDelay: `${delay + 500}ms` }}
         />
 
-        {!isTransitionStep && (
+        {!cardStyles.isTransitionStep && (
           <div
             className={`
               absolute w-[40rem] h-[40rem] rounded-full blur-[5rem]
@@ -118,10 +137,10 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         )}
       </div>
 
-      {/* Enhanced Card Container with smoother entrance */}
+      {/* Enhanced Card Container with hardware acceleration */}
       <div
         className={`
-          relative w-full ${cardWidth} transition-all duration-400 ease-out ${cardScale}
+          relative w-full ${cardStyles.cardWidth} transition-all duration-500 ${cardStyles.cardScale}
           ${isVisible
             ? 'opacity-100 translate-y-0 scale-100'
             : 'opacity-0 translate-y-8 scale-95'
@@ -129,7 +148,10 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         `}
         style={{
           transitionDelay: `${delay}ms`,
-          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+          ...animationStyles,
+          transform: isVisible 
+            ? 'translate3d(0, 0, 0) scale(1)' 
+            : 'translate3d(0, 8px, 0) scale(0.95)'
         }}
       >
         {/* Glassmorphic Card with enhanced entrance */}
@@ -140,21 +162,24 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
           <div className={`
             relative rounded-3xl
             backdrop-blur-xl shadow-2xl
-            transition-all duration-300 ease-out
-            ${isTransitionStep 
+            transition-all duration-400
+            ${cardStyles.isTransitionStep 
               ? 'p-5 lg:p-6 bg-white/[0.015] border border-white/[0.06] shadow-black/20' // Subtler for transition
               : 'p-6 lg:p-7 bg-white/[0.02] border border-white/[0.08] shadow-black/40'
             }
             ${isVisible
-              ? isTransitionStep 
+              ? cardStyles.isTransitionStep 
                 ? 'border-white/[0.08] bg-white/[0.02]'
                 : 'border-white/[0.12] bg-white/[0.03]'
-              : isTransitionStep
+              : cardStyles.isTransitionStep
                 ? 'border-white/[0.04] bg-white/[0.008]'
                 : 'border-white/[0.06] bg-white/[0.01]'
             }
           `}
-          style={{ transitionDelay: `${delay + 200}ms` }}
+          style={{ 
+            transitionDelay: `${delay + 150}ms`,
+            ...animationStyles
+          }}
           >
 
             {/* Enhanced Step Number with smoother reveal */}
@@ -162,14 +187,17 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               <div className="relative">
                 <div className={`
                   font-black leading-none mb-2 font-mono
-                  transition-all duration-250 ease-out
-                  ${isTransitionStep 
+                  transition-all duration-350
+                  ${cardStyles.isTransitionStep 
                     ? 'text-3xl lg:text-4xl text-white/8' // Smaller and more subtle
                     : 'text-4xl lg:text-5xl text-white/10'
                   }
                   ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
                 `}
-                style={{ transitionDelay: `${delay + 300}ms` }}
+                style={{ 
+                  transitionDelay: `${delay + 200}ms`,
+                  ...animationStyles
+                }}
                 >
                   {step.number}
                 </div>
@@ -177,7 +205,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                   absolute top-0.5 left-0.5 font-black
                   bg-gradient-to-br leading-none font-mono
                   bg-clip-text text-transparent transition-all duration-300 ease-out
-                  ${isTransitionStep
+                  ${cardStyles.isTransitionStep
                     ? 'text-3xl lg:text-4xl from-white/60 via-white/45 to-white/35' // More subtle gradient
                     : 'text-4xl lg:text-5xl from-white/90 via-white/70 to-white/50'
                   }
@@ -208,7 +236,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               <h3 className={`
                 font-bold leading-tight tracking-tight font-sans
                 transition-all duration-250 ease-out
-                ${isTransitionStep
+                ${cardStyles.isTransitionStep
                   ? 'text-base lg:text-lg text-white/80' // Smaller and more subtle
                   : 'text-lg lg:text-xl text-white/95'
                 }
@@ -225,7 +253,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               <p className={`
                 font-light leading-relaxed
                 transition-all duration-300 ease-out
-                ${isTransitionStep
+                ${cardStyles.isTransitionStep
                   ? 'text-white/50 text-xs lg:text-sm' // Smaller and more subtle
                   : 'text-white/65 text-sm lg:text-base'
                 }
@@ -245,7 +273,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               absolute top-1/2 -translate-y-0.5
               bg-gradient-to-r from-white/20 to-transparent
               transition-all duration-200 ease-out
-              ${isTransitionStep 
+              ${cardStyles.isTransitionStep 
                 ? 'w-4 lg:w-6 h-px opacity-60' // Shorter and more subtle
                 : 'w-6 lg:w-10 h-px'
               }
@@ -255,7 +283,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             style={{ transitionDelay: `${delay + 700}ms` }}
             >
               <div className={`absolute inset-0 w-1 h-full rounded-full animate-pulse ${
-                isTransitionStep 
+                cardStyles.isTransitionStep 
                   ? 'bg-gradient-to-r from-white/20 to-transparent'
                   : 'bg-gradient-to-r from-cyan-400/40 to-transparent'
               }`} />
@@ -265,7 +293,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             <div className={`
               absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-transparent to-transparent
               transition-opacity duration-[400ms] ease-out
-              ${isTransitionStep ? 'via-white/8' : 'via-white/15'}
+              ${cardStyles.isTransitionStep ? 'via-white/8' : 'via-white/15'}
               ${isVisible ? 'opacity-100' : 'opacity-0'}
             `}
             style={{ transitionDelay: `${delay + 800}ms` }}
@@ -274,7 +302,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             <div className={`
               absolute top-4 left-0 w-px h-8 bg-gradient-to-b to-transparent
               transition-all duration-[300ms] ease-out
-              ${isTransitionStep ? 'from-white/15' : 'from-white/25'}
+              ${cardStyles.isTransitionStep ? 'from-white/15' : 'from-white/25'}
               ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}
             `}
             style={{ transitionDelay: `${delay + 900}ms` }}
@@ -283,7 +311,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             <div className={`
               absolute top-4 right-0 w-px h-8 bg-gradient-to-b to-transparent
               transition-all duration-[300ms] ease-out
-              ${isTransitionStep ? 'from-white/15' : 'from-white/25'}
+              ${cardStyles.isTransitionStep ? 'from-white/15' : 'from-white/25'}
               ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}
             `}
             style={{ transitionDelay: `${delay + 950}ms` }}
@@ -294,7 +322,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               absolute top-2 left-2 rounded-full blur-sm
               bg-gradient-to-br to-transparent
               transition-opacity duration-[600ms] ease-out
-              ${isTransitionStep 
+              ${cardStyles.isTransitionStep 
                 ? 'w-12 h-12 from-white/[0.04]' // Smaller and more subtle
                 : 'w-16 h-16 from-white/[0.08]'
               }
@@ -304,7 +332,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             />
 
             {/* Add subtle pulse animation for transition step */}
-            {isTransitionStep && (
+            {cardStyles.isTransitionStep && (
               <div className={`
                 absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.02] to-transparent
                 transition-opacity duration-1000 ease-out animate-pulse

@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { LucideIcon, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, LucideIcon } from 'lucide-react';
+import { useCallback, useMemo, useState } from 'react';
 
 interface MethodologyStep {
   id: number;
@@ -38,8 +38,21 @@ interface WorkMethodologyProcessProps {
 const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodologyProcessProps) => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
-  // Custom scrollbar styles as CSS string
-  const scrollbarStyles = `
+  // Optimized hover handlers with useCallback
+  const handleStepEnter = useCallback((stepId: number) => {
+    setHoveredStep(stepId);
+  }, []);
+
+  const handleStepLeave = useCallback(() => {
+    setHoveredStep(null);
+  }, []);
+
+  const handleStepClick = useCallback((stepId: number) => {
+    onStepSelect(stepId);
+  }, [onStepSelect]);
+
+  // Memoized custom scrollbar styles for better performance
+  const scrollbarStyles = useMemo(() => `
     .custom-scrollbar::-webkit-scrollbar {
       width: 4px;
     }
@@ -50,14 +63,42 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.2);
       border-radius: 2px;
+      transition: background 0.2s ease;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: rgba(255, 255, 255, 0.3);
     }
-  `;
 
-  // Define specific glow colors for each step
-  const getStepGlowColor = (stepId: number) => {
+    /* Performance optimizations */
+    .methodology-step {
+      will-change: transform, box-shadow;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .methodology-icon {
+      will-change: transform, box-shadow;
+      backface-visibility: hidden;
+    }
+
+    .methodology-glow {
+      will-change: opacity, transform;
+      backface-visibility: hidden;
+    }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .methodology-step,
+      .methodology-icon,
+      .methodology-glow {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  `, []);
+
+  // Memoized glow color mapping for better performance
+  const getStepGlowColor = useCallback((stepId: number) => {
     const glowMap: { [key: number]: string } = {
       1: '#4484FF', // Blue for Discovery & Strategy
       2: '#AA66FF', // Purple for Rapid Prototype
@@ -65,18 +106,21 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
       4: '#FF9944'  // Orange for Live & Optimization
     };
     return glowMap[stepId] || '#4484FF';
-  };
+  }, []);
 
   return (
     <div className="relative">
       {/* Custom scrollbar styles */}
       <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
 
-      {/* Progress connector */}
+      {/* Progress connector with enhanced animation */}
       <div className="absolute top-16 left-0 right-0 h-0.5 bg-white/10 hidden lg:block z-10">
-        <div 
-          className="h-full bg-gradient-to-r from-emerald-400 to-purple-400 transition-all duration-1000 ease-out"
-          style={{ width: `${((activeStep - 1) / (steps.length - 1)) * 100}%` }}
+        <div
+          className="h-full bg-gradient-to-r from-emerald-400 to-purple-400 transition-all duration-800 cubic-bezier(0.4, 0, 0.2, 1) will-change-transform"
+          style={{
+            width: `${((activeStep - 1) / (steps.length - 1)) * 100}%`,
+            transform: 'translate3d(0, 0, 0)'
+          }}
         />
       </div>
 
@@ -86,7 +130,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           const isActive = activeStep === step.id;
           const isHovered = hoveredStep === step.id;
           const stepGlowColor = getStepGlowColor(step.id);
-          
+
           // Safe access to accent color properties with explicit fallbacks
           const accentColor = step.accentColor || {
             primary: 'from-blue-500 to-cyan-600',
@@ -99,24 +143,24 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
           const getGlowColor = () => {
             const colorMap: { [key: string]: string } = {
               'from-blue-500': '59, 130, 246',
-              'from-purple-500': '139, 92, 246', 
+              'from-purple-500': '139, 92, 246',
               'from-emerald-400': '52, 211, 153',
               'from-orange-500': '249, 115, 22'
             };
-            
+
             const primaryGradient = accentColor.primary;
             if (!primaryGradient || typeof primaryGradient !== 'string') {
               return '59, 130, 246';
             }
-            
+
             const primaryColor = primaryGradient.split(' ')[0];
             if (!primaryColor) {
               return '59, 130, 246';
             }
-            
+
             return colorMap[primaryColor] || '59, 130, 246';
           };
-          
+
           const glowColor = getGlowColor();
 
           // Enhanced icon container styles with solid black background and full inner fill glow
@@ -199,30 +243,30 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               ].join(', ');
             }
           };
-          
+
           return (
             <div
               key={step.id}
-              className="relative cursor-pointer"
-              onMouseEnter={() => setHoveredStep(step.id)}
-              onMouseLeave={() => setHoveredStep(null)}
-              onClick={() => onStepSelect(step.id)}
+              className="methodology-step relative cursor-pointer"
+              onMouseEnter={() => handleStepEnter(step.id)}
+              onMouseLeave={handleStepLeave}
+              onClick={() => handleStepClick(step.id)}
             >
               {/* Background glow layers - positioned behind the card */}
               <div className="absolute inset-0 pointer-events-none z-0">
                 {/* Primary glow - wide and soft */}
-                <div 
-                  className="absolute inset-0 rounded-3xl transition-all duration-500 ease-out"
+                <div
+                  className="methodology-glow absolute inset-0 rounded-3xl transition-all duration-400 cubic-bezier(0.4, 0, 0.2, 1)"
                   style={{
                     background: `radial-gradient(ellipse 150% 120% at center, ${stepGlowColor}15 0%, ${stepGlowColor}08 40%, transparent 70%)`,
                     opacity: isActive ? 0.6 : isHovered ? 0.4 : 0.25,
-                    transform: isActive ? 'scale(1.1)' : isHovered ? 'scale(1.05)' : 'scale(1)',
+                    transform: isActive ? 'translate3d(0, 0, 0) scale(1.1)' : isHovered ? 'translate3d(0, 0, 0) scale(1.05)' : 'translate3d(0, 0, 0) scale(1)',
                     filter: 'blur(8px)'
                   }}
                 />
-                
+
                 {/* Secondary glow - more focused */}
-                <div 
+                <div
                   className="absolute inset-4 rounded-3xl transition-all duration-400 ease-out"
                   style={{
                     background: `radial-gradient(ellipse 120% 100% at center, ${stepGlowColor}20 0%, ${stepGlowColor}10 50%, transparent 80%)`,
@@ -231,9 +275,9 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                     filter: 'blur(4px)'
                   }}
                 />
-                
+
                 {/* Accent glow - inner highlight */}
-                <div 
+                <div
                   className="absolute inset-8 rounded-3xl transition-all duration-300 ease-out"
                   style={{
                     background: `radial-gradient(ellipse 100% 80% at center, ${stepGlowColor}25 0%, ${stepGlowColor}12 40%, transparent 70%)`,
@@ -246,25 +290,26 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
               {/* Step number indicator with solid black background and enhanced glow effects */}
               <div className="flex items-center justify-center mb-6 relative z-10">
-                <div 
-                  className="relative w-12 h-12 rounded-full transition-all duration-200 ease-out"
+                <div
+                  className="methodology-icon relative w-12 h-12 rounded-full transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)"
                   style={getIconContainerStyles()}
                 >
-                  <step.icon 
-                    className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-200 ease-out" 
+                  <step.icon
+                    className="w-5 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)"
                     strokeWidth={2}
-                    style={{ 
-                      color: isActive || isHovered ? '#FFFFFF' : '#E5E7EB'
+                    style={{
+                      color: isActive || isHovered ? '#FFFFFF' : '#E5E7EB',
+                      transform: isActive ? 'scale(1.1)' : isHovered ? 'scale(1.05)' : 'scale(1)'
                     }}
                   />
                 </div>
               </div>
 
               {/* Step card with fixed heights and subtle widespread glow - COLLAPSED: 185px, EXPANDED: 450px */}
-              <div 
+              <div
                 className={`relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-200 ease-out flex flex-col overflow-hidden z-10 ${
-                  isActive 
-                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[450px]` 
+                  isActive
+                    ? `bg-gradient-to-br from-${accentColor.subtle} to-${accentColor.subtle}/50 ${accentColor.border} shadow-2xl h-[450px]`
                     : isHovered
                       ? `bg-gradient-to-br from-${accentColor.subtle} to-transparent border-white/20 h-[185px] scale-[1.02]`
                       : `bg-gradient-to-br from-${accentColor.subtle}/20 to-transparent ${accentColor.border} opacity-60 hover:opacity-80 h-[185px]`
@@ -275,7 +320,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
               >
                 {/* Glassmorphism overlay on hover */}
                 {isHovered && !isActive && (
-                  <div 
+                  <div
                     className="absolute inset-0 rounded-3xl backdrop-blur-sm border transition-all duration-200 ease-out"
                     style={{
                       background: `linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(${glowColor}, 0.05))`,
@@ -288,7 +333,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                 {/* Phase badge with subtle accent */}
                 <div className="mb-4 flex-shrink-0 relative z-10">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono border transition-all duration-200 ease-out ${
-                    isActive 
+                    isActive
                       ? `bg-gradient-to-r ${accentColor.primary} text-white ${accentColor.border}`
                       : `bg-gradient-to-r ${accentColor.primary} opacity-60 text-white ${accentColor.border} hover:opacity-80`
                   }`}>
@@ -313,16 +358,16 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                     <div className="absolute inset-0">
                       {/* Bottom right hover text with ArrowUpRight icon */}
                       <div className="absolute bottom-0 right-0 flex items-center">
-                        <div 
+                        <div
                           className={`flex items-center text-xs transition-all duration-250 ease-out ${
-                            isHovered 
-                              ? 'opacity-60 translate-y-0' 
+                            isHovered
+                              ? 'opacity-60 translate-y-0'
                               : 'opacity-0 translate-y-1'
                           }`}
                           style={{ color: '#9CA3AF' }}
                         >
                           <span className="mr-1">Klik voor details</span>
-                          <ArrowUpRight 
+                          <ArrowUpRight
                             className={`w-3 h-3 transition-all duration-200 ease-out ${
                               isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-1'
                             }`}
@@ -342,7 +387,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                           <p className="text-white/60 text-sm leading-relaxed mb-6">
                             {step.description}
                           </p>
-                          
+
                           {/* Deliverables with accent color bullets */}
                           <div className="space-y-3">
                             <h4 className="text-white/90 font-medium text-xs uppercase tracking-wider">
@@ -350,7 +395,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
                             </h4>
                             {step.deliverables.map((deliverable, idx) => (
                               <div key={idx} className="flex items-start text-xs text-white/70">
-                                <div 
+                                <div
                                   className="w-1 h-1 rounded-full mr-2 mt-2 flex-shrink-0"
                                   style={{
                                     background: `linear-gradient(135deg, rgba(${glowColor}, 1), rgba(${glowColor}, 0.8))`
@@ -368,7 +413,7 @@ const WorkMethodologyProcess = ({ steps, activeStep, onStepSelect }: WorkMethodo
 
                 {/* Accent line at bottom for active cards */}
                 {isActive && (
-                  <div 
+                  <div
                     className="absolute bottom-0 left-4 right-4 h-px opacity-60 flex-shrink-0"
                     style={{
                       background: `linear-gradient(to right, transparent, rgba(${glowColor}, 0.8), transparent)`
