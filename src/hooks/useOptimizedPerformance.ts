@@ -132,6 +132,8 @@ export const useOptimizedPerformance = (config: PerformanceConfig = {}) => {
         connection.removeEventListener('change', handleConnectionChange);
       };
     }
+    // Add explicit return for when connection is not available
+    return undefined;
   }, [detectCapabilities]);
 
   return {

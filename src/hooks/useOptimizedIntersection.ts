@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface UseOptimizedIntersectionOptions {
@@ -29,6 +30,9 @@ export const useOptimizedIntersection = (options: UseOptimizedIntersectionOption
   // Optimized intersection callback
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
     const entry = entries[0];
+    
+    // Add null check for entry
+    if (!entry) return;
 
     if (entry.isIntersecting && (!triggerOnce || !hasTriggered)) {
       if (delay > 0) {

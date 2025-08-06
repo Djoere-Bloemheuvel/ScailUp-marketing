@@ -1,26 +1,23 @@
+
 import { lazy, memo, Suspense } from 'react';
 
-// Lazy load heavy animation components only when needed
-const OptimizedAnimations = lazy(() => import('./OptimizedAnimations'));
-const CinematicAnimations = lazy(() => import('./hero/CinematicAnimations'));
-const AmbientLighting = lazy(() => import('./hero/AmbientLighting'));
+// Only load animation components that actually exist
+const OptimizedCinematicAnimations = lazy(() => import('./hero/OptimizedCinematicAnimations'));
+const OptimizedHoverAnimations = lazy(() => import('./hero/OptimizedHoverAnimations'));
 
 interface LazyAnimationProviderProps {
   includeHeroAnimations?: boolean;
-  includeAmbientLighting?: boolean;
-  includeOptimizedAnimations?: boolean;
+  includeHoverAnimations?: boolean;
 }
 
 const LazyAnimationProvider = memo(({
   includeHeroAnimations = false,
-  includeAmbientLighting = false,
-  includeOptimizedAnimations = false
+  includeHoverAnimations = false
 }: LazyAnimationProviderProps) => {
   return (
     <Suspense fallback={null}>
-      {includeOptimizedAnimations && <OptimizedAnimations />}
-      {includeHeroAnimations && <CinematicAnimations />}
-      {includeAmbientLighting && <AmbientLighting />}
+      {includeHeroAnimations && <OptimizedCinematicAnimations />}
+      {includeHoverAnimations && <OptimizedHoverAnimations />}
     </Suspense>
   );
 });

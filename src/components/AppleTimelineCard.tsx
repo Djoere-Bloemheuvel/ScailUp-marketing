@@ -1,6 +1,6 @@
 
 import { LucideIcon } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePerformantIntersection } from '../hooks/usePerformantIntersection';
 import { useOptimizedPerformance } from '../hooks/useOptimizedPerformance';
 

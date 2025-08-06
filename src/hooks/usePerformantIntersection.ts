@@ -90,6 +90,9 @@ export const usePerformantIntersection = (options: UsePerformantIntersectionOpti
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
     const entry = entries[0];
 
+    // Add null check for entry
+    if (!entry) return;
+
     // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
