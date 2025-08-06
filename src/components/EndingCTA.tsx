@@ -215,7 +215,8 @@ const EndingCTA = () => {
               inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+            z-index: 2;
           }
 
           .premium-glass-main-container::before {
@@ -228,12 +229,12 @@ const EndingCTA = () => {
             height: 80%;
             background: radial-gradient(
               ellipse 100% 60% at center bottom,
-              rgba(59, 130, 246, 0.06) 0%,
-              rgba(147, 51, 234, 0.04) 25%,
-              rgba(34, 211, 238, 0.03) 50%,
+              rgba(59, 130, 246, 0.12) 0%,
+              rgba(147, 51, 234, 0.08) 25%,
+              rgba(34, 211, 238, 0.06) 50%,
               transparent 80%
             );
-            opacity: 0.8;
+            opacity: 0.6;
             z-index: -1;
             pointer-events: none;
           }
@@ -326,12 +327,14 @@ const EndingCTA = () => {
             .premium-glass-main-container {
               border-radius: 20px;
               padding: 1rem;
+              overflow: visible;
             }
             
             .premium-glass-main-container::before {
               width: 140%;
               height: 70%;
               bottom: -30%;
+              opacity: 0.4;
             }
             
             .premium-orbit-node {
