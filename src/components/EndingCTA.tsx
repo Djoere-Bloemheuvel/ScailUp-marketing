@@ -64,7 +64,7 @@ const EndingCTA = () => {
                       : 'opacity-0 translate-y-8'
                   }`}>
                     <span className="block text-white mb-2">Zonder AI</span>
-                    <span className="text-white block">
+                    <span className="text-white block text-[0.95em]">
                       Loop je achter.
                     </span>
                   </h1>
