@@ -1,63 +1,65 @@
 
-const CinematicAnimations = () => {
+import { memo } from 'react';
+
+const CinematicAnimations = memo(() => {
   return (
     <style dangerouslySetInnerHTML={{
       __html: `
-        /* Optimized Cinematic Entrance Animation - Much faster */
-        @keyframes cinematic-entrance {
+        /* Optimized Cinematic Entrance Animation - Hardware accelerated */
+        @keyframes cinematic-entrance-optimized {
           0% {
             opacity: 0;
-            transform: scale(0.95) translateY(10px);
-            filter: blur(2px);
+            transform: translate3d(0, 10px, 0) scale(0.95);
+            filter: blur(1px);
           }
           100% {
             opacity: 1;
-            transform: scale(1) translateY(0);
-            filter: blur(0px);
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
           }
         }
 
-        /* AI Core Floating Animations */
-        @keyframes cinematic-float-1 {
+        /* Optimized AI Core Floating Animations - Hardware accelerated */
+        @keyframes cinematic-float-1-opt {
           0%, 100% {
-            transform: translateY(0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
             opacity: 0.9;
           }
           50% {
-            transform: translateY(-8px) scale(1.01);
+            transform: translate3d(0, -8px, 0) scale(1.01);
             opacity: 1;
           }
         }
 
-        @keyframes cinematic-float-2 {
+        @keyframes cinematic-float-2-opt {
           0%, 100% {
-            transform: translateY(0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
             opacity: 0.8;
           }
           50% {
-            transform: translateY(-12px) scale(1.05);
+            transform: translate3d(0, -12px, 0) scale(1.05);
             opacity: 1;
           }
         }
 
-        @keyframes cinematic-float-3 {
+        @keyframes cinematic-float-3-opt {
           0%, 100% {
-            transform: translateY(0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
             opacity: 0.7;
           }
           50% {
-            transform: translateY(-6px) scale(1.02);
+            transform: translate3d(0, -6px, 0) scale(1.02);
             opacity: 1;
           }
         }
 
-        @keyframes cinematic-float-4 {
+        @keyframes cinematic-float-4-opt {
           0%, 100% {
-            transform: translateY(0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
             opacity: 0.9;
           }
           50% {
-            transform: translateY(-10px) scale(1.03);
+            transform: translate3d(0, -10px, 0) scale(1.03);
             opacity: 1;
           }
         }
@@ -179,25 +181,35 @@ const CinematicAnimations = () => {
           }
         }
 
-        /* Apply Optimized Cinematic Animations - Much faster entrance */
+        /* Apply Optimized Cinematic Animations - Hardware accelerated */
         .cinematic-entrance {
-          animation: cinematic-entrance 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+          animation: cinematic-entrance-optimized 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
         }
 
         .animate-cinematic-float-1 {
-          animation: cinematic-float-1 8s ease-in-out infinite;
+          animation: cinematic-float-1-opt 8s ease-in-out infinite;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
         }
 
         .animate-cinematic-float-2 {
-          animation: cinematic-float-2 6s ease-in-out infinite;
+          animation: cinematic-float-2-opt 6s ease-in-out infinite;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
         }
 
         .animate-cinematic-float-3 {
-          animation: cinematic-float-3 10s ease-in-out infinite;
+          animation: cinematic-float-3-opt 10s ease-in-out infinite;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
         }
 
         .animate-cinematic-float-4 {
-          animation: cinematic-float-4 7s ease-in-out infinite;
+          animation: cinematic-float-4-opt 7s ease-in-out infinite;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
         }
 
         .animate-cinematic-core-pulse {
@@ -241,7 +253,7 @@ const CinematicAnimations = () => {
           .animate-cinematic-pulse-fast,
           .animate-cinematic-pulse-medium,
           .animate-cinematic-pulse-slow {
-            animation-duration: 3s;
+            animation-duration: 2s;
           }
 
           .animate-cinematic-float-1,
@@ -256,26 +268,39 @@ const CinematicAnimations = () => {
           }
 
           .animate-cinematic-glass-shimmer {
-            animation-duration: 6s;
+            animation-duration: 4s;
           }
 
           /* Reduce motion for better mobile performance */
           .cinematic-entrance {
-            animation-duration: 0.5s;
+            animation-duration: 0.3s;
           }
         }
 
-        /* Performance optimizations for all devices */
+        /* Low-end device optimizations */
+        @media (max-width: 480px) {
+          .animate-cinematic-pulse-fast,
+          .animate-cinematic-pulse-medium,
+          .animate-cinematic-pulse-slow {
+            box-shadow: none !important;
+          }
+        }
+
+        /* Performance optimizations for all devices - now more comprehensive */
         .cinematic-entrance,
         .animate-cinematic-float-1,
         .animate-cinematic-float-2,
         .animate-cinematic-float-3,
-        .animate-cinematic-float-4 {
-          will-change: transform, opacity;
+        .animate-cinematic-float-4,
+        .animate-cinematic-core-pulse,
+        .animate-cinematic-ring-pulse {
+          contain: layout style paint;
         }
       `
     }} />
   );
-};
+});
+
+CinematicAnimations.displayName = 'CinematicAnimations';
 
 export default CinematicAnimations;

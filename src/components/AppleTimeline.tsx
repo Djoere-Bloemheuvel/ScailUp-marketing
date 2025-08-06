@@ -17,7 +17,7 @@ const AppleTimeline = () => {
     },
     {
       id: 2,
-      number: "02", 
+      number: "02",
       title: "Ownership mentaliteit",
       subtitle: "Jullie succes is ons succes. We bouwen voor jullie alsof het ons eigen bedrijf is.",
       icon: HandHeart,
@@ -50,17 +50,17 @@ const AppleTimeline = () => {
       <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
         {/* Base line with enhanced gradient */}
         <div className="w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent" />
-        
+
         {/* Enhanced animated glow pulse with better timing and hardware acceleration */}
         <div className="absolute inset-0 w-full h-full">
-          <div 
+          <div
             className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm will-change-transform"
             style={{
               animation: 'timelinePulse 16s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               transformOrigin: 'top'
             }}
           />
-          <div 
+          <div
             className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md will-change-transform"
             style={{
               animation: 'timelinePulse 20s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -69,13 +69,13 @@ const AppleTimeline = () => {
             }}
           />
         </div>
-        
+
         {/* Enhanced timeline dots with smoother pulsing and hardware acceleration */}
         {steps.map((step, index) => (
-          <div 
+          <div
             key={step.id}
             className="absolute left-1/2 transform -translate-x-1/2 will-change-transform"
-            style={{ 
+            style={{
               top: `${12 + (index * 18)}%`,
               animation: `dotPulse 7s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
               animationDelay: `${index * 1}s`
@@ -83,14 +83,14 @@ const AppleTimeline = () => {
           >
             <div className="relative">
               <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30 will-change-transform">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent will-change-opacity" 
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent will-change-opacity"
                      style={{
                        animation: `dotInnerPulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
                        animationDelay: `${index * 0.5}s`
                      }} />
               </div>
               {/* Enhanced outer glow with smoother animation */}
-              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 opacity-70 bg-white/15 will-change-transform will-change-opacity" 
+              <div className="absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 opacity-70 bg-white/15 will-change-transform will-change-opacity"
                    style={{
                      animation: `dotGlow 5s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
                      animationDelay: `${index * 0.7}s`
@@ -116,7 +116,7 @@ const AppleTimeline = () => {
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes timelinePulse {
-            0% { 
+            0% {
               transform: translate3d(0, -100%, 0) scaleY(0);
               opacity: 0;
             }
@@ -128,7 +128,7 @@ const AppleTimeline = () => {
               opacity: 0.5;
               transform: translate3d(0, -50%, 0) scaleY(0.6);
             }
-            50% { 
+            50% {
               opacity: 1;
               transform: translate3d(0, 0%, 0) scaleY(1);
             }
@@ -140,38 +140,38 @@ const AppleTimeline = () => {
               opacity: 0.6;
               transform: translate3d(0, 50%, 0) scaleY(0.7);
             }
-            100% { 
+            100% {
               transform: translate3d(0, 100vh, 0) scaleY(0);
               opacity: 0;
             }
           }
-          
+
           @keyframes dotPulse {
-            0%, 100% { 
+            0%, 100% {
               transform: translate3d(-50%, -50%, 0) scale(1);
               opacity: 0.5;
             }
-            50% { 
+            50% {
               transform: translate3d(-50%, -50%, 0) scale(1.2);
               opacity: 1;
             }
           }
 
           @keyframes dotInnerPulse {
-            0%, 100% { 
+            0%, 100% {
               opacity: 0.3;
             }
-            50% { 
+            50% {
               opacity: 0.8;
             }
           }
 
           @keyframes dotGlow {
-            0%, 100% { 
+            0%, 100% {
               opacity: 0.4;
               transform: scale(1.5);
             }
-            50% { 
+            50% {
               opacity: 0.9;
               transform: scale(1.8);
             }

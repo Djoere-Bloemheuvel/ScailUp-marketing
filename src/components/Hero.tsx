@@ -1,11 +1,12 @@
 
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
-import { useMemo, useCallback } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedHeadline from './AnimatedHeadline';
 import CinematicBackground from './hero/CinematicBackground';
+import LazyAnimationProvider from './LazyAnimationProvider';
 
 const Hero = () => {
   const backgroundLoaded = useProgressiveLoad(100);
@@ -153,13 +154,13 @@ const Hero = () => {
         __html: `
           /* Enhanced scroll pulse with better easing */
           @keyframes premium-scroll-pulse {
-            0%, 100% { 
-              opacity: 0.5; 
-              transform: translate3d(0, 0, 0) scale(1); 
+            0%, 100% {
+              opacity: 0.5;
+              transform: translate3d(0, 0, 0) scale(1);
             }
-            50% { 
-              opacity: 1; 
-              transform: translate3d(0, 12px, 0) scale(1.05); 
+            50% {
+              opacity: 1;
+              transform: translate3d(0, 12px, 0) scale(1.05);
             }
           }
 
@@ -178,14 +179,14 @@ const Hero = () => {
 
           /* Subtle glow animation for buttons */
           @keyframes premium-glow-pulse {
-            0%, 100% { 
-              box-shadow: 
+            0%, 100% {
+              box-shadow:
                 0 0 20px rgba(255, 255, 255, 0.1),
                 0 0 40px rgba(255, 255, 255, 0.05),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
             }
-            50% { 
-              box-shadow: 
+            50% {
+              box-shadow:
                 0 0 30px rgba(255, 255, 255, 0.2),
                 0 0 60px rgba(255, 255, 255, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -238,7 +239,7 @@ const Hero = () => {
             .premium-scale-hover {
               animation: none;
             }
-            
+
             .premium-button-hover:hover,
             .premium-scale-hover:hover {
               transform: none;
@@ -246,6 +247,12 @@ const Hero = () => {
           }
         `
       }} />
+
+      {/* Load optimized animations for hero section */}
+      <LazyAnimationProvider
+        includeHeroAnimations={backgroundLoaded}
+        includeOptimizedAnimations={true}
+      />
     </section>
   );
 };

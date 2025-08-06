@@ -1,32 +1,40 @@
 
-const SmoothHoverAnimations = () => {
+import { memo } from 'react';
+
+const SmoothHoverAnimations = memo(() => {
   return (
     <style dangerouslySetInnerHTML={{
       __html: `
-        /* Smooth Hover Base Classes */
+        /* Smooth Hover Base Classes - Hardware accelerated */
         .smooth-hover-base {
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: transform, opacity, box-shadow;
+          backface-visibility: hidden;
+          transform: translateZ(0);
         }
 
         .smooth-hover-scale {
-          transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           will-change: transform;
+          backface-visibility: hidden;
+          transform: translateZ(0);
         }
 
         .smooth-hover-glow {
-          transition: box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out;
+          transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
           will-change: box-shadow, opacity;
+          backface-visibility: hidden;
         }
 
         .smooth-hover-fade {
-          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: opacity;
+          backface-visibility: hidden;
         }
 
         /* Enhanced Card Hover Effects */
         .premium-card-smooth {
-          transition: 
+          transition:
             transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
             background-color 0.4s ease-out,
             border-color 0.4s ease-out,
@@ -40,7 +48,7 @@ const SmoothHoverAnimations = () => {
 
         /* Glassmorphic Hover Enhancements */
         .glass-hover-smooth {
-          transition: 
+          transition:
             backdrop-filter 0.5s ease-out,
             background-color 0.4s ease-out,
             border-color 0.4s ease-out,
@@ -55,7 +63,7 @@ const SmoothHoverAnimations = () => {
 
         /* Icon Hover Animations */
         .icon-hover-smooth {
-          transition: 
+          transition:
             transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
             color 0.3s ease-out,
             filter 0.4s ease-out;
@@ -71,7 +79,7 @@ const SmoothHoverAnimations = () => {
         .button-hover-smooth {
           position: relative;
           overflow: hidden;
-          transition: 
+          transition:
             transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
             box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
             background-color 0.3s ease-out;
@@ -171,13 +179,28 @@ const SmoothHoverAnimations = () => {
         /* Responsive Hover - Only on devices that support hover */
         @media (hover: hover) and (pointer: fine) {
           .hover-only-smooth {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
         }
 
         @media (hover: none) {
           .hover-only-smooth {
             transition: none;
+          }
+        }
+
+        /* Low-end device optimizations */
+        @media (max-width: 480px) {
+          .smooth-hover-base,
+          .smooth-hover-scale,
+          .smooth-hover-glow,
+          .smooth-hover-fade {
+            transition-duration: 0.2s;
+          }
+
+          .button-hover-smooth::before,
+          .glow-hover-smooth::after {
+            display: none;
           }
         }
 
@@ -190,7 +213,7 @@ const SmoothHoverAnimations = () => {
 
         /* Enhanced Timeline Card Hover */
         .timeline-card-smooth {
-          transition: 
+          transition:
             transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
             background-color 0.4s ease-out,
             backdrop-filter 0.5s ease-out,
@@ -204,7 +227,7 @@ const SmoothHoverAnimations = () => {
 
         /* CTA Section Smooth Hover */
         .cta-hover-smooth {
-          transition: 
+          transition:
             transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
             box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: transform, box-shadow;
@@ -216,6 +239,8 @@ const SmoothHoverAnimations = () => {
       `
     }} />
   );
-};
+});
+
+SmoothHoverAnimations.displayName = 'SmoothHoverAnimations';
 
 export default SmoothHoverAnimations;

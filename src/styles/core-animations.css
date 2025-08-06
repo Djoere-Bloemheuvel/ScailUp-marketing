@@ -1,0 +1,287 @@
+/* Core Performance-Optimized Animation Library */
+/* This file consolidates all critical animations for optimal loading */
+
+/* Hardware-accelerated base classes */
+.gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.performance-optimized {
+  contain: layout style paint;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Core Entrance Animations */
+@keyframes premium-entrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes cinematic-entrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Core Float Animations - Optimized */
+@keyframes float-gentle {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -18px, 0); }
+}
+
+@keyframes float-strong {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -24px, 0); }
+}
+
+/* Core Pulse Animations */
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+}
+
+@keyframes pulse-medium {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.08);
+  }
+}
+
+/* Core Glow Animations */
+@keyframes glow-blue {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes glow-purple {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(147, 51, 234, 0.4);
+  }
+}
+
+@keyframes glow-cyan {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.4);
+  }
+}
+
+/* Core Scan Animations */
+@keyframes scan-horizontal {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes scan-vertical {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+/* Core Rotation Animations */
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate-medium {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Applied Animation Classes */
+.entrance-animation {
+  animation: premium-entrance 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.cinematic-entrance {
+  animation: cinematic-entrance 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.float-gentle {
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+.float-medium {
+  animation: float-medium 10s ease-in-out infinite;
+}
+
+.float-strong {
+  animation: float-strong 12s ease-in-out infinite;
+}
+
+.pulse-gentle {
+  animation: pulse-gentle 4s ease-in-out infinite;
+}
+
+.pulse-medium {
+  animation: pulse-medium 3s ease-in-out infinite;
+}
+
+.glow-blue {
+  animation: glow-blue 5s ease-in-out infinite;
+}
+
+.glow-purple {
+  animation: glow-purple 6s ease-in-out infinite;
+}
+
+.glow-cyan {
+  animation: glow-cyan 4s ease-in-out infinite;
+}
+
+.scan-horizontal {
+  animation: scan-horizontal 20s linear infinite;
+}
+
+.scan-vertical {
+  animation: scan-vertical 25s linear infinite;
+}
+
+.rotate-slow {
+  animation: rotate-slow 40s linear infinite;
+}
+
+.rotate-medium {
+  animation: rotate-medium 30s linear infinite;
+}
+
+/* Hover Optimizations */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translate3d(0, -4px, 0);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .float-gentle,
+  .float-medium,
+  .float-strong {
+    animation-duration: 6s;
+  }
+
+  .pulse-gentle,
+  .pulse-medium {
+    animation-duration: 3s;
+  }
+
+  .rotate-slow,
+  .rotate-medium {
+    animation-duration: 20s;
+  }
+
+  .cinematic-entrance {
+    animation-duration: 0.3s;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .float-gentle,
+  .float-medium,
+  .float-strong,
+  .pulse-gentle,
+  .pulse-medium,
+  .glow-blue,
+  .glow-purple,
+  .glow-cyan,
+  .scan-horizontal,
+  .scan-vertical,
+  .rotate-slow,
+  .rotate-medium {
+    animation: none !important;
+  }
+
+  .cinematic-entrance,
+  .entrance-animation {
+    animation-duration: 0.01ms !important;
+  }
+
+  .hover-lift,
+  .hover-scale,
+  .hover-glow {
+    transition: none !important;
+  }
+}
+
+/* Performance hints */
+.core-animated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.core-animated-heavy {
+  will-change: transform, opacity, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}

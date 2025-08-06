@@ -1,30 +1,35 @@
-import SmoothHoverAnimations from './SmoothHoverAnimations';
+import { lazy, memo, Suspense } from 'react';
 
-const HeroAnimations = () => {
+// Lazy load smooth hover animations
+const SmoothHoverAnimations = lazy(() => import('./SmoothHoverAnimations'));
+
+const HeroAnimations = memo(() => {
   return (
     <>
-      <SmoothHoverAnimations />
+      <Suspense fallback={null}>
+        <SmoothHoverAnimations />
+      </Suspense>
       <style dangerouslySetInnerHTML={{
         __html: `
-        /* Premium Animation Keyframes - Enhanced with smooth transitions */
-        @keyframes premium-fade-in {
-          0% { opacity: 0; transform: translateY(40px) scale(0.98); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
+        /* Premium Animation Keyframes - Hardware accelerated */
+        @keyframes premium-fade-in-opt {
+          0% { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.98); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
         }
 
-        @keyframes premium-orb-float-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-30px); }
+        @keyframes premium-orb-float-slow-opt {
+          0%, 100% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -30px, 0); }
         }
 
-        @keyframes premium-orb-float-medium {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+        @keyframes premium-orb-float-medium-opt {
+          0%, 100% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -20px, 0); }
         }
 
-        @keyframes premium-orb-float-fast {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-15px); }
+        @keyframes premium-orb-float-fast-opt {
+          0%, 100% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -15px, 0); }
         }
 
         @keyframes premium-orb-pulse {
@@ -325,9 +330,11 @@ const HeroAnimations = () => {
           50% { opacity: 0.8; stroke-width: 2; }
         }
 
-        /* Apply Premium Animations with enhanced smooth hover support */
+        /* Apply Optimized Premium Animations */
         .premium-fade-in {
-          animation: premium-fade-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+          animation: premium-fade-in-opt 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+          will-change: transform, opacity;
+          backface-visibility: hidden;
         }
 
         .premium-stagger-1 {
@@ -342,35 +349,41 @@ const HeroAnimations = () => {
           animation-delay: 0.3s;
         }
 
-        /* Enhanced floating animations with smooth hover interaction */
+        /* Optimized floating animations with hardware acceleration */
         .premium-orb-float-slow {
-          animation: premium-orb-float-slow 12s ease-in-out infinite;
-          transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: premium-orb-float-slow-opt 12s ease-in-out infinite;
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          will-change: transform;
+          backface-visibility: hidden;
         }
 
         .premium-orb-float-slow:hover {
           animation-play-state: paused;
-          transform: translateY(-10px) scale(1.05);
+          transform: translate3d(0, -10px, 0) scale(1.05);
         }
 
         .premium-orb-float-medium {
-          animation: premium-orb-float-medium 9s ease-in-out infinite;
-          transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: premium-orb-float-medium-opt 9s ease-in-out infinite;
+          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          will-change: transform;
+          backface-visibility: hidden;
         }
 
         .premium-orb-float-medium:hover {
           animation-play-state: paused;
-          transform: translateY(-8px) scale(1.03);
+          transform: translate3d(0, -8px, 0) scale(1.03);
         }
 
         .premium-orb-float-fast {
-          animation: premium-orb-float-fast 6s ease-in-out infinite;
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: premium-orb-float-fast-opt 6s ease-in-out infinite;
+          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          will-change: transform;
+          backface-visibility: hidden;
         }
 
         .premium-orb-float-fast:hover {
           animation-play-state: paused;
-          transform: translateY(-6px) scale(1.02);
+          transform: translate3d(0, -6px, 0) scale(1.02);
         }
 
         .premium-orb-pulse {
@@ -487,6 +500,8 @@ const HeroAnimations = () => {
     }} />
     </>
   );
-};
+});
+
+HeroAnimations.displayName = 'HeroAnimations';
 
 export default HeroAnimations;

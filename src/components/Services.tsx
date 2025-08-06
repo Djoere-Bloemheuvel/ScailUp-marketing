@@ -1,6 +1,6 @@
 
 import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import ServiceSection from './ServiceSection';
 
 const Services = () => {
@@ -18,7 +18,7 @@ const Services = () => {
 
   useEffect(() => {
     const observers = new Map();
-    
+
     // Optimized observer options
     const observerOptions = {
       threshold: 0.15,
@@ -100,12 +100,12 @@ const Services = () => {
     }
 
     @keyframes orbital-glow {
-      0%, 100% { 
-        opacity: 0.6; 
+      0%, 100% {
+        opacity: 0.6;
         transform: translate3d(0, 0, 0) scale(1);
       }
-      50% { 
-        opacity: 1; 
+      50% {
+        opacity: 1;
         transform: translate3d(0, 0, 0) scale(1.1);
       }
     }

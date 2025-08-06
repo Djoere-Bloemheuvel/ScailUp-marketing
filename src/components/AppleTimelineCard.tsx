@@ -1,6 +1,6 @@
 
 import { LucideIcon } from 'lucide-react';
-import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 interface AppleTimelineCardProps {
   step: {
@@ -94,7 +94,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
             ${cardStyles.isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
           `}
-          style={{ 
+          style={{
             transitionDelay: `${delay + 200}ms`,
             ...animationStyles,
             transform: isVisible ? 'translate3d(0, 0, 0) scale(1)' : 'translate3d(0, 0, 0) scale(0.75)'
@@ -149,8 +149,8 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
         style={{
           transitionDelay: `${delay}ms`,
           ...animationStyles,
-          transform: isVisible 
-            ? 'translate3d(0, 0, 0) scale(1)' 
+          transform: isVisible
+            ? 'translate3d(0, 0, 0) scale(1)'
             : 'translate3d(0, 8px, 0) scale(0.95)'
         }}
       >
@@ -163,12 +163,12 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             relative rounded-3xl
             backdrop-blur-xl shadow-2xl
             transition-all duration-400
-            ${cardStyles.isTransitionStep 
+            ${cardStyles.isTransitionStep
               ? 'p-5 lg:p-6 bg-white/[0.015] border border-white/[0.06] shadow-black/20' // Subtler for transition
               : 'p-6 lg:p-7 bg-white/[0.02] border border-white/[0.08] shadow-black/40'
             }
             ${isVisible
-              ? cardStyles.isTransitionStep 
+              ? cardStyles.isTransitionStep
                 ? 'border-white/[0.08] bg-white/[0.02]'
                 : 'border-white/[0.12] bg-white/[0.03]'
               : cardStyles.isTransitionStep
@@ -176,7 +176,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                 : 'border-white/[0.06] bg-white/[0.01]'
             }
           `}
-          style={{ 
+          style={{
             transitionDelay: `${delay + 150}ms`,
             ...animationStyles
           }}
@@ -188,13 +188,13 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                 <div className={`
                   font-black leading-none mb-2 font-mono
                   transition-all duration-350
-                  ${cardStyles.isTransitionStep 
+                  ${cardStyles.isTransitionStep
                     ? 'text-3xl lg:text-4xl text-white/8' // Smaller and more subtle
                     : 'text-4xl lg:text-5xl text-white/10'
                   }
                   ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
                 `}
-                style={{ 
+                style={{
                   transitionDelay: `${delay + 200}ms`,
                   ...animationStyles
                 }}
@@ -273,7 +273,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               absolute top-1/2 -translate-y-0.5
               bg-gradient-to-r from-white/20 to-transparent
               transition-all duration-200 ease-out
-              ${cardStyles.isTransitionStep 
+              ${cardStyles.isTransitionStep
                 ? 'w-4 lg:w-6 h-px opacity-60' // Shorter and more subtle
                 : 'w-6 lg:w-10 h-px'
               }
@@ -283,7 +283,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             style={{ transitionDelay: `${delay + 700}ms` }}
             >
               <div className={`absolute inset-0 w-1 h-full rounded-full animate-pulse ${
-                cardStyles.isTransitionStep 
+                cardStyles.isTransitionStep
                   ? 'bg-gradient-to-r from-white/20 to-transparent'
                   : 'bg-gradient-to-r from-cyan-400/40 to-transparent'
               }`} />
@@ -322,7 +322,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               absolute top-2 left-2 rounded-full blur-sm
               bg-gradient-to-br to-transparent
               transition-opacity duration-[600ms] ease-out
-              ${cardStyles.isTransitionStep 
+              ${cardStyles.isTransitionStep
                 ? 'w-12 h-12 from-white/[0.04]' // Smaller and more subtle
                 : 'w-16 h-16 from-white/[0.08]'
               }
