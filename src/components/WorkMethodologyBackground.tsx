@@ -10,8 +10,8 @@
 const WorkMethodologyBackground = () => {
   return (
     <>
-      {/* Base gradient - different from Approach */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-900" />
+      {/* Base gradient - changed from black to #333333 */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-[#333333] to-gray-900" />
       
       {/* Enhanced ambient nebula clouds behind steps - more balanced and visible */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-60">

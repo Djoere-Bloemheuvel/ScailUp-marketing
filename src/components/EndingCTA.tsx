@@ -12,9 +12,9 @@ const EndingCTA = () => {
   };
 
   return (
-    <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
-      {/* Smooth vertical fade from black at top - 25% height */}
-      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
+    <section className="relative min-h-[120vh] overflow-hidden flex items-center justify-center py-20" style={{ backgroundColor: '#333333' }}>
+      {/* Smooth vertical fade from #333333 at top - 25% height */}
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-[#333333] via-[#333333]/70 to-transparent z-10" />
       
       {/* CinematicBackground - positioned behind main content */}
       <div className="absolute inset-0 z-5">
