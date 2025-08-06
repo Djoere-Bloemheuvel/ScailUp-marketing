@@ -70,53 +70,54 @@ const AppleTimelineUnified = () => {
 
   return (
     <div ref={sectionRef} className="relative max-w-5xl mx-auto">
-      {/* Title Section with Apple-style entrance */}
+      {/* Title Section with much smoother entrance */}
       <div className="mb-16 text-center">
-        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-700 ease-out ${
+        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-1200 ease-out ${
           isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-2'
+            ? 'opacity-100 translate-y-0 scale-100' 
+            : 'opacity-0 translate-y-4 scale-95'
         }`}
         style={{
           fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+          transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          transitionDelay: '200ms'
         }}>
           <span 
-            className={`inline-block transition-all duration-600 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
+            className={`inline-block transition-all duration-1000 ease-out ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
             }`}
             style={{ 
-              transitionDelay: '100ms',
-              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+              transitionDelay: '300ms',
+              transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
             }}
           >
             Gebouwd op principes.
           </span>
         </h2>
-        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight transition-all duration-700 ease-out ${
+        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight transition-all duration-1000 ease-out ${
           isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-2'
+            ? 'opacity-100 translate-y-0 scale-100' 
+            : 'opacity-0 translate-y-3 scale-98'
         }`}
         style={{ 
-          transitionDelay: '200ms',
+          transitionDelay: '500ms',
           fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+          transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
         }}
         >
           <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
             Gedreven door resultaat.
           </span>
         </h2>
-        <p className={`text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed mt-6 transition-all duration-600 ease-out ${
+        <p className={`text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed mt-6 transition-all duration-800 ease-out ${
           isVisible 
             ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-1'
+            : 'opacity-0 translate-y-2'
         }`}
         style={{ 
           fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-          transitionDelay: '300ms',
-          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+          transitionDelay: '700ms',
+          transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
         }}
         >
           Dit zijn de vier principes waarmee we elk project tot een succes maken.
@@ -128,22 +129,22 @@ const AppleTimelineUnified = () => {
         {/* Enhanced central animated timeline line */}
         <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
           {/* Base line with enhanced gradient */}
-          <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-500 ease-out ${
+          <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-800 ease-out ${
             isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
           }`} 
           style={{ 
             transformOrigin: 'top',
-            transitionDelay: '400ms',
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+            transitionDelay: '900ms',
+            transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
           }} />
           
           {/* Enhanced animated glow pulse */}
-          <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-out ${
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-800 ease-out ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
           style={{ 
-            transitionDelay: '500ms',
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+            transitionDelay: '1000ms',
+            transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
           }}
           >
             <div 
@@ -172,12 +173,12 @@ const AppleTimelineUnified = () => {
                 top: `${12 + (index * 18)}%`,
               }}
             >
-              <div className={`relative transition-all duration-300 ease-out ${
+              <div className={`relative transition-all duration-600 ease-out ${
                 isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}
               style={{ 
-                transitionDelay: `${600 + (index * 50)}ms`,
-                transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+                transitionDelay: `${1100 + (index * 100)}ms`,
+                transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
               }}
               >
                 <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
@@ -194,32 +195,34 @@ const AppleTimelineUnified = () => {
           ))}
         </div>
 
-        {/* Timeline cards with unified staggered animation */}
+        {/* Timeline cards with unified staggered animation and gradual glow */}
         <div className="relative z-10 space-y-8 lg:space-y-10">
           {steps.map((step, index) => (
             <div
               key={step.id}
-              className={`transition-all duration-500 ease-out ${
+              className={`transition-all duration-800 ease-out ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-6'
+                  : 'opacity-0 translate-y-8'
               }`}
               style={{ 
-                transitionDelay: `${700 + (index * 80)}ms`,
-                transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+                transitionDelay: `${1200 + (index * 150)}ms`,
+                transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
               }}
             >
               <AppleTimelineCard
                 step={step}
                 isLeft={index % 2 === 0}
                 delay={0}
+                isVisible={isVisible}
+                cardIndex={index}
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Enhanced timeline animations with Apple-like timing */}
+      {/* Enhanced timeline animations with smoother timing */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes timelinePulse {
