@@ -25,13 +25,13 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
 
   return (
     <div className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}>
-      {/* Enhanced Ambient Glow - kept exactly as before */}
-      <div className="absolute inset-0 transition-all duration-500 ease-out pointer-events-none opacity-100 scale-100">
+      {/* Enhanced Ambient Glow - performance optimized */}
+      <div className="absolute inset-0 pointer-events-none opacity-100 scale-100">
         {/* Enhanced glow layers with smoother scaling - adjusted for transition step */}
         <div
           className={`
             absolute rounded-full blur-[4rem]
-            bg-gradient-to-br ${step.glowColor} transition-all duration-600 ease-out scale-100
+            bg-gradient-to-br ${step.glowColor}
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
             ${isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
           `}
@@ -40,7 +40,7 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
         <div
           className={`
             absolute rounded-full blur-3xl
-            bg-gradient-to-br ${step.glowColor} transition-all duration-500 ease-out scale-100
+            bg-gradient-to-br ${step.glowColor}
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
             ${isTransitionStep ? 'w-64 h-64 opacity-20' : 'w-80 h-80 opacity-28'}
           `}
@@ -49,7 +49,7 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
         <div
           className={`
             absolute rounded-full blur-2xl
-            bg-gradient-to-br ${step.glowColorHover} transition-all duration-400 ease-out scale-100
+            bg-gradient-to-br ${step.glowColorHover}
             ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
             ${isTransitionStep ? 'w-32 h-32 opacity-30' : 'w-48 h-48 opacity-48'}
           `}
@@ -60,7 +60,6 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             className={`
               absolute w-[40rem] h-[40rem] rounded-full blur-[5rem]
               bg-gradient-to-br ${step.glowColor} opacity-20
-              transition-all duration-600 ease-out scale-100
               ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
             `}
           />
@@ -78,8 +77,8 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             relative rounded-3xl
             backdrop-blur-xl shadow-2xl
             transition-all duration-300 ease-out
-            ${isTransitionStep 
-              ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20' 
+            ${isTransitionStep
+              ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20'
               : 'p-6 lg:p-7 bg-white/[0.03] border border-white/[0.12] shadow-black/40'
             }
           `}>
@@ -89,8 +88,8 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
               <div className="relative">
                 <div className={`
                   font-black leading-none mb-2 font-mono
-                  ${isTransitionStep 
-                    ? 'text-3xl lg:text-4xl text-white/8' 
+                  ${isTransitionStep
+                    ? 'text-3xl lg:text-4xl text-white/8'
                     : 'text-4xl lg:text-5xl text-white/10'
                   }
                 `}>
@@ -152,14 +151,14 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             <div className={`
               absolute top-1/2 -translate-y-0.5
               bg-gradient-to-r from-white/20 to-transparent
-              ${isTransitionStep 
-                ? 'w-4 lg:w-6 h-px opacity-60' 
+              ${isTransitionStep
+                ? 'w-4 lg:w-6 h-px opacity-60'
                 : 'w-6 lg:w-10 h-px'
               }
               ${isLeft ? '-right-4 lg:-right-6 origin-left' : '-left-4 lg:-left-6 rotate-180 origin-right'}
             `}>
-              <div className={`absolute inset-0 w-1 h-full rounded-full animate-pulse ${
-                isTransitionStep 
+              <div className={`absolute inset-0 w-1 h-full rounded-full ${
+                isTransitionStep
                   ? 'bg-gradient-to-r from-white/20 to-transparent'
                   : 'bg-gradient-to-r from-cyan-400/40 to-transparent'
               }`} />
@@ -185,15 +184,15 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             <div className={`
               absolute top-2 left-2 rounded-full blur-sm
               bg-gradient-to-br to-transparent
-              ${isTransitionStep 
+              ${isTransitionStep
                 ? 'w-12 h-12 from-white/[0.04]'
                 : 'w-16 h-16 from-white/[0.08]'
               }
             `} />
 
-            {/* Add subtle pulse animation for transition step */}
+            {/* Static overlay for transition step */}
             {isTransitionStep && (
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.02] to-transparent animate-pulse" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.02] to-transparent" />
             )}
           </div>
         </div>
