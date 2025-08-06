@@ -1,7 +1,7 @@
 
 import { ArrowRight, Brain } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import CinematicBackground from './hero/CinematicBackground';
 
 const EndingCTA = () => {
@@ -9,31 +9,42 @@ const EndingCTA = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleContactClick = () => {
+  // Optimized navigation handler with useCallback
+  const handleContactClick = useCallback(() => {
     navigate('/contact');
-  };
+  }, [navigate]);
+
+  // Optimized intersection observer callback
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Use requestAnimationFrame for smoother animation timing
+        requestAnimationFrame(() => {
+          setIsVisible(true);
+        });
+      }
+    });
+  }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-      }
-    );
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -30px 0px'
+    });
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [handleIntersection]);
+
+  // Memoized animation styles for better performance
+  const animationStyles = useMemo(() => ({
+    transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+    backfaceVisibility: 'hidden' as const,
+    willChange: 'transform, opacity' as const
+  }), []);
 
   return (
     <section 
@@ -58,33 +69,51 @@ const EndingCTA = () => {
           <div className="premium-glass-main-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
-              <div className="space-y-8 order-2 lg:order-1">
+              <div className="ending-cta-content space-y-8 order-2 lg:order-1">
                 {/* Statement Title with split styling */}
                 <div className="space-y-6">
-                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight whitespace-nowrap transition-all duration-1000 ease-out ${
-                    isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-8'
-                  }`}>
+                  <h1 
+                    className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight whitespace-nowrap transition-all duration-800 ${
+                      isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                    }`}
+                    style={{
+                      ...animationStyles,
+                      transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)'
+                    }}
+                  >
                     <span className="text-white font-bold tracking-wide">Zonder AI</span>
                     <span className="text-gray-300 font-medium"> loop je achter.</span>
                   </h1>
                   
-                  <p className={`text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl transition-all duration-1000 ease-out delay-200 ${
-                    isVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-8'
-                  }`}>
+                  <p 
+                    className={`text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl transition-all duration-900 delay-150 ${
+                      isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                    }`}
+                    style={{
+                      ...animationStyles,
+                      transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)'
+                    }}
+                  >
                     Wij brengen je grootste AI-kansen in kaart, zonder verplichtingen. In 30 minuten ontdek je waar jouw bedrijf het meeste rendement uit AI kan halen.
                   </p>
                 </div>
 
                 {/* Premium CTA Button with enhanced glow */}
-                <div className={`pt-4 transition-all duration-1000 ease-out delay-400 ${
-                  isVisible 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
-                }`}>
+                <div 
+                  className={`pt-4 transition-all duration-1000 delay-300 ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{
+                    ...animationStyles,
+                    transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)'
+                  }}
+                >
                   <button
                     onClick={handleContactClick}
                     aria-label="Plan mijn AI Scan - Start een gesprek met Buildrs.AI"
@@ -99,11 +128,17 @@ const EndingCTA = () => {
               </div>
 
               {/* Right Visual Element - Simplified AI Brain */}
-              <div className={`relative flex items-center justify-center order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
-              }`}>
+              <div 
+                className={`ending-cta-content relative flex items-center justify-center order-1 lg:order-2 transition-all duration-1100 delay-200 ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{
+                  ...animationStyles,
+                  transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)'
+                }}
+              >
                 {/* Simplified AI Visualization */}
                 <div className="relative">
                   {/* Core visualization container - clean and minimal */}
@@ -166,11 +201,17 @@ const EndingCTA = () => {
           </div>
 
           {/* Premium Footer Section */}
-          <div className={`mt-16 pt-12 border-t border-white/10 transition-all duration-1000 ease-out delay-600 ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-8'
-          }`}>
+          <div 
+            className={`mt-16 pt-12 border-t border-white/10 transition-all duration-1000 delay-450 ${
+              isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{
+              ...animationStyles,
+              transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 8px, 0)'
+            }}
+          >
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div>
                 <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
@@ -191,16 +232,17 @@ const EndingCTA = () => {
       {/* Enhanced Animation Styles with enhanced AI Scan button */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          /* Enhanced animations with hardware acceleration */
           @keyframes premium-orbit {
             0% { 
-              transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
+              transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg) translate3d(0, 0, 0);
               opacity: 0.6;
             }
             50% {
               opacity: 1;
             }
             100% { 
-              transform: rotate(360deg) translateY(var(--orbit-distance)) rotate(-360deg);
+              transform: rotate(360deg) translateY(var(--orbit-distance)) rotate(-360deg) translate3d(0, 0, 0);
               opacity: 0.6;
             }
           }
@@ -208,22 +250,22 @@ const EndingCTA = () => {
           @keyframes premium-neural-ring {
             0%, 100% { 
               opacity: 0.3;
-              transform: rotate(0deg);
+              transform: rotate(0deg) translate3d(0, 0, 0);
             }
             50% { 
               opacity: 0.6;
-              transform: rotate(180deg);
+              transform: rotate(180deg) translate3d(0, 0, 0);
             }
           }
 
           @keyframes premium-brain-pulse {
             0%, 100% { 
               filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
-              transform: scale(1);
+              transform: translate3d(0, 0, 0) scale(1);
             }
             50% { 
               filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.6));
-              transform: scale(1.05);
+              transform: translate3d(0, 0, 0) scale(1.05);
             }
           }
 
@@ -311,13 +353,23 @@ const EndingCTA = () => {
               0 0 20px rgba(255, 255, 255, 0.3);
           }
 
-          /* Visual Elements */
+          /* Visual Elements with performance optimizations */
           .premium-brain-pulse {
-            animation: premium-brain-pulse 4s ease-in-out infinite;
+            animation: premium-brain-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            will-change: transform, filter;
+            backface-visibility: hidden;
           }
 
           .premium-neural-ring {
-            animation: premium-neural-ring 20s linear infinite;
+            animation: premium-neural-ring 20s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+          }
+
+          .premium-orbit-node {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
           }
 
           /* Mobile Optimizations */
@@ -337,25 +389,39 @@ const EndingCTA = () => {
             }
           }
 
-          /* Reduced Motion */
+          /* Enhanced Reduced Motion Support */
           @media (prefers-reduced-motion: reduce) {
             .premium-brain-pulse,
             .premium-neural-ring,
             .premium-orbit-node {
-              animation: none;
+              animation: none !important;
             }
             
             .premium-ai-scan-button {
-              transition: none;
+              transition: none !important;
+            }
+
+            /* Disable all transform animations */
+            * {
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
             }
           }
 
-          /* Performance Optimizations */
+          /* Enhanced Performance Optimizations */
           .premium-glass-main-container,
           .premium-ai-scan-button {
             will-change: transform;
             backface-visibility: hidden;
-            transform: translateZ(0);
+            transform: translate3d(0, 0, 0);
+          }
+
+          /* Content animation optimizations */
+          .ending-cta-content {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
           }
         `
       }} />
