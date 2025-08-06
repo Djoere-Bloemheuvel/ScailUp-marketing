@@ -69,45 +69,53 @@ const AppleTimelineEnhanced = () => {
 
   return (
     <div className="relative max-w-5xl mx-auto">
-      {/* Enhanced Title with subtle animation */}
+      {/* Enhanced Title with Services-style animation */}
       <div className="mb-16 text-center">
-        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-1000 ease-out ${
-          isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-6'
-        }`}>
-          <span 
-            className={`inline-block transition-all duration-800 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-            }`}
-            style={{ transitionDelay: '200ms' }}
+        <div className="relative overflow-hidden mb-4">
+          <div className={`transform transition-all duration-700 ease-out ${
+            isVisible 
+              ? 'translate-y-0 opacity-100' 
+              : 'translate-y-full opacity-0'
+          }`}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Gebouwd op principes.
+            </h2>
+          </div>
+        </div>
+        
+        <div className="relative overflow-hidden mb-6">
+          <div className={`transform transition-all duration-700 ease-out ${
+            isVisible 
+              ? 'translate-y-0 opacity-100' 
+              : 'translate-y-full opacity-0'
+          }`}
+          style={{ transitionDelay: '200ms' }}
           >
-            Gebouwd op principes.
-          </span>
-        </h2>
-        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight transition-all duration-1000 ease-out ${
-          isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-6'
-        }`}
-        style={{ transitionDelay: '400ms' }}
-        >
-          <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-            Gedreven door resultaat.
-          </span>
-        </h2>
-        <p className={`text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed mt-6 transition-all duration-1000 ease-out ${
-          isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-4'
-        }`}
-        style={{ 
-          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-          transitionDelay: '600ms'
-        }}
-        >
-          Dit zijn de vier principes waarmee we elk project tot een succes maken.
-        </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+                Gedreven door resultaat.
+              </span>
+            </h2>
+          </div>
+        </div>
+
+        <div className="relative overflow-hidden">
+          <div className={`transform transition-all duration-700 ease-out ${
+            isVisible 
+              ? 'translate-y-0 opacity-100' 
+              : 'translate-y-full opacity-0'
+          }`}
+          style={{ transitionDelay: '400ms' }}
+          >
+            <p className="text-white/55 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed"
+            style={{ 
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif'
+            }}
+            >
+              Dit zijn de vier principes waarmee we elk project tot een succes maken.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Timeline container */}
