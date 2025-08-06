@@ -58,15 +58,12 @@ const EndingCTA = () => {
               <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
                 <div className="space-y-6">
-                  <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight transition-all duration-1000 ease-out ${
+                  <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white transition-all duration-1000 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
                   }`}>
-                    <span className="block text-white mb-2">Zonder AI</span>
-                    <span className="text-white/55 block text-[0.85em]">
-                      Loop je achter.
-                    </span>
+                    Zonder AI loop je achter.
                   </h1>
                   
                   <p className={`text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl transition-all duration-1000 ease-out delay-200 ${
