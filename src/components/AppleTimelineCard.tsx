@@ -17,7 +17,7 @@ interface AppleTimelineCardProps {
   isVisible: boolean;
 }
 
-const AppleTimelineCard = ({ step, isLeft, delay, isVisible }: AppleTimelineCardProps) => {
+const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
   // Special styling for transition step
   const isTransitionStep = step.isTransition;
   const cardWidth = isTransitionStep ? 'max-w-xs' : 'max-w-sm';

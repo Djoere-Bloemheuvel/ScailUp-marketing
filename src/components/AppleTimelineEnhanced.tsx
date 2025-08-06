@@ -195,6 +195,7 @@ const AppleTimelineEnhanced = () => {
                 step={step}
                 isLeft={index % 2 === 0}
                 delay={0}
+                isVisible={isVisible}
               />
             </div>
           ))}
