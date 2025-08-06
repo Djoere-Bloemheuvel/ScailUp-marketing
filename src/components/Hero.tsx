@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
-
+import { useMemo, useCallback } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedHeadline from './AnimatedHeadline';
@@ -11,12 +11,20 @@ const Hero = () => {
   const backgroundLoaded = useProgressiveLoad(100);
   const navigate = useNavigate();
 
-  // Add preloading hook
-
-
-  const handleDeepDiveClick = () => {
+  // Memoized navigation handlers for better performance
+  const handleDeepDiveClick = useCallback(() => {
     navigate('/contact');
-  };
+  }, [navigate]);
+
+  // Memoized button styles to prevent recalculation
+  const primaryButtonStyle = useMemo(() => ({
+    background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
+    boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+  }), []);
+
+  const secondaryButtonStyle = useMemo(() => ({
+    boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+  }), []);
 
   return (
     <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
@@ -52,11 +60,8 @@ const Hero = () => {
               {/* Buttons - Immediately visible with preload triggers */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
                 <Button
-                  className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
-                  style={{
-                    background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-                    boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                  }}
+                  className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-300 ease-out px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto will-change-transform"
+                  style={primaryButtonStyle}
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Ontdek de mogelijkheden
@@ -66,10 +71,8 @@ const Hero = () => {
 
                 <Button
                   variant="outline"
-                  className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-300 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
-                  style={{
-                    boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                  }}
+                  className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-300 ease-out premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto will-change-transform"
+                  style={secondaryButtonStyle}
                   onClick={handleDeepDiveClick}
                   data-contact-trigger="true"
                 >
@@ -108,11 +111,8 @@ const Hero = () => {
                 {/* Reflected Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 md:mb-20">
                   <Button
-                    className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto"
-                    style={{
-                      background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-                      boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                    }}
+                    className="group relative bg-white text-black hover:bg-premium-silver-light transition-all duration-300 ease-out px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden premium-button-hover premium-scale-hover w-full sm:w-auto will-change-transform"
+                    style={primaryButtonStyle}
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Ontdek de mogelijkheden
@@ -122,10 +122,8 @@ const Hero = () => {
 
                   <Button
                     variant="outline"
-                    className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-300 premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto"
-                    style={{
-                      boxShadow: '0 4px 24px rgba(192, 192, 192, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                    }}
+                    className="relative text-premium-silver hover:text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full border-premium-silver/40 hover:border-premium-silver/70 transition-all duration-300 ease-out premium-button-hover group overflow-hidden bg-white/[0.05] backdrop-blur-md hover:bg-white/[0.12] w-full sm:w-auto will-change-transform"
+                    style={secondaryButtonStyle}
                     data-contact-trigger="true"
                   >
                     <span className="relative z-10 flex items-center justify-center">
@@ -150,34 +148,101 @@ const Hero = () => {
 
 
 
-      {/* Keep only hover and continuous animations */}
+      {/* Optimized animations with performance enhancements */}
       <style dangerouslySetInnerHTML={{
         __html: `
+          /* Enhanced scroll pulse with better easing */
           @keyframes premium-scroll-pulse {
-            0%, 100% { opacity: 0.5; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(12px); }
+            0%, 100% { 
+              opacity: 0.5; 
+              transform: translate3d(0, 0, 0) scale(1); 
+            }
+            50% { 
+              opacity: 1; 
+              transform: translate3d(0, 12px, 0) scale(1.05); 
+            }
           }
 
+          /* Smoother button hover with cubic-bezier easing */
           @keyframes premium-button-hover {
-            0% { transform: scale(1) translateY(0); }
-            100% { transform: scale(1.02) translateY(-2px); }
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(0, -2px, 0) scale(1.02); }
           }
 
+          /* Enhanced scale hover with bounce effect */
           @keyframes premium-scale-hover {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.02); }
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(0, 0, 0) scale(1.03); }
+            100% { transform: translate3d(0, 0, 0) scale(1.02); }
           }
 
+          /* Subtle glow animation for buttons */
+          @keyframes premium-glow-pulse {
+            0%, 100% { 
+              box-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.1),
+                0 0 40px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+              box-shadow: 
+                0 0 30px rgba(255, 255, 255, 0.2),
+                0 0 60px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+          }
+
+          /* Apply animations with performance optimizations */
           .premium-scroll-pulse {
-            animation: premium-scroll-pulse 3s ease-in-out infinite;
+            animation: premium-scroll-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
           }
 
           .premium-button-hover:hover {
-            animation: premium-button-hover 0.3s ease-out forwards;
+            animation: premium-button-hover 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
           }
 
           .premium-scale-hover:hover {
-            animation: premium-scale-hover 0.2s ease-out forwards;
+            animation: premium-scale-hover 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          }
+
+          /* Enhanced button interactions */
+          .premium-button-hover:active {
+            transform: translate3d(0, 0, 0) scale(0.98);
+            transition: transform 0.1s ease-out;
+          }
+
+          .premium-scale-hover:active {
+            transform: translate3d(0, 0, 0) scale(0.98);
+            transition: transform 0.1s ease-out;
+          }
+
+          /* Smooth icon animations */
+          .premium-button-hover .lucide {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform;
+          }
+
+          /* Performance optimizations */
+          .premium-button-hover,
+          .premium-scale-hover {
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+          }
+
+          /* Reduce motion for accessibility */
+          @media (prefers-reduced-motion: reduce) {
+            .premium-scroll-pulse,
+            .premium-button-hover,
+            .premium-scale-hover {
+              animation: none;
+            }
+            
+            .premium-button-hover:hover,
+            .premium-scale-hover:hover {
+              transform: none;
+            }
           }
         `
       }} />
