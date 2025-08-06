@@ -16,49 +16,9 @@ const EndingCTA = () => {
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
-      {/* CinematicBackground - positioned behind main content */}
+      {/* CinematicBackground - positioned behind main content with glass container hidden */}
       <div className="absolute inset-0 z-5">
-        <CinematicBackground />
-      </div>
-
-      {/* Premium Background Layers - confined to content area */}
-      <div className="absolute inset-0 z-6">
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="relative w-full">
-            {/* Premium Background Layers - now properly confined */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-              {/* Central focal glow */}
-              <div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-                style={{
-                  background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.10) 40%, rgba(34, 211, 238, 0.05) 70%, transparent 85%)',
-                  filter: 'blur(120px)',
-                  animation: 'premium-focal-glow 12s ease-in-out infinite'
-                }}
-              />
-              
-              {/* Particle system */}
-              <div className="absolute inset-0">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div
-                    key={`particle-${i}`}
-                    className="absolute w-1 h-1 rounded-full"
-                    style={{
-                      background: i % 3 === 0 ? 'rgba(59, 130, 246, 0.8)' : 
-                                 i % 3 === 1 ? 'rgba(147, 51, 234, 0.6)' : 
-                                 'rgba(34, 211, 238, 0.7)',
-                      left: `${15 + (i * 9) % 70}%`,
-                      top: `${25 + (i * 11) % 50}%`,
-                      animation: `premium-particle-float ${15 + (i % 3) * 5}s ease-in-out infinite`,
-                      animationDelay: `${i * 0.8}s`,
-                      filter: 'blur(0.5px)'
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <CinematicBackground hideGlassContainer={true} />
       </div>
 
       {/* Main Content Container - Only one glass container */}
@@ -99,14 +59,11 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element - No glass container, just visual */}
+              {/* Right Visual Element - Simplified AI Brain */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
-                {/* Premium AI Visualization */}
+                {/* Simplified AI Visualization */}
                 <div className="relative">
-                  {/* Outer quantum field */}
-                  <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
-                  
-                  {/* Core visualization container - removed glass styling */}
+                  {/* Core visualization container - clean and minimal */}
                   <div className="relative w-64 h-64 rounded-full flex items-center justify-center">
                     {/* Central brain element */}
                     <div className="relative z-10">
@@ -184,46 +141,9 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Animation Styles */}
+      {/* Simplified Animation Styles - Only essential animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes premium-focal-glow {
-            0%, 100% { 
-              opacity: 0.4;
-              transform: translate(-50%, -50%) scale(1) rotate(0deg);
-              filter: blur(120px);
-            }
-            33% { 
-              opacity: 0.55;
-              transform: translate(-50%, -50%) scale(1.08) rotate(2deg);
-              filter: blur(125px);
-            }
-            66% { 
-              opacity: 0.3;
-              transform: translate(-50%, -50%) scale(0.95) rotate(-1deg);
-              filter: blur(115px);
-            }
-          }
-
-          @keyframes premium-particle-float {
-            0%, 100% { 
-              opacity: 0.6;
-              transform: translateY(0px) translateX(0px);
-            }
-            25% { 
-              opacity: 1;
-              transform: translateY(-10px) translateX(5px);
-            }
-            50% { 
-              opacity: 0.4;
-              transform: translateY(-5px) translateX(-3px);
-            }
-            75% { 
-              opacity: 0.8;
-              transform: translateY(8px) translateX(7px);
-            }
-          }
-
           @keyframes premium-orbit {
             0% { 
               transform: rotate(0deg) translateY(var(--orbit-distance)) rotate(0deg);
@@ -346,16 +266,6 @@ const EndingCTA = () => {
           }
 
           /* Visual Elements */
-          .premium-quantum-field {
-            background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.15) 0%,
-              rgba(147, 51, 234, 0.10) 35%,
-              rgba(34, 211, 238, 0.08) 70%,
-              transparent 85%);
-            filter: blur(50px);
-            animation: premium-focal-glow 15s ease-in-out infinite;
-          }
-
           .premium-brain-pulse {
             animation: premium-brain-pulse 4s ease-in-out infinite;
           }
@@ -397,11 +307,6 @@ const EndingCTA = () => {
               padding: 1rem;
             }
             
-            .premium-quantum-field {
-              width: 240px;
-              height: 240px;
-            }
-            
             .premium-orbit-node {
               --orbit-distance: -60px;
             }
@@ -409,7 +314,6 @@ const EndingCTA = () => {
 
           /* Reduced Motion */
           @media (prefers-reduced-motion: reduce) {
-            .premium-quantum-field,
             .premium-brain-pulse,
             .premium-neural-ring,
             .premium-orbit-node {
