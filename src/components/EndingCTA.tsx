@@ -59,18 +59,16 @@ const EndingCTA = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
               <div className="space-y-8 order-2 lg:order-1">
-                {/* Statement Title with split styling on separate lines */}
+                {/* Statement Title with split styling */}
                 <div className="space-y-6">
-                  <div className={`transition-all duration-1000 ease-out ${
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight whitespace-nowrap transition-all duration-1000 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
                   }`}>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight">
-                      <div className="text-white font-bold tracking-wide">Zonder AI</div>
-                      <div className="text-gray-300 font-medium">loop je achter.</div>
-                    </h1>
-                  </div>
+                    <span className="text-white font-bold tracking-wide">Zonder AI</span>
+                    <span className="text-gray-300 font-medium"> loop je achter.</span>
+                  </h1>
                   
                   <p className={`text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl transition-all duration-1000 ease-out delay-200 ${
                     isVisible 
