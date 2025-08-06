@@ -43,28 +43,36 @@ const EndingCTA = () => {
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
+      {/* Enhanced Background Glow - positioned left-behind headline */}
+      <div className="absolute top-1/2 left-[15%] transform -translate-y-1/2 w-[800px] h-[600px] opacity-20 pointer-events-none z-5">
+        <div className="w-full h-full bg-gradient-radial from-blue-500/25 via-purple-500/20 to-transparent blur-3xl premium-enhanced-glow"></div>
+      </div>
+
       {/* CinematicBackground - positioned behind main content with glass container hidden */}
       <div className="absolute inset-0 z-5">
         <CinematicBackground hideGlassContainer={true} />
       </div>
 
-      {/* Main Content Container - Only one glass container */}
+      {/* Main Content Container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
-          {/* Main Glass Container - The only one containing text */}
+          {/* Text Readability Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-white/[0.01] to-transparent pointer-events-none z-15"></div>
+
+          {/* Main Glass Container */}
           <div className="premium-glass-main-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
-              <div className="space-y-8 order-2 lg:order-1">
-                {/* Statement Title */}
-                <div className="space-y-6">
+              <div className="space-y-10 order-2 lg:order-1">
+                {/* Enhanced Typography Section */}
+                <div className="space-y-8">
                   <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight transition-all duration-1000 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
                   }`}>
-                    <span className="block text-white mb-2">Zonder AI</span>
-                    <span className="text-white/55 block text-[0.85em]">
+                    <span className="block text-white mb-3 font-extrabold">Zonder AI</span>
+                    <span className="text-white/55 block text-[0.8em] font-medium leading-relaxed">
                       Loop je achter.
                     </span>
                   </h1>
@@ -78,8 +86,8 @@ const EndingCTA = () => {
                   </p>
                 </div>
 
-                {/* Premium CTA Button */}
-                <div className={`pt-4 transition-all duration-1000 ease-out delay-400 ${
+                {/* Premium Glassmorphism CTA Button */}
+                <div className={`pt-6 transition-all duration-1000 ease-out delay-400 ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
@@ -87,29 +95,36 @@ const EndingCTA = () => {
                   <button
                     onClick={handleContactClick}
                     aria-label="Plan mijn AI Scan - Start een gesprek met Buildrs.AI"
-                    className="premium-ai-scan-button group relative overflow-hidden"
+                    className="premium-glassmorphism-button group relative overflow-hidden"
                   >
-                    <div className="relative z-10 flex items-center px-6 py-3">
+                    <div className="relative z-10 flex items-center px-8 py-4">
                       <span className="text-lg font-semibold text-white">Plan mijn AI Scan</span>
-                      <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 transition-transform duration-500" />
+                      <div className="ml-4 transform group-hover:translate-x-1 transition-transform duration-300">
+                        →
+                      </div>
                     </div>
                   </button>
                 </div>
               </div>
 
-              {/* Right Visual Element - Simplified AI Brain */}
+              {/* Right Visual Element - Enhanced AI Brain with Halo */}
               <div className={`relative flex items-center justify-center order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`}>
-                {/* Simplified AI Visualization */}
+                {/* Enhanced AI Visualization with Halo */}
                 <div className="relative">
-                  {/* Core visualization container - clean and minimal */}
-                  <div className="relative w-64 h-64 rounded-full flex items-center justify-center">
-                    {/* Central brain element */}
+                  {/* Pulsating Halo Behind Brain */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-400/15 via-purple-400/10 to-cyan-400/15 blur-2xl premium-brain-halo"></div>
+                  </div>
+
+                  {/* Core visualization container */}
+                  <div className="relative w-64 h-64 rounded-full flex items-center justify-center z-10">
+                    {/* Enhanced central brain element */}
                     <div className="relative z-10">
-                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
+                      <Brain className="w-20 h-20 text-white/90 premium-brain-pulse filter drop-shadow-lg" />
                     </div>
                     
                     {/* Orbiting intelligence nodes */}
@@ -187,7 +202,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Enhanced Animation Styles with new AI Scan button */}
+      {/* Enhanced Animation Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-orbit {
@@ -226,20 +241,51 @@ const EndingCTA = () => {
             }
           }
 
-          @keyframes premium-glow-pulse {
+          @keyframes premium-brain-halo {
             0%, 100% { 
-              box-shadow: 
-                0 0 20px rgba(255, 255, 255, 0.3),
-                0 0 40px rgba(255, 255, 255, 0.1);
+              opacity: 0.6;
+              transform: scale(1);
             }
             50% { 
-              box-shadow: 
-                0 0 30px rgba(255, 255, 255, 0.5),
-                0 0 60px rgba(255, 255, 255, 0.2);
+              opacity: 1;
+              transform: scale(1.1);
             }
           }
 
-          /* Premium Glass Container - Only one main container */
+          @keyframes premium-enhanced-glow {
+            0%, 100% { 
+              opacity: 0.15;
+              transform: scale(1) rotate(0deg);
+            }
+            33% { 
+              opacity: 0.25;
+              transform: scale(1.05) rotate(120deg);
+            }
+            66% { 
+              opacity: 0.2;
+              transform: scale(1.02) rotate(240deg);
+            }
+          }
+
+          @keyframes premium-glassmorphism-hover {
+            0% { 
+              background: rgba(255, 255, 255, 0.08);
+              box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 4px 16px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+            100% { 
+              background: rgba(255, 255, 255, 0.12);
+              box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                0 6px 24px rgba(255, 255, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(59, 130, 246, 0.2);
+            }
+          }
+
+          /* Premium Glass Container */
           .premium-glass-main-container {
             background: linear-gradient(135deg, 
               rgba(255, 255, 255, 0.08) 0%, 
@@ -271,47 +317,81 @@ const EndingCTA = () => {
             pointer-events: none;
           }
 
-          /* New AI Scan Button Design */
-          .premium-ai-scan-button {
-            background: transparent;
-            border: 1px solid white;
-            border-radius: 8px;
-            padding: 12px 24px;
+          /* Enhanced Glassmorphism CTA Button */
+          .premium-glassmorphism-button {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             color: white;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
-            font-size: 1.125rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-          }
-
-          .premium-ai-scan-button:hover {
-            background: rgba(255, 255, 255, 0.1);
             box-shadow: 
-              0 0 20px rgba(255, 255, 255, 0.3),
-              0 0 40px rgba(255, 255, 255, 0.1);
+              0 8px 32px rgba(0, 0, 0, 0.3),
+              0 4px 16px rgba(255, 255, 255, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+          }
+
+          .premium-glassmorphism-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+              rgba(255, 255, 255, 0.1) 0%,
+              rgba(255, 255, 255, 0.05) 50%,
+              rgba(59, 130, 246, 0.05) 100%);
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          .premium-glassmorphism-button:hover {
+            background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
+            box-shadow: 
+              0 12px 40px rgba(0, 0, 0, 0.4),
+              0 6px 24px rgba(255, 255, 255, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+              0 0 20px rgba(59, 130, 246, 0.2);
           }
 
-          .premium-ai-scan-button:active {
-            transform: translateY(0);
+          .premium-glassmorphism-button:hover::before {
+            opacity: 1;
           }
 
-          .premium-ai-scan-button:focus {
+          .premium-glassmorphism-button:active {
+            transform: translateY(-1px);
+          }
+
+          .premium-glassmorphism-button:focus {
             outline: none;
             box-shadow: 
-              0 0 0 2px rgba(255, 255, 255, 0.2),
-              0 0 20px rgba(255, 255, 255, 0.3);
+              0 0 0 3px rgba(59, 130, 246, 0.3),
+              0 12px 40px rgba(0, 0, 0, 0.4),
+              0 6px 24px rgba(255, 255, 255, 0.15);
           }
 
           /* Visual Elements */
           .premium-brain-pulse {
             animation: premium-brain-pulse 4s ease-in-out infinite;
+          }
+
+          .premium-brain-halo {
+            animation: premium-brain-halo 3s ease-in-out infinite;
+          }
+
+          .premium-enhanced-glow {
+            animation: premium-enhanced-glow 25s linear infinite;
           }
 
           .premium-neural-ring {
@@ -329,28 +409,41 @@ const EndingCTA = () => {
               --orbit-distance: -60px;
             }
 
-            .premium-ai-scan-button {
-              padding: 10px 20px;
+            .premium-glassmorphism-button {
+              padding: 12px 24px;
               font-size: 1rem;
+            }
+
+            .premium-enhanced-glow {
+              opacity: 0.1 !important;
+              animation-duration: 35s;
+            }
+
+            .premium-brain-halo {
+              opacity: 0.4 !important;
             }
           }
 
           /* Reduced Motion */
           @media (prefers-reduced-motion: reduce) {
             .premium-brain-pulse,
+            .premium-brain-halo,
+            .premium-enhanced-glow,
             .premium-neural-ring,
             .premium-orbit-node {
               animation: none;
             }
             
-            .premium-ai-scan-button {
+            .premium-glassmorphism-button {
               transition: none;
             }
           }
 
           /* Performance Optimizations */
           .premium-glass-main-container,
-          .premium-ai-scan-button {
+          .premium-glassmorphism-button,
+          .premium-enhanced-glow,
+          .premium-brain-halo {
             will-change: transform;
             backface-visibility: hidden;
             transform: translateZ(0);
