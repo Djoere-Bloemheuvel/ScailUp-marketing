@@ -4,13 +4,12 @@ import StructuredData from '@/components/StructuredData';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 
-// Lazy loading for better performance - keep existing imports
+// Lazy loading for better performance - removed TechCommandCenterCTA import
 const Hero = lazy(() => import('@/components/Hero'));
 const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
 const EndingCTA = lazy(() => import('@/components/EndingCTA'));
-const TechCommandCenterCTA = lazy(() => import('@/components/TechCommandCenterCTA'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen bg-premium-black flex items-center justify-center">
@@ -96,10 +95,6 @@ const Index = () => {
         
         <Suspense fallback={<LoadingSpinner />}>
           <EndingCTA />
-        </Suspense>
-        
-        <Suspense fallback={<LoadingSpinner />}>
-          <TechCommandCenterCTA />
         </Suspense>
       </main>
     </>
