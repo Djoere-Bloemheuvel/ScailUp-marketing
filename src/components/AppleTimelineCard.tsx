@@ -1,3 +1,4 @@
+
 import { LucideIcon } from 'lucide-react';
 
 interface AppleTimelineCardProps {
@@ -12,10 +13,11 @@ interface AppleTimelineCardProps {
     isTransition?: boolean;
   };
   isLeft: boolean;
+  delay: number;
   isVisible: boolean;
 }
 
-const AppleTimelineCard = ({ step, isLeft, isVisible }: AppleTimelineCardProps) => {
+const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
   // Special styling for transition step
   const isTransitionStep = step.isTransition;
   const cardWidth = isTransitionStep ? 'max-w-xs' : 'max-w-sm';
@@ -23,72 +25,44 @@ const AppleTimelineCard = ({ step, isLeft, isVisible }: AppleTimelineCardProps) 
 
   return (
     <div className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}>
-      {/* Enhanced Ambient Glow with gradual loading animation */}
-      <div className="absolute inset-0 transition-all duration-800 ease-out pointer-events-none">
-        {/* Enhanced glow layers with gradual opacity transitions */}
+      {/* Enhanced Ambient Glow - kept exactly as before */}
+      <div className="absolute inset-0 transition-all duration-500 ease-out pointer-events-none opacity-100 scale-100">
+        {/* Enhanced glow layers with smoother scaling - adjusted for transition step */}
         <div
           className={`
             absolute rounded-full blur-[4rem]
-            bg-gradient-to-br ${step.glowColor} transition-all duration-2000 ease-out
+            bg-gradient-to-br ${step.glowColor} transition-all duration-600 ease-out scale-100
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-80 h-80' : 'w-[32rem] h-[32rem]'}
-            ${isVisible 
-              ? (isTransitionStep ? 'opacity-25 scale-100' : 'opacity-40 scale-100')
-              : 'opacity-0 scale-75'
-            }
+            ${isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
           `}
-          style={{
-            transitionDelay: isVisible ? '800ms' : '0ms',
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
         />
 
         <div
           className={`
             absolute rounded-full blur-3xl
-            bg-gradient-to-br ${step.glowColor} transition-all duration-1800 ease-out
+            bg-gradient-to-br ${step.glowColor} transition-all duration-500 ease-out scale-100
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-64 h-64' : 'w-80 h-80'}
-            ${isVisible 
-              ? (isTransitionStep ? 'opacity-20 scale-100' : 'opacity-28 scale-100')
-              : 'opacity-0 scale-80'
-            }
+            ${isTransitionStep ? 'w-64 h-64 opacity-20' : 'w-80 h-80 opacity-28'}
           `}
-          style={{
-            transitionDelay: isVisible ? '1000ms' : '0ms',
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
         />
 
         <div
           className={`
             absolute rounded-full blur-2xl
-            bg-gradient-to-br ${step.glowColorHover} transition-all duration-1500 ease-out
+            bg-gradient-to-br ${step.glowColorHover} transition-all duration-400 ease-out scale-100
             ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-32 h-32' : 'w-48 h-48'}
-            ${isVisible 
-              ? (isTransitionStep ? 'opacity-30 scale-100' : 'opacity-48 scale-100')
-              : 'opacity-0 scale-90'
-            }
+            ${isTransitionStep ? 'w-32 h-32 opacity-30' : 'w-48 h-48 opacity-48'}
           `}
-          style={{
-            transitionDelay: isVisible ? '1200ms' : '0ms',
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
         />
 
         {!isTransitionStep && (
           <div
             className={`
               absolute w-[40rem] h-[40rem] rounded-full blur-[5rem]
-              bg-gradient-to-br ${step.glowColor} transition-all duration-2500 ease-out
+              bg-gradient-to-br ${step.glowColor} opacity-20
+              transition-all duration-600 ease-out scale-100
               ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
-              ${isVisible ? 'opacity-20 scale-100' : 'opacity-0 scale-70'}
             `}
-            style={{
-              transitionDelay: isVisible ? '600ms' : '0ms',
-              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
-            }}
           />
         )}
       </div>
@@ -103,9 +77,9 @@ const AppleTimelineCard = ({ step, isLeft, isVisible }: AppleTimelineCardProps) 
           <div className={`
             relative rounded-3xl
             backdrop-blur-xl shadow-2xl
-            transition-all duration-600 ease-out
-            ${isTransitionStep
-              ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20'
+            transition-all duration-300 ease-out
+            ${isTransitionStep 
+              ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20' 
               : 'p-6 lg:p-7 bg-white/[0.03] border border-white/[0.12] shadow-black/40'
             }
           `}>
@@ -115,8 +89,8 @@ const AppleTimelineCard = ({ step, isLeft, isVisible }: AppleTimelineCardProps) 
               <div className="relative">
                 <div className={`
                   font-black leading-none mb-2 font-mono
-                  ${isTransitionStep
-                    ? 'text-3xl lg:text-4xl text-white/8'
+                  ${isTransitionStep 
+                    ? 'text-3xl lg:text-4xl text-white/8' 
                     : 'text-4xl lg:text-5xl text-white/10'
                   }
                 `}>
@@ -178,17 +152,17 @@ const AppleTimelineCard = ({ step, isLeft, isVisible }: AppleTimelineCardProps) 
             <div className={`
               absolute top-1/2 -translate-y-0.5
               bg-gradient-to-r from-white/20 to-transparent
-              ${isTransitionStep
-                ? 'w-4 lg:w-6 h-px opacity-60'
+              ${isTransitionStep 
+                ? 'w-4 lg:w-6 h-px opacity-60' 
                 : 'w-6 lg:w-10 h-px'
               }
               ${isLeft ? '-right-4 lg:-right-6 origin-left' : '-left-4 lg:-left-6 rotate-180 origin-right'}
             `}>
-              <div className={`absolute inset-0 w-1 h-full rounded-full transition-all duration-2000 ${
-                isTransitionStep
+              <div className={`absolute inset-0 w-1 h-full rounded-full animate-pulse ${
+                isTransitionStep 
                   ? 'bg-gradient-to-r from-white/20 to-transparent'
                   : 'bg-gradient-to-r from-cyan-400/40 to-transparent'
-              }`} style={{ animation: 'subtleConnectionPulse 6s ease-in-out infinite' }} />
+              }`} />
             </div>
 
             {/* Enhanced glassmorphic details */}
@@ -211,43 +185,19 @@ const AppleTimelineCard = ({ step, isLeft, isVisible }: AppleTimelineCardProps) 
             <div className={`
               absolute top-2 left-2 rounded-full blur-sm
               bg-gradient-to-br to-transparent
-              ${isTransitionStep
+              ${isTransitionStep 
                 ? 'w-12 h-12 from-white/[0.04]'
                 : 'w-16 h-16 from-white/[0.08]'
               }
             `} />
 
-            {/* Add very subtle pulse animation for transition step */}
+            {/* Add subtle pulse animation for transition step */}
             {isTransitionStep && (
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.015] to-transparent transition-opacity duration-2000"
-                style={{ animation: 'subtleCardPulse 8s ease-in-out infinite' }} />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.02] to-transparent animate-pulse" />
             )}
           </div>
         </div>
       </div>
-
-      {/* Subtle animation keyframes */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes subtleConnectionPulse {
-            0%, 100% {
-              opacity: 0.6;
-            }
-            50% {
-              opacity: 1;
-            }
-          }
-
-          @keyframes subtleCardPulse {
-            0%, 100% {
-              opacity: 0.3;
-            }
-            50% {
-              opacity: 0.6;
-            }
-          }
-        `
-      }} />
     </div>
   );
 };

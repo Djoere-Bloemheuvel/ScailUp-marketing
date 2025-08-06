@@ -1,3 +1,4 @@
+
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import AppleTimelineCard from './AppleTimelineCard';
 
@@ -18,7 +19,7 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
     },
     {
       id: 2,
-      number: "02",
+      number: "02", 
       title: "Ownership mentaliteit",
       subtitle: "Jullie succes is ons succes. We bouwen voor jullie alsof het ons eigen bedrijf is.",
       icon: HandHeart,
@@ -47,67 +48,67 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
 
   return (
     <div className="relative max-w-5xl mx-auto">
-      {/* Enhanced central animated timeline line with ultra-smooth animation */}
+      {/* Enhanced central animated timeline line with smoother animation */}
       <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
         {/* Base line with enhanced gradient */}
-        <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/12 to-transparent transition-all duration-1500 ease-out ${
+        <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-800 ease-out ${
           isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
         }`}
         style={{
           transformOrigin: 'top',
-          transitionDelay: '600ms',
+          transitionDelay: '300ms',
           transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
         }} />
-
-        {/* Subtle animated glow pulse with Apple-style timing */}
-        <div className={`absolute inset-0 w-full h-full transition-opacity duration-1500 ease-out ${
+        
+        {/* Enhanced animated glow pulse with better timing */}
+        <div className={`absolute inset-0 w-full h-full transition-opacity duration-800 ease-out ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ transitionDelay: '800ms' }}
+        style={{ transitionDelay: '400ms' }}
         >
-          <div
-            className="w-full h-12 bg-gradient-to-b from-cyan-400/15 via-white/20 to-transparent blur-sm"
+          <div 
+            className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
             style={{
-              animation: isVisible ? 'subtleTimelinePulse 20s ease-in-out infinite' : 'none',
+              animation: isVisible ? 'timelinePulse 15s ease-in-out infinite' : 'none',
               transformOrigin: 'top'
             }}
           />
-          <div
-            className="w-full h-6 bg-gradient-to-b from-blue-400/10 via-white/15 to-transparent blur-md"
+          <div 
+            className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md"
             style={{
-              animation: isVisible ? 'subtleTimelinePulse 24s ease-in-out infinite' : 'none',
-              animationDelay: '6s',
+              animation: isVisible ? 'timelinePulse 18s ease-in-out infinite' : 'none',
+              animationDelay: '4s',
               transformOrigin: 'top'
             }}
           />
         </div>
-
+        
         {/* Enhanced timeline dots with smoother pulsing - only for actual steps */}
         {steps.map((step, index) => (
-          <div
+          <div 
             key={step.id}
             className="absolute left-1/2 transform -translate-x-1/2"
-            style={{
+            style={{ 
               top: `${12 + (index * 18)}%`,
             }}
           >
-            <div className={`relative transition-all duration-800 ease-out ${
+            <div className={`relative transition-all duration-500 ease-out ${
               isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
             }`}
             style={{
-              transitionDelay: `${1000 + (index * 100)}ms`,
+              transitionDelay: `${500 + (index * 50)}ms`,
               transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
             }}
             >
-              <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/60 to-white/25 shadow-white/8 border-white/25">
-                <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/20 to-transparent transition-opacity duration-2000 ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
-                }`} style={{ animation: isVisible ? 'subtleDotPulse 8s ease-in-out infinite' : 'none' }} />
+              <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
+                <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent ${
+                  isVisible ? 'animate-pulse' : ''
+                }`} />
               </div>
-              {/* Subtle outer glow */}
-              <div className={`absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-125 opacity-40 bg-white/10 transition-opacity duration-2000 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`} style={{ animation: isVisible ? 'subtleDotPulse 8s ease-in-out infinite' : 'none', animationDelay: '2s' }} />
+              {/* Enhanced outer glow with smoother animation */}
+              <div className={`absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-150 opacity-70 bg-white/15 ${
+                isVisible ? 'animate-pulse' : ''
+              }`} />
             </div>
           </div>
         ))}
@@ -118,73 +119,57 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
         {steps.map((step, index) => (
           <div
             key={step.id}
-            className={`transition-all duration-1000 ease-out ${
-              isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
+            className={`transition-all duration-600 ease-out ${
+              isVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-6'
             }`}
             style={{
-              transitionDelay: `${1200 + (index * 150)}ms`,
+              transitionDelay: `${600 + (index * 80)}ms`,
               transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
             <AppleTimelineCard
               step={step}
               isLeft={index % 2 === 0}
+              delay={0}
               isVisible={isVisible}
             />
           </div>
         ))}
       </div>
 
-      {/* Ultra-smooth timeline animations with Apple-style easing */}
+      {/* Enhanced timeline animations with smoother easing */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes subtleTimelinePulse {
-            0% {
+          @keyframes timelinePulse {
+            0% { 
               transform: translateY(-100%) scaleY(0);
               opacity: 0;
             }
-            8% {
-              opacity: 0.15;
-              transform: translateY(-80%) scaleY(0.2);
-            }
             15% {
-              opacity: 0.25;
-              transform: translateY(-60%) scaleY(0.4);
+              opacity: 0.3;
+              transform: translateY(-70%) scaleY(0.3);
             }
-            30% {
-              opacity: 0.4;
-              transform: translateY(-20%) scaleY(0.8);
+            25% {
+              opacity: 0.5;
+              transform: translateY(-50%) scaleY(0.6);
             }
-            45% {
-              opacity: 0.6;
+            50% { 
+              opacity: 1;
               transform: translateY(0%) scaleY(1);
             }
-            65% {
-              opacity: 0.4;
-              transform: translateY(20%) scaleY(0.9);
+            75% {
+              opacity: 0.8;
+              transform: translateY(30%) scaleY(0.9);
             }
-            80% {
-              opacity: 0.25;
-              transform: translateY(40%) scaleY(0.6);
+            85% {
+              opacity: 0.6;
+              transform: translateY(50%) scaleY(0.7);
             }
-            92% {
-              opacity: 0.1;
-              transform: translateY(70%) scaleY(0.3);
-            }
-            100% {
+            100% { 
               transform: translateY(100vh) scaleY(0);
               opacity: 0;
-            }
-          }
-
-          @keyframes subtleDotPulse {
-            0%, 100% {
-              opacity: 0.3;
-            }
-            50% {
-              opacity: 0.8;
             }
           }
         `
