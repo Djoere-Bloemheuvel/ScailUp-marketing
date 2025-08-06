@@ -24,31 +24,6 @@ const EndingCTA = () => {
       {/* Main Content Container - Only one glass container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
-          {/* Cinematic Spotlight Glow - Behind the card */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-            <div 
-              className="w-[140%] h-[200%] rounded-full opacity-20 animate-pulse"
-              style={{
-                background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.25) 0%, rgba(147, 51, 234, 0.18) 35%, rgba(139, 92, 246, 0.12) 55%, rgba(124, 58, 237, 0.06) 75%, transparent 90%)',
-                filter: 'blur(80px)',
-                animationDuration: '8s'
-              }}
-            />
-          </div>
-
-          {/* Secondary spotlight layer for depth */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-            <div 
-              className="w-[100%] h-[150%] rounded-full opacity-15 animate-pulse"
-              style={{
-                background: 'radial-gradient(ellipse at center, rgba(34, 211, 238, 0.20) 0%, rgba(59, 130, 246, 0.15) 40%, rgba(147, 51, 234, 0.08) 70%, transparent 85%)',
-                filter: 'blur(60px)',
-                animationDuration: '10s',
-                animationDelay: '-4s'
-              }}
-            />
-          </div>
-
           {/* Main Glass Container - The only one containing text */}
           <div className="premium-glass-main-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
