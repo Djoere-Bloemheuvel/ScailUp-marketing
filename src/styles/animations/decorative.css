@@ -1,0 +1,45 @@
+
+/* Decorative animations - Low priority, lazy loaded */
+@keyframes scan-sweep {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes particle-trail {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes connection-pulse {
+  0%, 100% { opacity: 0.1; stroke-width: 1; }
+  50% { opacity: 0.4; stroke-width: 1.5; }
+}
+
+/* Applied classes */
+.scan-sweep { animation: scan-sweep 3s linear infinite; }
+.particle-trail { animation: particle-trail 8s ease-in-out infinite; }
+.connection-pulse { animation: connection-pulse 20s linear infinite; }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .scan-sweep { animation-duration: 2s; }
+  .particle-trail { animation-duration: 6s; }
+  .connection-pulse { animation-duration: 15s; }
+}
+
+@media (max-width: 480px) {
+  .scan-sweep,
+  .particle-trail,
+  .connection-pulse {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-sweep,
+  .particle-trail,
+  .connection-pulse {
+    animation: none !important;
+  }
+}

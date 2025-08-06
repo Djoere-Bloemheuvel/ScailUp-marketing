@@ -1,0 +1,78 @@
+
+/* Ambient animations - Medium priority, lazy loaded */
+@keyframes ambient-glow-1 {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    filter: blur(80px);
+  }
+  33% {
+    opacity: 0.85;
+    transform: translate3d(0, 0, 0) scale(1.08) rotate(2deg);
+    filter: blur(85px);
+  }
+  66% {
+    opacity: 0.6;
+    transform: translate3d(0, 0, 0) scale(0.95) rotate(-1deg);
+    filter: blur(75px);
+  }
+}
+
+@keyframes ambient-glow-2 {
+  0%, 100% {
+    opacity: 0.65;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    filter: blur(90px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(0, 0, 0) scale(1.12) rotate(-3deg);
+    filter: blur(95px);
+  }
+}
+
+@keyframes timeline-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+}
+
+/* Applied classes */
+.ambient-glow-1 { animation: ambient-glow-1 14s ease-in-out infinite; }
+.ambient-glow-2 { 
+  animation: ambient-glow-2 16s ease-in-out infinite;
+  animation-delay: -5s;
+}
+.timeline-pulse { animation: timeline-pulse 16s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .ambient-glow-1,
+  .ambient-glow-2 {
+    animation-duration: 20s;
+  }
+  .timeline-pulse {
+    animation-duration: 12s;
+  }
+}
+
+@media (max-width: 480px) {
+  .ambient-glow-1,
+  .ambient-glow-2 {
+    opacity: 0.3 !important;
+    filter: blur(40px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow-1,
+  .ambient-glow-2,
+  .timeline-pulse {
+    animation: none !important;
+  }
+}
