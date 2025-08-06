@@ -1,6 +1,5 @@
 
 import { LucideIcon } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
 
 interface AppleTimelineCardProps {
   step: {
@@ -14,48 +13,18 @@ interface AppleTimelineCardProps {
     isTransition?: boolean;
   };
   isLeft: boolean;
+  isVisible: boolean;
   delay: number;
 }
 
-const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Smoother staggered animation with better timing
-            setTimeout(() => {
-              setIsVisible(true);
-            }, delay);
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger earlier
-        rootMargin: '100px 0px -50px 0px' // More generous margins for smoother loading
-      }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [delay]);
-
+const AppleTimelineCard = ({ step, isLeft, isVisible, delay }: AppleTimelineCardProps) => {
   // Special styling for transition step
   const isTransitionStep = step.isTransition;
   const cardWidth = isTransitionStep ? 'max-w-xs' : 'max-w-sm'; // Smaller width for transition
   const cardScale = isTransitionStep ? 'scale-90' : 'scale-100'; // Slightly smaller scale
 
   return (
-    <div
-      ref={cardRef}
-      className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
-    >
+    <div className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}>
       {/* Enhanced Ambient Glow with smoother transitions */}
       <div
         className={`
@@ -66,7 +35,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
           }
         `}
         style={{
-          transitionDelay: `${delay + 200}ms`,
+          transitionDelay: `${delay + 100}ms`,
           transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >
@@ -79,7 +48,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
             ${isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
           `}
-          style={{ transitionDelay: `${delay + 300}ms` }}
+          style={{ transitionDelay: `${delay + 150}ms` }}
         />
 
         <div
@@ -90,7 +59,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
             ${isTransitionStep ? 'w-64 h-64 opacity-20' : 'w-80 h-80 opacity-28'}
           `}
-          style={{ transitionDelay: `${delay + 400}ms` }}
+          style={{ transitionDelay: `${delay + 200}ms` }}
         />
 
         <div
@@ -101,7 +70,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
             ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
             ${isTransitionStep ? 'w-32 h-32 opacity-30' : 'w-48 h-48 opacity-48'}
           `}
-          style={{ transitionDelay: `${delay + 500}ms` }}
+          style={{ transitionDelay: `${delay + 250}ms` }}
         />
 
         {!isTransitionStep && (
@@ -113,7 +82,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               ${isVisible ? 'scale-100' : 'scale-70'}
               ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
             `}
-            style={{ transitionDelay: `${delay + 100}ms` }}
+            style={{ transitionDelay: `${delay + 50}ms` }}
           />
         )}
       </div>
@@ -154,7 +123,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                 : 'border-white/[0.06] bg-white/[0.01]'
             }
           `}
-          style={{ transitionDelay: `${delay + 200}ms` }}
+          style={{ transitionDelay: `${delay + 100}ms` }}
           >
 
             {/* Enhanced Step Number with smoother reveal */}
@@ -169,7 +138,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                   }
                   ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
                 `}
-                style={{ transitionDelay: `${delay + 300}ms` }}
+                style={{ transitionDelay: `${delay + 150}ms` }}
                 >
                   {step.number}
                 </div>
@@ -183,7 +152,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                   }
                   ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
                 `}
-                style={{ transitionDelay: `${delay + 400}ms` }}
+                style={{ transitionDelay: `${delay + 200}ms` }}
                 >
                   {step.number}
                 </div>
@@ -196,7 +165,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                   transition-all duration-200 ease-out
                   ${isVisible ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-75 rotate-12'}
                 `}
-                style={{ transitionDelay: `${delay + 600}ms` }}
+                style={{ transitionDelay: `${delay + 300}ms` }}
                 >
                   <step.icon className="w-full h-full" />
                 </div>
@@ -217,7 +186,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               `}
               style={{
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
-                transitionDelay: `${delay + 500}ms`
+                transitionDelay: `${delay + 250}ms`
               }}>
                 {step.title}
               </h3>
@@ -234,7 +203,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               `}
               style={{
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif',
-                transitionDelay: `${delay + 600}ms`
+                transitionDelay: `${delay + 300}ms`
               }}>
                 {step.subtitle}
               </p>
@@ -252,7 +221,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}
               ${isLeft ? '-right-4 lg:-right-6 origin-left' : '-left-4 lg:-left-6 rotate-180 origin-right'}
             `}
-            style={{ transitionDelay: `${delay + 700}ms` }}
+            style={{ transitionDelay: `${delay + 350}ms` }}
             >
               <div className={`absolute inset-0 w-1 h-full rounded-full animate-pulse ${
                 isTransitionStep 
@@ -268,7 +237,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               ${isTransitionStep ? 'via-white/8' : 'via-white/15'}
               ${isVisible ? 'opacity-100' : 'opacity-0'}
             `}
-            style={{ transitionDelay: `${delay + 800}ms` }}
+            style={{ transitionDelay: `${delay + 400}ms` }}
             />
 
             <div className={`
@@ -277,7 +246,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               ${isTransitionStep ? 'from-white/15' : 'from-white/25'}
               ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}
             `}
-            style={{ transitionDelay: `${delay + 900}ms` }}
+            style={{ transitionDelay: `${delay + 450}ms` }}
             />
 
             <div className={`
@@ -286,7 +255,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               ${isTransitionStep ? 'from-white/15' : 'from-white/25'}
               ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}
             `}
-            style={{ transitionDelay: `${delay + 950}ms` }}
+            style={{ transitionDelay: `${delay + 475}ms` }}
             />
 
             {/* Enhanced glass reflection with smoother fade */}
@@ -300,7 +269,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
               }
               ${isVisible ? 'opacity-100' : 'opacity-0'}
             `}
-            style={{ transitionDelay: `${delay + 1000}ms` }}
+            style={{ transitionDelay: `${delay + 500}ms` }}
             />
 
             {/* Add subtle pulse animation for transition step */}
@@ -310,7 +279,7 @@ const AppleTimelineCard = ({ step, isLeft, delay }: AppleTimelineCardProps) => {
                 transition-opacity duration-1000 ease-out animate-pulse
                 ${isVisible ? 'opacity-100' : 'opacity-0'}
               `}
-              style={{ transitionDelay: `${delay + 1200}ms` }}
+              style={{ transitionDelay: `${delay + 600}ms` }}
               />
             )}
           </div>
