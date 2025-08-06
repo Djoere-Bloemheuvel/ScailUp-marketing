@@ -58,7 +58,7 @@ const EndingCTA = () => {
               <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
                 <div className="space-y-6">
-                  <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white transition-all duration-1000 ease-out ${
+                  <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight text-white whitespace-nowrap transition-all duration-1000 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
