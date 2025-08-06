@@ -15,35 +15,14 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; object-src 'none'; base-uri 'self';" />
 
-    <!-- Performance optimizations - Preload critical resources -->
+    <!-- Preload critical resources -->
     <link rel="preload" href="/src/main.tsx" as="script" crossorigin />
-    <link rel="preload" href="/src/styles/critical.css" as="style" />
-    <link rel="preload" href="/src/styles/core-animations.css" as="style" />
-
-    <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//lovable.dev" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-
-    <!-- Module preload for better loading performance -->
-    <link rel="modulepreload" href="/src/components/Hero.tsx" />
-    <link rel="modulepreload" href="/src/components/LazyAnimationProvider.tsx" />
-
-    <!-- Prefetch secondary pages -->
-    <link rel="prefetch" href="/contact" />
     <link rel="prefetch" href="/ai-automations" />
     <link rel="prefetch" href="/custom-ai-saas" />
     <link rel="prefetch" href="/consultancy" />
     <link rel="prefetch" href="/autonomous-ai-agents" />
-
-    <!-- Critical CSS inline for instant loading -->
-    <style>
-      /* Inline critical CSS will be inserted here during build */
-      * { box-sizing: border-box; }
-      body { margin: 0; font-family: 'Inter', sans-serif; background: #000; color: #fff; }
-      .min-h-screen { min-height: 100vh; }
-      .loading-spinner { width: 4rem; height: 4rem; border: 2px solid transparent; border-top: 2px solid #fff; border-radius: 50%; animation: spin 1s linear infinite; }
-      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
 
     <title>Buildrs.AI - Elite AI Engineering Studio | Custom AI SaaS & Automatisering</title>
     <meta name="description" content="Premium AI-oplossingen voor visionairs: Custom AI SaaS, intelligente automatisering en strategische AI-consultancy. Transformeer uw business met autonome AI-systemen van de hoogste kwaliteit." />

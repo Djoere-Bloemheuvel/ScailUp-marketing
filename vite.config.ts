@@ -31,14 +31,15 @@ export default defineConfig(({ mode }) => ({
           'ui-vendor': ['@radix-ui/react-slot', '@radix-ui/react-toast', '@radix-ui/react-tooltip', '@radix-ui/react-dialog'],
           'animation-vendor': ['lucide-react', 'tailwind-merge', 'clsx', 'class-variance-authority'],
           'query-vendor': ['@tanstack/react-query'],
+          // Separate chunk for contact page components
+
         },
       },
     },
-    // Optimize CSS - more aggressive
+    // Optimize CSS
     cssCodeSplit: true,
-    cssMinify: true,
     // Minimize bundle size warnings for production
-    chunkSizeWarningLimit: 800,
+    chunkSizeWarningLimit: 1000,
     // Enable source maps for production debugging (optional)
     sourcemap: false,
     // Minify with terser for better compression
@@ -48,21 +49,14 @@ export default defineConfig(({ mode }) => ({
         drop_console: mode === 'production',
         drop_debugger: true,
         // Remove unused code more aggressively
-        pure_funcs: ['console.log', 'console.info', 'console.warn'],
-        passes: 3,
-        unsafe_arrows: true,
-        unsafe_methods: true,
-        unsafe_proto: true,
+        pure_funcs: ['console.log', 'console.info'],
+        passes: 2,
       },
       mangle: {
         // Optimize variable names for smaller bundle
         safari10: true,
-        properties: false, // Don't mangle properties to avoid breaking React
       },
     },
-    // Performance optimizations
-    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
-    reportCompressedSize: false, // Faster builds
   },
   // Performance optimizations
   optimizeDeps: {
@@ -75,16 +69,7 @@ export default defineConfig(({ mode }) => ({
       'tailwind-merge',
       'clsx',
     ],
-    // Force optimize critical performance packages
-    force: true,
-  },
-  // Enable server-side optimizations
-  esbuild: {
-    // Remove console logs in production
-    drop: mode === 'production' ? ['console', 'debugger'] : [],
-    // Optimize for modern browsers
-    target: 'es2020',
-    // Tree shake unused imports
-    treeShaking: true,
+    // Exclude contact components from optimization to allow lazy loading
+    exclude: ['@/components/contact/*'],
   },
 }));

@@ -1,161 +1,131 @@
 
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 const AnimatedHeadline = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  // Memoize the words array to prevent recreation
-  const words = useMemo(() => ['denkt', 'bouwt', 'werkt'], []);
-
-  // Memoized current word to prevent unnecessary re-renders
-  const currentWord = useMemo(() => words[currentWordIndex], [words, currentWordIndex]);
-
-  // Memoized animation sequence for better performance
-  const runAnimationSequence = useCallback(async () => {
-    if (animationComplete) return;
-
-    // Optimized timing for smoother experience
-    await new Promise(resolve => setTimeout(resolve, 150));
-
-    for (let i = 0; i < words.length; i++) {
-      if (i > 0) {
-        // Slightly longer glitch for better visual impact
-        setIsGlitching(true);
-        await new Promise(resolve => setTimeout(resolve, 150));
-        setIsGlitching(false);
-      }
-
-      // Show the new word
-      setCurrentWordIndex(i);
-
-      // Smooth transition to next word
-      if (i < words.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 200));
-      }
-    }
-
-    setAnimationComplete(true);
-  }, [words, animationComplete]);
+  const words = ['denkt', 'bouwt', 'werkt'];
 
   useEffect(() => {
-    runAnimationSequence();
-  }, [runAnimationSequence]);
+    if (animationComplete) return;
 
-  // Memoized CSS styles for better performance
-  const cssStyles = useMemo(() => `
-    /* Optimized RGB Split Animations with hardware acceleration */
+    const sequence = async () => {
+      // Snellere start - wacht minder
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      for (let i = 0; i < words.length; i++) {
+        if (i > 0) {
+          // Snellere glitch-animatie
+          setIsGlitching(true);
+          await new Promise(resolve => setTimeout(resolve, 120));
+          setIsGlitching(false);
+        }
+
+        // Toon het nieuwe woord
+        setCurrentWordIndex(i);
+
+        // Snellere overgang naar volgende woord
+        if (i < words.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 180));
+        }
+      }
+
+      setAnimationComplete(true);
+    };
+
+    sequence();
+  }, []);
+
+  const cssStyles = `
+    /* RGB Split Animations */
     .glitch-rgb-red {
-      animation: glitch-rgb-red 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-      will-change: transform, opacity;
-      backface-visibility: hidden;
+      animation: glitch-rgb-red 120ms linear infinite;
     }
 
     .glitch-rgb-green {
-      animation: glitch-rgb-green 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-      will-change: transform, opacity;
-      backface-visibility: hidden;
+      animation: glitch-rgb-green 120ms linear infinite;
     }
 
     .glitch-rgb-blue {
-      animation: glitch-rgb-blue 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-      will-change: transform, opacity;
-      backface-visibility: hidden;
+      animation: glitch-rgb-blue 120ms linear infinite;
     }
 
-    /* Enhanced Slice Animations with better performance */
+    /* Slice Animations */
     .glitch-slice-1 {
-      animation: glitch-slice-1 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+      animation: glitch-slice-1 120ms linear infinite;
       clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 0% 45%);
-      will-change: transform;
-      backface-visibility: hidden;
     }
 
     .glitch-slice-2 {
-      animation: glitch-slice-2 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+      animation: glitch-slice-2 120ms linear infinite;
       clip-path: polygon(0% 55%, 100% 55%, 100% 100%, 0% 100%);
-      will-change: transform;
-      backface-visibility: hidden;
     }
 
-    /* Smoother Scanline Animation */
+    /* Scanline Animation */
     .glitch-scanline {
-      animation: glitch-scanline 120ms ease-in-out infinite;
-      will-change: transform, opacity;
+      animation: glitch-scanline 100ms linear infinite;
     }
 
-    /* Enhanced keyframes with hardware acceleration using translate3d */
     @keyframes glitch-rgb-red {
-      0% { transform: translate3d(-2px, 1px, 0) skewX(-1deg); opacity: 0.8; }
-      20% { transform: translate3d(2px, -1px, 0) skewX(1deg); opacity: 0.9; }
-      40% { transform: translate3d(-1px, 2px, 0) skewX(-0.5deg); opacity: 0.7; }
-      60% { transform: translate3d(3px, -2px, 0) skewX(1.5deg); opacity: 0.8; }
-      80% { transform: translate3d(-2px, 1px, 0) skewX(-1deg); opacity: 0.9; }
-      100% { transform: translate3d(1px, -1px, 0) skewX(0.5deg); opacity: 0.7; }
+      0% { transform: translate(-2px, 1px) skewX(-1deg); opacity: 0.8; }
+      20% { transform: translate(2px, -1px) skewX(1deg); opacity: 0.9; }
+      40% { transform: translate(-1px, 2px) skewX(-0.5deg); opacity: 0.7; }
+      60% { transform: translate(3px, -2px) skewX(1.5deg); opacity: 0.8; }
+      80% { transform: translate(-2px, 1px) skewX(-1deg); opacity: 0.9; }
+      100% { transform: translate(1px, -1px) skewX(0.5deg); opacity: 0.7; }
     }
 
     @keyframes glitch-rgb-green {
-      0% { transform: translate3d(1px, -2px, 0) skewY(1deg); opacity: 0.7; }
-      25% { transform: translate3d(-2px, 1px, 0) skewY(-1deg); opacity: 0.8; }
-      50% { transform: translate3d(2px, 1px, 0) skewY(0.5deg); opacity: 0.6; }
-      75% { transform: translate3d(-1px, -2px, 0) skewY(-1.5deg); opacity: 0.9; }
-      100% { transform: translate3d(1px, 2px, 0) skewY(1deg); opacity: 0.7; }
+      0% { transform: translate(1px, -2px) skewY(1deg); opacity: 0.7; }
+      25% { transform: translate(-2px, 1px) skewY(-1deg); opacity: 0.8; }
+      50% { transform: translate(2px, 1px) skewY(0.5deg); opacity: 0.6; }
+      75% { transform: translate(-1px, -2px) skewY(-1.5deg); opacity: 0.9; }
+      100% { transform: translate(1px, 2px) skewY(1deg); opacity: 0.7; }
     }
 
     @keyframes glitch-rgb-blue {
-      0% { transform: translate3d(2px, 1px, 0) skewX(0.5deg); opacity: 0.9; }
-      30% { transform: translate3d(-1px, -2px, 0) skewX(-1deg); opacity: 0.6; }
-      60% { transform: translate3d(3px, 1px, 0) skewX(1.5deg); opacity: 0.8; }
-      90% { transform: translate3d(-2px, -1px, 0) skewX(-0.5deg); opacity: 0.7; }
-      100% { transform: translate3d(1px, 2px, 0) skewX(1deg); opacity: 0.8; }
+      0% { transform: translate(2px, 1px) skewX(0.5deg); opacity: 0.9; }
+      30% { transform: translate(-1px, -2px) skewX(-1deg); opacity: 0.6; }
+      60% { transform: translate(3px, 1px) skewX(1.5deg); opacity: 0.8; }
+      90% { transform: translate(-2px, -1px) skewX(-0.5deg); opacity: 0.7; }
+      100% { transform: translate(1px, 2px) skewX(1deg); opacity: 0.8; }
     }
 
     @keyframes glitch-slice-1 {
-      0% { transform: translate3d(0, 0, 0) scaleX(1); }
-      10% { transform: translate3d(-5px, 0, 0) scaleX(1.05); }
-      20% { transform: translate3d(3px, 0, 0) scaleX(0.95); }
-      30% { transform: translate3d(-2px, 0, 0) scaleX(1.02); }
-      40% { transform: translate3d(4px, 0, 0) scaleX(0.98); }
-      50% { transform: translate3d(-3px, 0, 0) scaleX(1.03); }
-      60% { transform: translate3d(2px, 0, 0) scaleX(0.97); }
-      70% { transform: translate3d(-4px, 0, 0) scaleX(1.01); }
-      80% { transform: translate3d(3px, 0, 0) scaleX(0.99); }
-      90% { transform: translate3d(-1px, 0, 0) scaleX(1.02); }
-      100% { transform: translate3d(0, 0, 0) scaleX(1); }
+      0% { transform: translateX(0px); }
+      10% { transform: translateX(-5px) scaleX(1.05); }
+      20% { transform: translateX(3px) scaleX(0.95); }
+      30% { transform: translateX(-2px) scaleX(1.02); }
+      40% { transform: translateX(4px) scaleX(0.98); }
+      50% { transform: translateX(-3px) scaleX(1.03); }
+      60% { transform: translateX(2px) scaleX(0.97); }
+      70% { transform: translateX(-4px) scaleX(1.01); }
+      80% { transform: translateX(3px) scaleX(0.99); }
+      90% { transform: translateX(-1px) scaleX(1.02); }
+      100% { transform: translateX(0px) scaleX(1); }
     }
 
     @keyframes glitch-slice-2 {
-      0% { transform: translate3d(0, 0, 0) scaleX(1); }
-      15% { transform: translate3d(4px, 0, 0) scaleX(0.96); }
-      30% { transform: translate3d(-3px, 0, 0) scaleX(1.04); }
-      45% { transform: translate3d(2px, 0, 0) scaleX(0.98); }
-      60% { transform: translate3d(-4px, 0, 0) scaleX(1.02); }
-      75% { transform: translate3d(3px, 0, 0) scaleX(0.97); }
-      90% { transform: translate3d(-1px, 0, 0) scaleX(1.01); }
-      100% { transform: translate3d(0, 0, 0) scaleX(1); }
+      0% { transform: translateX(0px); }
+      15% { transform: translateX(4px) scaleX(0.96); }
+      30% { transform: translateX(-3px) scaleX(1.04); }
+      45% { transform: translateX(2px) scaleX(0.98); }
+      60% { transform: translateX(-4px) scaleX(1.02); }
+      75% { transform: translateX(3px) scaleX(0.97); }
+      90% { transform: translateX(-1px) scaleX(1.01); }
+      100% { transform: translateX(0px) scaleX(1); }
     }
 
     @keyframes glitch-scanline {
-      0% { transform: translate3d(0, 0%, 0); height: 2px; opacity: 0.8; }
-      25% { transform: translate3d(0, 25%, 0); height: 1px; opacity: 1; }
-      50% { transform: translate3d(0, 50%, 0); height: 3px; opacity: 0.6; }
-      75% { transform: translate3d(0, 75%, 0); height: 1px; opacity: 0.9; }
-      100% { transform: translate3d(0, 100%, 0); height: 2px; opacity: 0.7; }
+      0% { top: 0%; height: 2px; opacity: 0.8; }
+      25% { top: 25%; height: 1px; opacity: 1; }
+      50% { top: 50%; height: 3px; opacity: 0.6; }
+      75% { top: 75%; height: 1px; opacity: 0.9; }
+      100% { top: 100%; height: 2px; opacity: 0.7; }
     }
-
-    /* Accessibility - Reduce motion */
-    @media (prefers-reduced-motion: reduce) {
-      .glitch-rgb-red,
-      .glitch-rgb-green,
-      .glitch-rgb-blue,
-      .glitch-slice-1,
-      .glitch-slice-2,
-      .glitch-scanline {
-        animation: none;
-      }
-    }
-  `, []);
+  `;
 
   return (
     <div className="relative">
@@ -166,11 +136,11 @@ const AnimatedHeadline = () => {
           AI die{' '}
           <span className="relative inline-block">
             <span
-              className={`relative z-20 transition-opacity duration-100 ease-out ${
+              className={`relative z-20 transition-opacity duration-75 ${
                 isGlitching ? 'opacity-0' : 'opacity-100'
               }`}
             >
-              {currentWord}.
+              {words[currentWordIndex]}.
             </span>
 
             {/* Glitch Layers */}
@@ -183,7 +153,7 @@ const AnimatedHeadline = () => {
                     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
                   }}
                 >
-                  {currentWord}.
+                  {words[currentWordIndex]}.
                 </span>
 
                 <span
@@ -192,7 +162,7 @@ const AnimatedHeadline = () => {
                     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
                   }}
                 >
-                  {currentWord}.
+                  {words[currentWordIndex]}.
                 </span>
 
                 <span
@@ -201,20 +171,20 @@ const AnimatedHeadline = () => {
                     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
                   }}
                 >
-                  {currentWord}.
+                  {words[currentWordIndex]}.
                 </span>
 
                 {/* Slice Layers */}
                 <span
                   className="absolute top-0 left-0 z-15 text-white glitch-slice-1"
                 >
-                  {currentWord}.
+                  {words[currentWordIndex]}.
                 </span>
 
                 <span
                   className="absolute top-0 left-0 z-15 text-white glitch-slice-2"
                 >
-                  {currentWord}.
+                  {words[currentWordIndex]}.
                 </span>
 
                 {/* Scanline effect */}

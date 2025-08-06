@@ -1,33 +1,28 @@
 
 import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ServiceSection from './ServiceSection';
 
 const Services = () => {
   const [visibleSection, setVisibleSection] = useState<number>(-1);
 
-  // Memoized intersection observer callback for better performance
-  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry?.isIntersecting) {
-        const index = parseInt(entry.target.getAttribute('data-service-section') || '0');
-        setVisibleSection(prev => Math.max(prev, index));
-      }
-    });
-  }, []);
-
   useEffect(() => {
     const observers = new Map();
 
-    // Optimized observer options
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '50px 0px -50px 0px'
-    };
-
     const sections = document.querySelectorAll('[data-service-section]');
     sections.forEach((section, index) => {
-      const observer = new IntersectionObserver(handleIntersection, observerOptions);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry?.isIntersecting) {
+            setVisibleSection(prev => Math.max(prev, index));
+          }
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '100px 0px -20px 0px'
+        }
+      );
+
       observer.observe(section);
       observers.set(index, observer);
     });
@@ -35,10 +30,9 @@ const Services = () => {
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, [handleIntersection]);
+  }, []);
 
-  // Memoized services array to prevent unnecessary re-renders
-  const services = useMemo(() => [
+  const services = [
     {
       id: 'ai-automations',
       icon: Cog,
@@ -84,60 +78,15 @@ const Services = () => {
       primaryButtonText: 'Meer informatie',
       secondaryButtonText: 'Bekijk in actie'
     }
-  ], []);
+  ];
 
-  // Memoized CSS styles with enhanced performance optimizations
-  const cssStyles = useMemo(() => `
+  const cssStyles = `
     @keyframes sweep {
-      0% { transform: translate3d(-100%, 0, 0) scale(1); }
-      50% { transform: translate3d(100%, 0, 0) scale(1.1); }
-      100% { transform: translate3d(100%, 0, 0) scale(1); }
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
     }
-
-    @keyframes gentle-float {
-      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-      50% { transform: translate3d(0, -8px, 0) rotate(2deg); }
-    }
-
-    @keyframes orbital-glow {
-      0%, 100% {
-        opacity: 0.6;
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      50% {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1.1);
-      }
-    }
-
-    /* Performance optimizations for service animations */
-    .service-visual {
-      will-change: transform, opacity;
-      backface-visibility: hidden;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .service-icon {
-      will-change: transform, filter;
-      backface-visibility: hidden;
-    }
-
-    .service-button {
-      will-change: transform, box-shadow;
-      backface-visibility: hidden;
-      transform: translate3d(0, 0, 0);
-    }
-
-    /* Reduce motion for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .service-visual,
-      .service-icon,
-      .service-button {
-        animation: none;
-        transition: none;
-      }
-    }
-  `, []);
+  `;
 
   return (
     <div className="relative bg-premium-black">

@@ -1,31 +1,29 @@
 
-import { memo } from 'react';
-
-const AmbientLighting = memo(() => {
+const AmbientLighting = () => {
   return (
     <>
       {/* Ambient Corner Lighting Effects - Behind all content */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* Top-left ambient glow - More Blue, Less Intense */}
-        <div
+        <div 
           className="absolute -top-1/4 -left-1/4 w-96 h-96 sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full opacity-70 md:opacity-80 ambient-glow-blue"
           style={{
             background: 'radial-gradient(circle, rgba(59, 130, 246, 0.30) 0%, rgba(37, 99, 235, 0.22) 30%, rgba(29, 78, 216, 0.12) 50%, rgba(30, 64, 175, 0.06) 70%, transparent 85%)',
             filter: 'blur(80px)',
           }}
         />
-
+        
         {/* Bottom-right ambient glow - More Blue-Violet, Less Purple */}
-        <div
+        <div 
           className="absolute -bottom-1/4 -right-1/4 w-80 h-80 sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full opacity-65 md:opacity-75 ambient-glow-purple"
           style={{
             background: 'radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(79, 70, 229, 0.18) 35%, rgba(67, 56, 202, 0.10) 55%, rgba(55, 48, 163, 0.04) 75%, transparent 90%)',
             filter: 'blur(90px)',
           }}
         />
-
+        
         {/* Additional accent glow - Enhanced Blue tone */}
-        <div
+        <div 
           className="absolute top-1/3 -right-1/6 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] rounded-full opacity-55 md:opacity-65 ambient-glow-blend"
           style={{
             background: 'radial-gradient(circle, rgba(59, 130, 246, 0.20) 0%, rgba(37, 99, 235, 0.15) 40%, rgba(79, 70, 229, 0.08) 60%, rgba(29, 78, 216, 0.04) 80%, transparent 95%)',
@@ -34,7 +32,7 @@ const AmbientLighting = memo(() => {
         />
 
         {/* Subtle grain texture layer */}
-        <div
+        <div 
           className="absolute inset-0 opacity-[0.02] ambient-grain"
           style={{
             backgroundImage: `
@@ -50,7 +48,7 @@ const AmbientLighting = memo(() => {
         />
 
         {/* Starfield particle layer */}
-        <div
+        <div 
           className="absolute inset-0 opacity-[0.03] ambient-starfield"
           style={{
             backgroundImage: `
@@ -70,17 +68,17 @@ const AmbientLighting = memo(() => {
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes ambient-glow-blue {
-            0%, 100% {
+            0%, 100% { 
               opacity: 0.70;
               transform: scale(1) rotate(0deg);
               filter: blur(80px);
             }
-            33% {
+            33% { 
               opacity: 0.85;
               transform: scale(1.08) rotate(2deg);
               filter: blur(85px);
             }
-            66% {
+            66% { 
               opacity: 0.60;
               transform: scale(0.95) rotate(-1deg);
               filter: blur(75px);
@@ -88,12 +86,12 @@ const AmbientLighting = memo(() => {
           }
 
           @keyframes ambient-glow-purple {
-            0%, 100% {
+            0%, 100% { 
               opacity: 0.65;
               transform: scale(1) rotate(0deg);
               filter: blur(90px);
             }
-            50% {
+            50% { 
               opacity: 0.80;
               transform: scale(1.12) rotate(-3deg);
               filter: blur(95px);
@@ -101,17 +99,17 @@ const AmbientLighting = memo(() => {
           }
 
           @keyframes ambient-glow-blend {
-            0%, 100% {
+            0%, 100% { 
               opacity: 0.55;
               transform: scale(1) rotate(0deg);
               filter: blur(70px);
             }
-            40% {
+            40% { 
               opacity: 0.70;
               transform: scale(1.05) rotate(1deg);
               filter: blur(75px);
             }
-            80% {
+            80% { 
               opacity: 0.45;
               transform: scale(0.98) rotate(-2deg);
               filter: blur(65px);
@@ -119,30 +117,30 @@ const AmbientLighting = memo(() => {
           }
 
           @keyframes ambient-grain {
-            0%, 100% {
+            0%, 100% { 
               opacity: 0.02;
               transform: translateX(0) translateY(0);
             }
-            25% {
+            25% { 
               opacity: 0.025;
               transform: translateX(-2px) translateY(-1px);
             }
-            50% {
+            50% { 
               opacity: 0.015;
               transform: translateX(1px) translateY(-2px);
             }
-            75% {
+            75% { 
               opacity: 0.03;
               transform: translateX(-1px) translateY(1px);
             }
           }
 
           @keyframes ambient-starfield {
-            0%, 100% {
+            0%, 100% { 
               opacity: 0.03;
               transform: rotate(0deg);
             }
-            50% {
+            50% { 
               opacity: 0.02;
               transform: rotate(0.5deg);
             }
@@ -151,24 +149,18 @@ const AmbientLighting = memo(() => {
           .ambient-glow-blue {
             animation: ambient-glow-blue 14s ease-in-out infinite;
             will-change: transform, opacity, filter;
-            backface-visibility: hidden;
-            contain: layout style paint;
           }
 
           .ambient-glow-purple {
             animation: ambient-glow-purple 16s ease-in-out infinite;
             animation-delay: -5s;
             will-change: transform, opacity, filter;
-            backface-visibility: hidden;
-            contain: layout style paint;
           }
 
           .ambient-glow-blend {
             animation: ambient-glow-blend 12s ease-in-out infinite;
             animation-delay: -8s;
             will-change: transform, opacity, filter;
-            backface-visibility: hidden;
-            contain: layout style paint;
           }
 
           .ambient-grain {
@@ -186,47 +178,29 @@ const AmbientLighting = memo(() => {
             .ambient-glow-blue,
             .ambient-glow-purple,
             .ambient-glow-blend {
-              animation-duration: 25s;
+              animation-duration: 20s;
             }
-
+            
             .ambient-glow-blue {
-              opacity: 0.35 !important;
-              filter: blur(60px) !important;
+              opacity: 0.45 !important;
             }
-
+            
             .ambient-glow-purple {
-              opacity: 0.30 !important;
-              filter: blur(70px) !important;
+              opacity: 0.40 !important;
             }
-
+            
             .ambient-glow-blend {
-              opacity: 0.25 !important;
-              filter: blur(50px) !important;
+              opacity: 0.35 !important;
             }
 
             .ambient-grain {
-              opacity: 0.005 !important;
-              animation-duration: 40s;
-            }
-
-            .ambient-starfield {
               opacity: 0.01 !important;
-              animation-duration: 45s;
-            }
-          }
-
-          /* Low-end device optimizations */
-          @media (max-width: 480px) {
-            .ambient-glow-blue,
-            .ambient-glow-purple,
-            .ambient-glow-blend {
-              filter: blur(40px) !important;
-              opacity: 0.2 !important;
+              animation-duration: 35s;
             }
 
-            .ambient-grain,
             .ambient-starfield {
-              display: none;
+              opacity: 0.015 !important;
+              animation-duration: 40s;
             }
           }
 
@@ -252,8 +226,6 @@ const AmbientLighting = memo(() => {
       }} />
     </>
   );
-});
-
-AmbientLighting.displayName = 'AmbientLighting';
+};
 
 export default AmbientLighting;
