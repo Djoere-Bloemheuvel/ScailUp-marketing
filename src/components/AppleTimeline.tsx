@@ -1,8 +1,17 @@
 
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import AppleTimelineCard from './AppleTimelineCard';
 
 const AppleTimeline = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Set visible after component mounts for animation
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const steps = [
     {
       id: 1,
@@ -97,6 +106,7 @@ const AppleTimeline = () => {
             key={step.id}
             step={step}
             isLeft={index % 2 === 0}
+            isVisible={isVisible}
             delay={index * 200} // Slightly more spaced out timing
           />
         ))}
