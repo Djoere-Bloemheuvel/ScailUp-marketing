@@ -1,3 +1,4 @@
+
 import { ArrowRight, Brain } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
@@ -57,14 +58,14 @@ const EndingCTA = () => {
               <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
                 <div className="space-y-6">
-                  <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight transition-all duration-1000 ease-out ${
+                  <h1 className={`font-bold leading-tight tracking-tight transition-all duration-1000 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
                   }`}>
-                    <span className="block text-white mb-3">Zonder AI loop</span>
-                    <span className="text-white block">
-                      je achter.
+                    <span className="block text-white text-4xl md:text-5xl lg:text-6xl mb-2">Zonder AI</span>
+                    <span className="text-white block text-[0.9em] md:text-[0.9em] lg:text-[0.9em]" style={{fontSize: '90%'}}>
+                      Loop je achter.
                     </span>
                   </h1>
                   
