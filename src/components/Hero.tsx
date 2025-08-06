@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { useProgressiveLoad } from '@/hooks/useProgressiveLoad';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -146,9 +145,6 @@ const Hero = () => {
         </div>
       </div>
 
-
-
-
       {/* Optimized animations with performance enhancements */}
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -251,7 +247,7 @@ const Hero = () => {
       {/* Load optimized animations for hero section */}
       <LazyAnimationProvider
         includeHeroAnimations={backgroundLoaded}
-        includeOptimizedAnimations={true}
+        includeHoverAnimations={true}
       />
     </section>
   );

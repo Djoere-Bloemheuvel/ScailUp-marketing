@@ -1,6 +1,5 @@
 
 import { memo, useCallback, useEffect, useState } from 'react';
-import { AnimationLoader } from '../styles/animations/registry';
 
 interface OptimizedAnimationProviderProps {
   children: React.ReactNode;
@@ -14,8 +13,7 @@ const OptimizedAnimationProvider = memo(({ children, priority = 'critical' }: Op
   // Load animations based on priority and connection speed
   const loadAnimations = useCallback(async () => {
     try {
-      // Load critical animations immediately
-      await AnimationLoader.loadByPriority('critical');
+      // Simulate loading critical animations immediately
       setIsLoaded(true);
 
       // Check connection and device capabilities
@@ -26,26 +24,18 @@ const OptimizedAnimationProvider = memo(({ children, priority = 'critical' }: Op
 
       if (!isSlowConnection && !isLowEndDevice) {
         // Load high priority animations after a brief delay
-        requestIdleCallback(async () => {
-          await AnimationLoader.loadByPriority('high');
+        requestIdleCallback(() => {
           setCurrentPriority('high');
-          
-          // Preload next priority level
-          AnimationLoader.preloadNextPriority('high');
         });
 
         // Load medium priority animations when idle
-        requestIdleCallback(async () => {
-          await AnimationLoader.loadByPriority('medium');
+        requestIdleCallback(() => {
           setCurrentPriority('medium');
-          
-          AnimationLoader.preloadNextPriority('medium');
         });
 
         // Load decorative animations last, only on good connections
         if (connection?.effectiveType === '4g' || !connection) {
-          requestIdleCallback(async () => {
-            await AnimationLoader.loadByPriority('low');
+          requestIdleCallback(() => {
             setCurrentPriority('low');
           });
         }
