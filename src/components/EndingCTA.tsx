@@ -2,17 +2,45 @@
 import { ArrowRight, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import CinematicBackground from './hero/CinematicBackground';
 
 const EndingCTA = () => {
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleContactClick = () => {
     navigate('/contact');
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
+    <section 
+      ref={sectionRef}
+      className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20"
+    >
       {/* Smooth vertical fade from black at top - 25% height */}
       <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
@@ -31,36 +59,51 @@ const EndingCTA = () => {
               <div className="space-y-8 order-2 lg:order-1">
                 {/* Statement Title */}
                 <div className="space-y-6">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight premium-title-entrance">
-                    <span className="block text-white mb-3">Klaar voor</span>
+                  <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight transition-all duration-1000 ease-out ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}>
+                    <span className="block text-white mb-3">Zonder AI loop</span>
                     <span className="text-white block">
-                      AI transformatie?
+                      je achter.
                     </span>
                   </h1>
                   
-                  <p className="text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl premium-subtitle-entrance">
-                    Van strategie tot implementatie. Elite engineers leveren tastbare resultaten in 2-4 weken.
+                  <p className={`text-lg md:text-xl font-light text-premium-silver/90 leading-relaxed max-w-2xl transition-all duration-1000 ease-out delay-200 ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}>
+                    Wij brengen je grootste AI-kansen in kaart, zonder verplichtingen. In 30 minuten ontdek je waar jouw bedrijf het meeste rendement uit AI kan halen.
                   </p>
                 </div>
 
                 {/* Premium CTA Button */}
-                <div className="pt-4 premium-button-entrance">
-                  <Button 
+                <div className={`pt-4 transition-all duration-1000 ease-out delay-400 ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}>
+                  <button
                     onClick={handleContactClick}
-                    size="lg" 
-                    className="premium-cta-button group relative overflow-hidden"
+                    aria-label="Plan mijn AI Scan - Start een gesprek met Buildrs.AI"
+                    className="premium-ai-scan-button group relative overflow-hidden"
                   >
-                    <div className="premium-button-shimmer" />
                     <div className="relative z-10 flex items-center px-6 py-3">
-                      <span className="text-lg font-semibold text-black">Start het gesprek</span>
+                      <span className="text-lg font-semibold text-white">Plan mijn AI Scan</span>
                       <ArrowRight className="ml-4 h-5 w-5 group-hover:translate-x-2 transition-transform duration-500" />
                     </div>
-                  </Button>
+                  </button>
                 </div>
               </div>
 
               {/* Right Visual Element - Simplified AI Brain */}
-              <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
+              <div className={`relative flex items-center justify-center order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}>
                 {/* Simplified AI Visualization */}
                 <div className="relative">
                   {/* Core visualization container - clean and minimal */}
@@ -123,7 +166,11 @@ const EndingCTA = () => {
           </div>
 
           {/* Premium Footer Section */}
-          <div className="mt-16 pt-12 border-t border-white/10 premium-footer-entrance">
+          <div className={`mt-16 pt-12 border-t border-white/10 transition-all duration-1000 ease-out delay-600 ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}>
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div>
                 <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Buildrs.AI</h3>
@@ -141,7 +188,7 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Simplified Animation Styles - Only essential animations */}
+      {/* Enhanced Animation Styles with new AI Scan button */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes premium-orbit {
@@ -180,22 +227,17 @@ const EndingCTA = () => {
             }
           }
 
-          @keyframes premium-entrance-fade {
-            0% { 
-              opacity: 0;
-              transform: translateY(30px) scale(0.95);
-              filter: blur(10px);
+          @keyframes premium-glow-pulse {
+            0%, 100% { 
+              box-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 40px rgba(255, 255, 255, 0.1);
             }
-            100% { 
-              opacity: 1;
-              transform: translateY(0) scale(1);
-              filter: blur(0);
+            50% { 
+              box-shadow: 
+                0 0 30px rgba(255, 255, 255, 0.5),
+                0 0 60px rgba(255, 255, 255, 0.2);
             }
-          }
-
-          @keyframes premium-shimmer {
-            0% { transform: translateX(-100%) rotate(35deg); }
-            100% { transform: translateX(400%) rotate(35deg); }
           }
 
           /* Premium Glass Container - Only one main container */
@@ -230,39 +272,42 @@ const EndingCTA = () => {
             pointer-events: none;
           }
 
-          /* Premium Button */
-          .premium-cta-button {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            box-shadow: 
-              0 6px 24px rgba(0, 0, 0, 0.3),
-              0 3px 12px rgba(59, 130, 246, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.8),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
+          /* New AI Scan Button Design */
+          .premium-ai-scan-button {
+            background: transparent;
+            border: 1px solid white;
+            border-radius: 8px;
+            padding: 12px 24px;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
           }
 
-          .premium-cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
+          .premium-ai-scan-button:hover {
+            background: rgba(255, 255, 255, 0.1);
             box-shadow: 
-              0 12px 36px rgba(0, 0, 0, 0.4),
-              0 6px 18px rgba(59, 130, 246, 0.3),
-              0 3px 9px rgba(147, 51, 234, 0.2);
+              0 0 20px rgba(255, 255, 255, 0.3),
+              0 0 40px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
           }
 
-          .premium-button-shimmer {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-              transparent 0%, 
-              rgba(255, 255, 255, 0.4) 50%, 
-              transparent 100%);
-            animation: premium-shimmer 3s ease-in-out infinite;
+          .premium-ai-scan-button:active {
+            transform: translateY(0);
+          }
+
+          .premium-ai-scan-button:focus {
+            outline: none;
+            box-shadow: 
+              0 0 0 2px rgba(255, 255, 255, 0.2),
+              0 0 20px rgba(255, 255, 255, 0.3);
           }
 
           /* Visual Elements */
@@ -272,32 +317,6 @@ const EndingCTA = () => {
 
           .premium-neural-ring {
             animation: premium-neural-ring 20s linear infinite;
-          }
-
-          /* Entrance Animations */
-          .premium-title-entrance {
-            animation: premium-entrance-fade 1s ease-out 0.2s forwards;
-            opacity: 0;
-          }
-
-          .premium-subtitle-entrance {
-            animation: premium-entrance-fade 1s ease-out 0.4s forwards;
-            opacity: 0;
-          }
-
-          .premium-button-entrance {
-            animation: premium-entrance-fade 1s ease-out 0.6s forwards;
-            opacity: 0;
-          }
-
-          .premium-visual-entrance {
-            animation: premium-entrance-fade 1.2s ease-out 0.3s forwards;
-            opacity: 0;
-          }
-
-          .premium-footer-entrance {
-            animation: premium-entrance-fade 1s ease-out 1.2s forwards;
-            opacity: 0;
           }
 
           /* Mobile Optimizations */
@@ -310,6 +329,11 @@ const EndingCTA = () => {
             .premium-orbit-node {
               --orbit-distance: -60px;
             }
+
+            .premium-ai-scan-button {
+              padding: 10px 20px;
+              font-size: 1rem;
+            }
           }
 
           /* Reduced Motion */
@@ -319,11 +343,15 @@ const EndingCTA = () => {
             .premium-orbit-node {
               animation: none;
             }
+            
+            .premium-ai-scan-button {
+              transition: none;
+            }
           }
 
           /* Performance Optimizations */
           .premium-glass-main-container,
-          .premium-cta-button {
+          .premium-ai-scan-button {
             will-change: transform;
             backface-visibility: hidden;
             transform: translateZ(0);
