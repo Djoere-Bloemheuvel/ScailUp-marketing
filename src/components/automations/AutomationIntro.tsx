@@ -2,7 +2,7 @@
 const AutomationIntro = () => {
   return (
     <section className="py-16 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#333333] via-[#333333]/95 to-[#333333]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-premium-black via-premium-black/95 to-premium-black" />
       
       <div className="relative max-w-4xl mx-auto px-4 text-center">
         <div className="animate-fade-in">

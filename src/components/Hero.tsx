@@ -19,9 +19,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 overflow-hidden" style={{ backgroundColor: '#333333' }}>
+    <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden">
       {/* Instant basic background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#333333] via-gray-900 to-[#333333]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
 
       {/* Progressive Cinematic Background */}
       {backgroundLoaded && (
@@ -86,7 +86,7 @@ const Hero = () => {
               <div
                 className="absolute inset-0 opacity-20 scale-y-[-1] origin-top"
                 style={{
-                  background: 'linear-gradient(to bottom, transparent 0%, #333333 70%)',
+                  background: 'linear-gradient(to bottom, transparent 0%, black 70%)',
                   maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.1) 70%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.1) 70%, transparent 100%)',
                   filter: 'blur(1px)',

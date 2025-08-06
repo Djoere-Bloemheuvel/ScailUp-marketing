@@ -6,11 +6,11 @@ import CinematicBackground from '@/components/hero/CinematicBackground';
 const AutomationFinalCTA = () => {
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Much darker background overlay - changed from bg-black/95 to #333333 based */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(51, 51, 51, 0.95)' }} />
+      {/* Much darker background overlay - increased from bg-black/80 to bg-black/95 */}
+      <div className="absolute inset-0 bg-black/95" />
       
       {/* Additional darkening layer */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#333333]/60 via-[#333333]/70 to-[#333333]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80" />
       
       {/* Use the same cinematic background as the hero section but hide glass container */}
       <div className="absolute inset-0 opacity-30">

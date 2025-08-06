@@ -12,9 +12,9 @@ const EndingCTA = () => {
   };
 
   return (
-    <section className="relative min-h-[120vh] overflow-hidden flex items-center justify-center py-20" style={{ backgroundColor: '#333333' }}>
-      {/* Smooth vertical fade from #333333 at top - 25% height */}
-      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-[#333333] via-[#333333]/70 to-transparent z-10" />
+    <section className="relative min-h-[120vh] overflow-hidden bg-black flex items-center justify-center py-20">
+      {/* Smooth vertical fade from black at top - 25% height */}
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
       
       {/* CinematicBackground - positioned behind main content */}
       <div className="absolute inset-0 z-5">
@@ -61,10 +61,10 @@ const EndingCTA = () => {
         </div>
       </div>
 
-      {/* Premium Glass Container */}
+      {/* Main Content Container - Only one glass container */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <div className="relative">
-          {/* Main Glass Container */}
+          {/* Main Glass Container - The only one containing text */}
           <div className="premium-glass-main-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-24">
               {/* Left Content */}
@@ -99,15 +99,15 @@ const EndingCTA = () => {
                 </div>
               </div>
 
-              {/* Right Visual Element */}
+              {/* Right Visual Element - No glass container, just visual */}
               <div className="relative flex items-center justify-center order-1 lg:order-2 premium-visual-entrance">
                 {/* Premium AI Visualization */}
                 <div className="relative">
                   {/* Outer quantum field */}
                   <div className="absolute inset-0 w-80 h-80 rounded-full premium-quantum-field" />
                   
-                  {/* Core visualization container */}
-                  <div className="relative w-64 h-64 rounded-full premium-core-container flex items-center justify-center">
+                  {/* Core visualization container - removed glass styling */}
+                  <div className="relative w-64 h-64 rounded-full flex items-center justify-center">
                     {/* Central brain element */}
                     <div className="relative z-10">
                       <Brain className="w-20 h-20 text-white/90 premium-brain-pulse" />
@@ -278,7 +278,7 @@ const EndingCTA = () => {
             100% { transform: translateX(400%) rotate(35deg); }
           }
 
-          /* Premium Glass Container */
+          /* Premium Glass Container - Only one main container */
           .premium-glass-main-container {
             background: linear-gradient(135deg, 
               rgba(255, 255, 255, 0.08) 0%, 
@@ -356,19 +356,6 @@ const EndingCTA = () => {
             animation: premium-focal-glow 15s ease-in-out infinite;
           }
 
-          .premium-core-container {
-            background: radial-gradient(circle,
-              rgba(59, 130, 246, 0.08) 0%,
-              rgba(147, 51, 234, 0.04) 50%,
-              transparent 70%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 
-              0 0 40px rgba(59, 130, 246, 0.2),
-              0 0 80px rgba(147, 51, 234, 0.1),
-              inset 0 0 30px rgba(255, 255, 255, 0.05);
-          }
-
           .premium-brain-pulse {
             animation: premium-brain-pulse 4s ease-in-out infinite;
           }
@@ -413,11 +400,6 @@ const EndingCTA = () => {
             .premium-quantum-field {
               width: 240px;
               height: 240px;
-            }
-            
-            .premium-core-container {
-              width: 200px;
-              height: 200px;
             }
             
             .premium-orbit-node {
