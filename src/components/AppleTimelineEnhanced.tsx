@@ -83,24 +83,24 @@ const AppleTimelineEnhanced = () => {
         data-timeline-element="title"
         className="mb-16 text-center"
       >
-        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-1000 ease-out ${
+        <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight transition-all duration-800 ease-out ${
           isTitleVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
         }`}>
           <span 
-            className={`inline-block transition-all duration-700 ease-out ${
+            className={`inline-block transition-all duration-500 ease-out ${
               isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
-            style={{ transitionDelay: '200ms' }}
+            style={{ transitionDelay: '150ms' }}
           >
             Onze
           </span>{' '}
           <span 
-            className={`inline-block transition-all duration-700 ease-out ${
+            className={`inline-block transition-all duration-500 ease-out ${
               isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
-            style={{ transitionDelay: '400ms' }}
+            style={{ transitionDelay: '250ms' }}
           >
             aanpak
           </span>
@@ -112,32 +112,32 @@ const AppleTimelineEnhanced = () => {
         {/* Enhanced central animated timeline line with smoother animation */}
         <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-0.5 w-px">
           {/* Base line with enhanced gradient */}
-          <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-1000 ease-out ${
+          <div className={`w-full h-full bg-gradient-to-b from-transparent via-white/15 to-transparent transition-all duration-700 ease-out ${
             isTimelineVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
           }`} 
           style={{ 
             transformOrigin: 'top',
-            transitionDelay: '600ms'
+            transitionDelay: '400ms'
           }} />
           
           {/* Enhanced animated glow pulse with better timing */}
-          <div className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-out ${
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-out ${
             isTimelineVisible ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ transitionDelay: '800ms' }}
+          style={{ transitionDelay: '500ms' }}
           >
             <div 
               className="w-full h-16 bg-gradient-to-b from-cyan-400/25 via-white/35 to-transparent blur-sm"
               style={{
-                animation: isTimelineVisible ? 'timelinePulse 15s ease-in-out infinite' : 'none',
+                animation: isTimelineVisible ? 'timelinePulse 12s ease-in-out infinite' : 'none',
                 transformOrigin: 'top'
               }}
             />
             <div 
               className="w-full h-8 bg-gradient-to-b from-blue-400/20 via-white/25 to-transparent blur-md"
               style={{
-                animation: isTimelineVisible ? 'timelinePulse 18s ease-in-out infinite' : 'none',
-                animationDelay: '4s',
+                animation: isTimelineVisible ? 'timelinePulse 14s ease-in-out infinite' : 'none',
+                animationDelay: '3s',
                 transformOrigin: 'top'
               }}
             />
@@ -152,11 +152,11 @@ const AppleTimelineEnhanced = () => {
                 top: `${12 + (index * 18)}%`,
               }}
             >
-              <div className={`relative transition-all duration-500 ease-out ${
+              <div className={`relative transition-all duration-400 ease-out ${
                 isTimelineVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
               }`}
               style={{ 
-                transitionDelay: `${1000 + (index * 200)}ms`
+                transitionDelay: `${600 + (index * 100)}ms`
               }}
               >
                 <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
@@ -178,13 +178,13 @@ const AppleTimelineEnhanced = () => {
           {steps.map((step, index) => (
             <div
               key={step.id}
-              className={`transition-all duration-800 ease-out ${
+              className={`transition-all duration-600 ease-out ${
                 isTimelineVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-12'
               }`}
               style={{ 
-                transitionDelay: `${1200 + (index * 300)}ms` // Staggered delay: 1.2s, 1.5s, 1.8s, 2.1s
+                transitionDelay: `${800 + (index * 150)}ms` // Faster staggered delay: 800ms, 950ms, 1100ms, 1250ms
               }}
             >
               <AppleTimelineCard
@@ -205,25 +205,25 @@ const AppleTimelineEnhanced = () => {
               transform: translateY(-100%) scaleY(0);
               opacity: 0;
             }
-            15% {
+            12% {
               opacity: 0.3;
-              transform: translateY(-70%) scaleY(0.3);
+              transform: translateY(-75%) scaleY(0.25);
             }
-            25% {
+            20% {
               opacity: 0.5;
-              transform: translateY(-50%) scaleY(0.6);
+              transform: translateY(-55%) scaleY(0.5);
             }
-            50% { 
+            40% { 
               opacity: 1;
               transform: translateY(0%) scaleY(1);
             }
-            75% {
+            65% {
               opacity: 0.8;
-              transform: translateY(30%) scaleY(0.9);
+              transform: translateY(25%) scaleY(0.85);
             }
-            85% {
+            80% {
               opacity: 0.6;
-              transform: translateY(50%) scaleY(0.7);
+              transform: translateY(45%) scaleY(0.65);
             }
             100% { 
               transform: translateY(100vh) scaleY(0);
