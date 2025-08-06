@@ -1,33 +1,7 @@
 
-import { useEffect, useState } from 'react';
 import AppleTimelineEnhanced from './AppleTimelineEnhanced';
 
 const WhyBuildrs = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '50px 0px -50px 0px'
-      }
-    );
-
-    const section = document.querySelector('[data-section="why-buildrs"]');
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section 
       data-section="why-buildrs"
