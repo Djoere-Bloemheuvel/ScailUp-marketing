@@ -31,12 +31,6 @@ export default defineConfig(({ mode }) => ({
           'ui-vendor': ['@radix-ui/react-slot', '@radix-ui/react-toast', '@radix-ui/react-tooltip', '@radix-ui/react-dialog'],
           'animation-vendor': ['lucide-react', 'tailwind-merge', 'clsx', 'class-variance-authority'],
           'query-vendor': ['@tanstack/react-query'],
-          // Separate chunks for animation components that actually exist
-          'core-animations': [
-            'src/components/LazyAnimationProvider.tsx',
-            'src/components/LazyOptimizedAnimations.tsx',
-            'src/components/OptimizedAnimationProvider.tsx'
-          ],
         },
       },
     },
@@ -80,15 +74,6 @@ export default defineConfig(({ mode }) => ({
       'lucide-react',
       'tailwind-merge',
       'clsx',
-    ],
-    // Exclude heavy animation components from optimization to allow lazy loading
-    exclude: [
-      '@/components/contact/*',
-      '@/components/hero/OptimizedCinematicAnimations',
-      '@/components/hero/OptimizedHoverAnimations',
-      '@/components/LazyAnimationProvider',
-      '@/components/LazyOptimizedAnimations',
-      '@/components/OptimizedAnimationProvider',
     ],
     // Force optimize critical performance packages
     force: true,
