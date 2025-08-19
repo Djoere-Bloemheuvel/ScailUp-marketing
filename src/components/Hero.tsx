@@ -1,17 +1,51 @@
 
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Brain, Cog } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import AnimatedHeadline from './AnimatedHeadline';
 import CloudinaryVideoBackground from './CloudinaryVideoBackground';
 import HorizontalLightFlare from './HorizontalLightFlare';
 import { CLOUDINARY_CONFIG } from '@/config/cloudinary';
 
-const Hero = () => {
-  const navigate = useNavigate();
+// Hook that copies AnimatedHeadline's successful pattern
+const useHeroAnimations = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [staggerStep, setStaggerStep] = useState(0);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
+  useEffect(() => {
+    if (animationComplete) return;
+
+    const sequence = async () => {
+      // Start visible for instant fallback
+      setIsVisible(true);
+      
+      // Quick start like AnimatedHeadline
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Stagger reveals like AnimatedHeadline word changes
+      await new Promise(resolve => setTimeout(resolve, 200));
+      setStaggerStep(1);
+      
+      await new Promise(resolve => setTimeout(resolve, 200));
+      setStaggerStep(2);
+      
+      setAnimationComplete(true);
+    };
+
+    sequence();
+  }, []);
+
+  return { isVisible, staggerStep, animationComplete };
+};
+
+const Hero = () => {
+  const { isVisible, staggerStep } = useHeroAnimations();
   const handleDeepDiveClick = () => {
-    navigate('/contact');
+    // Guard for browser environment
+    if (typeof window !== 'undefined') {
+      window.location.href = '/contact';
+    }
   };
 
   return (
@@ -62,12 +96,20 @@ const Hero = () => {
                }} />
           
           {/* Animated Headline */}
-          <div className="mb-2 apple-fade-in">
+          <div className={`mb-2 transition-all duration-700 ease-out ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-100 translate-y-0' // Always visible fallback like AnimatedHeadline
+          }`}>
             <AnimatedHeadline />
           </div>
 
           {/* Subtitle with enhanced gradient */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 apple-fade-in apple-stagger-2">
+          <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 transition-all duration-700 ease-out ${
+            staggerStep >= 1 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-100 translate-y-0' // Always visible fallback
+          }`}>
             <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
               Wij bouwen AI-systemen die uw business
             </span>
@@ -78,7 +120,11 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons with Enhanced Styling */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center apple-fade-in apple-stagger-3">
+          <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center transition-all duration-700 ease-out ${
+            staggerStep >= 2 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-100 translate-y-0' // Always visible fallback
+          }`}>
             <Button
               className="group relative bg-white text-black apple-button-hover transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden w-full sm:w-auto"
               style={{
@@ -195,34 +241,7 @@ const Hero = () => {
         />
       </div>
 
-      {/* Subtle animation */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes gentle-flare-pulse {
-            0%, 100% { 
-              opacity: 0.6; 
-            }
-            50% { 
-              opacity: 0.8; 
-            }
-          }
-          
-          @keyframes upward-nebula-drift {
-            0%, 100% { 
-              transform: translateX(-50%) translateY(0) scale(1);
-              opacity: 0.3;
-            }
-            33% { 
-              transform: translateX(-50%) translateY(-15px) scale(1.05);
-              opacity: 0.15;
-            }
-            66% { 
-              transform: translateX(-50%) translateY(-25px) scale(1.1);
-              opacity: 0.2;
-            }
-          }
-        `
-      }} />
+      {/* Animation CSS moved to index.css to prevent build issues in Astro */}
 
     </section>
   );

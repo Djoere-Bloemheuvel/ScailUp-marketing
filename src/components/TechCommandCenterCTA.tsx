@@ -1,12 +1,9 @@
 import { ArrowRight, Brain, Zap, Shield, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
 
 const TechCommandCenterCTA = () => {
-  const navigate = useNavigate();
-
   const handleContactClick = () => {
-    navigate('/contact');
+    window.location.href = '/contact';
   };
 
   return (

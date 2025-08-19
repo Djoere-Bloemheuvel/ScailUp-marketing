@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 interface Service {
   id: string;
@@ -91,37 +90,37 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               </button>
               
               {isAIAutomations ? (
-                <Link 
-                  to="/ai-automations"
+                <a 
+                  href="/ai-automations"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
+                </a>
               ) : isCustomSaaS ? (
-                <Link 
-                  to="/custom-ai-saas"
+                <a 
+                  href="/custom-ai-saas"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
+                </a>
               ) : isConsultancy ? (
-                <Link 
-                  to="/consultancy"
+                <a 
+                  href="/consultancy"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
+                </a>
               ) : isAutonomousAgents ? (
-                <Link 
-                  to="/autonomous-ai-agents"
+                <a 
+                  href="/autonomous-ai-agents"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
+                </a>
               ) : (
                 <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
                   <span className="text-sm font-medium">{service.secondaryButtonText}</span>

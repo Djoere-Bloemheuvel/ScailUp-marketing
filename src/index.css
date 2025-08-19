@@ -1,9 +1,9 @@
+/* Import performance optimizations first */
+@import './styles/performance.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import performance optimizations */
-@import './styles/performance.css';
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
@@ -55,17 +55,26 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Apple-inspired animations */
+  /* FAIL-SAFE Apple animations - Always visible by default */
   .apple-fade-in {
-    animation: appleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-    transform: translateY(30px);
+    /* Default: Always visible and positioned correctly */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fallback */
   }
 
-  .apple-stagger-2 { animation-delay: 0.2s; }
-  .apple-stagger-3 { animation-delay: 0.4s; }
-  .apple-stagger-4 { animation-delay: 0.6s; }
-  .apple-stagger-5 { animation-delay: 0.8s; }
+  /* Only animate when explicitly ready - progressive enhancement */
+  .animate-ready .apple-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: appleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: none; /* Disable transition when animating */
+  }
+
+  .animate-ready .apple-stagger-2 { animation-delay: 0.2s; }
+  .animate-ready .apple-stagger-3 { animation-delay: 0.4s; }
+  .animate-ready .apple-stagger-4 { animation-delay: 0.6s; }
+  .animate-ready .apple-stagger-5 { animation-delay: 0.8s; }
 
   .apple-glow {
     animation: appleGlow 8s ease-in-out infinite;
@@ -991,5 +1000,119 @@ html {
   100% {
     left: 150%;
     opacity: 0;
+  }
+}
+
+/* ===== GLITCH ANIMATIONS FOR ANIMATEDHEADLINE ===== */
+/* These are consolidated from AnimatedHeadline.tsx to prevent dangerouslySetInnerHTML usage */
+
+.glitch-rgb-red {
+  animation: glitch-rgb-red 120ms linear infinite;
+}
+
+.glitch-rgb-green {
+  animation: glitch-rgb-green 120ms linear infinite;
+}
+
+.glitch-rgb-blue {
+  animation: glitch-rgb-blue 120ms linear infinite;
+}
+
+.glitch-slice-1 {
+  animation: glitch-slice-1 120ms linear infinite;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 0% 45%);
+}
+
+.glitch-slice-2 {
+  animation: glitch-slice-2 120ms linear infinite;
+  clip-path: polygon(0% 55%, 100% 55%, 100% 100%, 0% 100%);
+}
+
+.glitch-scanline {
+  animation: glitch-scanline 100ms linear infinite;
+}
+
+@keyframes glitch-rgb-red {
+  0% { transform: translate(-2px, 1px) skewX(-1deg); opacity: 0.8; }
+  20% { transform: translate(2px, -1px) skewX(1deg); opacity: 0.9; }
+  40% { transform: translate(-1px, 2px) skewX(-0.5deg); opacity: 0.7; }
+  60% { transform: translate(3px, -2px) skewX(1.5deg); opacity: 0.8; }
+  80% { transform: translate(-2px, 1px) skewX(-1deg); opacity: 0.9; }
+  100% { transform: translate(1px, -1px) skewX(0.5deg); opacity: 0.7; }
+}
+
+@keyframes glitch-rgb-green {
+  0% { transform: translate(1px, -2px) skewY(1deg); opacity: 0.7; }
+  25% { transform: translate(-2px, 1px) skewY(-1deg); opacity: 0.8; }
+  50% { transform: translate(2px, 1px) skewY(0.5deg); opacity: 0.6; }
+  75% { transform: translate(-1px, -2px) skewY(-1.5deg); opacity: 0.9; }
+  100% { transform: translate(1px, 2px) skewY(1deg); opacity: 0.7; }
+}
+
+@keyframes glitch-rgb-blue {
+  0% { transform: translate(2px, 1px) skewX(0.5deg); opacity: 0.9; }
+  30% { transform: translate(-1px, -2px) skewX(-1deg); opacity: 0.6; }
+  60% { transform: translate(3px, 1px) skewX(1.5deg); opacity: 0.8; }
+  90% { transform: translate(-2px, -1px) skewX(-0.5deg); opacity: 0.7; }
+  100% { transform: translate(1px, 2px) skewX(1deg); opacity: 0.8; }
+}
+
+@keyframes glitch-slice-1 {
+  0% { transform: translateX(0px); }
+  10% { transform: translateX(-5px) scaleX(1.05); }
+  20% { transform: translateX(3px) scaleX(0.95); }
+  30% { transform: translateX(-2px) scaleX(1.02); }
+  40% { transform: translateX(4px) scaleX(0.98); }
+  50% { transform: translateX(-3px) scaleX(1.03); }
+  60% { transform: translateX(2px) scaleX(0.97); }
+  70% { transform: translateX(-4px) scaleX(1.01); }
+  80% { transform: translateX(3px) scaleX(0.99); }
+  90% { transform: translateX(-1px) scaleX(1.02); }
+  100% { transform: translateX(0px) scaleX(1); }
+}
+
+@keyframes glitch-slice-2 {
+  0% { transform: translateX(0px); }
+  15% { transform: translateX(4px) scaleX(0.96); }
+  30% { transform: translateX(-3px) scaleX(1.04); }
+  45% { transform: translateX(2px) scaleX(0.98); }
+  60% { transform: translateX(-4px) scaleX(1.02); }
+  75% { transform: translateX(3px) scaleX(0.97); }
+  90% { transform: translateX(-1px) scaleX(1.01); }
+  100% { transform: translateX(0px) scaleX(1); }
+}
+
+@keyframes glitch-scanline {
+  0% { top: 0%; height: 2px; opacity: 0.8; }
+  25% { top: 25%; height: 1px; opacity: 1; }
+  50% { top: 50%; height: 3px; opacity: 0.6; }
+  75% { top: 75%; height: 1px; opacity: 0.9; }
+  100% { top: 100%; height: 2px; opacity: 0.7; }
+}
+
+/* ===== HERO LIGHT FLARE ANIMATIONS ===== */
+/* These are consolidated from Hero.tsx to prevent dangerouslySetInnerHTML usage */
+
+@keyframes gentle-flare-pulse {
+  0%, 100% { 
+    opacity: 0.6; 
+  }
+  50% { 
+    opacity: 0.8; 
+  }
+}
+
+@keyframes upward-nebula-drift {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  33% { 
+    transform: translateX(-50%) translateY(-15px) scale(1.05);
+    opacity: 0.15;
+  }
+  66% { 
+    transform: translateX(-50%) translateY(-25px) scale(1.1);
+    opacity: 0.2;
   }
 }
