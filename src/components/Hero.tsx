@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Brain, Cog } from 'lucide-react';
 import AnimatedHeadline from './AnimatedHeadline';
@@ -7,40 +7,9 @@ import CloudinaryVideoBackground from './CloudinaryVideoBackground';
 import HorizontalLightFlare from './HorizontalLightFlare';
 import { CLOUDINARY_CONFIG } from '@/config/cloudinary';
 
-// Hook that copies AnimatedHeadline's successful pattern
-const useHeroAnimations = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [staggerStep, setStaggerStep] = useState(0);
-  const [animationComplete, setAnimationComplete] = useState(false);
-
-  useEffect(() => {
-    if (animationComplete) return;
-
-    const sequence = async () => {
-      // Start visible for instant fallback
-      setIsVisible(true);
-      
-      // Quick start like AnimatedHeadline
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
-      // Stagger reveals like AnimatedHeadline word changes
-      await new Promise(resolve => setTimeout(resolve, 200));
-      setStaggerStep(1);
-      
-      await new Promise(resolve => setTimeout(resolve, 200));
-      setStaggerStep(2);
-      
-      setAnimationComplete(true);
-    };
-
-    sequence();
-  }, []);
-
-  return { isVisible, staggerStep, animationComplete };
-};
+// No animations needed - keeping only AnimatedHeadline
 
 const Hero = () => {
-  const { isVisible, staggerStep } = useHeroAnimations();
   const handleDeepDiveClick = () => {
     // Guard for browser environment
     if (typeof window !== 'undefined') {
@@ -50,7 +19,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden" style={{ alignItems: 'flex-start', paddingTop: '25vh' }}>
-      {/* Test: Direct Cloudinary URL with Speed */}
+      {/* Responsive Video Background - Optimized for Different Screen Sizes */}
       <div className="absolute inset-0 opacity-90">
         <video
           className="w-full h-full object-cover"
@@ -58,8 +27,41 @@ const Hero = () => {
           muted
           loop
           playsInline
+          preload="metadata"
         >
-          <source src="https://res.cloudinary.com/dlhhmt8wo/video/upload/e_accelerate:-50,w_1920,q_auto,f_auto/hero-video.mp4" type="video/mp4" />
+          {/* 4K for very large screens (27"+ monitors) */}
+          <source 
+            src="https://res.cloudinary.com/dlhhmt8wo/video/upload/e_accelerate:-50,w_3840,h_2160,c_fill,g_center,q_auto:best,f_mp4,br_8000k/hero-video.mp4" 
+            type="video/mp4" 
+            media="(min-width: 2560px)"
+          />
+          
+          {/* 2K for large screens (24-27" monitors) */}
+          <source 
+            src="https://res.cloudinary.com/dlhhmt8wo/video/upload/e_accelerate:-50,w_2560,h_1440,c_fill,g_center,q_auto:best,f_mp4,br_6000k/hero-video.mp4" 
+            type="video/mp4" 
+            media="(min-width: 1920px)"
+          />
+          
+          {/* Full HD for medium screens */}
+          <source 
+            src="https://res.cloudinary.com/dlhhmt8wo/video/upload/e_accelerate:-50,w_1920,h_1080,c_fill,g_center,q_auto:good,f_mp4,br_4000k/hero-video.mp4" 
+            type="video/mp4" 
+            media="(min-width: 1280px)"
+          />
+          
+          {/* HD for smaller screens */}
+          <source 
+            src="https://res.cloudinary.com/dlhhmt8wo/video/upload/e_accelerate:-50,w_1280,h_720,c_fill,g_center,q_auto,f_mp4,br_2500k/hero-video.mp4" 
+            type="video/mp4" 
+            media="(max-width: 1279px)"
+          />
+          
+          {/* Fallback for unsupported browsers */}
+          <source 
+            src="https://res.cloudinary.com/dlhhmt8wo/video/upload/e_accelerate:-50,w_1920,h_1080,c_fill,g_center,q_auto,f_mp4/hero-video.mp4" 
+            type="video/mp4" 
+          />
         </video>
       </div>
 
@@ -96,20 +98,12 @@ const Hero = () => {
                }} />
           
           {/* Animated Headline */}
-          <div className={`mb-2 transition-all duration-700 ease-out ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-100 translate-y-0' // Always visible fallback like AnimatedHeadline
-          }`}>
+          <div className="mb-2 opacity-0 animate-hero-entrance-1">
             <AnimatedHeadline />
           </div>
 
           {/* Subtitle with enhanced gradient */}
-          <p className={`text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 transition-all duration-700 ease-out ${
-            staggerStep >= 1 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-100 translate-y-0' // Always visible fallback
-          }`}>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4 opacity-0 animate-hero-entrance-2">
             <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
               Wij bouwen AI-systemen die uw business
             </span>
@@ -120,11 +114,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons with Enhanced Styling */}
-          <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center transition-all duration-700 ease-out ${
-            staggerStep >= 2 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-100 translate-y-0' // Always visible fallback
-          }`}>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center opacity-0 animate-hero-entrance-3">
             <Button
               className="group relative bg-white text-black apple-button-hover transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden w-full sm:w-auto"
               style={{

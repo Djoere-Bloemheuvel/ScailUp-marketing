@@ -5,9 +5,6 @@ export default {
 	darkMode: ["class"],
 	content: [
 		"./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-		"./src/pages/**/*.{astro,ts,tsx}",
-		"./src/components/**/*.{astro,ts,tsx}",
-		"./src/layouts/**/*.{astro,ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -82,6 +79,14 @@ export default {
 			},
 			fontFamily: {
 				'apple': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
+			},
+			scale: {
+				'105': '1.05',
+				'108': '1.08',
+				'115': '1.15',
+			},
+			boxShadow: {
+				'3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 20px 40px -20px rgba(0, 0, 0, 0.3)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -236,6 +241,16 @@ export default {
 						transform: 'translateX(-100%)', 
 						opacity: '0' 
 					}
+				},
+				'hero-entrance': {
+					'from': {
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
@@ -260,7 +275,11 @@ export default {
 				'float-orbit': 'float-orbit 4s ease-in-out infinite',
 				'glow-pulse': 'glow-pulse 2.5s ease-in-out infinite',
 				'sweep': 'sweep 4s ease-in-out infinite',
-				'sweep-reverse': 'sweep-reverse 6s ease-in-out infinite reverse'
+				'sweep-reverse': 'sweep-reverse 6s ease-in-out infinite reverse',
+				'hero-entrance': 'hero-entrance 1.4s ease-out forwards',
+			'hero-entrance-1': 'hero-entrance 1.4s ease-out forwards 0.3s',
+			'hero-entrance-2': 'hero-entrance 1.4s ease-out forwards 0.6s',
+			'hero-entrance-3': 'hero-entrance 1.4s ease-out forwards 1.2s'
 			}
 		}
 	},

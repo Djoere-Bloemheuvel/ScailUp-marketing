@@ -1,5 +1,4 @@
 
-import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 
 const CTA = () => {
@@ -37,9 +36,9 @@ const CTA = () => {
             </p>
 
             <div className="apple-fade-in apple-stagger-4">
-              <Button
-                onClick={() => window.location.href = '/contact'}
-                className="group relative button-hover-smooth cta-hover-smooth px-12 py-8 text-xl font-semibold rounded-xl overflow-hidden shadow-xl gpu-accelerated"
+              <a
+                href="/contact"
+                className="group relative button-hover-smooth cta-hover-smooth px-12 py-8 text-xl font-semibold rounded-xl overflow-hidden shadow-xl gpu-accelerated inline-block"
                 style={{
                   background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #e8e8e8 100%)',
                   boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
@@ -54,7 +53,7 @@ const CTA = () => {
 
                 {/* Enhanced shimmer effect with smooth animation */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-800 ease-out"></div>
-              </Button>
+              </a>
             </div>
 
             <p className="text-premium-silver/60 text-base mt-6 italic apple-fade-in apple-stagger-5 text-hover-smooth hover:text-premium-silver/80">

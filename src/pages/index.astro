@@ -68,8 +68,8 @@ const structuredData = {
   </a>
 
   <main id="main-content" role="main" class="min-h-screen">
-    <!-- Hero component - client:load for immediate smooth animations -->
-    <Hero client:load />
+    <!-- Hero component - client:only for proper CSS animation timing -->
+    <Hero client:only="react" />
     
     <!-- Components with staggered loading for smooth experience -->
     <Services client:only="react" />

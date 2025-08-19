@@ -1,36 +1,9 @@
 
 import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import ServiceSection from './ServiceSection';
 
 const Services = () => {
-  const [visibleSection, setVisibleSection] = useState<number>(-1);
-
-  useEffect(() => {
-    const observers = new Map();
-
-    const sections = document.querySelectorAll('[data-service-section]');
-    sections.forEach((section, index) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry?.isIntersecting) {
-            setVisibleSection(prev => Math.max(prev, index));
-          }
-        },
-        {
-          threshold: 0.1,
-          rootMargin: '100px 0px -20px 0px'
-        }
-      );
-
-      observer.observe(section);
-      observers.set(index, observer);
-    });
-
-    return () => {
-      observers.forEach(observer => observer.disconnect());
-    };
-  }, []);
+  // No animations - all sections visible immediately
 
   const services = [
     {
@@ -97,7 +70,7 @@ const Services = () => {
           key={service.id}
           service={service}
           index={index}
-          isVisible={visibleSection >= index}
+          isVisible={true}
         />
       ))}
     </div>

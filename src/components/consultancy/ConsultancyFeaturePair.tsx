@@ -13,11 +13,11 @@ interface Feature {
 }
 
 interface ConsultancyFeaturePairProps {
-  features: Feature[];
-  startIndex: number;
+  features?: Feature[];
+  startIndex?: number;
 }
 
-const ConsultancyFeaturePair = ({ features, startIndex }: ConsultancyFeaturePairProps) => {
+const ConsultancyFeaturePair = ({ features = [], startIndex = 0 }: ConsultancyFeaturePairProps) => {
   return (
     <section className="py-20 lg:py-32 px-4 relative overflow-hidden bg-gradient-to-b from-premium-black via-premium-black/95 to-premium-black">
       {/* Background ambient lighting with blue/purple focus */}

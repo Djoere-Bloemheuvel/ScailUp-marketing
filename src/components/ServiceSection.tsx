@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 
@@ -22,21 +22,14 @@ interface ServiceSectionProps {
 }
 
 const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
-  const [deviceHovered, setDeviceHovered] = useState(false);
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  
-  // Once visible, keep it visible to prevent unloading
-  if (isVisible && !hasBeenVisible) {
-    setHasBeenVisible(true);
-  }
   
   // Determine layout order - Autonomous AI Agents should have text on right, visual on left
   const isAutonomousAgents = service.id === 'autonomous-agents';
   // For Autonomous AI Agents: force isEven to true (visual left, text right)
   // For others: use normal alternating pattern
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
-  const shouldShowContent = hasBeenVisible || isVisible;
+  const shouldShowContent = true; // Always show content - no animations
 
   // Determine service type for routing
   const isAIAutomations = service.id === 'ai-automations';
@@ -136,16 +129,14 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
           <div 
             className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
             style={{ transitionDelay: shouldShowContent ? '200ms' : '0ms' }}
-            onMouseEnter={() => setDeviceHovered(true)}
-            onMouseLeave={() => setDeviceHovered(false)}
           >
-            <div className={`relative w-72 h-72 transition-all duration-700 ${deviceHovered ? 'scale-105' : 'scale-100'}`}>
+            <div className="group relative w-72 h-72 transition-all duration-500 ease-out hover:scale-105 will-change-transform">
               
               {/* Enhanced glow effect with more base presence */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-40 transition-all duration-700 ${deviceHovered ? 'opacity-70 scale-110' : 'opacity-40 scale-100'}`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-40 transition-all duration-700 ease-out group-hover:opacity-55 group-hover:scale-105 will-change-transform`} />
               
               {/* Main device with enhanced glassmorphism */}
-              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl">
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl">
                 
                 {service.isSpecial ? (
                   // Special animated core for Studio service with steady glow instead of pulsing
@@ -166,11 +157,11 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 ) : (
                   // Regular service visualization with steady glow instead of pulsing
                   <div className="relative w-28 h-28">
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 transition-all duration-500 shadow-xl opacity-90 ${deviceHovered ? 'opacity-100' : ''}`}>
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-90 transition-all duration-500 ease-out group-hover:opacity-95 group-hover:shadow-2xl`}>
                       <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
                         
                         {/* Static icon with steady glow instead of pulsing */}
-                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300" style={{
+                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
                           filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' : 
                                                        service.accentColor.includes('purple') ? '#a855f7' : 
                                                        service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
@@ -183,19 +174,15 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                                animationDelay: `${index * 0.5}s`
                              }} />
                         
-                        {/* Enhanced hover scan line */}
-                        {deviceHovered && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
-                        )}
                         
                         {/* Ambient base glow inside icon container */}
-                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-all duration-700 ${deviceHovered ? 'opacity-20' : 'opacity-10'}`} />
+                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-15`} />
                       </div>
                     </div>
                     
                     {/* Enhanced floating accent elements with more base color */}
-                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-80 transition-all duration-700 shadow-lg ${deviceHovered ? 'translate-y-1 rotate-12 shadow-xl opacity-90' : 'opacity-80'}`} />
-                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 transition-all duration-700 delay-100 shadow-lg ${deviceHovered ? '-translate-y-1 rotate-45 shadow-xl opacity-85' : 'opacity-75'}`} />
+                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-80 shadow-lg transition-all duration-700 ease-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-85`} />
+                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-700 ease-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-80`} />
                   </div>
                 )}
               </div>

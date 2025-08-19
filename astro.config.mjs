@@ -24,8 +24,5 @@ export default defineConfig({
   },
   // View transitions are now stable in Astro 5
   // Optimize for performance
-  output: 'static',
-  build: {
-    inlineStylesheets: 'auto'
-  }
+  output: 'static'
 });

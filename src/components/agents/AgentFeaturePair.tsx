@@ -13,11 +13,11 @@ interface Feature {
 }
 
 interface AgentFeaturePairProps {
-  features: Feature[];
-  startIndex: number;
+  features?: Feature[];
+  startIndex?: number;
 }
 
-const AgentFeaturePair = ({ features, startIndex }: AgentFeaturePairProps) => {
+const AgentFeaturePair = ({ features = [], startIndex = 0 }: AgentFeaturePairProps) => {
   return (
     <section className="py-20 lg:py-32 px-4 relative overflow-hidden bg-gradient-to-b from-premium-black via-premium-black/95 to-premium-black">
       {/* Background ambient lighting */}

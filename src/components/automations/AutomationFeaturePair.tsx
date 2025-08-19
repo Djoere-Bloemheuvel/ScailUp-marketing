@@ -15,11 +15,11 @@ interface AutomationFeature {
 }
 
 interface AutomationFeaturePairProps {
-  features: AutomationFeature[];
-  startIndex: number;
+  features?: AutomationFeature[];
+  startIndex?: number;
 }
 
-const AutomationFeaturePair = ({ features, startIndex }: AutomationFeaturePairProps) => {
+const AutomationFeaturePair = ({ features = [], startIndex = 0 }: AutomationFeaturePairProps) => {
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
   useEffect(() => {

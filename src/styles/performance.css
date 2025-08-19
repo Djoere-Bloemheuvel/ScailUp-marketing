@@ -15,11 +15,15 @@
   backface-visibility: hidden;
 }
 
-/* Reduce motion for users who prefer it */
+/* Reduce motion for users who prefer it - but preserve hero entrance animations */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not(.animate-hero-entrance-1):not(.animate-hero-entrance-2):not(.animate-hero-entrance-3),
+  *:not(.animate-hero-entrance-1)::before,
+  *:not(.animate-hero-entrance-1)::after,
+  *:not(.animate-hero-entrance-2)::before,
+  *:not(.animate-hero-entrance-2)::after,
+  *:not(.animate-hero-entrance-3)::before,
+  *:not(.animate-hero-entrance-3)::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

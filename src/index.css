@@ -370,6 +370,8 @@ All colors MUST be HSL.
   .matrix-flow {
     animation: matrixFlow linear infinite;
   }
+
+
 }
 
 /* Apple-inspired keyframes */
@@ -1090,6 +1092,8 @@ html {
   100% { top: 100%; height: 2px; opacity: 0.7; }
 }
 
+
+
 /* ===== HERO LIGHT FLARE ANIMATIONS ===== */
 /* These are consolidated from Hero.tsx to prevent dangerouslySetInnerHTML usage */
 
@@ -1102,17 +1106,3 @@ html {
   }
 }
 
-@keyframes upward-nebula-drift {
-  0%, 100% { 
-    transform: translateX(-50%) translateY(0) scale(1);
-    opacity: 0.3;
-  }
-  33% { 
-    transform: translateX(-50%) translateY(-15px) scale(1.05);
-    opacity: 0.15;
-  }
-  66% { 
-    transform: translateX(-50%) translateY(-25px) scale(1.1);
-    opacity: 0.2;
-  }
-}
