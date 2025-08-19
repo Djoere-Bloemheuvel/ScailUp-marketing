@@ -4,8 +4,10 @@ import StructuredData from '@/components/StructuredData';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 
-// Lazy loading for better performance - keep existing imports
-const Hero = lazy(() => import('@/components/Hero'));
+// Direct import for Hero for instant loading
+import Hero from '@/components/Hero';
+
+// Lazy loading for other components
 const Services = lazy(() => import('@/components/Services'));
 const Approach = lazy(() => import('@/components/Approach'));
 const WorkMethodology = lazy(() => import('@/components/WorkMethodology'));
@@ -78,9 +80,7 @@ const Index = () => {
       <AccessibilitySkipLink />
 
       <main id="main-content" role="main" className="min-h-screen">
-        <Suspense fallback={<LoadingSpinner />}>
-          <Hero />
-        </Suspense>
+        <Hero />
         
         <Suspense fallback={<LoadingSpinner />}>
           <Services />
