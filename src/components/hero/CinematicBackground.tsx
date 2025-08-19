@@ -15,6 +15,19 @@ const CinematicBackground = ({
       {/* Solid black background */}
       <div className="absolute inset-0 bg-black" />
 
+      {/* Brain Network Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+        style={{
+          backgroundImage: 'url(/brain-network.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center'
+        }}
+      />
+
+      {/* Dark overlay to maintain text readability */}
+      <div className="absolute inset-0 bg-black/30" />
+
       {/* Ambient Lighting Layer - Behind all content */}
       <AmbientLighting />
 
