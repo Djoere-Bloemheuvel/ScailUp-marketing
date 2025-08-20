@@ -7,17 +7,8 @@ const Services = () => {
   const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    // PREEMPTIVE CHECK: If sections are already in view, make them visible immediately
+    // PERFORMANCE OPTIMIZED: Geen sync DOM measurements meer
     const sections = document.querySelectorAll('[data-service-section]');
-    sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-      if (isInView) {
-        setVisibleSections(prev => new Set([...prev, index]));
-        console.log(`🔥 Preemptive Services animation for section ${index}`);
-      }
-    });
-
     const observers = new Map<number, IntersectionObserver>();
 
     sections.forEach((section, index) => {
@@ -25,11 +16,12 @@ const Services = () => {
         ([entry]) => {
           if (entry?.isIntersecting) {
             setVisibleSections(prev => new Set([...prev, index]));
+            console.log(`🚀 SERVICES VISIBLE: Section ${index} triggered!`);
           }
         },
         {
-          threshold: 0.2,
-          rootMargin: '50px 0px -100px 0px'
+          threshold: 0.1, // Lower threshold voor snellere trigger
+          rootMargin: '100px 0px -50px 0px' // Meer aggressive rootMargin
         }
       );
 

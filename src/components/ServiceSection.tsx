@@ -22,12 +22,13 @@ interface ServiceSectionProps {
 }
 
 const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Once visible, keep it visible to prevent unloading
-  if (isVisible && !hasBeenVisible) {
-    setHasBeenVisible(true);
+  // One-time animation trigger - eenmaal getriggerd, ALTIJD geanimeerd
+  if (isVisible && !hasAnimated) {
+    console.log(`🎯 SECTION ${index} ANIMATION TRIGGERED! hasAnimated changing to true`);
+    setHasAnimated(true);
   }
   
   // Determine layout order - Autonomous AI Agents should have text on right, visual on left
@@ -35,7 +36,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   // For Autonomous AI Agents: force isEven to true (visual left, text right)
   // For others: use normal alternating pattern
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
-  const shouldShowContent = hasBeenVisible || isVisible;
 
   // Determine service type for routing
   const isAIAutomations = service.id === 'ai-automations';
@@ -62,7 +62,10 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
         
         {/* Content - Left for normal sections, Right for Autonomous AI Agents */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-          <div className={`transition-all duration-1000 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <div 
+            className={`opacity-0 ${hasAnimated ? 'animate-services-entrance-1' : ''}`}
+            data-debug={`section-${index}-text hasAnimated:${hasAnimated} isVisible:${isVisible}`}
+          >
             
             {/* Typography */}
             <div className="space-y-6">
@@ -132,10 +135,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
         {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
-          <div 
-            className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
-            style={{ transitionDelay: shouldShowContent ? '200ms' : '0ms' }}
-          >
+          <div className={`opacity-0 ${hasAnimated ? 'animate-services-entrance-2' : ''}`}>
             <div className="group relative w-72 h-72 transition-all duration-500 ease-out hover:scale-105 will-change-transform">
               
               {/* Enhanced glow effect with more base presence */}

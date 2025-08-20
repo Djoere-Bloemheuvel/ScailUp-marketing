@@ -15,39 +15,14 @@ const ScrollHeader = () => {
     // Set current path on mount and listen for changes
     setCurrentPath(window.location.pathname);
     
-    // Use refs to avoid stale closure and prevent double triggers
-    const currentVisibilityRef = { current: isVisible };
-    let ticking = false; // Throttle scroll events for performance
-    
+    // SIMPLIFIED SCROLL HANDLER - geen over-throttling meer
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          
-          // Show header immediately when starting to scroll down from hero
-          let triggerHeight;
-          const pathname = window.location.pathname; // Get fresh pathname
-          if (pathname === '/') {
-            // Homepage: show header as soon as user starts scrolling
-            triggerHeight = 100; // Very low threshold for immediate response
-          } else {
-            // Subpages: also show early
-            triggerHeight = 80;
-          }
-          
-          const shouldBeVisible = scrollY > triggerHeight;
-          
-          // Only update state if visibility actually changes
-          if (shouldBeVisible !== currentVisibilityRef.current) {
-            currentVisibilityRef.current = shouldBeVisible;
-            setIsVisible(shouldBeVisible);
-            
-          }
-          
-          ticking = false;
-        });
-        ticking = true;
-      }
+      const scrollY = window.scrollY;
+      const triggerHeight = window.location.pathname === '/' ? 100 : 80;
+      const shouldBeVisible = scrollY > triggerHeight;
+      
+      // Direct state update - geen ref complexity
+      setIsVisible(shouldBeVisible);
     };
 
     // Listen for navigation changes (for Astro)
@@ -57,20 +32,18 @@ const ScrollHeader = () => {
       }
     };
 
-    // Add event listeners with safety checks
+    // Add event listeners - ALLEEN passive scroll voor performance
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('popstate', handleNavigation);
     
-    // Initial check IMMEDIATELY + backup delayed check
-    handleScroll(); // Immediate check
-    const initialTimer = setTimeout(handleScroll, 50);
+    // Initial check
+    handleScroll();
     
     return () => {
       if (typeof window !== 'undefined') {
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('popstate', handleNavigation);
       }
-      clearTimeout(initialTimer);
     };
   }, []); // Empty dependency array to prevent double runs
 
