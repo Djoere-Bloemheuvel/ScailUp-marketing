@@ -1,12 +1,8 @@
-
 import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
-import { Suspense, lazy } from 'react';
-import { ServiceErrorBoundary } from './ServiceErrorBoundary';
-
-// Lazy load CinematicServiceSection for better performance
-const CinematicServiceSection = lazy(() => import('./CinematicServiceSection'));
+import ServiceSection from './ServiceSection';
 
 const Services = () => {
+  // No animations - all sections visible immediately
 
   const services = [
     {
@@ -56,36 +52,25 @@ const Services = () => {
     }
   ];
 
-
-  // Loading placeholder component for better UX
-  const ServiceSkeleton = ({ index }: { index: number }) => (
-    <div className="relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-premium-black">
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div className="space-y-6 animate-pulse">
-          <div className="h-12 bg-premium-gray/20 rounded-lg w-3/4"></div>
-          <div className="h-6 bg-premium-gray/15 rounded-lg w-1/2"></div>
-          <div className="h-4 bg-premium-gray/10 rounded-lg w-full"></div>
-          <div className="flex gap-4">
-            <div className="h-12 bg-premium-gray/20 rounded-full w-32"></div>
-            <div className="h-12 bg-premium-gray/15 rounded-full w-32"></div>
-          </div>
-        </div>
-        <div className="w-72 h-72 bg-premium-gray/20 rounded-3xl animate-pulse mx-auto"></div>
-      </div>
-    </div>
-  );
+  const cssStyles = `
+    @keyframes sweep {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+  `;
 
   return (
     <div className="relative bg-premium-black">
+      <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
+
       {services.map((service, index) => (
-        <ServiceErrorBoundary key={service.id} fallback={<ServiceSkeleton index={index} />}>
-          <Suspense fallback={<ServiceSkeleton index={index} />}>
-            <CinematicServiceSection
-              service={service}
-              index={index}
-            />
-          </Suspense>
-        </ServiceErrorBoundary>
+        <ServiceSection
+          key={service.id}
+          service={service}
+          index={index}
+          isVisible={true}
+        />
       ))}
     </div>
   );
