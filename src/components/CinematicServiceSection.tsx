@@ -2,7 +2,6 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, useInView, Variants, useReducedMotion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
-import { usePerformanceOptimization } from '@/hooks/usePerformanceOptimization';
 
 interface Service {
   id: string;
@@ -26,10 +25,8 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
   const sectionRef = useRef<HTMLElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const shouldReduceMotion = useReducedMotion();
-  const { isLowEndDevice, prefersReducedMotion, connectionSpeed } = usePerformanceOptimization();
-  
-  // Smart performance adjustments
-  const shouldOptimizeForPerformance = isLowEndDevice || connectionSpeed === 'slow' || prefersReducedMotion;
+  // Simplified performance check - alleen reduced motion
+  const shouldOptimizeForPerformance = shouldReduceMotion;
   
   // More precise intersection observer for better performance
   const isInView = useInView(sectionRef, { 
@@ -59,14 +56,14 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
   const isAutonomousAgents = service.id === 'autonomous-agents';
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
   
-  // Ultra-smooth premium easing curves - veel smoother
-  const ultraSmoothEasing = shouldOptimizeForPerformance ? "easeOut" : [0.25, 0.46, 0.45, 0.94]; // Veel soepeler
-  const premiumEasing = shouldOptimizeForPerformance ? "easeOut" : [0.23, 1, 0.320, 1]; // Apple-style smoothness
-  const springEasing = shouldOptimizeForPerformance ? "easeOut" : [0.175, 0.885, 0.32, 1.275]; // Zachte spring
-  const glideEasing = shouldOptimizeForPerformance ? "easeOut" : [0.4, 0, 0.2, 1]; // Perfect gliding motion
+  // Simplified high-performance easing curves - geen haperingen
+  const ultraSmoothEasing = shouldOptimizeForPerformance ? "easeOut" : "easeOut"; // Gebruik browser-native easing
+  const premiumEasing = shouldOptimizeForPerformance ? "easeOut" : [0.4, 0, 0.2, 1]; // Material Design easing
+  const springEasing = shouldOptimizeForPerformance ? "easeOut" : "easeOut"; // Native browser easing
+  const glideEasing = shouldOptimizeForPerformance ? "easeOut" : "easeOut"; // Consistent smooth motion
   
-  // Langere durations voor ultra-smooth motion
-  const getOptimizedDuration = (baseMs: number) => shouldOptimizeForPerformance ? baseMs * 0.6 : baseMs * 1.2;
+  // Kortere, snappier durations - geen haperingen
+  const getOptimizedDuration = (baseMs: number) => shouldOptimizeForPerformance ? baseMs * 0.5 : baseMs * 0.8;
 
   // MAIN CONTAINER VARIANTS - Optimized for performance
   const containerVariants: Variants = {
@@ -78,10 +75,10 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       opacity: 1,
       willChange: 'auto', // Remove will-change after animation
       transition: {
-        duration: getOptimizedDuration(800) / 1000, // Langere duration
+        duration: getOptimizedDuration(600) / 1000, // Snappier container
         ease: ultraSmoothEasing,
-        staggerChildren: getOptimizedDuration(120) / 1000, // Meer ruimte tussen animaties
-        delayChildren: getOptimizedDuration(150) / 1000
+        staggerChildren: getOptimizedDuration(80) / 1000, // Tighter stagger
+        delayChildren: getOptimizedDuration(100) / 1000
       }
     }
   };
@@ -92,18 +89,16 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       opacity: 0, 
       y: shouldOptimizeForPerformance ? 10 : 40,
       scale: shouldOptimizeForPerformance ? 1 : 0.98,
-      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(1200) / 1000, // Veel langer voor smoothness
+        duration: getOptimizedDuration(800) / 1000, // Kortere content animatie
         ease: premiumEasing,
-        staggerChildren: getOptimizedDuration(100) / 1000,
-        delayChildren: getOptimizedDuration(80) / 1000
+        staggerChildren: getOptimizedDuration(60) / 1000,
+        delayChildren: getOptimizedDuration(50) / 1000
       }
     }
   };
@@ -115,18 +110,16 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       scale: shouldOptimizeForPerformance ? 1 : 0.9,
       y: shouldOptimizeForPerformance ? 0 : 25,
       rotateY: shouldOptimizeForPerformance ? 0 : -15,
-      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
       rotateY: 0,
-      willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(1400) / 1000, // Langere visual animatie
+        duration: getOptimizedDuration(700) / 1000, // Snappier visual
         ease: springEasing,
-        delay: getOptimizedDuration(200) / 1000
+        delay: getOptimizedDuration(100) / 1000
       }
     }
   };
@@ -137,15 +130,13 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       opacity: 0, 
       y: shouldOptimizeForPerformance ? 0 : 20,
       x: shouldOptimizeForPerformance ? 0 : (isEven ? 10 : -10),
-      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
-      willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(1000) / 1000, // Smooth text gliding
+        duration: getOptimizedDuration(500) / 1000, // Quick text reveal
         ease: glideEasing
       }
     }
@@ -157,17 +148,15 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       opacity: 0, 
       y: shouldOptimizeForPerformance ? 0 : 15,
       scale: shouldOptimizeForPerformance ? 1 : 0.95,
-      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(800) / 1000, // Langere button animaties
+        duration: getOptimizedDuration(400) / 1000, // Snappy buttons
         ease: springEasing,
-        delay: getOptimizedDuration(100) / 1000
+        delay: getOptimizedDuration(50) / 1000
       }
     }
   };
@@ -202,12 +191,6 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       variants={containerVariants}
       initial="hidden"
       animate={hasAnimated ? "visible" : "hidden"}
-      style={{
-        // Performance optimization
-        transform: 'translateZ(0)',
-        backfaceVisibility: 'hidden',
-        WebkitBackfaceVisibility: 'hidden'
-      }}
     >
       {/* Background pattern for special section */}
       {service.isSpecial && (
@@ -401,10 +384,10 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
                     <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
                       
                       {/* Icon */}
-                      <service.icon className="w-14 h-14 text-white/80 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
-                        filter: `drop-shadow(0 0 6px ${service.accentColor.includes('blue') ? '#60a5fa' : 
+                      <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
+                        filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' : 
                                                      service.accentColor.includes('purple') ? '#a855f7' : 
-                                                     service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}30)`
+                                                     service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
                       }} />
                       
                       {/* Sweeping light */}
