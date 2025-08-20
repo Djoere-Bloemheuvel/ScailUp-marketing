@@ -14,7 +14,6 @@ interface AppleTimelineCardProps {
   };
   isLeft: boolean;
   delay: number;
-  isVisible: boolean;
 }
 
 const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {

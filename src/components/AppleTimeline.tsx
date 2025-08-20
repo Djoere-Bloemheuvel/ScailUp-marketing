@@ -143,7 +143,6 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
               step={step}
               isLeft={index % 2 === 0}
               delay={0}
-              isVisible={isVisible}
             />
           </div>
         ))}
