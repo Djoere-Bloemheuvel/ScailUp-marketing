@@ -38,10 +38,6 @@ export default {
 		'text-hover-smooth',
 		'cinematic-entrance',
 		'premium-fade-in',
-		// Services animaties - exact zelfde als hero
-		'animate-services-entrance-1',
-		'animate-services-entrance-2',
-		'animate-services-entrance-3',
 		// Header animaties - KRITIEK voor scroll animaties
 		'animate-header-entrance',
 		'animate-header-exit',
@@ -300,16 +296,6 @@ export default {
 						transform: 'translateY(0)'
 					}
 				},
-				'services-entrance': {
-					'from': {
-						opacity: '0',
-						transform: 'translateY(30px)'
-					},
-					'to': {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
-				},
 				// Header keyframes - KRITIEK: expliciet definiëren in Tailwind
 				'headerEntrance': {
 					'from': {
@@ -359,10 +345,6 @@ export default {
 			'hero-entrance-1': 'hero-entrance 1.4s ease-out forwards 0.3s',
 			'hero-entrance-2': 'hero-entrance 1.4s ease-out forwards 0.6s',
 			'hero-entrance-3': 'hero-entrance 1.4s ease-out forwards 1.2s',
-			// Services animaties - exact zelfde timing als hero
-			'services-entrance-1': 'services-entrance 1.4s ease-out forwards 0.2s',
-			'services-entrance-2': 'services-entrance 1.4s ease-out forwards 0.4s',
-			'services-entrance-3': 'services-entrance 1.4s ease-out forwards 0.6s',
 			// Header animaties - KRITIEK: expliciet toevoegen aan Tailwind
 			'header-entrance': 'headerEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 			'header-exit': 'headerExit 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards'

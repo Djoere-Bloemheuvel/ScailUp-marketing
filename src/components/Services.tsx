@@ -1,7 +1,6 @@
 
 import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import SimpleServiceSection from './SimpleServiceSection';
+import CinematicServiceSection from './CinematicServiceSection';
 
 const Services = () => {
 
@@ -53,20 +52,11 @@ const Services = () => {
     }
   ];
 
-  const cssStyles = `
-    @keyframes sweep {
-      0% { transform: translateX(-100%); }
-      50% { transform: translateX(100%); }
-      100% { transform: translateX(100%); }
-    }
-  `;
 
   return (
     <div className="relative bg-premium-black">
-      <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
-
       {services.map((service, index) => (
-        <SimpleServiceSection
+        <CinematicServiceSection
           key={service.id}
           service={service}
           index={index}
