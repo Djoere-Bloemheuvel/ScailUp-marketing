@@ -59,14 +59,14 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
   const isAutonomousAgents = service.id === 'autonomous-agents';
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
   
-  // Adaptive performance-based easing curves
-  const ultraSmoothEasing = shouldOptimizeForPerformance ? "easeOut" : [0.19, 1, 0.22, 1];
-  const premiumEasing = shouldOptimizeForPerformance ? "easeOut" : [0.165, 0.84, 0.44, 1];
-  const springEasing = shouldOptimizeForPerformance ? "easeOut" : [0.68, -0.55, 0.265, 1.35];
-  const glideEasing = shouldOptimizeForPerformance ? "easeOut" : [0.25, 1, 0.5, 1];
+  // Ultra-smooth premium easing curves - veel smoother
+  const ultraSmoothEasing = shouldOptimizeForPerformance ? "easeOut" : [0.25, 0.46, 0.45, 0.94]; // Veel soepeler
+  const premiumEasing = shouldOptimizeForPerformance ? "easeOut" : [0.23, 1, 0.320, 1]; // Apple-style smoothness
+  const springEasing = shouldOptimizeForPerformance ? "easeOut" : [0.175, 0.885, 0.32, 1.275]; // Zachte spring
+  const glideEasing = shouldOptimizeForPerformance ? "easeOut" : [0.4, 0, 0.2, 1]; // Perfect gliding motion
   
-  // Dynamic animation durations based on device capabilities
-  const getOptimizedDuration = (baseMs: number) => shouldOptimizeForPerformance ? baseMs * 0.5 : baseMs;
+  // Langere durations voor ultra-smooth motion
+  const getOptimizedDuration = (baseMs: number) => shouldOptimizeForPerformance ? baseMs * 0.6 : baseMs * 1.2;
 
   // MAIN CONTAINER VARIANTS - Optimized for performance
   const containerVariants: Variants = {
@@ -78,10 +78,10 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       opacity: 1,
       willChange: 'auto', // Remove will-change after animation
       transition: {
-        duration: getOptimizedDuration(600) / 1000,
+        duration: getOptimizedDuration(800) / 1000, // Langere duration
         ease: ultraSmoothEasing,
-        staggerChildren: getOptimizedDuration(80) / 1000,
-        delayChildren: getOptimizedDuration(100) / 1000
+        staggerChildren: getOptimizedDuration(120) / 1000, // Meer ruimte tussen animaties
+        delayChildren: getOptimizedDuration(150) / 1000
       }
     }
   };
@@ -100,10 +100,10 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       scale: 1,
       willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(900) / 1000,
+        duration: getOptimizedDuration(1200) / 1000, // Veel langer voor smoothness
         ease: premiumEasing,
-        staggerChildren: getOptimizedDuration(60) / 1000,
-        delayChildren: getOptimizedDuration(50) / 1000
+        staggerChildren: getOptimizedDuration(100) / 1000,
+        delayChildren: getOptimizedDuration(80) / 1000
       }
     }
   };
@@ -124,9 +124,9 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       rotateY: 0,
       willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(1100) / 1000,
+        duration: getOptimizedDuration(1400) / 1000, // Langere visual animatie
         ease: springEasing,
-        delay: getOptimizedDuration(150) / 1000
+        delay: getOptimizedDuration(200) / 1000
       }
     }
   };
@@ -145,7 +145,7 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       x: 0,
       willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(700) / 1000,
+        duration: getOptimizedDuration(1000) / 1000, // Smooth text gliding
         ease: glideEasing
       }
     }
@@ -165,9 +165,9 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       scale: 1,
       willChange: 'auto',
       transition: {
-        duration: getOptimizedDuration(500) / 1000,
+        duration: getOptimizedDuration(800) / 1000, // Langere button animaties
         ease: springEasing,
-        delay: getOptimizedDuration(50) / 1000
+        delay: getOptimizedDuration(100) / 1000
       }
     }
   };
@@ -333,8 +333,8 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
         >
           <div className="group relative w-72 h-72 transition-all duration-500 ease-out hover:scale-105 will-change-transform">
             
-            {/* Enhanced glow effect - ORIGINAL VERSION */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-40 transition-all duration-700 ease-out group-hover:opacity-55 group-hover:scale-105 will-change-transform`} />
+            {/* Enhanced glow effect - Normal endstate (geen hover tijdens animatie) */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-25 transition-all duration-700 ease-out group-hover:opacity-40 group-hover:scale-105 will-change-transform`} />
             
             {/* Main device container */}
             <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl">
@@ -397,14 +397,14 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
               ) : (
                 // Regular service visualization
                 <div className="relative w-28 h-28">
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-90 transition-all duration-500 ease-out group-hover:opacity-95 group-hover:shadow-2xl`}>
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-75 transition-all duration-500 ease-out group-hover:opacity-90 group-hover:shadow-2xl`}>
                     <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
                       
                       {/* Icon */}
-                      <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
-                        filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' : 
+                      <service.icon className="w-14 h-14 text-white/80 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
+                        filter: `drop-shadow(0 0 6px ${service.accentColor.includes('blue') ? '#60a5fa' : 
                                                      service.accentColor.includes('purple') ? '#a855f7' : 
-                                                     service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
+                                                     service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}30)`
                       }} />
                       
                       {/* Sweeping light */}
@@ -415,13 +415,13 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
                            }} />
                       
                       {/* Ambient glow */}
-                      <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-15`} />
+                      <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-6 transition-opacity duration-500 ease-out group-hover:opacity-12`} />
                     </div>
                   </div>
                   
                   {/* Floating accents */}
-                  <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-80 shadow-lg transition-all duration-700 ease-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-85`} />
-                  <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-700 ease-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-80`} />
+                  <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-60 shadow-lg transition-all duration-700 ease-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-75`} />
+                  <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-55 shadow-lg transition-all duration-700 ease-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-70`} />
                 </div>
               )}
             </div>
