@@ -1,7 +1,8 @@
-import { useRef } from 'react';
-import { motion, useInView, Variants } from 'framer-motion';
+import { useRef, useEffect, useState, useCallback } from 'react';
+import { motion, useInView, Variants, useReducedMotion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
+import { usePerformanceOptimization } from '@/hooks/usePerformanceOptimization';
 
 interface Service {
   id: string;
@@ -22,113 +23,151 @@ interface CinematicServiceSectionProps {
 }
 
 const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProps) => {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const { isLowEndDevice, prefersReducedMotion, connectionSpeed } = usePerformanceOptimization();
+  
+  // Smart performance adjustments
+  const shouldOptimizeForPerformance = isLowEndDevice || connectionSpeed === 'slow' || prefersReducedMotion;
+  
+  // More precise intersection observer for better performance
   const isInView = useInView(sectionRef, { 
     once: true, 
-    margin: "-150px",
-    amount: 0.3 
+    margin: "-100px",
+    amount: 0.2 
   });
+  
+  // Progressive enhancement - only animate once when in view
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
+  
+  // Cleanup function for memory management
+  useEffect(() => {
+    return () => {
+      // Clean up any potential memory leaks
+      if (sectionRef.current) {
+        sectionRef.current.style.willChange = 'auto';
+      }
+    };
+  }, []);
   
   // Determine layout order
   const isAutonomousAgents = service.id === 'autonomous-agents';
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
   
-  // ULTRA-SMOOTH EASING CURVES - Buttery motion
-  const ultraSmoothEasing = [0.19, 1, 0.22, 1]; // Ultra-smooth entrance
-  const premiumEasing = [0.165, 0.84, 0.44, 1]; // Premium feel
-  const springEasing = [0.68, -0.55, 0.265, 1.35]; // Natural spring motion
-  const glideEasing = [0.25, 1, 0.5, 1]; // Smooth gliding motion
+  // Adaptive performance-based easing curves
+  const ultraSmoothEasing = shouldOptimizeForPerformance ? "easeOut" : [0.19, 1, 0.22, 1];
+  const premiumEasing = shouldOptimizeForPerformance ? "easeOut" : [0.165, 0.84, 0.44, 1];
+  const springEasing = shouldOptimizeForPerformance ? "easeOut" : [0.68, -0.55, 0.265, 1.35];
+  const glideEasing = shouldOptimizeForPerformance ? "easeOut" : [0.25, 1, 0.5, 1];
+  
+  // Dynamic animation durations based on device capabilities
+  const getOptimizedDuration = (baseMs: number) => shouldOptimizeForPerformance ? baseMs * 0.5 : baseMs;
 
-  // MAIN CONTAINER VARIANTS - Orchestrates the entire entrance
+  // MAIN CONTAINER VARIANTS - Optimized for performance
   const containerVariants: Variants = {
     hidden: {
       opacity: 0,
+      willChange: 'opacity'
     },
     visible: {
       opacity: 1,
+      willChange: 'auto', // Remove will-change after animation
       transition: {
-        duration: 0.6,
+        duration: getOptimizedDuration(600) / 1000,
         ease: ultraSmoothEasing,
-        staggerChildren: 0.08, // Tighter stagger for fluid cascade
-        delayChildren: 0.1 // Reduced initial delay
+        staggerChildren: getOptimizedDuration(80) / 1000,
+        delayChildren: getOptimizedDuration(100) / 1000
       }
     }
   };
 
-  // CONTENT VARIANTS - Text and buttons slide in beautifully
+  // CONTENT VARIANTS - Performance optimized
   const contentVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      y: 40, // Reduced distance for smoother motion
-      scale: 0.98, // Subtle scale for premium feel
+      y: shouldOptimizeForPerformance ? 10 : 40,
+      scale: shouldOptimizeForPerformance ? 1 : 0.98,
+      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
+      willChange: 'auto',
       transition: {
-        duration: 0.9, // Optimized duration
+        duration: getOptimizedDuration(900) / 1000,
         ease: premiumEasing,
-        staggerChildren: 0.06, // Tighter stagger
-        delayChildren: 0.05 // Minimal delay
+        staggerChildren: getOptimizedDuration(60) / 1000,
+        delayChildren: getOptimizedDuration(50) / 1000
       }
     }
   };
 
-  // VISUAL ELEMENT VARIANTS - The service icon/visual floats in
+  // VISUAL ELEMENT VARIANTS - Optimized transforms
   const visualVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      scale: 0.9, // Subtle scale for smoother entrance
-      y: 25, // Reduced distance
-      rotateY: -15 // Gentler rotation
+      scale: shouldOptimizeForPerformance ? 1 : 0.9,
+      y: shouldOptimizeForPerformance ? 0 : 25,
+      rotateY: shouldOptimizeForPerformance ? 0 : -15,
+      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
       rotateY: 0,
+      willChange: 'auto',
       transition: {
-        duration: 1.1, // Shorter duration for smoothness
+        duration: getOptimizedDuration(1100) / 1000,
         ease: springEasing,
-        delay: 0.15 // Reduced delay for tighter sequence
+        delay: getOptimizedDuration(150) / 1000
       }
     }
   };
 
-  // TEXT ELEMENT VARIANTS - Individual text elements cascade in
+  // TEXT ELEMENT VARIANTS - Respect motion preferences
   const textVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      y: 20, // Reduced movement for smoothness
-      x: isEven ? 10 : -10 // Subtle horizontal offset
+      y: shouldOptimizeForPerformance ? 0 : 20,
+      x: shouldOptimizeForPerformance ? 0 : (isEven ? 10 : -10),
+      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       y: 0,
       x: 0,
+      willChange: 'auto',
       transition: {
-        duration: 0.7, // Optimized duration
+        duration: getOptimizedDuration(700) / 1000,
         ease: glideEasing
       }
     }
   };
 
-  // BUTTON VARIANTS - Buttons pop in with elastic feel
+  // BUTTON VARIANTS - Optimized for accessibility
   const buttonVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      y: 15, // Reduced movement
-      scale: 0.95 // Subtle scale
+      y: shouldOptimizeForPerformance ? 0 : 15,
+      scale: shouldOptimizeForPerformance ? 1 : 0.95,
+      willChange: shouldOptimizeForPerformance ? 'auto' : 'opacity, transform'
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
+      willChange: 'auto',
       transition: {
-        duration: 0.5, // Faster for responsiveness
+        duration: getOptimizedDuration(500) / 1000,
         ease: springEasing,
-        delay: 0.05 // Minimal delay
+        delay: getOptimizedDuration(50) / 1000
       }
     }
   };
@@ -162,7 +201,13 @@ const CinematicServiceSection = ({ service, index }: CinematicServiceSectionProp
       className={`relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-gradient-to-b ${service.background}`}
       variants={containerVariants}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={hasAnimated ? "visible" : "hidden"}
+      style={{
+        // Performance optimization
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden'
+      }}
     >
       {/* Background pattern for special section */}
       {service.isSpecial && (
