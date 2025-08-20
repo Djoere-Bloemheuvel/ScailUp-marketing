@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 
@@ -22,14 +22,20 @@ interface ServiceSectionProps {
 }
 
 const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Once visible, keep it visible to prevent unloading
+  if (isVisible && !hasBeenVisible) {
+    setHasBeenVisible(true);
+  }
   
   // Determine layout order - Autonomous AI Agents should have text on right, visual on left
   const isAutonomousAgents = service.id === 'autonomous-agents';
   // For Autonomous AI Agents: force isEven to true (visual left, text right)
   // For others: use normal alternating pattern
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
-  const shouldShowContent = true; // Always show content - no animations
+  const shouldShowContent = hasBeenVisible || isVisible;
 
   // Determine service type for routing
   const isAIAutomations = service.id === 'ai-automations';

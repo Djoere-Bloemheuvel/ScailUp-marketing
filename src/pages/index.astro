@@ -67,16 +67,99 @@ const structuredData = {
     Skip to main content
   </a>
 
-  <main id="main-content" role="main" class="min-h-screen">
-    <!-- Hero component - client:only for proper CSS animation timing -->
-    <Hero client:only="react" />
+  <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
+  <style>
+    /* Hide everything below hero until hero is loaded */
+    .below-hero {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-out;
+    }
     
-    <!-- Components with staggered loading for smooth experience -->
-    <Services client:only="react" />
-    <Approach client:only="react" />
-    <WorkMethodology client:only="react" />
-    <EndingCTA client:only="react" />
-    <TechCommandCenterCTA client:only="react" />
+    .hero-loaded .below-hero {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* Fallback - show after 1 second no matter what */
+    body .below-hero {
+      animation: forceShow 1s ease-out 1s forwards;
+    }
+    
+    @keyframes forceShow {
+      to {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    
+    /* Ensure page starts with black background */
+    body {
+      background-color: #000000 !important;
+    }
+    
+    /* Critical hero styles for instant rendering */
+    .hero-section {
+      position: relative;
+      min-height: 90vh;
+      background-color: #000000;
+      color: #ffffff;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 25vh 1rem 3rem;
+    }
+    
+    /* Prevent any layout shift */
+    .hero-content {
+      position: relative;
+      max-width: 80rem;
+      width: 100%;
+      text-align: center;
+      z-index: 30;
+    }
+  </style>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Hero component loads first and immediately -->
+    <Hero client:load />
+    
+    <!-- Other sections hidden until hero is ready -->
+    <div class="below-hero">
+      <Services client:visible />
+      <Approach client:visible />
+      <WorkMethodology client:visible />
+      <EndingCTA client:visible />
+      <TechCommandCenterCTA client:visible />
+    </div>
   </main>
+
+  <script>
+    // Show other sections after hero is ready
+    function showBelowHero() {
+      console.log('Showing below-hero sections');
+      document.body.classList.add('hero-loaded');
+    }
+    
+    // Multiple fallbacks to ensure it works
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wait a moment for hero to render
+      setTimeout(showBelowHero, 100);
+    });
+    
+    // Backup trigger after page load
+    window.addEventListener('load', () => {
+      setTimeout(showBelowHero, 50);
+    });
+    
+    // Immediate trigger if DOM is already ready
+    if (document.readyState !== 'loading') {
+      setTimeout(showBelowHero, 50);
+    }
+    
+    // Force trigger as absolute fallback
+    setTimeout(showBelowHero, 500);
+  </script>
 </Layout>
 

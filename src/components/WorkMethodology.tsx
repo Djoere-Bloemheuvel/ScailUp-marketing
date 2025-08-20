@@ -33,7 +33,30 @@ interface MethodologyStep {
 const WorkMethodology = () => {
   const [activeStep, setActiveStep] = useState<number>(1);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Animation visibility observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          console.log('🔥 WorkMethodology entrance animation triggered');
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '50px 0px -100px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   // Methodology steps focused on practical workflow with unique accent colors
   const methodologySteps: MethodologyStep[] = useMemo(() => [
@@ -175,6 +198,7 @@ const WorkMethodology = () => {
           steps={methodologySteps}
           activeStep={activeStep}
           onStepSelect={handleStepSelect}
+          isVisible={isVisible}
         />
       </div>
 

@@ -1,13 +1,42 @@
 import { ArrowRight, Brain, Zap, Shield, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect, useState, useRef } from 'react';
 
 const TechCommandCenterCTA = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          console.log('🔥 TechCommandCenterCTA entrance animation triggered');
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '50px 0px -100px 0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
   const handleContactClick = () => {
     window.location.href = '/contact';
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black py-20">
+    <section 
+      ref={sectionRef}
+      className={`relative min-h-screen overflow-hidden bg-black py-20 transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       {/* Tech Grid Background */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" 

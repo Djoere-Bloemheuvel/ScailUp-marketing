@@ -1,14 +1,38 @@
 
+import { useEffect, useState } from 'react';
 import AppleNebulaBackground from './AppleNebulaBackground';
 import AppleTimeline from './AppleTimeline';
 import HorizontalLightFlare from './HorizontalLightFlare';
 import HorizontalLightFlareAnimations from './HorizontalLightFlareAnimations';
 
 const Approach = () => {
-  // No animations - content always visible
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          console.log('🔥 Approach timeline animation triggered');
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '50px 0px -100px 0px'
+      }
+    );
+
+    const section = document.querySelector('#approach-section');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   return (
     <section
+      id="approach-section"
       className="relative py-20 lg:py-28 pb-32 lg:pb-40 px-4 overflow-hidden bg-black"
     >
       {/* Include light flare animations */}
@@ -57,7 +81,7 @@ const Approach = () => {
         </div>
 
         {/* Apple-style vertical timeline with unified animation */}
-        <AppleTimeline isVisible={true} />
+        <AppleTimeline isVisible={isVisible} />
 
         {/* Removed bottom CTA section */}
       </div>

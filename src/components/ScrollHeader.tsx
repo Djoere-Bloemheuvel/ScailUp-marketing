@@ -2,46 +2,109 @@
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 const ScrollHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState('/');
 
   useEffect(() => {
+    // SSR Guard: Only run in browser environment
+    if (typeof window === 'undefined') return;
+    
+    // Set current path on mount and listen for changes
+    setCurrentPath(window.location.pathname);
+    
+    // Use refs to avoid stale closure and prevent double triggers
+    const currentVisibilityRef = { current: isVisible };
+    let ticking = false; // Throttle scroll events for performance
+    
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsVisible(scrollY > 40);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          
+          // Show header immediately when starting to scroll down from hero
+          let triggerHeight;
+          const pathname = window.location.pathname; // Get fresh pathname
+          if (pathname === '/') {
+            // Homepage: show header as soon as user starts scrolling
+            triggerHeight = 100; // Very low threshold for immediate response
+          } else {
+            // Subpages: also show early
+            triggerHeight = 80;
+          }
+          
+          const shouldBeVisible = scrollY > triggerHeight;
+          
+          // Only update state if visibility actually changes
+          if (shouldBeVisible !== currentVisibilityRef.current) {
+            currentVisibilityRef.current = shouldBeVisible;
+            setIsVisible(shouldBeVisible);
+            
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
+    // Listen for navigation changes (for Astro)
+    const handleNavigation = () => {
+      if (typeof window !== 'undefined') {
+        setCurrentPath(window.location.pathname);
+      }
+    };
+
+    // Add event listeners with safety checks
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('popstate', handleNavigation);
+    
+    // Initial check IMMEDIATELY + backup delayed check
+    handleScroll(); // Immediate check
+    const initialTimer = setTimeout(handleScroll, 50);
+    
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('popstate', handleNavigation);
+      }
+      clearTimeout(initialTimer);
+    };
+  }, []); // Empty dependency array to prevent double runs
 
   const navItems = [
     { label: 'Services', href: '#services', path: '/' },
     { label: 'AI Automations', href: '/ai-automations', path: '/ai-automations' },
+    { label: 'Custom AI SaaS', href: '/custom-ai-saas', path: '/custom-ai-saas' },
+    { label: 'Consultancy', href: '/consultancy', path: '/consultancy' },
+    { label: 'Autonomous AI Agents', href: '/autonomous-ai-agents', path: '/autonomous-ai-agents' },
     { label: 'Aanpak', href: '#approach', path: '/' },
-    { label: 'Projecten', href: '#showcase', path: '/' },
     { label: 'Contact', href: '#contact', path: '/' }
   ];
 
   const isActive = (item: typeof navItems[0]) => {
-    if (item.path === '/ai-automations') {
-      return location.pathname === '/ai-automations';
+    // Check for exact page matches
+    if (item.path === currentPath && item.path !== '/') {
+      return true;
     }
-    return location.pathname === '/' && item.path === '/';
+    // Check for homepage sections
+    return currentPath === '/' && item.path === '/';
   };
 
   const handleNavClick = (item: typeof navItems[0]) => {
-    if (item.path === '/ai-automations') {
-      // This will be handled by React Router
+    // SSR Guard: Only run in browser environment
+    if (typeof window === 'undefined') return;
+    
+    // Handle subpage navigation
+    if (item.path !== '/') {
+      window.location.href = item.href;
       return;
     }
 
     // For homepage sections, scroll to anchor if on homepage
-    if (location.pathname === '/' && item.href.startsWith('#')) {
+    if (currentPath === '/' && item.href.startsWith('#')) {
       const element = document.querySelector(item.href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -54,14 +117,11 @@ const ScrollHeader = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
-        isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 -translate-y-2 pointer-events-none'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
       }`}
       style={{
-        willChange: 'opacity, transform',
-        transform: isVisible ? 'translateY(0)' : 'translateY(-8px)'
+        willChange: 'opacity, transform'
       }}
     >
       {/* Glassmorphic container */}
@@ -82,9 +142,10 @@ const ScrollHeader = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => {
-                if (item.path === '/ai-automations') {
+                if (item.path !== '/') {
+                  // Render as links for subpages
                   return (
                     <a
                       key={item.label}
@@ -100,6 +161,7 @@ const ScrollHeader = () => {
                   );
                 }
 
+                // Render as buttons for homepage sections
                 return (
                   <button
                     key={item.label}
@@ -144,7 +206,8 @@ const ScrollHeader = () => {
           >
             <nav className="flex flex-col space-y-3 pt-2 border-t border-white/10">
               {navItems.map((item) => {
-                if (item.path === '/ai-automations') {
+                if (item.path !== '/') {
+                  // Render as links for subpages
                   return (
                     <a
                       key={item.label}
@@ -161,6 +224,7 @@ const ScrollHeader = () => {
                   );
                 }
 
+                // Render as buttons for homepage sections
                 return (
                   <button
                     key={item.label}

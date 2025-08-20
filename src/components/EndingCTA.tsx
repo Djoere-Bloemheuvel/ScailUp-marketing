@@ -8,7 +8,7 @@ const EndingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleContactClick = () => {
-    navigate('/contact');
+    window.location.href = '/contact';
   };
 
   useEffect(() => {
