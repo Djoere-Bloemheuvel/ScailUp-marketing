@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 interface Service {
   id: string;
@@ -43,11 +44,12 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   const isConsultancy = service.id === 'consultancy';
 
   return (
-    <section 
-      ref={sectionRef}
-      data-service-section={index}
-      className={`relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-gradient-to-b ${service.background}`}
-    >
+    <LazyMotion features={domAnimation}>
+      <section 
+        ref={sectionRef}
+        data-service-section={index}
+        className={`relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-gradient-to-b ${service.background}`}
+      >
       {/* Background pattern for special section */}
       {service.isSpecial && (
         <div className="absolute inset-0 opacity-10">
@@ -62,8 +64,10 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
         
         {/* Content - Left for normal sections, Right for Autonomous AI Agents */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-          <div 
-            className={`opacity-0 ${hasAnimated ? 'animate-services-entrance-1' : ''}`}
+          <m.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             data-debug={`section-${index}-text hasAnimated:${hasAnimated} isVisible:${isVisible}`}
           >
             
@@ -130,12 +134,16 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 </button>
               )}
             </div>
-          </div>
+          </m.div>
         </div>
 
         {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
-          <div className={`opacity-0 ${hasAnimated ? 'animate-services-entrance-2' : ''}`}>
+          <m.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={hasAnimated ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <div className="group relative w-72 h-72 transition-all duration-500 ease-out hover:scale-105 will-change-transform">
               
               {/* Enhanced glow effect with more base presence */}
@@ -193,10 +201,11 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 )}
               </div>
             </div>
-          </div>
+          </m.div>
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 };
 

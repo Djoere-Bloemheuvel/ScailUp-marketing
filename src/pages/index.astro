@@ -69,29 +69,6 @@ const structuredData = {
 
   <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
   <style>
-    /* Hide everything below hero until hero is loaded */
-    .below-hero {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease-out;
-    }
-    
-    .hero-loaded .below-hero {
-      opacity: 1 !important;
-      visibility: visible !important;
-    }
-    
-    /* Fallback - show after 1 second no matter what */
-    body .below-hero {
-      animation: forceShow 1s ease-out 1s forwards;
-    }
-    
-    @keyframes forceShow {
-      to {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
     
     /* Ensure page starts with black background */
     body {
@@ -125,41 +102,13 @@ const structuredData = {
     <!-- Hero component loads first and immediately -->
     <Hero client:load />
     
-    <!-- Other sections hidden until hero is ready -->
-    <div class="below-hero">
-      <Services client:load />
-      <Approach client:visible />
-      <WorkMethodology client:visible />
-      <EndingCTA client:visible />
-      <TechCommandCenterCTA client:visible />
-    </div>
+    <!-- Services section with immediate loading -->
+    <Services client:load />
+    <Approach client:visible />
+    <WorkMethodology client:visible />
+    <EndingCTA client:visible />
+    <TechCommandCenterCTA client:visible />
   </main>
 
-  <script>
-    // Show other sections after hero is ready
-    function showBelowHero() {
-      console.log('Showing below-hero sections');
-      document.body.classList.add('hero-loaded');
-    }
-    
-    // Multiple fallbacks to ensure it works
-    document.addEventListener('DOMContentLoaded', () => {
-      // Wait a moment for hero to render
-      setTimeout(showBelowHero, 100);
-    });
-    
-    // Backup trigger after page load
-    window.addEventListener('load', () => {
-      setTimeout(showBelowHero, 50);
-    });
-    
-    // Immediate trigger if DOM is already ready
-    if (document.readyState !== 'loading') {
-      setTimeout(showBelowHero, 50);
-    }
-    
-    // Force trigger as absolute fallback
-    setTimeout(showBelowHero, 500);
-  </script>
 </Layout>
 
