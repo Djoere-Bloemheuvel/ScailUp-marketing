@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Brain, Cog } from 'lucide-react';
+import { ArrowRight, Sparkles, Brain, Cog, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import AnimatedHeadline from './AnimatedHeadline';
 import CloudinaryVideoBackground from './CloudinaryVideoBackground';
 import HorizontalLightFlare from './HorizontalLightFlare';
@@ -108,6 +109,7 @@ const Hero = () => {
               Wij bouwen AI-systemen die uw business
             </span>
             <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             <span className="text-white font-medium bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
               daadwerkelijk transformeren.
             </span>
@@ -116,46 +118,47 @@ const Hero = () => {
           {/* CTA Buttons with Enhanced Styling */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center opacity-0 animate-hero-entrance-3">
             <Button
-              className="group relative bg-white text-black apple-button-hover transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden w-full sm:w-auto"
-              style={{
-                background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-              }}
-            >
+                className="group relative bg-white text-black apple-button-hover transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden w-full sm:w-80 hover:scale-[1.03]"
+                style={{
+                  background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                }}
+              >
               <span className="relative z-10 flex items-center justify-center">
                 Ontdek de mogelijkheden
                 <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
               </span>
             </Button>
 
-            <Button
-              variant="outline"
-              className="relative apple-button-hover px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full transition-all duration-300 group overflow-hidden w-full sm:w-auto"
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(59, 130, 246, 0.3)',
-                color: 'rgba(192, 192, 192, 0.9)',
-                boxShadow: '0 4px 24px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-              }}
+            <div className="relative group">
+              <div 
+                className="absolute inset-0 rounded-full transition-all duration-300 group-hover:scale-[1.03]"
+                style={{
+                  background: 'linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(59, 130, 246) 25%, rgb(147, 197, 253) 50%, rgb(59, 130, 246) 75%, rgb(37, 99, 235) 100%)',
+                  padding: '2px'
+                }}
+              >
+                <div className="w-full h-full rounded-full" style={{ background: 'rgba(0, 0, 0, 0.85)' }} />
+              </div>
+              <Button
+                variant="outline"
+                className="group relative apple-button-hover px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full transition-all duration-300 overflow-hidden w-full sm:w-72 border-0 hover:scale-[1.03]"
+                style={{
+                  background: 'rgba(0, 0, 0, 0.85)',
+                  backdropFilter: 'blur(20px)',
+                  color: '#ffffff',
+                  boxShadow: '0 4px 24px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(59, 130, 246, 0.1)',
+                  margin: '2px'
+                }}
               onClick={handleDeepDiveClick}
               data-contact-trigger="true"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-                e.currentTarget.style.color = '#ffffff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
-                e.currentTarget.style.color = 'rgba(192, 192, 192, 0.9)';
-              }}
             >
               <span className="relative z-10 flex items-center justify-center">
                 Plan een deepdive
-                <Sparkles className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-200" />
+                <Brain className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:rotate-12 transition-transform duration-200" />
               </span>
             </Button>
+            </div>
           </div>
         </div>
       </div>
