@@ -56,29 +56,10 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
         {/* Content - Left for normal sections, Right for Autonomous AI Agents */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.2,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-          >
+          <div>
 
             {/* Typography */}
-            <motion.div 
-              className="space-y-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.2 + 0.1,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-            >
+            <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
                 {service.title}
               </h2>
@@ -90,20 +71,10 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               <p className="text-base md:text-lg text-premium-silver/70 font-light leading-relaxed max-w-lg tracking-wide">
                 {service.description}
               </p>
-            </motion.div>
+            </div>
 
             {/* CTA Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 pt-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.2 + 0.2,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-            >
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
 
               {isAIAutomations ? (
                 <div className="relative group">
@@ -345,23 +316,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   </motion.button>
                 </div>
               )}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
         {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
-              duration: 0.9,
-              delay: index * 0.2 + 0.3,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
-            style={{ isolation: 'isolate' }}
-          >
+          <div style={{ isolation: 'isolate' }}>
             <motion.div
               className="group relative w-72 h-72"
               style={{ isolation: 'isolate' }}
@@ -472,7 +433,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 )}
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

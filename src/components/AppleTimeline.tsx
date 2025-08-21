@@ -1,6 +1,7 @@
 
 import { Clock, HandHeart, Target, TrendingUp } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import AppleTimelineCard from './AppleTimelineCard';
 
 interface AppleTimelineProps {
@@ -104,7 +105,7 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
               isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
             }`}
             style={{
-              transitionDelay: `${600 + (index * 100)}ms`,
+              transitionDelay: `${600 + (index * 60)}ms`,
               transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
               willChange: 'transform, opacity'
             }}
@@ -112,33 +113,21 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
               <div className="w-2.5 h-2.5 rounded-full shadow-lg border bg-gradient-to-br from-white/70 to-white/30 shadow-white/10 border-white/30">
                 <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent transition-opacity duration-1000 ${
                   isVisible ? 'opacity-100' : 'opacity-0'
-                }`} style={{ transitionDelay: `${1000 + (index * 150)}ms` }} />
+                }`} style={{ transitionDelay: `${1000 + (index * 80)}ms` }} />
               </div>
               {/* Subtle outer glow */}
               <div className={`absolute inset-0 w-2.5 h-2.5 rounded-full blur-sm scale-125 opacity-50 bg-white/10 transition-opacity duration-1000 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
-              }`} style={{ transitionDelay: `${1200 + (index * 150)}ms` }} />
+              }`} style={{ transitionDelay: `${1200 + (index * 80)}ms` }} />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Timeline cards with subtle staggered entrance */}
+      {/* Timeline cards without animations */}
       <div className="relative z-10 space-y-8 lg:space-y-10">
         {steps.map((step, index) => (
-          <div
-            key={step.id}
-            className={`transition-all duration-1000 ease-out ${
-              isVisible
-                ? 'opacity-100 translate-y-0 blur-none'
-                : 'opacity-0 translate-y-2 blur-sm'
-            }`}
-            style={{
-              transitionDelay: `${700 + (index * 120)}ms`,
-              transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-              willChange: 'transform, opacity, filter'
-            }}
-          >
+          <div key={step.id}>
             <AppleTimelineCard
               step={step}
               isLeft={index % 2 === 0}

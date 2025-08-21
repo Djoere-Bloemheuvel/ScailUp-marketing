@@ -1,5 +1,6 @@
-
 import { LucideIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 interface AppleTimelineCardProps {
   step: {
@@ -17,6 +18,7 @@ interface AppleTimelineCardProps {
 }
 
 const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
   // Special styling for transition step
   const isTransitionStep = step.isTransition;
   const cardWidth = isTransitionStep ? 'max-w-xs' : 'max-w-sm';
@@ -24,16 +26,74 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
 
   return (
     <div className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}>
-      {/* Enhanced Ambient Glow - performance optimized */}
-      <div className="absolute inset-0 pointer-events-none opacity-100 scale-100">
-        {/* Enhanced glow layers with smoother scaling - adjusted for transition step */}
+      {/* Enhanced Ambient Glow with subtle pulse animation */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none opacity-100 scale-100"
+        animate={{
+          opacity: step.id === 1 
+            ? [0.95, 1.25, 1.55, 1.35, 1.65, 1.45, 1.05, 0.95]
+            : step.id === 2 
+            ? [0.90, 1.20, 1.50, 1.60, 1.50, 1.25, 1.00, 0.90]
+            : step.id === 3
+            ? [0.85, 1.15, 1.40, 1.20, 1.30, 1.10, 0.95, 0.85]
+            : [0.80, 1.10, 1.30, 1.35, 1.20, 1.00, 0.90, 0.80],
+          scale: step.id === 1
+            ? [0.98, 1.02, 1.04, 1.01, 0.99, 0.98]
+            : step.id === 2
+            ? [0.97, 1.01, 1.05, 1.03, 0.98, 0.97]
+            : step.id === 3
+            ? [0.99, 1.03, 1.02, 1.04, 1.0, 0.99]
+            : [0.96, 1.0, 1.06, 1.02, 0.97, 0.96],
+          x: step.id === 1
+            ? [0, isLeft ? -1.2 : 1.2, 0, isLeft ? 0.8 : -0.8, 0]
+            : step.id === 2
+            ? [0, isLeft ? -0.8 : 0.8, 0.3, isLeft ? 0.5 : -0.5, 0]
+            : step.id === 3
+            ? [0, isLeft ? -0.5 : 0.5, 0, isLeft ? 1.0 : -1.0, 0]
+            : [0, isLeft ? -1.5 : 1.5, -0.2, isLeft ? 0.3 : -0.3, 0],
+          y: step.id === 1
+            ? [0, -1.2, -0.8, 0.5, 0.8, 0.3, -0.4, 0]
+            : step.id === 2
+            ? [0, -0.5, 0.9, 0.2, -0.3, 1.1, -0.6, 0]
+            : step.id === 3
+            ? [0, -0.9, 0.6, -1.0, 0.4, -0.7, 0.8, 0]
+            : [0, -0.7, 1.0, -0.4, 0.9, -0.8, 0.5, 0],
+          rotate: step.id === 1
+            ? [0, isLeft ? -0.3 : 0.3, 0, isLeft ? 0.15 : -0.15, 0]
+            : step.id === 2
+            ? [0, isLeft ? -0.1 : 0.1, 0.2, isLeft ? 0.05 : -0.05, 0]
+            : step.id === 3
+            ? [0, isLeft ? -0.25 : 0.25, 0, isLeft ? 0.2 : -0.2, 0]
+            : [0, isLeft ? -0.15 : 0.15, -0.1, isLeft ? 0.25 : -0.25, 0]
+        }}
+        transition={{
+          duration: 6 + (step.id * 0.5),
+          ease: [0.4, 0, 0.6, 1],
+          repeat: Infinity,
+          delay: step.id * 0.8,
+          times: [0, 0.14, 0.28, 0.42, 0.56, 0.70, 0.84, 1]
+        }}
+      >
+        {/* Enhanced glow layers with progressive fade and randomness */}
         <div
           className={`
-            absolute rounded-full blur-[4rem]
+            absolute rounded-full blur-[3rem]
             bg-gradient-to-br ${step.glowColor}
-            ${isLeft ? '-left-48 top-1/2 -translate-y-1/2' : '-right-48 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-80 h-80 opacity-25' : 'w-[32rem] h-[32rem] opacity-40'}
+            ${isLeft ? '-left-36 top-1/2 -translate-y-1/2' : '-right-36 top-1/2 -translate-y-1/2'}
+            ${isTransitionStep ? 'w-72 h-80 opacity-100' : 'w-88 h-104 opacity-100'}
           `}
+          style={{
+            background: `radial-gradient(ellipse ${isLeft ? '75% 90%' : '90% 75%'} at center, 
+              ${step.id === 1 ? 'rgba(59, 130, 246, 0.8)' :
+                step.id === 2 ? 'rgba(168, 85, 247, 0.8)' :
+                step.id === 3 ? 'rgba(249, 115, 22, 0.8)' :
+                'rgba(34, 197, 94, 0.8)'} 0%, 
+              ${step.id === 1 ? 'rgba(59, 130, 246, 0.4)' :
+                step.id === 2 ? 'rgba(168, 85, 247, 0.4)' :
+                step.id === 3 ? 'rgba(249, 115, 22, 0.4)' :
+                'rgba(34, 197, 94, 0.4)'} 50%, 
+              transparent 75%)`
+          }}
         />
 
         <div
@@ -41,46 +101,95 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             absolute rounded-full blur-3xl
             bg-gradient-to-br ${step.glowColor}
             ${isLeft ? '-left-24 top-1/2 -translate-y-1/2' : '-right-24 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-64 h-64 opacity-20' : 'w-80 h-80 opacity-28'}
+            ${isTransitionStep ? 'w-56 h-64 opacity-100' : 'w-72 h-80 opacity-100'}
           `}
+          style={{
+            background: `radial-gradient(ellipse ${isLeft ? '85% 70%' : '70% 85%'} at center, 
+              ${step.id === 1 ? 'rgba(59, 130, 246, 0.7)' :
+                step.id === 2 ? 'rgba(168, 85, 247, 0.7)' :
+                step.id === 3 ? 'rgba(249, 115, 22, 0.7)' :
+                'rgba(34, 197, 94, 0.7)'} 0%, 
+              transparent 60%)`
+          }}
         />
 
         <div
           className={`
-            absolute rounded-full blur-2xl
+            absolute rounded-full blur-xl
             bg-gradient-to-br ${step.glowColorHover}
-            ${isLeft ? 'left-0 top-1/2 -translate-y-1/2' : 'right-0 top-1/2 -translate-y-1/2'}
-            ${isTransitionStep ? 'w-32 h-32 opacity-30' : 'w-48 h-48 opacity-48'}
+            ${isLeft ? '-left-8 top-1/2 -translate-y-1/2' : '-right-8 top-1/2 -translate-y-1/2'}
+            ${isTransitionStep ? 'w-32 h-40 opacity-100' : 'w-40 h-48 opacity-100'}
           `}
+          style={{
+            background: `radial-gradient(ellipse ${isLeft ? '90% 75%' : '75% 90%'} at center, 
+              ${step.id === 1 ? 'rgba(34, 211, 238, 0.9)' :
+                step.id === 2 ? 'rgba(139, 92, 246, 0.9)' :
+                step.id === 3 ? 'rgba(251, 146, 60, 0.9)' :
+                'rgba(37, 99, 235, 0.9)'} 0%, 
+              transparent 50%)`
+          }}
         />
 
         {!isTransitionStep && (
           <div
             className={`
-              absolute w-[40rem] h-[40rem] rounded-full blur-[5rem]
-              bg-gradient-to-br ${step.glowColor} opacity-20
-              ${isLeft ? '-left-64 top-1/2 -translate-y-1/2' : '-right-64 top-1/2 -translate-y-1/2'}
+              absolute w-[26rem] h-[30rem] rounded-full blur-[3.5rem]
+              ${isLeft ? '-left-52 top-1/2 -translate-y-1/2' : '-right-52 top-1/2 -translate-y-1/2'}
+              opacity-90
             `}
+            style={{
+              background: `radial-gradient(ellipse ${isLeft ? '65% 85%' : '85% 65%'} at center, 
+                ${step.id === 1 ? 'rgba(59, 130, 246, 0.6)' :
+                  step.id === 2 ? 'rgba(168, 85, 247, 0.6)' :
+                  step.id === 3 ? 'rgba(249, 115, 22, 0.6)' :
+                  'rgba(34, 197, 94, 0.6)'} 0%, 
+                transparent 70%)`
+            }}
           />
         )}
-      </div>
+      </motion.div>
 
-      {/* Enhanced Card Container - no individual animations, relies on parent */}
-      <div className={`relative w-full ${cardWidth} ${cardScale}`}>
+      {/* Enhanced Card Container with subtle hover */}
+      <motion.div 
+        className={`relative w-full ${cardWidth} ${cardScale}`}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        whileHover={{
+          scale: 1.015,
+          y: -2
+        }}
+        transition={{
+          duration: 0.3,
+          ease: [0.16, 1, 0.3, 1]
+        }}
+      >
         {/* Glassmorphic Card */}
         <div className={`
           relative z-10
           ${isLeft ? 'mr-6 lg:mr-10' : 'ml-6 lg:ml-10'}
         `}>
-          <div className={`
-            relative rounded-3xl
-            backdrop-blur-xl shadow-2xl
-            transition-all duration-300 ease-out
-            ${isTransitionStep
-              ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20'
-              : 'p-6 lg:p-7 bg-white/[0.03] border border-white/[0.12] shadow-black/40'
-            }
-          `}>
+          <motion.div 
+            className={`
+              relative rounded-3xl
+              backdrop-blur-xl shadow-2xl
+              ${isTransitionStep
+                ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20'
+                : 'p-6 lg:p-7 bg-white/[0.03] border border-white/[0.12] shadow-black/40'
+              }
+            `}
+            animate={{
+              backgroundColor: isHovered 
+                ? (isTransitionStep ? 'rgba(255,255,255,0.035)' : 'rgba(255,255,255,0.045)')
+                : (isTransitionStep ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.03)'),
+              borderColor: isHovered
+                ? (isTransitionStep ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.16)')
+                : (isTransitionStep ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.12)')
+            }}
+            transition={{
+              duration: 0.3,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+          >
 
             {/* Enhanced Step Number */}
             <div className={`flex items-start justify-between mb-5 ${isLeft ? '' : 'flex-row-reverse'}`}>
@@ -193,9 +302,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             {isTransitionStep && (
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.02] to-transparent" />
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

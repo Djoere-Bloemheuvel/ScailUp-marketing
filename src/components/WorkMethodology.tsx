@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Target, Zap, Users, CheckCircle } from 'lucide-react';
 import WorkMethodologyProcess from './WorkMethodologyProcess';
 import HorizontalLightFlare from './HorizontalLightFlare';
@@ -178,20 +179,125 @@ const WorkMethodology = () => {
 
       {/* Content container */}
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Header styled exactly like Approach section */}
-        <div className="text-center mb-16 lg:mb-20">
-          {/* Hero title - Apple style with refined fonts, 15% larger than current */}
-          <div className="mb-8">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-4" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
-              Van visie naar uitvoering.
-            </h2>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif' }}>
-              <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+        {/* Header with premium animations like Approach section */}
+        <motion.div 
+          className="text-center mb-16 lg:mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
+        >
+          {/* Hero title with premium animations */}
+          <motion.div 
+            className="mb-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+          >
+            {/* First line - "Van visie naar uitvoering." - depth blur reveal with ambient glow */}
+            <div className="relative">
+              <motion.h2 
+                className="relative text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif'
+                }}
+                initial={{ 
+                  opacity: 0, 
+                  filter: 'blur(4px)'
+                }}
+                whileInView={{ 
+                  opacity: 1, 
+                  filter: 'blur(0px)'
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.4,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+              >
+                Van visie naar uitvoering.
+              </motion.h2>
+              
+              {/* Ambient glow pulse */}
+              <motion.div
+                className="absolute inset-0 text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight pointer-events-none"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
+                  filter: 'blur(20px)',
+                  color: '#22d3ee'
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0, 0.2, 0]
+                }}
+                transition={{
+                  duration: 2.0,
+                  delay: 0.6,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+              >
+                Van visie naar uitvoering.
+              </motion.div>
+            </div>
+            
+            {/* Second line - "Zo brengen we de principes tot leven." - depth blur reveal with ambient glow */}
+            <div className="relative">
+              <motion.div 
+                className="relative text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif'
+                }}
+                initial={{ 
+                  opacity: 0, 
+                  filter: 'blur(4px)'
+                }}
+                whileInView={{ 
+                  opacity: 1, 
+                  filter: 'blur(0px)'
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 1.4,
+                  delay: 0.8,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+              >
                 Zo brengen we de principes tot leven.
-              </span>
-            </h2>
-          </div>
-        </div>
+              </motion.div>
+              
+              {/* Ambient glow pulse */}
+              <motion.div
+                className="absolute inset-0 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight pointer-events-none"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
+                  filter: 'blur(20px)',
+                  color: '#22d3ee'
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0, 0.2, 0]
+                }}
+                transition={{
+                  duration: 2.2,
+                  delay: 1.0,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+              >
+                Zo brengen we de principes tot leven.
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
 
         {/* Horizontal process flow with enhanced accent colors */}
         <WorkMethodologyProcess 
