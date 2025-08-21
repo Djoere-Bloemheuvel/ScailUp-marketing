@@ -1,0 +1,487 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ScrollHeader from '../../components/ScrollHeader';
+import StickyPillarNav from '../../components/kenniscentrum/StickyPillarNav';
+import { ArrowRight, ChevronRight } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const pillars = await getCollection('pillars');
+  return pillars.map((pillar) => ({
+    params: { pillar: pillar.data.pillarId },
+    props: { pillar },
+  }));
+}
+
+const { pillar } = Astro.props;
+const { Content } = await pillar.render();
+
+// Get related articles for this pillar
+const allArtikelen = await getCollection('artikelen');
+const pillarArtikelen = allArtikelen
+  .filter(artikel => artikel.data.pillar === pillar.data.pillarId)
+  .sort((a, b) => {
+    // Sort by cluster type first (core > supporting > related), then by date
+    const typeOrder = { core: 0, supporting: 1, related: 2 };
+    if (a.data.clusterType !== b.data.clusterType) {
+      return typeOrder[a.data.clusterType] - typeOrder[b.data.clusterType];
+    }
+    return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+  });
+
+const coreArticles = pillarArtikelen.filter(a => a.data.clusterType === 'core');
+const supportingArticles = pillarArtikelen.filter(a => a.data.clusterType === 'supporting');
+
+// Category labels
+const categoryLabels = {
+  'deep-dive': 'Deep Dive',
+  'how-to': 'How-To Guide',
+  'case-study': 'Case Study',
+  'comparison': 'Comparison',
+  'trends': 'Trends',
+  'beginner-guide': 'Beginner Guide'
+};
+
+const difficultyLabels = {
+  'beginner': 'Beginner',
+  'intermediate': 'Intermediate',
+  'advanced': 'Advanced'
+};
+
+const pillarIcons = {
+  'ai-automatisering': '⚡',
+  'custom-ai-saas': '🧠',
+  'ai-consultancy': '🎯',
+  'autonomous-agents': '🤖',
+  'ai-marketing-sales': '📈',
+  'ai-implementation': '🚀'
+};
+---
+
+<Layout 
+  title={`${pillar.data.title} | Complete Gids | Buildrs.AI`}
+  description={pillar.data.description}
+  keywords={pillar.data.seo?.keywords?.join(', ') || ''}
+>
+  <ScrollHeader client:load />
+  <StickyPillarNav client:load currentPillar={pillar.data.pillarId} />
+
+  <main class="bg-white text-black">
+    
+    <!-- Hero Section - Apple Style -->
+    <section class="pt-32 pb-20 px-6">
+      <div class="max-w-5xl mx-auto">
+        
+        <!-- Breadcrumb -->
+        <div class="flex items-center text-sm text-gray-500 mb-8 font-medium">
+          <a href="/kenniscentrum" class="hover:text-black transition-colors duration-200">Kenniscentrum</a>
+          <ChevronRight class="w-4 h-4 mx-2" />
+          <span>{pillar.data.title}</span>
+        </div>
+        
+        <!-- Icon -->
+        <div class="w-16 h-16 rounded-3xl bg-gray-50 flex items-center justify-center mb-8">
+          <span class="text-2xl">
+            {pillarIcons[pillar.data.pillarId] || '🎯'}
+          </span>
+        </div>
+        
+        <!-- Title -->
+        <h1 class="text-5xl md:text-6xl font-light tracking-tight mb-6 text-black leading-tight">
+          {pillar.data.title}
+        </h1>
+        
+        <!-- Subtitle -->
+        {pillar.data.subtitle && (
+          <p class="text-xl md:text-2xl text-gray-500 font-light mb-8">
+            {pillar.data.subtitle}
+          </p>
+        )}
+        
+        <!-- Description -->
+        <p class="text-lg text-gray-600 font-light mb-12 max-w-4xl leading-relaxed">
+          {pillar.data.description}
+        </p>
+        
+        <!-- Highlight Piece - Flagship Content -->
+        {coreArticles.length > 0 && (
+          <div class="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-3xl p-8 mb-12">
+            <div class="flex items-start gap-6">
+              <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="text-white text-2xl">⭐</span>
+              </div>
+              
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="px-3 py-1 bg-black text-white text-xs font-medium rounded-full">
+                    Flagship Content
+                  </span>
+                  <span class="text-sm text-gray-500">
+                    {coreArticles[0].data.readingTime || 15} min leestijd
+                  </span>
+                </div>
+                
+                <h3 class="text-2xl font-medium mb-3 text-black leading-tight">
+                  {coreArticles[0].data.title}
+                </h3>
+                
+                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                  {coreArticles[0].data.description}
+                </p>
+                
+                <a 
+                  href={`/kenniscentrum/${coreArticles[0].slug}`}
+                  class="inline-flex items-center text-black hover:text-gray-600 transition-colors duration-200 font-medium text-lg"
+                >
+                  <span>Start met lezen</span>
+                  <ArrowRight class="w-5 h-5 ml-2" />
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a 
+            href="#artikelen" 
+            class="inline-flex items-center px-8 py-4 bg-black text-white font-medium rounded-2xl hover:bg-gray-800 transition-colors duration-200"
+          >
+            <span>Ontdek artikelen</span>
+            <ArrowRight class="w-4 h-4 ml-2" />
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center px-8 py-4 border border-gray-200 text-black font-medium rounded-2xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
+          >
+            Plan strategy sessie
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Topics Overview -->
+    <section class="py-20 px-6 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-12 text-black">
+          Wat je leert
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {pillar.data.coreExplanation.map((item, index) => (
+            <div class="bg-white p-8 rounded-3xl border border-gray-100">
+              <h3 class="text-lg font-medium mb-3 text-black">
+                {item.title}
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Subclusters / Thematic Sections -->
+    <section class="py-20 px-6">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4 text-black">
+          Expertise Clusters
+        </h2>
+        <p class="text-lg text-gray-600 mb-12 font-light">
+          Ontdek de verschillende aspecten van {pillar.data.title.toLowerCase()} in georganiseerde thema's
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Strategie & Planning Cluster -->
+          <div class="group">
+            <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-sm transition-all duration-300">
+              <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors duration-300">
+                <span class="text-blue-600 text-xl">🎯</span>
+              </div>
+              
+              <h3 class="text-xl font-medium mb-3 text-black">
+                Strategie & Planning
+              </h3>
+              
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Fundamenten, roadmaps en strategische frameworks voor succesvolle implementatie.
+              </p>
+              
+              <div class="space-y-2">
+                {pillarArtikelen
+                  .filter(artikel => artikel.data.tags.some(tag => ['strategie', 'planning', 'roadmap', 'framework'].includes(tag.toLowerCase())))
+                  .slice(0, 3)
+                  .map((artikel) => (
+                    <a href={`/kenniscentrum/${artikel.slug}`} class="block text-sm text-gray-500 hover:text-black transition-colors duration-200 py-1">
+                      • {artikel.data.title}
+                    </a>
+                  ))
+                }
+                {pillarArtikelen.filter(artikel => artikel.data.tags.some(tag => ['strategie', 'planning', 'roadmap', 'framework'].includes(tag.toLowerCase()))).length === 0 && (
+                  <span class="text-sm text-gray-400 italic">Binnenkort beschikbaar</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <!-- Implementatie & Tools Cluster -->
+          <div class="group">
+            <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-sm transition-all duration-300">
+              <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-100 transition-colors duration-300">
+                <span class="text-purple-600 text-xl">🛠️</span>
+              </div>
+              
+              <h3 class="text-xl font-medium mb-3 text-black">
+                Implementatie & Tools
+              </h3>
+              
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Praktische gidsen, tool vergelijkingen en hands-on implementatie resources.
+              </p>
+              
+              <div class="space-y-2">
+                {pillarArtikelen
+                  .filter(artikel => artikel.data.tags.some(tag => ['implementatie', 'tools', 'how-to', 'praktisch'].includes(tag.toLowerCase())))
+                  .slice(0, 3)
+                  .map((artikel) => (
+                    <a href={`/kenniscentrum/${artikel.slug}`} class="block text-sm text-gray-500 hover:text-black transition-colors duration-200 py-1">
+                      • {artikel.data.title}
+                    </a>
+                  ))
+                }
+                {pillarArtikelen.filter(artikel => artikel.data.tags.some(tag => ['implementatie', 'tools', 'how-to', 'praktisch'].includes(tag.toLowerCase()))).length === 0 && (
+                  <span class="text-sm text-gray-400 italic">Binnenkort beschikbaar</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Studies & ROI Cluster -->
+          <div class="group">
+            <div class="bg-white border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-sm transition-all duration-300">
+              <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-100 transition-colors duration-300">
+                <span class="text-green-600 text-xl">📈</span>
+              </div>
+              
+              <h3 class="text-xl font-medium mb-3 text-black">
+                Cases & ROI
+              </h3>
+              
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Echte resultaten, case studies en ROI berekeningen uit de praktijk.
+              </p>
+              
+              <div class="space-y-2">
+                {pillarArtikelen
+                  .filter(artikel => artikel.data.tags.some(tag => ['case-study', 'roi', 'resultaten', 'succes'].includes(tag.toLowerCase())))
+                  .slice(0, 3)
+                  .map((artikel) => (
+                    <a href={`/kenniscentrum/${artikel.slug}`} class="block text-sm text-gray-500 hover:text-black transition-colors duration-200 py-1">
+                      • {artikel.data.title}
+                    </a>
+                  ))
+                }
+                {pillarArtikelen.filter(artikel => artikel.data.tags.some(tag => ['case-study', 'roi', 'resultaten', 'succes'].includes(tag.toLowerCase()))).length === 0 && (
+                  <span class="text-sm text-gray-400 italic">Binnenkort beschikbaar</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Articles -->
+    {coreArticles.length > 0 && (
+      <section id="artikelen" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-12 text-black">
+            Basis Artikelen
+          </h2>
+          
+          <div class="space-y-6">
+            {coreArticles.map((artikel, index) => (
+              <a href={`/kenniscentrum/${artikel.slug}`} class="group block">
+                <article class="flex items-center justify-between py-8 border-b border-gray-100 hover:border-gray-200 transition-colors duration-200">
+                  
+                  <!-- Number -->
+                  <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600 mr-6 flex-shrink-0 group-hover:bg-gray-200 transition-colors duration-200">
+                    {index + 1}
+                  </div>
+                  
+                  <!-- Content -->
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                      <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                        {categoryLabels[artikel.data.category]}
+                      </span>
+                      <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                        {difficultyLabels[artikel.data.difficulty]}
+                      </span>
+                      <span class="text-sm text-gray-400">
+                        {artikel.data.readingTime || 8} min
+                      </span>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium mb-2 text-black group-hover:text-gray-600 transition-colors duration-200">
+                      {artikel.data.title}
+                    </h3>
+                    
+                    <p class="text-gray-600 leading-relaxed line-clamp-2">
+                      {artikel.data.description}
+                    </p>
+                  </div>
+
+                  <!-- Arrow -->
+                  <ArrowRight class="w-5 h-5 text-gray-300 group-hover:text-black group-hover:translate-x-1 transition-all duration-200 ml-6 flex-shrink-0" />
+                </article>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Supporting Articles -->
+    {supportingArticles.length > 0 && (
+      <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-12 text-black">
+            Diepgaande Gidsen
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {supportingArticles.slice(0, 8).map((artikel) => (
+              <a href={`/kenniscentrum/${artikel.slug}`} class="group">
+                <article class="bg-white p-6 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all duration-200 h-full">
+                  
+                  <!-- Meta -->
+                  <div class="flex items-center gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">
+                      {categoryLabels[artikel.data.category]}
+                    </span>
+                    <span class="text-xs text-gray-400">
+                      {artikel.data.readingTime || 8} min
+                    </span>
+                  </div>
+                  
+                  <!-- Title -->
+                  <h3 class="font-medium mb-3 text-black group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
+                    {artikel.data.title}
+                  </h3>
+                  
+                  <!-- Description -->
+                  <p class="text-sm text-gray-600 line-clamp-3 leading-relaxed mb-4">
+                    {artikel.data.description}
+                  </p>
+                  
+                  <!-- CTA -->
+                  <div class="flex items-center text-sm text-black group-hover:text-gray-600 transition-colors duration-200">
+                    <span>Lees meer</span>
+                    <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+
+          {supportingArticles.length > 8 && (
+            <div class="text-center mt-12">
+              <a href={`/kenniscentrum/pillar/${pillar.data.pillarId}/all`} class="inline-flex items-center text-black hover:text-gray-600 transition-colors duration-200 font-medium">
+                <span>Bekijk alle {supportingArticles.length} artikelen</span>
+                <ArrowRight class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Long-form Content -->
+    <section class="py-20 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg max-w-none prose-gray">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Session CTA -->
+    <section class="py-20 px-6 bg-black text-white">
+      <div class="max-w-4xl mx-auto text-center">
+        
+        <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-6">
+          Ready voor {pillar.data.title}?
+        </h2>
+        
+        <p class="text-lg text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+          Boek een gratis 60-minuten strategy session en ontdek hoe je {pillar.data.title.toLowerCase()} 
+          strategisch kunt implementeren in jouw organisatie.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="/contact" 
+            class="px-8 py-4 bg-white text-black font-medium rounded-2xl hover:bg-gray-100 transition-colors duration-200"
+          >
+            Plan gratis strategy sessie
+          </a>
+          <a 
+            href="/kenniscentrum" 
+            class="px-8 py-4 border border-gray-600 text-white font-medium rounded-2xl hover:border-gray-400 transition-colors duration-200"
+          >
+            Terug naar kenniscentrum
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Prose styling for content */
+  .prose h2 {
+    @apply text-2xl font-medium text-black mb-4 mt-8;
+  }
+  
+  .prose h3 {
+    @apply text-xl font-medium text-black mb-3 mt-6;
+  }
+  
+  .prose p {
+    @apply text-gray-600 leading-relaxed mb-4;
+  }
+  
+  .prose ul {
+    @apply text-gray-600 space-y-2 mb-4;
+  }
+  
+  .prose li {
+    @apply leading-relaxed;
+  }
+  
+  .prose strong {
+    @apply text-black font-medium;
+  }
+  
+  .prose a {
+    @apply text-black hover:text-gray-600 transition-colors duration-200;
+  }
+</style>

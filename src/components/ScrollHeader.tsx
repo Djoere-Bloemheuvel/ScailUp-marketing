@@ -15,9 +15,22 @@ const ScrollHeader = () => {
     // Set current path on mount and listen for changes
     setCurrentPath(window.location.pathname);
     
+    // Check if we're on kenniscentrum page and set header visible immediately
+    if (window.location.pathname.startsWith('/kenniscentrum')) {
+      setIsVisible(true);
+    }
+    
     // SIMPLIFIED SCROLL HANDLER - geen over-throttling meer
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      const isKenniscentrum = window.location.pathname.startsWith('/kenniscentrum');
+      
+      // Header altijd zichtbaar op kenniscentrum pagina's
+      if (isKenniscentrum) {
+        setIsVisible(true);
+        return;
+      }
+      
       const triggerHeight = window.location.pathname === '/' ? 100 : 80;
       const shouldBeVisible = scrollY > triggerHeight;
       
@@ -29,6 +42,10 @@ const ScrollHeader = () => {
     const handleNavigation = () => {
       if (typeof window !== 'undefined') {
         setCurrentPath(window.location.pathname);
+        // Check if we navigated to kenniscentrum and make header visible
+        if (window.location.pathname.startsWith('/kenniscentrum')) {
+          setIsVisible(true);
+        }
       }
     };
 
@@ -50,6 +67,7 @@ const ScrollHeader = () => {
     { label: 'Custom AI SaaS', href: '/custom-ai-saas', path: '/custom-ai-saas' },
     { label: 'Consultancy', href: '/consultancy', path: '/consultancy' },
     { label: 'Autonomous AI Agents', href: '/autonomous-ai-agents', path: '/autonomous-ai-agents' },
+    { label: 'Kenniscentrum', href: '/kenniscentrum', path: '/kenniscentrum' },
     { label: 'Aanpak', href: '#approach', path: '/' },
     { label: 'Contact', href: '#contact', path: '/' }
   ];
@@ -57,6 +75,10 @@ const ScrollHeader = () => {
   const isActive = (item: typeof navItems[0]) => {
     // Check for exact page matches
     if (item.path === currentPath && item.path !== '/') {
+      return true;
+    }
+    // Check for kenniscentrum subpages
+    if (item.path === '/kenniscentrum' && currentPath.startsWith('/kenniscentrum')) {
       return true;
     }
     // Check for homepage sections
