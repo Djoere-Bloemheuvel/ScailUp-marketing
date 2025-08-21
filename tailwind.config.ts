@@ -296,6 +296,16 @@ export default {
 						transform: 'translateY(0)'
 					}
 				},
+				'hero-entrance-left': {
+					'from': {
+						opacity: '0',
+						transform: 'translateX(-50px)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
 				// Header keyframes - KRITIEK: expliciet definiëren in Tailwind
 				'headerEntrance': {
 					'from': {
@@ -342,9 +352,9 @@ export default {
 				'sweep': 'sweep 4s ease-in-out infinite',
 				'sweep-reverse': 'sweep-reverse 6s ease-in-out infinite reverse',
 				'hero-entrance': 'hero-entrance 1.4s ease-out forwards',
-			'hero-entrance-1': 'hero-entrance 1.4s ease-out forwards 0.3s',
-			'hero-entrance-2': 'hero-entrance 1.4s ease-out forwards 0.6s',
-			'hero-entrance-3': 'hero-entrance 1.4s ease-out forwards 1.2s',
+			'hero-entrance-1': 'hero-entrance-left 1.19s ease-out forwards 0s',
+			'hero-entrance-2': 'hero-entrance 1.19s ease-out forwards 0.255s',
+			'hero-entrance-3': 'hero-entrance 1.19s ease-out forwards 0.51s',
 			// Header animaties - KRITIEK: expliciet toevoegen aan Tailwind
 			'header-entrance': 'headerEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 			'header-exit': 'headerExit 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards'

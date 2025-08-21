@@ -6,15 +6,16 @@ const AnimatedHeadline = () => {
   const [isGlitching, setIsGlitching] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  const words = ['denkt', 'bouwt', 'werkt'];
+  const words = ['denkt', 'leert', 'doet', 'bouwt', 'werkt'];
 
   useEffect(() => {
     if (animationComplete) return;
 
     const sequence = async () => {
-      // Snellere start - wacht minder
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Wacht tot de entrance animatie klaar is (~0.6 seconden)
+      await new Promise(resolve => setTimeout(resolve, 600));
 
+      // Nu pas starten met de oorspronkelijke snelle animatie tussen de woorden
       for (let i = 0; i < words.length; i++) {
         if (i > 0) {
           // Snellere glitch-animatie
