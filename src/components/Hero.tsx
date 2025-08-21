@@ -164,20 +164,20 @@ const Hero = () => {
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-none h-px pointer-events-none z-40">
           {/* Volumetric Light Beam - more visible gradient */}
         <div 
-          className="absolute inset-0 w-full h-40 -top-40 opacity-60"
+          className="absolute inset-0 w-full h-40 -top-40 opacity-55"
           style={{
             background: `linear-gradient(0deg, 
-              rgba(34, 211, 238, 0.5) 0%, 
-              rgba(34, 211, 238, 0.35) 20%,
-              rgba(34, 211, 238, 0.25) 35%,
-              rgba(34, 211, 238, 0.18) 50%,
-              rgba(34, 211, 238, 0.12) 62%,
-              rgba(34, 211, 238, 0.08) 72%,
-              rgba(34, 211, 238, 0.05) 80%,
-              rgba(34, 211, 238, 0.03) 86%,
-              rgba(34, 211, 238, 0.015) 91%,
-              rgba(34, 211, 238, 0.008) 95%,
-              rgba(34, 211, 238, 0.003) 98%,
+              rgba(59, 130, 246, 0.5) 0%, 
+              rgba(59, 130, 246, 0.35) 20%,
+              rgba(59, 130, 246, 0.25) 35%,
+              rgba(59, 130, 246, 0.18) 50%,
+              rgba(59, 130, 246, 0.12) 62%,
+              rgba(59, 130, 246, 0.08) 72%,
+              rgba(59, 130, 246, 0.05) 80%,
+              rgba(59, 130, 246, 0.03) 86%,
+              rgba(59, 130, 246, 0.015) 91%,
+              rgba(59, 130, 246, 0.008) 95%,
+              rgba(59, 130, 246, 0.003) 98%,
               transparent 100%
             )`,
             filter: 'blur(8px)'
@@ -187,7 +187,7 @@ const Hero = () => {
         {/* Ambient nebula spotlight clouds for atmosphere */}
         <div className="absolute inset-0 w-full h-40 -top-40 overflow-hidden pointer-events-none opacity-20">
           <div 
-            className="absolute w-[600px] h-[200px] left-1/2 bottom-0 transform -translate-x-1/2 rounded-full blur-3xl bg-gradient-to-t from-cyan-400/10 to-blue-500/5"
+            className="absolute w-[600px] h-[200px] left-1/2 bottom-0 transform -translate-x-1/2 rounded-full blur-3xl bg-gradient-to-t from-blue-500/10 to-purple-600/5"
             style={{
               animation: 'upward-nebula-drift 25s ease-in-out infinite',
             }}
@@ -203,14 +203,14 @@ const Hero = () => {
         
         {/* Main horizontal light line - perfectly flat */}
         <div 
-          className="absolute inset-0 w-full h-px opacity-70"
+          className="absolute inset-0 w-full h-px opacity-65"
           style={{
             background: `linear-gradient(90deg, 
-              transparent 0%, 
-              rgba(59, 130, 246, 0.3) 10%, 
-              rgba(34, 211, 238, 0.6) 50%, 
-              rgba(59, 130, 246, 0.3) 90%, 
-              transparent 100%
+              rgba(59, 130, 246, 0.3) 0%, 
+              rgba(59, 130, 246, 0.5) 25%, 
+              rgba(59, 130, 246, 0.6) 50%, 
+              rgba(59, 130, 246, 0.5) 75%, 
+              rgba(59, 130, 246, 0.3) 100%
             )`,
             animation: 'gentle-flare-pulse 8s ease-in-out infinite'
           }}
@@ -218,12 +218,12 @@ const Hero = () => {
         
         {/* Core line for definition */}
         <div 
-          className="absolute inset-0 w-full h-px opacity-60"
+          className="absolute inset-0 w-full h-px opacity-55"
           style={{
             background: `linear-gradient(90deg, 
               transparent 0%, 
               transparent 30%, 
-              rgba(34, 211, 238, 0.8) 50%, 
+              rgba(59, 130, 246, 0.8) 50%, 
               transparent 70%, 
               transparent 100%
             )`

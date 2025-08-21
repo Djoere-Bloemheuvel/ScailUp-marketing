@@ -85,13 +85,13 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           style={{
             background: `radial-gradient(ellipse ${isLeft ? '75% 90%' : '90% 75%'} at center, 
               ${step.id === 1 ? 'rgba(59, 130, 246, 0.8)' :
-                step.id === 2 ? 'rgba(168, 85, 247, 0.8)' :
+                step.id === 2 ? 'rgba(236, 72, 153, 0.8)' :
                 step.id === 3 ? 'rgba(249, 115, 22, 0.8)' :
-                'rgba(34, 197, 94, 0.8)'} 0%, 
+                'rgba(20, 184, 166, 0.8)'} 0%, 
               ${step.id === 1 ? 'rgba(59, 130, 246, 0.4)' :
-                step.id === 2 ? 'rgba(168, 85, 247, 0.4)' :
+                step.id === 2 ? 'rgba(236, 72, 153, 0.4)' :
                 step.id === 3 ? 'rgba(249, 115, 22, 0.4)' :
-                'rgba(34, 197, 94, 0.4)'} 50%, 
+                'rgba(20, 184, 166, 0.4)'} 50%, 
               transparent 75%)`
           }}
         />
@@ -106,9 +106,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           style={{
             background: `radial-gradient(ellipse ${isLeft ? '85% 70%' : '70% 85%'} at center, 
               ${step.id === 1 ? 'rgba(59, 130, 246, 0.7)' :
-                step.id === 2 ? 'rgba(168, 85, 247, 0.7)' :
+                step.id === 2 ? 'rgba(236, 72, 153, 0.7)' :
                 step.id === 3 ? 'rgba(249, 115, 22, 0.7)' :
-                'rgba(34, 197, 94, 0.7)'} 0%, 
+                'rgba(20, 184, 166, 0.7)'} 0%, 
               transparent 60%)`
           }}
         />
@@ -123,9 +123,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           style={{
             background: `radial-gradient(ellipse ${isLeft ? '90% 75%' : '75% 90%'} at center, 
               ${step.id === 1 ? 'rgba(34, 211, 238, 0.9)' :
-                step.id === 2 ? 'rgba(139, 92, 246, 0.9)' :
+                step.id === 2 ? 'rgba(249, 115, 222, 0.9)' :
                 step.id === 3 ? 'rgba(251, 146, 60, 0.9)' :
-                'rgba(37, 99, 235, 0.9)'} 0%, 
+                'rgba(45, 212, 191, 0.9)'} 0%, 
               transparent 50%)`
           }}
         />
@@ -140,9 +140,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             style={{
               background: `radial-gradient(ellipse ${isLeft ? '65% 85%' : '85% 65%'} at center, 
                 ${step.id === 1 ? 'rgba(59, 130, 246, 0.6)' :
-                  step.id === 2 ? 'rgba(168, 85, 247, 0.6)' :
+                  step.id === 2 ? 'rgba(236, 72, 153, 0.6)' :
                   step.id === 3 ? 'rgba(249, 115, 22, 0.6)' :
-                  'rgba(34, 197, 94, 0.6)'} 0%, 
+                  'rgba(20, 184, 166, 0.6)'} 0%, 
                 transparent 70%)`
             }}
           />
@@ -155,11 +155,13 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         whileHover={{
-          scale: 1.015,
-          y: -2
+          scale: 1.03,
+          y: -6,
+          rotateY: isLeft ? 2 : -2,
+          rotateX: -1
         }}
         transition={{
-          duration: 0.3,
+          duration: 0.4,
           ease: [0.16, 1, 0.3, 1]
         }}
       >
@@ -171,23 +173,17 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           <motion.div 
             className={`
               relative rounded-3xl
-              backdrop-blur-xl shadow-2xl
+              backdrop-blur-xl shadow-2xl border
               ${isTransitionStep
-                ? 'p-5 lg:p-6 bg-white/[0.02] border border-white/[0.08] shadow-black/20'
-                : 'p-6 lg:p-7 bg-white/[0.03] border border-white/[0.12] shadow-black/40'
+                ? 'p-5 lg:p-6 border-white/[0.08] shadow-black/20'
+                : 'p-6 lg:p-7 border-white/[0.12] shadow-black/40'
               }
             `}
-            animate={{
-              backgroundColor: isHovered 
-                ? (isTransitionStep ? 'rgba(255,255,255,0.035)' : 'rgba(255,255,255,0.045)')
-                : (isTransitionStep ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.03)'),
-              borderColor: isHovered
-                ? (isTransitionStep ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.16)')
-                : (isTransitionStep ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.12)')
-            }}
-            transition={{
-              duration: 0.3,
-              ease: [0.16, 1, 0.3, 1]
+            style={{
+              background: step.id === 1 ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(147, 197, 253, 0.06) 50%, rgba(59, 130, 246, 0.04) 100%)' :
+                         step.id === 2 ? 'linear-gradient(135deg, rgba(236, 72, 153, 0.12) 0%, rgba(249, 115, 222, 0.08) 50%, rgba(219, 39, 119, 0.06) 100%)' :
+                         step.id === 3 ? 'linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(251, 146, 60, 0.08) 50%, rgba(234, 88, 12, 0.06) 100%)' :
+                         'linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(45, 212, 191, 0.08) 50%, rgba(13, 148, 136, 0.06) 100%)'
             }}
           >
 

@@ -111,7 +111,8 @@ const ScrollHeader = () => {
       <div
         className="w-full border-b border-white/10 backdrop-blur-xl bg-black/70"
         style={{
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(20px)'
         }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
