@@ -1,7 +1,6 @@
-import { useRef } from 'react';
-import { LucideIcon } from 'lucide-react';
-import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ChevronRight, LucideIcon } from 'lucide-react';
+import { useRef, useState } from 'react';
 
 interface Service {
   id: string;
@@ -24,7 +23,8 @@ interface ServiceSectionProps {
 
 const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  
+  const [isHovered, setIsHovered] = useState(false);
+
   // Determine layout order - Autonomous AI Agents should have text on right, visual on left
   const isAutonomousAgents = service.id === 'autonomous-agents';
   // For Autonomous AI Agents: force isEven to true (visual left, text right)
@@ -38,7 +38,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   const isConsultancy = service.id === 'consultancy';
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       data-service-section={index}
       className={`relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-gradient-to-b ${service.background}`}
@@ -54,21 +54,21 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
       )}
 
       <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        
+
         {/* Content - Left for normal sections, Right for Autonomous AI Agents */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
           <div className={`transition-all duration-1000 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            
+
             {/* Typography */}
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
                 {service.title}
               </h2>
-              
+
               <h3 className="text-xl md:text-2xl font-light text-premium-silver/90 tracking-wide leading-relaxed">
                 {service.subtitle}
               </h3>
-              
+
               <p className="text-base md:text-lg text-premium-silver/70 font-light leading-relaxed max-w-lg tracking-wide">
                 {service.description}
               </p>
@@ -82,9 +82,9 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
-              
+
               {isAIAutomations ? (
-                <a 
+                <a
                   href="/ai-automations"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
@@ -92,7 +92,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               ) : isCustomSaaS ? (
-                <a 
+                <a
                   href="/custom-ai-saas"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
@@ -100,7 +100,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               ) : isConsultancy ? (
-                <a 
+                <a
                   href="/consultancy"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
@@ -108,7 +108,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               ) : isAutonomousAgents ? (
-                <a 
+                <a
                   href="/autonomous-ai-agents"
                   className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
                 >
@@ -127,52 +127,52 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
         {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
-          <div 
+          <div
             className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
             style={{ transitionDelay: shouldShowContent ? '200ms' : '0ms' }}
           >
-            <motion.div 
+            <motion.div
               className="group relative w-72 h-72"
-              whileHover={{ 
+              onHoverStart={() => setIsHovered(true)}
+              onHoverEnd={() => setIsHovered(false)}
+              whileHover={{
                 scale: 1.05,
-                transition: { 
-                  duration: 0.4, 
-                  ease: [0.25, 0.46, 0.45, 0.94] 
+                transition: {
+                  duration: 0.4,
+                  ease: [0.25, 0.46, 0.45, 0.94]
                 }
               }}
-              transition={{ 
-                duration: 0.3, 
-                ease: [0.25, 0.46, 0.45, 0.94] 
+              transition={{
+                duration: 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94]
               }}
             >
-              
+
               {/* Strong backlight glow with Framer Motion */}
-              <motion.div 
-                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-70`}
-                whileHover={{ 
-                  opacity: 0.95, 
-                  scale: 1.15,
-                  transition: { 
-                    duration: 0.4, 
-                    ease: [0.25, 0.46, 0.45, 0.94] 
-                  }
+              <motion.div
+                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-80`}
+                animate={{
+                  scale: isHovered ? 1.04 : 1,
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.25, 0.46, 0.45, 0.94]
                 }}
               />
-              <motion.div 
-                className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-50`}
-                whileHover={{ 
-                  opacity: 0.75,
-                  scale: 1.1,
-                  transition: { 
-                    duration: 0.4, 
-                    ease: [0.25, 0.46, 0.45, 0.94] 
-                  }
+              <motion.div
+                className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-55`}
+                animate={{
+                  scale: isHovered ? 1.03 : 1,
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.25, 0.46, 0.45, 0.94]
                 }}
               />
-              
+
               {/* Main device with enhanced glassmorphism */}
               <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl">
-                
+
                 {service.isSpecial ? (
                   // Special animated core for Studio service with steady glow instead of pulsing
                   <div className="relative w-32 h-32">
@@ -182,7 +182,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <service.icon className="w-14 h-14 text-blue-300 drop-shadow-lg" />
                     </div>
-                    
+
                     {/* Orbiting dots with enhanced visibility but no pulsing */}
                     <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
                       <div className="absolute top-0 left-1/2 w-3 h-3 bg-blue-300 rounded-full transform -translate-x-1/2 shadow-lg shadow-blue-400/50" />
@@ -194,19 +194,19 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   <div className="relative w-28 h-28">
                     <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-90 transition-all duration-500 ease-out group-hover:opacity-95 group-hover:shadow-2xl`}>
                       <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
-                        
+
                         {/* Static icon with steady glow instead of pulsing */}
                         <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
-                          filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' : 
-                                                       service.accentColor.includes('purple') ? '#a855f7' : 
+                          filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' :
+                                                       service.accentColor.includes('purple') ? '#a855f7' :
                                                        service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
                         }} />
-                        
+
                         {/* Enhanced sweeping light scan with Framer Motion */}
-                        <motion.div 
+                        <motion.div
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
                           initial={{ x: '-100%' }}
-                          animate={{ 
+                          animate={{
                             x: '100%',
                             transition: {
                               duration: 3,
@@ -224,13 +224,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                             }
                           }}
                         />
-                        
-                        
+
+
                         {/* Ambient base glow inside icon container */}
                         <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-15`} />
                       </div>
                     </div>
-                    
+
                     {/* Enhanced floating accent elements with more base color */}
                     <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-80 shadow-lg transition-all duration-700 ease-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-85`} />
                     <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-700 ease-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-80`} />

@@ -1,7 +1,7 @@
-
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const ScrollHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,9 +35,6 @@ const ScrollHeader = () => {
     // Add event listeners - ALLEEN passive scroll voor performance
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('popstate', handleNavigation);
-    
-    // Initial check
-    handleScroll();
     
     return () => {
       if (typeof window !== 'undefined') {
@@ -89,12 +86,25 @@ const ScrollHeader = () => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
-      }`}
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50"
+      initial={{ 
+        opacity: 0, 
+        y: -8,
+        pointerEvents: 'none'
+      }}
+      animate={{ 
+        opacity: isVisible ? 1 : 0, 
+        y: isVisible ? 0 : -8,
+        pointerEvents: isVisible ? 'auto' : 'none'
+      }}
+      transition={{
+        duration: 0.25,
+        ease: "easeOut"
+      }}
       style={{
-        willChange: 'opacity, transform'
+        willChange: 'transform, opacity',
+        backfaceVisibility: 'hidden'
       }}
     >
       {/* Glassmorphic container */}
@@ -172,10 +182,20 @@ const ScrollHeader = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div
-            className={`md:hidden transition-all duration-300 ease-out overflow-hidden ${
-              isMobileMenuOpen ? 'max-h-64 opacity-100 mt-4' : 'max-h-0 opacity-0'
-            }`}
+          <motion.div
+            className="md:hidden overflow-hidden"
+            animate={{
+              height: isMobileMenuOpen ? 'auto' : 0,
+              opacity: isMobileMenuOpen ? 1 : 0,
+              marginTop: isMobileMenuOpen ? 16 : 0
+            }}
+            transition={{
+              duration: 0.2,
+              ease: "easeOut"
+            }}
+            style={{
+              willChange: 'height, opacity'
+            }}
           >
             <nav className="flex flex-col space-y-3 pt-2 border-t border-white/10">
               {navItems.map((item) => {
@@ -226,10 +246,10 @@ const ScrollHeader = () => {
                 Contact
               </Button>
             </nav>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
