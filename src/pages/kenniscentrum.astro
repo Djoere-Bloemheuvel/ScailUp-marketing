@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import ScrollHeader from '../components/ScrollHeader';
+import KenniscentrumSearch from '../components/KenniscentrumSearch';
 import { Search, Command, TrendingUp, BookOpen, Users, Target, Rocket, Brain, Zap, ArrowRight, Filter } from 'lucide-react';
 
 // Get all pillars and sort by order
@@ -48,31 +49,172 @@ const pillarIcons = {
 
   <main class="bg-black text-white min-h-screen">
     
-    <!-- Hero Section - Clean -->
-    <section class="pt-32 pb-16 px-6">
+    
+    <!-- Main Hero Section -->
+    <section class="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6">
       <div class="max-w-6xl mx-auto text-center">
         
-        <!-- Main Title -->
-        <h1 class="text-4xl md:text-6xl font-semibold mb-6 text-white tracking-tight">
-          AI Kenniscentrum
-        </h1>
+        <!-- Large Title -->
+        <div class="space-y-6 sm:space-y-8">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight text-center">
+            AI verandert alles om ons heen.<br>
+            <span class="text-gray-400">Jouw voorsprong </span><span class="text-white font-extrabold">start hier</span>
+          </h1>
+        </div>
         
-        <!-- Subtitle -->
-        <p class="text-xl text-gray-300 mb-12 font-normal max-w-3xl mx-auto leading-8">
-          Zes strategische expertise gebieden voor AI transformatie
-        </p>
+        <!-- Search Bar -->
+        <div class="mt-10 sm:mt-16">
+          <KenniscentrumSearch client:load />
+        </div>
         
       </div>
     </section>
 
-
-
-    <!-- Clean Pillars Grid -->
-    <section class="py-16 px-6">
+    <!-- Featured Content Section -->
+    <section class="pb-8 px-4 sm:px-6">
       <div class="max-w-6xl mx-auto">
+        
+        <div class="flex flex-col lg:flex-row gap-6 sm:gap-8 mb-8">
+          
+          <!-- Left: Flagship Article -->
+          <div class="lg:flex-[1.2]">
+            <a href="/kenniscentrum/ai-automatisering" class="group block transform transition-transform duration-300 hover:scale-[1.02] h-full">
+              <article class="border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-2xl hover:border-gray-700 transition-colors duration-200 h-full">
+                <div class="bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-2xl p-6 sm:p-8 h-full relative">
+                  <!-- 50% Shadow Overlay -->
+                  <div class="absolute inset-0 bg-black/50 rounded-2xl z-0"></div>
+                  <div class="relative z-10 flex flex-col justify-between h-full">
+                    <div>
+                      <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3 mb-4 sm:mb-6">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                            <Zap class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                          </div>
+                          <span class="text-xs sm:text-sm font-medium text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 sm:px-3 py-1 rounded-full">Featured</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
+                          <span>•</span>
+                          <span>5 min read</span>
+                        </div>
+                      </div>
+                      
+                      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3 sm:mb-4 text-white group-hover:text-gray-200 transition-colors">
+                        De 2025 AI Automatisering & Trends Report: Data van 1700+ Bedrijven
+                      </h2>
+                      
+                      <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6 line-clamp-3 sm:line-clamp-none">
+                        Ontdek de digitale AI trends, winnende mogelijkheden en uitdagingen waar bedrijven mee te maken hebben dit jaar. Complete analyse van 1700+ bedrijven.
+                      </p>
+                    </div>
+                    
+                    <div class="border-t border-white/10 pt-3 sm:pt-4">
+                      <div class="flex items-center justify-end">
+                        <div class="flex items-center text-gray-400 group-hover:text-white transition-colors">
+                          <span class="text-xs sm:text-sm font-medium mr-2">Lees artikel</span>
+                          <ArrowRight class="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </a>
+          </div>
+          
+          <!-- Right: Recent Articles Grid -->
+          <div class="lg:flex-[0.8]">
+            <div class="flex flex-col gap-4 h-full">
+              {[...featuredArtikelen].slice(0, 3).map((artikel, index) => {
+                const IconComponent = index === 2 ? pillarIcons['custom-ai-saas'] : (pillarIcons[artikel.data.pillar] || pillarIcons['ai-automatisering']);
+                const formatDate = () => {
+                  const dates = ['Jul 10', 'May 20', 'Jun 25', 'Apr 15'];
+                  return dates[index % dates.length];
+                };
+                // Force third article to be custom-ai-saas styling
+                const isAIAutomatisering = artikel.data.pillar === 'ai-automatisering' && index !== 2;
+                const isCustomAISaaS = artikel.data.pillar === 'custom-ai-saas' || index === 2;
+                const isConsultancy = artikel.data.pillar === 'ai-consultancy' && index !== 2;
+                const isAutonomousAgents = artikel.data.pillar === 'autonomous-agents' && index !== 2;
+                const isAIMarketingSales = artikel.data.pillar === 'ai-marketing-sales' && index !== 2;
+                const isAIImplementation = artikel.data.pillar === 'ai-implementation' && index !== 2;
+                
+                let articleClasses, contentClasses;
+                
+                if (isAIAutomatisering) {
+                  articleClasses = 'border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                } else if (isCustomAISaaS) {
+                  articleClasses = 'border-0 bg-gradient-to-r from-purple-500/70 to-pink-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'bg-gradient-to-br from-purple-500/[0.015] via-black to-pink-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                } else if (isConsultancy) {
+                  articleClasses = 'border-0 bg-gradient-to-r from-cyan-400/70 to-blue-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'bg-gradient-to-br from-cyan-400/[0.015] via-black to-blue-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                } else if (isAutonomousAgents) {
+                  articleClasses = 'border-0 bg-gradient-to-r from-green-500/70 to-blue-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'bg-gradient-to-br from-green-500/[0.015] via-black to-blue-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                } else if (isAIMarketingSales) {
+                  articleClasses = 'border-0 bg-gradient-to-r from-red-600/70 to-orange-500/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'bg-gradient-to-br from-red-600/[0.015] via-black to-orange-500/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                } else if (isAIImplementation) {
+                  articleClasses = 'border-0 bg-gradient-to-r from-gray-200/70 via-slate-600/70 to-gray-800/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'bg-gradient-to-br from-gray-200/[0.015] via-black to-gray-800/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                } else {
+                  articleClasses = 'border border-gray-800 rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+                  contentClasses = 'p-3 sm:p-4 h-full flex flex-col justify-between relative';
+                }
+                
+                return (
+                  <a href={`/kenniscentrum/${artikel.slug}`} class="group block transform transition-transform duration-300 hover:scale-[1.02] flex-1">
+                    <article class={articleClasses}>
+                      <div class={contentClasses}>
+                      
+                      <!-- 80% Shadow Overlay -->
+                      <div class="absolute inset-0 bg-black/80 rounded-lg z-0"></div>
+                      
+                      <div class="relative z-10 flex-1 flex flex-col">
+                        <!-- Icon -->
+                        <div class="flex items-center justify-end mb-2 sm:mb-3">
+                          <div class="w-5 h-5 sm:w-6 sm:h-6 rounded border border-gray-700 flex items-center justify-center">
+                            <IconComponent class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gray-400" />
+                          </div>
+                        </div>
 
-        <!-- Simple Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Content -->
+                        <h3 class="text-sm sm:text-base font-semibold mb-2 text-white group-hover:text-gray-200 transition-colors leading-tight flex-1">
+                          {artikel.data.title}
+                        </h3>
+
+                        <!-- Read More -->
+                        <div class="flex items-center text-gray-400 group-hover:text-white transition-colors mt-auto">
+                          <span class="text-xs font-medium">Lees meer</span>
+                          <ArrowRight class="w-3 h-3 ml-1" />
+                        </div>
+                      </div>
+                      
+                      </div>
+                    </article>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="pt-8 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Topics Label -->
+        <div class="mb-8 sm:mb-10 text-left">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-white leading-tight">Ontdek Alle Expertise Gebieden</h2>
+          <p class="text-lg sm:text-xl text-gray-500">Verdiep je in onze complete portfolio van AI kennisgebieden en specialisaties</p>
+        </div>
+
+        <!-- Complete Grid met alle 6 pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {sortedPillars.map((pillar, index) => {
             const IconComponent = pillarIcons[pillar.data.pillarId];
             const formatDate = () => {
@@ -114,30 +256,30 @@ const pillarIcons = {
             return (
               <a href={`/kenniscentrum/${pillar.data.pillarId}`} class="group block transform transition-transform duration-300 hover:scale-[1.02]" id={pillar.data.pillarId}>
                 <article class={articleClasses}>
-                  <div class={contentClasses}>
+                  <div class={contentClasses.replace('p-8', 'p-3 sm:p-4')}>
                   
-                  <div class="relative z-10">
-                  <!-- Date & Icon -->
-                  <div class="flex items-center justify-between mb-6">
-                    <span class="text-sm text-gray-500">{formatDate()}</span>
-                    <div class="w-8 h-8 rounded border border-gray-700 flex items-center justify-center">
-                      <IconComponent class="w-4 h-4 text-gray-400" />
+                  <div class="relative z-10 h-full flex flex-col">
+                  <!-- Icon -->
+                  <div class="flex items-center justify-end mb-2 sm:mb-3">
+                    <div class="w-5 h-5 sm:w-6 sm:h-6 rounded border border-gray-700 flex items-center justify-center">
+                      <IconComponent class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gray-400" />
                     </div>
                   </div>
 
                   <!-- Content -->
-                  <h3 class="text-xl font-semibold mb-4 text-white group-hover:text-gray-200 transition-colors leading-tight">
+                  <h3 class="text-base sm:text-lg font-semibold mb-3 text-white group-hover:text-gray-200 transition-colors leading-tight">
                     {pillar.data.title}
                   </h3>
 
-                  <p class="text-gray-300 text-base leading-7 mb-6">
-                    {pillar.data.description.substring(0, 140)}...
+                  <!-- Description -->
+                  <p class="text-xs sm:text-sm text-gray-400 mb-4 leading-relaxed flex-1">
+                    {pillar.data.description}
                   </p>
 
                   <!-- Read More -->
-                  <div class="flex items-center text-gray-400 group-hover:text-white transition-colors">
-                    <span class="text-sm font-medium">Lees meer</span>
-                    <ArrowRight class="w-4 h-4 ml-2" />
+                  <div class="flex items-center text-gray-400 group-hover:text-white transition-colors mt-auto">
+                    <span class="text-xs font-medium">Lees meer</span>
+                    <ArrowRight class="w-3 h-3 ml-1" />
                   </div>
                   </div>
                   
@@ -152,20 +294,20 @@ const pillarIcons = {
 
 
     <!-- Trending & Featured Content -->
-    <section class="py-20 px-6 border-t border-gray-800">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-gray-800">
       <div class="max-w-6xl mx-auto">
         
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-white">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-white">
             Trending Content
           </h2>
-          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-4">
             De meest gelezen en gedeelde inzichten uit ons kenniscentrum
           </p>
         </div>
 
         <!-- Featured Articles Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {featuredArtikelen.map((artikel, index) => {
             const formatDate = (date) => {
               return new Date(date).toLocaleDateString('nl-NL', { 
@@ -268,23 +410,116 @@ const pillarIcons = {
       </div>
     </section>
 
+    <!-- Explore More Topics -->
+    <section class="py-12 sm:py-16 px-4 sm:px-6 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Section Title -->
+        <div class="text-center mb-8 sm:mb-12">
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4">
+            Ontdek Alle Expertise Gebieden
+          </h2>
+          <p class="text-gray-400 max-w-2xl mx-auto px-4">
+            Verdiep je in onze complete portfolio van AI kennisgebieden en specialisaties
+          </p>
+        </div>
+
+        <!-- Duplicate Gradient Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
+          {sortedPillars.map((pillar, index) => {
+            const IconComponent = pillarIcons[pillar.data.pillarId];
+            const formatDate = () => {
+              const dates = ['Jul 10', 'May 20', 'Jun 25', 'Apr 15', 'Mar 8', 'Feb 12'];
+              return dates[index % dates.length];
+            };
+            const isAIAutomatisering = pillar.data.pillarId === 'ai-automatisering';
+            const isCustomAISaaS = pillar.data.pillarId === 'custom-ai-saas';
+            const isConsultancy = pillar.data.pillarId === 'ai-consultancy';
+            const isAutonomousAgents = pillar.data.pillarId === 'autonomous-agents';
+            const isAIMarketingSales = pillar.data.pillarId === 'ai-marketing-sales';
+            const isAIImplementation = pillar.data.pillarId === 'ai-implementation';
+            
+            let articleClasses, contentClasses;
+            
+            if (isAIAutomatisering) {
+              articleClasses = 'border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-lg p-8 h-full';
+            } else if (isCustomAISaaS) {
+              articleClasses = 'border-0 bg-gradient-to-r from-purple-500/70 to-pink-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'bg-gradient-to-br from-purple-500/[0.015] via-black to-pink-600/[0.015] rounded-lg p-8 h-full';
+            } else if (isConsultancy) {
+              articleClasses = 'border-0 bg-gradient-to-r from-cyan-400/70 to-blue-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'bg-gradient-to-br from-cyan-400/[0.015] via-black to-blue-600/[0.015] rounded-lg p-8 h-full';
+            } else if (isAutonomousAgents) {
+              articleClasses = 'border-0 bg-gradient-to-r from-green-500/70 to-blue-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'bg-gradient-to-br from-green-500/[0.015] via-black to-blue-600/[0.015] rounded-lg p-8 h-full';
+            } else if (isAIMarketingSales) {
+              articleClasses = 'border-0 bg-gradient-to-r from-red-600/70 to-orange-500/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'bg-gradient-to-br from-red-600/[0.015] via-black to-orange-500/[0.015] rounded-lg p-8 h-full';
+            } else if (isAIImplementation) {
+              articleClasses = 'border-0 bg-gradient-to-r from-gray-200/70 via-slate-600/70 to-gray-800/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'bg-gradient-to-br from-gray-200/[0.015] via-black to-gray-800/[0.015] rounded-lg p-8 h-full';
+            } else {
+              articleClasses = 'border border-gray-800 rounded-lg hover:border-gray-700 transition-colors duration-200 h-full';
+              contentClasses = 'p-8 h-full';
+            }
+            
+            return (
+              <a href={`/kenniscentrum/${pillar.data.pillarId}`} class="group block transform transition-transform duration-300 hover:scale-[1.02]" id={`${pillar.data.pillarId}-bottom`}>
+                <article class={articleClasses}>
+                  <div class={contentClasses}>
+                  
+                  <div class="relative z-10">
+                  <!-- Date & Icon -->
+                  <div class="flex items-center justify-between mb-6">
+                    <span class="text-sm text-gray-500">{formatDate()}</span>
+                    <div class="w-8 h-8 rounded border border-gray-700 flex items-center justify-center">
+                      <IconComponent class="w-4 h-4 text-gray-400" />
+                    </div>
+                  </div>
+
+                  <!-- Content -->
+                  <h3 class="text-xl font-semibold mb-4 text-white group-hover:text-gray-200 transition-colors leading-tight">
+                    {pillar.data.title}
+                  </h3>
+
+                  <p class="text-gray-300 text-base leading-7 mb-6">
+                    {pillar.data.description.substring(0, 140)}...
+                  </p>
+
+                  <!-- Read More -->
+                  <div class="flex items-center text-gray-400 group-hover:text-white transition-colors">
+                    <span class="text-sm font-medium">Lees meer</span>
+                    <ArrowRight class="w-4 h-4 ml-2" />
+                  </div>
+                  </div>
+                  
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
     <!-- Clean CTA -->
-    <section class="py-20 px-6 border-t border-gray-800">
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-gray-800">
       <div class="max-w-4xl mx-auto text-center">
         
-        <h2 class="text-3xl font-semibold mb-4 text-white">
+        <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-white">
           Geen tijd om alles te lezen?
         </h2>
         
-        <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
           Plan een deepdive sessie en we nemen je mee door de frameworks die het meest relevant zijn voor jouw situatie.
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/contact" class="px-6 py-3 bg-white text-black font-medium rounded-md hover:bg-gray-200 transition-colors">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+          <a href="/contact" class="w-full sm:w-auto px-6 py-3 bg-white text-black font-medium rounded-md hover:bg-gray-200 transition-colors text-center">
             Plan deepdive sessie
           </a>
-          <a href="/kenniscentrum/ai-automatisering" class="px-6 py-3 border border-gray-700 text-white rounded-md hover:border-gray-600 transition-colors">
+          <a href="/kenniscentrum/ai-automatisering" class="w-full sm:w-auto px-6 py-3 border border-gray-700 text-white rounded-md hover:border-gray-600 transition-colors text-center">
             Start met automatisering
           </a>
         </div>

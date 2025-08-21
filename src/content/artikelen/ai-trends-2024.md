@@ -3,7 +3,7 @@ title: "5 AI Trends die MKB in 2024 Moeten Kennen"
 description: "Van Generative AI tot Autonomous Agents: ontdek welke AI-ontwikkelingen dit jaar impact gaan maken op jouw business en hoe je voorop kunt lopen."
 author: "Djoere Bloemheuvel"
 publishDate: 2024-01-20
-pillar: "ai-consultancy"
+pillar: "ai-automatisering"
 category: "trends"
 clusterType: "core"
 difficulty: "beginner"

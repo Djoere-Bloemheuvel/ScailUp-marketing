@@ -3,7 +3,7 @@ title: "Hoe AI de Operations van een MKB-bedrijf transformeerde: Een Succesverha
 description: "Ontdek hoe een MKB-bedrijf door slimme AI-implementatie hun operationele efficiëntie met 40% verhoogde en kosten met 25% reduceerde."
 author: "Djoere Bloemheuvel"
 publishDate: 2024-01-15
-pillar: "ai-automatisering"
+pillar: "ai-consultancy"
 category: "case-study"
 clusterType: "supporting"
 difficulty: "beginner"
