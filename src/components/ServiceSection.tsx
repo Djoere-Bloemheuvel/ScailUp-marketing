@@ -30,7 +30,6 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   // For Autonomous AI Agents: force isEven to true (visual left, text right)
   // For others: use normal alternating pattern
   const isEven = isAutonomousAgents ? true : (index % 2 === 1);
-  const shouldShowContent = true; // Always show content - no animations
 
   // Determine service type for routing
   const isAIAutomations = service.id === 'ai-automations';
@@ -57,10 +56,29 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
         {/* Content - Left for normal sections, Right for Autonomous AI Agents */}
         <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-          <div className={`transition-all duration-1000 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.8,
+              delay: index * 0.2,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+          >
 
             {/* Typography */}
-            <div className="space-y-6">
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.2 + 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            >
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
                 {service.title}
               </h2>
@@ -72,71 +90,285 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               <p className="text-base md:text-lg text-premium-silver/70 font-light leading-relaxed max-w-lg tracking-wide">
                 {service.description}
               </p>
-            </div>
+            </motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <button className="group relative inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-500 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl overflow-hidden">
-                <span className="relative z-10 text-sm font-medium">
-                  {service.primaryButtonText}
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </button>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.2 + 0.2,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            >
 
               {isAIAutomations ? (
-                <a
-                  href="/ai-automations"
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
-                >
-                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
-                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                <div className="relative group">
+                  {/* External glow aura - outside button */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  
+                  <motion.a
+                    href="/ai-automations"
+                    className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full  overflow-hidden"
+                    whileHover={{
+                      scale: 1.08,
+                      transition: {
+                        duration: 1.0,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 4px 12px rgba(59, 130, 246, 0.2))"
+                    }}
+                  >
+                    {/* Animated gradient border */}
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                      <div className="w-full h-full rounded-full bg-premium-black" />
+                    </div>
+                    {/* Rotating gradient border on hover */}
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
+                        <div className="w-full h-full rounded-full bg-premium-black" />
+                      </div>
+                    </div>
+                    <span className="relative z-10 text-sm font-medium">{service.secondaryButtonText}</span>
+                    <motion.div
+                      className="relative z-10 ml-2"
+                      animate={{ x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </motion.div>
+                  </motion.a>
+                </div>
               ) : isCustomSaaS ? (
-                <a
-                  href="/custom-ai-saas"
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
-                >
-                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
-                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                <div className="relative group">
+                  {/* External glow aura - outside button */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  
+                  <motion.a
+                    href="/custom-ai-saas"
+                    className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
+                    whileHover={{
+                      scale: 1.08,
+                      transition: {
+                        duration: 1.0,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                    }}
+                  >
+                    {/* Animated gradient border */}
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                      <div className="w-full h-full rounded-full bg-premium-black" />
+                    </div>
+                    {/* Rotating gradient border on hover */}
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
+                        <div className="w-full h-full rounded-full bg-premium-black" />
+                      </div>
+                    </div>
+                    <span className="relative z-10 text-sm font-medium">{service.secondaryButtonText}</span>
+                    <motion.div
+                      className="relative z-10 ml-2"
+                      animate={{ x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </motion.div>
+                  </motion.a>
+                </div>
               ) : isConsultancy ? (
-                <a
-                  href="/consultancy"
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
-                >
-                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
-                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                <div className="relative group">
+                  {/* External glow aura - outside button */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  
+                  <motion.a
+                    href="/consultancy"
+                    className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
+                    whileHover={{
+                      scale: 1.08,
+                      transition: {
+                        duration: 1.0,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                    }}
+                  >
+                    {/* Animated gradient border */}
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                      <div className="w-full h-full rounded-full bg-premium-black" />
+                    </div>
+                    {/* Rotating gradient border on hover */}
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
+                        <div className="w-full h-full rounded-full bg-premium-black" />
+                      </div>
+                    </div>
+                    <span className="relative z-10 text-sm font-medium">{service.secondaryButtonText}</span>
+                    <motion.div
+                      className="relative z-10 ml-2"
+                      animate={{ x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </motion.div>
+                  </motion.a>
+                </div>
               ) : isAutonomousAgents ? (
-                <a
-                  href="/autonomous-ai-agents"
-                  className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
-                >
-                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
-                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                <div className="relative group">
+                  {/* External glow aura - outside button */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  
+                  <motion.a
+                    href="/autonomous-ai-agents"
+                    className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
+                    whileHover={{
+                      scale: 1.08,
+                      transition: {
+                        duration: 1.0,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                    }}
+                  >
+                    {/* Animated gradient border */}
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                      <div className="w-full h-full rounded-full bg-premium-black" />
+                    </div>
+                    {/* Rotating gradient border on hover */}
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
+                        <div className="w-full h-full rounded-full bg-premium-black" />
+                      </div>
+                    </div>
+                    <span className="relative z-10 text-sm font-medium">{service.secondaryButtonText}</span>
+                    <motion.div
+                      className="relative z-10 ml-2"
+                      animate={{ x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </motion.div>
+                  </motion.a>
+                </div>
               ) : (
-                <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-premium-silver/30 text-premium-silver font-medium rounded-full hover:border-white hover:text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
-                  <span className="text-sm font-medium">{service.secondaryButtonText}</span>
-                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+                <div className="relative group">
+                  {/* External glow aura - outside button */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  
+                  <motion.button 
+                    className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
+                    whileHover={{
+                      scale: 1.08,
+                      transition: {
+                        duration: 1.0,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      y: 0
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    style={{
+                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                    }}
+                  >
+                    {/* Animated gradient border */}
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                      <div className="w-full h-full rounded-full bg-premium-black" />
+                    </div>
+                    {/* Rotating gradient border on hover */}
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
+                        <div className="w-full h-full rounded-full bg-premium-black" />
+                      </div>
+                    </div>
+                    <span className="relative z-10 text-sm font-medium">{service.secondaryButtonText}</span>
+                    <motion.div
+                      className="relative z-10 ml-2"
+                      animate={{ x: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </motion.div>
+                  </motion.button>
+                </div>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
-          <div
-            className={`transition-all duration-1200 ease-out ${shouldShowContent ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
-            style={{ transitionDelay: shouldShowContent ? '200ms' : '0ms' }}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{
+              duration: 0.9,
+              delay: index * 0.2 + 0.3,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            style={{ isolation: 'isolate' }}
           >
             <motion.div
               className="group relative w-72 h-72"
+              style={{ isolation: 'isolate' }}
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
               whileHover={{
-                scale: 1.05,
+                scale: 1.08,
                 transition: {
                   duration: 0.4,
                   ease: [0.25, 0.46, 0.45, 0.94]
@@ -150,28 +382,30 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
               {/* Strong backlight glow with Framer Motion */}
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-80`}
+                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-50`}
+                style={{ zIndex: 1 }}
                 animate={{
                   scale: isHovered ? 1.04 : 1,
                 }}
                 transition={{
-                  duration: 0.4,
+                  duration: 0.4, 
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
               />
               <motion.div
                 className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-55`}
+                style={{ zIndex: 1 }}
                 animate={{
                   scale: isHovered ? 1.03 : 1,
                 }}
                 transition={{
-                  duration: 0.4,
+                  duration: 0.4, 
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
               />
 
               {/* Main device with enhanced glassmorphism */}
-              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl">
+              <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl" style={{ zIndex: 2, isolation: 'isolate' }}>
 
                 {service.isSpecial ? (
                   // Special animated core for Studio service with steady glow instead of pulsing
@@ -196,7 +430,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                       <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
 
                         {/* Static icon with steady glow instead of pulsing */}
-                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-300 ease-out group-hover:text-white" style={{
+                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-500 ease-out ease-out group-hover:text-white" style={{
                           filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' :
                                                        service.accentColor.includes('purple') ? '#a855f7' :
                                                        service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
@@ -227,18 +461,18 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
 
                         {/* Ambient base glow inside icon container */}
-                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-15`} />
+                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-5`} />
                       </div>
                     </div>
 
                     {/* Enhanced floating accent elements with more base color */}
-                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-80 shadow-lg transition-all duration-700 ease-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-85`} />
-                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-700 ease-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-80`} />
+                    <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-50 shadow-lg transition-all duration-1000 ease-in-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-55`} />
+                    <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-1000 ease-in-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-50`} />
                   </div>
                 )}
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
