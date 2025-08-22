@@ -105,7 +105,7 @@ const SolutionsSection = () => {
         
         {/* Header matching problems section style */}
         <motion.div 
-          className="text-center mb-8"
+          className="text-left mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -114,7 +114,7 @@ const SolutionsSection = () => {
           <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
             De Nieuwe Realiteit
           </h2>
-          <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl">
             Zo werkt outbound als je het goed doet
           </p>
         </motion.div>

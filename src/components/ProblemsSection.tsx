@@ -150,10 +150,10 @@ const ProblemsSection = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-            Uitdagingen
+            De Harde Realiteit
           </h2>
           <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            De harde realiteit van outbound waar bijna elk bedrijf tegenaan loopt
+            Waarom outbound niet meer werkt zoals vroeger
           </p>
         </motion.div>
 
