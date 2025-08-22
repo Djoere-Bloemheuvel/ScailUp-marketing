@@ -1,5 +1,29 @@
 import { defineCollection, z } from 'astro:content';
 
+// Clusters Collection - Content groupings within pillars
+const clusterCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    clusterId: z.string(),
+    pillar: z.enum([
+      'ai-automatisering',
+      'ai-marketing',
+      'ai-sales'
+    ]),
+    order: z.number(),
+    icon: z.string().optional(),
+    featured: z.boolean().default(false),
+    seo: z.object({
+      metaTitle: z.string().optional(),
+      metaDescription: z.string().optional(),
+      keywords: z.array(z.string()).optional(),
+      ogImage: z.string().optional(),
+    }).optional(),
+  }),
+});
+
 // Pillar Collection - Premium hub pages
 const pillarCollection = defineCollection({
   type: 'content',
@@ -43,11 +67,8 @@ const artikelenCollection = defineCollection({
     updatedDate: z.date().optional(),
     pillar: z.enum([
       'ai-automatisering',
-      'custom-ai-saas',
-      'ai-consultancy',
-      'autonomous-agents',
-      'ai-marketing-sales',
-      'ai-implementation'
+      'ai-marketing',
+      'ai-sales'
     ]),
     category: z.enum([
       'deep-dive',
@@ -57,6 +78,7 @@ const artikelenCollection = defineCollection({
       'trends',
       'beginner-guide'
     ]),
+    cluster: z.string().optional(), // Reference to cluster ID
     clusterType: z.enum([
       'core', // Main topic articles
       'supporting', // Detail articles
@@ -82,8 +104,10 @@ const artikelenCollection = defineCollection({
 
 export const collections = {
   'pillars': pillarCollection,
+  'clusters': clusterCollection,
   'artikelen': artikelenCollection,
 };
 
 export type PillarEntry = z.infer<typeof pillarCollection.schema>;
+export type ClusterEntry = z.infer<typeof clusterCollection.schema>;
 export type ArtikelEntry = z.infer<typeof artikelenCollection.schema>;

@@ -4,6 +4,7 @@ description: "Van Generative AI tot Autonomous Agents: ontdek welke AI-ontwikkel
 author: "Djoere Bloemheuvel"
 publishDate: 2024-01-20
 pillar: "ai-automatisering"
+cluster: "workflow-automation"
 category: "trends"
 clusterType: "core"
 difficulty: "beginner"

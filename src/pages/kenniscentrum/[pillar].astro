@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ScrollHeader from '../../components/ScrollHeader';
 import StickyPillarNav from '../../components/kenniscentrum/StickyPillarNav';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { Search, Command, BookOpen, ArrowRight, Filter, ChevronRight } from 'lucide-react';
 
 export async function getStaticPaths() {
   const pillars = await getCollection('pillars');
@@ -16,45 +16,16 @@ export async function getStaticPaths() {
 const { pillar } = Astro.props;
 const { Content } = await pillar.render();
 
-// Get related articles for this pillar
+// Get all articles for this pillar
 const allArtikelen = await getCollection('artikelen');
 const pillarArtikelen = allArtikelen
   .filter(artikel => artikel.data.pillar === pillar.data.pillarId)
-  .sort((a, b) => {
-    // Sort by cluster type first (core > supporting > related), then by date
-    const typeOrder = { core: 0, supporting: 1, related: 2 };
-    if (a.data.clusterType !== b.data.clusterType) {
-      return typeOrder[a.data.clusterType] - typeOrder[b.data.clusterType];
-    }
-    return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
-  });
-
-const coreArticles = pillarArtikelen.filter(a => a.data.clusterType === 'core');
-const supportingArticles = pillarArtikelen.filter(a => a.data.clusterType === 'supporting');
-
-// Category labels
-const categoryLabels = {
-  'deep-dive': 'Deep Dive',
-  'how-to': 'How-To Guide',
-  'case-study': 'Case Study',
-  'comparison': 'Comparison',
-  'trends': 'Trends',
-  'beginner-guide': 'Beginner Guide'
-};
-
-const difficultyLabels = {
-  'beginner': 'Beginner',
-  'intermediate': 'Intermediate',
-  'advanced': 'Advanced'
-};
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 
 const pillarIcons = {
   'ai-automatisering': '⚡',
-  'custom-ai-saas': '🧠',
-  'ai-consultancy': '🎯',
-  'autonomous-agents': '🤖',
-  'ai-marketing-sales': '📈',
-  'ai-implementation': '🚀'
+  'ai-marketing': '🎯',
+  'ai-sales': '📈'
 };
 ---
 
@@ -66,373 +37,354 @@ const pillarIcons = {
   <ScrollHeader client:load />
   <StickyPillarNav client:load currentPillar={pillar.data.pillarId} />
 
-  <main class="bg-black text-white">
+  <main class="bg-black text-white min-h-screen">
     
-    <!-- Hero Section - Apple Style -->
-    <section class="pt-32 pb-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        
-        <!-- Breadcrumb -->
+    <!-- Breadcrumb -->
+    <div class="pt-32 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
         <div class="flex items-center text-sm text-gray-400 mb-8 font-medium">
           <a href="/kenniscentrum" class="hover:text-white transition-colors duration-200">Kenniscentrum</a>
           <ChevronRight class="w-4 h-4 mx-2" />
           <span>{pillar.data.title}</span>
         </div>
+      </div>
+    </div>
+    
+    <!-- Main Hero Section -->
+    <section class="pb-12 sm:pb-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto text-center">
         
-        <!-- Icon -->
-        <div class="w-16 h-16 rounded-3xl bg-gray-800 border border-gray-700 flex items-center justify-center mb-8">
-          <span class="text-2xl">
-            {pillarIcons[pillar.data.pillarId] || '🎯'}
-          </span>
+        <!-- Large Title -->
+        <div class="space-y-6 sm:space-y-8">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight text-center">
+            {pillar.data.title} verandert alles.<br>
+            <span class="text-gray-400">Jouw {pillar.data.title.toLowerCase()} voorsprong </span><span class="text-white font-extrabold">start hier</span>
+          </h1>
         </div>
         
-        <!-- Title -->
-        <h1 class="text-5xl md:text-6xl font-light tracking-tight mb-6 text-white leading-tight">
-          {pillar.data.title}
-        </h1>
-        
-        <!-- Subtitle -->
-        {pillar.data.subtitle && (
-          <p class="text-xl md:text-2xl text-gray-400 font-light mb-8">
-            {pillar.data.subtitle}
-          </p>
-        )}
-        
-        <!-- Description -->
-        <p class="text-lg text-gray-300 font-light mb-12 max-w-4xl leading-relaxed">
-          {pillar.data.description}
-        </p>
-        
-        <!-- Highlight Piece - Flagship Content -->
-        {coreArticles.length > 0 && (
-          <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 rounded-3xl p-8 mb-12">
-            <div class="flex items-start gap-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <span class="text-white text-2xl">⭐</span>
-              </div>
-              
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium rounded-full">
-                    Flagship Content
-                  </span>
-                  <span class="text-sm text-gray-400">
-                    {coreArticles[0].data.readingTime || 15} min leestijd
-                  </span>
+        <!-- Search Bar -->
+        <div class="mt-10 sm:mt-16">
+          <div class="relative w-full max-w-sm sm:max-w-md mx-auto" style="z-index: 1000;">
+            <!-- Ambient light glow with pillar colors -->
+            {pillar.data.pillarId === 'ai-marketing' && (
+              <>
+                <div class="absolute -inset-3 bg-gradient-to-r from-pink-500/40 to-purple-600/40 rounded-2xl blur-xl opacity-75"></div>
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-pink-500/60 to-purple-600/60 rounded-xl blur-lg opacity-50"></div>
+              </>
+            )}
+            {pillar.data.pillarId === 'ai-automatisering' && (
+              <>
+                <div class="absolute -inset-3 bg-gradient-to-r from-blue-500/40 to-purple-600/40 rounded-2xl blur-xl opacity-75"></div>
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500/60 to-purple-600/60 rounded-xl blur-lg opacity-50"></div>
+              </>
+            )}
+            {pillar.data.pillarId === 'ai-sales' && (
+              <>
+                <div class="absolute -inset-3 bg-gradient-to-r from-blue-500/40 to-blue-800/40 rounded-2xl blur-xl opacity-75"></div>
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500/60 to-blue-800/60 rounded-xl blur-lg opacity-50"></div>
+              </>
+            )}
+            
+            <!-- Gradient border wrapper -->
+            <div class={`relative border-0 p-[1px] rounded-xl ${
+              pillar.data.pillarId === 'ai-marketing' ? 'bg-gradient-to-r from-pink-500/70 to-purple-600/70' :
+              pillar.data.pillarId === 'ai-automatisering' ? 'bg-gradient-to-r from-blue-500/70 to-purple-600/70' :
+              'bg-gradient-to-r from-blue-500/70 to-blue-800/70'
+            }`}>
+              <div class="bg-black rounded-xl">
+                <div class="relative">
+                  <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder={`Zoek in ${pillar.data.title}...`}
+                    class="w-full pl-12 pr-4 py-4 bg-transparent text-white placeholder-gray-400 focus:outline-none text-sm"
+                  />
                 </div>
-                
-                <h3 class="text-2xl font-medium mb-3 text-white leading-tight">
-                  {coreArticles[0].data.title}
-                </h3>
-                
-                <p class="text-gray-300 leading-relaxed mb-6 text-lg">
-                  {coreArticles[0].data.description}
-                </p>
-                
-                <a 
-                  href={`/kenniscentrum/${coreArticles[0].slug}`}
-                  class="inline-flex items-center text-white hover:text-gray-300 transition-colors duration-200 font-medium text-lg"
-                >
-                  <span>Start met lezen</span>
-                  <ArrowRight class="w-5 h-5 ml-2" />
-                </a>
               </div>
             </div>
           </div>
-        )}
-
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a 
-            href="#artikelen" 
-            class="inline-flex items-center px-8 py-4 bg-white text-black font-medium rounded-2xl hover:bg-gray-200 transition-colors duration-200"
-          >
-            <span>Ontdek artikelen</span>
-            <ArrowRight class="w-4 h-4 ml-2" />
-          </a>
-          <a 
-            href="/contact" 
-            class="inline-flex items-center px-8 py-4 border border-gray-600 text-white font-medium rounded-2xl hover:border-gray-400 hover:bg-gray-800 transition-all duration-200"
-          >
-            Plan strategy sessie
-          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- Key Topics Overview -->
-    <section class="py-20 px-6 bg-gray-900/50">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-12 text-white">
-          Wat je leert
-        </h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {pillar.data.coreExplanation.map((item, index) => (
-            <div class="bg-gray-800/50 p-8 rounded-3xl border border-gray-700">
-              <h3 class="text-lg font-medium mb-3 text-white">
-                {item.title}
-              </h3>
-              <p class="text-gray-300 leading-relaxed">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
 
-    <!-- Subclusters / Thematic Sections -->
-    <section class="py-20 px-6">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4 text-white">
-          Expertise Clusters
-        </h2>
-        <p class="text-lg text-gray-300 mb-12 font-light">
-          Ontdek de verschillende aspecten van {pillar.data.title.toLowerCase()} in georganiseerde thema's
-        </p>
+    <!-- Featured Content Section -->
+    <section class="pb-8 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex flex-col lg:flex-row gap-6 sm:gap-8 mb-8">
           
-          <!-- Strategie & Planning Cluster -->
-          <div class="group">
-            <div class="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 hover:border-gray-600 hover:bg-gray-700/50 transition-all duration-300">
-              <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors duration-300">
-                <span class="text-blue-600 text-xl">🎯</span>
-              </div>
-              
-              <h3 class="text-xl font-medium mb-3 text-white">
-                Strategie & Planning
-              </h3>
-              
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Fundamenten, roadmaps en strategische frameworks voor succesvolle implementatie.
-              </p>
-              
-              <div class="space-y-2">
-                {pillarArtikelen
-                  .filter(artikel => artikel.data.tags.some(tag => ['strategie', 'planning', 'roadmap', 'framework'].includes(tag.toLowerCase())))
-                  .slice(0, 3)
-                  .map((artikel) => (
-                    <a href={`/kenniscentrum/${artikel.slug}`} class="block text-sm text-gray-500 hover:text-black transition-colors duration-200 py-1">
-                      • {artikel.data.title}
-                    </a>
-                  ))
-                }
-                {pillarArtikelen.filter(artikel => artikel.data.tags.some(tag => ['strategie', 'planning', 'roadmap', 'framework'].includes(tag.toLowerCase()))).length === 0 && (
-                  <span class="text-sm text-gray-400 italic">Binnenkort beschikbaar</span>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <!-- Implementatie & Tools Cluster -->
-          <div class="group">
-            <div class="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 hover:border-gray-600 hover:bg-gray-700/50 transition-all duration-300">
-              <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-100 transition-colors duration-300">
-                <span class="text-purple-600 text-xl">🛠️</span>
-              </div>
-              
-              <h3 class="text-xl font-medium mb-3 text-white">
-                Implementatie & Tools
-              </h3>
-              
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Praktische gidsen, tool vergelijkingen en hands-on implementatie resources.
-              </p>
-              
-              <div class="space-y-2">
-                {pillarArtikelen
-                  .filter(artikel => artikel.data.tags.some(tag => ['implementatie', 'tools', 'how-to', 'praktisch'].includes(tag.toLowerCase())))
-                  .slice(0, 3)
-                  .map((artikel) => (
-                    <a href={`/kenniscentrum/${artikel.slug}`} class="block text-sm text-gray-500 hover:text-black transition-colors duration-200 py-1">
-                      • {artikel.data.title}
-                    </a>
-                  ))
-                }
-                {pillarArtikelen.filter(artikel => artikel.data.tags.some(tag => ['implementatie', 'tools', 'how-to', 'praktisch'].includes(tag.toLowerCase()))).length === 0 && (
-                  <span class="text-sm text-gray-400 italic">Binnenkort beschikbaar</span>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <!-- Case Studies & ROI Cluster -->
-          <div class="group">
-            <div class="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 hover:border-gray-600 hover:bg-gray-700/50 transition-all duration-300">
-              <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-100 transition-colors duration-300">
-                <span class="text-green-600 text-xl">📈</span>
-              </div>
-              
-              <h3 class="text-xl font-medium mb-3 text-white">
-                Cases & ROI
-              </h3>
-              
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Echte resultaten, case studies en ROI berekeningen uit de praktijk.
-              </p>
-              
-              <div class="space-y-2">
-                {pillarArtikelen
-                  .filter(artikel => artikel.data.tags.some(tag => ['case-study', 'roi', 'resultaten', 'succes'].includes(tag.toLowerCase())))
-                  .slice(0, 3)
-                  .map((artikel) => (
-                    <a href={`/kenniscentrum/${artikel.slug}`} class="block text-sm text-gray-500 hover:text-black transition-colors duration-200 py-1">
-                      • {artikel.data.title}
-                    </a>
-                  ))
-                }
-                {pillarArtikelen.filter(artikel => artikel.data.tags.some(tag => ['case-study', 'roi', 'resultaten', 'succes'].includes(tag.toLowerCase()))).length === 0 && (
-                  <span class="text-sm text-gray-400 italic">Binnenkort beschikbaar</span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Articles -->
-    {coreArticles.length > 0 && (
-      <section id="artikelen" class="py-20 px-6">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-12 text-black">
-            Basis Artikelen
-          </h2>
-          
-          <div class="space-y-6">
-            {coreArticles.map((artikel, index) => (
-              <a href={`/kenniscentrum/${artikel.slug}`} class="group block">
-                <article class="flex items-center justify-between py-8 border-b border-gray-100 hover:border-gray-200 transition-colors duration-200">
-                  
-                  <!-- Number -->
-                  <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600 mr-6 flex-shrink-0 group-hover:bg-gray-200 transition-colors duration-200">
-                    {index + 1}
-                  </div>
-                  
-                  <!-- Content -->
-                  <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-2">
-                      <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
-                        {categoryLabels[artikel.data.category]}
-                      </span>
-                      <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
-                        {difficultyLabels[artikel.data.difficulty]}
-                      </span>
-                      <span class="text-sm text-gray-400">
-                        {artikel.data.readingTime || 8} min
-                      </span>
+          <!-- Left: Flagship Article -->
+          <div class="lg:flex-[1.2]">
+            <a href={`/kenniscentrum/${pillar.data.pillarId}`} class="group block transform transition-transform duration-300 hover:scale-[1.02] h-full">
+              <article class="border-0 bg-gradient-to-r from-pink-500/70 to-purple-600/70 p-[1px] rounded-2xl hover:border-gray-700 transition-colors duration-200 h-full">
+                <div class="bg-gradient-to-br from-pink-500/[0.015] via-black to-purple-600/[0.015] rounded-2xl p-6 sm:p-8 h-full relative">
+                  <!-- 50% Shadow Overlay -->
+                  <div class="absolute inset-0 bg-black/50 rounded-2xl z-0"></div>
+                  <div class="relative z-10 flex flex-col justify-between h-full">
+                    <div>
+                      <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3 mb-4 sm:mb-6">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+                            <span class="text-white text-lg">{pillarIcons[pillar.data.pillarId] || '🎯'}</span>
+                          </div>
+                          <span class="text-xs sm:text-sm font-medium text-pink-300 bg-pink-500/10 border border-pink-500/20 px-2 sm:px-3 py-1 rounded-full">Featured</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
+                          <span>•</span>
+                          <span>8 min read</span>
+                        </div>
+                      </div>
+                      
+                      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3 sm:mb-4 text-white group-hover:text-gray-200 transition-colors">
+                        Complete {pillar.data.title} Gids: Van Strategie tot Implementatie
+                      </h2>
+                      
+                      <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6 line-clamp-3 sm:line-clamp-none">
+                        {pillar.data.description}
+                      </p>
                     </div>
                     
-                    <h3 class="text-lg font-medium mb-2 text-black group-hover:text-gray-600 transition-colors duration-200">
-                      {artikel.data.title}
-                    </h3>
-                    
-                    <p class="text-gray-600 leading-relaxed line-clamp-2">
-                      {artikel.data.description}
-                    </p>
+                    <div>
+                      <div class="flex items-center text-white group-hover:text-gray-300 transition-colors">
+                        <div class="flex items-center">
+                          <span class="text-xs sm:text-sm font-medium mr-2">Lees artikel</span>
+                          <ArrowRight class="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <!-- Arrow -->
-                  <ArrowRight class="w-5 h-5 text-gray-300 group-hover:text-black group-hover:translate-x-1 transition-all duration-200 ml-6 flex-shrink-0" />
-                </article>
-              </a>
-            ))}
+                </div>
+              </article>
+            </a>
           </div>
-        </div>
-      </section>
-    )}
-
-    <!-- Supporting Articles -->
-    {supportingArticles.length > 0 && (
-      <section class="py-20 px-6 bg-gray-50">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-12 text-black">
-            Diepgaande Gidsen
-          </h2>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {supportingArticles.slice(0, 8).map((artikel) => (
-              <a href={`/kenniscentrum/${artikel.slug}`} class="group">
-                <article class="bg-white p-6 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all duration-200 h-full">
-                  
-                  <!-- Meta -->
-                  <div class="flex items-center gap-2 mb-4">
-                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">
-                      {categoryLabels[artikel.data.category]}
-                    </span>
-                    <span class="text-xs text-gray-400">
-                      {artikel.data.readingTime || 8} min
-                    </span>
-                  </div>
-                  
-                  <!-- Title -->
-                  <h3 class="font-medium mb-3 text-black group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
-                    {artikel.data.title}
-                  </h3>
-                  
-                  <!-- Description -->
-                  <p class="text-sm text-gray-600 line-clamp-3 leading-relaxed mb-4">
-                    {artikel.data.description}
-                  </p>
-                  
-                  <!-- CTA -->
-                  <div class="flex items-center text-sm text-black group-hover:text-gray-600 transition-colors duration-200">
-                    <span>Lees meer</span>
-                    <ArrowRight class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
+          <!-- Right: Recent Articles Grid -->
+          <div class="lg:flex-[0.8]">
+            <div class="flex flex-col gap-4 h-full">
+              
+              <!-- Article 1 -->
+              <a href={pillarArtikelen[0] ? `/kenniscentrum/${pillarArtikelen[0].slug}` : '#'} class="group block transform transition-transform duration-300 hover:scale-[1.02] flex-1">
+                <article class="border-0 bg-gradient-to-r from-pink-500/70 to-purple-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full">
+                  <div class="bg-gradient-to-br from-pink-500/[0.015] via-black to-purple-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative">
+                    <!-- Shadow Overlay -->
+                    <div class="absolute inset-0 bg-black/80 rounded-lg z-0"></div>
+                    
+                    <div class="relative z-10 flex-1 flex flex-col">
+                      <!-- Icon -->
+                      <div class="flex items-center justify-end mb-2 sm:mb-3">
+                        <div class="w-5 h-5 sm:w-6 sm:h-6 rounded border border-gray-700 flex items-center justify-center">
+                          <span class="text-xs text-gray-400">{pillarIcons[pillar.data.pillarId] || '🎯'}</span>
+                        </div>
+                      </div>
+
+                      <!-- Content -->
+                      <h3 class="text-sm sm:text-base font-semibold mb-2 text-white group-hover:text-gray-200 transition-colors leading-tight flex-1">
+                        {pillarArtikelen[0] ? pillarArtikelen[0].data.title : `${pillar.data.title} Trends & Strategieën`}
+                      </h3>
+
+                      <!-- Read More -->
+                      <div class="flex items-center text-gray-400 group-hover:text-white transition-colors mt-auto">
+                        <span class="text-xs font-medium">Lees meer</span>
+                        <ArrowRight class="w-3 h-3 ml-1" />
+                      </div>
+                    </div>
                   </div>
                 </article>
               </a>
-            ))}
-          </div>
 
-          {supportingArticles.length > 8 && (
-            <div class="text-center mt-12">
-              <a href={`/kenniscentrum/pillar/${pillar.data.pillarId}/all`} class="inline-flex items-center text-black hover:text-gray-600 transition-colors duration-200 font-medium">
-                <span>Bekijk alle {supportingArticles.length} artikelen</span>
-                <ArrowRight class="w-4 h-4 ml-1" />
+              <!-- Article 2 -->
+              <a href={pillarArtikelen[1] ? `/kenniscentrum/${pillarArtikelen[1].slug}` : '#'} class="group block transform transition-transform duration-300 hover:scale-[1.02] flex-1">
+                <article class="border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full">
+                  <div class="bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative">
+                    <!-- Shadow Overlay -->
+                    <div class="absolute inset-0 bg-black/80 rounded-lg z-0"></div>
+                    
+                    <div class="relative z-10 flex-1 flex flex-col">
+                      <!-- Icon -->
+                      <div class="flex items-center justify-end mb-2 sm:mb-3">
+                        <div class="w-5 h-5 sm:w-6 sm:h-6 rounded border border-gray-700 flex items-center justify-center">
+                          <span class="text-xs text-gray-400">{pillarIcons[pillar.data.pillarId] || '🎯'}</span>
+                        </div>
+                      </div>
+
+                      <!-- Content -->
+                      <h3 class="text-sm sm:text-base font-semibold mb-2 text-white group-hover:text-gray-200 transition-colors leading-tight flex-1">
+                        {pillarArtikelen[1] ? pillarArtikelen[1].data.title : `${pillar.data.title} Implementatie Gids`}
+                      </h3>
+
+                      <!-- Read More -->
+                      <div class="flex items-center text-gray-400 group-hover:text-white transition-colors mt-auto">
+                        <span class="text-xs font-medium">Lees meer</span>
+                        <ArrowRight class="w-3 h-3 ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </article>
               </a>
-            </div>
-          )}
-        </div>
-      </section>
-    )}
 
-    <!-- Long-form Content -->
-    <section class="py-20 px-6">
-      <div class="max-w-4xl mx-auto">
-        <div class="prose prose-lg max-w-none prose-gray">
-          <Content />
+              <!-- Article 3 -->
+              <a href={pillarArtikelen[2] ? `/kenniscentrum/${pillarArtikelen[2].slug}` : '#'} class="group block transform transition-transform duration-300 hover:scale-[1.02] flex-1">
+                <article class="border-0 bg-gradient-to-r from-green-500/70 to-blue-600/70 p-[1px] rounded-lg hover:border-gray-700 transition-colors duration-200 h-full">
+                  <div class="bg-gradient-to-br from-green-500/[0.015] via-black to-blue-600/[0.015] rounded-lg p-3 sm:p-4 h-full flex flex-col justify-between relative">
+                    <!-- Shadow Overlay -->
+                    <div class="absolute inset-0 bg-black/80 rounded-lg z-0"></div>
+                    
+                    <div class="relative z-10 flex-1 flex flex-col">
+                      <!-- Icon -->
+                      <div class="flex items-center justify-end mb-2 sm:mb-3">
+                        <div class="w-5 h-5 sm:w-6 sm:h-6 rounded border border-gray-700 flex items-center justify-center">
+                          <span class="text-xs text-gray-400">{pillarIcons[pillar.data.pillarId] || '🎯'}</span>
+                        </div>
+                      </div>
+
+                      <!-- Content -->
+                      <h3 class="text-sm sm:text-base font-semibold mb-2 text-white group-hover:text-gray-200 transition-colors leading-tight flex-1">
+                        {pillarArtikelen[2] ? pillarArtikelen[2].data.title : `${pillar.data.title} Success Stories`}
+                      </h3>
+
+                      <!-- Read More -->
+                      <div class="flex items-center text-gray-400 group-hover:text-white transition-colors mt-auto">
+                        <span class="text-xs font-medium">Lees meer</span>
+                        <ArrowRight class="w-3 h-3 ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </a>
+
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>
 
-    <!-- Strategy Session CTA -->
-    <section class="py-20 px-6 bg-black text-white">
-      <div class="max-w-4xl mx-auto text-center">
+    <!-- Topics Section - Show related pillars -->
+    <section class="pt-8 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
         
-        <h2 class="text-4xl md:text-5xl font-light tracking-tight mb-6">
-          Ready voor {pillar.data.title}?
+        <!-- Topics Label -->
+        <div class="mb-8 sm:mb-10 text-left">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-white leading-tight">Gerelateerde Expertise Gebieden</h2>
+          <p class="text-lg sm:text-xl text-gray-500">Ontdek meer AI kennisgebieden die aansluiten bij {pillar.data.title}</p>
+        </div>
+
+        <!-- Related Pillars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {['ai-automatisering', 'ai-marketing', 'ai-sales']
+            .filter(id => id !== pillar.data.pillarId)
+            .map((pillarId, index) => {
+              const pillarTitle = pillarId === 'ai-automatisering' ? 'AI Automatisering' : 
+                                 pillarId === 'ai-marketing' ? 'AI Marketing' : 'AI Sales';
+              const pillarDesc = pillarId === 'ai-automatisering' ? 'Automatiseer processen met intelligente workflows' :
+                                pillarId === 'ai-marketing' ? 'Personaliseer marketing met predictive analytics' :
+                                'Accelereer sales met intelligente lead scoring';
+              
+              return (
+                <a href={`/kenniscentrum/${pillarId}`} class="group block transform transition-transform duration-300 hover:scale-[1.02]">
+                  <article class="border border-gray-800 rounded-lg hover:border-gray-700 transition-colors duration-200 h-full">
+                    <div class="p-3 sm:p-4 h-full flex flex-col justify-between">
+                      <div class="relative z-10 h-full flex flex-col">
+                        <!-- Icon -->
+                        <div class="flex items-center justify-end mb-2 sm:mb-3">
+                          <div class="w-5 h-5 sm:w-6 sm:h-6 rounded border border-gray-700 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">{pillarIcons[pillarId] || '🎯'}</span>
+                          </div>
+                        </div>
+
+                        <!-- Content -->
+                        <h3 class="text-base sm:text-lg font-semibold mb-3 text-white group-hover:text-gray-200 transition-colors leading-tight">
+                          {pillarTitle}
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-xs sm:text-sm text-gray-400 mb-4 leading-relaxed flex-1">
+                          {pillarDesc}
+                        </p>
+
+                        <!-- Read More -->
+                        <div class="flex items-center text-gray-400 group-hover:text-white transition-colors mt-auto">
+                          <span class="text-xs font-medium">Ontdek meer</span>
+                          <ArrowRight class="w-3 h-3 ml-1" />
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </a>
+              );
+            })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Showcase -->
+    <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-semibold mb-8 text-white">
+          Alle {pillar.data.title} Artikelen
         </h2>
         
-        <p class="text-lg text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
-          Boek een gratis 60-minuten strategy session en ontdek hoe je {pillar.data.title.toLowerCase()} 
-          strategisch kunt implementeren in jouw organisatie.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a 
-            href="/contact" 
-            class="px-8 py-4 bg-white text-black font-medium rounded-2xl hover:bg-gray-100 transition-colors duration-200"
-          >
-            Plan gratis strategy sessie
-          </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {pillarArtikelen.slice(0, 4).map((artikel) => {
+            const formatDate = (date) => {
+              return new Date(date).toLocaleDateString('nl-NL', {
+                day: 'numeric',
+                month: 'short'
+              });
+            };
+            
+            return (
+              <a href={`/kenniscentrum/${artikel.slug}`} class="group block">
+                <article class="border border-gray-800 rounded-lg p-6 h-full hover:border-gray-700 transition-all duration-700 ease-out group-hover:shadow-xl group-hover:shadow-white/5">
+                  
+                  <!-- Header -->
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs text-gray-500 font-medium px-2 py-1 bg-gray-800/50 rounded">
+                      {artikel.data.pillar.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                    </span>
+                    <span class="text-xs text-gray-500">
+                      {formatDate(artikel.data.publishDate)}
+                    </span>
+                  </div>
+
+                  <!-- Content -->
+                  <h3 class="text-lg font-semibold mb-3 text-white group-hover:text-gray-200 transition-colors duration-700 ease-out leading-tight line-clamp-2">
+                    {artikel.data.title}
+                  </h3>
+
+                  <p class="text-gray-300 text-sm leading-6 mb-4 line-clamp-3 group-hover:text-gray-200 transition-colors duration-700 ease-out">
+                    {artikel.data.description}
+                  </p>
+
+                  <!-- Meta -->
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs text-gray-500 px-2 py-1 bg-gray-800/30 rounded">
+                        {artikel.data.readingTime || 5} min
+                      </span>
+                      <span class="text-xs text-gray-500 px-2 py-1 bg-gray-800/30 rounded">
+                        {artikel.data.difficulty === 'beginner' ? 'Basis' : artikel.data.difficulty === 'intermediate' ? 'Gemiddeld' : 'Geavanceerd'}
+                      </span>
+                    </div>
+                    <ArrowRight class="w-4 h-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-700 ease-out" />
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+
+        <!-- Show all articles link -->
+        <div class="text-center mt-8">
           <a 
             href="/kenniscentrum" 
-            class="px-8 py-4 border border-gray-600 text-white font-medium rounded-2xl hover:border-gray-400 transition-colors duration-200"
+            class="inline-flex items-center px-6 py-3 border border-gray-600 text-white font-medium rounded-xl hover:border-gray-400 hover:bg-gray-800 transition-all duration-200"
           >
-            Terug naar kenniscentrum
+            <span>Bekijk alle artikelen</span>
+            <ArrowRight class="w-4 h-4 ml-2" />
           </a>
         </div>
       </div>
@@ -440,48 +392,3 @@ const pillarIcons = {
 
   </main>
 </Layout>
-
-<style>
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Prose styling for content */
-  .prose h2 {
-    @apply text-2xl font-medium text-black mb-4 mt-8;
-  }
-  
-  .prose h3 {
-    @apply text-xl font-medium text-black mb-3 mt-6;
-  }
-  
-  .prose p {
-    @apply text-gray-600 leading-relaxed mb-4;
-  }
-  
-  .prose ul {
-    @apply text-gray-600 space-y-2 mb-4;
-  }
-  
-  .prose li {
-    @apply leading-relaxed;
-  }
-  
-  .prose strong {
-    @apply text-black font-medium;
-  }
-  
-  .prose a {
-    @apply text-black hover:text-gray-600 transition-colors duration-200;
-  }
-</style>

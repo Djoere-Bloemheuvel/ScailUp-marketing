@@ -49,11 +49,8 @@
           "type": "string",
           "enum": [
             "ai-automatisering",
-            "custom-ai-saas",
-            "ai-consultancy",
-            "autonomous-agents",
-            "ai-marketing-sales",
-            "ai-implementation"
+            "ai-marketing",
+            "ai-sales"
           ]
         },
         "category": {
@@ -66,6 +63,9 @@
             "trends",
             "beginner-guide"
           ]
+        },
+        "cluster": {
+          "type": "string"
         },
         "clusterType": {
           "type": "string",

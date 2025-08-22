@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 interface SEOHeadProps {
   title?: string;
@@ -7,6 +6,7 @@ interface SEOHeadProps {
   keywords?: string;
   ogImage?: string;
   canonical?: string;
+  currentPath?: string;
 }
 
 const SEOHead = ({
@@ -14,10 +14,10 @@ const SEOHead = ({
   description = "Premium AI-oplossingen voor visionairs: Custom AI SaaS, intelligente automatisering en strategische AI-consultancy.",
   keywords = "AI automatisering, Custom AI SaaS, AI consultancy, Autonomous AI Agents, AI engineering",
   ogImage = "https://lovable.dev/opengraph-image-p98pqg.png",
-  canonical
+  canonical,
+  currentPath = "/"
 }: SEOHeadProps) => {
-  const location = useLocation();
-  const currentUrl = `https://buildrs.ai${location.pathname}`;
+  const currentUrl = `https://buildrs.ai${currentPath}`;
   const canonicalUrl = canonical || currentUrl;
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const SEOHead = ({
     updateTwitterTag('twitter:description', description);
     updateTwitterTag('twitter:image', ogImage);
 
-  }, [title, description, keywords, ogImage, canonicalUrl, currentUrl]);
+  }, [title, description, keywords, ogImage, canonicalUrl, currentUrl, currentPath]);
 
   return null; // This component doesn't render anything visible
 };

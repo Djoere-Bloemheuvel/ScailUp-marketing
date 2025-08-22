@@ -1,0 +1,293 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ScrollHeader from '../../components/ScrollHeader';
+import { ArrowRight } from 'lucide-react';
+
+// Get pillar data
+const allPillars = await getCollection('pillars');
+const pillar = allPillars.find(p => p.data.pillarId === 'ai-automatisering');
+
+// Get clusters for this pillar
+const allClusters = await getCollection('clusters');
+const pillarClusters = allClusters
+  .filter(cluster => cluster.data.pillar === 'ai-automatisering')
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Get articles for this pillar
+const allArtikelen = await getCollection('artikelen');
+const pillarArtikelen = allArtikelen
+  .filter(artikel => artikel.data.pillar === 'ai-automatisering')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const featuredArtikelen = pillarArtikelen.filter(a => a.data.featured).slice(0, 3);
+---
+
+<Layout 
+  title="AI Automatisering | Complete Implementatiegids | Buildrs.AI"
+  description="Transformeer je bedrijfsprocessen met AI automatisering. Van strategie tot implementatie - complete gids voor 40-60% kostenbesparingen."
+  keywords="AI automatisering, workflow automatisering, business process automation, AI implementatie"
+>
+  <ScrollHeader client:load />
+
+  <main class="bg-black text-white min-h-screen">
+    
+    <!-- Hero Section -->
+    <section class="pt-32 sm:pt-40 pb-16 sm:pb-20 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto text-center">
+        
+        <!-- Breadcrumb -->
+        <div class="flex items-center justify-center text-sm text-gray-400 mb-8 font-medium">
+          <a href="/kenniscentrum" class="hover:text-white transition-colors duration-200">Kenniscentrum</a>
+          <ArrowRight class="w-4 h-4 mx-2" />
+          <span>AI Automatisering</span>
+        </div>
+        
+        <!-- Title -->
+        <div class="mb-8 sm:mb-12">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+              <span class="text-white text-2xl sm:text-3xl">⚡</span>
+            </div>
+            <span class="text-sm sm:text-base font-medium text-blue-300 bg-blue-500/10 border border-blue-500/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+              AI Automatisering
+            </span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 text-white tracking-tight leading-tight">
+            Van handmatige processen naar <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">intelligente workflows</span>
+          </h1>
+          
+          <p class="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Complete gids voor AI-gedreven automatisering: strategie, implementatie en ROI maximalisatie voor moderne bedrijven.
+          </p>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="#content" 
+            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-2xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            <span>Start met leren</span>
+            <ArrowRight class="w-5 h-5 ml-2" />
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center px-8 py-4 border border-gray-600 text-white font-medium rounded-2xl hover:border-gray-400 hover:bg-gray-800 transition-all duration-200"
+          >
+            Plan strategy sessie
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section id="content" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white text-center">
+          Waarom AI Automatisering?
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-400 text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+          Bedrijven die nu investeren in AI automatisering bouwen 2-3 jaar concurrentievoordeel op
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-2xl">
+            <div class="bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-2xl p-8 h-full relative">
+              <div class="absolute inset-0 bg-black/50 rounded-2xl"></div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-6">
+                  <span class="text-white text-xl">💰</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-white">
+                  40-60% Kostenbesparingen
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Dramatische verlaging van operationele kosten door intelligente automatisering van repetitieve taken en processen.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-2xl">
+            <div class="bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-2xl p-8 h-full relative">
+              <div class="absolute inset-0 bg-black/50 rounded-2xl"></div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-6">
+                  <span class="text-white text-xl">📈</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-white">
+                  300-500% ROI
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  Gemiddeld return on investment binnen 12 maanden plus dramatische verbetering van employee satisfaction.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-2xl">
+            <div class="bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-2xl p-8 h-full relative">
+              <div class="absolute inset-0 bg-black/50 rounded-2xl"></div>
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-6">
+                  <span class="text-white text-xl">⚙️</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-white">
+                  Naadloze Integratie
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  AI integreert naadloos in bestaande workflows en leert continu bij voor optimale performance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Content -->
+    <section class="py-16 sm:py-20 px-4 sm:px-6 bg-gray-900/30">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-white text-center">
+          Featured AI Automatisering Content
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredArtikelen.map((artikel) => {
+            const formatDate = (date) => {
+              return new Date(date).toLocaleDateString('nl-NL', { 
+                day: 'numeric', 
+                month: 'short' 
+              });
+            };
+            
+            return (
+              <a href={`/kenniscentrum/${artikel.slug}`} class="group block transform transition-transform duration-300 hover:scale-[1.02]">
+                <article class="border-0 bg-gradient-to-r from-blue-500/70 to-purple-600/70 p-[1px] rounded-lg h-full">
+                  <div class="bg-gradient-to-br from-blue-500/[0.015] via-black to-purple-600/[0.015] rounded-lg p-6 h-full relative">
+                    <div class="absolute inset-0 bg-black/80 rounded-lg"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                      
+                      <!-- Header -->
+                      <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs text-blue-300 font-medium px-2 py-1 bg-blue-500/20 rounded">
+                          {artikel.data.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                        </span>
+                        <span class="text-xs text-gray-400">
+                          {formatDate(artikel.data.publishDate)}
+                        </span>
+                      </div>
+
+                      <!-- Content -->
+                      <h3 class="text-lg font-semibold mb-3 text-white group-hover:text-gray-200 transition-colors leading-tight flex-1">
+                        {artikel.data.title}
+                      </h3>
+
+                      <p class="text-gray-300 text-sm leading-6 mb-4 line-clamp-3">
+                        {artikel.data.description}
+                      </p>
+
+                      <!-- Footer -->
+                      <div class="flex items-center justify-between mt-auto">
+                        <div class="flex items-center gap-2">
+                          <span class="text-xs text-gray-400 px-2 py-1 bg-gray-800/30 rounded">
+                            {artikel.data.readingTime || 5} min
+                          </span>
+                          <span class="text-xs text-gray-400 px-2 py-1 bg-gray-800/30 rounded">
+                            {artikel.data.difficulty === 'beginner' ? 'Basis' : artikel.data.difficulty === 'intermediate' ? 'Gemiddeld' : 'Geavanceerd'}
+                          </span>
+                        </div>
+                        <ArrowRight class="w-4 h-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Process -->
+    <section class="py-16 sm:py-20 px-4 sm:px-6 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white text-center">
+          Ons Bewezen Implementatie Framework
+        </h2>
+        <p class="text-lg text-gray-400 text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+          Van concept tot volledig geautomatiseerde workflows in 4 strategische fases
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              step: "01",
+              title: "Process Audit",
+              description: "Complete analyse van huidige workflows en identificatie van automatiseringsopportuniteiten.",
+              icon: "🧠"
+            },
+            {
+              step: "02", 
+              title: "AI Strategy Design",
+              description: "Ontwikkeling van tailored AI automatisering roadmap met ROI projecties en timeline.",
+              icon: "⚙️"
+            },
+            {
+              step: "03",
+              title: "Implementation",
+              description: "Gefaseerde implementatie met continuous testing en optimization voor maximale impact.",
+              icon: "⚡"
+            },
+            {
+              step: "04",
+              title: "Scale & Optimize",
+              description: "Uitbreiding naar andere processen en continue optimization voor sustained growth.",
+              icon: "📈"
+            }
+          ].map((phase, index) => (
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 mb-6">
+                <span class="text-2xl text-white">{phase.icon}</span>
+              </div>
+              <div class="text-sm font-bold text-blue-400 mb-2">{phase.step}</div>
+              <h3 class="text-xl font-semibold mb-4 text-white">{phase.title}</h3>
+              <p class="text-gray-300 leading-relaxed">{phase.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 sm:py-20 px-4 sm:px-6 border-t border-gray-800">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-white">
+          Klaar om je processen te transformeren?
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-400 mb-8 sm:mb-12">
+          Start je AI automatisering journey met een gratis strategy sessie waarin we je grootste automation opportunities identificeren.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contact" 
+            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-2xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            Plan gratis strategy sessie
+            <ArrowRight class="w-5 h-5 ml-2" />
+          </a>
+          <a 
+            href="/kenniscentrum/ai-automatisering" 
+            class="inline-flex items-center px-8 py-4 border border-gray-600 text-white font-medium rounded-2xl hover:border-gray-400 hover:bg-gray-800 transition-all duration-200"
+          >
+            Bekijk alle resources
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>

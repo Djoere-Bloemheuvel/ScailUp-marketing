@@ -7,7 +7,7 @@ interface SearchItem {
   title: string;
   description: string;
   url: string;
-  type: 'artikel' | 'pillar';
+  type: 'artikel' | 'pillar' | 'cluster';
   pillar: string;
   tags?: string[];
 }
@@ -78,7 +78,7 @@ const KenniscentrumSearch: React.FC = () => {
     }
 
     const searchResults = fuse.search(query);
-    const items = searchResults.slice(0, 6).map(result => result.item);
+    const items = searchResults.slice(0, 10).map(result => result.item);
     setResults(items);
     setIsOpen(items.length > 0);
     setSelectedIndex(-1);
@@ -134,7 +134,7 @@ const KenniscentrumSearch: React.FC = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-sm sm:max-w-md mx-auto transform transition-all duration-700 ease-out hover:scale-[1.02]">
+    <div ref={searchRef} className="relative w-full max-w-sm sm:max-w-md mx-auto" style={{zIndex: 1000}}>
       {/* Ambient light glow */}
       <div className="absolute -inset-3 bg-gradient-to-r from-blue-500/40 to-purple-600/40 rounded-2xl blur-xl opacity-75"></div>
       <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-500/60 to-purple-600/60 rounded-xl blur-lg opacity-50"></div>
@@ -159,83 +159,53 @@ const KenniscentrumSearch: React.FC = () => {
 
       {/* Search Results Dropdown */}
       {isOpen && results.length > 0 && (
-        <div className="absolute top-full mt-2 w-full overflow-hidden" style={{zIndex: 9999}}>
-          {/* Ambient glow for dropdown */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/30 to-purple-600/30 rounded-2xl blur-xl opacity-60"></div>
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/40 to-purple-600/40 rounded-xl blur-lg opacity-40"></div>
-          
-          {/* Gradient border wrapper for dropdown */}
-          <div className="relative border-0 bg-gradient-to-r from-blue-500/60 to-purple-600/60 p-[1px] rounded-xl">
-            <div className="bg-gray-900/98 backdrop-blur-2xl rounded-xl shadow-2xl">
-              {results.map((item, index) => {
-                const IconComponent = item.type === 'pillar' 
-                  ? pillarIcons[item.pillar as keyof typeof pillarIcons] || FileText
-                  : FileText;
-                
-                return (
-                  <div
-                    key={`${item.type}-${item.url}`}
-                    onClick={() => handleResultClick(item)}
-                    className={`px-5 py-4 cursor-pointer transition-all duration-300 ease-out border-b border-gray-800/50 last:border-b-0 group ${
-                      index === selectedIndex 
-                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-l-2 border-l-blue-400' 
-                        : 'hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-600/10 hover:scale-[1.01]'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className={`w-10 h-10 border rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 ${
+        <div className="absolute top-full w-full" style={{zIndex: 999999, position: 'absolute'}}>
+          <div className="bg-black border border-gray-800/50 rounded-xl shadow-2xl max-h-80 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-700/50 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border [&::-webkit-scrollbar-thumb]:border-gray-600/30 hover:[&::-webkit-scrollbar-thumb]:bg-gray-600/70">
+                {results.map((item, index) => {
+                  const IconComponent = item.type === 'pillar' 
+                    ? pillarIcons[item.pillar as keyof typeof pillarIcons] || FileText
+                    : FileText;
+                  
+                  return (
+                    <div
+                      key={`${item.type}-${item.url}`}
+                      onClick={() => handleResultClick(item)}
+                      className={`px-4 py-3 cursor-pointer transition-colors duration-150 border-b border-gray-800/30 last:border-b-0 group ${
                         index === selectedIndex 
-                          ? 'bg-gradient-to-r from-blue-500/30 to-purple-600/30 border-blue-400/50' 
-                          : 'bg-gray-800/80 border-gray-700/50 group-hover:bg-gray-700/80 group-hover:border-gray-600/50'
-                      }`}>
-                        <IconComponent className={`w-5 h-5 transition-colors duration-300 ${
-                          index === selectedIndex ? 'text-blue-300' : 'text-gray-400 group-hover:text-gray-300'
-                        }`} />
-                      </div>
-                      
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h4 className={`text-sm font-semibold truncate transition-colors duration-300 ${
+                          ? 'bg-gray-800/50' 
+                          : 'hover:bg-gray-800/30'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <h4 className={`font-medium text-sm mb-1 transition-colors duration-150 ${
                             index === selectedIndex ? 'text-white' : 'text-gray-100 group-hover:text-white'
                           }`}>
                             {item.title}
                           </h4>
-                          <span className={`px-2.5 py-1 text-xs font-medium rounded-full flex-shrink-0 transition-all duration-300 ${
-                            item.type === 'pillar' 
-                              ? index === selectedIndex 
-                                ? 'bg-blue-400/30 text-blue-200 border border-blue-400/30'
-                                : 'bg-blue-500/20 text-blue-300 group-hover:bg-blue-400/25'
-                              : index === selectedIndex
-                                ? 'bg-gray-600/50 text-gray-200 border border-gray-500/30'
-                                : 'bg-gray-700/50 text-gray-300 group-hover:bg-gray-600/50'
+                          
+                          <p className={`text-xs leading-relaxed transition-colors duration-150 line-clamp-2 ${
+                            index === selectedIndex ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300'
                           }`}>
-                            {item.type === 'pillar' ? 'Pillar' : 'Artikel'}
-                          </span>
+                            {item.description}
+                          </p>
                         </div>
                         
-                        <p className={`text-xs line-clamp-2 leading-relaxed transition-colors duration-300 ${
-                          index === selectedIndex ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300'
-                        }`}>
-                          {item.description}
-                        </p>
+                        <div className="flex items-start gap-2 flex-shrink-0 mt-0.5">
+                          <span className={`px-2 py-0.5 text-xs font-medium rounded ${
+                            item.type === 'pillar' 
+                              ? 'bg-blue-500/15 text-blue-300'
+                              : item.type === 'cluster'
+                              ? 'bg-purple-500/15 text-purple-300' 
+                              : 'bg-gray-700/30 text-gray-400'
+                          }`}>
+                            {item.type === 'pillar' ? 'Pillar' : item.type === 'cluster' ? 'Cluster' : 'Artikel'}
+                          </span>
+                        </div>
                       </div>
-                      
-                      <ArrowRight className={`w-5 h-5 flex-shrink-0 mt-1 transition-all duration-300 ${
-                        index === selectedIndex 
-                          ? 'text-blue-400 transform translate-x-1' 
-                          : 'text-gray-500 group-hover:text-gray-400 group-hover:transform group-hover:translate-x-0.5'
-                      }`} />
                     </div>
-                  </div>
-                );
-              })}
-              
-              <div className="px-5 py-3 bg-gradient-to-r from-gray-800/40 to-gray-700/40 border-t border-gray-700/50">
-                <p className="text-xs text-gray-400 text-center font-medium">
-                  Use <span className="text-blue-400">↑↓</span> to navigate, <span className="text-blue-400">Enter</span> to select, <span className="text-blue-400">Esc</span> to close
-                </p>
-              </div>
-            </div>
+                  );
+                })}
           </div>
         </div>
       )}

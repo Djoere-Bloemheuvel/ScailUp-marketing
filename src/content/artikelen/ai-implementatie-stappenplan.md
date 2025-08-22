@@ -3,7 +3,7 @@ title: "AI Implementatie voor MKB: Complete Stappenplan voor Succesvolle Transfo
 description: "Een praktische gids met 7 concrete stappen om AI succesvol te implementeren in je MKB-bedrijf. Van strategie tot realisatie."
 author: "Djoere Bloemheuvel"
 publishDate: 2024-01-08
-pillar: "ai-implementation"
+pillar: "ai-automatisering"
 category: "how-to"
 clusterType: "core"
 difficulty: "intermediate"

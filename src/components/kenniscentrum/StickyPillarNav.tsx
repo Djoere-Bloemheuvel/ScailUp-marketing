@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Zap, Brain, Target, Users, TrendingUp, Rocket } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface PillarNavProps {
   currentPillar?: string;
@@ -14,44 +14,23 @@ const StickyPillarNav = ({ currentPillar }: PillarNavProps) => {
     {
       id: 'ai-automatisering',
       title: 'AI Automatisering',
-      icon: Zap,
+      icon: '⚡',
       color: 'from-blue-500 to-purple-600',
       href: '/kenniscentrum/ai-automatisering'
     },
     {
-      id: 'custom-ai-saas',
-      title: 'Custom AI SaaS',
-      icon: Brain,
-      color: 'from-purple-500 to-pink-600',
-      href: '/kenniscentrum/custom-ai-saas'
+      id: 'ai-marketing',
+      title: 'AI Marketing',
+      icon: '🎯',
+      color: 'from-pink-500 to-purple-600',
+      href: '/kenniscentrum/ai-marketing'
     },
     {
-      id: 'ai-consultancy',
-      title: 'AI Consultancy',
-      icon: Target,
-      color: 'from-cyan-400 to-blue-600',
-      href: '/kenniscentrum/ai-consultancy'
-    },
-    {
-      id: 'autonomous-agents',
-      title: 'Autonomous AI Agents',
-      icon: Users,
-      color: 'from-green-500 to-blue-600',
-      href: '/kenniscentrum/autonomous-agents'
-    },
-    {
-      id: 'ai-marketing-sales',
-      title: 'AI Marketing & Sales',
-      icon: TrendingUp,
-      color: 'from-red-600 to-orange-500',
-      href: '/kenniscentrum/ai-marketing-sales'
-    },
-    {
-      id: 'ai-implementation',
-      title: 'AI Implementation',
-      icon: Rocket,
-      color: 'from-gray-200 via-slate-600 to-gray-800',
-      href: '/kenniscentrum/ai-implementation'
+      id: 'ai-sales',
+      title: 'AI Sales',
+      icon: '📈',
+      color: 'from-red-500 to-orange-500',
+      href: '/kenniscentrum/ai-sales'
     }
   ];
 
@@ -139,7 +118,6 @@ const StickyPillarNav = ({ currentPillar }: PillarNavProps) => {
                   >
                     <div className="space-y-1">
                       {pillars.map((pillar, index) => {
-                        const IconComponent = pillar.icon;
                         const isActive = currentPillar === pillar.id;
                         
                         return (
@@ -164,7 +142,7 @@ const StickyPillarNav = ({ currentPillar }: PillarNavProps) => {
                                 ? `bg-gradient-to-r ${pillar.color}` 
                                 : 'bg-white/10 group-hover:bg-white/20'
                             } transition-all duration-200`}>
-                              <IconComponent className="w-4 h-4 text-white" />
+                              <span className="text-white text-sm">{pillar.icon}</span>
                             </div>
                             
                             {/* Text */}

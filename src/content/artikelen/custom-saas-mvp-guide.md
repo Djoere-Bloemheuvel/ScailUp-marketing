@@ -3,7 +3,7 @@ title: "Van Idee naar MVP: Custom AI SaaS in 8 Weken"
 description: "Ontdek hoe je stap-voor-stap een custom AI SaaS oplossing ontwikkelt. Van concept tot werkende MVP met praktische tips en real-world voorbeelden."
 author: "Djoere Bloemheuvel"
 publishDate: 2024-01-10
-pillar: "custom-ai-saas"
+pillar: "ai-marketing"
 category: "how-to"
 clusterType: "core"
 difficulty: "intermediate"

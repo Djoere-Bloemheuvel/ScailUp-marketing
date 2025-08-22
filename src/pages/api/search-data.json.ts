@@ -4,8 +4,9 @@ import { getCollection } from 'astro:content';
 export const GET: APIRoute = async () => {
   try {
     // Get all content collections
-    const [pillars, artikelen] = await Promise.all([
+    const [pillars, clusters, artikelen] = await Promise.all([
       getCollection('pillars'),
+      getCollection('clusters'),
       getCollection('artikelen')
     ]);
 
@@ -19,6 +20,16 @@ export const GET: APIRoute = async () => {
         type: 'pillar',
         pillar: pillar.data.pillarId,
         tags: pillar.data.seo?.keywords || []
+      })),
+      
+      // Add cluster pages
+      ...clusters.map(cluster => ({
+        title: cluster.data.title,
+        description: cluster.data.description,
+        url: `/kenniscentrum/${cluster.data.pillar}/${cluster.data.clusterId}`,
+        type: 'cluster',
+        pillar: cluster.data.pillar,
+        tags: cluster.data.seo?.keywords || []
       })),
       
       // Add artikel pages
