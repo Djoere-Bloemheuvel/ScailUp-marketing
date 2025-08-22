@@ -11,24 +11,24 @@ const AnimatedHeadline = () => {
     if (animationComplete) return;
 
     const sequence = async () => {
-      // Wacht tot de entrance animatie klaar is (~0.6 seconden)
-      await new Promise(resolve => setTimeout(resolve, 600));
+      // Snellere entrance animatie (~0.4 seconden)
+      await new Promise(resolve => setTimeout(resolve, 400));
 
       // Nu pas starten met de woord cycling animatie
       for (let i = 0; i < words.length; i++) {
         if (i > 0) {
           // Snelle glitch-animatie tussen woorden
           setIsGlitching(true);
-          await new Promise(resolve => setTimeout(resolve, 120));
+          await new Promise(resolve => setTimeout(resolve, 100));
           setIsGlitching(false);
         }
 
         // Toon het nieuwe woord
         setCurrentWordIndex(i);
 
-        // Snellere overgang naar volgende woord (zoals origineel)
+        // Snellere overgang naar volgende woord
         if (i < words.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 300));
+          await new Promise(resolve => setTimeout(resolve, 250));
         }
       }
 
@@ -40,7 +40,7 @@ const AnimatedHeadline = () => {
 
   return (
     <div className="relative px-2 sm:px-4">
-      <h1 className="font-bold tracking-tight leading-[0.85] sm:leading-[0.9] text-center">
+      <h1 className="font-bold tracking-tight leading-[0.85] sm:leading-[0.9] text-center" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
         <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white">
           <span className="block sm:inline">Outbound die{' '}</span>
           <span className="relative inline-block">

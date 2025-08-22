@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { DollarSign, Clock, Target, AlertTriangle, TrendingDown, X } from 'lucide-react';
+import { DollarSign, Clock, Target, AlertTriangle, TrendingDown, X, Mail, Phone, Ban } from 'lucide-react';
 import { useRef } from 'react';
 
 const ProblemsSection = () => {
@@ -8,39 +8,63 @@ const ProblemsSection = () => {
 
   const problems = [
     {
-      icon: DollarSign,
-      title: "€10.000+ per maand weggegooid",
-      description: "Outbound budgets verdwijnen in het niets zonder meetbare resultaten",
+      icon: Ban,
+      title: "De helft verdwijnt in spam",
+      description: (
+        <>
+          53% van je mails komt nooit aan. Niet geopend, niet gelezen. <span className="font-bold text-white">Gewoon weg.</span> Voordat je prospect überhaupt weet dat je bestaat. Elke mail in spam is weggegooid marketingbudget.
+        </>
+      ),
       color: "from-blue-500 to-blue-400"
     },
     {
-      icon: Clock,
-      title: "6+ maanden verspilde tijd",
-      description: "Eindeloos uitproberen van tactieken die niet werken",
+      icon: Mail,
+      title: "99,9% reageert nooit",
+      description: (
+        <>
+          Zelfs als je mail de inbox bereikt, reageert minder dan 1% van je prospects. <span className="font-bold text-white">De rest negeert je.</span> Weken werk voor vrijwel geen leads. Jouw outbound ROI? Praktisch nul.
+        </>
+      ),
+      color: "from-blue-500 to-blue-400"
+    },
+    {
+      icon: Phone,
+      title: "Niemand neemt meer op",
+      description: (
+        <>
+          Bij 9 van de 10 calls wordt je nummer <span className="font-bold text-white">direct weggedrukt</span>. Wat overblijft, wordt geblokkeerd door secretaresses. Cold calling slokt uren op, maar levert niets op.
+        </>
+      ),
       color: "from-blue-500 to-blue-400"
     },
     {
       icon: Target,
-      title: "95% prospects negeren je",
-      description: "Generieke berichten die direct in spam verdwijnen",
+      title: "Personaliseren is onmogelijk",
+      description: (
+        <>
+          Je moet personaliseren om op te vallen. Maar je moet ook opschalen om resultaat te halen. Bulk voelt als spam. Handmatig kost weken. Hoe je het ook doet: <span className="font-bold text-white">je verliest altijd</span>.
+        </>
+      ),
       color: "from-blue-500 to-blue-400"
     },
     {
-      icon: AlertTriangle,
-      title: "Geen kwaliteit leads",
-      description: "Salesteam zit zonder goede prospects om te bellen",
+      icon: Clock,
+      title: "Weken werk voor niets",
+      description: (
+        <>
+          Urenlang scrapen, personaliseren en opvolgen voor een handvol reacties <span className="font-bold text-white">die nergens toe leiden</span>. Je investeert maanden in outbound, maar je omzet groeit niet.
+        </>
+      ),
       color: "from-blue-500 to-blue-400"
     },
     {
-      icon: TrendingDown,
-      title: "Groeidoelen gemist",
-      description: "Maand na maand worden de targets niet gehaald",
-      color: "from-blue-500 to-blue-400"
-    },
-    {
-      icon: X,
-      title: "Geen ROI op marketing",
-      description: "Marketing budget zonder meetbare resultaten of impact",
+      icon: DollarSign,
+      title: "Veel werk. Geen winst.",
+      description: (
+        <>
+          Je boekt eindelijk afspraken na weken outbound werk, maar de helft <span className="font-bold text-white">komt niet opdagen</span>. No-shows en tijdverspillers maken je hele pipeline waardeloos. Al die moeite voor niks.
+        </>
+      ),
       color: "from-blue-500 to-blue-400"
     }
   ];
@@ -129,7 +153,7 @@ const ProblemsSection = () => {
             Uitdagingen
           </h2>
           <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
-            Problemen die we regelmatig tegenkomen bij bedrijven
+            De harde realiteit van outbound waar bijna elk bedrijf tegenaan loopt
           </p>
         </motion.div>
 
@@ -163,11 +187,11 @@ const ProblemsSection = () => {
                   
                   {/* Content */}
                   <div className="flex-1 flex flex-col">
-                    <h3 className="text-lg lg:text-xl font-medium text-white mb-3 tracking-tight leading-tight">
+                    <h3 className="text-lg lg:text-xl font-bold text-white mb-3 tracking-tight leading-tight">
                       {problem.title}
                     </h3>
                     
-                    <p className="text-gray-400 leading-relaxed text-sm lg:text-base flex-1 font-light">
+                    <p className="text-gray-300 leading-relaxed text-sm lg:text-base flex-1 font-light">
                       {problem.description}
                     </p>
                   </div>
