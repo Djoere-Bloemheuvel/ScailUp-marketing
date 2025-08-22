@@ -50,8 +50,15 @@ const Services = () => {
   `;
 
   return (
-    <div className="relative bg-black">
+    <div className="relative bg-black ambient">
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
+      
+      {/* Ambient Background Lights */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="backlight backlight-left bg-scailup-blue"></div>
+        <div className="backlight backlight-right bg-scailup-cyan"></div>
+        <div className="backlight backlight-center bg-scailup-blue opacity-30"></div>
+      </div>
 
       {services.map((service, index) => (
         <ServiceSection

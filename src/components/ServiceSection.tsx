@@ -343,8 +343,8 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
               {/* Strong backlight glow with Framer Motion */}
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-50`}
-                style={{ zIndex: 1 }}
+                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl`}
+                style={{ zIndex: 1, opacity: 0.5 }}
                 animate={{
                   scale: isHovered ? 1.04 : 1,
                 }}
@@ -354,8 +354,8 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 }}
               />
               <motion.div
-                className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-55`}
-                style={{ zIndex: 1 }}
+                className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl`}
+                style={{ zIndex: 1, opacity: 0.55 }}
                 animate={{
                   scale: isHovered ? 1.03 : 1,
                 }}

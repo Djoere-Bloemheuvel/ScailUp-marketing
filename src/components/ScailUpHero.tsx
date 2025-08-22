@@ -99,10 +99,7 @@ const ScailUpHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          Wij bouwen AI-systemen die uw business{' '}
-          <span className="sm:block lg:inline">
-            <span className="font-bold text-white">daadwerkelijk transformeren.</span>
-          </span>
+          Wij bouwen AI-systemen die uw business <span className="font-bold text-white">daadwerkelijk transformeren.</span>
         </motion.p>
         
         {/* CTA Buttons */}
