@@ -65,25 +65,22 @@ const ProblemStatement = () => {
   ];
 
   return (
-    <section className="relative py-32 bg-black overflow-hidden">
+    <section className="relative pt-16 pb-32 bg-black overflow-hidden">
 
       <div className="relative max-w-7xl mx-auto px-8">
         
-        {/* Header */}
+        {/* Apple-style Header */}
         <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-32"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Waarom jouw outbound{' '}
-            <span className="bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">
-              niet werkt
-            </span>
+          <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            Waarom jouw outbound niet werkt
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
             De realiteit van ineffectieve outbound vs. de ScailUp methode
           </p>
         </motion.div>
@@ -245,6 +242,10 @@ const ProblemStatement = () => {
                         whileHover={{ 
                           scale: 1.02,
                           boxShadow: "0 0 25px rgba(59, 130, 246, 0.2)"
+                        }}
+                        transition={{ 
+                          duration: 0.15,
+                          ease: "easeOut"
                         }}
                       >
                         <div className="flex items-center space-x-3">

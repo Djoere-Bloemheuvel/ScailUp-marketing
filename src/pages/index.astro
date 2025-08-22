@@ -6,6 +6,7 @@ import WhyScailUp from '../components/WhyScailUp';
 import Services from '../components/Services';
 import SimpleApproach from '../components/SimpleApproach';
 import SocialProofStrip from '../components/SocialProofStrip';
+import ProblemsSection from '../components/ProblemsSection';
 import ProblemStatement from '../components/ProblemStatement';
 import ScailUpMetrics from '../components/ScailUpMetrics';
 import CasesPreview from '../components/CasesPreview';
@@ -129,8 +130,8 @@ const structuredData = {
     <!-- Approach section (4 kern principes) -->
     <SimpleApproach client:visible />
     
-    <!-- Social proof strip -->
-    <SocialProofStrip client:visible />
+    <!-- Problems section -->
+    <ProblemsSection client:visible />
     
     <!-- Problem statement -->
     <ProblemStatement client:visible />
@@ -143,6 +144,9 @@ const structuredData = {
     
     <!-- Cases preview -->
     <CasesPreview client:visible />
+    
+    <!-- Social proof strip -->
+    <SocialProofStrip client:visible />
     
     <!-- Final CTA -->
     <ScailUpFinalCTA client:visible />

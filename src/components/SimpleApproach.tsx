@@ -42,21 +42,21 @@ const SimpleApproach = () => {
   ];
 
   return (
-    <section className="relative py-32 w-full bg-black overflow-hidden">
+    <section className="relative py-32 pb-16 w-full bg-black overflow-hidden">
       
       <div className="relative max-w-6xl mx-auto px-8">
-        {/* Header */}
+        {/* Apple-style Header */}
         <motion.div 
-          className="text-center mb-24"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-8">
-            Onze <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Werkwijze</span>
+          <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            Onze Werkwijze
           </h2>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
             Zo pakken wij het aan, geen geheimzinnige trucjes, gewoon eerlijk werk dat resultaat oplevert
           </p>
         </motion.div>
