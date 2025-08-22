@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CheckCircle, Target, Zap } from 'lucide-react';
+---
+
+<Layout 
+  title="Over Ons | ScailUp - Done-for-You Outbound Experts"
+  description="Leer het team achter ScailUp kennen. Outbound specialisten die van jouw agenda-vulling hun missie hebben gemaakt."
+>
+  
+  <main class="min-h-screen bg-black text-white">
+    
+    <!-- Hero Section -->
+    <section class="relative py-32 px-4 bg-black ambient">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Over <span class="gradient-text">ScailUp</span>
+        </h1>
+        <p class="text-xl text-scailup-gray max-w-2xl mx-auto leading-relaxed">
+          Wij geloven dat outbound marketing niet moet voelen als spam. Het moet voelen als een relevante, waardevolle conversatie.
+        </p>
+      </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="relative py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          
+          <!-- Vision Text -->
+          <div>
+            <h2 class="text-4xl font-bold text-white mb-8">Onze visie</h2>
+            <div class="space-y-6 text-lg text-scailup-gray leading-relaxed">
+              <p>
+                De meeste outbound-bureaus spammen de markt vol met generieke berichten. 
+                Wij doen het anders. Elk bericht is zorgvuldig afgestemd op de ontvanger, 
+                hun uitdagingen, en hun bedrijfscontext.
+              </p>
+              <p>
+                Het resultaat? Hogere response rates, betere kwaliteit leads, en uiteindelijk 
+                meer omzet voor jouw bedrijf. Outbound dat werkt, zonder dat het aanvoelt als outbound.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Visual Element -->}
+          <div class="glass p-12 text-center">
+            <div class="w-24 h-24 mx-auto mb-8 bg-scailup-gradient rounded-full flex items-center justify-center">
+              <span class="text-4xl font-bold text-white">S</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">ScailUp Team</h3>
+            <p class="text-scailup-gray">
+              Outbound specialisten met 8+ jaar ervaring in B2B lead generation
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="relative py-20 px-4 bg-gradient-to-b from-scailup-black to-black">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            Onze waarden
+          </h2>
+          <p class="text-xl text-scailup-gray max-w-2xl mx-auto">
+            Drie kernprincipes die alles wat we doen sturen.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          <!-- Value 1: Kwaliteit */}
+          <div class="glass p-8 text-center group hover:shadow-scailup-glow transition-all duration-500">
+            <div class="w-16 h-16 mx-auto mb-6 bg-scailup-gradient rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <CheckCircle className="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Kwaliteit over kwantiteit</h3>
+            <p class="text-scailup-gray leading-relaxed">
+              Liever 10 perfecte prospects dan 100 slechte leads. 
+              Elke campagne is zorgvuldig afgestemd op jouw ideale klant.
+            </p>
+          </div>
+
+          <!-- Value 2: Transparantie -->}
+          <div class="glass p-8 text-center group hover:shadow-scailup-glow transition-all duration-500">
+            <div class="w-16 h-16 mx-auto mb-6 bg-scailup-gradient rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Target className="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Totale transparantie</h3>
+            <p class="text-scailup-gray leading-relaxed">
+              Realtime dashboards, wekelijkse rapportages, en directe toegang tot alle data. 
+              Geen black box, wel volledige zichtbaarheid.
+            </p>
+          </div>
+
+          <!-- Value 3: Results */}
+          <div class="glass p-8 text-center group hover:shadow-scailup-glow transition-all duration-500">
+            <div class="w-16 h-16 mx-auto mb-6 bg-scailup-gradient rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Zap className="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Resultaat-gedreven</h3>
+            <p class="text-scailup-gray leading-relaxed">
+              We worden afgerekend op jouw succes. Geen vage metrics, maar harde KPI's: 
+              afspraken, pipeline, en uiteindelijk gesloten deals.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Placeholder Section -->
+    <section class="relative py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-white mb-4">Het team</h2>
+          <p class="text-lg text-scailup-gray">
+            Ervaren specialisten die van jouw succes hun prioriteit maken.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          
+          {/* Team Member Placeholders */}
+          {[1, 2, 3].map((member, index) => (
+            <div class="glass p-8 text-center">
+              <div class="w-20 h-20 mx-auto mb-6 bg-scailup-gradient rounded-full flex items-center justify-center">
+                <span class="text-2xl font-bold text-white">?</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Team Member {member}</h3>
+              <p class="text-scailup-blue mb-3">Functie Titel</p>
+              <p class="text-scailup-gray text-sm">
+                Expertise beschrijving komt hier. 8+ jaar ervaring in outbound marketing en lead generation.
+              </p>
+            </div>
+          ))}
+          
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-24 px-4 bg-scailup-gradient ambient">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Klaar om samen te werken?
+        </h2>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          Leer ons persoonlijk kennen in een strategiegesprek van 30 minuten. 
+          Geen verplichtingen, wel concrete aanbevelingen voor jouw situatie.
+        </p>
+        <a 
+          href="/contact" 
+          class="bg-white hover:bg-gray-100 text-scailup-black px-10 py-5 text-xl font-bold rounded-2xl transition-all duration-300 focus-ring shadow-lg hover:shadow-xl inline-flex items-center group"
+        >
+          Plan een strategiegesprek
+          <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+</Layout>

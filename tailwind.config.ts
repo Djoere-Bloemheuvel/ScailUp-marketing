@@ -110,6 +110,15 @@ export default {
 					'gray-dark': '#0A0A0A',
 					silver: '#C0C0C0',
 					'silver-light': '#E5E5E5'
+				},
+				scailup: {
+					black: '#000000',
+					white: '#FFFFFF',
+					gray: '#CCCCCC',
+					border: '#111111',
+					blue: '#2196F3',
+					cyan: '#21CBF3',
+					glow: 'rgba(33, 203, 243, 0.18)'
 				}
 			},
 			borderRadius: {
@@ -120,6 +129,8 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'scailup-gradient': 'linear-gradient(135deg, #2196F3 0%, #21CBF3 100%)',
+				'scailup-ambient': 'radial-gradient(ellipse at center, rgba(33, 203, 243, 0.05) 0%, rgba(33, 150, 243, 0.02) 50%, transparent 70%)',
 			},
 			fontFamily: {
 				'apple': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -131,6 +142,8 @@ export default {
 			},
 			boxShadow: {
 				'3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 20px 40px -20px rgba(0, 0, 0, 0.3)',
+				'scailup-glow': '0 0 20px rgba(33, 203, 243, 0.18), 0 0 40px rgba(33, 150, 243, 0.08)',
+				'scailup-hover': '0 10px 40px rgba(33, 203, 243, 0.15), 0 4px 20px rgba(33, 150, 243, 0.1)',
 			},
 			keyframes: {
 				'accordion-down': {

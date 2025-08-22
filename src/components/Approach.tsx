@@ -1,10 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import AppleNebulaBackground from './AppleNebulaBackground';
 import AppleTimeline from './AppleTimeline';
-import HorizontalLightFlare from './HorizontalLightFlare';
-import HorizontalLightFlareAnimations from './HorizontalLightFlareAnimations';
 
 const Approach = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,14 +12,13 @@ const Approach = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !isVisible) {
-            // Add a small delay for smooth scroll experience
-            setTimeout(() => setIsVisible(true), 50);
+            setIsVisible(true);
           }
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: '0px 0px -5% 0px'
+        threshold: 0.1,
+        rootMargin: '50px'
       }
     );
 
@@ -36,14 +32,8 @@ const Approach = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 lg:py-28 pb-32 lg:pb-40 px-4 overflow-hidden bg-black"
+      className="relative py-20 px-4 bg-black"
     >
-      {/* Include light flare animations */}
-      <HorizontalLightFlareAnimations />
-
-      {/* Enhanced nebula background */}
-      <AppleNebulaBackground />
-
       {/* Content container */}
       <div className="relative max-w-6xl mx-auto z-10">
         {/* Apple-inspired header with refined typography */}
@@ -177,11 +167,7 @@ const Approach = () => {
         {/* Apple-style vertical timeline with staggered animation */}
         <AppleTimeline isVisible={isVisible} />
 
-        {/* Removed bottom CTA section */}
       </div>
-
-      {/* Horizontal light flare at bottom for section separation */}
-      <HorizontalLightFlare position="bottom" className="-bottom-8" />
     </section>
   );
 };

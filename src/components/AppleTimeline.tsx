@@ -41,8 +41,8 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
       title: "Ownership mentaliteit",
       subtitle: "Jullie succes is ons succes. We bouwen voor jullie alsof het ons eigen bedrijf is.",
       icon: HandHeart,
-      glowColor: "from-purple-500/20 to-violet-400/15", // Custom SaaS purple
-      glowColorHover: "from-purple-500/35 to-violet-400/25",
+      glowColor: "from-blue-500/20 to-blue-400/15", // ScailUp variation - blue to lighter blue (was card 4 color)
+      glowColorHover: "from-blue-500/35 to-blue-400/25",
     },
     {
       id: 3,
@@ -50,8 +50,8 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
       title: "High standards",
       subtitle: "Perfect is het vertrekpunt. We leveren niets wat we zelf niet zouden gebruiken.",
       icon: Target,
-      glowColor: "from-purple-400/20 to-blue-500/15", // Consultancy purple-blue
-      glowColorHover: "from-purple-400/35 to-blue-500/25",
+      glowColor: "from-blue-400/20 to-blue-600/15", // ScailUp variation - light to dark blue
+      glowColorHover: "from-blue-400/35 to-blue-600/25",
     },
     {
       id: 4,
@@ -59,8 +59,8 @@ const AppleTimeline = ({ isVisible }: AppleTimelineProps) => {
       title: "Functionele creativiteit",
       subtitle: "AI zonder creativiteit is kracht zonder richting. Wij sturen die kracht met visie.",
       icon: TrendingUp,
-      glowColor: "from-green-500/20 to-blue-600/15", // Autonomous Agents green-blue
-      glowColorHover: "from-green-500/35 to-blue-600/25",
+      glowColor: "from-blue-600/20 to-blue-500/15", // ScailUp variation - darker blue (was card 2 color)
+      glowColorHover: "from-blue-600/35 to-blue-500/25",
     }
   ];
 

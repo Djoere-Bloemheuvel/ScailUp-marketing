@@ -82,3 +82,12 @@ The app uses React Router with the following routes:
 - Components use premium design patterns with focus on performance and aesthetics
 - The project uses `lovable-tagger` in development for component identification
 - All pages implement lazy loading for optimal bundle splitting
+
+## ScailUp Brand Colors
+
+The standard ScailUp brand colors are:
+- **Primary**: `from-blue-500 to-blue-400` (LinkedIn-style gradient)
+- **Background tint**: `via-blue-900/20` for subtle background coloring
+- **Hero backlights**: `bg-scailup-blue` and `bg-scailup-cyan` (original brand colors)
+
+Use `from-blue-500 to-blue-400` as the default accent color for new components unless specifically requested otherwise.

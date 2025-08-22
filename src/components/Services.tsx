@@ -1,54 +1,43 @@
-import { Brain, Cog, MessageSquare, Users } from 'lucide-react';
+import { Mail, Users, Target } from 'lucide-react';
 import ServiceSection from './ServiceSection';
 
 const Services = () => {
-  // No animations - all sections visible immediately
+  // ScailUp Outbound Agency Services - 3 core services
 
   const services = [
     {
-      id: 'ai-automations',
-      icon: Cog,
-      title: 'AI Automations',
-      subtitle: 'Slim. Snel. Onzichtbaar.',
-      description: 'Onze automatisering werkt in de achtergrond — maar voelt als magie op de voorgrond.',
-      background: 'from-premium-black via-blue-950/20 to-premium-black',
-      accentColor: 'from-blue-500 to-purple-600',
+      id: 'email-campaigns',
+      icon: Mail,
+      title: 'E-mailcampagnes',
+      subtitle: 'Persoonlijk. Relevant. Resultaat.',
+      description: 'AI-gedreven e-mailcampagnes die opvallen tussen de ruis. Elke boodschap op maat.',
+      background: 'from-black via-blue-950/20 to-black',
+      accentColor: 'from-scailup-blue to-scailup-cyan',
       primaryButtonText: 'Meer informatie',
-      secondaryButtonText: 'Lees meer',
-      ariaLabel: 'AI Automatisering services - intelligente workflow automatisering'
+      secondaryButtonText: 'Bekijk cases',
+      ariaLabel: 'E-mailcampagnes - gepersonaliseerde outbound e-mailmarketing'
     },
     {
-      id: 'custom-saas',
-      icon: Brain,
-      title: 'Custom AI SaaS',
-      subtitle: 'Gebouwd voor schaal.',
-      description: 'Custom software met AI als motor. Van prototype tot product.',
-      background: 'from-premium-black via-purple-950/20 to-premium-black',
-      accentColor: 'from-purple-500 to-pink-600',
-      primaryButtonText: 'Meer informatie',
-      secondaryButtonText: 'Lees meer'
-    },
-    {
-      id: 'consultancy',
-      icon: MessageSquare,
-      title: 'Consultancy',
-      subtitle: 'Denken in impact.',
-      description: 'Samen onderzoeken we wat AI écht kan betekenen voor jouw organisatie.',
-      background: 'from-premium-black via-blue-950/20 to-premium-black',
-      accentColor: 'from-cyan-400 to-blue-600',
-      primaryButtonText: 'Meer informatie',
-      secondaryButtonText: 'Lees meer'
-    },
-    {
-      id: 'autonomous-agents',
+      id: 'linkedin-outreach',
       icon: Users,
-      title: 'Autonomous AI Agents',
-      subtitle: 'Altijd alert. Altijd lerend.',
-      description: 'Jouw digitale teamgenoten — geautomatiseerd, contextueel en proactief. Onze agents voeren taken uit, leren van interacties en verbeteren zichzelf.',
-      background: 'from-premium-black via-purple-950/15 to-premium-black',
-      accentColor: 'from-green-500 to-blue-600',
+      title: 'LinkedIn Outreach',
+      subtitle: 'Netwerken die converteren.',
+      description: 'Strategische LinkedIn-campagnes. Bouw relaties die leiden tot afspraken.',
+      background: 'from-black via-blue-900/20 to-black',
+      accentColor: 'from-blue-500 to-blue-400',
       primaryButtonText: 'Meer informatie',
-      secondaryButtonText: 'Bekijk in actie'
+      secondaryButtonText: 'Bekijk cases'
+    },
+    {
+      id: 'account-based-marketing',
+      icon: Target,
+      title: 'Account Based Marketing',
+      subtitle: 'Precies de juiste accounts.',
+      description: 'ABM-campagnes gericht op jouw ideale klanten. Kwaliteit boven kwantiteit.',
+      background: 'from-black via-blue-900/15 to-black',
+      accentColor: 'from-blue-600 to-blue-500',
+      primaryButtonText: 'Meer informatie',
+      secondaryButtonText: 'Bekijk cases'
     }
   ];
 
@@ -61,7 +50,7 @@ const Services = () => {
   `;
 
   return (
-    <div className="relative bg-premium-black">
+    <div className="relative bg-black">
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
 
       {services.map((service, index) => (

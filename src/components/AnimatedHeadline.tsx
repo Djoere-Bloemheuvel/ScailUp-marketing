@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 
 const AnimatedHeadline = () => {
@@ -6,7 +5,7 @@ const AnimatedHeadline = () => {
   const [isGlitching, setIsGlitching] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  const words = ['denkt', 'leert', 'doet', 'bouwt', 'werkt'];
+  const words = ['onderzoekt', 'identificeert', 'personaliseert', 'converteert'];
 
   useEffect(() => {
     if (animationComplete) return;
@@ -15,10 +14,10 @@ const AnimatedHeadline = () => {
       // Wacht tot de entrance animatie klaar is (~0.6 seconden)
       await new Promise(resolve => setTimeout(resolve, 600));
 
-      // Nu pas starten met de oorspronkelijke snelle animatie tussen de woorden
+      // Nu pas starten met de woord cycling animatie
       for (let i = 0; i < words.length; i++) {
         if (i > 0) {
-          // Snellere glitch-animatie
+          // Snelle glitch-animatie tussen woorden
           setIsGlitching(true);
           await new Promise(resolve => setTimeout(resolve, 120));
           setIsGlitching(false);
@@ -27,9 +26,9 @@ const AnimatedHeadline = () => {
         // Toon het nieuwe woord
         setCurrentWordIndex(i);
 
-        // Snellere overgang naar volgende woord
+        // Snellere overgang naar volgende woord (zoals origineel)
         if (i < words.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 180));
+          await new Promise(resolve => setTimeout(resolve, 300));
         }
       }
 
@@ -39,15 +38,11 @@ const AnimatedHeadline = () => {
     sequence();
   }, []);
 
-  // CSS animations moved to index.css to prevent build issues in Astro
-
   return (
-    <div className="relative">
-      {/* CSS animations now imported from index.css - no more dangerouslySetInnerHTML */}
-
-      <h1 className="font-bold tracking-tight leading-[0.9] text-center">
-        <div className="text-6xl md:text-8xl lg:text-9xl text-white">
-          AI die{' '}
+    <div className="relative px-2 sm:px-4">
+      <h1 className="font-bold tracking-tight leading-[0.85] sm:leading-[0.9] text-center">
+        <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white">
+          <span className="block sm:inline">Outbound die{' '}</span>
           <span className="relative inline-block">
             <span
               className={`relative z-20 transition-opacity duration-75 ${

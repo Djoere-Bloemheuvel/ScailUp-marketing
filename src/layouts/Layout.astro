@@ -1,7 +1,7 @@
 ---
 // Import main CSS for styling
 import '../index.css';
-import ScrollHeader from '../components/ScrollHeader';
+import ScailUpHeader from '../components/ScailUpHeader';
 
 export interface Props {
   title: string;
@@ -13,7 +13,7 @@ const { title, description, keywords } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" style="margin: 0 !important; padding: 0 !important; height: 100% !important;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,20 +31,20 @@ const { title, description, keywords } = Astro.props;
   <link rel="preconnect" href="https://res.cloudinary.com" />
 
   <!-- Canonical URL -->
-  <link rel="canonical" href={`https://buildrs.ai${Astro.url.pathname}`} />
+  <link rel="canonical" href={`https://scailup.nl${Astro.url.pathname}`} />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   {description && <meta property="og:description" content={description} />}
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={`https://buildrs.ai${Astro.url.pathname}`} />
-  <meta property="og:image" content="https://buildrs.ai/og-image.jpg" />
+  <meta property="og:url" content={`https://scailup.nl${Astro.url.pathname}`} />
+  <meta property="og:image" content="https://scailup.nl/og-image.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   {description && <meta name="twitter:description" content={description} />}
-  <meta name="twitter:image" content="https://buildrs.ai/og-image.jpg" />
+  <meta name="twitter:image" content="https://scailup.nl/og-image.jpg" />
 
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -319,9 +319,9 @@ const { title, description, keywords } = Astro.props;
     }
   </style>
 </head>
-<body class="min-h-screen bg-black text-white">
-  <!-- Navigation Header - KRITIEK: client:only voor immediate hydration -->
-  <ScrollHeader client:only="react" />
+<body class="min-h-screen bg-black text-white" style="margin: 0 !important; padding: 0 !important; height: 100% !important; position: relative !important; top: 0 !important;">
+  <!-- ScailUp Navigation Header -->
+  <ScailUpHeader client:only="react" />
   
   <slot />
 

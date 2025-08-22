@@ -3,7 +3,7 @@ export const CLOUDINARY_CONFIG = {
   cloudName: 'dlhhmt8wo', // Your Cloudinary cloud name
   // Video public IDs (without file extensions)
   videos: {
-    heroBackground: 'hero-video', // This will be the public ID after upload
+    heroBackground: 'scailup-hero-video', // ScailUp hero video public ID
   }
 };
 

@@ -85,13 +85,13 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           style={{
             background: `radial-gradient(ellipse ${isLeft ? '75% 90%' : '90% 75%'} at center, 
               ${step.id === 1 ? 'rgba(59, 130, 246, 0.8)' :
-                step.id === 2 ? 'rgba(236, 72, 153, 0.8)' :
-                step.id === 3 ? 'rgba(249, 115, 22, 0.8)' :
-                'rgba(20, 184, 166, 0.8)'} 0%, 
+                step.id === 2 ? 'rgba(59, 130, 246, 0.8)' :
+                step.id === 3 ? 'rgba(96, 165, 250, 0.8)' :
+                'rgba(37, 99, 235, 0.8)'} 0%, 
               ${step.id === 1 ? 'rgba(59, 130, 246, 0.4)' :
-                step.id === 2 ? 'rgba(236, 72, 153, 0.4)' :
-                step.id === 3 ? 'rgba(249, 115, 22, 0.4)' :
-                'rgba(20, 184, 166, 0.4)'} 50%, 
+                step.id === 2 ? 'rgba(59, 130, 246, 0.4)' :
+                step.id === 3 ? 'rgba(96, 165, 250, 0.4)' :
+                'rgba(37, 99, 235, 0.4)'} 50%, 
               transparent 75%)`
           }}
         />
@@ -106,9 +106,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           style={{
             background: `radial-gradient(ellipse ${isLeft ? '85% 70%' : '70% 85%'} at center, 
               ${step.id === 1 ? 'rgba(59, 130, 246, 0.7)' :
-                step.id === 2 ? 'rgba(236, 72, 153, 0.7)' :
-                step.id === 3 ? 'rgba(249, 115, 22, 0.7)' :
-                'rgba(20, 184, 166, 0.7)'} 0%, 
+                step.id === 2 ? 'rgba(59, 130, 246, 0.7)' :
+                step.id === 3 ? 'rgba(96, 165, 250, 0.7)' :
+                'rgba(37, 99, 235, 0.7)'} 0%, 
               transparent 60%)`
           }}
         />
@@ -123,9 +123,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
           style={{
             background: `radial-gradient(ellipse ${isLeft ? '90% 75%' : '75% 90%'} at center, 
               ${step.id === 1 ? 'rgba(34, 211, 238, 0.9)' :
-                step.id === 2 ? 'rgba(249, 115, 222, 0.9)' :
-                step.id === 3 ? 'rgba(251, 146, 60, 0.9)' :
-                'rgba(45, 212, 191, 0.9)'} 0%, 
+                step.id === 2 ? 'rgba(34, 211, 238, 0.9)' :
+                step.id === 3 ? 'rgba(37, 99, 235, 0.9)' :
+                'rgba(59, 130, 246, 0.9)'} 0%, 
               transparent 50%)`
           }}
         />
@@ -140,9 +140,9 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
             style={{
               background: `radial-gradient(ellipse ${isLeft ? '65% 85%' : '85% 65%'} at center, 
                 ${step.id === 1 ? 'rgba(59, 130, 246, 0.6)' :
-                  step.id === 2 ? 'rgba(236, 72, 153, 0.6)' :
-                  step.id === 3 ? 'rgba(249, 115, 22, 0.6)' :
-                  'rgba(20, 184, 166, 0.6)'} 0%, 
+                  step.id === 2 ? 'rgba(59, 130, 246, 0.6)' :
+                  step.id === 3 ? 'rgba(96, 165, 250, 0.6)' :
+                  'rgba(37, 99, 235, 0.6)'} 0%, 
                 transparent 70%)`
             }}
           />
@@ -180,10 +180,10 @@ const AppleTimelineCard = ({ step, isLeft }: AppleTimelineCardProps) => {
               }
             `}
             style={{
-              background: step.id === 1 ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(147, 197, 253, 0.06) 50%, rgba(59, 130, 246, 0.04) 100%)' :
-                         step.id === 2 ? 'linear-gradient(135deg, rgba(236, 72, 153, 0.12) 0%, rgba(249, 115, 222, 0.08) 50%, rgba(219, 39, 119, 0.06) 100%)' :
-                         step.id === 3 ? 'linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(251, 146, 60, 0.08) 50%, rgba(234, 88, 12, 0.06) 100%)' :
-                         'linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(45, 212, 191, 0.08) 50%, rgba(13, 148, 136, 0.06) 100%)'
+              background: step.id === 1 ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(34, 211, 238, 0.06) 50%, rgba(59, 130, 246, 0.04) 100%)' :
+                         step.id === 2 ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(34, 211, 238, 0.08) 50%, rgba(59, 130, 246, 0.06) 100%)' :
+                         step.id === 3 ? 'linear-gradient(135deg, rgba(96, 165, 250, 0.12) 0%, rgba(37, 99, 235, 0.08) 50%, rgba(96, 165, 250, 0.06) 100%)' :
+                         'linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(37, 99, 235, 0.06) 100%)'
             }}
           >
 
