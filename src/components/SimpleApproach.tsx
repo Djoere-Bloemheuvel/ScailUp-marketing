@@ -110,29 +110,29 @@ const SimpleApproach = () => {
   ];
 
   return (
-    <section className="relative py-32 pb-32 w-full bg-black overflow-hidden">
+    <section className="relative py-12 sm:py-16 md:py-24 lg:py-32 pb-12 sm:pb-16 md:pb-24 lg:pb-32 w-full bg-black overflow-hidden">
       
-      <div className="relative max-w-6xl mx-auto px-8">
-        {/* Apple-style Header */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+        {/* Apple-style Header - Responsive */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-none px-2" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
             Onze Aanpak
           </h2>
-          <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto px-4 sm:px-0">
             Zo pakken wij het aan, geen geheimzinnige trucjes, gewoon eerlijk werk dat resultaat oplevert
           </p>
         </motion.div>
 
         {/* Timeline Layout - Compact Cards */}
         <div className="relative">
-          {/* Central Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-cyan-400 to-blue-500 opacity-30 hidden lg:block" />
+          {/* Central Timeline Line - Always visible on all screens */}
+          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-cyan-400 to-blue-500 opacity-20 sm:opacity-30" />
           
           {principles.map((principle, index) => {
             const IconComponent = principle.icon;
@@ -141,19 +141,23 @@ const SimpleApproach = () => {
             return (
               <motion.div
                 key={principle.id}
-                className={`relative flex items-center mb-5 lg:mb-7 ${
-                  isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } flex-col`}
+                className={`relative flex items-center mb-4 sm:mb-5 md:mb-6 lg:mb-7 ${
+                  isEven ? 'flex-row' : 'flex-row-reverse'
+                }`}
                 initial={{ opacity: 0, x: isEven ? -60 : 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
               >
-                {/* Card container */}
-                <div className={`group lg:w-2/5 w-full ${isEven ? 'lg:pr-12 pr-8' : 'lg:pl-12 pl-8'} relative`}>
+                {/* Card container - Responsive for all screen sizes */}
+                <div className={`group w-2/5 sm:w-5/12 md:w-2/5 lg:w-2/5 xl:w-5/12 ${
+                  isEven 
+                    ? 'pr-2 sm:pr-4 md:pr-6 lg:pr-8 xl:pr-12' 
+                    : 'pl-2 sm:pl-4 md:pl-6 lg:pl-8 xl:pl-12'
+                } relative`}>
 
                   <motion.div
-                    className="relative border border-white/8 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-white/12 z-10"
+                    className="relative border border-white/8 rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-white/12 z-10"
                     whileHover={{ 
                       scale: 1.015,
                       transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
@@ -162,23 +166,18 @@ const SimpleApproach = () => {
                       background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
                       backdropFilter: 'blur(8px)',
                       boxShadow: `
-                        0 8px 32px -8px rgba(0, 0, 0, 0.4),
+                        0 4px 16px -4px rgba(0, 0, 0, 0.3),
                         0 0 0 1px rgba(255, 255, 255, 0.04),
                         inset 0 1px 0 rgba(255, 255, 255, 0.08),
-                        0 0 30px ${
-                          principle.color.includes('blue-500') && principle.color.includes('blue-400') ? 'rgba(59, 130, 246, 0.4)' :
-                          principle.color.includes('blue-400') && principle.color.includes('blue-300') ? 'rgba(96, 165, 250, 0.4)' :
-                          'rgba(59, 130, 246, 0.4)'
+                        0 0 20px ${
+                          principle.color.includes('blue-500') && principle.color.includes('blue-400') ? 'rgba(59, 130, 246, 0.3)' :
+                          principle.color.includes('blue-400') && principle.color.includes('blue-300') ? 'rgba(96, 165, 250, 0.3)' :
+                          'rgba(59, 130, 246, 0.3)'
                         },
-                        0 0 60px ${
-                          principle.color.includes('blue-500') && principle.color.includes('blue-400') ? 'rgba(59, 130, 246, 0.25)' :
-                          principle.color.includes('blue-400') && principle.color.includes('blue-300') ? 'rgba(96, 165, 250, 0.25)' :
-                          'rgba(59, 130, 246, 0.25)'
-                        },
-                        0 0 90px ${
-                          principle.color.includes('blue-500') && principle.color.includes('blue-400') ? 'rgba(59, 130, 246, 0.15)' :
-                          principle.color.includes('blue-400') && principle.color.includes('blue-300') ? 'rgba(96, 165, 250, 0.15)' :
-                          'rgba(59, 130, 246, 0.15)'
+                        0 0 40px ${
+                          principle.color.includes('blue-500') && principle.color.includes('blue-400') ? 'rgba(59, 130, 246, 0.2)' :
+                          principle.color.includes('blue-400') && principle.color.includes('blue-300') ? 'rgba(96, 165, 250, 0.2)' :
+                          'rgba(59, 130, 246, 0.2)'
                         }
                       `
                     }}
@@ -186,23 +185,23 @@ const SimpleApproach = () => {
                     {/* Subtle top highlight */}
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
                     
-                    {/* Compact content */}
-                    <div className="relative p-5">
-                      {/* Header with icon */}
-                      <div className="flex items-start justify-between mb-3">
+                    {/* Compact content - Responsive padding */}
+                    <div className="relative p-3 sm:p-4 md:p-5 lg:p-6">
+                      {/* Header with icon - Responsive */}
+                      <div className="flex items-start justify-between mb-2 sm:mb-3">
                         <div className="flex-1">
-                          <h3 className="text-xl font-black text-white leading-tight group-hover:text-blue-50 transition-colors duration-300" 
+                          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-white leading-tight group-hover:text-blue-50 transition-colors duration-300" 
                               style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
                             {principle.title}
                           </h3>
                         </div>
-                        <div className="text-right ml-4 flex-shrink-0">
-                          <IconComponent className="w-5 h-5 text-white/40 group-hover:text-white/60 transition-colors duration-300" />
+                        <div className="text-right ml-2 sm:ml-3 md:ml-4 flex-shrink-0">
+                          <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white/40 group-hover:text-white/60 transition-colors duration-300" />
                         </div>
                       </div>
 
-                      {/* Description */}
-                      <p className="text-gray-200 text-base leading-relaxed font-normal mb-3">
+                      {/* Description - Responsive */}
+                      <p className="text-gray-200 text-xs sm:text-sm md:text-base leading-relaxed font-normal mb-2 sm:mb-3">
                         {principle.description}
                       </p>
 
@@ -221,23 +220,19 @@ const SimpleApproach = () => {
                   </motion.div>
                 </div>
 
-                {/* Timeline Node */}
-                <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 items-center justify-center">
+                {/* Timeline Node - Always visible, responsive sizing */}
+                <div className="flex absolute left-1/2 transform -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 items-center justify-center">
                   <motion.div 
-                    className={`w-12 h-12 rounded-full bg-gradient-to-br ${principle.color} flex items-center justify-center border-4 border-black shadow-xl`}
+                    className={`w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br ${principle.color} flex items-center justify-center border-2 sm:border-3 lg:border-4 border-black shadow-xl`}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.3, delay: index * 0.08 + 0.15 }}
                   >
-                    <span className="text-white font-bold text-sm">{principle.id}</span>
+                    <span className="text-white font-bold text-xs sm:text-sm md:text-sm lg:text-sm">{principle.id}</span>
                   </motion.div>
                 </div>
 
-                {/* Mobile Number */}
-                <div className="lg:hidden absolute top-4 right-4 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-600/30 backdrop-blur-sm flex items-center justify-center border border-blue-400/30">
-                  <span className="text-lg font-bold text-blue-200">{principle.id}</span>
-                </div>
               </motion.div>
             );
           })}

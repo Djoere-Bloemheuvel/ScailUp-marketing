@@ -24,74 +24,74 @@ const ScailUpHero = ({ isEmailPage = false }) => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-0 overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-0 overflow-hidden">
       
       {/* Black Background */}
       <div className="absolute inset-0 bg-black" />
       
-      {/* Conditional Backlights */}
+      {/* Conditional Backlights - Fully Responsive */}
       {isEmailPage ? (
-        /* Email-themed backlights - different positioning and colors */
-        <div className="absolute inset-0 overflow-hidden opacity-60">
-          <div className="absolute top-1/4 left-1/2 w-[800px] h-[400px] bg-blue-500 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/4"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-blue-400 rounded-full blur-3xl transform translate-x-1/4"></div>
-          <div className="absolute top-1/2 left-1/4 w-[500px] h-[300px] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-3xl opacity-70"></div>
+        /* Email-themed backlights - responsive sizing */
+        <div className="absolute inset-0 overflow-hidden opacity-50 sm:opacity-60">
+          <div className="absolute top-1/4 left-1/2 w-[300px] h-[150px] sm:w-[400px] sm:h-[200px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] bg-blue-500 rounded-full blur-2xl sm:blur-3xl transform -translate-x-1/2 -translate-y-1/4"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-blue-400 rounded-full blur-2xl sm:blur-3xl transform translate-x-1/4"></div>
+          <div className="absolute top-1/2 left-1/4 w-[200px] h-[120px] sm:w-[300px] sm:h-[180px] md:w-[400px] md:h-[240px] lg:w-[500px] lg:h-[300px] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-2xl sm:blur-3xl opacity-70"></div>
         </div>
       ) : (
-        /* Original backlights for main page */
-        <div className="absolute inset-0 overflow-hidden opacity-60">
-          <div className="backlight backlight-left bg-scailup-blue"></div>
-          <div className="backlight backlight-right bg-scailup-cyan"></div>
-          <div className="backlight backlight-center bg-scailup-blue opacity-30"></div>
+        /* Original backlights for main page - responsive */
+        <div className="absolute inset-0 overflow-hidden opacity-50 sm:opacity-60">
+          <div className="backlight backlight-left bg-scailup-blue w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]"></div>
+          <div className="backlight backlight-right bg-scailup-cyan w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] xl:w-[580px] xl:h-[580px]"></div>
+          <div className="backlight backlight-center bg-scailup-blue opacity-20 sm:opacity-30 w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
         </div>
       )}
       
-      {/* Email-themed ambient lights with different feeling */}
-      <div className="absolute inset-0 opacity-30">
+      {/* Email-themed ambient lights with different feeling - Fully Responsive */}
+      <div className="absolute inset-0 opacity-20 sm:opacity-25 md:opacity-30">
         {isEmailPage ? (
           <>
-            {/* Horizontal streak lights - email flow inspired */}
+            {/* Horizontal streak lights - email flow inspired - Responsive */}
             <div 
-              className="absolute top-1/4 left-0 w-full h-32 bg-gradient-to-r from-transparent via-scailup-blue/20 to-transparent rounded-full blur-3xl" 
+              className="absolute top-1/4 left-0 w-full h-16 sm:h-24 md:h-32 bg-gradient-to-r from-transparent via-scailup-blue/20 to-transparent rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '0s', 
                 animation: 'horizontal-flow 20s ease-in-out infinite, pulse-glow 15s ease-in-out infinite'
               }} 
             />
             <div 
-              className="absolute bottom-1/3 right-0 w-3/4 h-24 bg-gradient-to-l from-transparent via-scailup-cyan/25 to-transparent rounded-full blur-3xl" 
+              className="absolute bottom-1/3 right-0 w-3/4 h-12 sm:h-18 md:h-24 bg-gradient-to-l from-transparent via-scailup-cyan/25 to-transparent rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '7s', 
                 animation: 'horizontal-flow-reverse 18s ease-in-out infinite, pulse-glow 12s ease-in-out infinite reverse'
               }} 
             />
             
-            {/* Email envelope-like rectangular glows */}
+            {/* Email envelope-like rectangular glows - Responsive */}
             <div 
-              className="absolute top-1/2 left-1/4 w-80 h-48 bg-scailup-blue/15 rounded-2xl blur-3xl" 
+              className="absolute top-1/2 left-1/4 w-40 h-24 sm:w-60 sm:h-36 md:w-80 md:h-48 bg-scailup-blue/15 rounded-lg sm:rounded-xl md:rounded-2xl blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '3s', 
                 animation: 'envelope-drift 25s ease-in-out infinite, fade-pulse 14s ease-in-out infinite'
               }} 
             />
             <div 
-              className="absolute bottom-1/4 right-1/3 w-96 h-32 bg-scailup-cyan/20 rounded-xl blur-3xl" 
+              className="absolute bottom-1/4 right-1/3 w-48 h-16 sm:w-72 sm:h-24 md:w-96 md:h-32 bg-scailup-cyan/20 rounded-lg sm:rounded-xl blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '10s', 
                 animation: 'envelope-drift-reverse 22s ease-in-out infinite, fade-pulse 16s ease-in-out infinite'
               }} 
             />
             
-            {/* Small message particle lights */}
+            {/* Small message particle lights - Responsive */}
             <div 
-              className="absolute top-1/3 right-1/4 w-24 h-16 bg-scailup-blue/30 rounded-lg blur-2xl" 
+              className="absolute top-1/3 right-1/4 w-12 h-8 sm:w-18 sm:h-12 md:w-24 md:h-16 bg-scailup-blue/30 rounded-md sm:rounded-lg blur-xl sm:blur-2xl" 
               style={{ 
                 animationDelay: '5s', 
                 animation: 'message-float 30s ease-in-out infinite, quick-pulse 8s ease-in-out infinite'
               }} 
             />
             <div 
-              className="absolute bottom-1/2 left-1/3 w-32 h-20 bg-scailup-cyan/25 rounded-lg blur-2xl" 
+              className="absolute bottom-1/2 left-1/3 w-16 h-10 sm:w-24 sm:h-15 md:w-32 md:h-20 bg-scailup-cyan/25 rounded-md sm:rounded-lg blur-xl sm:blur-2xl" 
               style={{ 
                 animationDelay: '12s', 
                 animation: 'message-float-reverse 28s ease-in-out infinite, quick-pulse 10s ease-in-out infinite'
@@ -100,32 +100,32 @@ const ScailUpHero = ({ isEmailPage = false }) => {
           </>
         ) : (
           <>
-            {/* Original ambient lights for main page */}
+            {/* Original ambient lights for main page - Fully Responsive */}
             <div 
-              className="absolute top-1/4 left-1/4 w-96 h-96 bg-scailup-blue rounded-full blur-3xl" 
+              className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-scailup-blue rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '0s', 
                 animation: 'float-orbit 12s ease-in-out infinite, scale-pulse 8s ease-in-out infinite, wobble 18s ease-in-out infinite, glow-pulse 15s ease-in-out infinite'
               }} 
             />
             <div 
-              className="absolute bottom-1/3 right-1/4 w-[32rem] h-[32rem] bg-scailup-cyan rounded-full blur-3xl" 
+              className="absolute bottom-1/3 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] bg-scailup-cyan rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '3s', 
                 animation: 'float-smooth 14s ease-in-out infinite, scale-pulse 10s ease-in-out infinite, float-orbit 22s ease-in-out infinite reverse, wobble 28s ease-in-out infinite'
               }} 
             />
             <div 
-              className="absolute top-1/2 right-1/2 w-80 h-80 bg-blue-500 rounded-full blur-3xl" 
+              className="absolute top-1/2 right-1/2 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-blue-500 rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '1.5s', 
                 animation: 'wobble 16s ease-in-out infinite, scale-pulse 9s ease-in-out infinite, float-smooth 20s ease-in-out infinite reverse, glow-pulse 25s ease-in-out infinite reverse'
               }} 
             />
             
-            {/* Additional dynamic glow particles */}
+            {/* Additional dynamic glow particles - Responsive */}
             <div 
-              className="absolute top-1/3 right-1/3 w-48 h-48 bg-purple-500/40 rounded-full blur-3xl" 
+              className="absolute top-1/3 right-1/3 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-purple-500/40 rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '6s', 
                 animation: 'float-orbit 24s ease-in-out infinite reverse, scale-pulse 11s ease-in-out infinite, sweep 30s ease-in-out infinite'
@@ -133,7 +133,7 @@ const ScailUpHero = ({ isEmailPage = false }) => {
             />
             
             <div 
-              className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-blue-400/35 rounded-full blur-3xl" 
+              className="absolute bottom-1/4 left-1/3 w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-blue-400/35 rounded-full blur-2xl sm:blur-3xl" 
               style={{ 
                 animationDelay: '8s', 
                 animation: 'wobble 26s ease-in-out infinite, float-smooth 13s ease-in-out infinite, glow-pulse 19s ease-in-out infinite'
@@ -207,33 +207,42 @@ const ScailUpHero = ({ isEmailPage = false }) => {
       />
         
       {/* Hero Content */}
-      <div className="relative w-full max-w-7xl mx-auto text-center z-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative w-full max-w-7xl mx-auto text-center z-20 px-2 sm:px-4 md:px-6 lg:px-8">
         
-        {/* Email Page Split Layout */}
+        {/* Email Page Split Layout - Fully Responsive */}
         {isEmailPage ? (
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
             {/* Left Side - Content */}
             <motion.div
-              className="text-left"
+              className="text-center lg:text-left order-1 lg:order-1"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.72, ease: "easeOut" }}
             >
               
-              {/* Feature-Driven Headline */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-                Alles wat outbound hoort te zijn.<br />
-                <span className="font-bold text-white">In één platform.</span>
+              {/* Feature-Driven Headline - 2 lines mobile, 3 lines desktop */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+                <span className="lg:hidden">
+                  {/* Mobile/Tablet: 2 lines centered */}
+                  Alles wat outbound hoort te zijn.<br />
+                  <span className="font-bold text-white">In één platform.</span>
+                </span>
+                <span className="hidden lg:block">
+                  {/* Desktop split-screen: 3 lines */}
+                  Alles wat outbound<br />
+                  hoort te zijn.<br />
+                  <span className="font-bold text-white">In één platform.</span>
+                </span>
               </h1>
 
-              {/* Product-focused Subtitle */}
-              <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
+              {/* Product-focused Subtitle - Better Responsive */}
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
                 Van data tot deals: schaalbaar, persoonlijk en<br />
                 <span className="font-bold text-white">volledig geautomatiseerd.</span>
               </p>
 
-              {/* CTA Button - Scroll to modules */}
-              <div className="flex items-start">
+              {/* CTA Button - Responsive */}
+              <div className="flex justify-center lg:justify-start">
                 <button
                   onClick={() => {
                     const modulesSection = document.querySelector('#modules-section') || document.querySelector('[data-section="modules"]');
@@ -241,7 +250,7 @@ const ScailUpHero = ({ isEmailPage = false }) => {
                       modulesSection.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="bg-white hover:bg-gray-100 text-black px-8 py-4 text-base font-semibold rounded-full transition-all duration-300 group min-w-[220px]"
+                  className="w-full sm:w-auto bg-white hover:bg-gray-100 text-black px-4 sm:px-5 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 group max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
                 >
                   <span className="flex items-center justify-center">
                     Ontdek de functies
@@ -251,32 +260,33 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               </div>
             </motion.div>
 
-            {/* Right Side - Stats */}
+            {/* Right Side - Stats - Fully Responsive */}
             <motion.div
+              className="order-2 lg:order-2 mt-8 lg:mt-0"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.72, delay: 0.2, ease: "easeOut" }}
             >
-              {/* Platform Proof Points - Uniform Size */}
-              <div className="space-y-3">
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 h-20 flex flex-col justify-center">
-                  <div className="text-2xl font-bold text-white mb-1">500k+</div>
-                  <div className="text-white/80 text-sm font-medium leading-tight">decision makers in database</div>
+              {/* Platform Proof Points - Responsive Scaling */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:space-y-2.5 xl:space-y-3 lg:gap-0 max-w-md mx-auto lg:max-w-none">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
+                  <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">500k+</div>
+                  <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">decision makers in database</div>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 h-20 flex flex-col justify-center">
-                  <div className="text-2xl font-bold text-white mb-1">85%</div>
-                  <div className="text-white/80 text-sm font-medium leading-tight">inbox rate <span className="text-gray-400 text-xs">(geen spam)</span></div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
+                  <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">85%</div>
+                  <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">inbox rate <span className="text-gray-400 text-xs">(geen spam)</span></div>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 h-20 flex flex-col justify-center">
-                  <div className="text-2xl font-bold text-white mb-1">12%</div>
-                  <div className="text-white/80 text-sm font-medium leading-tight">response rate <span className="text-gray-400 text-xs">(boven industry avg.)</span></div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
+                  <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">12%</div>
+                  <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">response rate <span className="text-gray-400 text-xs">(boven industry avg.)</span></div>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 h-20 flex flex-col justify-center">
-                  <div className="text-2xl font-bold text-white mb-1">3%</div>
-                  <div className="text-white/80 text-sm font-medium leading-tight">meeting rate <span className="text-gray-400 text-xs">(direct naar agenda)</span></div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
+                  <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">3%</div>
+                  <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">meeting rate <span className="text-gray-400 text-xs">(direct naar agenda)</span></div>
                 </div>
               </div>
             </motion.div>

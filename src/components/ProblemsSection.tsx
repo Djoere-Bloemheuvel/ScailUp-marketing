@@ -72,7 +72,7 @@ const ProblemsSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 lg:py-32 bg-black overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-black overflow-hidden"
     >
       {/* LinkedIn-colored dynamically animated ambient lights */}
       <div className="absolute inset-0 opacity-30">
@@ -139,26 +139,26 @@ const ProblemsSection = () => {
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-8 z-20">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8 z-20">
         
-        {/* Apple-style Header */}
+        {/* Apple-style Header - Responsive */}
         <motion.div 
-          className="text-center mb-8"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-2 sm:mb-3 md:mb-4 tracking-tight leading-none px-2" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
             De Harde Waarheid
           </h2>
-          <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto px-4 sm:px-0">
             Waarom outbound niet meer werkt zoals vroeger
           </p>
         </motion.div>
 
-        {/* Apple-style Clean Cards - 2x3 Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Apple-style Clean Cards - Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {problems.map((problem, index) => {
             const IconComponent = problem.icon;
             
@@ -175,23 +175,23 @@ const ProblemsSection = () => {
                   ease: [0.16, 1, 0.3, 1]
                 }}
               >
-                {/* Apple-style card */}
-                <div className="relative bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 lg:p-8 h-full flex flex-col transition-all duration-700 hover:bg-blue-500/[0.05] hover:border-blue-400/[0.15]">
+                {/* Apple-style card - Responsive */}
+                <div className="relative bg-white/[0.03] border border-white/[0.08] rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 h-full flex flex-col transition-all duration-700 hover:bg-blue-500/[0.05] hover:border-blue-400/[0.15]">
                   
-                  {/* Icon */}
-                  <div className="mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-blue-400" />
+                  {/* Icon - Responsive */}
+                  <div className="mb-3 sm:mb-4 lg:mb-5">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg sm:rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                      <IconComponent className="w-5 sm:w-6 h-5 sm:h-6 text-blue-400" />
                     </div>
                   </div>
                   
-                  {/* Content */}
+                  {/* Content - Responsive */}
                   <div className="flex-1 flex flex-col">
-                    <h3 className="text-lg lg:text-xl font-bold text-white mb-3 tracking-tight leading-tight">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 sm:mb-3 tracking-tight leading-tight">
                       {problem.title}
                     </h3>
                     
-                    <p className="text-gray-300 leading-relaxed text-sm lg:text-base flex-1 font-light">
+                    <p className="text-gray-300 leading-relaxed text-sm sm:text-base flex-1 font-light">
                       {problem.description}
                     </p>
                   </div>
