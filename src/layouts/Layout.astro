@@ -7,9 +7,11 @@ export interface Props {
   title: string;
   description?: string;
   keywords?: string;
+  showHeaderAlways?: boolean;
+  structuredData?: object;
 }
 
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, showHeaderAlways = false, structuredData } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -45,6 +47,9 @@ const { title, description, keywords } = Astro.props;
   <meta name="twitter:title" content={title} />
   {description && <meta name="twitter:description" content={description} />}
   <meta name="twitter:image" content="https://scailup.nl/og-image.jpg" />
+
+  <!-- Structured Data -->
+  {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>}
 
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -321,7 +326,7 @@ const { title, description, keywords } = Astro.props;
 </head>
 <body class="min-h-screen bg-black text-white" style="margin: 0 !important; padding: 0 !important; height: 100% !important; position: relative !important; top: 0 !important;">
   <!-- ScailUp Navigation Header -->
-  <ScailUpHeader client:only="react" />
+  <ScailUpHeader client:only="react" showAlways={showHeaderAlways} />
   
   <slot />
 

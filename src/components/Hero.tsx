@@ -14,7 +14,7 @@ const Hero = () => {
   const handleDeepDiveClick = () => {
     // Guard for browser environment
     if (typeof window !== 'undefined') {
-      window.location.href = '/contact';
+      window.location.href = '/kenniscentrum';
     }
   };
 

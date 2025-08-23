@@ -3,8 +3,12 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ScailUpHeader = () => {
-  const [isVisible, setIsVisible] = useState(false);
+interface ScailUpHeaderProps {
+  showAlways?: boolean;
+}
+
+const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
+  const [isVisible, setIsVisible] = useState(showAlways);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
@@ -23,7 +27,7 @@ const ScailUpHeader = () => {
         // Simplified scroll handler for header visibility
         const handleScroll = () => {
           const scrollY = mainContainer.scrollTop;
-          const shouldBeVisible = scrollY > 100; // Increased threshold for better UX
+          const shouldBeVisible = showAlways || scrollY > 100; // Show always if prop is true
           setIsVisible(shouldBeVisible);
         };
 
@@ -91,6 +95,39 @@ const ScailUpHeader = () => {
 
   return (
     <>
+      {/* CSS to disable hover effects but preserve glassmorphism */}
+      <style jsx global>{`
+        header,
+        header *,
+        header button {
+          transition: none !important;
+        }
+        
+        header *:hover,
+        header button:hover {
+          background-color: transparent !important;
+          box-shadow: none !important;
+          transform: none !important;
+          filter: none !important;
+          border-color: inherit !important;
+          color: inherit !important;
+          opacity: inherit !important;
+        }
+        
+        /* Preserve glassmorphism but disable hover changes */
+        header {
+          background: rgba(0, 0, 0, 0.3) !important;
+          backdrop-filter: blur(20px) !important;
+          -webkit-backdrop-filter: blur(20px) !important;
+        }
+        
+        header:hover {
+          background: rgba(0, 0, 0, 0.3) !important;
+          backdrop-filter: blur(20px) !important;
+          -webkit-backdrop-filter: blur(20px) !important;
+        }
+      `}</style>
+      
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
@@ -99,10 +136,20 @@ const ScailUpHeader = () => {
           y: isVisible ? 0 : -20 
         }}
         transition={{ duration: 0.1, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-[9999] glass border-b border-scailup-border/20 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[9999] border-b border-scailup-border/20 ${
           isVisible ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
-        style={{ top: 0, margin: 0, padding: 0 }}
+        style={{ 
+          transition: 'none',
+          top: 0, 
+          margin: 0, 
+          padding: 0,
+          pointerEvents: isVisible ? 'auto' : 'none',
+          background: 'rgba(0, 0, 0, 0.3)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.05)'
+        }}
       >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
@@ -110,7 +157,8 @@ const ScailUpHeader = () => {
               {/* Logo */}
               <button
                 onClick={handleLogoClick}
-                className="flex items-center space-x-2 focus-ring rounded-lg px-2 py-1"
+                className="flex items-center space-x-2 rounded-lg px-2 py-1"
+                style={{ transition: 'none', outline: 'none' }}
               >
                 <div className="w-10 h-10 bg-scailup-gradient rounded-xl flex items-center justify-center">
                   <span className="text-xl font-bold text-white">S</span>
@@ -126,11 +174,12 @@ const ScailUpHeader = () => {
                   <button
                     key={item.path}
                     onClick={() => handleNavClick(item)}
-                    className={`px-3 py-2 text-sm font-medium rounded-lg focus-ring ${
+                    className={`px-3 py-2 text-sm font-medium rounded-lg ${
                       isActive(item)
                         ? 'text-scailup-blue bg-scailup-blue/10'
                         : 'text-scailup-gray'
                     }`}
+                    style={{ transition: 'none', outline: 'none' }}
                   >
                     {item.label}
                   </button>
@@ -142,7 +191,8 @@ const ScailUpHeader = () => {
                 {/* Desktop CTA Button */}
                 <Button
                   onClick={handleCTAClick}
-                  className="hidden md:inline-flex bg-scailup-gradient text-white px-6 py-2 text-sm font-semibold rounded-lg focus-ring"
+                  className="hidden md:inline-flex bg-scailup-gradient text-white px-6 py-2 text-sm font-semibold rounded-lg"
+                  style={{ transition: 'none', outline: 'none' }}
                 >
                   Plan gesprek
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -151,7 +201,8 @@ const ScailUpHeader = () => {
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden p-2 text-scailup-gray rounded-lg focus-ring"
+                  className="md:hidden p-2 text-scailup-gray rounded-lg"
+                  style={{ transition: 'none', outline: 'none' }}
                 >
                   {isMobileMenuOpen ? (
                     <X className="w-6 h-6" />
