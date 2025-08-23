@@ -60,7 +60,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
             {/* Typography */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight whitespace-nowrap">
                 {service.title}
               </h2>
 
@@ -79,17 +79,17 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               {isAIAutomations ? (
                 <div className="relative group">
                   {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                   
                   <motion.a
                     href="/ai-automations"
                     className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full  overflow-hidden"
                     whileHover={{
-                      scale: 1.08,
+                      scale: 1.05,
                       transition: {
-                        duration: 1.0,
-                        ease: [0.25, 0.46, 0.45, 0.94]
+                        duration: 1.2,
+                        ease: [0.16, 1, 0.3, 1]
                       }
                     }}
                     whileTap={{
@@ -97,19 +97,19 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                       y: 0
                     }}
                     transition={{
-                      duration: 0.3,
-                      ease: [0.25, 0.46, 0.45, 0.94]
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     style={{
                       filter: "drop-shadow(0 4px 12px rgba(59, 130, 246, 0.2))"
                     }}
                   >
                     {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
                       <div className="w-full h-full rounded-full bg-premium-black" />
                     </div>
                     {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
                       <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
@@ -127,17 +127,17 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : isCustomSaaS ? (
                 <div className="relative group">
                   {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                   
                   <motion.a
                     href="/custom-ai-saas"
                     className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
                     whileHover={{
-                      scale: 1.08,
+                      scale: 1.05,
                       transition: {
-                        duration: 1.0,
-                        ease: [0.25, 0.46, 0.45, 0.94]
+                        duration: 1.2,
+                        ease: [0.16, 1, 0.3, 1]
                       }
                     }}
                     whileTap={{
@@ -145,19 +145,19 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                       y: 0
                     }}
                     transition={{
-                      duration: 0.3,
-                      ease: [0.25, 0.46, 0.45, 0.94]
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     style={{
                       filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
                     }}
                   >
                     {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
                       <div className="w-full h-full rounded-full bg-premium-black" />
                     </div>
                     {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
                       <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
@@ -175,17 +175,17 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : isConsultancy ? (
                 <div className="relative group">
                   {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                   
                   <motion.a
                     href="/consultancy"
                     className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
                     whileHover={{
-                      scale: 1.08,
+                      scale: 1.05,
                       transition: {
-                        duration: 1.0,
-                        ease: [0.25, 0.46, 0.45, 0.94]
+                        duration: 1.2,
+                        ease: [0.16, 1, 0.3, 1]
                       }
                     }}
                     whileTap={{
@@ -193,19 +193,19 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                       y: 0
                     }}
                     transition={{
-                      duration: 0.3,
-                      ease: [0.25, 0.46, 0.45, 0.94]
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     style={{
                       filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
                     }}
                   >
                     {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
                       <div className="w-full h-full rounded-full bg-premium-black" />
                     </div>
                     {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
                       <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
@@ -223,17 +223,17 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : isAutonomousAgents ? (
                 <div className="relative group">
                   {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                   
                   <motion.a
                     href="/autonomous-ai-agents"
                     className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
                     whileHover={{
-                      scale: 1.08,
+                      scale: 1.05,
                       transition: {
-                        duration: 1.0,
-                        ease: [0.25, 0.46, 0.45, 0.94]
+                        duration: 1.2,
+                        ease: [0.16, 1, 0.3, 1]
                       }
                     }}
                     whileTap={{
@@ -241,19 +241,19 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                       y: 0
                     }}
                     transition={{
-                      duration: 0.3,
-                      ease: [0.25, 0.46, 0.45, 0.94]
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     style={{
                       filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
                     }}
                   >
                     {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
                       <div className="w-full h-full rounded-full bg-premium-black" />
                     </div>
                     {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
                       <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
@@ -271,16 +271,16 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               ) : (
                 <div className="relative group">
                   {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1000 ease-in-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1000 ease-in-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                   
                   <motion.button 
                     className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full "
                     whileHover={{
-                      scale: 1.08,
+                      scale: 1.05,
                       transition: {
-                        duration: 1.0,
-                        ease: [0.25, 0.46, 0.45, 0.94]
+                        duration: 1.2,
+                        ease: [0.16, 1, 0.3, 1]
                       }
                     }}
                     whileTap={{
@@ -288,19 +288,19 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                       y: 0
                     }}
                     transition={{
-                      duration: 0.3,
-                      ease: [0.25, 0.46, 0.45, 0.94]
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1]
                     }}
                     style={{
                       filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
                     }}
                   >
                     {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-500 ease-out`}>
+                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
                       <div className="w-full h-full rounded-full bg-premium-black" />
                     </div>
                     {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-500`} style={{ animationDuration: '3s' }}>
+                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
                       <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
@@ -387,11 +387,11 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                 ) : (
                   // Regular service visualization with steady glow instead of pulsing
                   <div className="relative w-28 h-28">
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-90 transition-all duration-500 ease-out group-hover:opacity-95 group-hover:shadow-2xl`}>
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-90 transition-all duration-800 ease-out group-hover:opacity-95 group-hover:shadow-2xl`}>
                       <div className="w-full h-full rounded-2xl bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
 
                         {/* Static icon with steady glow instead of pulsing */}
-                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-500 ease-out ease-out group-hover:text-white" style={{
+                        <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-800 ease-out ease-out group-hover:text-white" style={{
                           filter: `drop-shadow(0 0 8px ${service.accentColor.includes('blue') ? '#60a5fa' :
                                                        service.accentColor.includes('purple') ? '#a855f7' :
                                                        service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}40)`
@@ -422,7 +422,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
 
                         {/* Ambient base glow inside icon container */}
-                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-500 ease-out group-hover:opacity-5`} />
+                        <div className={`absolute inset-2 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-10 transition-opacity duration-800 ease-out group-hover:opacity-5`} />
                       </div>
                     </div>
 

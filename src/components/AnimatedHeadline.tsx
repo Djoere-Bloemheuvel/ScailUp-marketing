@@ -11,8 +11,8 @@ const AnimatedHeadline = () => {
     if (animationComplete) return;
 
     const sequence = async () => {
-      // Snellere entrance animatie (~0.4 seconden)
-      await new Promise(resolve => setTimeout(resolve, 400));
+      // Snellere entrance animatie (~0.34 seconden - 15% eerder)
+      await new Promise(resolve => setTimeout(resolve, 340));
 
       // Nu pas starten met de woord cycling animatie
       for (let i = 0; i < words.length; i++) {
@@ -26,9 +26,10 @@ const AnimatedHeadline = () => {
         // Toon het nieuwe woord
         setCurrentWordIndex(i);
 
-        // Snellere overgang naar volgende woord
+        // Snellere overgang naar volgende woord (15% eerder voor converteert)
         if (i < words.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 250));
+          const delay = i === words.length - 2 ? 212 : 250; // 15% korter voor de laatste overgang naar 'converteert'
+          await new Promise(resolve => setTimeout(resolve, delay));
         }
       }
 

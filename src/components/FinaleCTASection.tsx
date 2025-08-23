@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 const FinaleCTASection = () => {
   return (
-    <section className="relative py-32 lg:py-40 bg-black overflow-hidden">
+    <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-20 bg-black overflow-hidden">
       
       {/* Premium ambient lighting */}
       <div className="absolute inset-0 opacity-20">

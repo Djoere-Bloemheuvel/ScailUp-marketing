@@ -6,8 +6,8 @@ const SimpleApproach = () => {
     {
       id: 1,
       icon: Search,
-      title: 'Analyse',
-      description: 'We beginnen met jouw situatie volledig te begrijpen. Wie zijn je ideale klanten en waar hangen ze uit? Wat werkt er al goed in je huidige aanpak? Pas daarna maken we een plan.',
+      title: 'We kennen je markt',
+      description: 'We hebben zelf al 500.000+ decision makers in onze database. Daar beginnen we. Wie is jouw ideale klant? Wij vinden ze meteen.',
       color: 'from-blue-500 to-blue-400',
       cardGradient: 'from-blue-500/70 to-blue-400/70',
       bgGradient: 'from-blue-500/[0.015] via-black to-blue-400/[0.015]'
@@ -15,8 +15,8 @@ const SimpleApproach = () => {
     {
       id: 2,
       icon: Compass,
-      title: 'Strategie',
-      description: 'Nu maken we een plan dat écht bij jou past. Welke boodschap raakt je prospects? Via welk kanaal bereik je ze het best? Maatwerk, geen standaard recepten.',
+      title: 'Personalisatie zonder gedoe',
+      description: 'Iedereen roept dat je persoonlijk moet zijn, maar in bulk voelt dat altijd als spam. Wij maken berichten die wél persoonlijk aanvoelen, terwijl we het voor je opschalen.',
       color: 'from-blue-400 to-blue-300',
       cardGradient: 'from-blue-400/70 to-blue-300/70',
       bgGradient: 'from-blue-400/[0.015] via-black to-blue-300/[0.015]'
@@ -24,8 +24,8 @@ const SimpleApproach = () => {
     {
       id: 3,
       icon: Settings,
-      title: 'Uitvoering',
-      description: 'Time to go live! Je campagnes draaien, prospects krijgen persoonlijke berichten, en wij houden alles scherp in de gaten. Jij ziet de leads binnenkomen.',
+      title: 'Meer dan één kanaal',
+      description: 'Soms reageert iemand niet op e-mail, maar wel op LinkedIn. Of andersom. Daarom zetten we meerdere kanalen slim in, zodat je boodschap altijd aankomt.',
       color: 'from-blue-400 to-blue-300',
       cardGradient: 'from-blue-400/70 to-blue-300/70',
       bgGradient: 'from-blue-400/[0.015] via-black to-blue-300/[0.015]'
@@ -33,8 +33,8 @@ const SimpleApproach = () => {
     {
       id: 4,
       icon: TrendingUp,
-      title: 'Optimalisatie & Groei',
-      description: 'We stoppen niet bij "het werkt". Elke week kijken we naar de cijfers en maken het nóg beter. Meer leads, hogere conversies, minder kosten. Dat is het doel.',
+      title: 'We blijven bijsturen',
+      description: 'Outbound is nooit "klaar". We kijken elke week naar de resultaten en draaien aan de knoppen. Wat werkt, doen we meer. Wat niet werkt, gooien we eruit.',
       color: 'from-blue-500 to-blue-400',
       cardGradient: 'from-blue-500/70 to-blue-400/70',
       bgGradient: 'from-blue-500/[0.015] via-black to-blue-400/[0.015]'

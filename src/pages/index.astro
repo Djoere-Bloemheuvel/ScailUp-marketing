@@ -1,19 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpHero from '../components/ScailUpHero';
-import ServicesGlassTabs from '../components/ServicesGlassTabs';
-import WhyScailUp from '../components/WhyScailUp';
 import Services from '../components/Services';
 import SimpleApproach from '../components/SimpleApproach';
-import SocialProofStrip from '../components/SocialProofStrip';
 import ProblemsSection from '../components/ProblemsSection';
 import SolutionsSection from '../components/SolutionsSection';
 import TransitionSection from '../components/TransitionSection';
 import FinaleCTASection from '../components/FinaleCTASection';
-import ProblemStatement from '../components/ProblemStatement';
-import ScailUpMetrics from '../components/ScailUpMetrics';
-import CasesPreview from '../components/CasesPreview';
-import ScailUpFinalCTA from '../components/ScailUpFinalCTA';
 
 // ScailUp structured data
 const structuredData = {
@@ -144,24 +137,6 @@ const structuredData = {
     
     <!-- Finale CTA section -->
     <FinaleCTASection client:visible />
-    
-    <!-- Problem statement -->
-    <ProblemStatement client:visible />
-    
-    <!-- Why ScailUp section -->
-    <WhyScailUp client:visible />
-    
-    <!-- Results metrics -->
-    <ScailUpMetrics client:visible />
-    
-    <!-- Cases preview -->
-    <CasesPreview client:visible />
-    
-    <!-- Social proof strip -->
-    <SocialProofStrip client:visible />
-    
-    <!-- Final CTA -->
-    <ScailUpFinalCTA client:visible />
   </main>
 
 </Layout>

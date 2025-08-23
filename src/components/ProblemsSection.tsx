@@ -150,7 +150,7 @@ const ProblemsSection = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="text-5xl lg:text-7xl font-light text-white mb-2 tracking-tight leading-none" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-            De Harde Realiteit
+            De Harde Waarheid
           </h2>
           <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
             Waarom outbound niet meer werkt zoals vroeger

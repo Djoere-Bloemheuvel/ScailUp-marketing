@@ -87,7 +87,7 @@ const ScailUpHero = () => {
           className="mb-4 sm:mb-6 lg:mb-8"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.72, ease: "easeOut" }}
         >
           <AnimatedHeadline />
         </motion.div>
@@ -97,10 +97,10 @@ const ScailUpHero = () => {
           className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/80 mb-8 sm:mb-10 lg:mb-12 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.72, delay: 0.18, ease: "easeOut" }}
         >
-          Wij bouwen AI-systemen die uw business<br />
-          <span className="font-bold text-white">daadwerkelijk transformeren.</span>
+          Wij transformeren jouw outbound met AI die<br />
+          <span className="font-bold text-white">daadwerkelijk meetings boekt.</span>
         </motion.p>
         
         {/* CTA Buttons */}
@@ -108,7 +108,7 @@ const ScailUpHero = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12 lg:mb-16 px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.72, delay: 0.36, ease: "easeOut" }}
         >
           <button
             onClick={handleStrategicTalkClick}

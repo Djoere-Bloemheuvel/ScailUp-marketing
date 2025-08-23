@@ -8,35 +8,35 @@ const Services = () => {
     {
       id: 'email-campaigns',
       icon: Mail,
-      title: 'E-mailcampagnes',
+      title: 'Inbox to Meeting',
       subtitle: 'Persoonlijk. Relevant. Resultaat.',
       description: 'AI-gedreven e-mailcampagnes die opvallen tussen de ruis. Elke boodschap op maat.',
       background: 'from-black via-blue-950/20 to-black',
       accentColor: 'from-scailup-blue to-scailup-cyan',
-      primaryButtonText: 'Meer informatie',
+      primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Bekijk cases',
       ariaLabel: 'E-mailcampagnes - gepersonaliseerde outbound e-mailmarketing'
     },
     {
       id: 'linkedin-outreach',
       icon: Users,
-      title: 'LinkedIn Outreach',
+      title: 'Connect to Client',
       subtitle: 'Netwerken die converteren.',
       description: 'Strategische LinkedIn-campagnes. Bouw relaties die leiden tot afspraken.',
       background: 'from-black via-blue-900/20 to-black',
       accentColor: 'from-blue-500 to-blue-400',
-      primaryButtonText: 'Meer informatie',
+      primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Bekijk cases'
     },
     {
       id: 'account-based-marketing',
       icon: Target,
-      title: 'Account Based Marketing',
+      title: 'Account to Deal',
       subtitle: 'Precies de juiste accounts.',
       description: 'ABM-campagnes gericht op jouw ideale klanten. Kwaliteit boven kwantiteit.',
       background: 'from-black via-blue-900/15 to-black',
       accentColor: 'from-blue-600 to-blue-500',
-      primaryButtonText: 'Meer informatie',
+      primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Bekijk cases'
     }
   ];
