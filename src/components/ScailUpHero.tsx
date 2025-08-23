@@ -220,14 +220,17 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               transition={{ duration: 0.72, ease: "easeOut" }}
             >
               
-              {/* Feature-Driven Headline - 2 lines mobile, 3 lines desktop */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+              {/* Feature-Driven Headline - Optimized for iPhone screens */}
+              <h1 className="font-light text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
                 <span className="lg:hidden">
-                  {/* Mobile/Tablet: 2 lines centered */}
-                  Alles wat outbound hoort te zijn.<br />
-                  <span className="font-bold text-white">In één platform.</span>
+                  {/* Mobile/Tablet: Very small on iPhone, scaling up */}
+                  <span className="text-xl sm:text-3xl md:text-4xl leading-tight">
+                    Alles wat outbound<br className="block sm:hidden" />
+                    <span className="sm:inline"> hoort te zijn.</span>
+                  </span><br />
+                  <span className="font-bold text-white text-xl sm:text-3xl md:text-4xl">In één platform.</span>
                 </span>
-                <span className="hidden lg:block">
+                <span className="hidden lg:block text-6xl xl:text-7xl">
                   {/* Desktop split-screen: 3 lines */}
                   Alles wat outbound<br />
                   hoort te zijn.<br />
