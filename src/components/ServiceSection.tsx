@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ChevronRight, LucideIcon } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 interface Service {
   id: string;
@@ -23,7 +23,6 @@ interface ServiceSectionProps {
 
 const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   // Determine layout order - Autonomous AI Agents should have text on right, visual on left
   const isAutonomousAgents = service.id === 'autonomous-agents';
@@ -322,12 +321,9 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
         {/* Visual Element - Right for normal sections, Left for Autonomous AI Agents */}
         <div className={`relative ${isEven ? 'md:order-1 md:justify-self-start' : 'md:order-2 md:justify-self-end'} flex justify-center`}>
-          <div style={{ isolation: 'isolate' }}>
+          <div className="isolate">
             <motion.div
-              className="group relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72"
-              style={{ isolation: 'isolate' }}
-              onHoverStart={() => setIsHovered(true)}
-              onHoverEnd={() => setIsHovered(false)}
+              className="group relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 isolate"
               whileHover={{
                 scale: 1.08,
                 transition: {
@@ -341,32 +337,16 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
               }}
             >
 
-              {/* Responsive backlight glow with Framer Motion - subtler on mobile */}
+              {/* Responsive backlight glow with optimized hover - subtler on mobile */}
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-xl sm:blur-2xl md:blur-3xl`}
-                style={{ zIndex: 1 }}
-                animate={{
-                  scale: isHovered ? 1.04 : 1,
-                }}
-                transition={{
-                  duration: 0.4, 
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
+                className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-xl sm:blur-2xl md:blur-3xl z-10 group-hover:scale-[1.04] transition-transform duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]`}
               />
               <motion.div
-                className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-lg sm:blur-xl md:blur-2xl opacity-30 sm:opacity-40 md:opacity-55`}
-                style={{ zIndex: 1 }}
-                animate={{
-                  scale: isHovered ? 1.03 : 1,
-                }}
-                transition={{
-                  duration: 0.4, 
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
+                className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-lg sm:blur-xl md:blur-2xl opacity-30 sm:opacity-40 md:opacity-55 z-10 group-hover:scale-[1.03] transition-transform duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]`}
               />
 
               {/* Main device with enhanced glassmorphism */}
-              <div className="relative h-full rounded-2xl xs:rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-12 xs:p-16 sm:p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl" style={{ zIndex: 2, isolation: 'isolate' }}>
+              <div className="relative h-full rounded-2xl xs:rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-12 xs:p-16 sm:p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl z-20 isolate will-change-auto">
 
                 {service.isSpecial ? (
                   // Special animated core for Studio service with steady glow instead of pulsing

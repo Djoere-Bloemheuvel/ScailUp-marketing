@@ -1,4 +1,4 @@
-import { Mail, Users, Target } from 'lucide-react';
+import { Mail, Users, Target, Brain, Send, Globe } from 'lucide-react';
 import ServiceSection from './ServiceSection';
 
 const Services = () => {
@@ -6,38 +6,48 @@ const Services = () => {
 
   const services = [
     {
-      id: 'email-campaigns',
-      icon: Mail,
-      title: 'Inbox to Meeting',
-      subtitle: 'Persoonlijk. Relevant. Resultaat.',
-      description: 'AI-gedreven e-mailcampagnes die opvallen tussen de ruis. Elke boodschap op maat.',
-      background: 'from-black via-blue-950/20 to-black',
-      accentColor: 'from-scailup-blue to-scailup-cyan',
-      primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Bekijk cases',
-      ariaLabel: 'E-mailcampagnes - gepersonaliseerde outbound e-mailmarketing'
-    },
-    {
-      id: 'linkedin-outreach',
-      icon: Users,
-      title: 'Connect to Client',
-      subtitle: 'Netwerken die converteren.',
-      description: 'Strategische LinkedIn-campagnes. Bouw relaties die leiden tot afspraken.',
+      id: 'lead-engine',
+      icon: Send,
+      title: 'Lead Engine',
+      subtitle: 'Elke dag perfecte prospects.',
+      description: 'Hyper-targeting dat alleen jouw ideale klanten identificeert. Geen tijd verspillen aan verkeerde leads.',
       background: 'from-black via-blue-900/20 to-black',
       accentColor: 'from-blue-500 to-blue-400',
       primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Bekijk cases'
+      secondaryButtonText: 'Lees meer'
     },
     {
-      id: 'account-based-marketing',
-      icon: Target,
-      title: 'Account to Deal',
-      subtitle: 'Precies de juiste accounts.',
-      description: 'ABM-campagnes gericht op jouw ideale klanten. Kwaliteit boven kwantiteit.',
-      background: 'from-black via-blue-900/15 to-black',
-      accentColor: 'from-blue-600 to-blue-500',
+      id: 'sales-engine',
+      icon: Users,
+      title: 'Sales Engine',
+      subtitle: 'Prospects worden klanten.',
+      description: 'Geoptimaliseerde sequences die elke prospect naar een deal leiden. Maximale conversie, minimale inspanning.',
+      background: 'from-premium-black via-purple-950/15 to-premium-black',
+      accentColor: 'from-green-500 to-blue-600',
       primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Bekijk cases'
+      secondaryButtonText: 'Lees meer'
+    },
+    {
+      id: 'marketing-engine',
+      icon: Globe,
+      title: 'Marketing Engine',
+      subtitle: 'Domineer je markt.',
+      description: 'Multi-channel campagnes die je merk onmiskenbaar maken. Van onbekend naar marktleider.',
+      background: 'from-premium-black via-purple-950/20 to-premium-black',
+      accentColor: 'from-purple-500 to-pink-600',
+      primaryButtonText: 'Lees meer',
+      secondaryButtonText: 'Lees meer'
+    },
+    {
+      id: 'agents-automations',
+      icon: Brain,
+      title: 'Agents & Automations',
+      subtitle: 'Automatiseer alles. Schaal oneindig.',
+      description: 'AI-agenten die je complete salesproces overnemen. Van lead-identificatie tot afspraken - volledig geautomatiseerd.',
+      background: 'from-premium-black via-blue-950/20 to-premium-black',
+      accentColor: 'from-blue-500 to-purple-600',
+      primaryButtonText: 'Lees meer',
+      secondaryButtonText: 'Lees meer'
     }
   ];
 
