@@ -38,11 +38,11 @@ const ScailUpHero = ({ isEmailPage = false }) => {
           <div className="absolute top-1/2 left-1/4 w-[200px] h-[120px] sm:w-[300px] sm:h-[180px] md:w-[400px] md:h-[240px] lg:w-[500px] lg:h-[300px] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-2xl sm:blur-3xl opacity-70"></div>
         </div>
       ) : (
-        /* Original backlights for main page - responsive */
-        <div className="absolute inset-0 overflow-hidden opacity-50 sm:opacity-60">
-          <div className="backlight backlight-left bg-scailup-blue w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]"></div>
-          <div className="backlight backlight-right bg-scailup-cyan w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] xl:w-[580px] xl:h-[580px]"></div>
-          <div className="backlight backlight-center bg-scailup-blue opacity-20 sm:opacity-30 w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+        /* Original backlights for main page - mobile meer aanwezig */
+        <div className="absolute inset-0 overflow-hidden opacity-65 sm:opacity-60">
+          <div className="backlight backlight-left bg-scailup-blue w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]"></div>
+          <div className="backlight backlight-right bg-scailup-cyan w-[250px] h-[250px] sm:w-[280px] sm:h-[280px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] xl:w-[580px] xl:h-[580px]"></div>
+          <div className="backlight backlight-center bg-scailup-blue opacity-30 sm:opacity-30 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
         </div>
       )}
       
@@ -297,7 +297,7 @@ const ScailUpHero = ({ isEmailPage = false }) => {
         ) : (
           /* Regular Centered Layout for Main Page */
           <motion.div 
-            className="mb-4 sm:mb-6 lg:mb-8"
+            className="mb-3 xs:mb-4 sm:mb-6 lg:mb-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.72, ease: "easeOut" }}
@@ -310,17 +310,18 @@ const ScailUpHero = ({ isEmailPage = false }) => {
         {!isEmailPage && (
           <>
             <motion.p 
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/80 mb-8 sm:mb-10 lg:mb-12 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-4"
+              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/80 mb-4 xs:mb-5 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 max-w-xs xs:max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-3 xs:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.72, delay: 0.18, ease: "easeOut" }}
             >
-              Wij transformeren jouw outbound met AI die<br />
+              <span className="block sm:inline">Wij transformeren jouw outbound met AI die</span>
+              <span className="sm:hidden"> </span><br className="hidden sm:block" />
               <span className="font-bold text-white">daadwerkelijk meetings boekt.</span>
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12 lg:mb-16 px-4"
+              className="flex flex-col xs:flex-col sm:flex-row items-center justify-center gap-2 xs:gap-3 sm:gap-4 lg:gap-6 mb-6 xs:mb-7 sm:mb-10 lg:mb-14 xl:mb-16 px-3 xs:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.72, delay: 0.36, ease: "easeOut" }}

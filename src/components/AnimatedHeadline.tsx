@@ -43,7 +43,7 @@ const AnimatedHeadline = () => {
     <div className="relative px-2 sm:px-4">
       <h1 className="font-bold tracking-tight leading-[0.85] sm:leading-[0.9] text-center" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
         <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white">
-          <span className="block sm:inline">Outbound die{' '}</span>
+          <span className="whitespace-nowrap xl:whitespace-normal">Outbound die{' '}</span>
           <span className="relative inline-block">
             <span
               className={`relative z-20 transition-opacity duration-75 ${

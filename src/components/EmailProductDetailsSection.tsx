@@ -52,18 +52,18 @@ const EmailProductDetailsSection = () => {
     <div className="relative bg-black" id="diensten">
       {/* Section header */}
       <motion.div
-        className="relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-black"
+        className="relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 flex items-center justify-center px-4 sm:px-6 md:px-8 overflow-hidden bg-black"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
         <div className="relative max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-8"
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white mb-6 sm:mb-8"
               style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
             E-mail Marketing Diensten
           </h2>
-          <p className="text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed">
+          <p className="text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed">
             Complete AI-gedreven e-mailcampagne service van targeting tot meeting booking
           </p>
         </div>
@@ -77,13 +77,13 @@ const EmailProductDetailsSection = () => {
         return (
           <section
             key={service.id}
-            className={`relative py-20 lg:py-28 flex items-center justify-center px-4 overflow-hidden bg-gradient-to-b ${service.background}`}
+            className={`relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 flex items-center justify-center px-4 sm:px-6 md:px-8 overflow-hidden bg-gradient-to-b ${service.background}`}
           >
-            <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-center">
 
               {/* Content */}
               <motion.div 
-                className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
+                className={`space-y-6 sm:space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -91,16 +91,16 @@ const EmailProductDetailsSection = () => {
               >
                 <div>
                   {/* Typography */}
-                  <div className="space-y-6">
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+                  <div className="space-y-4 sm:space-y-6">
+                    <h3 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
                       {service.title}
                     </h3>
 
-                    <h4 className="text-xl md:text-2xl font-light text-premium-silver/90 tracking-wide leading-relaxed">
+                    <h4 className="text-lg xs:text-xl sm:text-xl md:text-2xl font-light text-premium-silver/90 tracking-wide leading-relaxed">
                       {service.subtitle}
                     </h4>
 
-                    <p className="text-base md:text-lg text-premium-silver/70 font-light leading-relaxed max-w-lg tracking-wide">
+                    <p className="text-sm xs:text-base sm:text-base md:text-lg text-premium-silver/70 font-light leading-relaxed max-w-none sm:max-w-lg tracking-wide">
                       {service.description}
                     </p>
                   </div>
@@ -111,14 +111,14 @@ const EmailProductDetailsSection = () => {
                   </div>
 
                   {/* CTA Button */}
-                  <div className="pt-8">
+                  <div className="pt-6 sm:pt-8">
                     <div className="relative group">
                       {/* External glow aura */}
                       <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
                       <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                       
                       <motion.button 
-                        className="group relative inline-flex items-center justify-center px-20 py-4 bg-black text-white font-medium rounded-full"
+                        className="group relative inline-flex items-center justify-center px-8 xs:px-12 sm:px-16 md:px-20 py-3 xs:py-3.5 sm:py-4 bg-black text-white font-medium text-sm xs:text-sm sm:text-base rounded-full"
                         whileHover={{
                           scale: 1.05,
                           transition: {
@@ -148,13 +148,13 @@ const EmailProductDetailsSection = () => {
                             <div className="w-full h-full rounded-full bg-premium-black" />
                           </div>
                         </div>
-                        <span className="relative z-10 text-sm font-medium">Meer informatie</span>
+                        <span className="relative z-10 text-xs xs:text-sm font-medium">Meer informatie</span>
                         <motion.div
                           className="relative z-10 ml-2"
                           animate={{ x: 0 }}
                           transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                         >
-                          <ChevronRight className="w-4 h-4" />
+                          <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4" />
                         </motion.div>
                       </motion.button>
                     </div>
@@ -172,7 +172,7 @@ const EmailProductDetailsSection = () => {
               >
                 <div style={{ isolation: 'isolate' }}>
                   <motion.div
-                    className="group relative w-80 h-80"
+                    className="group relative w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:w-80 md:h-80"
                     style={{ isolation: 'isolate' }}
                     onHoverStart={() => setHoveredService(index)}
                     onHoverEnd={() => setHoveredService(null)}
@@ -217,12 +217,12 @@ const EmailProductDetailsSection = () => {
                     <div className="relative h-full rounded-full bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 backdrop-blur-md p-20 flex items-center justify-center shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-3xl" style={{ zIndex: 2, isolation: 'isolate' }}>
 
                       {/* Round service visualization */}
-                      <div className="relative w-28 h-28">
+                      <div className="relative w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28">
                         <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${service.accentColor} p-0.5 shadow-xl opacity-90 transition-all duration-800 ease-out group-hover:opacity-95 group-hover:shadow-2xl`}>
                           <div className="w-full h-full rounded-full bg-premium-black flex items-center justify-center relative overflow-hidden shadow-inner">
 
                             {/* Static icon with steady glow */}
-                            <service.icon className="w-14 h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-800 ease-out group-hover:text-white" style={{
+                            <service.icon className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 text-white/90 relative z-10 drop-shadow-lg transition-all duration-800 ease-out group-hover:text-white" style={{
                               filter: 'drop-shadow(0 0 8px #60a5fa40)'
                             }} />
 
@@ -253,9 +253,9 @@ const EmailProductDetailsSection = () => {
                         </div>
 
                         {/* Enhanced floating accent elements - ALL ROUND */}
-                        <div className={`absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-to-br ${service.accentColor} opacity-50 shadow-lg transition-all duration-1000 ease-in-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-55`} />
-                        <div className={`absolute -bottom-4 -left-4 w-6 h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-1000 ease-in-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-50`} />
-                        <div className={`absolute top-2 -left-6 w-4 h-4 rounded-full bg-gradient-to-br ${service.accentColor} opacity-60 shadow-md transition-all duration-1000 ease-in-out delay-150 group-hover:-translate-x-0.5 group-hover:opacity-70`} />
+                        <div className={`absolute -top-3 -right-3 xs:-top-4 xs:-right-4 w-6 h-6 xs:w-8 xs:h-8 rounded-full bg-gradient-to-br ${service.accentColor} opacity-50 shadow-lg transition-all duration-1000 ease-in-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-55`} />
+                        <div className={`absolute -bottom-3 -left-3 xs:-bottom-4 xs:-left-4 w-4 h-4 xs:w-6 xs:h-6 rounded-full bg-gradient-to-br ${service.accentColor} opacity-75 shadow-lg transition-all duration-1000 ease-in-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-50`} />
+                        <div className={`absolute top-1 -left-4 xs:top-2 xs:-left-6 w-3 h-3 xs:w-4 xs:h-4 rounded-full bg-gradient-to-br ${service.accentColor} opacity-60 shadow-md transition-all duration-1000 ease-in-out delay-150 group-hover:-translate-x-0.5 group-hover:opacity-70`} />
                       </div>
                     </div>
                   </motion.div>

@@ -151,8 +151,8 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
           border: '1px solid rgba(255, 255, 255, 0.05)'
         }}
       >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="flex items-center justify-between h-14 sm:h-16">
               
               {/* Logo */}
               <button
@@ -160,21 +160,21 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 className="flex items-center space-x-2 rounded-lg px-2 py-1"
                 style={{ transition: 'none', outline: 'none' }}
               >
-                <div className="w-10 h-10 bg-scailup-gradient rounded-xl flex items-center justify-center">
-                  <span className="text-xl font-bold text-white">S</span>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-scailup-gradient rounded-lg sm:rounded-xl flex items-center justify-center">
+                  <span className="text-sm sm:text-xl font-bold text-white">S</span>
                 </div>
-                <span className="text-xl font-bold text-white">
+                <span className="text-lg sm:text-xl font-bold text-white">
                   ScailUp
                 </span>
               </button>
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center space-x-8">
+              <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
                 {navItems.map((item) => (
                   <button
                     key={item.path}
                     onClick={() => handleNavClick(item)}
-                    className={`px-3 py-2 text-sm font-medium rounded-lg ${
+                    className={`px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm font-medium rounded-lg ${
                       isActive(item)
                         ? 'text-scailup-blue bg-scailup-blue/10'
                         : 'text-scailup-gray'
@@ -187,27 +187,28 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               </nav>
 
               {/* Desktop CTA + Mobile Menu Button */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 {/* Desktop CTA Button */}
                 <Button
                   onClick={handleCTAClick}
-                  className="hidden md:inline-flex bg-scailup-gradient text-white px-6 py-2 text-sm font-semibold rounded-lg"
+                  className="hidden md:inline-flex bg-scailup-gradient text-white px-3 py-1.5 md:px-6 md:py-2 text-xs md:text-sm font-semibold rounded-lg"
                   style={{ transition: 'none', outline: 'none' }}
                 >
-                  Plan gesprek
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <span className="hidden lg:inline">Plan gesprek</span>
+                  <span className="lg:hidden">Plan</span>
+                  <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4" />
                 </Button>
 
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden p-2 text-scailup-gray rounded-lg"
+                  className="md:hidden p-1.5 sm:p-2 text-scailup-gray rounded-lg"
                   style={{ transition: 'none', outline: 'none' }}
                 >
                   {isMobileMenuOpen ? (
-                    <X className="w-6 h-6" />
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
                   ) : (
-                    <Menu className="w-6 h-6" />
+                    <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                   )}
                 </button>
               </div>
@@ -239,14 +240,14 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               transition={{ duration: 0.3, ease: 'easeOut' }}
               className="absolute top-0 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-scailup-border"
             >
-              <div className="px-4 pt-20 pb-6">
+              <div className="px-4 pt-16 sm:pt-20 pb-6">
                 {/* Mobile Navigation */}
-                <nav className="space-y-4 mb-8">
+                <nav className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                   {navItems.map((item) => (
                     <button
                       key={item.path}
                       onClick={() => handleNavClick(item)}
-                      className={`block w-full text-left px-4 py-3 rounded-xl focus-ring ${
+                      className={`block w-full text-left px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl focus-ring ${
                         isActive(item)
                           ? 'text-scailup-blue bg-scailup-blue/10 border border-scailup-blue/20'
                           : 'text-scailup-gray'
@@ -260,10 +261,11 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 {/* Mobile CTA Button */}
                 <Button
                   onClick={handleCTAClick}
-                  className="w-full bg-scailup-gradient text-white px-6 py-4 text-lg font-semibold rounded-xl focus-ring"
+                  className="w-full bg-scailup-gradient text-white px-4 py-3 sm:px-6 sm:py-4 text-base sm:text-lg font-semibold rounded-xl focus-ring"
                 >
-                  Plan een strategiegesprek
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <span className="sm:hidden">Plan gesprek</span>
+                  <span className="hidden sm:inline">Plan een strategiegesprek</span>
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </div>
             </motion.div>

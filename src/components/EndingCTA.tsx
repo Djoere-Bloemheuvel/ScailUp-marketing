@@ -38,8 +38,9 @@ const EndingCTA = () => {
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden bg-black flex items-center justify-center py-20"
     >
-      {/* Smooth vertical fade from black at top - 25% height */}
-      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/70 to-transparent z-10" />
+      {/* Enhanced fade to black effects - top and bottom */}
+      <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-black via-black/80 to-transparent z-30 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-black via-black/80 to-transparent z-30 pointer-events-none" />
       
       {/* CinematicBackground - positioned behind main content with glass container hidden */}
       <div className="absolute inset-0 z-5">
