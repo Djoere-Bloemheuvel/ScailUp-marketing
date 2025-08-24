@@ -60,7 +60,7 @@ const Services = () => {
   `;
 
   return (
-    <div className="relative bg-black ambient">
+    <div id="services" className="relative bg-black ambient">
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
       
       {/* Ambient Background Lights */}

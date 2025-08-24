@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ScailUpHero from '../components/ScailUpHero';
 import Services from '../components/Services';
 import SimpleApproach from '../components/SimpleApproach';
+import ContinueGate from '../components/ContinueGate';
 import ProblemsSection from '../components/ProblemsSection';
 import SolutionsSection from '../components/SolutionsSection';
 import TransitionSection from '../components/TransitionSection';
@@ -123,8 +124,14 @@ const structuredData = {
     <!-- Services section -->
     <Services client:visible />
     
+    <!-- Spacer between Services and Continue Gate -->
+    <div class="h-32 md:h-48 lg:h-64 bg-black"></div>
+    
+    <!-- Continue Gate - Flow Break -->
+    <ContinueGate client:load />
+    
     <!-- Approach section (4 kern principes) -->
-    <SimpleApproach client:visible />
+    <SimpleApproach client:visible id="approach" />
     
     <!-- Problems section -->
     <ProblemsSection client:visible />
