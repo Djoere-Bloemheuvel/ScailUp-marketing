@@ -227,13 +227,13 @@ const ScailUpHero = ({ isEmailPage = false }) => {
                   <span className="text-2xl sm:text-3xl md:text-4xl leading-tight">
                     Alles wat outbound hoort te zijn.
                   </span><br />
-                  <span className="font-bold text-white text-2xl sm:text-3xl md:text-4xl">In één platform.</span>
+                  <span className="font-bold text-white text-2xl sm:text-3xl md:text-4xl">In een platform.</span>
                 </span>
                 <span className="hidden lg:block text-6xl xl:text-7xl">
                   {/* Desktop split-screen: 3 lines */}
                   Alles wat outbound<br />
                   hoort te zijn.<br />
-                  <span className="font-bold text-white">In één platform.</span>
+                  <span className="font-bold text-white">In een platform.</span>
                 </span>
               </h1>
 

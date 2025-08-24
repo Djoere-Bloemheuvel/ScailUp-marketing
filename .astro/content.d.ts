@@ -162,7 +162,37 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"artikelen": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "artikelen";
+  data: InferEntrySchema<"artikelen">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"clusters": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "clusters";
+  data: InferEntrySchema<"clusters">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"pillars": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "pillars";
+  data: InferEntrySchema<"pillars">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
@@ -194,6 +224,6 @@ declare module 'astro:content' {
 		LiveContentConfig['collections'][C]['loader']
 	>;
 
-	export type ContentConfig = typeof import("../src/content.config.mjs");
+	export type ContentConfig = typeof import("../src/content/config.js");
 	export type LiveContentConfig = never;
 }
