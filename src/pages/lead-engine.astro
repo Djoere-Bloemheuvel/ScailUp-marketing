@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpHero from '../components/ScailUpHero';
-import ServicesOld from '../components/ServicesOld';
+import Services from '../components/Services';
+import ProductWalkthrough from '../components/ProductWalkthrough';
 import SimpleApproach from '../components/SimpleApproach';
 import ProblemsSection from '../components/ProblemsSection';
 import SolutionsSection from '../components/SolutionsSection';
@@ -121,7 +122,10 @@ const structuredData = {
     <ScailUpHero client:load isEmailPage={true} />
     
     <!-- Services section -->
-    <ServicesOld client:visible />
+    <Services client:visible blueTheme={true} />
+    
+    <!-- Product Walkthrough section -->
+    <ProductWalkthrough client:visible />
     
     <!-- Approach section (4 kern principes) -->
     <SimpleApproach client:visible />

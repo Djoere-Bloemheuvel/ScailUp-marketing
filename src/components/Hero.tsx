@@ -68,6 +68,9 @@ const Hero = () => {
 
       {/* Minimal overlay to maintain text readability */}
       <div className="absolute inset-0 bg-black/10" />
+      
+      {/* Very subtle fade to black at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-black/25 via-black/10 via-black/5 to-transparent pointer-events-none z-20" />
 
       {/* Floating Design Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

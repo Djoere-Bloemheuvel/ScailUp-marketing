@@ -243,23 +243,23 @@ const ContinueGate = () => {
                     <div className="group relative w-40 h-40 mx-auto isolate">
                       
                       {/* Mini backlight glow */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-80 z-10 group-hover:scale-[1.04] transition-transform duration-400`} />
-                      <div className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-40 z-10 group-hover:scale-[1.03] transition-transform duration-400`} />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-80 z-10 group-hover:scale-[1.04] transition-transform duration-100`} />
+                      <div className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-40 z-10 group-hover:scale-[1.03] transition-transform duration-100`} />
                       
                       {/* Mini device with glassmorphism */}
-                      <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 p-8 flex items-center justify-center shadow-3xl transition-shadow duration-500 ease-out group-hover:shadow-4xl z-20 isolate will-change-auto">
+                      <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 p-8 flex items-center justify-center shadow-3xl transition-shadow duration-100 ease-out group-hover:shadow-4xl z-20 isolate will-change-auto">
                         
                         {/* Mini service visualization */}
                         <div className="relative w-20 h-20">
-                          <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-2xl opacity-85 transition-all duration-800 ease-out group-hover:opacity-90 group-hover:shadow-3xl`}>
+                          <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.accentColor} p-0.5 shadow-2xl opacity-85 transition-all duration-100 ease-out group-hover:opacity-90 group-hover:shadow-3xl`}>
                             <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center relative overflow-hidden shadow-inner">
                               
                               {/* Icon with glow */}
-                              <IconComponent className="w-10 h-10 text-white relative z-10 drop-shadow-2xl transition-all duration-800 ease-out group-hover:text-white" style={{
+                              <IconComponent className="w-10 h-10 text-white relative z-10 drop-shadow-2xl transition-all duration-100 ease-out group-hover:text-white" style={{
                                 filter: `drop-shadow(0 0 16px ${service.accentColor.includes('blue') ? '#60a5fa' :
                                                              service.accentColor.includes('purple') ? '#a855f7' :
                                                              service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}80)`,
-                                transition: 'filter 0.5s ease-out'
+                                transition: 'filter 0.1s ease-out'
                               }} 
                               onMouseEnter={(e) => {
                                 e.currentTarget.style.filter = `drop-shadow(0 0 24px ${service.accentColor.includes('blue') ? '#60a5fa' :
@@ -300,8 +300,8 @@ const ContinueGate = () => {
                           </div>
                           
                           {/* Mini floating accent elements */}
-                          <div className={`absolute -top-3 -right-3 w-5 h-5 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-35 shadow-xl transition-all duration-1000 ease-in-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-40`} />
-                          <div className={`absolute -bottom-3 -left-3 w-4 h-4 rounded-full bg-gradient-to-br ${service.accentColor} opacity-45 shadow-xl transition-all duration-1000 ease-in-out delay-75 group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-50`} />
+                          <div className={`absolute -top-3 -right-3 w-5 h-5 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-35 shadow-xl transition-all duration-100 ease-in-out group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:opacity-40`} />
+                          <div className={`absolute -bottom-3 -left-3 w-4 h-4 rounded-full bg-gradient-to-br ${service.accentColor} opacity-45 shadow-xl transition-all duration-100 ease-in-out group-hover:translate-y-0.5 group-hover:rotate-12 group-hover:opacity-50`} />
                         </div>
                       </div>
                     </div>
@@ -346,7 +346,7 @@ const ContinueGate = () => {
             group relative inline-flex items-center justify-center
             w-20 h-20 rounded-full border border-white/20
             hover:border-white/40 hover:bg-white/5
-            transition-all duration-300 ease-out
+            transition-all duration-100 ease-out
             focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black
           "
           aria-label="Ga verder naar het volgende gedeelte"
@@ -355,13 +355,13 @@ const ContinueGate = () => {
           <ChevronDown 
             className="
               w-8 h-8 text-white/70 
-              group-hover:text-white transition-all duration-300
+              group-hover:text-white transition-all duration-100
               animate-bounce
             " 
           />
           
           {/* Subtle glow effect */}
-          <div className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-100"></div>
         </button>
 
         {/* Hint text */}
