@@ -39,7 +39,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
     <section
       ref={sectionRef}
       data-service-section={index}
-      className={`relative py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28 flex items-center justify-center px-3 xs:px-4 sm:px-6 md:px-8 overflow-hidden bg-gradient-to-b ${service.background}`}
+      className={`relative py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 flex items-center justify-center px-3 xs:px-4 sm:px-6 md:px-8 overflow-hidden bg-gradient-to-b ${service.background}`}
     >
       {/* Background pattern for special section */}
       {service.isSpecial && (
@@ -53,11 +53,11 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
 
       <div className="relative w-full max-w-none mx-auto px-8 lg:px-16 xl:px-24">
 
-        <div className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-[20%] ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+        <div className={`flex flex-col lg:flex-row items-center lg:items-center gap-16 lg:gap-56 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
 
-          {/* Visual Element - 40% */}
+          {/* Visual Element - 35% */}
           <motion.div
-            className="relative w-full lg:w-[40%] flex-shrink-0 lg:pl-8 xl:pl-12"
+            className={`relative w-full lg:w-[40%] flex-shrink-0 flex items-center ${isEven ? 'justify-end lg:pr-16' : 'justify-start lg:pl-16'}`}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -68,7 +68,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
             }}
           >
             <div className="isolate">
-              <div className="group relative w-64 h-64 lg:w-72 lg:h-72 mx-auto isolate">
+              <div className="group relative w-64 h-64 lg:w-72 lg:h-72 isolate">
                 
                 {/* Backlight glow */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-80 z-10 group-hover:scale-[1.04] transition-transform duration-400`} />
@@ -125,9 +125,9 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
             </div>
           </motion.div>
 
-          {/* Content - 40% */}
+          {/* Content - Full Width */}
           <motion.div 
-            className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 text-left w-full lg:w-[40%] lg:pr-16 xl:pr-24"
+            className={`space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 text-left flex-1 lg:max-w-lg ${isEven ? 'lg:pl-16' : 'lg:pr-16'}`}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -142,7 +142,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
             {/* Typography */}
             <div className="space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6">
               <motion.h2 
-                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-white leading-tight tracking-tight"
+                className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-white leading-tight tracking-tight whitespace-nowrap"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -205,7 +205,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   
                   <motion.a
                     href="/ai-automations"
-                    className="group relative inline-flex items-center justify-center px-6 xs:px-8 sm:px-12 md:px-16 lg:px-20 py-2.5 xs:py-3 sm:py-3.5 md:py-4 bg-black text-white font-medium text-xs xs:text-sm sm:text-sm md:text-base rounded-full overflow-hidden"
+                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full overflow-hidden"
                     whileHover={{
                       scale: 1.05,
                       transition: {
@@ -235,13 +235,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
                     </div>
-                    <span className="relative z-10 text-xs xs:text-sm font-medium">{service.secondaryButtonText}</span>
+                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
                     <motion.div
-                      className="relative z-10 ml-1.5 xs:ml-2"
+                      className="relative z-10 ml-2"
                       animate={{ x: 0 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                      <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4" />
+                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
                     </motion.div>
                   </motion.a>
                 </div>
@@ -253,7 +253,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   
                   <motion.a
                     href="/custom-ai-saas"
-                    className="group relative inline-flex items-center justify-center px-6 xs:px-8 sm:px-12 md:px-16 lg:px-20 py-2.5 xs:py-3 sm:py-3.5 md:py-4 bg-black text-white font-medium rounded-full"
+                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
                     whileHover={{
                       scale: 1.05,
                       transition: {
@@ -283,13 +283,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
                     </div>
-                    <span className="relative z-10 text-xs xs:text-sm font-medium">{service.secondaryButtonText}</span>
+                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
                     <motion.div
-                      className="relative z-10 ml-1.5 xs:ml-2"
+                      className="relative z-10 ml-2"
                       animate={{ x: 0 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                      <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4" />
+                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
                     </motion.div>
                   </motion.a>
                 </div>
@@ -301,7 +301,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   
                   <motion.a
                     href="/consultancy"
-                    className="group relative inline-flex items-center justify-center px-6 xs:px-8 sm:px-12 md:px-16 lg:px-20 py-2.5 xs:py-3 sm:py-3.5 md:py-4 bg-black text-white font-medium rounded-full"
+                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
                     whileHover={{
                       scale: 1.05,
                       transition: {
@@ -331,13 +331,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
                     </div>
-                    <span className="relative z-10 text-xs xs:text-sm font-medium">{service.secondaryButtonText}</span>
+                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
                     <motion.div
-                      className="relative z-10 ml-1.5 xs:ml-2"
+                      className="relative z-10 ml-2"
                       animate={{ x: 0 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                      <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4" />
+                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
                     </motion.div>
                   </motion.a>
                 </div>
@@ -349,7 +349,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   
                   <motion.a
                     href="/autonomous-ai-agents"
-                    className="group relative inline-flex items-center justify-center px-6 xs:px-8 sm:px-12 md:px-16 lg:px-20 py-2.5 xs:py-3 sm:py-3.5 md:py-4 bg-black text-white font-medium rounded-full"
+                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
                     whileHover={{
                       scale: 1.05,
                       transition: {
@@ -379,13 +379,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
                     </div>
-                    <span className="relative z-10 text-xs xs:text-sm font-medium">{service.secondaryButtonText}</span>
+                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
                     <motion.div
-                      className="relative z-10 ml-1.5 xs:ml-2"
+                      className="relative z-10 ml-2"
                       animate={{ x: 0 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                      <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4" />
+                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
                     </motion.div>
                   </motion.a>
                 </div>
@@ -396,7 +396,7 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                   <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
                   
                   <motion.button 
-                    className="group relative inline-flex items-center justify-center px-6 xs:px-8 sm:px-12 md:px-16 lg:px-20 py-2.5 xs:py-3 sm:py-3.5 md:py-4 bg-black text-white font-medium rounded-full"
+                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
                     whileHover={{
                       scale: 1.05,
                       transition: {
@@ -426,13 +426,13 @@ const ServiceSection = ({ service, index, isVisible }: ServiceSectionProps) => {
                         <div className="w-full h-full rounded-full bg-premium-black" />
                       </div>
                     </div>
-                    <span className="relative z-10 text-xs xs:text-sm font-medium">{service.secondaryButtonText}</span>
+                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
                     <motion.div
-                      className="relative z-10 ml-1.5 xs:ml-2"
+                      className="relative z-10 ml-2"
                       animate={{ x: 0 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                      <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4" />
+                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
                     </motion.div>
                   </motion.button>
                 </div>
