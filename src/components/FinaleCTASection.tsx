@@ -5,6 +5,10 @@ const FinaleCTASection = () => {
   return (
     <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-20 bg-black overflow-hidden">
       
+      {/* Fade to black effects */}
+      <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-black via-black/60 to-transparent z-30 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-black via-black/60 to-transparent z-30 pointer-events-none" />
+      
       {/* Premium ambient lighting */}
       <div className="absolute inset-0 opacity-20">
         <div 

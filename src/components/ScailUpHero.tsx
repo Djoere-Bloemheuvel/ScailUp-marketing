@@ -223,18 +223,17 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               {/* Feature-Driven Headline - Optimized for iPhone screens */}
               <h1 className="font-light text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
                 <span className="lg:hidden">
-                  {/* Mobile/Tablet: Very small on iPhone, scaling up */}
-                  <span className="text-xl sm:text-3xl md:text-4xl leading-tight">
-                    Alles wat outbound<br className="block sm:hidden" />
-                    <span className="sm:inline"> hoort te zijn.</span>
+                  {/* Mobile/Tablet: 2 sentences - combined first sentence */}
+                  <span className="text-2xl sm:text-3xl md:text-4xl leading-tight">
+                    Alles wat outbound hoort te zijn.
                   </span><br />
-                  <span className="font-bold text-white text-xl sm:text-3xl md:text-4xl">In één platform.</span>
+                  <span className="font-bold text-white text-2xl sm:text-3xl md:text-4xl">In een platform.</span>
                 </span>
                 <span className="hidden lg:block text-6xl xl:text-7xl">
                   {/* Desktop split-screen: 3 lines */}
                   Alles wat outbound<br />
                   hoort te zijn.<br />
-                  <span className="font-bold text-white">In één platform.</span>
+                  <span className="font-bold text-white">In een platform.</span>
                 </span>
               </h1>
 
@@ -321,25 +320,25 @@ const ScailUpHero = ({ isEmailPage = false }) => {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col xs:flex-col sm:flex-row items-center justify-center gap-2 xs:gap-3 sm:gap-4 lg:gap-6 mb-6 xs:mb-7 sm:mb-10 lg:mb-14 xl:mb-16 px-3 xs:px-4"
+              className="flex flex-row items-center justify-center gap-2 xs:gap-3 sm:gap-4 lg:gap-6 mb-6 xs:mb-7 sm:mb-10 lg:mb-14 xl:mb-16 px-3 xs:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.72, delay: 0.36, ease: "easeOut" }}
             >
               <button
                 onClick={handleStrategicTalkClick}
-                className="w-full sm:w-auto bg-white hover:bg-gray-100 text-black px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 group min-w-[200px] sm:min-w-[220px]"
+                className="w-full sm:w-auto bg-white hover:bg-gray-100 text-black px-3 xs:px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 text-xs xs:text-sm sm:text-base font-semibold rounded-full transition-all duration-300 group sm:min-w-[200px] md:min-w-[220px]"
               >
                 <span className="flex items-center justify-center">
-                  <span className="hidden sm:inline">Ontdek de mogelijkheden</span>
                   <span className="sm:hidden">Ontdek mogelijkheden</span>
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <span className="hidden sm:inline">Ontdek de mogelijkheden</span>
+                  <ArrowRight className="ml-1.5 sm:ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </span>
               </button>
               
               <button
                 onClick={handleCasesClick}
-                className="w-full sm:w-auto relative bg-transparent border border-scailup-cyan/60 text-white px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-semibold rounded-full min-w-[200px] sm:min-w-[220px]"
+                className="w-full sm:w-auto relative bg-transparent border border-scailup-cyan/60 text-white px-3 xs:px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 text-xs xs:text-sm sm:text-base font-semibold rounded-full sm:min-w-[200px] md:min-w-[220px]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 203, 243, 0.15) 100%)',
                   boxShadow: '0 0 15px rgba(33, 203, 243, 0.4), 0 0 30px rgba(33, 150, 243, 0.2)',
@@ -347,8 +346,9 @@ const ScailUpHero = ({ isEmailPage = false }) => {
                 }}
               >
                 <span className="relative z-10 flex items-center justify-center">
-                  Plan een deepdive
-                  <ChevronRight className="ml-2 w-4 h-4" />
+                  <span className="sm:hidden">Plan deepdive</span>
+                  <span className="hidden sm:inline">Plan een deepdive</span>
+                  <ChevronRight className="ml-1.5 sm:ml-2 w-4 h-4" />
                 </span>
               </button>
             </motion.div>

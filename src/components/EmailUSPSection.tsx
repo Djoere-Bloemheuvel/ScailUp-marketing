@@ -62,7 +62,7 @@ const EmailUSPSection = () => {
         </motion.div>
 
         {/* USP Cards - Apple inspired clean design */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {usps.map((usp, index) => {
             const IconComponent = usp.icon;
             
@@ -77,16 +77,16 @@ const EmailUSPSection = () => {
                 whileHover={{ y: -8 }}
               >
                 {/* Icon */}
-                <div className="w-20 h-20 lg:w-24 lg:h-24 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-white/15 transition-all duration-500">
-                  <IconComponent className="w-10 h-10 lg:w-12 lg:h-12 text-white/90" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-8 group-hover:bg-white/15 transition-all duration-500">
+                  <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white/90" />
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-xl lg:text-2xl font-light text-white mb-3 transition-colors duration-300"
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-white mb-2 sm:mb-3 transition-colors duration-300"
                     style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
                   {usp.title}
                 </h3>
-                <p className="text-white/60 text-base lg:text-lg font-light leading-relaxed">
+                <p className="text-white/60 text-sm sm:text-base lg:text-lg font-light leading-relaxed">
                   {usp.description}
                 </p>
               </motion.div>
