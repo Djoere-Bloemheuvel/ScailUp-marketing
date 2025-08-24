@@ -114,15 +114,15 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
           opacity: inherit !important;
         }
         
-        /* Preserve glassmorphism but disable hover changes */
+        /* Preserve glassmorphism but make it much lighter */
         header {
-          background: rgba(0, 0, 0, 0.3) !important;
+          background: rgba(0, 0, 0, 0.05) !important;
           backdrop-filter: blur(20px) !important;
           -webkit-backdrop-filter: blur(20px) !important;
         }
         
         header:hover {
-          background: rgba(0, 0, 0, 0.3) !important;
+          background: rgba(0, 0, 0, 0.05) !important;
           backdrop-filter: blur(20px) !important;
           -webkit-backdrop-filter: blur(20px) !important;
         }
@@ -145,7 +145,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
           margin: 0, 
           padding: 0,
           pointerEvents: isVisible ? 'auto' : 'none',
-          background: 'rgba(0, 0, 0, 0.3)',
+          background: 'rgba(0, 0, 0, 0.05)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           border: '1px solid rgba(255, 255, 255, 0.05)'

@@ -1,10 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpHero from '../components/ScailUpHero';
-import ProblemsSection from '../components/ProblemsSection';
-import SolutionsSection from '../components/SolutionsSection';
-import SimpleApproach from '../components/SimpleApproach';
-import FinaleCTASection from '../components/FinaleCTASection';
+import EmailProblemSection from '../components/EmailProblemSection';
+import EmailSolutionSection from '../components/EmailSolutionSection';
+import EmailUSPSection from '../components/EmailUSPSection';
+import EmailProcessSection from '../components/EmailProcessSection';
+import EmailProductDetailsSection from '../components/EmailProductDetailsSection';
+import EmailPricingSection from '../components/EmailPricingSection';
+import EmailFAQSection from '../components/EmailFAQSection';
+import EmailClosingCTASection from '../components/EmailClosingCTASection';
 
 // Inbox-to-Meeting structured data for SEO
 const structuredData = {
@@ -35,8 +39,12 @@ const structuredData = {
   showHeaderAlways={true}
 >
   <ScailUpHero client:load isEmailPage={true} />
-  <ProblemsSection client:load />
-  <SolutionsSection client:load />
-  <SimpleApproach client:load />
-  <FinaleCTASection client:load />
+  <EmailProblemSection client:load />
+  <EmailSolutionSection client:load />
+  <EmailUSPSection client:load />
+  <EmailProcessSection client:load />
+  <EmailProductDetailsSection client:load />
+  <EmailPricingSection client:load />
+  <EmailFAQSection client:load />
+  <EmailClosingCTASection client:load />
 </Layout>
