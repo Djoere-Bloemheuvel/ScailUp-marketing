@@ -166,31 +166,6 @@ const AgentsWalkthrough = () => {
         ))}
       </div>
 
-      {/* CTA - exact copy from original AgentsWalkthrough */}
-      <div className="relative z-10">
-        <motion.div 
-          className="text-center mt-20 pb-20"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
-        >
-          <motion.button
-            className="group relative inline-flex items-center justify-center px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full overflow-hidden text-lg will-change-transform"
-            whileHover={{
-              scale: 1.05,
-              transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10">Start jouw automatisering</span>
-            <svg className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-        </motion.div>
-      </div>
     </div>
   );
 };
