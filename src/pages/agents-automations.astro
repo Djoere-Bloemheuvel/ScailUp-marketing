@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AgentsHero from '../components/AgentsHero';
+import WhyAgentsSection from '../components/WhyAgentsSection';
 import AgentsWalkthrough from '../components/AgentsWalkthrough';
 import ProcessAutomationSection from '../components/ProcessAutomationSection';
 import ROISection from '../components/ROISection';
@@ -98,11 +99,13 @@ const structuredData = {
       background-color: #000000 !important;
       margin: 0 !important;
       padding: 0 !important;
+      overflow-x: hidden !important;
     }
     
     html {
       margin: 0 !important;
       padding: 0 !important;
+      overflow-x: hidden !important;
     }
     
     /* Ensure no spacing anywhere that could create black canvas */
@@ -143,9 +146,12 @@ const structuredData = {
     }
   </style>
 
-  <main id="main-content" role="main" class="min-h-screen bg-black">
+  <main id="main-content" role="main" class="min-h-screen bg-black max-w-full overflow-x-hidden">
     <!-- Agents Hero section -->
     <AgentsHero client:load />
+    
+    <!-- Why Agents & Automations section -->
+    <WhyAgentsSection client:visible />
     
     <!-- Agents Walkthrough section -->
     <AgentsWalkthrough client:visible />

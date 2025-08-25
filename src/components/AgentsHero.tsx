@@ -105,7 +105,7 @@ const AgentsHero = () => {
       />
         
       {/* Hero Content */}
-      <div className="relative w-full max-w-7xl mx-auto text-center z-20 px-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="relative w-full text-center z-20 px-2 sm:px-4 md:px-6 lg:px-8">
         
         {/* Split Layout - Similar to Email Page */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">

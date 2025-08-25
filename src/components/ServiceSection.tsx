@@ -34,7 +34,11 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
   // For walkthrough mode: always alternate
   // For Autonomous AI Agents: force isEven to true (visual left, text right)
   // For others: use normal alternating pattern
-  const isEven = walkthrough ? (index % 2 === 1) : (isAutonomousAgents ? true : (index % 2 === 1));
+  const isEven = walkthrough ? (index % 2 === 0) : (isAutonomousAgents ? true : (index % 2 === 1));
+  
+  // Alternating horizontal animation direction
+  const isEvenIndex = index % 2 === 0;
+  const xDirection = isEvenIndex ? -24 : 24;
 
   // Determine service type for routing
   const isAIAutomations = service.id === 'ai-automations';
@@ -57,24 +61,26 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
         </div>
       )}
 
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center">
 
         {/* Visual Element - Right for normal sections, Left for special cases */}
-        <div className={`relative ${isEven ? 'lg:order-1 lg:justify-self-start' : 'lg:order-2 lg:justify-self-end'}`}>
+        <div className={`relative flex items-center justify-center ${isEven ? 'lg:order-2 lg:justify-self-end' : 'lg:order-1 lg:justify-self-start'}`}>
           <motion.div
             className="relative"
             initial={{ 
               opacity: 0, 
-              x: (service.id === 'lead-engine' || service.id === 'marketing-engine') ? -40 : 40, 
-              y: 24 
+              x: -xDirection
             }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            whileInView={{ 
+              opacity: 1, 
+              x: 0,
+              transition: {
+                duration: 0.7,
+                delay: index * 0.05,
+                ease: [0.16, 1, 0.3, 1]
+              }
+            }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ 
-              duration: 1.2, 
-              delay: index * 0.15,
-              ease: [0.16, 1, 0.3, 1]
-            }}
           >
             <div style={{ isolation: 'isolate' }}>
               {walkthrough ? (
@@ -82,9 +88,9 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                   className="group relative w-full max-w-2xl"
                   style={{ isolation: 'isolate' }}
                   whileHover={{
-                    scale: 1.02,
+                    y: -2,
                     transition: {
-                      duration: 0.3,
+                      duration: 0.2,
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }
                   }}
@@ -324,12 +330,12 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                     service.id === 'agents-automations' ? '/agents-automations' :
                     '#'
                   }
-                  className="group relative w-72 h-72 block cursor-pointer"
+                  className="group relative w-80 h-80 block cursor-pointer"
                   style={{ isolation: 'isolate' }}
                   whileHover={{
-                    scale: 1.02,
+                    y: -4,
                     transition: {
-                      duration: 0.3,
+                      duration: 0.2,
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }
                   }}
@@ -343,8 +349,8 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                 >
                 
                 {/* Backlight glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-80 z-10 group-hover:scale-[1.02] transition-all duration-300 ease-out`} />
-                <div className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-40 z-10 group-hover:scale-[1.015] group-hover:opacity-50 transition-all duration-300 ease-out`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-3xl opacity-60 z-10 group-hover:opacity-75 transition-all duration-300 ease-out`} />
+                <div className={`absolute inset-2 bg-gradient-to-br ${service.accentColor} rounded-3xl blur-2xl opacity-30 z-10 group-hover:opacity-40 transition-all duration-300 ease-out`} />
                 
                 {/* Device with glassmorphism */}
                 <div className="relative h-full rounded-3xl bg-gradient-to-br from-premium-gray/40 to-premium-black/60 border border-premium-silver/40 p-12 flex items-center justify-center shadow-3xl transition-all duration-300 ease-out group-hover:shadow-4xl z-20 isolate will-change-auto">
@@ -355,43 +361,24 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                       <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center relative overflow-hidden shadow-inner">
                         
                         {/* Icon with glow */}
-                        <service.icon className="w-[3.75rem] h-[3.75rem] text-white relative z-10 drop-shadow-2xl transition-all duration-300 ease-out group-hover:text-white group-hover:scale-105" style={{
+                        <service.icon className="w-[3.75rem] h-[3.75rem] text-white relative z-10 drop-shadow-2xl transition-all duration-200 ease-out group-hover:scale-105" style={{
                           filter: `drop-shadow(0 0 16px ${service.accentColor.includes('blue') ? '#60a5fa' :
                                                            service.accentColor.includes('purple') ? '#a855f7' :
                                                            service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}60)`,
-                          transition: 'filter 0.3s ease-out, transform 0.3s ease-out'
-                        }} 
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.filter = `drop-shadow(0 0 20px ${service.accentColor.includes('blue') ? '#60a5fa' :
-                                                                       service.accentColor.includes('purple') ? '#a855f7' :
-                                                                       service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}80)`
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.filter = `drop-shadow(0 0 16px ${service.accentColor.includes('blue') ? '#60a5fa' :
-                                                                       service.accentColor.includes('purple') ? '#a855f7' :
-                                                                       service.accentColor.includes('green') ? '#34d399' : '#60a5fa'}60)`
-                        }}
-                        />
+                          transition: 'filter 0.2s ease-out, transform 0.2s ease-out'
+                        }} />
                         
-                        {/* Enhanced sweeping light with Framer Motion */}
+                        {/* Simplified sweeping light */}
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                           initial={{ x: '-100%' }}
                           animate={{
                             x: '100%',
                             transition: {
-                              duration: 3,
+                              duration: 4,
                               ease: 'easeInOut',
                               repeat: Infinity,
-                              delay: index * 0.5
-                            }
-                          }}
-                          whileHover={{
-                            transition: {
-                              duration: 2,
-                              ease: 'easeInOut',
-                              repeat: Infinity,
-                              delay: 0
+                              delay: index * 1
                             }
                           }}
                         />
@@ -400,8 +387,8 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                     </div>
                     
                     {/* Floating accent elements */}
-                    <div className={`absolute -top-5 -right-5 w-7 h-7 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-35 shadow-xl transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:rotate-12 group-hover:opacity-50`} />
-                    <div className={`absolute -bottom-5 -left-5 w-5 h-5 rounded-full bg-gradient-to-br ${service.accentColor} opacity-45 shadow-xl transition-all duration-600 ease-out group-hover:translate-y-1 group-hover:rotate-18 group-hover:opacity-60`} />
+                    <div className={`absolute -top-5 -right-5 w-7 h-7 rounded-lg bg-gradient-to-br ${service.accentColor} opacity-20 shadow-xl transition-all duration-300 ease-out group-hover:opacity-30`} />
+                    <div className={`absolute -bottom-5 -left-5 w-5 h-5 rounded-full bg-gradient-to-br ${service.accentColor} opacity-25 shadow-xl transition-all duration-300 ease-out group-hover:opacity-35`} />
                   </div>
                 </div>
               </motion.a>
@@ -411,34 +398,36 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
         </div>
 
         {/* Content - Left for normal sections, Right for special cases */}
-        <div className={`space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+        <div className={`space-y-8 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
           <motion.div 
             className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 text-left"
             initial={{ 
               opacity: 0, 
-              x: (service.id === 'lead-engine' || service.id === 'marketing-engine') ? 40 : -40, 
-              y: 24 
+              x: xDirection
             }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            whileInView={{ 
+              opacity: 1, 
+              x: 0,
+              transition: {
+                duration: 0.6,
+                delay: index * 0.05 + 0.1,
+                ease: [0.16, 1, 0.3, 1]
+              }
+            }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ 
-              duration: 1.2, 
-              delay: index * 0.15 + 0.1,
-              ease: [0.16, 1, 0.3, 1]
-            }}
           >
           <div>
 
             {/* Typography */}
-            <div className="space-y-3 xs:space-y-4 sm:space-y-5 md:space-y-6">
+            <div className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8">
               {/* Premium step indicator for walkthrough */}
               {walkthrough && (
                 <motion.div 
                   className="flex items-center gap-8 mb-8"
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 1.2, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="relative">
                     <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-400/20 backdrop-blur-xl">
@@ -454,66 +443,65 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
 
               <motion.h2 
                 className={`${walkthrough ? 'text-2xl lg:text-3xl xl:text-4xl' : 'text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl'} font-bold text-white leading-tight tracking-tight ${walkthrough ? '' : 'whitespace-nowrap'}`}
-                initial={{ 
-                  opacity: 0, 
-                  x: (service.id === 'lead-engine' || service.id === 'marketing-engine') ? 20 : -20, 
-                  y: 24 
+                initial={{ opacity: 0, x: xDirection * 0.67 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  x: 0,
+                  transition: {
+                    duration: 0.5,
+                    delay: 0.1,
+                    ease: [0.16, 1, 0.3, 1]
+                  }
                 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: index * 0.15 + 0.2,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
               >
                 {service.title}
               </motion.h2>
 
-              <motion.h3 
-                className={`${walkthrough ? 'text-lg lg:text-xl' : 'text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl'} font-light text-premium-silver/90 tracking-wide leading-relaxed`}
-                initial={{ 
-                  opacity: 0, 
-                  x: (service.id === 'lead-engine' || service.id === 'marketing-engine') ? 20 : -20, 
-                  y: 24 
-                }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: index * 0.15 + 0.3,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
-              >
-                {service.subtitle}
-              </motion.h3>
+              <div className="space-y-0.5">
+                <motion.h3 
+                  className={`${walkthrough ? 'text-xl lg:text-2xl' : 'text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl'} font-light ${service.subtitleStyle || 'text-premium-silver/90'} tracking-wide leading-relaxed whitespace-nowrap`}
+                  initial={{ opacity: 0, x: xDirection * 0.5 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    x: 0,
+                    transition: {
+                      duration: 0.5,
+                      delay: 0.15,
+                      ease: [0.16, 1, 0.3, 1]
+                    }
+                  }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  {service.subtitle}
+                </motion.h3>
 
-              <motion.p 
-                className={`${walkthrough ? 'text-base lg:text-lg' : 'text-sm xs:text-sm sm:text-base md:text-base lg:text-lg'} text-premium-silver/70 font-light leading-relaxed max-w-none tracking-wide`}
-                initial={{ 
-                  opacity: 0, 
-                  x: (service.id === 'lead-engine' || service.id === 'marketing-engine') ? 20 : -20, 
-                  y: 24 
-                }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: index * 0.15 + 0.4,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
-              >
-                {service.description}
-              </motion.p>
+                <motion.p 
+                  className={`${walkthrough ? 'text-base lg:text-lg' : 'text-sm xs:text-sm sm:text-base md:text-base lg:text-lg'} ${service.descriptionStyle || 'text-premium-silver/70'} font-light leading-relaxed max-w-none tracking-wide`}
+                  initial={{ opacity: 0, x: xDirection * 0.33 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    x: 0,
+                    transition: {
+                      duration: 0.5,
+                      delay: 0.2,
+                      ease: [0.16, 1, 0.3, 1]
+                    }
+                  }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  {service.description}
+                </motion.p>
+              </div>
 
               {/* Premium metrics for walkthrough */}
               {walkthrough && (service.highlight || service.metrics) && (
                 <motion.div 
                   className="flex flex-col sm:flex-row gap-4 mt-8"
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 1.2, delay: index * 0.1 + 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
                   {service.highlight && (
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500/5 to-blue-600/5 rounded-xl border border-blue-500/10 backdrop-blur-xl">
@@ -538,260 +526,217 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
             {/* CTA Buttons - Hidden in walkthrough mode */}
             {!walkthrough && (
               <motion.div 
-                className="flex flex-col xs:flex-col sm:flex-row gap-3 xs:gap-4 pt-4 xs:pt-5 sm:pt-6 md:pt-8 justify-start"
+                className="flex flex-col xs:flex-col sm:flex-row gap-3 xs:gap-4 pt-6 xs:pt-7 sm:pt-8 md:pt-10 justify-start"
                 initial={{ 
                   opacity: 0, 
-                  x: (service.id === 'lead-engine' || service.id === 'marketing-engine') ? 20 : -20, 
-                  y: 24 
+                  x: xDirection * 0.83
                 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  x: 0
+                }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ 
-                  duration: 1.2, 
-                  delay: index * 0.15 + 0.5,
+                  duration: 0.5, 
+                  delay: 0.3,
                   ease: [0.16, 1, 0.3, 1]
                 }}
               >
 
               {service.id === 'agents-automations' ? (
-                <div className="relative group">
-                  {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
-                  
-                  <motion.a
-                    href="/sales-engine"
-                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full overflow-hidden"
-                    whileHover={{
-                      scale: 1.05,
-                      transition: {
-                        duration: 1.2,
-                        ease: [0.16, 1, 0.3, 1]
-                      }
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      y: 0
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 4px 12px rgba(59, 130, 246, 0.2))"
+                <motion.a
+                  href="/agents-automations"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full overflow-hidden"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(59, 130, 246, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
                     }}
                   >
-                    {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
-                      <div className="w-full h-full rounded-full bg-premium-black" />
-                    </div>
-                    {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
-                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
-                        <div className="w-full h-full rounded-full bg-premium-black" />
-                      </div>
-                    </div>
-                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
-                    <motion.div
-                      className="relative z-10 ml-2"
-                      animate={{ x: 0 }}
-                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    >
-                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
-                    </motion.div>
-                  </motion.a>
-                </div>
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
               ) : service.id === 'sales-engine' ? (
-                <div className="relative group">
-                  {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
-                  
-                  <motion.a
-                    href="/sales-engine"
-                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
-                    whileHover={{
-                      scale: 1.05,
-                      transition: {
-                        duration: 1.2,
-                        ease: [0.16, 1, 0.3, 1]
-                      }
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      y: 0
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                <motion.a
+                  href="/sales-engine"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
                     }}
                   >
-                    {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
-                      <div className="w-full h-full rounded-full bg-premium-black" />
-                    </div>
-                    {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
-                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
-                        <div className="w-full h-full rounded-full bg-premium-black" />
-                      </div>
-                    </div>
-                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
-                    <motion.div
-                      className="relative z-10 ml-2"
-                      animate={{ x: 0 }}
-                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    >
-                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
-                    </motion.div>
-                  </motion.a>
-                </div>
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
               ) : service.id === 'marketing-engine' ? (
-                <div className="relative group">
-                  {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
-                  
-                  <motion.a
-                    href="/marketing-engine"
-                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
-                    whileHover={{
-                      scale: 1.05,
-                      transition: {
-                        duration: 1.2,
-                        ease: [0.16, 1, 0.3, 1]
-                      }
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      y: 0
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                <motion.a
+                  href="/marketing-engine"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
                     }}
                   >
-                    {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
-                      <div className="w-full h-full rounded-full bg-premium-black" />
-                    </div>
-                    {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
-                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
-                        <div className="w-full h-full rounded-full bg-premium-black" />
-                      </div>
-                    </div>
-                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
-                    <motion.div
-                      className="relative z-10 ml-2"
-                      animate={{ x: 0 }}
-                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    >
-                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
-                    </motion.div>
-                  </motion.a>
-                </div>
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
               ) : service.id === 'lead-engine' ? (
-                <div className="relative group">
-                  {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
-                  
-                  <motion.a
-                    href="/lead-engine"
-                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
-                    whileHover={{
-                      scale: 1.05,
-                      transition: {
-                        duration: 1.2,
-                        ease: [0.16, 1, 0.3, 1]
-                      }
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      y: 0
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                <motion.a
+                  href="/lead-engine"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
                     }}
                   >
-                    {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
-                      <div className="w-full h-full rounded-full bg-premium-black" />
-                    </div>
-                    {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
-                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
-                        <div className="w-full h-full rounded-full bg-premium-black" />
-                      </div>
-                    </div>
-                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
-                    <motion.div
-                      className="relative z-10 ml-2"
-                      animate={{ x: 0 }}
-                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    >
-                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
-                    </motion.div>
-                  </motion.a>
-                </div>
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
               ) : (
-                <div className="relative group">
-                  {/* External glow aura - outside button */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-15 blur-lg scale-150 group-hover:scale-160 transition-all duration-1500 ease-out pointer-events-none`} />
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} opacity-5 group-hover:opacity-12 blur-md scale-125 group-hover:scale-135 transition-all duration-1500 ease-out pointer-events-none`} />
-                  
-                  <motion.button 
-                    className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
-                    whileHover={{
-                      scale: 1.05,
-                      transition: {
-                        duration: 1.2,
-                        ease: [0.16, 1, 0.3, 1]
-                      }
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      y: 0
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
-                    style={{
-                      filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.2))"
+                <motion.button 
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
                     }}
                   >
-                    {/* Animated gradient border */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-30 group-hover:opacity-100 transition-all duration-800 ease-out`}>
-                      <div className="w-full h-full rounded-full bg-premium-black" />
-                    </div>
-                    {/* Rotating gradient border on hover */}
-                    <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-5 animate-spin transition-opacity duration-800`} style={{ animationDuration: '4s' }}>
-                      <div className={`w-full h-full rounded-full bg-gradient-conic ${service.accentColor} p-0.5`}>
-                        <div className="w-full h-full rounded-full bg-premium-black" />
-                      </div>
-                    </div>
-                    <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
-                    <motion.div
-                      className="relative z-10 ml-2"
-                      animate={{ x: 0 }}
-                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    >
-                      <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
-                    </motion.div>
-                  </motion.button>
-                </div>
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.button>
               )}
               </motion.div>
             )}

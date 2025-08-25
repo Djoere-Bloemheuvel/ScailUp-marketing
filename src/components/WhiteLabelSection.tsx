@@ -160,7 +160,7 @@ const WhiteLabelSection = () => {
         <div className="backlight backlight-right bg-purple-600 opacity-10"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-8">
+      <div className="relative z-10 w-full px-8">
         
         {/* Header */}
         <div className="text-center mb-20">

@@ -26,7 +26,7 @@ const FinaleCTASection = () => {
         />
       </div>
 
-      <div className="relative max-w-5xl mx-auto px-8 z-20 text-center">
+      <div className="relative w-full px-8 z-20 text-center">
         
         <motion.div
           initial={{ opacity: 0, y: 40 }}

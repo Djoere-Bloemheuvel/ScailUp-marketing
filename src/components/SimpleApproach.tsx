@@ -112,7 +112,7 @@ const SimpleApproach = () => {
   return (
     <section className="relative py-12 sm:py-16 md:py-24 lg:py-32 pb-12 sm:pb-16 md:pb-24 lg:pb-32 w-full bg-black overflow-hidden">
       
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="relative w-full px-4 sm:px-6 md:px-8">
         {/* Apple-style Header - Responsive */}
         <motion.div 
           className="text-center mb-8 sm:mb-12 md:mb-16"

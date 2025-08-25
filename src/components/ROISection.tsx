@@ -120,7 +120,7 @@ const ROISection = () => {
         <div className="absolute bottom-1/3 right-1/5 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-8">
+      <div className="relative z-10 w-full px-8">
         
         {/* Header */}
         <div className="text-center mb-20">
