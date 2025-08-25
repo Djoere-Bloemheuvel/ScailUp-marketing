@@ -3,6 +3,24 @@ import { motion } from 'framer-motion';
 const AgentsStatsSection = () => {
   return (
     <section className="relative bg-black py-20 lg:py-32 overflow-hidden">
+      {/* Ambient Background Lights */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Main backlight orbs */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-purple-500/25 to-pink-500/25 rounded-full blur-3xl opacity-50"></div>
+        
+        {/* Secondary ambient glows */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-blue-400/10 via-purple-400/5 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-40 right-20 w-60 h-60 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-2xl opacity-60 animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }}></div>
+        <div className="absolute bottom-40 left-20 w-72 h-72 bg-gradient-to-tr from-purple-400/15 to-pink-400/15 rounded-full blur-2xl opacity-70 animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
+        
+        {/* Subtle corner glows */}
+        <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-xl opacity-30"></div>
+        <div className="absolute top-0 right-0 w-56 h-56 bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-xl opacity-25"></div>
+        <div className="absolute bottom-0 left-0 w-52 h-52 bg-gradient-to-tr from-cyan-500/15 to-transparent rounded-full blur-xl opacity-35"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-pink-500/15 to-transparent rounded-full blur-xl opacity-30"></div>
+      </div>
+      
       <div className="relative w-full z-20 px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           
