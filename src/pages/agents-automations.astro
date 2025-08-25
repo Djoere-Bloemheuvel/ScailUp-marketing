@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AgentsHero from '../components/AgentsHero';
+import AgentsWalkthrough from '../components/AgentsWalkthrough';
+import ProcessAutomationSection from '../components/ProcessAutomationSection';
+import ROISection from '../components/ROISection';
+import IndustriesSection from '../components/IndustriesSection';
+import WhiteLabelSection from '../components/WhiteLabelSection';
+import SimpleApproach from '../components/SimpleApproach';
+import FinaleCTASection from '../components/FinaleCTASection';
+
+// ScailUp Agents & Automations structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Agents & Business Automation",
+  "provider": {
+    "@type": "Organization",
+    "name": "ScailUp",
+    "url": "https://scailup.nl"
+  },
+  "description": "White-label AI agents en business automation services. Van 24/7 chatbots tot complexe procesautomatisering. 98% tijdbesparing, ROI binnen 30 dagen.",
+  "areaServed": "Netherlands",
+  "serviceType": "Business Process Automation",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "AI Chatbots voor Klantenservice",
+      "description": "24/7 beschikbare chatbots met directe ROI binnen 3-6 maanden"
+    },
+    {
+      "@type": "Offer", 
+      "name": "Procesautomatisering (RPA)",
+      "description": "98% tijdbesparing bij repetitieve taken, ROI binnen 1-3 maanden"
+    },
+    {
+      "@type": "Offer",
+      "name": "AI Agents voor Complexe Processen",
+      "description": "Digitale collega's die complete processen zelfstandig uitvoeren"
+    },
+    {
+      "@type": "Offer",
+      "name": "White-Label Automation Solutions",
+      "description": "Volledige automatiseringsoplossingen onder jouw eigen merk"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Automation Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Chatbot Implementation",
+          "description": "24/7 klantenservice automatisering"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Business Process Automation",
+          "description": "RPA voor administratieve processen"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service", 
+          "name": "AI Agents Development",
+          "description": "Custom AI agents voor complexe bedrijfsprocessen"
+        }
+      }
+    ]
+  }
+};
+---
+
+<Layout 
+  title="AI Agents & Automatisering | ScailUp - White-Label Automation Services"
+  description="Transformeer je bedrijfsprocessen met AI agents & automatisering. 98% tijdbesparing, ROI binnen 30 dagen. Van chatbots tot complexe procesautomatisering. White-label oplossingen beschikbaar."
+  keywords="AI agents, business automation, procesautomatisering, RPA, chatbots, workflow automation, white label automation, AI automatisering Nederland, business process automation"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
+  <style>
+    
+    /* Ensure page starts with true black background */
+    body {
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* Ensure no spacing anywhere that could create black canvas */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Force hero to start at very top */
+    #main-content {
+      position: relative;
+      top: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Critical hero styles for instant rendering */
+    .hero-section {
+      position: relative;
+      min-height: 90vh;
+      background-color: #000000;
+      color: #ffffff;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 25vh 1rem 3rem;
+    }
+    
+    /* Prevent any layout shift */
+    .hero-content {
+      position: relative;
+      max-width: 80rem;
+      width: 100%;
+      text-align: center;
+      z-index: 30;
+    }
+  </style>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Agents Hero section -->
+    <AgentsHero client:load />
+    
+    <!-- Agents Walkthrough section -->
+    <AgentsWalkthrough client:visible />
+    
+    <!-- Process Automation section -->
+    <ProcessAutomationSection client:visible />
+    
+    <!-- ROI & Results section -->
+    <ROISection client:visible />
+    
+    <!-- Industries section -->
+    <IndustriesSection client:visible />
+    
+    <!-- White Label section -->
+    <WhiteLabelSection client:visible />
+    
+    <!-- Approach section (4 kern principes) -->
+    <SimpleApproach client:visible />
+    
+    <!-- Finale CTA section -->
+    <FinaleCTASection client:visible />
+  </main>
+
+</Layout>
