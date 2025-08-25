@@ -139,12 +139,6 @@ const Services = ({ blueTheme = false, walkthrough = false }: ServicesProps) => 
     <div id="services" className="relative bg-black ambient">
       <style dangerouslySetInnerHTML={{ __html: cssStyles }} />
       
-      {/* Ambient Background Lights */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="backlight backlight-left bg-scailup-blue w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] lg:w-[480px] lg:h-[480px] xl:w-[560px] xl:h-[560px]"></div>
-        <div className="backlight backlight-right bg-scailup-cyan w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] lg:w-[460px] lg:h-[460px] xl:w-[540px] xl:h-[540px]"></div>
-        <div className="backlight backlight-center bg-scailup-blue w-[350px] h-[200px] sm:w-[400px] sm:h-[250px] md:w-[500px] md:h-[300px] lg:w-[600px] lg:h-[350px] xl:w-[700px] xl:h-[400px] opacity-30"></div>
-      </div>
 
       {/* Header for walkthrough mode */}
       {walkthrough && (

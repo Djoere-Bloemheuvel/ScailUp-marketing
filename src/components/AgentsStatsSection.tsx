@@ -2,23 +2,28 @@ import { motion } from 'framer-motion';
 
 const AgentsStatsSection = () => {
   return (
-    <section className="relative bg-black py-20 lg:py-32 overflow-hidden">
-      {/* Ambient Background Lights */}
+    <section className="relative bg-black py-24 lg:py-40 overflow-hidden ambient">
+      {/* Ambient Background Lights - Service Colors */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Main backlight orbs */}
-        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-purple-500/25 to-pink-500/25 rounded-full blur-3xl opacity-50"></div>
+        {/* Main service orbs - matching the 3 agents */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-purple-500/40 to-pink-600/40 rounded-full blur-3xl opacity-60 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-blue-500/40 to-blue-400/40 rounded-full blur-3xl opacity-65"></div>
+        <div className="absolute top-1/3 right-1/4 w-88 h-88 bg-gradient-to-r from-blue-400/35 to-purple-500/35 rounded-full blur-3xl opacity-55 animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '4s' }}></div>
         
-        {/* Secondary ambient glows */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-blue-400/10 via-purple-400/5 to-transparent rounded-full blur-2xl"></div>
-        <div className="absolute top-40 right-20 w-60 h-60 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-2xl opacity-60 animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }}></div>
-        <div className="absolute bottom-40 left-20 w-72 h-72 bg-gradient-to-tr from-purple-400/15 to-pink-400/15 rounded-full blur-2xl opacity-70 animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
+        {/* Secondary ambient glows - service color combinations */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-blue-400/15 via-purple-500/8 to-transparent rounded-full blur-2xl"></div>
+        <div className="absolute top-40 right-20 w-60 h-60 bg-gradient-to-br from-blue-500/25 to-blue-400/25 rounded-full blur-2xl opacity-75 animate-pulse" style={{ animationDelay: '1s', animationDuration: '3s' }}></div>
+        <div className="absolute bottom-40 left-20 w-72 h-72 bg-gradient-to-tr from-purple-500/22 to-pink-600/22 rounded-full blur-2xl opacity-80 animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
         
-        {/* Subtle corner glows */}
-        <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-xl opacity-30"></div>
-        <div className="absolute top-0 right-0 w-56 h-56 bg-gradient-to-bl from-purple-500/20 to-transparent rounded-full blur-xl opacity-25"></div>
-        <div className="absolute bottom-0 left-0 w-52 h-52 bg-gradient-to-tr from-cyan-500/15 to-transparent rounded-full blur-xl opacity-35"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-pink-500/15 to-transparent rounded-full blur-xl opacity-30"></div>
+        {/* Corner service glows */}
+        <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-purple-500/30 to-transparent rounded-full blur-xl opacity-45"></div>
+        <div className="absolute top-0 right-0 w-56 h-56 bg-gradient-to-bl from-blue-500/30 to-transparent rounded-full blur-xl opacity-40"></div>
+        <div className="absolute bottom-0 left-0 w-52 h-52 bg-gradient-to-tr from-blue-400/25 to-transparent rounded-full blur-xl opacity-50"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-pink-600/25 to-transparent rounded-full blur-xl opacity-45"></div>
+        
+        {/* Subtle fade to black overlays */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black via-black/80 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"></div>
       </div>
       
       <div className="relative w-full z-20 px-2 sm:px-4 md:px-6 lg:px-8">
@@ -245,16 +250,21 @@ const AgentsStatsSection = () => {
 
                   {/* AI Agent - Center */}
                   <div className="flex items-center justify-center order-first lg:order-none h-full min-h-0">
-                    <div className="text-center">
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-0.5 sm:mb-1 leading-[1.1] tracking-[-0.01em] antialiased">
-                        Alles verbonden.
-                      </h3>
-                      <p className="text-white/60 text-sm sm:text-base font-light leading-[1.4] tracking-[-0.005em] antialiased mb-2 sm:mb-3">
-                        200+ integraties. Elke week komen er nieuwe bij.
-                      </p>
-                      <p className="text-white/40 text-xs sm:text-sm font-light leading-[1.4] tracking-[-0.005em] antialiased">
-                        Van losse tools naar één geheel.
-                      </p>
+                    <div className="text-center relative">
+                      {/* Background glow */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/45 via-purple-600/65 to-blue-500/45 rounded-full blur-2xl scale-130"></div>
+                      
+                      <div className="relative z-10">
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-0.5 sm:mb-1 leading-[1.1] tracking-[-0.01em] antialiased">
+                          Alles verbonden.
+                        </h3>
+                        <p className="text-white/60 text-sm sm:text-base font-light leading-[1.4] tracking-[-0.005em] antialiased mb-2 sm:mb-3">
+                          200+ integraties. Elke week komen er nieuwe bij.
+                        </p>
+                        <p className="text-white/40 text-xs sm:text-sm font-light leading-[1.4] tracking-[-0.005em] antialiased">
+                          Van losse tools naar één geheel.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
