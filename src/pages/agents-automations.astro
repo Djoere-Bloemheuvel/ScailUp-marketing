@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import AgentsHero from '../components/AgentsHero';
 import WhyAgentsSection from '../components/WhyAgentsSection';
+import AgentsStatsSection from '../components/AgentsStatsSection';
+import AgentsIntegrationsSection from '../components/AgentsIntegrationsSection';
 import AgentsWalkthrough from '../components/AgentsWalkthrough';
 import ProcessAutomationSection from '../components/ProcessAutomationSection';
 import ROISection from '../components/ROISection';
@@ -150,6 +152,12 @@ const structuredData = {
     <!-- Agents Hero section -->
     <AgentsHero client:load />
     
+    <!-- Agents Stats section (Vercel-style grid) -->
+    <AgentsStatsSection client:visible />
+    
+    <!-- Agents Integrations section (extensive AI capabilities showcase) -->
+    <AgentsIntegrationsSection client:visible />
+    
     <!-- Why Agents & Automations section -->
     <WhyAgentsSection client:visible />
     
@@ -170,6 +178,9 @@ const structuredData = {
     
     <!-- Approach section (4 kern principes) -->
     <SimpleApproach client:visible />
+    
+    <!-- Why Agents section (duplicate at bottom) -->
+    <WhyAgentsSection client:visible />
     
     <!-- Finale CTA section -->
     <FinaleCTASection client:visible />

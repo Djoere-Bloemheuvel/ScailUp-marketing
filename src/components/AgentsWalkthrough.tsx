@@ -25,7 +25,7 @@ const AgentsWalkthrough = () => {
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
             Speed to Lead
           </div>
-          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
+          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
             Inbound Lead Agent
           </div>
         </div>
@@ -33,8 +33,8 @@ const AgentsWalkthrough = () => {
       subtitle: '',
       description: 'Jouw digitale sales assistent die nooit slaapt. Studies tonen aan: respons binnen 60 seconden verhoogt conversie met 391%. Onze AI vangt elke lead op, kwalificeert automatisch en plant afspraken in je agenda.',
       descriptionStyle: 'text-premium-silver/85',
-      background: 'from-black via-blue-900/20 to-black',
-      accentColor: 'from-blue-400 to-purple-500',
+      background: 'from-black via-purple-900/20 to-black',
+      accentColor: 'from-purple-500 to-pink-600',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Start nu',
       number: '01',
@@ -49,7 +49,7 @@ const AgentsWalkthrough = () => {
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
             Seal The Deal
           </div>
-          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
+          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
             Smart Deal Agent
           </div>
         </div>
@@ -58,8 +58,8 @@ const AgentsWalkthrough = () => {
       subtitleStyle: 'text-white/95 font-light tracking-[-0.02em] leading-[1.2] antialiased',
       description: 'Genereert voorstellen direct vanuit CRM-data, stuurt automatisch naar prospects en volgt op bij stilte. AI analyseert gedrag en optimaliseert timing voor maximale conversie. Sneller closen, meer deals en hogere values.',
       descriptionStyle: 'text-premium-silver/85',
-      background: 'from-black via-purple-900/20 to-black',
-      accentColor: 'from-blue-500 to-purple-600',
+      background: 'from-black via-blue-900/20 to-black',
+      accentColor: 'from-blue-500 to-blue-400',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Start nu',
       number: '02',

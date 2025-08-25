@@ -28,17 +28,18 @@ const WhyAgentsSection = () => {
 
   return (
     <section className="relative bg-black py-20 lg:py-32 overflow-hidden">
-      {/* Ambient Background Lights */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      {/* Ambient Background Lights - explicit z-index control */}
+      <div className="absolute inset-0 overflow-hidden" style={{ zIndex: -1 }}>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl opacity-30"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative w-full text-center z-20 px-2 sm:px-4 md:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 max-w-7xl mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-6 leading-[0.9] tracking-tight"
+            className="relative z-30 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-6 leading-[0.9] tracking-tight"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -54,7 +55,7 @@ const WhyAgentsSection = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-lg lg:text-xl text-blue-200/70 max-w-3xl mx-auto font-light leading-relaxed"
+            className="relative z-30 text-lg lg:text-xl text-blue-200/70 max-w-3xl mx-auto font-light leading-relaxed"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -64,42 +65,99 @@ const WhyAgentsSection = () => {
           </motion.p>
         </div>
 
-        {/* Benefits Grid - Simple & Clean */}
+        {/* Benefits Grid with Enhanced Glow */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {benefits.map((benefit, index) => (
-            <motion.div
-              key={benefit.title}
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1, 
-                ease: [0.23, 1, 0.32, 1] 
-              }}
-            >
-              {/* Icon */}
-              <div className="mb-8">
-                <benefit.icon className="w-12 h-12 mx-auto text-white/80" />
-              </div>
+          {benefits.map((benefit, index) => {
+            const colors = [
+              { primary: 'rgba(139, 92, 246, 0.4)', secondary: 'rgba(236, 72, 153, 0.3)' }, // Purple to Pink (Marketing Engine)
+              { primary: 'rgba(59, 130, 246, 0.4)', secondary: 'rgba(59, 130, 246, 0.2)' }, // Blue (Lead Engine)  
+              { primary: 'rgba(16, 185, 129, 0.4)', secondary: 'rgba(16, 185, 129, 0.2)' }  // Green
+            ];
+            const color = colors[index];
+            const isLeft = index % 2 === 0;
+            
+            return (
+              <motion.div
+                key={benefit.title}
+                className="relative text-center group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1, 
+                  ease: [0.23, 1, 0.32, 1] 
+                }}
+              >
+                {/* Background glow for glassmorphism */}
+                <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+                  <motion.div 
+                    className="w-[400px] h-[350px] rounded-3xl opacity-40"
+                    style={{
+                      background: colors[index] === colors[0] 
+                        ? 'radial-gradient(ellipse at center, rgba(139, 92, 246, 0.8) 0%, rgba(236, 72, 153, 0.6) 30%, rgba(236, 72, 153, 0.3) 60%, transparent 80%)'
+                        : colors[index] === colors[1]
+                        ? 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0.4) 40%, transparent 70%)'
+                        : 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.8) 0%, rgba(16, 185, 129, 0.4) 40%, transparent 70%)',
+                      filter: 'blur(60px)',
+                    }}
+                    animate={{
+                      opacity: [0.3, 0.5, 0.4, 0.45, 0.3],
+                      scale: [0.95, 1.05, 1.02, 0.98, 0.95],
+                    }}
+                    transition={{
+                      duration: 10 + (index * 2),
+                      ease: [0.25, 0.1, 0.25, 1],
+                      repeat: Infinity,
+                      repeatType: "loop"
+                    }}
+                  />
+                </div>
 
-              {/* Content */}
-              <div className="space-y-4">
-                <h3 className="text-2xl font-light text-white tracking-tight leading-tight">
-                  {benefit.title}
-                </h3>
-                
-                <p className="text-lg text-premium-silver/90 font-light leading-relaxed">
-                  {benefit.subtitle}
-                </p>
-                
-                <p className="text-premium-silver/70 font-light leading-relaxed text-sm">
-                  {benefit.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                {/* Glassmorphic Card */}
+                <motion.div 
+                  className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 mx-4 h-[400px] flex flex-col justify-center"
+                  style={{
+                    background: colors[index] === colors[0] 
+                      ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.08) 50%, rgba(255, 255, 255, 0.02) 100%)'
+                      : colors[index] === colors[1]
+                      ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 50%, rgba(255, 255, 255, 0.02) 100%)'
+                      : 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(255, 255, 255, 0.02) 100%)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                  }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] }
+                  }}
+                >
+                  {/* Card number */}
+                  <div className="absolute top-6 right-6 text-white/30 text-lg font-bold tracking-wider">
+                    0{index + 1}
+                  </div>
+
+                  {/* Icon */}
+                  <div className="mb-8">
+                    <benefit.icon className="w-14 h-14 mx-auto text-white/90" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-semibold text-white tracking-tight leading-tight">
+                      {benefit.title}
+                    </h3>
+                    
+                    <p className="text-lg text-white/80 font-light leading-relaxed">
+                      {benefit.subtitle}
+                    </p>
+                    
+                    <p className="text-white/60 font-light leading-relaxed text-sm">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Bottom CTA hint */}
