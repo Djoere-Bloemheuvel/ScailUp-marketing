@@ -4,90 +4,110 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-- `npm run dev` - Start development server (runs on port 8080)
-- `npm run build` - Build for production 
-- `npm run build:dev` - Build in development mode
-- `npm run lint` - Run ESLint
+- `npm run dev` - Start development server using Astro
+- `npm run build` - Build for production using Astro
 - `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
 ## Architecture Overview
 
-This is a modern React SPA built with Vite, TypeScript, and Tailwind CSS. The application uses:
+This is a modern marketing website built with **Astro**, **React**, **TypeScript**, and **Tailwind CSS**. The application uses:
 
-- **Vite** for build tooling and development server
-- **React Router** for client-side routing with lazy-loaded pages
-- **TanStack Query** for data fetching and caching
+- **Astro** as the meta-framework for static site generation with islands architecture
+- **React** components with client-side hydration (client:load, client:visible directives)
+- **Astro Content Collections** for structured content management (articles, pillars, clusters)
 - **shadcn/ui** components built on Radix UI primitives
-- **Tailwind CSS** with custom premium design tokens and animations
+- **Tailwind CSS** with extensive custom animations and premium color palette
+- **Framer Motion** for advanced animations
+- **Cloudinary** for optimized image/video delivery
 
 ### Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
+├── components/          # React components organized by feature
 │   ├── ui/             # shadcn/ui components
-│   ├── agents/         # Agent-specific components
+│   ├── agents/         # Agent-specific page components  
 │   ├── automations/    # Automation page components
 │   ├── consultancy/    # Consultancy page components
-│   ├── contact/        # Contact page components
-│   ├── hero/           # Hero section components
+│   ├── hero/           # Hero section components with animations
+│   ├── kenniscentrum/  # Knowledge center components
 │   └── saas/          # SaaS page components
-├── pages/              # Route components (lazy loaded)
+├── pages/              # Astro pages (.astro files)
+│   ├── agents-automations/  # Nested route pages
+│   ├── kenniscentrum/  # Knowledge center with dynamic routing
+│   └── api/           # API endpoints
+├── content/            # Content collections
+│   ├── artikelen/     # Article markdown files
+│   ├── pillars/       # Knowledge pillar definitions
+│   └── clusters/      # Content cluster groupings
+├── layouts/            # Astro layout components
 ├── hooks/              # Custom React hooks
 ├── lib/               # Utility functions
+├── config/            # Configuration files (Cloudinary, etc.)
 └── styles/            # Additional CSS files
 ```
 
 ### Key Architecture Patterns
 
-- **Lazy Loading**: All pages are lazy-loaded for optimal performance
-- **Code Splitting**: Vite configuration includes manual chunks for vendor libraries
-- **Component Organization**: Components are grouped by feature/page in subdirectories
-- **Performance**: Optimized QueryClient configuration and build settings
-- **Design System**: Custom premium color palette and Apple-inspired animations
+- **Astro Islands**: React components hydrate only when needed with client: directives
+- **Content Collections**: Structured content management with Zod schemas for articles/pillars
+- **Component Organization**: Components grouped by feature in subdirectories  
+- **Performance Optimizations**: Client-side hydration controls, progressive loading hooks
+- **Premium Animations**: Extensive Apple-inspired keyframes and transitions
 
 ### Routing
 
-The app uses React Router with the following routes:
+Astro file-based routing with the following key pages:
 - `/` - Main landing page
-- `/contact` - Contact page
-- `/ai-automations` - AI Automations service page
-- `/custom-ai-saas` - Custom AI SaaS service page
-- `/consultancy` - Consultancy service page
-- `/autonomous-ai-agents` - AI Agents service page
+- `/agents-automations` - AI agents and automation services
+- `/agents-automations/speed-to-lead` - Speed to lead specific page
+- `/kenniscentrum` - Knowledge center hub
+- `/kenniscentrum/[pillar]` - Dynamic pillar pages (ai-automatisering, ai-marketing, ai-sales)
+- `/kenniscentrum/[pillar]/[cluster]` - Dynamic cluster pages within pillars
+- `/kenniscentrum/[slug]` - Individual article pages
+- `/lead-engine` - Lead engine product page
+- `/inbox-to-meeting` - Inbox to meeting feature page
 
-### Styling
+### Content System
 
-- **Tailwind CSS** with custom configuration including premium color palette
-- **CSS Variables** for theming (--premium-black, --premium-gray, etc.)
-- **Custom Animations**: Extensive keyframes for Apple-style animations
-- **shadcn/ui** design system with Radix UI components
+Uses Astro Content Collections with three main types:
+- **Articles** (`artikelen`): Blog posts/guides with pillar/cluster associations
+- **Pillars** (`pillars`): Main knowledge hub pages (ai-automatisering, ai-marketing, ai-sales)  
+- **Clusters** (`clusters`): Content groupings within pillars
+
+All content is typed with Zod schemas and supports SEO metadata, featured content, and cross-references.
+
+### Styling & Animations
+
+- **Tailwind CSS** with extensive custom configuration including:
+  - Custom color palette (premium blacks, ScailUp brand colors)
+  - 50+ custom keyframe animations (Apple-inspired, cinematic effects)
+  - Comprehensive safelist to preserve animation classes
+- **Custom CSS Variables**: `--premium-black`, `--premium-gray`, `--scailup-blue`, etc.
+- **Animation System**: Apple-style smooth transitions, premium hover effects, GPU-accelerated animations
 
 ### Build Configuration
 
-- **Vite**: Configured with SWC for fast compilation
-- **Code Splitting**: Manual chunks for better caching
-- **Optimization**: Terser minification with console.log removal in production
-- **Development**: Hot reload on port 8080
-
-### TypeScript Configuration
-
-- Path aliases: `@/*` maps to `./src/*`
-- Relaxed type checking (noImplicitAny: false, strictNullChecks: false)
-- References to separate app and node configurations
+- **Astro Config**: Static output with React and Tailwind integrations
+- **Vite Integration**: Path aliases (`@/*` → `./src/*`), global definitions
+- **TypeScript**: Multiple tsconfig files (app, node) with path mapping
+- **Performance**: Optimized for static generation with selective hydration
 
 ## Important Notes
 
-- This is a Lovable.dev project that can be edited via their platform or locally
-- Components use premium design patterns with focus on performance and aesthetics
-- The project uses `lovable-tagger` in development for component identification
-- All pages implement lazy loading for optimal bundle splitting
+- This is a **Lovable.dev project** that can be edited via their platform or locally
+- Uses **Astro's islands architecture** - only hydrate React components when needed
+- **Content-driven**: Articles and knowledge content managed through Astro Content Collections
+- **Performance-focused**: Client directives control hydration timing (client:load vs client:visible)
+- Development includes `lovable-tagger` for component identification
 
 ## ScailUp Brand Colors
 
-The standard ScailUp brand colors are:
-- **Primary**: `from-blue-500 to-blue-400` (LinkedIn-style gradient)
-- **Background tint**: `via-blue-900/20` for subtle background coloring
-- **Hero backlights**: `bg-scailup-blue` and `bg-scailup-cyan` (original brand colors)
+The standard ScailUp brand colors defined in tailwind.config.ts:
+- **Primary Gradient**: `from-blue-500 to-blue-400` (LinkedIn-style)
+- **Brand Colors**: `bg-scailup-blue` (#2196F3), `bg-scailup-cyan` (#21CBF3)
+- **Background Tints**: `via-blue-900/20` for subtle blue tinting
+- **Premium Palette**: Custom blacks (`premium-black`, `premium-gray`) and silvers
 
 Use `from-blue-500 to-blue-400` as the default accent color for new components unless specifically requested otherwise.

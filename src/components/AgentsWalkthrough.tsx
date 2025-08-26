@@ -30,13 +30,14 @@ const AgentsWalkthrough = () => {
           </div>
         </div>
       ),
-      subtitle: '',
-      description: 'Jouw digitale sales assistent die nooit slaapt. Studies tonen aan: respons binnen 60 seconden verhoogt conversie met 391%. Onze AI vangt elke lead op, kwalificeert automatisch en plant afspraken in je agenda.',
+      subtitle: 'Vangt elke lead op het perfecte moment',
+      subtitleStyle: 'text-gray-300 font-bold tracking-[-0.02em] leading-[1.2] antialiased',
+      description: 'Met Speed to Lead reageer je binnen minuten op nieuwe leads met een persoonlijk bericht, precies wanneer ze nog warm zijn. Je krijgt direct een overzicht van hun bedrijf en achtergrond, zodat je opvolging voelt alsof je al uren research hebt gedaan. Volledig geautomatiseerd en geïntegreerd met je CRM, voor directe opvolging en tot 391% meer conversie.',
       descriptionStyle: 'text-premium-silver/85',
       background: 'from-black via-purple-900/20 to-black',
       accentColor: 'from-purple-500 to-pink-600',
       primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Start nu',
+      secondaryButtonText: 'Lees meer',
       number: '01',
       highlight: '391% meer conversie',
       metrics: 'ROI: 1-3 maanden'
@@ -54,14 +55,14 @@ const AgentsWalkthrough = () => {
           </div>
         </div>
       ),
-      subtitle: 'Van prospect naar gewonnen deal in één gestroomlijnde flow',
+      subtitle: 'Sluit deals terwijl ze nog warm zijn',
       subtitleStyle: 'text-white/95 font-light tracking-[-0.02em] leading-[1.2] antialiased',
-      description: 'Genereert voorstellen direct vanuit CRM-data, stuurt automatisch naar prospects en volgt op bij stilte. AI analyseert gedrag en optimaliseert timing voor maximale conversie. Sneller closen, meer deals en hogere values.',
+      description: 'Met Seal The Deal stuur je direct na je salescall een professioneel document met voorstel, contract en betaallink. Op basis van een paar inputs wordt dit volledig automatisch gegenereerd, terwijl er tegelijk een overzichtelijk verslag in je CRM wordt gelogd. Onze AI neemt de opvolging uit handen, houdt leads warm en helpt je deals sneller vooruit.',
       descriptionStyle: 'text-premium-silver/85',
       background: 'from-black via-blue-900/20 to-black',
       accentColor: 'from-blue-500 to-blue-400',
       primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Start nu',
+      secondaryButtonText: 'Lees meer',
       number: '02',
       highlight: '65% sneller closen',
       metrics: 'ROI: 2-4 maanden'
@@ -81,12 +82,12 @@ const AgentsWalkthrough = () => {
       ),
       subtitle: 'Sterke start = hogere retentie & snellere upsells',
       subtitleStyle: 'text-white/95 font-light tracking-[-0.02em] leading-[1.2] antialiased',
-      description: 'Stuurt nieuwe klanten een gepersonaliseerd onboardingtraject, plant kick-off calls en zorgt dat documenten tijdig afgerond worden. AI monitort voortgang en escaleert waar nodig. Snellere time-to-value en meer upsell kansen.',
+      description: 'Met Onboard & Beyond krijgt elke nieuwe klant direct een persoonlijk welkomstpakket en onboardingplan, volledig automatisch en in jouw branding. Alle informatie wordt meteen verwerkt in je CRM en projectomgeving, zodat je zonder vertraging kunt starten. Zo creëer je een vlekkeloze onboarding die vertrouwen wekt en elke samenwerking vanaf dag één professioneel laat beginnen.',
       descriptionStyle: 'text-premium-silver/85',
       background: 'from-black via-blue-900/15 to-black',
       accentColor: 'from-blue-600 to-purple-700',
       primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Start nu',
+      secondaryButtonText: 'Lees meer',
       number: '03',
       highlight: 'Hogere retentie',
       metrics: 'ROI: 2-4 maanden'
@@ -114,23 +115,13 @@ const AgentsWalkthrough = () => {
 
       {/* Header - exact copy from Services walkthrough mode */}
       <div className="relative z-10 text-center py-20 lg:py-32">
-        <motion.div 
-          className="inline-flex items-center gap-3 mb-12 px-8 py-4 bg-gradient-to-r from-blue-500/5 via-purple-500/8 to-purple-600/5 rounded-full border border-blue-400/20 backdrop-blur-xl"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-        >
-          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-          <span className="text-blue-200/90 font-semibold text-base tracking-wide uppercase">Onze Populairste Automatiseringen</span>
-        </motion.div>
         
         <motion.h2 
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 leading-[0.9] tracking-tight"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
             Kies wat bij
@@ -143,10 +134,10 @@ const AgentsWalkthrough = () => {
         
         <motion.p 
           className="text-lg lg:text-xl text-blue-200/70 max-w-3xl mx-auto font-light leading-relaxed"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
         >
           Start met eenvoudige chatbots of ga direct voor <span className="text-blue-300 font-medium">volledige automatisering</span>. 
           Wij adviseren wat het beste bij jouw bedrijf past.

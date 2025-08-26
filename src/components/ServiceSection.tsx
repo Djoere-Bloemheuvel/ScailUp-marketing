@@ -67,17 +67,13 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
         <div className={`relative flex items-center justify-center ${isEven ? 'lg:order-2 lg:justify-self-end' : 'lg:order-1 lg:justify-self-start'}`}>
           <motion.div
             className="relative"
-            initial={{ 
-              opacity: 0, 
-              x: -xDirection
-            }}
+            initial={{ opacity: 0 }}
             whileInView={{ 
-              opacity: 1, 
-              x: 0,
+              opacity: 1,
               transition: {
-                duration: 0.7,
-                delay: index * 0.05,
-                ease: [0.16, 1, 0.3, 1]
+                duration: 0.2,
+                delay: 0,
+                ease: "easeOut"
               }
             }}
             viewport={{ once: true, amount: 0.2 }}
@@ -401,17 +397,13 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
         <div className={`space-y-8 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
           <motion.div 
             className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 text-left"
-            initial={{ 
-              opacity: 0, 
-              x: xDirection
-            }}
+            initial={{ opacity: 0 }}
             whileInView={{ 
-              opacity: 1, 
-              x: 0,
+              opacity: 1,
               transition: {
-                duration: 0.6,
-                delay: index * 0.05 + 0.1,
-                ease: [0.16, 1, 0.3, 1]
+                duration: 0.3,
+                delay: 0,
+                ease: "easeOut"
               }
             }}
             viewport={{ once: true, amount: 0.2 }}
@@ -424,10 +416,10 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               {walkthrough && (
                 <motion.div 
                   className="flex items-center gap-8 mb-8"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
                 >
                   <div className="relative">
                     <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-400/20 backdrop-blur-xl">
@@ -443,14 +435,13 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
 
               <motion.h2 
                 className={`${walkthrough ? 'text-2xl lg:text-3xl xl:text-4xl' : 'text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl'} font-bold text-white leading-tight tracking-tight ${walkthrough ? '' : 'whitespace-nowrap'}`}
-                initial={{ opacity: 0, x: xDirection * 0.67 }}
+                initial={{ opacity: 0 }}
                 whileInView={{ 
-                  opacity: 1, 
-                  x: 0,
+                  opacity: 1,
                   transition: {
-                    duration: 0.5,
-                    delay: 0.1,
-                    ease: [0.16, 1, 0.3, 1]
+                    duration: 0.2,
+                    delay: 0,
+                    ease: "easeOut"
                   }
                 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -461,14 +452,13 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               <div className="space-y-0.5">
                 <motion.h3 
                   className={`${walkthrough ? 'text-xl lg:text-2xl' : 'text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl'} font-light ${service.subtitleStyle || 'text-premium-silver/90'} tracking-wide leading-relaxed whitespace-nowrap`}
-                  initial={{ opacity: 0, x: xDirection * 0.5 }}
+                  initial={{ opacity: 0 }}
                   whileInView={{ 
-                    opacity: 1, 
-                    x: 0,
+                    opacity: 1,
                     transition: {
-                      duration: 0.5,
-                      delay: 0.15,
-                      ease: [0.16, 1, 0.3, 1]
+                      duration: 0.2,
+                      delay: 0,
+                      ease: "easeOut"
                     }
                   }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -478,14 +468,13 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
 
                 <motion.p 
                   className={`${walkthrough ? 'text-base lg:text-lg' : 'text-sm xs:text-sm sm:text-base md:text-base lg:text-lg'} ${service.descriptionStyle || 'text-premium-silver/70'} font-light leading-relaxed max-w-none tracking-wide`}
-                  initial={{ opacity: 0, x: xDirection * 0.33 }}
+                  initial={{ opacity: 0 }}
                   whileInView={{ 
-                    opacity: 1, 
-                    x: 0,
+                    opacity: 1,
                     transition: {
-                      duration: 0.5,
-                      delay: 0.2,
-                      ease: [0.16, 1, 0.3, 1]
+                      duration: 0.3,
+                      delay: 0,
+                      ease: "easeOut"
                     }
                   }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -624,6 +613,45 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               ) : service.id === 'marketing-engine' ? (
                 <motion.a
                   href="/marketing-engine"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                  >
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
+              ) : service.id === 'lead-agent' ? (
+                <motion.a
+                  href="/agents-automations/speed-to-lead"
                   className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
                   whileHover={{
                     y: -1,
