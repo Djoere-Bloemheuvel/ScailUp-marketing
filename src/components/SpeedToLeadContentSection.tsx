@@ -210,9 +210,9 @@ const SpeedToLeadContentSection = () => {
     <div className="bg-black">
       
       {/* Statistics Cards - Direct onder hero (without headline) */}
-      <section className="py-12 lg:py-16 bg-black">
+      <section className="py-8 sm:py-12 lg:py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto relative">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-lg xs:max-w-2xl lg:max-w-6xl mx-auto relative">
             {statistics.map((stat, index) => (
               <div key={index} className={`relative ${index < 4 ? 'overflow-visible' : ''}`}>
                 {/* Conditional aura glow effect - stronger for top 4 cards */}
@@ -231,17 +231,17 @@ const SpeedToLeadContentSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                  className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:bg-white/8 transition-all duration-300 h-40 flex flex-col justify-center"
+                  className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 text-center hover:bg-white/8 transition-all duration-300 min-h-[120px] sm:min-h-[140px] lg:h-40 flex flex-col justify-center"
                 >
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <stat.icon className="w-6 h-6 text-white" />
                   </div>
                   
-                  <div className="text-2xl lg:text-3xl font-bold text-white mb-2">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
                     {stat.number}
                   </div>
                   
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                     {stat.description}
                   </p>
                 </motion.div>
@@ -259,7 +259,7 @@ const SpeedToLeadContentSection = () => {
       </section>
       
       {/* Problem Section - "Elke seconde telt in leadconversie" */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-32 relative overflow-hidden">
         {/* Backlights - diagonal flowing shapes */}
         <div className="absolute inset-0 opacity-15">
           <div className="absolute top-1/4 right-1/3 w-[400px] h-[200px] sm:w-[600px] sm:h-[300px] md:w-[800px] md:h-[400px] bg-gradient-to-br from-purple-600/60 to-pink-500/60 rounded-full blur-3xl transform rotate-45"></div>
@@ -272,7 +272,7 @@ const SpeedToLeadContentSection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent pointer-events-none z-20"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
             
             {/* Left - Big Bold Number */}
             <div className="text-center">
@@ -281,14 +281,14 @@ const SpeedToLeadContentSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-3xl blur-3xl"></div>
                 
                 {/* Main statistic */}
-                <div className="relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-12">
-                  <div className="text-8xl lg:text-9xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent leading-none mb-4">
+                <div className="relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-6 sm:p-8 lg:p-12">
+                  <div className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent leading-none mb-4">
                     +391%
                   </div>
-                  <div className="text-2xl lg:text-3xl text-white font-semibold mb-2">
+                  <div className="text-xl sm:text-2xl lg:text-3xl text-white font-semibold mb-2">
                     conversie
                   </div>
-                  <div className="text-gray-400 text-lg">
+                  <div className="text-gray-400 text-sm sm:text-base lg:text-lg">
                     bij reactie binnen 1 minuut
                   </div>
                 </div>
@@ -297,14 +297,14 @@ const SpeedToLeadContentSection = () => {
 
             {/* Right - Text */}
             <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
                 Elke seconde telt in
                 <span className="block bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent font-medium">
                   leadconversie
                 </span>
               </h2>
               
-              <div className="space-y-4 text-lg text-gray-300 mb-8 leading-relaxed">
+              <div className="space-y-4 text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
                 <p>
                   In sales is timing vaak belangrijker dan alles wat daarna komt. Je kunt de perfecte pitch hebben, de beste oplossing en de scherpste prijs, maar als je pas uren of dagen na een aanvraag reageert, is de kans groot dat je lead allang met iemand anders in gesprek is.
                 </p>
@@ -351,7 +351,7 @@ const SpeedToLeadContentSection = () => {
       </section>
       
       {/* Benefits Section - "Waarom kiezen voor Speed to Lead?" */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-32 relative overflow-hidden">
         {/* Backlights - circular spreading pattern */}
         <div className="absolute inset-0 opacity-15">
           <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] bg-gradient-to-br from-purple-500/40 to-pink-600/40 rounded-full blur-3xl"></div>
@@ -369,14 +369,14 @@ const SpeedToLeadContentSection = () => {
             
             {/* Left - Text Content */}
             <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
                 Waarom kiezen voor
                 <span className="block bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent font-medium">
                   Speed to Lead?
                 </span>
               </h2>
               
-              <div className="space-y-4 text-lg text-gray-300 mb-8 leading-relaxed">
+              <div className="space-y-4 text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
                 <p>
                   Wanneer iemand je formulier invult, is dat hét moment: ze zijn warm en geïnteresseerd. Toch laten de meeste bedrijven prospects gemiddeld 47 uur wachten op een reactie. Tegen die tijd is de interesse vaak al verdwenen of al in gesprek met je concurrent.
                 </p>
@@ -497,17 +497,17 @@ const SpeedToLeadContentSection = () => {
       </section>
       
       {/* Speed to Lead Workflow Section */}
-      <section className="py-20 lg:py-32">
+      <section className="py-12 sm:py-16 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
-          <div className="text-center mb-24 mt-16">
-            <div className="space-y-6 mb-32">
+          <div className="text-center mb-16 sm:mb-24 mt-8 sm:mt-16">
+            <div className="space-y-4 sm:space-y-6 mb-16 sm:mb-32">
               <motion.h2 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-normal text-white leading-tight tracking-tight" 
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-white leading-tight tracking-tight" 
                 style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}
               >
                 Zo werkt Speed to Lead.
@@ -516,7 +516,7 @@ const SpeedToLeadContentSection = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-2xl sm:text-3xl font-light text-gray-400 leading-relaxed max-w-4xl mx-auto" 
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-400 leading-relaxed max-w-4xl mx-auto" 
                 style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}
               >
                 Volledig automatisch, alsof je het zelf deed.
@@ -525,38 +525,38 @@ const SpeedToLeadContentSection = () => {
           </div>
 
           {/* Workflow Steps */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {workflowSteps.map((step, index) => (
               <div
                 key={step.step}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center ${
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}
               >
                 
                 {/* Step Content */}
-                <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''} space-y-6`}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
-                      <step.icon className="w-6 h-6 text-white" />
+                <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''} space-y-4 sm:space-y-6`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                      <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-purple-400 font-bold text-xl">Stap {step.step}</span>
+                    <div className="flex items-center gap-2 sm:gap-3 flex-1">
+                      <span className="text-purple-400 font-bold text-lg sm:text-xl">Stap {step.step}</span>
                       <div className="h-px bg-gradient-to-r from-purple-500 to-transparent flex-1"></div>
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">
                     {step.title}
                   </h3>
                   
-                  <p className="text-gray-300 text-lg leading-relaxed">
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
                     {step.description}
                   </p>
                   
                   {step.example && (
-                    <div className="bg-gradient-to-br from-purple-950/30 to-pink-900/20 rounded-xl p-6 border border-purple-500/20 mt-6">
-                      <p className="text-purple-200 italic text-base">
+                    <div className="bg-gradient-to-br from-purple-950/30 to-pink-900/20 rounded-xl p-4 sm:p-6 border border-purple-500/20 mt-4 sm:mt-6">
+                      <p className="text-purple-200 italic text-sm sm:text-base">
                         "{step.example}"
                       </p>
                     </div>
@@ -564,26 +564,26 @@ const SpeedToLeadContentSection = () => {
                 </div>
 
                 {/* Visual Element */}
-                <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} relative`}>
+                <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} relative order-first lg:order-none`}>
                   <div className="relative">
                     {/* Background glow */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-3xl blur-3xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-2xl sm:rounded-3xl blur-2xl sm:blur-3xl"></div>
                     
                     {/* Main visual container */}
-                    <div className="relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-12">
+                    <div className="relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12">
                       <div className="text-center">
-                        <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                          <step.icon className="w-10 h-10 text-white" />
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                          <step.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                         </div>
                         
-                        <div className="text-6xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent leading-none mb-4">
+                        <div className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent leading-none mb-3 sm:mb-4">
                           {step.step}
                         </div>
                         
-                        <div className="space-y-2">
-                          <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
-                          <div className="h-1 bg-white/20 rounded-full w-3/4 mx-auto"></div>
-                          <div className="h-1 bg-white/10 rounded-full w-1/2 mx-auto"></div>
+                        <div className="space-y-1 sm:space-y-2">
+                          <div className="h-1.5 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full"></div>
+                          <div className="h-0.5 sm:h-1 bg-white/20 rounded-full w-3/4 mx-auto"></div>
+                          <div className="h-0.5 sm:h-1 bg-white/10 rounded-full w-1/2 mx-auto"></div>
                         </div>
                       </div>
                     </div>
@@ -599,31 +599,31 @@ const SpeedToLeadContentSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mt-16 mb-12"
+            className="text-center mt-12 sm:mt-16 mb-8 sm:mb-12"
           >
-            <p className="text-gray-400 text-sm uppercase tracking-wider mb-8">
+            <p className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider mb-6 sm:mb-8">
               Integraties met jouw favoriete tools
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-6 sm:gap-8 items-center mb-8">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 sm:gap-6 lg:gap-8 items-center mb-6 sm:mb-8">
             {integrations.map((integration, index) => (
               <motion.div
                 key={integration.name}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                className="flex items-center justify-center h-12 opacity-60 hover:opacity-100 transition-opacity duration-300"
+                transition={{ duration: 0.3, delay: index * 0.05, ease: "easeOut" }}
+                className="flex items-center justify-center h-8 sm:h-10 lg:h-12 opacity-60 hover:opacity-100 transition-opacity duration-300"
               >
                 <img 
                   src={integration.logo} 
                   alt={`${integration.name} logo`}
                   className={`max-h-full max-w-full object-contain ${
-                    integration.name === 'Gmail' ? 'bg-white p-1 rounded' : 
+                    integration.name === 'Gmail' ? 'bg-white p-0.5 sm:p-1 rounded' : 
                     ''
                   }`}
-                  style={{ maxHeight: '40px', maxWidth: '40px' }}
+                  style={{ maxHeight: '28px', maxWidth: '28px' }}
                 />
               </motion.div>
             ))}
@@ -634,7 +634,7 @@ const SpeedToLeadContentSection = () => {
 
 
       {/* FAQ Section - "Veelgestelde vragen over Speed to Lead" */}
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-black to-purple-950/5">
+      <section className="py-12 sm:py-16 lg:py-32 bg-gradient-to-b from-black to-purple-950/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div
@@ -642,11 +642,11 @@ const SpeedToLeadContentSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <div className="flex items-center justify-center mb-6">
-              <HelpCircle className="w-8 h-8 text-purple-400 mr-3" />
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white">
+            <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6">
+              <HelpCircle className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400 mr-0 sm:mr-3 mb-2 sm:mb-0" />
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white text-center">
                 Veelgestelde vragen over
                 <span className="block bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent font-medium">
                   Speed to Lead
@@ -654,7 +654,7 @@ const SpeedToLeadContentSection = () => {
               </h2>
             </div>
             
-            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
               Hier vind je antwoorden op de meest gestelde vragen over Speed to Lead. 
               Staat je vraag er niet tussen? <button 
                 onClick={() => window.location.href = '/contact'}
@@ -677,19 +677,19 @@ const SpeedToLeadContentSection = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex items-center justify-between"
+                  className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex items-start sm:items-center justify-between"
                 >
-                  <div className="flex items-center">
-                    <faq.icon className="w-5 h-5 mr-4 flex-shrink-0 text-purple-400" />
-                    <h3 className="text-lg font-semibold text-white pr-4">
+                  <div className="flex items-start sm:items-center flex-1 min-w-0">
+                    <faq.icon className="w-4 h-4 sm:w-5 sm:h-5 mr-3 sm:mr-4 flex-shrink-0 text-purple-400 mt-0.5 sm:mt-0" />
+                    <h3 className="text-base sm:text-lg font-semibold text-white pr-2 sm:pr-4 leading-snug">
                       {faq.question}
                     </h3>
                   </div>
                   <div className="flex-shrink-0">
                     {openFAQ === index ? (
-                      <ChevronUp className="w-5 h-5 text-purple-400" />
+                      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-purple-400" />
+                      <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
                     )}
                   </div>
                 </button>
@@ -703,8 +703,8 @@ const SpeedToLeadContentSection = () => {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-5">
-                    <p className="text-gray-300 leading-relaxed">
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-5">
+                    <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                       {faq.answer}
                     </p>
                   </div>
@@ -717,13 +717,13 @@ const SpeedToLeadContentSection = () => {
       </section>
 
       {/* Apple-style Closing CTA */}
-      <section className="relative py-32 lg:py-40 overflow-hidden">
+      <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 overflow-hidden">
         {/* Apple-style gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
         
         {/* Very subtle ambient glow with fade-out */}
         <div className="absolute inset-0 opacity-3">
-          <div className="absolute top-1/2 left-1/2 w-[1200px] h-[600px] rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
+          <div className="absolute top-1/2 left-1/2 w-[800px] sm:w-[1000px] lg:w-[1200px] h-[400px] sm:h-[500px] lg:h-[600px] rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
                style={{
                  background: 'radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, rgba(219, 39, 119, 0.08) 40%, transparent 70%)'
                }}>
@@ -731,37 +731,37 @@ const SpeedToLeadContentSection = () => {
         </div>
         
         {/* Apple-style content container */}
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             
             {/* Apple-style headline */}
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-normal text-white leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-white leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
               Mis nooit meer een lead.
             </h2>
             
             {/* Apple-style subheadline */}
-            <p className="text-2xl sm:text-3xl font-light text-gray-400 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-400 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
               Speed to Lead zorgt dat elke kans wordt benut.
             </p>
             
             {/* Apple-style description */}
-            <p className="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto font-normal mt-12">
+            <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto font-normal mt-8 sm:mt-12">
               Terwijl jij nog in een meeting zit, krijgt je nieuwe lead al de persoonlijke aandacht die ze verwachten.
             </p>
 
             {/* Apple-style CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-16">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-12 sm:mt-16">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => window.location.href = '/contact'}
-                className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-12 py-4 text-lg font-medium rounded-full transition-all duration-300 shadow-2xl shadow-purple-500/25 min-w-[200px]"
+                className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-full transition-all duration-300 shadow-2xl shadow-purple-500/25 min-w-[180px] sm:min-w-[200px] w-full sm:w-auto"
                 style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}
               >
                 Start nu
@@ -771,7 +771,7 @@ const SpeedToLeadContentSection = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => window.location.href = '/contact'}
-                className="border border-gray-700 hover:border-gray-600 hover:bg-white/5 text-white px-12 py-4 text-lg font-medium rounded-full transition-all duration-300 backdrop-blur-sm min-w-[200px]"
+                className="border border-gray-700 hover:border-gray-600 hover:bg-white/5 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-full transition-all duration-300 backdrop-blur-sm min-w-[180px] sm:min-w-[200px] w-full sm:w-auto"
                 style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}
               >
                 Meer informatie
@@ -779,7 +779,7 @@ const SpeedToLeadContentSection = () => {
             </div>
 
             {/* Apple-style subtle bottom text */}
-            <p className="text-sm text-gray-600 mt-12 font-normal">
+            <p className="text-xs sm:text-sm text-gray-600 mt-8 sm:mt-12 font-normal">
               Binnen minuten na implementatie beginnen jouw leads betere aandacht te krijgen.
             </p>
             

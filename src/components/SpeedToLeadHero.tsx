@@ -33,7 +33,7 @@ const SpeedToLeadHero = () => {
   ];
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-0 overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-0 overflow-hidden">
       
       {/* Black Background */}
       <div className="absolute inset-0 bg-black" />
@@ -107,8 +107,8 @@ const SpeedToLeadHero = () => {
       {/* Hero Content */}
       <div className="relative w-full text-center z-20 px-2 sm:px-4 md:px-6 lg:px-8">
         
-        {/* Split Layout - Similar to Agents Page */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
+        {/* Split Layout - Mobile First Responsive */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-center max-w-7xl mx-auto">
           
           {/* Left Side - Content */}
           <motion.div
@@ -118,27 +118,29 @@ const SpeedToLeadHero = () => {
             transition={{ duration: 0.72, ease: "easeOut" }}
           >
             
-            {/* Speed to Lead Headline - H1 */}
-            <h1 className="font-light text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+            {/* Speed to Lead Headline - H1 - Mobile Optimized */}
+            <h1 className="font-light text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
               <span className="lg:hidden">
-                {/* Mobile/Tablet: 3 lines */}
-                <span className="text-2xl sm:text-3xl md:text-4xl leading-tight">
-                  <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
-                    Speed to Lead –
-                  </span><br />
-                  <span className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
+                {/* Mobile/Tablet: Larger sizing for better readability */}
+                <div className="space-y-3">
+                  <div className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
+                    Speed to Lead
+                  </div>
+                  <div className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased">
                     Inbound Lead Agent
-                  </span>
-                </span>
+                  </div>
+                </div>
               </span>
               <span className="hidden lg:block">
                 {/* Desktop: 2 lines */}
-                <span className="text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
-                  Speed to Lead –
-                </span><br />
-                <span className="text-4xl xl:text-5xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-2">
-                  Inbound Lead Agent
-                </span>
+                <div className="space-y-2">
+                  <div className="text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
+                    Speed to Lead
+                  </div>
+                  <div className="text-4xl xl:text-5xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased">
+                    Inbound Lead Agent
+                  </div>
+                </div>
               </span>
             </h1>
 
@@ -148,15 +150,15 @@ const SpeedToLeadHero = () => {
             </p>
 
             {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg text-premium-silver/85 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base md:text-lg text-premium-silver/85 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-2xl lg:max-w-none">
               Met Speed to Lead reageer je binnen minuten op nieuwe leads met een persoonlijk bericht, precies wanneer ze nog warm zijn. Je krijgt direct een overzicht van hun bedrijf en achtergrond, zodat je opvolging voelt alsof je al uren research hebt gedaan.
             </p>
 
-            {/* CTA Buttons - Responsive */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+            {/* CTA Buttons - Mobile First Responsive */}
+            <div className="flex flex-col xs:flex-row sm:flex-row gap-4 xs:gap-3 sm:gap-4 justify-center lg:justify-start">
               <button
                 onClick={scrollToApproach}
-                className="w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-4 sm:px-5 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 group max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
+                className="w-full xs:w-auto sm:w-auto bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-6 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-3 xs:py-2 sm:py-2.5 md:py-3 lg:py-4 text-sm xs:text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 group xs:max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
               >
                 <span className="flex items-center justify-center">
                   Hoe het werkt
@@ -166,37 +168,37 @@ const SpeedToLeadHero = () => {
               
               <button
                 onClick={handleContactClick}
-                className="w-full sm:w-auto border border-white/30 hover:border-white/60 hover:bg-white/5 text-white px-4 sm:px-5 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
+                className="w-full xs:w-auto sm:w-auto border border-white/30 hover:border-white/60 hover:bg-white/5 text-white px-6 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-3 xs:py-2 sm:py-2.5 md:py-3 lg:py-4 text-sm xs:text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 xs:max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
               >
                 Start nu
               </button>
             </div>
           </motion.div>
 
-          {/* Right Side - Stats - Fully Responsive */}
+          {/* Right Side - Stats - Mobile Optimized */}
           <motion.div
-            className="order-2 lg:order-2 mt-8 lg:mt-0"
+            className="order-2 lg:order-2 mt-12 sm:mt-16 lg:mt-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.72, delay: 0.2, ease: "easeOut" }}
           >
-            {/* Speed to Lead Proof Points - Responsive Scaling */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:space-y-2.5 xl:space-y-3 lg:gap-0 max-w-md mx-auto lg:max-w-none">
+            {/* Speed to Lead Proof Points - Mobile First Grid */}
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-1 lg:space-y-4 xl:space-y-4 lg:gap-0 max-w-sm sm:max-w-md mx-auto lg:max-w-none">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center"
+                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 lg:p-4 xl:p-5 min-h-[80px] sm:min-h-[90px] lg:min-h-[85px] xl:min-h-[95px] flex flex-col justify-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1, ease: "easeOut" }}
                 >
-                  <div className="text-base sm:text-lg lg:text-base xl:text-lg font-bold text-white mb-0.5 leading-none">
+                  <div className="text-lg sm:text-xl lg:text-lg xl:text-xl font-bold text-white mb-1 leading-none">
                     {stat.value}
                   </div>
-                  <div className="text-xs sm:text-sm lg:text-xs xl:text-sm text-white/70 leading-tight">
+                  <div className="text-sm sm:text-sm lg:text-sm xl:text-sm text-white/70 leading-tight font-medium">
                     {stat.label}
                   </div>
-                  <div className="text-xs text-white/50 leading-tight mt-0.5">
+                  <div className="text-xs sm:text-xs text-white/50 leading-tight mt-1">
                     {stat.description}
                   </div>
                 </motion.div>
