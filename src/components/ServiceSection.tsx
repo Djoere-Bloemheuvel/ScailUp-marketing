@@ -67,16 +67,7 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
         <div className={`relative flex items-center justify-center ${isEven ? 'lg:order-2 lg:justify-self-end' : 'lg:order-1 lg:justify-self-start'}`}>
           <motion.div
             className="relative"
-            initial={{ opacity: 0 }}
-            whileInView={{ 
-              opacity: 1,
-              transition: {
-                duration: 0.2,
-                delay: 0,
-                ease: "easeOut"
-              }
-            }}
-            viewport={{ once: true, amount: 0.2 }}
+            initial={{ opacity: 1 }}
           >
             <div style={{ isolation: 'isolate' }}>
               {walkthrough ? (
@@ -400,16 +391,7 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
         <div className={`space-y-8 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
           <motion.div 
             className="space-y-4 xs:space-y-5 sm:space-y-6 md:space-y-8 text-left"
-            initial={{ opacity: 0 }}
-            whileInView={{ 
-              opacity: 1,
-              transition: {
-                duration: 0.3,
-                delay: 0,
-                ease: "easeOut"
-              }
-            }}
-            viewport={{ once: true, amount: 0.2 }}
+            initial={{ opacity: 1 }}
           >
           <div>
 
@@ -419,10 +401,7 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               {walkthrough && (
                 <motion.div 
                   className="flex items-center gap-8 mb-8"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
+                  initial={{ opacity: 1 }}
                 >
                   <div className="relative">
                     <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-400/20 backdrop-blur-xl">
@@ -438,16 +417,7 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
 
               <motion.h2 
                 className={`${walkthrough ? 'text-2xl lg:text-3xl xl:text-4xl' : 'text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl'} font-bold text-white leading-tight tracking-tight ${walkthrough ? '' : 'whitespace-nowrap'}`}
-                initial={{ opacity: 0 }}
-                whileInView={{ 
-                  opacity: 1,
-                  transition: {
-                    duration: 0.2,
-                    delay: 0,
-                    ease: "easeOut"
-                  }
-                }}
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{ opacity: 1 }}
               >
                 {service.title}
               </motion.h2>
@@ -455,32 +425,14 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               <div className="space-y-0.5">
                 <motion.h3 
                   className={`${walkthrough ? 'text-xl lg:text-2xl' : 'text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl'} font-light ${service.subtitleStyle || 'text-premium-silver/90'} tracking-wide leading-relaxed whitespace-nowrap`}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ 
-                    opacity: 1,
-                    transition: {
-                      duration: 0.2,
-                      delay: 0,
-                      ease: "easeOut"
-                    }
-                  }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  initial={{ opacity: 1 }}
                 >
                   {service.subtitle}
                 </motion.h3>
 
                 <motion.p 
                   className={`${walkthrough ? 'text-base lg:text-lg' : 'text-sm xs:text-sm sm:text-base md:text-base lg:text-lg'} ${service.descriptionStyle || 'text-premium-silver/70'} font-light leading-relaxed max-w-none tracking-wide`}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ 
-                    opacity: 1,
-                    transition: {
-                      duration: 0.3,
-                      delay: 0,
-                      ease: "easeOut"
-                    }
-                  }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  initial={{ opacity: 1 }}
                 >
                   {service.description}
                 </motion.p>
@@ -490,10 +442,7 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               {walkthrough && (service.highlight || service.metrics) && (
                 <motion.div 
                   className="flex flex-col sm:flex-row gap-4 mt-8"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 1, y: 0 }}
                 >
                   {service.highlight && (
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500/5 to-blue-600/5 rounded-xl border border-blue-500/10 backdrop-blur-xl">
@@ -520,18 +469,8 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
               <motion.div 
                 className="flex flex-col xs:flex-col sm:flex-row gap-3 xs:gap-4 pt-6 xs:pt-7 sm:pt-8 md:pt-10 justify-start"
                 initial={{ 
-                  opacity: 0, 
-                  x: xDirection * 0.83
-                }}
-                whileInView={{ 
                   opacity: 1, 
                   x: 0
-                }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.3,
-                  ease: [0.16, 1, 0.3, 1]
                 }}
               >
 

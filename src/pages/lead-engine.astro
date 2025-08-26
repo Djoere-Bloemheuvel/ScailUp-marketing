@@ -1,13 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpHero from '../components/ScailUpHero';
-import Services from '../components/Services';
-import ProductWalkthrough from '../components/ProductWalkthrough';
-import SimpleApproach from '../components/SimpleApproach';
-import ProblemsSection from '../components/ProblemsSection';
-import SolutionsSection from '../components/SolutionsSection';
-import TransitionSection from '../components/TransitionSection';
-import FinaleCTASection from '../components/FinaleCTASection';
+import LeadEngineFeatures from '../components/LeadEngineFeatures';
 
 // ScailUp structured data
 const structuredData = {
@@ -121,26 +115,8 @@ const structuredData = {
     <!-- ScailUp Hero section -->
     <ScailUpHero client:load isEmailPage={true} />
     
-    <!-- Services section -->
-    <Services client:visible blueTheme={true} walkthrough={true} />
-    
-    <!-- Product Walkthrough section -->
-    <ProductWalkthrough client:visible />
-    
-    <!-- Approach section (4 kern principes) -->
-    <SimpleApproach client:visible />
-    
-    <!-- Problems section -->
-    <ProblemsSection client:visible />
-    
-    <!-- Transition section -->
-    <TransitionSection client:visible />
-    
-    <!-- Solutions section -->
-    <SolutionsSection client:visible />
-    
-    <!-- Finale CTA section -->
-    <FinaleCTASection client:visible />
+    <!-- Lead Engine Features section -->
+    <LeadEngineFeatures client:visible />
   </main>
 
 </Layout>

@@ -160,11 +160,8 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 className="flex items-center space-x-2 rounded-lg px-2 py-1"
                 style={{ transition: 'none', outline: 'none' }}
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-scailup-gradient rounded-lg sm:rounded-xl flex items-center justify-center">
-                  <span className="text-sm sm:text-xl font-bold text-white">S</span>
-                </div>
-                <span className="text-lg sm:text-xl font-bold text-white">
-                  ScailUp
+                <span className="text-lg sm:text-xl font-bold text-white tracking-widest uppercase">
+                  BUILDRS
                 </span>
               </button>
 

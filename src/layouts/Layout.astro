@@ -326,7 +326,7 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
 </head>
 <body class="min-h-screen bg-black text-white" style="margin: 0 !important; padding: 0 !important; height: 100% !important; position: relative !important; top: 0 !important;">
   <!-- ScailUp Navigation Header -->
-  <ScailUpHeader client:only="react" showAlways={showHeaderAlways} />
+  <ScailUpHeader client:load showAlways={true} />
   
   <slot />
 
