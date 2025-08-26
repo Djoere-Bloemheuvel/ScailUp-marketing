@@ -8,63 +8,78 @@ const OnboardAndBeyondContentSection = () => {
   // FAQ data - Onboard and Beyond focus
   const faqData = [
     {
-      question: "Wat is Onboard and Beyond precies?",
-      answer: "Onboard and Beyond is een AI-aangedreven customer success platform dat nieuwe klanten vanaf dag één succesvol maakt. Het automatiseert de complete onboarding journey - van welkomstbericht tot producttraining, van eerste stappen tot langetermijn succes tracking. Terwijl de meeste bedrijven klanten loslaten na de verkoop, blijft jouw systeem actief begeleiden, ondersteunen en optimaliseren voor maximaal succes.",
+      question: "Wat is Onboard & Beyond onboarding precies?",
+      answer: "Onboard & Beyond is een B2B onboarding tool die het complete klant-onboardingproces automatiseert. In plaats van alleen gegevens verzamelen, zet onze tool automatisch een welkomstpakket, onboardingplan en follow-up reminders klaar en integreert dit direct in je CRM of projectomgeving.",
       icon: Heart
     },
     {
-      question: "Waarom is goede onboarding zo belangrijk voor klantsucces?",
-      answer: "De eerste 90 dagen bepalen of een klant succesvol wordt of churnt. Research toont aan dat klanten die een uitstekende onboarding ervaren 50% langer blijven en 40% meer waarde genereren. Slechte onboarding leidt tot frustratie, onderbenutting van je product, en uiteindelijk vertrek naar concurrenten. Onboard and Beyond zorgt dat elke klant vanaf dag één de waarde ervaart die ze verwachtten.",
-      icon: TrendingUp
-    },
-    {
-      question: "Hoe automatiseert het systeem de onboarding?",
-      answer: "Het systeem creëert een gepersonaliseerde onboarding journey op basis van klanttype, product package en doelstellingen. Automatische welkomstsequenties, stap-voor-stap tutorials, proactieve check-ins, en slimme content delivery zorgen voor een soepele ervaring. Alles wordt getimed op basis van gebruikersgedrag - als iemand vastloopt, krijgen ze extra hulp. Als ze vooruitgaan, worden ze uitgedaagd met volgende stappen.",
-      icon: Settings
-    },
-    {
-      question: "Hoe weet het systeem wanneer een klant hulp nodig heeft?",
-      answer: "Door slimme monitoring van gebruikersgedrag, product usage, en engagement metrics. Als een klant bijvoorbeeld 3 dagen inactief is, gestopt is in een cruciaal proces, of bepaalde features niet gebruikt, triggert dit automatisch een intervention. Dit kan een persoonlijke mail zijn, een tutorial, of zelfs een directe outreach van je team. Zo voorkom je problemen voordat ze escaleren.",
-      icon: Brain
-    },
-    {
-      question: "Kan ik de onboarding aanpassen aan mijn specifieke klanten?",
-      answer: "Absoluut! Het systeem biedt volledige customization. Je kunt verschillende onboarding tracks maken voor verschillende klanttypes, branche-specifieke content toevoegen, je eigen branding integreren, en de tone of voice aanpassen. Ook kun je handmatige touchpoints inbouwen waar persoonlijke interactie gewenst is. Het systeem leert ook van succesvolle klanten om de journey steeds te optimaliseren.",
+      question: "Hoe verschilt deze onboarding tool van Typeform of standaard intakeformulieren?",
+      answer: "Een gewoon formulier verzamelt alleen data. Onboard & Beyond is een slimme onboarding agent die verder gaat: de ingevulde gegevens worden automatisch verwerkt, omgezet in een persoonlijk onboardingplan, gekoppeld aan je systemen en aangevuld met geautomatiseerde klantcommunicatie. Zo krijg je een echte end-to-end onboarding ervaring.",
       icon: Target
     },
     {
-      question: "Hoe integreert het met onze bestaande tools en CRM?",
-      answer: "Onboard and Beyond integreert naadloos met alle populaire platforms zoals HubSpot, Salesforce, Intercom, Slack, en je product tools. Alle klantinteracties, progress updates, en success metrics worden automatisch gesynced. Je team heeft altijd realtime inzicht in de onboarding status van elke klant, zonder extra administratieve lasten of handmatige data-entry.",
+      question: "Waarom is een goede B2B onboarding zo belangrijk?",
+      answer: "Onderzoek toont aan dat bedrijven met een efficiënt onboardingproces hun klantretentie tot 50% verhogen. Een naadloze onboarding zorgt dat klanten sneller waarde ervaren, minder snel afhaken en eerder geneigd zijn om upsells of uitbreidingen af te nemen.",
+      icon: TrendingUp
+    },
+    {
+      question: "Wat levert Onboard & Beyond mij concreet op?",
+      answer: "Snellere klantactivatie → klanten starten direct i.p.v. dagen wachten. Tijdsbesparing → gemiddeld 3–5 uur minder handmatig werk per klant. Professionele eerste indruk → klanten voelen zich serieus genomen. Hogere retentie en loyaliteit → minder churn, meer upsell. Operationele efficiëntie → schaalbaar zonder extra personeel.",
+      icon: BarChart3
+    },
+    {
+      question: "Hoe ervaren klanten deze automatische onboarding?",
+      answer: "Voor de klant voelt het alsof je een persoonlijke onboarding hebt voorbereid. Ze krijgen direct een welkomstpakket, duidelijke volgende stappen en reminders, zonder dat ze heen-en-weer hoeven te mailen. Dit verhoogt klanttevredenheid en vertrouwen vanaf dag één.",
+      icon: Heart
+    },
+    {
+      question: "Werkt Onboard & Beyond alleen voor SaaS, of ook voor agencies en consultants?",
+      answer: "Onboard & Beyond werkt voor SaaS bedrijven, marketing agencies, consultants, coaches en alle B2B-dienstverleners. De onboardingflow wordt afgestemd op je type klant en aanbod, zodat het altijd relevant en professioneel aanvoelt.",
+      icon: Users
+    },
+    {
+      question: "Hoeveel tijd kan mijn team besparen met automatische onboarding?",
+      answer: "Gemiddeld bespaar je 3–5 uur per klant doordat repetitieve taken (welkomstmail, documenten verzamelen, CRM invullen) volledig automatisch gaan. Op schaal kan dit tientallen uren per maand opleveren.",
+      icon: Clock
+    },
+    {
+      question: "Kan ik de onboarding aanpassen aan mijn merk?",
+      answer: "Ja. Alle content (welkomstpakket, mails, onboardingplan) wordt opgesteld in jouw branding, tone-of-voice en stijl. De klant ervaart een naadloze, gepersonaliseerde onboarding alsof jij hem zelf hebt gemaakt.",
+      icon: Settings
+    },
+    {
+      question: "Hoe voorkomt Onboard & Beyond dat klanten afhaken?",
+      answer: "De tool stuurt automatische reminders en slimme follow-ups, waardoor klanten altijd de juiste stappen afronden. Hierdoor blijft het proces soepel en voorkom je dat leads of klanten vroegtijdig afhaken tijdens onboarding.",
+      icon: Shield
+    },
+    {
+      question: "Integreert Onboard & Beyond met mijn CRM en projecttools?",
+      answer: "Ja. De onboarding agent koppelt direct met populaire systemen zoals HubSpot, Salesforce, Asana, Trello, Notion en Slack. Alle klantgegevens en stappen worden automatisch verwerkt en gelogd.",
       icon: Link
     },
     {
-      question: "Wat gebeurt er na de initial onboarding periode?",
-      answer: "Dat is waar 'Beyond' begint! Het systeem blijft je klanten monitoren en ondersteunen voor langetermijn succes. Proactieve feature suggestions, renewal reminders, upsell opportunities, en continuous value delivery. Het doel is om van elke klant een succesverhaal en ambassadeur te maken. Klanten die het systeem doorlopen worden gemiddeld 60% meer waardevol en blijven 3x langer.",
+      question: "Hoe draagt onboarding bij aan mijn groei?",
+      answer: "Met automatische B2B onboarding start elke klant sneller, blijft langer tevreden en neemt vaker extra services af. Dat betekent hogere retentie, meer omzet en schaalbare groei zonder extra overhead.",
       icon: Award
-    },
-    {
-      question: "Hoe meet ik het succes van de geautomatiseerde onboarding?",
-      answer: "Het platform biedt uitgebreide analytics: time-to-value, feature adoption rates, customer health scores, en churn predictions. Je ziet precies waar klanten vastlopen, welke content het beste werkt, en wat leidt tot de hoogste tevredenheid. Deze inzichten helpen je de onboarding continu te verbeteren en zorgen voor meetbare ROI op je customer success investeringen.",
-      icon: BarChart3
     }
   ];
 
-  // Integration logos data - customer success focus
+  // Integration logos data - using exact same integrations as seal-the-deal page
   const integrations = [
+    { name: 'Gmail', logo: '/gmail-logo.webp' },
+    { name: 'Slack', logo: 'https://img.icons8.com/color/48/slack-new.png' },
+    { name: 'Google Calendar', logo: '/google-calendar-logo.webp' },
+    { name: 'Calendly', logo: '/calendly-logo.png' },
     { name: 'HubSpot', logo: 'https://cdn.worldvectorlogo.com/logos/hubspot-1.svg' },
     { name: 'Salesforce', logo: '/salesforce-logo.png' },
-    { name: 'Intercom', logo: 'https://img.icons8.com/color/48/intercom.png' },
-    { name: 'Slack', logo: 'https://img.icons8.com/color/48/slack-new.png' },
     { name: 'Notion', logo: '/notion-logo.png' },
-    { name: 'Zapier', logo: 'https://img.icons8.com/color/48/zapier.png' },
-    { name: 'Calendly', logo: '/calendly-logo.png' },
-    { name: 'Google Workspace', logo: '/google-sheets-logo.webp' },
-    { name: 'Microsoft Teams', logo: '/microsoft-teams-logo.png' },
-    { name: 'Pipedrive', logo: '/pipedrive-logo.svg' },
-    { name: 'Mailchimp', logo: '/mailchimp-logo.png' },
-    { name: 'Airtable', logo: '/airtable-logo.png' },
+    { name: 'PandaDoc', logo: '/pandadoc-logo.png' },
     { name: 'ClickUp', logo: 'https://img.icons8.com/color/48/clickup.png' },
-    { name: 'Zendesk', logo: 'https://img.icons8.com/color/48/zendesk.png' }
+    { name: 'Instantly', logo: '/instantly-logo.webp' },
+    { name: 'Google Sheets', logo: '/google-sheets-logo.webp' },
+    { name: 'Mailchimp', logo: '/mailchimp-logo.png' },
+    { name: 'Pipedrive', logo: '/pipedrive-logo.svg' },
+    { name: 'WhatsApp', logo: '/whatsapp-logo.webp' }
   ];
 
   // Benefits section - Onboard and Beyond focus
@@ -130,53 +145,38 @@ const OnboardAndBeyondContentSection = () => {
   const workflowSteps = [
     {
       step: "01",
-      title: "Automatische welkomst",
-      description: "Zodra een nieuwe klant binnenkomt, wordt automatisch een persoonlijke welkomstsequentie gestart. Gebaseerd op hun profiel, doelstellingen en gekozen package krijgen ze een custom onboarding plan. Een warm welkomstbericht, verwachtingen setting, en de eerste stappen worden direct gecommuniceerd.",
-      icon: Heart
+      title: "Van formulier naar fundament",
+      description: "De klant vult één slim formulier in. Niet zomaar data verzamelen, maar direct alles doorgezet naar je CRM en projectomgeving. Geen losse mails, geen spreadsheets. Alle klantinformatie wordt automatisch gesynchroniseerd en de onboarding journey wordt direct geactiveerd. Dit vormt het fundament voor een soepele en professionele samenwerking vanaf dag één.",
+      icon: Heart,
+      example: "Formulier → CRM sync → Project setup → Welcome sequence gestart"
     },
     {
       step: "02", 
-      title: "Slimme journey mapping",
-      description: "Het systeem creëert een gepersonaliseerde onboarding roadmap met alle belangrijke milestones. Van eerste login, tot key features, tot advanced functionaliteit - alles wordt getimed en gepersonaliseerd. Klanten zien altijd hun voortgang en volgende stappen.",
+      title: "Automatisch welkom & plan",
+      description: "Binnen seconden ontvangt de klant een professioneel welkomstpakket en een helder onboardingplan met taken, mijlpalen en documenten. Het voelt alsof jij uren voorbereiding hebt gedaan. Gepersonaliseerde content op basis van hun specifieke behoeften, branche en doelstellingen. Een persoonlijke roadmap die vertrouwen wekt en een professionele uitstraling heeft.",
       icon: Target,
-      example: "Week 1: Basissetup | Week 2: Core features | Week 3: Advanced training"
+      example: "Welkomstmail + Onboardingplan + Mijlpalen + Verwachtingen + Contactgegevens"
     },
     {
       step: "03",
-      title: "Proactieve begeleiding", 
-      description: "Tijdens de onboarding wordt elk klantgedrag gemonitored. Zitten ze vast? Automatische hulp. Gaan ze snel? Extra uitdagingen. Zijn ze inactief? Vriendelijke nudges. Het systeem past zich real-time aan op basis van hun gedrag en voortgang.",
-      icon: Brain
+      title: "Duidelijke volgende stappen", 
+      description: "Geen wachten of verwarring: de klant krijgt meteen bevestiging en ziet wat er van beide kanten verwacht wordt. Dat geeft vertrouwen én houdt het momentum vast. Crystal clear communicatie over tijdlijnen, deliverables en verantwoordelijkheden. Transparantie die professionele relaties opbouwt en misverstanden voorkomt.",
+      icon: Brain,
+      example: "Week 1: Kickoff meeting | Week 2: Content review | Week 3: Go-live"
     },
     {
       step: "04",
-      title: "Milestone tracking",
-      description: "Elke belangrijke stap wordt gevierd en getracked. Eerste succesvolle actie, feature adoption, value realization - het systeem erkent en versterkt positief gedrag. Dit houdt motivatie hoog en momentum gaande tijdens de kritieke eerste periode.",
-      icon: Award,
-      example: "🎉 Gefeliciteerd! Je hebt je eerste [feature] succesvol gebruikt!"
+      title: "Altijd opvolging, nooit losse eindjes",
+      description: "Slimme reminders en automatische follow-ups zorgen dat elk onderdeel wordt afgerond. Zo blijft de onboarding soepel lopen, zonder dat jij er achteraan hoeft. Het systeem houdt bij wat nog open staat, stuurt tijdige herinneringen en escaleert indien nodig. Jij houdt overzicht zonder handmatig werk, de klant voelt zich altijd ondersteund.",
+      icon: Shield,
+      example: "Reminder: Document review | Follow-up: Training voltooid? | Check-in: Alles duidelijk?"
     },
     {
-      step: "05", 
-      title: "Slimme interventies",
-      description: "Als het systeem signalen oppikt van mogelijke problemen - inactiviteit, frustratie, of vastlopen - worden automatisch interventies gestart. Dit kan extra tutorial content zijn, persoonlijke outreach, of escalatie naar je customer success team.",
-      icon: Shield
-    },
-    {
-      step: "06",
-      title: "Success optimization", 
-      description: "Het systeem analyseert continu wat werkt en wat niet. Welke klanten zijn het meest succesvol? Welke onboarding stappen zijn cruciaal? Deze learnings worden gebruikt om de journey voor toekomstige klanten te optimaliseren.",
-      icon: BarChart3
-    },
-    {
-      step: "07",
-      title: "Langetermijn nurturing",
-      description: "Na succesvolle onboarding begint de 'Beyond' fase: continue value delivery, nieuwe feature introductions, renewal voorbereiding, en upsell opportunities. Het doel is om van elke klant een trouwe ambassadeur te maken.",
-      icon: TrendingUp
-    },
-    {
-      step: "08",
-      title: "Ambassadeur worden",
-      description: "Succesvolle klanten worden uitgenodigd om case studies te delen, referrals te geven, of zelfs als gastspreker op te treden. Het systeem identificeert automatisch je grootste fans en helpt ze je merk te promoten.",
-      icon: Users
+      step: "05",
+      title: "Klaar voor succes, zonder heen-en-weer",
+      description: "Na deze gestroomlijnde onboarding hebben zowel jij als je klant alles wat nodig is voor een succesvol traject. Geen onduidelijkheden, geen gemiste details, geen eindeloze mailwisselingen. Alle informatie is compleet, alle verwachtingen zijn helder, en beide partijen kunnen vol vertrouwen aan de slag. Direct productief vanaf dag één, zonder frustratie of verwarring.",
+      icon: CheckCircle,
+      example: "✅ Volledige setup | ✅ Heldere afspraken | ✅ Alle documenten | ✅ Direct aan de slag"
     }
   ];
 
@@ -234,11 +234,11 @@ const OnboardAndBeyondContentSection = () => {
       
       {/* Problem Section - "Klanten loslaten na de verkoop" */}
       <section className="py-12 sm:py-16 lg:py-32 relative overflow-hidden">
-        {/* Backlights - diagonal flowing shapes */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-1/4 right-1/3 w-[400px] h-[200px] sm:w-[600px] sm:h-[300px] md:w-[800px] md:h-[400px] bg-gradient-to-br from-blue-700/60 to-purple-700/60 rounded-full blur-3xl transform rotate-45"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-tl from-purple-600/50 to-blue-600/50 rounded-full blur-3xl opacity-70"></div>
-          <div className="absolute top-1/2 left-1/2 w-[200px] h-[400px] sm:w-[300px] sm:h-[600px] md:w-[400px] md:h-[800px] bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-full blur-3xl transform -rotate-12"></div>
+        {/* Backlights - diagonal flowing shapes - More Blue theme */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 right-1/3 w-[400px] h-[200px] sm:w-[600px] sm:h-[300px] md:w-[800px] md:h-[400px] bg-gradient-to-br from-blue-500/80 to-blue-700/70 rounded-full blur-3xl transform rotate-45"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-tl from-blue-600/60 to-indigo-600/60 rounded-full blur-3xl opacity-80"></div>
+          <div className="absolute top-1/2 left-1/2 w-[200px] h-[400px] sm:w-[300px] sm:h-[600px] md:w-[400px] md:h-[800px] bg-gradient-to-r from-blue-500/40 to-indigo-500/40 rounded-full blur-3xl transform -rotate-12"></div>
         </div>
         
         {/* Fade to black - top and bottom */}
@@ -250,11 +250,11 @@ const OnboardAndBeyondContentSection = () => {
             
             {/* Left - Customer Journey Visual */}
             <div className="relative flex items-center justify-center h-80 sm:h-96 lg:h-[28rem] xl:h-[32rem]">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/15 to-purple-700/15 rounded-3xl blur-2xl"></div>
+              {/* Background glow - More Blue theme */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-700/20 rounded-3xl blur-2xl"></div>
               
               {/* Professional Customer Journey Chart */}
-              <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-8 sm:p-12 lg:p-16 w-full max-w-md lg:max-w-lg">
+              <div className="relative bg-gradient-to-br from-blue-900/25 to-indigo-900/20 backdrop-blur-sm border border-blue-400/35 rounded-3xl p-8 sm:p-12 lg:p-16 w-full max-w-md lg:max-w-lg">
                 
                 {/* Chart Title */}
                 <div className="text-center mb-8">
@@ -290,13 +290,13 @@ const OnboardAndBeyondContentSection = () => {
                     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
                       <defs>
                         <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#10b981" stopOpacity="0.8" />
-                          <stop offset="50%" stopColor="#059669" stopOpacity="0.7" />
-                          <stop offset="100%" stopColor="#047857" stopOpacity="0.6" />
+                          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
+                          <stop offset="50%" stopColor="#2563eb" stopOpacity="0.7" />
+                          <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.6" />
                         </linearGradient>
                         <linearGradient id="successArea" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
-                          <stop offset="100%" stopColor="#047857" stopOpacity="0.1" />
+                          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.3" />
+                          <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.1" />
                         </linearGradient>
                       </defs>
                       
@@ -316,12 +316,12 @@ const OnboardAndBeyondContentSection = () => {
                       />
                       
                       {/* Start point */}
-                      <circle cx="10" cy="50" r="3" fill="#10b981" opacity="0.9">
+                      <circle cx="10" cy="50" r="3" fill="#3b82f6" opacity="0.9">
                         <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite" />
                       </circle>
                       
                       {/* Success point */}
-                      <circle cx="190" cy="30" r="3" fill="#047857" opacity="0.8">
+                      <circle cx="190" cy="30" r="3" fill="#1d4ed8" opacity="0.8">
                         <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite" begin="1s" />
                       </circle>
                     </svg>
@@ -349,8 +349,8 @@ const OnboardAndBeyondContentSection = () => {
                 </div>
                 
                 {/* Professional insight */}
-                <div className="mt-6 p-3 bg-blue-950/30 rounded-lg border border-blue-600/20">
-                  <p className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent text-xs text-center">
+                <div className="mt-6 p-3 bg-blue-950/30 rounded-lg border border-blue-500/25">
+                  <p className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent text-xs text-center">
                     <strong>90 dagen</strong> bepalen klant succes
                   </p>
                 </div>
@@ -379,21 +379,21 @@ const OnboardAndBeyondContentSection = () => {
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
+                <div className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-blue-400/20 rounded-xl">
                   <TrendingUp className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                   <span className="text-white text-sm font-medium">
                     Nieuwe klanten worden overgelaten aan zichzelf
                   </span>
                 </div>
 
-                <div className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
-                  <Clock className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
+                <div className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-indigo-500/20 rounded-xl">
+                  <Clock className="w-6 h-6 text-indigo-400 mr-3 flex-shrink-0" />
                   <span className="text-white text-sm font-medium">
                     Frustratie en onderbenutting leiden tot churn
                   </span>
                 </div>
 
-                <div className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
+                <div className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-blue-400/20 rounded-xl">
                   <Mail className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                   <span className="text-white text-sm font-medium">
                     Geen proactieve begeleiding naar succes
@@ -402,7 +402,7 @@ const OnboardAndBeyondContentSection = () => {
               </div>
               
               {/* Tagline highlight */}
-              <div className="mt-8 p-4 bg-gradient-to-r from-blue-950/30 to-purple-900/20 rounded-xl border border-blue-600/30">
+              <div className="mt-8 p-4 bg-gradient-to-r from-blue-950/30 to-indigo-900/25 rounded-xl border border-blue-500/30">
                 <div className="flex items-center">
                   <Target className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0" />
                   <p className="text-white font-semibold text-lg">
@@ -417,12 +417,12 @@ const OnboardAndBeyondContentSection = () => {
       
       {/* Benefits Section - "Van onboarding naar ambassadeur" */}
       <section className="py-12 sm:py-16 lg:py-32 relative overflow-hidden">
-        {/* Backlights - circular spreading pattern */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] bg-gradient-to-br from-blue-600/40 to-purple-700/40 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[300px] sm:w-[600px] sm:h-[450px] md:w-[800px] md:h-[600px] bg-gradient-to-tl from-green-500/30 to-blue-700/30 rounded-full blur-3xl opacity-60"></div>
-          <div className="absolute top-1/3 right-1/5 w-[250px] h-[600px] sm:w-[350px] sm:h-[800px] md:w-[450px] md:h-[1000px] bg-gradient-to-b from-blue-700/20 to-purple-700/20 rounded-full blur-3xl transform rotate-25"></div>
-          <div className="absolute bottom-1/2 left-1/6 w-[300px] h-[200px] sm:w-[450px] sm:h-[300px] md:w-[600px] md:h-[400px] bg-gradient-to-r from-purple-500/25 to-blue-600/25 rounded-full blur-3xl"></div>
+        {/* Backlights - circular spreading pattern - More Blue theme */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] bg-gradient-to-br from-blue-500/50 to-blue-700/50 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[300px] sm:w-[600px] sm:h-[450px] md:w-[800px] md:h-[600px] bg-gradient-to-tl from-blue-600/40 to-indigo-700/40 rounded-full blur-3xl opacity-70"></div>
+          <div className="absolute top-1/3 right-1/5 w-[250px] h-[600px] sm:w-[350px] sm:h-[800px] md:w-[450px] md:h-[1000px] bg-gradient-to-b from-blue-600/30 to-indigo-700/30 rounded-full blur-3xl transform rotate-25"></div>
+          <div className="absolute bottom-1/2 left-1/6 w-[300px] h-[200px] sm:w-[450px] sm:h-[300px] md:w-[600px] md:h-[400px] bg-gradient-to-r from-indigo-500/35 to-blue-600/35 rounded-full blur-3xl"></div>
         </div>
         
         {/* Fade to black - top and bottom */}
@@ -457,7 +457,7 @@ const OnboardAndBeyondContentSection = () => {
                 {benefits.map((benefit, index) => (
                   <div
                     key={index}
-                    className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl"
+                    className="flex items-center p-4 bg-white/5 backdrop-blur-sm border border-blue-400/20 rounded-xl"
                   >
                     <CheckCircle className="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" />
                     <span className="text-white text-sm font-medium">
@@ -468,7 +468,7 @@ const OnboardAndBeyondContentSection = () => {
               </div>
               
               {/* Tagline highlight */}
-              <div className="mt-8 p-4 bg-gradient-to-r from-blue-950/30 to-purple-900/20 rounded-xl border border-blue-600/30">
+              <div className="mt-8 p-4 bg-gradient-to-r from-blue-950/30 to-indigo-900/25 rounded-xl border border-blue-500/30">
                 <div className="flex items-center">
                   <Target className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0" />
                   <p className="text-white font-semibold text-lg">
@@ -480,11 +480,11 @@ const OnboardAndBeyondContentSection = () => {
 
             {/* Right - Enhanced Success Visual */}
             <div className="relative">
-              {/* Background glow effects */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-700/20 rounded-3xl blur-3xl"></div>
+              {/* Background glow effects - More Blue theme */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/25 to-blue-700/25 rounded-3xl blur-3xl"></div>
               
               {/* Main container */}
-              <div className="relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
+              <div className="relative bg-gradient-to-br from-blue-900/20 to-indigo-900/25 backdrop-blur-sm border border-blue-400/25 rounded-3xl p-8">
                 
                 {/* Success metrics visual */}
                 <div className="text-center mb-8">
@@ -492,8 +492,8 @@ const OnboardAndBeyondContentSection = () => {
                   
                   {/* Stats showcase */}
                   <div className="space-y-4">
-                    <div className="bg-white/5 rounded-2xl p-6 text-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
+                    <div className="bg-blue-900/25 border border-blue-400/20 rounded-2xl p-6 text-center">
+                      <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent mb-2">
                         90%
                       </div>
                       <div className="text-white text-sm font-semibold mb-1">Succesvol onboarded</div>
@@ -501,18 +501,18 @@ const OnboardAndBeyondContentSection = () => {
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4 mb-4">
-                      <div className="bg-white/5 rounded-xl p-4 text-center">
+                      <div className="bg-blue-900/18 border border-blue-400/15 rounded-xl p-4 text-center">
                         <div className="text-xl font-bold text-white mb-1">3x</div>
                         <div className="text-gray-400 text-xs">langere relaties</div>
                       </div>
-                      <div className="bg-white/5 rounded-xl p-4 text-center">
+                      <div className="bg-indigo-900/18 border border-indigo-400/15 rounded-xl p-4 text-center">
                         <div className="text-xl font-bold text-white mb-1">60%</div>
                         <div className="text-gray-400 text-xs">meer waarde</div>
                       </div>
                     </div>
                     
-                    <div className="bg-white/5 rounded-2xl p-6 text-center">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-2">
+                    <div className="bg-indigo-900/25 border border-indigo-400/20 rounded-2xl p-6 text-center">
+                      <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent mb-2">
                         50%
                       </div>
                       <div className="text-white text-sm font-semibold mb-1">Lagere churn</div>
@@ -523,7 +523,7 @@ const OnboardAndBeyondContentSection = () => {
 
                 {/* Success indicator */}
                 <div className="mt-6 flex items-center justify-center">
-                  <div className="flex items-center bg-gradient-to-r from-blue-950/50 to-purple-900/30 rounded-full px-4 py-2">
+                  <div className="flex items-center bg-gradient-to-r from-blue-950/50 to-indigo-900/35 rounded-full px-4 py-2">
                     <Heart className="w-4 h-4 text-blue-400 mr-2" />
                     <span className="text-white text-sm font-medium">Klanten worden ambassadeurs</span>
                   </div>
@@ -579,7 +579,7 @@ const OnboardAndBeyondContentSection = () => {
                       <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div className="flex items-center gap-2 sm:gap-3 flex-1">
-                      <span className="text-blue-400 font-bold text-lg sm:text-xl">Stap {step.step}</span>
+                      <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-bold text-lg sm:text-xl">Stap {step.step}</span>
                       <div className="h-px bg-gradient-to-r from-blue-600 to-transparent flex-1"></div>
                     </div>
                   </div>
@@ -594,7 +594,7 @@ const OnboardAndBeyondContentSection = () => {
                   
                   {step.example && (
                     <div className="bg-gradient-to-br from-blue-950/30 to-purple-900/20 rounded-xl p-4 sm:p-6 border border-blue-600/20 mt-4 sm:mt-6">
-                      <p className="text-blue-200 italic text-sm sm:text-base">
+                      <p className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent italic text-sm sm:text-base">
                         "{step.example}"
                       </p>
                     </div>

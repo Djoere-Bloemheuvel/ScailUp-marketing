@@ -9,16 +9,6 @@ const SpeedToLeadHero = () => {
     setIsLoaded(true);
   }, []);
 
-  const scrollToApproach = () => {
-    const approachSection = document.querySelector('#approach');
-    if (approachSection) {
-      approachSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
-
   const handleContactClick = () => {
     if (typeof window !== 'undefined') {
       window.location.href = '/contact';
@@ -126,7 +116,7 @@ const SpeedToLeadHero = () => {
                   <div className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
                     Speed to Lead
                   </div>
-                  <div className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased">
+                  <div className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-normal antialiased pb-2">
                     Inbound Lead Agent
                   </div>
                 </div>
@@ -137,40 +127,33 @@ const SpeedToLeadHero = () => {
                   <div className="text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
                     Speed to Lead
                   </div>
-                  <div className="text-4xl xl:text-5xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased">
+                  <div className="text-4xl xl:text-5xl font-normal bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent tracking-[-0.01em] leading-normal antialiased pb-2">
                     Inbound Lead Agent
                   </div>
                 </div>
               </span>
             </h1>
 
-            {/* Speed to Lead Subtitle */}
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mb-4 sm:mb-6 md:mb-8 leading-relaxed font-bold tracking-[-0.02em] antialiased">
-              Vangt elke lead op het perfecte moment
-            </p>
+            {/* Apple-style Description */}
+            <div className="mb-6 sm:mb-8 md:mb-10 mt-2 sm:mt-3 md:mt-4 max-w-2xl lg:max-w-none">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-medium leading-relaxed mb-4 sm:mb-6" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+                Vangt elke lead op het perfecte moment.
+              </p>
+              <p className="text-sm sm:text-base md:text-lg text-gray-400 font-normal leading-relaxed" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+                Met Speed to Lead reageer je binnen minuten op nieuwe leads met een persoonlijk bericht, precies wanneer ze nog warm zijn. Je krijgt direct een overzicht van hun bedrijf en achtergrond, zodat je opvolging voelt alsof je al uren research hebt gedaan.
+              </p>
+            </div>
 
-            {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg text-premium-silver/85 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-2xl lg:max-w-none">
-              Met Speed to Lead reageer je binnen minuten op nieuwe leads met een persoonlijk bericht, precies wanneer ze nog warm zijn. Je krijgt direct een overzicht van hun bedrijf en achtergrond, zodat je opvolging voelt alsof je al uren research hebt gedaan.
-            </p>
-
-            {/* CTA Buttons - Mobile First Responsive */}
-            <div className="flex flex-col xs:flex-row sm:flex-row gap-4 xs:gap-3 sm:gap-4 justify-center lg:justify-start">
+            {/* CTA Button - Single Primary CTA */}
+            <div className="flex justify-center lg:justify-start">
               <button
-                onClick={scrollToApproach}
-                className="w-full xs:w-auto sm:w-auto bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-6 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-3 xs:py-2 sm:py-2.5 md:py-3 lg:py-4 text-sm xs:text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 group xs:max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
+                onClick={handleContactClick}
+                className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-12 md:px-16 lg:px-20 py-3 md:py-3.5 text-base md:text-lg font-semibold rounded-full transition-all duration-300 group shadow-lg shadow-purple-500/25"
               >
                 <span className="flex items-center justify-center">
                   Hoe het werkt
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </span>
-              </button>
-              
-              <button
-                onClick={handleContactClick}
-                className="w-full xs:w-auto sm:w-auto border border-white/30 hover:border-white/60 hover:bg-white/5 text-white px-6 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-3 xs:py-2 sm:py-2.5 md:py-3 lg:py-4 text-sm xs:text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 xs:max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
-              >
-                Start nu
               </button>
             </div>
           </motion.div>

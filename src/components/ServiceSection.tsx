@@ -324,6 +324,9 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                     service.id === 'lead-engine' ? '/lead-engine' :
                     service.id === 'sales-engine' ? '/sales-engine' :
                     service.id === 'agents-automations' ? '/agents-automations' :
+                    service.id === 'lead-agent' ? '/agents-automations/speed-to-lead' :
+                    service.id === 'proposal-agent' ? '/agents-automations/seal-the-deal' :
+                    service.id === 'onboarding-agent' ? '/agents-automations/onboard-and-beyond' :
                     '#'
                   }
                   className="group relative w-80 h-80 block cursor-pointer"
@@ -669,6 +672,84 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                   }}
                   style={{
                     filter: "drop-shadow(0 4px 12px rgba(168, 85, 247, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                  >
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
+              ) : service.id === 'proposal-agent' ? (
+                <motion.a
+                  href="/agents-automations/seal-the-deal"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(59, 130, 246, 0.15))"
+                  }}
+                >
+                  {/* Clean border */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.accentColor} p-0.5 opacity-50 group-hover:opacity-70 transition-all duration-200 ease-out`}>
+                    <div className="w-full h-full rounded-full bg-premium-black" />
+                  </div>
+                  <span className="relative z-10 text-xs lg:text-sm font-medium">{service.secondaryButtonText}</span>
+                  <motion.div
+                    className="relative z-10 ml-2"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                  >
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4" />
+                  </motion.div>
+                </motion.a>
+              ) : service.id === 'onboarding-agent' ? (
+                <motion.a
+                  href="/agents-automations/onboard-and-beyond"
+                  className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
+                  whileHover={{
+                    y: -1,
+                    transition: {
+                      duration: 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: {
+                      duration: 0.1,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }}
+                  style={{
+                    filter: "drop-shadow(0 4px 12px rgba(139, 92, 246, 0.15))"
                   }}
                 >
                   {/* Clean border */}

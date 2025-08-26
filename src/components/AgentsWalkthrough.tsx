@@ -50,7 +50,7 @@ const AgentsWalkthrough = () => {
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
             Seal The Deal
           </div>
-          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
+          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-300 via-blue-500 to-indigo-700 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
             Smart Deal Agent
           </div>
         </div>

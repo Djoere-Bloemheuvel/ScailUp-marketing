@@ -154,23 +154,16 @@ const SealTheDealHero = () => {
               </p>
             </div>
 
-            {/* CTA Buttons - Mobile First Responsive */}
-            <div className="flex flex-col xs:flex-row sm:flex-row gap-4 xs:gap-3 sm:gap-4 justify-center lg:justify-start">
+            {/* CTA Button - Single Primary CTA */}
+            <div className="flex justify-center lg:justify-start">
               <button
-                onClick={scrollToApproach}
-                className="w-full xs:w-auto sm:w-auto bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-600 hover:to-blue-500 text-white px-6 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-3 xs:py-2 sm:py-2.5 md:py-3 lg:py-4 text-sm xs:text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 group xs:max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
+                onClick={handleContactClick}
+                className="bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-600 hover:to-blue-500 text-white px-12 md:px-16 lg:px-20 py-3 md:py-3.5 text-base md:text-lg font-semibold rounded-full transition-all duration-300 group shadow-lg shadow-blue-500/25"
               >
                 <span className="flex items-center justify-center">
                   Hoe het werkt
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </span>
-              </button>
-              
-              <button
-                onClick={handleContactClick}
-                className="w-full xs:w-auto sm:w-auto border border-white/30 hover:border-white/60 hover:bg-white/5 text-white px-6 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-3 xs:py-2 sm:py-2.5 md:py-3 lg:py-4 text-sm xs:text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 xs:max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
-              >
-                Start nu
               </button>
             </div>
           </motion.div>

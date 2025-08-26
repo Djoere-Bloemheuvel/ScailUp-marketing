@@ -1,15 +1,25 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock, Building2, Users, Zap, CheckCircle, Star, ChevronDown, Target, Wrench, TrendingUp, Cog, Play } from 'lucide-react';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
+    companyEmail: '',
+    yourName: '',
+    phoneNumber: '',
+    country: '',
+    companySize: '',
+    primaryProductInterest: '',
     message: ''
+  });
+
+  const [dropdownStates, setDropdownStates] = useState({
+    country: false,
+    companySize: false,
+    primaryProductInterest: false
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,165 +28,256 @@ const Contact = () => {
     console.log('Form submitted:', formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
+  // Stats and testimonial data
+  const stats = [
+    { metric: '10x sneller', description: 'lead opvolging en deal closing' },
+    { metric: '95% minder werk', description: 'handmatige taken geautomatiseerd' }
+  ];
+
+  const testimonial = {
+    quote: '"ScailUp maakt onze verkoopteams productiever en laat ons sneller naar de markt gaan."',
+    company: 'TechCorp',
+    companyLogo: '/techcorp-logo.png' // You can replace with actual logo
+  };
+
+  const countryOptions = [
+    { value: 'nl', label: 'Nederland' },
+    { value: 'be', label: 'België' },
+    { value: 'de', label: 'Duitsland' },
+    { value: 'other', label: 'Anders' }
+  ];
+
+  const companySizeOptions = [
+    { value: '1-10', label: '1-10 medewerkers' },
+    { value: '11-50', label: '11-50 medewerkers' },
+    { value: '51-200', label: '51-200 medewerkers' },
+    { value: '201-500', label: '201-500 medewerkers' },
+    { value: '500+', label: '500+ medewerkers' }
+  ];
+
+  const productOptions = [
+    { value: 'speed-to-lead', label: 'Speed to Lead' },
+    { value: 'seal-the-deal', label: 'Seal the Deal' },
+    { value: 'onboard-beyond', label: 'Onboard & Beyond' },
+    { value: 'full-package', label: 'Volledig AI Agents pakket' },
+    { value: 'custom', label: 'Custom AI Automatisering' }
+  ];
+
+  const toggleDropdown = (field: keyof typeof dropdownStates) => {
+    setDropdownStates(prev => ({
+      ...prev,
+      [field]: !prev[field]
+    }));
+  };
+
+  const selectOption = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    setDropdownStates(prev => ({
+      ...prev,
+      [field]: false
+    }));
+  };
+
+  const getDisplayLabel = (field: string, options: any[]) => {
+    const selected = options.find(opt => opt.value === formData[field as keyof typeof formData]);
+    return selected ? selected.label : '';
+  };
+
   return (
-    <div className="min-h-screen bg-premium-black overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-radial from-blue-500/10 via-blue-500/5 to-transparent rounded-full blur-3xl"></div>
-        </div>
+    <div className="min-h-screen bg-black overflow-x-hidden relative ambient">
+      {/* Ambient Background Lights */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="backlight bg-blue-600" style={{ width: '320px', height: '320px', top: '10%', left: '10%' }}></div>
+        <div className="backlight bg-purple-600" style={{ width: '280px', height: '280px', bottom: '15%', right: '15%' }}></div>
+        <div className="backlight bg-blue-500 opacity-30" style={{ width: '400px', height: '400px', top: '40%', left: '40%' }}></div>
+        {/* Additional top-right glow in marketing engine color */}
+        <div className="absolute w-96 h-96 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full opacity-40 -z-10" style={{ filter: 'blur(70px)', top: '5%', right: '10%' }}></div>
+      </div>
 
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Laten we <span className="text-gradient-premium">praten</span>
-          </h1>
-          <p className="text-premium-silver/90 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-            Ontdek hoe AI de toekomst van uw bedrijf kan transformeren. 
-            Start met een vrijblijvende verkenning.
-          </p>
-        </div>
-      </section>
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
 
-      {/* Contact Form & Info Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative">
+        {/* 3D Container with enhanced effects */}
+        <div className="w-full max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto bg-black border border-gray-800 rounded-2xl p-6 md:p-8 xl:p-12 relative shadow-[0_20px_40px_rgba(0,0,0,0.8),0_8px_16px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl" style={{ 
+          transform: 'perspective(1000px) rotateX(1deg)',
+          boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.3)'
+        }}>
+          {/* Vertical border in the middle - extends full height of container */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-800 transform -translate-x-1/2"></div>
           
-          {/* Contact Form */}
-          <div className="relative">
-            <div className="bg-gradient-to-br from-premium-gray/20 to-premium-black/60 border border-premium-silver/20 backdrop-blur-md rounded-3xl p-8 lg:p-12">
-              <h2 className="text-3xl font-bold text-white mb-8">Start uw AI-verkenning</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-premium-silver/90 text-sm font-medium mb-2">
-                    Naam *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-premium-black/50 border border-premium-silver/30 rounded-xl text-white placeholder-premium-silver/50 focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                    placeholder="Uw volledige naam"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-premium-silver/90 text-sm font-medium mb-2">
-                    E-mail *
-                  </label>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-start relative">
+            
+            {/* Mobile: Form first, Desktop: Content first */}
+            <div className="w-full lg:order-2">
+              <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Bedrijf Email */}
+              <div className="space-y-3">
+                <label className="block text-white text-base lg:text-lg font-semibold tracking-wide" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif' }}>
+                  Zakelijk e-mailadres
+                </label>
+                <div className="border border-gray-700 rounded-xl px-4 py-4 bg-black">
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
+                    name="companyEmail"
+                    value={formData.companyEmail || ''}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-premium-black/50 border border-premium-silver/30 rounded-xl text-white placeholder-premium-silver/50 focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                    placeholder="uw.email@bedrijf.nl"
+                    className="w-full bg-transparent border-none text-white placeholder-gray-400 focus:outline-none text-base"
+                    placeholder="naam@bedrijf.nl"
+                    required
                   />
                 </div>
-                
-                <div>
-                  <label htmlFor="company" className="block text-premium-silver/90 text-sm font-medium mb-2">
-                    Bedrijf
-                  </label>
+              </div>
+
+              {/* Je naam */}
+              <div className="space-y-3">
+                <label className="block text-white text-base lg:text-lg font-semibold tracking-wide" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif' }}>
+                  Je naam
+                </label>
+                <div className="border border-gray-700 rounded-xl px-4 py-4 bg-black">
                   <input
                     type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
+                    name="yourName"
+                    value={formData.yourName || ''}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-premium-black/50 border border-premium-silver/30 rounded-xl text-white placeholder-premium-silver/50 focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                    placeholder="Uw bedrijfsnaam"
+                    className="w-full bg-transparent border-none text-white placeholder-gray-400 focus:outline-none text-base"
+                    placeholder="Jouw naam"
                   />
                 </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-premium-silver/90 text-sm font-medium mb-2">
-                    Vertel ons over uw uitdaging
-                  </label>
+              </div>
+              
+              {/* Telefoonnummer */}
+              <div className="space-y-3">
+                <label className="block text-white text-base lg:text-lg font-semibold tracking-wide" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif' }}>
+                  Telefoonnummer
+                </label>
+                <div className="border border-gray-700 rounded-xl px-4 py-4 bg-black">
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber || ''}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-none text-white placeholder-gray-400 focus:outline-none text-base"
+                    placeholder="(020) 123-4567"
+                  />
+                </div>
+              </div>
+              
+              
+              {/* Message Block */}
+              <div className="space-y-3">
+                <label htmlFor="message" className="block text-base lg:text-lg font-semibold text-white tracking-wide" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif' }}>
+                  Hoe kunnen we helpen?
+                </label>
+                <div className="border border-gray-800 rounded-xl p-6 bg-black/50">
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-premium-black/50 border border-premium-silver/30 rounded-xl text-white placeholder-premium-silver/50 focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-none"
-                    placeholder="Beschrijf uw huidige processen en waar u AI zou willen inzetten..."
+                    className="w-full px-0 py-2 bg-transparent border-none text-white placeholder-gray-500 focus:outline-none resize-none text-base"
+                    placeholder="Vertel ons over je bedrijfsbehoeften"
                   />
                 </div>
-                
-                <Button
-                  type="submit"
-                  className="w-full py-4 text-lg font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                >
-                  Plan een AI-verkenning
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full py-4 text-base font-medium rounded-xl bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-600 hover:to-blue-500 text-white transition-all duration-200 shadow-lg mt-12"
+              >
+                Praat met ScailUp
+              </button>
               </form>
             </div>
-          </div>
 
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Waarom kiezen voor Buildrs?</h3>
-              <div className="space-y-4 text-premium-silver/90">
-                <p>✓ Geen sales pitch - wel concrete inzichten</p>
-                <p>✓ Maatwerkvoorstel binnen 48 uur</p>
-                <p>✓ Ervaring met 50+ succesvolle AI-implementaties</p>
-                <p>✓ 100% focus op uw ROI</p>
+            {/* Mobile: Content second, Desktop: Content first */}
+            <div className="space-y-8 lg:order-1 lg:bg-black/30 lg:pr-6 lg:pl-3 lg:pt-3 lg:pb-6 xl:pr-8 xl:pl-4 xl:pt-4 xl:pb-8 lg:rounded-2xl lg:backdrop-blur-sm">
+              {/* Header Block */}
+              <div className="pl-0 pr-6 pt-0 pb-2">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-light text-white leading-tight tracking-tight mb-2 whitespace-nowrap" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+                  Laten we bouwen.
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl text-gray-400 font-light mb-6" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, SF Pro Display, sans-serif' }}>
+                  Laat ons vrijblijvend contact met je opnemen
+                </p>
+                
+                {/* Value Propositions - 5 bullets with icons */}
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3 lg:space-x-4">
+                    <Target className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="text-white font-medium text-base lg:text-lg mb-1">Ontdek je AI-kansen.</h3>
+                      <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+                        Concreet advies. Directe stappen vooruit.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3 lg:space-x-4">
+                    <Wrench className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="text-white font-medium text-base lg:text-lg mb-1">Bouw met AI.</h3>
+                      <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+                        Zie hoe Buildrs jouw workflow versnelt.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3 lg:space-x-4">
+                    <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="text-white font-medium text-base lg:text-lg mb-1">Van idee naar impact.</h3>
+                      <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+                        Wij maken AI praktisch toepasbaar.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3 lg:space-x-4">
+                    <Cog className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="text-white font-medium text-base lg:text-lg mb-1">Jouw proces. Slimmer.</h3>
+                      <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+                        AI-oplossingen die direct werken.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3 lg:space-x-4">
+                    <Play className="w-5 h-5 lg:w-6 lg:h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="text-white font-medium text-base lg:text-lg mb-1">Begin je AI-transformatie.</h3>
+                      <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
+                        Heldere inzichten. Concrete acties.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-white">Contact informatie</h3>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-blue-400" />
-                  <span className="text-premium-silver/90">info@buildrs.ai</span>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-blue-400" />
-                  <span className="text-premium-silver/90">+31 (0)20 123 4567</span>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-blue-400" />
-                  <span className="text-premium-silver/90">Amsterdam, Nederland</span>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-blue-400" />
-                  <span className="text-premium-silver/90">Reactie binnen 24 uur</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-premium-gray/10 to-premium-black/60 border border-premium-silver/20 backdrop-blur-md rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-white mb-3">AI-verkenning van 60 minuten</h4>
-              <p className="text-premium-silver/80 text-sm leading-relaxed">
-                In een strategische sessie van 60 minuten analyseren we uw processen, 
-                identificeren we AI-kansen en presenteren we een concreet implementatieplan. 
-                Investering: uw tijd. ROI: onbetaalbaar.
-              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <Footer />
       <ScrollToTop />
