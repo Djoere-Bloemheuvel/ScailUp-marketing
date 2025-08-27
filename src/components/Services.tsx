@@ -91,28 +91,6 @@ const Services = ({ blueTheme = false, walkthrough = false }: ServicesProps) => 
       secondaryButtonText: 'Lees meer'
     },
     {
-      id: 'sales-engine',
-      icon: Users,
-      title: 'Sales Engine',
-      subtitle: 'Prospects worden klanten.',
-      description: 'Geoptimaliseerde sequences die elke prospect naar een deal leiden. Maximale conversie, minimale inspanning.',
-      background: blueTheme ? 'from-premium-black via-blue-900/15 to-premium-black' : 'from-premium-black via-purple-950/15 to-premium-black',
-      accentColor: blueTheme ? blueThemeColors['sales-engine'] : 'from-green-500 to-blue-600',
-      primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Lees meer'
-    },
-    {
-      id: 'marketing-engine',
-      icon: Globe,
-      title: 'Marketing Engine',
-      subtitle: 'Domineer je markt.',
-      description: 'Multi-channel campagnes die je merk onmiskenbaar maken. Van onbekend naar marktleider.',
-      background: blueTheme ? 'from-premium-black via-blue-950/20 to-premium-black' : 'from-premium-black via-purple-950/20 to-premium-black',
-      accentColor: blueTheme ? blueThemeColors['marketing-engine'] : 'from-purple-500 to-pink-600',
-      primaryButtonText: 'Lees meer',
-      secondaryButtonText: 'Lees meer'
-    },
-    {
       id: 'agents-automations',
       icon: Brain,
       title: 'Agents & Automations',

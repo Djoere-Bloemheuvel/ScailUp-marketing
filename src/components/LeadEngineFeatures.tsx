@@ -1,4 +1,4 @@
-import { MessageSquare, Cog, Brain, Database, TrendingUp } from 'lucide-react';
+import { Mail, Users, Building, Database, DollarSign } from 'lucide-react';
 import ServiceSection from './ServiceSection';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
@@ -21,7 +21,7 @@ const LeadEngineFeatures = () => {
   const services = [
     {
       id: 'inbox-to-meeting',
-      icon: MessageSquare,
+      icon: Mail,
       title: (
         <div>
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
@@ -40,13 +40,15 @@ const LeadEngineFeatures = () => {
       accentColor: 'from-blue-400 to-blue-500',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
+      primaryButtonAction: () => window.location.href = '/lead-engine/inbox-to-meeting',
+      secondaryButtonAction: () => window.location.href = '/lead-engine/inbox-to-meeting',
       number: '01',
       highlight: 'Autonome email-to-meeting',
       metrics: 'End-to-end geautomatiseerd'
     },
     {
       id: 'connect-to-client',
-      icon: Cog,
+      icon: Users,
       title: (
         <div>
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
@@ -65,13 +67,15 @@ const LeadEngineFeatures = () => {
       accentColor: 'from-blue-500 to-blue-400',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
+      primaryButtonAction: () => window.location.href = '/lead-engine/connect-to-client',
+      secondaryButtonAction: () => window.location.href = '/lead-engine/connect-to-client',
       number: '02',
       highlight: 'Authentieke LinkedIn outreach',
       metrics: 'Menselijk op schaal'
     },
     {
       id: 'account-to-deal',
-      icon: Brain,
+      icon: Building,
       title: (
         <div>
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
@@ -90,6 +94,8 @@ const LeadEngineFeatures = () => {
       accentColor: 'from-blue-400 to-indigo-500',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
+      primaryButtonAction: () => window.location.href = '/lead-engine/account-to-deal',
+      secondaryButtonAction: () => window.location.href = '/lead-engine/account-to-deal',
       number: '03',
       highlight: 'AI-gedreven ABM',
       metrics: 'Multithreading op schaal'
@@ -115,13 +121,15 @@ const LeadEngineFeatures = () => {
       accentColor: 'from-blue-300 to-blue-500',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
+      primaryButtonAction: () => window.location.href = '/lead-engine/lead-database',
+      secondaryButtonAction: () => window.location.href = '/lead-engine/lead-database',
       number: '04',
       highlight: 'Levende doelgroep-motor',
       metrics: '100k+ decision makers'
     },
     {
       id: 'sales-engine',
-      icon: TrendingUp,
+      icon: DollarSign,
       title: (
         <div>
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
@@ -140,6 +148,8 @@ const LeadEngineFeatures = () => {
       accentColor: 'from-blue-600 to-blue-400',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
+      primaryButtonAction: () => window.location.href = '/sales-engine',
+      secondaryButtonAction: () => window.location.href = '/sales-engine',
       number: '05',
       highlight: 'Complete sales omgeving',
       metrics: 'Plug & Play agents'

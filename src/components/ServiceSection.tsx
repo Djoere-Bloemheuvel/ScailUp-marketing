@@ -13,6 +13,8 @@ interface Service {
   isSpecial?: boolean;
   primaryButtonText: string;
   secondaryButtonText: string;
+  primaryButtonAction?: () => void;
+  secondaryButtonAction?: () => void;
   // Walkthrough specific props
   number?: string;
   highlight?: string;
@@ -749,6 +751,7 @@ const ServiceSection = ({ service, index, isVisible, walkthrough = false }: Serv
                 </motion.a>
               ) : (
                 <motion.button 
+                  onClick={service.secondaryButtonAction}
                   className="group relative inline-flex items-center justify-center px-10 sm:px-16 lg:px-24 py-3 lg:py-4 bg-black text-white font-medium text-xs lg:text-sm rounded-full"
                   whileHover={{
                     y: -1,

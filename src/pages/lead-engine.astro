@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ScailUpHero from '../components/ScailUpHero';
 import LeadEngineFeatures from '../components/LeadEngineFeatures';
+import PricingSection from '../components/PricingSection';
 
 // ScailUp structured data
 const structuredData = {
@@ -117,6 +118,9 @@ const structuredData = {
     
     <!-- Lead Engine Features section -->
     <LeadEngineFeatures client:visible />
+    
+    <!-- Pricing section -->
+    <PricingSection client:visible />
   </main>
 
 </Layout>
