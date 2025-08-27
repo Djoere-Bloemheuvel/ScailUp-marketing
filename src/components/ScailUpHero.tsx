@@ -198,11 +198,11 @@ const ScailUpHero = ({ isEmailPage = false }) => {
         `}</style>
       )}
       
-      {/* Subtle fade to black at bottom */}
+      {/* Subtle fade to black at bottom - More gradual */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-40 sm:h-44 lg:h-48 pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 55%, rgba(0, 0, 0, 0.6) 100%)'
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.05) 25%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0.35) 65%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.85) 95%, rgba(0, 0, 0, 1) 100%)'
         }}
       />
         

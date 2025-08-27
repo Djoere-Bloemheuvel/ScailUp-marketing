@@ -95,13 +95,16 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden relative ambient">
-      {/* Ambient Background Lights */}
+      {/* Ambient Background Lights - Enhanced */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="backlight bg-blue-600" style={{ width: '320px', height: '320px', top: '10%', left: '10%' }}></div>
-        <div className="backlight bg-purple-600" style={{ width: '280px', height: '280px', bottom: '15%', right: '15%' }}></div>
-        <div className="backlight bg-blue-500 opacity-30" style={{ width: '400px', height: '400px', top: '40%', left: '40%' }}></div>
+        <div className="backlight bg-blue-600" style={{ width: '400px', height: '400px', top: '5%', left: '8%' }}></div>
+        <div className="backlight bg-purple-600" style={{ width: '360px', height: '360px', bottom: '10%', right: '12%' }}></div>
+        <div className="backlight bg-blue-500 opacity-40" style={{ width: '480px', height: '480px', top: '35%', left: '35%' }}></div>
         {/* Additional top-right glow in marketing engine color */}
-        <div className="absolute w-96 h-96 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full opacity-40 -z-10" style={{ filter: 'blur(70px)', top: '5%', right: '10%' }}></div>
+        <div className="absolute w-96 h-96 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full opacity-50 -z-10" style={{ filter: 'blur(70px)', top: '2%', right: '8%' }}></div>
+        {/* Extra ambient lights for more atmosphere */}
+        <div className="backlight bg-cyan-500 opacity-25" style={{ width: '300px', height: '300px', top: '70%', left: '20%' }}></div>
+        <div className="backlight bg-indigo-600 opacity-30" style={{ width: '250px', height: '250px', top: '20%', right: '40%' }}></div>
       </div>
 
       {/* Background Grid Pattern */}

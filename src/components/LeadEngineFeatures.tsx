@@ -27,7 +27,7 @@ const LeadEngineFeatures = () => {
           <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
             Inbox to Meeting
           </div>
-          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
+          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
             Outbound Email Agent
           </div>
         </div>
@@ -37,7 +37,7 @@ const LeadEngineFeatures = () => {
       description: 'Deze agent maakt van outbound e-mail een voorspelbare meeting-machine. Hij doet al het werk door prospects te zoeken, persoonlijke mails te schrijven, te testen wat werkt, reacties op te volgen en afspraken direct in je agenda te zetten. Volledig op de automatische piloot.',
       descriptionStyle: 'text-premium-silver/85',
       background: 'from-black via-blue-900/20 to-black',
-      accentColor: 'from-blue-500 to-cyan-400',
+      accentColor: 'from-blue-400 to-blue-500',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
       number: '01',

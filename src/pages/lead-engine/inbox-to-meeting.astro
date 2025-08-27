@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InboxToMeetingHero from '../../components/InboxToMeetingHero';
+import InboxToMeetingStats from '../../components/InboxToMeetingStats';
+import InboxToMeetingContentSection from '../../components/InboxToMeetingContentSection';
+
+// Inbox to Meeting structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Inbox to Meeting - Outbound Email Agent",
+  "provider": {
+    "@type": "Organization",
+    "name": "ScailUp",
+    "url": "https://scailup.nl",
+    "logo": "https://scailup.nl/logo.png"
+  },
+  "description": "Van koude e-mails naar voorspelbare meetings. Autonome AI-agent die outbound e-mail verandert in een voorspelbare meeting-machine. Volledig geautomatiseerd van prospect research tot meeting booking.",
+  "areaServed": "Netherlands",
+  "serviceType": "Outbound Email Automation",
+  "category": "Business Process Automation",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Inbox to Meeting Automation",
+      "description": "Autonome email-to-meeting agent die koude e-mails omzet in gekwalificeerde afspraken",
+      "price": "Custom pricing",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Inbox to Meeting Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Prospect Research & Enrichment",
+          "description": "Automatische verzameling en verrijking van contactinformatie"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Hyperpersoonlijke Campagnecreatie",
+          "description": "AI schrijft campagnes die aanvoelen als één-op-één communicatie"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Reply Management & Meeting Booking",
+          "description": "Automatische afhandeling van reacties en directe agenda-integratie"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "89",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sales Director B2B"
+      },
+      "reviewBody": "Inbox to Meeting heeft outbound e-mail voor ons veranderd van giswerk naar voorspelbare pipeline. Eindelijk een tool die menselijk voelt maar op schaal werkt."
+    }
+  ]
+};
+---
+
+<Layout 
+  title="Inbox to Meeting | Van koude e-mails naar warme afspraken met AI"
+  description="Van cold email naar gekwalificeerde meetings. Autonome AI-agent die outbound e-mail verandert in voorspelbare pipeline. Volledig geautomatiseerd van prospect research tot meeting booking."
+  keywords="inbox to meeting agent, outbound email automation, cold email AI agent, email to meeting automation, autonomous SDR, prospect research automation, email personalization AI, reply management automation, meeting booking agent, outbound sales automation Nederland"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
+  <style>
+    
+    /* Ensure page starts with true black background */
+    body {
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+    }
+    
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+    }
+    
+    /* Ensure no spacing anywhere that could create black canvas */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Force hero to start at very top */
+    #main-content {
+      position: relative;
+      top: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Critical hero styles for instant rendering */
+    .hero-section {
+      position: relative;
+      min-height: 90vh;
+      background-color: #000000;
+      color: #ffffff;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 25vh 1rem 3rem;
+    }
+    
+    /* Prevent any layout shift */
+    .hero-content {
+      position: relative;
+      max-width: 80rem;
+      width: 100%;
+      text-align: center;
+      z-index: 30;
+    }
+  </style>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black max-w-full overflow-x-hidden">
+    <!-- Inbox to Meeting Hero section -->
+    <InboxToMeetingHero client:load />
+    
+    <!-- Inbox to Meeting Content Sections -->
+    <InboxToMeetingContentSection client:visible />
+  </main>
+
+</Layout>

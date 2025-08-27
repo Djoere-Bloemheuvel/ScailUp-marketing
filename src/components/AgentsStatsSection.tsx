@@ -54,7 +54,7 @@ const AgentsStatsSection = () => {
                 {/* Title and description */}
                 <div className="mb-6 sm:mb-8">
                   <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6">
-                    Deploy AI in seconden. <span className="text-white/60">Toegang tot alle grote modellen via een enkele, uniforme interface en gedeelde AI credit wallet.</span>
+                    Deploy AI in seconden. <span className="text-white/60">Toegang tot onze plug & play agents. Volledig afgestemd op jouw business en direct inzetbaar.</span>
                   </h3>
                 </div>
                 
@@ -89,10 +89,10 @@ const AgentsStatsSection = () => {
                     {/* AI Models */}
                     <div className="space-y-2 sm:space-y-3">
                       {[
-                        { name: 'Grok', icon: 'X', colors: 'from-blue-500 to-cyan-500' },
-                        { name: 'o3-pro', icon: 'O', colors: 'from-green-500 to-emerald-500' },
-                        { name: 'Sonnet', icon: 'S', colors: 'from-orange-500 to-red-500' },
-                        { name: 'De volgende grote ding', icon: '★', colors: 'from-purple-500 to-pink-500' }
+                        { name: 'Speed to Lead', icon: 'S', colors: 'from-blue-500 to-cyan-500' },
+                        { name: 'Seal The Deal', icon: 'D', colors: 'from-green-500 to-emerald-500' },
+                        { name: 'Onboard & Beyond', icon: 'O', colors: 'from-orange-500 to-red-500' },
+                        { name: 'Custom AI Agent', icon: 'C', colors: 'from-purple-500 to-pink-500' }
                       ].map((model) => (
                         <div key={model.name} className="bg-black/80 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 border border-white/10 flex items-center gap-2.5 sm:gap-3">
                           <div className={`w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r ${model.colors} rounded flex items-center justify-center text-xs font-bold text-white`}>
@@ -136,10 +136,10 @@ const AgentsStatsSection = () => {
                     {/* AI Models flow */}
                     <div className="flex-1 space-y-2.5 lg:space-y-3">
                       {[
-                        { name: 'Grok', icon: 'X', colors: 'from-blue-500 to-cyan-500' },
-                        { name: 'o3-pro', icon: 'O', colors: 'from-green-500 to-emerald-500' },
-                        { name: 'Sonnet', icon: 'S', colors: 'from-orange-500 to-red-500' },
-                        { name: 'De volgende grote ding', icon: '★', colors: 'from-purple-500 to-pink-500' }
+                        { name: 'Speed to Lead', icon: 'S', colors: 'from-blue-500 to-cyan-500' },
+                        { name: 'Seal The Deal', icon: 'D', colors: 'from-green-500 to-emerald-500' },
+                        { name: 'Onboard & Beyond', icon: 'O', colors: 'from-orange-500 to-red-500' },
+                        { name: 'Custom AI Agent', icon: 'C', colors: 'from-purple-500 to-pink-500' }
                       ].map((model) => (
                         <div key={model.name} className="bg-black/80 rounded-lg px-3 lg:px-4 py-2.5 lg:py-3 border border-white/10 flex items-center gap-2.5 lg:gap-3">
                           <div className={`w-5 h-5 lg:w-6 lg:h-6 bg-gradient-to-r ${model.colors} rounded flex items-center justify-center text-xs font-bold text-white`}>
@@ -340,7 +340,7 @@ const AgentsStatsSection = () => {
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {[
                     { title: 'Snel.', desc: 'Deploy AI in seconden.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-                    { title: 'Ergonomisch.', desc: 'AI eerst.', icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z' },
+                    { title: 'Ergonomisch.', desc: 'AI first.', icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z' },
                     { title: 'Natuurlijk.', desc: 'Pure prestaties.', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
                     { title: 'Betrouwbaar.', desc: '99.8% uptime.', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z' }
                   ].map((benefit) => (

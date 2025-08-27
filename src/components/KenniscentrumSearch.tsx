@@ -1,4 +1,4 @@
-n m>import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, ArrowRight, FileText, Zap, Brain, Target, Bot, TrendingUp, Rocket } from 'lucide-react';
 import Fuse from 'fuse.js';
 

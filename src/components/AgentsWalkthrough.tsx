@@ -114,33 +114,32 @@ const AgentsWalkthrough = () => {
       </div>
 
       {/* Header - exact copy from Services walkthrough mode */}
-      <div className="relative z-10 text-center py-20 lg:py-32">
+      <div className="relative z-10 text-center py-16 lg:py-20 px-4 lg:px-8 max-w-7xl mx-auto">
         
         <motion.h2 
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 leading-[0.9] tracking-tight"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-4 leading-[0.9] tracking-tight"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
-            Kies wat bij
+            Plug & Play{' '}
           </span>
-          <br />
           <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-purple-600 bg-clip-text text-transparent font-medium">
-            jou past
+            Agents
           </span>
         </motion.h2>
         
         <motion.p 
-          className="text-lg lg:text-xl text-blue-200/70 max-w-3xl mx-auto font-light leading-relaxed"
+          className="text-xl lg:text-2xl text-gray-400 max-w-4xl mx-auto font-normal leading-relaxed mt-6 mb-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 1.4, delay: 0.2, ease: "easeOut" }}
+          style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}
         >
-          Start met eenvoudige chatbots of ga direct voor <span className="text-blue-300 font-medium">volledige automatisering</span>. 
-          Wij adviseren wat het beste bij jouw bedrijf past.
+          Volledig geprogrammeerd op jouw businessprocessen en direct klaar voor gebruik.
         </motion.p>
       </div>
 
