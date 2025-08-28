@@ -125,21 +125,21 @@ const WhatIsBuildrsSection = () => {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <button
                   onClick={handleDemoClick}
-                  className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-100 hover:scale-102 active:scale-98 transition-all"
+                  className="inline-flex items-center justify-center px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4 bg-white text-black font-medium sm:font-semibold rounded-full hover:bg-gray-100 hover:scale-102 active:scale-98 transition-all text-xs sm:text-sm md:text-base"
                 >
                   Plan een demo
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
                 
                 <button
                   onClick={handleGetStartedClick}
-                  className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-white/20 text-white font-semibold rounded-full hover:bg-white/10 hover:scale-102 active:scale-98 transition-all group"
+                  className="inline-flex items-center justify-center px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3 xl:py-4 bg-transparent border border-white/20 md:border-2 text-white font-medium sm:font-semibold rounded-full hover:bg-white/10 hover:scale-102 active:scale-98 transition-all group text-xs sm:text-sm md:text-base"
                 >
                   Ontdek de functies
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
