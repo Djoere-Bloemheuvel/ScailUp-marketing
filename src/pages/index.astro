@@ -5,7 +5,9 @@ import ProofStrip from '../components/ProofStrip';
 import AIAgentsSection from '../components/AIAgentsSection';
 import WhatIsBuildrsSection from '../components/WhatIsBuildrsSection';
 import GenerateLeadsSection from '../components/GenerateLeadsSection';
+import FAQSection from '../components/FAQSection';
 import Services from '../components/Services';
+import TestServicesSection from '../components/TestServicesSection';
 import ScailUpFooter from '../components/ScailUpFooter';
 
 // ScailUp structured data
@@ -129,11 +131,14 @@ const structuredData = {
     <!-- What is Buildrs Section -->
     <WhatIsBuildrsSection client:visible />
     
-    <!-- Services section -->
-    <Services client:visible />
+    <!-- Test Services Section -->
+    <TestServicesSection client:visible />
     
     <!-- Generate Leads Section -->
     <GenerateLeadsSection client:visible />
+    
+    <!-- FAQ Section -->
+    <FAQSection client:visible />
     
     <!-- Footer -->
     <ScailUpFooter client:visible />

@@ -210,6 +210,7 @@ const GenerateLeadsSection = () => {
           </div>
 
         </div>
+        
       </div>
     </section>
   );
