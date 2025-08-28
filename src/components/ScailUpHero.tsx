@@ -5,11 +5,7 @@ import { motion } from 'framer-motion';
 import AnimatedHeadline from './AnimatedHeadline';
 
 const ScailUpHero = ({ isEmailPage = false }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  // Removed unused isLoaded state for better performance
 
   const handleStrategicTalkClick = () => {
     if (typeof window !== 'undefined') {
@@ -29,25 +25,25 @@ const ScailUpHero = ({ isEmailPage = false }) => {
       {/* Black Background */}
       <div className="absolute inset-0 bg-black" />
       
-      {/* Conditional Backlights - Fully Responsive */}
+      {/* Optimized Backlights with GPU acceleration */}
       {isEmailPage ? (
-        /* Email-themed backlights - responsive sizing */
-        <div className="absolute inset-0 overflow-hidden opacity-50 sm:opacity-60">
-          <div className="absolute top-1/4 left-1/2 w-[300px] h-[150px] sm:w-[400px] sm:h-[200px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] bg-blue-500 rounded-full blur-2xl sm:blur-3xl transform -translate-x-1/2 -translate-y-1/4"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-blue-400 rounded-full blur-2xl sm:blur-3xl transform translate-x-1/4"></div>
-          <div className="absolute top-1/2 left-1/4 w-[200px] h-[120px] sm:w-[300px] sm:h-[180px] md:w-[400px] md:h-[240px] lg:w-[500px] lg:h-[300px] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-2xl sm:blur-3xl opacity-70"></div>
+        /* Email-themed backlights - performance optimized */
+        <div className="absolute inset-0 overflow-hidden opacity-50 sm:opacity-60 will-change-transform">
+          <div className="absolute top-1/4 left-1/2 w-[300px] h-[150px] sm:w-[400px] sm:h-[200px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] bg-blue-500 rounded-full blur-2xl sm:blur-3xl will-change-transform" style={{ transform: 'translate3d(-50%, -25%, 0)' }}></div>
+          <div className="absolute bottom-1/3 right-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-blue-400 rounded-full blur-2xl sm:blur-3xl will-change-transform" style={{ transform: 'translate3d(25%, 0, 0)' }}></div>
+          <div className="absolute top-1/2 left-1/4 w-[200px] h-[120px] sm:w-[300px] sm:h-[180px] md:w-[400px] md:h-[240px] lg:w-[500px] lg:h-[300px] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur-2xl sm:blur-3xl opacity-70 will-change-transform"></div>
         </div>
       ) : (
-        /* Original backlights for main page - mobile meer aanwezig */
-        <div className="absolute inset-0 overflow-hidden opacity-65 sm:opacity-60">
-          <div className="backlight backlight-left bg-scailup-blue w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]"></div>
-          <div className="backlight backlight-right bg-scailup-cyan w-[250px] h-[250px] sm:w-[280px] sm:h-[280px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] xl:w-[580px] xl:h-[580px]"></div>
-          <div className="backlight backlight-center bg-scailup-blue opacity-30 sm:opacity-30 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+        /* Original backlights - GPU optimized */
+        <div className="absolute inset-0 overflow-hidden opacity-65 sm:opacity-60 will-change-transform">
+          <div className="backlight backlight-left bg-scailup-blue w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] will-change-transform"></div>
+          <div className="backlight backlight-right bg-scailup-cyan w-[250px] h-[250px] sm:w-[280px] sm:h-[280px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] xl:w-[580px] xl:h-[580px] will-change-transform"></div>
+          <div className="backlight backlight-center bg-scailup-blue opacity-30 sm:opacity-30 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] will-change-transform"></div>
         </div>
       )}
       
-      {/* Email-themed ambient lights with different feeling - Fully Responsive */}
-      <div className="absolute inset-0 opacity-20 sm:opacity-25 md:opacity-30">
+      {/* Optimized ambient lights with reduced complexity */}
+      <div className="absolute inset-0 opacity-20 sm:opacity-25 md:opacity-30 will-change-transform">
         {isEmailPage ? (
           <>
             {/* Horizontal streak lights - email flow inspired - Responsive */}
@@ -217,7 +213,8 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               className="text-center lg:text-left order-1 lg:order-1"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.72, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              style={{ willChange: 'transform, opacity' }}
             >
               
               {/* Feature-Driven Headline - Optimized for iPhone screens */}
@@ -267,7 +264,8 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               className="order-2 lg:order-2 mt-8 lg:mt-0"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.72, delay: 0.2, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+              style={{ willChange: 'transform, opacity' }}
             >
               {/* Platform Proof Points - Responsive Scaling */}
               <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:space-y-2.5 xl:space-y-3 lg:gap-0 max-w-md mx-auto lg:max-w-none">
@@ -299,7 +297,8 @@ const ScailUpHero = ({ isEmailPage = false }) => {
             className="mb-3 xs:mb-4 sm:mb-6 lg:mb-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.72, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
           >
             <AnimatedHeadline />
           </motion.div>
@@ -312,7 +311,8 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white/80 mb-4 xs:mb-5 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 max-w-xs xs:max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-3 xs:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.72, delay: 0.18, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <span className="block sm:inline">Wij transformeren jouw outbound met AI die</span>
               <span className="sm:hidden"> </span><br className="hidden sm:block" />
@@ -323,7 +323,8 @@ const ScailUpHero = ({ isEmailPage = false }) => {
               className="flex flex-row items-center justify-center gap-2 xs:gap-3 sm:gap-4 lg:gap-6 mb-6 xs:mb-7 sm:mb-10 lg:mb-14 xl:mb-16 px-3 xs:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.72, delay: 0.36, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <button
                 onClick={handleStrategicTalkClick}

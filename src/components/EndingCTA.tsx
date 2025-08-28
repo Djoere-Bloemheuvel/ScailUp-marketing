@@ -1,4 +1,4 @@
-NIET import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, Brain, Sparkles } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import CinematicBackground from './hero/CinematicBackground';

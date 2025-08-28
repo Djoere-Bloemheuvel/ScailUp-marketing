@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Send, Users, Globe, Brain, Database, Mail, Calendar, Target, Zap, Settings, BookOpen, FileText, Video } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -62,10 +62,123 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
   }, []);
 
   const navItems = [
-    { label: 'Services', href: '/services', path: '/services' },
-    { label: 'Cases', href: '/cases', path: '/cases' },
-    { label: 'Over ons', href: '/over-ons', path: '/over-ons' },
-    { label: 'Contact', href: '/contact', path: '/contact' }
+    { 
+      label: 'Producten', 
+      href: '#', 
+      path: '/producten',
+      hasDropdown: true,
+      dropdownItems: {
+        title: 'Alles wat je nodig hebt voor outbound',
+        sections: [
+          {
+            title: 'Core Platform',
+            items: [
+              { 
+                icon: Send, 
+                label: 'Lead Engine', 
+                href: '/lead-engine',
+                description: 'Complete outbound platform voor leads en meetings'
+              }
+            ]
+          },
+          {
+            title: 'Agents',
+            items: [
+              { 
+                icon: Brain, 
+                label: 'AI Agents', 
+                href: '/agents-automations',
+                description: 'AI agents die je outbound automatiseren'
+              },
+              { 
+                icon: Zap, 
+                label: 'Automations', 
+                href: '/agents-automations',
+                description: 'Slimme workflows en triggers'
+              }
+            ]
+          },
+          {
+            title: 'Tools',
+            items: [
+              { 
+                icon: Database, 
+                label: 'Lead Database', 
+                href: '/lead-engine/lead-database',
+                description: '500k+ decision makers database'
+              },
+              { 
+                icon: Mail, 
+                label: 'Email Sequenties', 
+                href: '/lead-engine/connect-to-client',
+                description: 'Persoonlijke email campagnes'
+              },
+              { 
+                icon: Calendar, 
+                label: 'Meeting Booking', 
+                href: '/lead-engine/inbox-to-meeting',
+                description: 'Van inbox direct naar agenda'
+              }
+            ]
+          }
+        ]
+      }
+    },
+    { 
+      label: 'Oplossingen', 
+      href: '#', 
+      path: '/oplossingen',
+      hasDropdown: true,
+      dropdownItems: {
+        title: 'Voor elke business case',
+        sections: [
+          {
+            title: 'Per functie',
+            items: [
+              { 
+                icon: Target, 
+                label: 'Marketing', 
+                href: '/marketing',
+                description: 'Lead generation en brand awareness'
+              },
+              { 
+                icon: Users, 
+                label: 'Sales', 
+                href: '/sales',
+                description: 'Pipeline building en deal closing'
+              },
+              { 
+                icon: Settings, 
+                label: 'Operations', 
+                href: '/operations',
+                description: 'Processen en workflow optimalisatie'
+              }
+            ]
+          },
+          {
+            title: 'Per industrie',
+            items: [
+              { 
+                icon: Globe, 
+                label: 'B2B SaaS', 
+                href: '/saas',
+                description: 'Specialized voor software bedrijven'
+              },
+              { 
+                icon: Users, 
+                label: 'Professional Services', 
+                href: '/services',
+                description: 'Voor consultancy en agencies'
+              }
+            ]
+          }
+        ]
+      }
+    },
+    { label: 'Kenniscentrum', href: '/kenniscentrum', path: '/kenniscentrum' },
+    { label: 'Enterprise', href: '/enterprise', path: '/enterprise' },
+    { label: 'Docs', href: '/docs', path: '/docs' },
+    { label: 'Pricing', href: '/pricing', path: '/pricing' }
   ];
 
   const isActive = (item: typeof navItems[0]) => {
@@ -88,129 +201,159 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     window.location.href = '/';
   };
 
-  const handleCTAClick = () => {
+  const handleLoginClick = () => {
+    if (typeof window === 'undefined') return;
+    window.location.href = '/login';
+  };
+
+  const handleContactClick = () => {
     if (typeof window === 'undefined') return;
     window.location.href = '/contact';
   };
 
+  const handleSignUpClick = () => {
+    if (typeof window === 'undefined') return;
+    window.location.href = '/signup';
+  };
+
   return (
     <>
-      {/* CSS to disable hover effects but preserve glassmorphism */}
-      <style jsx global>{`
-        header,
-        header *,
-        header button {
-          transition: none !important;
-        }
-        
-        header *:hover,
-        header button:hover {
-          background-color: transparent !important;
-          box-shadow: none !important;
-          transform: none !important;
-          filter: none !important;
-          border-color: inherit !important;
-          color: inherit !important;
-          opacity: inherit !important;
-        }
-        
-        /* Preserve glassmorphism but make it much lighter */
-        header {
-          background: rgba(0, 0, 0, 0.05) !important;
-          backdrop-filter: blur(20px) !important;
-          -webkit-backdrop-filter: blur(20px) !important;
-        }
-        
-        header:hover {
-          background: rgba(0, 0, 0, 0.05) !important;
-          backdrop-filter: blur(20px) !important;
-          -webkit-backdrop-filter: blur(20px) !important;
-        }
-      `}</style>
-      
-      {/* Header */}
+      {/* Vercel-style Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ 
           opacity: isVisible ? 1 : 0, 
           y: isVisible ? 0 : -20 
         }}
-        transition={{ duration: 0.1, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-[9999] border-b border-scailup-border/20 ${
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-[9999] bg-black border-b border-gray-800 ${
           isVisible ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
-        style={{ 
-          transition: 'none',
-          top: 0, 
-          margin: 0, 
-          padding: 0,
-          pointerEvents: isVisible ? 'auto' : 'none',
-          background: 'rgba(0, 0, 0, 0.05)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.05)'
-        }}
       >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div className="flex items-center justify-between h-14 sm:h-16">
-              
-              {/* Logo */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center h-16">
+            
+            {/* Logo */}
+            <div className="flex items-center">
               <button
                 onClick={handleLogoClick}
-                className="flex items-center space-x-2 rounded-lg px-2 py-1"
-                style={{ transition: 'none', outline: 'none' }}
+                className="flex items-center hover:opacity-80 transition-opacity relative"
               >
-                <span className="text-lg sm:text-xl font-bold text-white tracking-widest uppercase">
+                {/* Subtle backlight glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-blue-400/30 to-blue-500/20 rounded-lg blur-lg -z-10 opacity-60"></div>
+                
+                <span className="text-white font-bold text-lg tracking-widest uppercase relative z-10">
                   BUILDRS
                 </span>
               </button>
+            </div>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-                {navItems.map((item) => (
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8 ml-12">
+              {navItems.map((item) => (
+                <div key={item.path} className="relative group">
                   <button
-                    key={item.path}
-                    onClick={() => handleNavClick(item)}
-                    className={`px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm font-medium rounded-lg ${
-                      isActive(item)
-                        ? 'text-scailup-blue bg-scailup-blue/10'
-                        : 'text-scailup-gray'
-                    }`}
-                    style={{ transition: 'none', outline: 'none' }}
+                    onClick={() => !item.hasDropdown && handleNavClick(item)}
+                    className="flex items-center space-x-1 text-gray-400 hover:text-white transition-colors py-2 text-sm font-medium"
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
                   </button>
-                ))}
-              </nav>
-
-              {/* Desktop CTA + Mobile Menu Button */}
-              <div className="flex items-center space-x-2 sm:space-x-4">
-                {/* Desktop CTA Button */}
-                <Button
-                  onClick={handleCTAClick}
-                  className="hidden md:inline-flex bg-scailup-gradient text-white px-3 py-1.5 md:px-6 md:py-2 text-xs md:text-sm font-semibold rounded-lg"
-                  style={{ transition: 'none', outline: 'none' }}
-                >
-                  <span className="hidden lg:inline">Plan gesprek</span>
-                  <span className="lg:hidden">Plan</span>
-                  <ArrowRight className="ml-1 md:ml-2 w-3 h-3 md:w-4 md:h-4" />
-                </Button>
-
-                {/* Mobile Menu Button */}
-                <button
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="md:hidden p-1.5 sm:p-2 text-scailup-gray rounded-lg"
-                  style={{ transition: 'none', outline: 'none' }}
-                >
-                  {isMobileMenuOpen ? (
-                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                  ) : (
-                    <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+                  
+                  {/* Vercel-Style Mega Menu */}
+                  {item.hasDropdown && item.dropdownItems && (
+                    <div className="absolute top-full left-0 mt-2 bg-black border border-gray-800 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[800px] p-6">
+                      {/* Menu Title */}
+                      <div className="mb-6">
+                        <h3 className="text-lg font-semibold text-white mb-1">{item.dropdownItems.title}</h3>
+                      </div>
+                      
+                      {/* Sections Grid */}
+                      <div className="grid grid-cols-3 gap-6">
+                        {item.dropdownItems.sections.map((section, sectionIndex) => (
+                          <div key={sectionIndex}>
+                            {/* Section Title */}
+                            <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">
+                              {section.title}
+                            </h4>
+                            
+                            {/* Section Items */}
+                            <div className="space-y-3">
+                              {section.items.map((menuItem) => {
+                                const IconComponent = menuItem.icon;
+                                return (
+                                  <button
+                                    key={menuItem.href}
+                                    onClick={() => window.location.href = menuItem.href}
+                                    className="flex items-start space-x-3 w-full text-left p-3 rounded-lg hover:bg-gray-900 transition-colors group/item"
+                                  >
+                                    {/* Icon */}
+                                    <div className="flex-shrink-0 mt-0.5">
+                                      <IconComponent className="w-5 h-5 text-gray-400 group-hover/item:text-white transition-colors" />
+                                    </div>
+                                    
+                                    {/* Content */}
+                                    <div className="flex-1">
+                                      <div className="text-white font-medium group-hover/item:text-blue-400 transition-colors">
+                                        {menuItem.label}
+                                      </div>
+                                      <div className="text-sm text-gray-400 mt-0.5">
+                                        {menuItem.description}
+                                      </div>
+                                    </div>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
-                </button>
-              </div>
+                </div>
+              ))}
+            </nav>
+
+            {/* Right Side Buttons */}
+            <div className="flex items-center space-x-1 ml-auto">
+              {/* Login Button */}
+              <button
+                onClick={handleLoginClick}
+                className="hidden md:block px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors rounded-lg"
+              >
+                Log In
+              </button>
+
+              {/* Contact Button */}
+              <button
+                onClick={handleContactClick}
+                className="hidden md:block px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors rounded-lg"
+              >
+                Contact
+              </button>
+
+              {/* Sign Up Button */}
+              <button
+                onClick={handleSignUpClick}
+                className="hidden md:flex items-center px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                Sign Up
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 text-gray-400 hover:text-white transition-colors"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
             </div>
           </div>
+        </div>
       </motion.header>
 
       {/* Mobile Menu Overlay */}
@@ -221,11 +364,11 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-40 lg:hidden"
           >
             {/* Backdrop */}
             <div 
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/80"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
@@ -235,35 +378,76 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="absolute top-0 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-scailup-border"
+              className="absolute top-0 left-0 right-0 bg-black border-b border-gray-800"
             >
-              <div className="px-4 pt-16 sm:pt-20 pb-6">
+              <div className="px-4 pt-20 pb-6">
                 {/* Mobile Navigation */}
-                <nav className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                <nav className="space-y-1 mb-8">
                   {navItems.map((item) => (
-                    <button
-                      key={item.path}
-                      onClick={() => handleNavClick(item)}
-                      className={`block w-full text-left px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-xl focus-ring ${
-                        isActive(item)
-                          ? 'text-scailup-blue bg-scailup-blue/10 border border-scailup-blue/20'
-                          : 'text-scailup-gray'
-                      }`}
-                    >
-                      {item.label}
-                    </button>
+                    <div key={item.path}>
+                      <button
+                        onClick={() => !item.hasDropdown && handleNavClick(item)}
+                        className="block w-full text-left px-4 py-3 text-base text-gray-400 hover:text-white transition-colors"
+                      >
+                        {item.label}
+                      </button>
+                      {item.hasDropdown && item.dropdownItems && (
+                        <div className="ml-4 mt-2 space-y-4">
+                          {item.dropdownItems.sections.map((section, sectionIndex) => (
+                            <div key={sectionIndex}>
+                              <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-2">
+                                {section.title}
+                              </h4>
+                              <div className="space-y-1">
+                                {section.items.map((menuItem) => {
+                                  const IconComponent = menuItem.icon;
+                                  return (
+                                    <button
+                                      key={menuItem.href}
+                                      onClick={() => {
+                                        window.location.href = menuItem.href;
+                                        setIsMobileMenuOpen(false);
+                                      }}
+                                      className="flex items-center space-x-3 w-full text-left px-4 py-2 text-sm text-gray-500 hover:text-gray-300 transition-colors"
+                                    >
+                                      <IconComponent className="w-4 h-4" />
+                                      <div>
+                                        <div className="font-medium">{menuItem.label}</div>
+                                        <div className="text-xs text-gray-600">{menuItem.description}</div>
+                                      </div>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </nav>
 
-                {/* Mobile CTA Button */}
-                <Button
-                  onClick={handleCTAClick}
-                  className="w-full bg-scailup-gradient text-white px-4 py-3 sm:px-6 sm:py-4 text-base sm:text-lg font-semibold rounded-xl focus-ring"
-                >
-                  <span className="sm:hidden">Plan gesprek</span>
-                  <span className="hidden sm:inline">Plan een strategiegesprek</span>
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                </Button>
+                {/* Mobile Buttons */}
+                <div className="space-y-3">
+                  <button
+                    onClick={handleLoginClick}
+                    className="w-full px-4 py-3 text-base text-gray-400 hover:text-white transition-colors text-left"
+                  >
+                    Log In
+                  </button>
+                  <button
+                    onClick={handleContactClick}
+                    className="w-full px-4 py-3 text-base text-gray-400 hover:text-white transition-colors text-left"
+                  >
+                    Contact
+                  </button>
+                  <button
+                    onClick={handleSignUpClick}
+                    className="w-full flex items-center px-4 py-3 bg-white text-black text-base font-medium rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    Sign Up
+                  </button>
+                </div>
               </div>
             </motion.div>
           </motion.div>
