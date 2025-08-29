@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ScailUpFooter from '../components/ScailUpFooter';
+import AgencyHero from '../components/AgencyHero';
+import AgencyAIAgentsSection from '../components/AgencyAIAgentsSection';
+import AgencyWhatIsBuildrsSection from '../components/AgencyWhatIsBuildrsSection';
+import AgencyTestServicesSection from '../components/AgencyTestServicesSection';
+import AgencyGenerateLeadsSection from '../components/AgencyGenerateLeadsSection';
+import AgencyFAQSection from '../components/AgencyFAQSection';
+
+// Agency structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ScailUp Agency Solutions",
+  "description": "White-label AI-gedreven outbound oplossingen voor marketing agencies. Schaal je agency met onze proven outbound systemen.",
+  "url": "https://scailup.nl/agency",
+  "logo": "https://scailup.nl/logo.png",
+  "sameAs": [
+    "https://linkedin.com/company/scailup"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+31-6-12345678",
+    "contactType": "customer service",
+    "availableLanguage": "Dutch"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "NL",
+    "addressLocality": "Amsterdam"
+  },
+  "service": [
+    {
+      "@type": "Service",
+      "name": "White-label Outbound",
+      "description": "Volledig white-label outbound systemen voor je agency klanten"
+    },
+    {
+      "@type": "Service", 
+      "name": "Agency Partnership",
+      "description": "Strategische partnerships voor scale en groei van je agency"
+    },
+    {
+      "@type": "Service",
+      "name": "Training & Support",
+      "description": "Volledige training en ongoing support voor je team"
+    }
+  ]
+};
+---
+
+<Layout 
+  title="ScailUp | White-label Outbound voor Agencies"
+  description="Schaal je marketing agency met onze white-label AI outbound oplossingen. Van lead generation tot full-service campaign management. Voor agencies die willen groeien."
+  keywords="marketing agency, white-label outbound, agency partnership, lead generation, B2B marketing agencies, outbound systemen, Netherlands"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
+  <style>
+    
+    /* Ensure page starts with true black background */
+    body {
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* Ensure no spacing anywhere that could create black canvas */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Force hero to start at very top */
+    #main-content {
+      position: relative;
+      top: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Critical hero styles for instant rendering */
+    .hero-section {
+      position: relative;
+      min-height: 90vh;
+      background-color: #000000;
+      color: #ffffff;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 25vh 1rem 3rem;
+    }
+    
+    /* Prevent any layout shift */
+    .hero-content {
+      position: relative;
+      max-width: 80rem;
+      width: 100%;
+      text-align: center;
+      z-index: 30;
+    }
+  </style>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Agency Hero section -->
+    <AgencyHero client:load />
+    
+    <!-- Agency AI Agents Section -->
+    <AgencyAIAgentsSection client:visible />
+    
+    <!-- Agency What is Buildrs Section -->
+    <AgencyWhatIsBuildrsSection client:visible />
+    
+    <!-- Agency Services Section -->
+    <AgencyTestServicesSection client:visible />
+    
+    <!-- Agency Generate Leads Section -->
+    <AgencyGenerateLeadsSection client:visible />
+    
+    <!-- Agency FAQ Section -->
+    <AgencyFAQSection client:visible />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:visible />
+  </main>
+
+</Layout>

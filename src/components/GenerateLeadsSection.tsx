@@ -56,7 +56,7 @@ const GenerateLeadsSection = () => {
               height: '100%'
             }}>
               <div className="mb-4 md:mb-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
                   Start direct met AI-first outbound
                 </h3>
                 

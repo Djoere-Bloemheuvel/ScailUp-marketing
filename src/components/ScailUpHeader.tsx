@@ -176,7 +176,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       }
     },
     { label: 'Kenniscentrum', href: '/kenniscentrum', path: '/kenniscentrum' },
-    { label: 'Enterprise', href: '/enterprise', path: '/enterprise' },
+    { label: 'Agency', href: '/agency', path: '/agency' },
     { label: 'Docs', href: '/docs', path: '/docs' },
     { label: 'Pricing', href: '/pricing', path: '/pricing' }
   ];
