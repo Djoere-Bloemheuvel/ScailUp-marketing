@@ -4,12 +4,12 @@ import { Mail, Linkedin, Building2, ArrowRight, Users, Target, Briefcase } from 
 const AgencyAIAgentsSection = () => {
   const agents = [
     {
-      title: 'Lead Kwalificatie Automatisering',
-      description: 'Stop met handmatige lead scoring. Automatisch de beste prospects identificeren en doorsturen naar sales.',
+      title: 'Leads Verdwijnen in Excel Lijsten?',
+      description: 'Van 40 uur handmatig sorteren naar 100% geautomatiseerde kwalificatie. Elke lead krijgt direct een score en wordt naar de juiste persoon gestuurd.',
       icon: Building2,
       color: 'from-blue-500 to-blue-400',
       bgColor: 'bg-gradient-to-br from-blue-900/30 to-blue-800/30',
-      href: '/agency/lead-qualification',
+      href: '/contact',
       mockup: (
         <div className="bg-gray-900 rounded-lg p-3 shadow-sm border border-gray-700 scale-90">
           <div className="flex items-center justify-between mb-2">
@@ -42,12 +42,12 @@ const AgencyAIAgentsSection = () => {
       )
     },
     {
-      title: 'Follow-up Sequence Automatisering',
-      description: 'Geen prospect valt meer door de mazen. Automatische, gepersonaliseerde follow-ups die converteren.',
+      title: 'Prospects Vergeten Follow-ups?',
+      description: 'Stop met het verliezen van €50K+ aan gemiste kansen. Automatische follow-up sequences die prospects warm houden tot ze kopen.',
       icon: Target,
       color: 'from-pink-500 to-purple-500',
       bgColor: 'bg-gradient-to-br from-pink-900/30 to-purple-900/30',
-      href: '/agency/follow-up-automation',
+      href: '/contact',
       mockup: (
         <div className="bg-gray-900 rounded-lg p-3 shadow-sm border border-gray-700 scale-90">
           <div className="flex items-center justify-between mb-2">
@@ -80,12 +80,12 @@ const AgencyAIAgentsSection = () => {
       )
     },
     {
-      title: 'Client Onboarding Stroomlijning',
-      description: 'Van 2 weken naar 2 dagen. Automatisch nieuwe klanten onboarden zonder kwaliteitsverlies.',
+      title: 'Klanten Wachten Weken op Onboarding?',
+      description: 'Van 14 dagen chaos naar 2 dagen perfecte onboarding. Klanten zijn sneller live, jij hebt 80% minder werk.',
       icon: Users,
       color: 'from-green-500 to-teal-500',
       bgColor: 'bg-gradient-to-br from-green-900/30 to-teal-900/30',
-      href: '/agency/onboarding-automation',
+      href: '/contact',
       mockup: (
         <div className="bg-gray-900 rounded-lg p-3 shadow-sm border border-gray-700 scale-90">
           <div className="flex items-center justify-between mb-2">
@@ -128,13 +128,13 @@ const AgencyAIAgentsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-            <span className="block sm:inline">Custom ontwikkeling</span>
+            <span className="block sm:inline">Waar jouw team</span>
             <span className="sm:hidden"> </span><br className="hidden sm:block" />
-            <span className="font-bold">voor unique cases.</span>
+            <span className="font-bold">tijd verliest.</span>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-            Standaard oplossingen niet genoeg? Wij ontwikkelen <span className="font-semibold text-white">custom AI agents en automations</span> 
-            die perfect aansluiten bij jouw specifieke business processen.
+            Deze processen kosten je team <span className="font-semibold text-white">20+ uur per week</span>. 
+            Wij automatiseren ze compleet weg. <span className="font-semibold text-white">Geen repetitief werk meer.</span>
           </p>
         </div>
 
@@ -193,6 +193,10 @@ const AgencyAIAgentsSection = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-12 sm:mt-16 md:mt-20">
+          <div className="mb-6">
+            <p className="text-white/60 text-lg mb-2">Herken je deze problemen?</p>
+            <p className="text-white font-semibold text-xl">Stop met tijd verliezen. Start met automatiseren.</p>
+          </div>
           <button
             onClick={() => {
               if (typeof window !== 'undefined') {
@@ -202,7 +206,7 @@ const AgencyAIAgentsSection = () => {
             className="bg-white hover:bg-gray-100 text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full transition-all duration-300 group"
           >
             <span className="flex items-center">
-              Bespreek je project
+              Ja, automatiseer dit voor ons
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </span>
           </button>

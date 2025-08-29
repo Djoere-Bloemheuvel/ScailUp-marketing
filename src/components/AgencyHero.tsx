@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import AgencyAnimatedHeadline from './AgencyAnimatedHeadline';
+import AgencyROICalculator from './AgencyROICalculator';
 
 const AgencyHero = () => {
   const handlePartnershipClick = () => {
@@ -109,95 +111,83 @@ const AgencyHero = () => {
         }}
       />
         
-      {/* Hero Content */}
-      <div className="relative w-full max-w-7xl mx-auto text-center z-20 px-2 sm:px-4 md:px-6 lg:px-8">
-        
-        {/* Agency Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
-          {/* Left Side - Content */}
-          <motion.div
-            className="text-center lg:text-left order-1 lg:order-1"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            style={{ willChange: 'transform, opacity' }}
-          >
-            
-            {/* Business Impact Headline */}
-            <h1 className="font-light text-white mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-              <span className="lg:hidden">
-                {/* Mobile/Tablet */}
-                <span className="text-2xl sm:text-3xl md:text-4xl leading-tight">
-                  Automatiseer je complexe
-                </span><br />
-                <span className="font-bold text-white text-2xl sm:text-3xl md:text-4xl">business processen.</span>
-              </span>
-              <span className="hidden lg:block text-6xl xl:text-7xl">
-                {/* Desktop */}
-                Automatiseer je complexe<br />
-                business<br />
-                <span className="font-bold text-white">processen.</span>
-              </span>
-            </h1>
+      {/* Content Container - Centered Layout like main Hero */}
+      <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
+        <div className="max-w-4xl mx-auto relative">
+          {/* Subtle background glow for content area */}
+          <div className="absolute inset-0 rounded-3xl opacity-5 pointer-events-none" 
+               style={{
+                 background: 'radial-gradient(ellipse at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
+                 filter: 'blur(40px)'
+               }} />
+          
+          {/* Animated Headline */}
+          <div className="mb-2">
+            <AgencyAnimatedHeadline />
+          </div>
 
-            {/* Business Value Subtitle */}
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
-              Verhoog efficiency met 200-400%. Bespaar 15-30 uur per week.<br />
-              <span className="font-bold text-white">Speciaal ontwikkeld voor jouw unieke situatie.</span>
-            </p>
+          {/* Subtitle */}
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+            <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
+              Agents & automations die jouw bedrijf
+            </span>
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
+            <span className="text-white font-medium bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+              daadwerkelijk transformeren.
+            </span>
+          </p>
 
-            {/* CTA Button */}
-            <div className="flex justify-center lg:justify-start">
-              <button
-                onClick={() => {
-                  const servicesSection = document.querySelector('#services-section') || document.querySelector('[data-section="services"]');
-                  if (servicesSection) {
-                    servicesSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+            <Button
+              className="group relative bg-white text-black apple-button-hover transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden w-full sm:w-80 hover:scale-[1.03]"
+              style={{
+                background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
+                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+              }}
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.location.href = '/contact';
+                }
+              }}
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                Start je transformatie
+                <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </span>
+            </Button>
+
+            <div className="relative group">
+              <div 
+                className="absolute inset-0 rounded-full transition-all duration-300 group-hover:scale-[1.03]"
+                style={{
+                  background: 'linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(59, 130, 246) 25%, rgb(147, 197, 253) 50%, rgb(59, 130, 246) 75%, rgb(37, 99, 235) 100%)',
+                  padding: '2px'
                 }}
-                className="w-full sm:w-auto bg-white hover:bg-gray-100 text-black px-4 sm:px-5 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 text-xs sm:text-sm md:text-base font-semibold rounded-full transition-all duration-300 group max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-none lg:min-w-[220px]"
               >
-                <span className="flex items-center justify-center">
-                  Plan een gesprek
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                <div className="w-full h-full rounded-full" style={{ background: 'rgba(0, 0, 0, 0.85)' }} />
+              </div>
+              <Button
+                variant="outline"
+                className="group relative apple-button-hover px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full transition-all duration-300 overflow-hidden w-full sm:w-72 border-0 hover:scale-[1.03]"
+                style={{
+                  background: 'rgba(0, 0, 0, 0.85)',
+                  backdropFilter: 'blur(20px)',
+                  color: '#ffffff',
+                  boxShadow: '0 4px 24px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(59, 130, 246, 0.1)',
+                  margin: '2px'
+                }}
+                onClick={handleCasesClick}
+              >
+                <span className="relative z-10 flex items-center justify-center">
+                  Bekijk cases
+                  <ChevronRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </span>
-              </button>
+              </Button>
             </div>
-          </motion.div>
-
-          {/* Right Side - Agency Stats */}
-          <motion.div
-            className="order-2 lg:order-2 mt-8 lg:mt-0"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            style={{ willChange: 'transform, opacity' }}
-          >
-            {/* Business Results */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:space-y-2.5 xl:space-y-3 lg:gap-0 max-w-md mx-auto lg:max-w-none">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
-                <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">200-400%</div>
-                <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">efficiency verbetering</div>
-              </div>
-              
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
-                <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">15-30h</div>
-                <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">tijd besparing per week</div>
-              </div>
-              
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
-                <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">4-6 weken</div>
-                <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">van idee naar resultaat</div>
-              </div>
-              
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-3 xl:p-4 h-16 sm:h-18 lg:h-16 xl:h-20 flex flex-col justify-center">
-                <div className="text-lg sm:text-xl lg:text-lg xl:text-2xl font-bold text-white mb-0.5 xl:mb-1">ROI</div>
-                <div className="text-white/80 text-xs sm:text-sm lg:text-xs xl:text-sm font-medium leading-tight">binnen 3 maanden</div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
-        
       </div>
       
       {/* Agency-themed floating elements */}

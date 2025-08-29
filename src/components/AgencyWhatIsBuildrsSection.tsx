@@ -42,40 +42,40 @@ const AgencyWhatIsBuildrsSection = () => {
           {/* Left Side - Content */}
           <div className="text-center lg:text-left">
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-              <span className="block">Custom development</span>
+              <span className="block">Jouw unieke situatie</span>
               <span className="font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                die past.
+                vraagt maatwerk.
               </span>
             </h2>
             
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Standaard oplossingen schieten tekort? Wij ontwikkelen custom AI agents en automations. 
-              <span className="font-semibold text-white"> Precies zoals jouw business het nodig heeft</span> - geïntegreerd in jouw bestaande systemen.
+              Standard software kan het niet. Jouw team blijft vastzitten in handmatig werk. 
+              <span className="font-semibold text-white"> Wij bouwen precies wat jij nodig hebt</span> - werkend binnen 30 dagen.
             </p>
 
-            {/* Key Benefits */}
+            {/* Hard Value Props */}
             <div className="space-y-4 mb-8">
               <div className="flex items-start space-x-3 justify-center lg:justify-start">
                 <Users className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />
                 <div className="text-left">
-                  <h3 className="text-white font-semibold">Maatwerk oplossingen</h3>
-                  <p className="text-white/70 text-sm">100% custom voor jouw specifieke behoeften</p>
+                  <h3 className="text-white font-semibold">€50K+ per jaar terug</h3>
+                  <p className="text-white/70 text-sm">Automatisering betaalt zichzelf binnen 3 maanden terug</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3 justify-center lg:justify-start">
                 <Target className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
                 <div className="text-left">
-                  <h3 className="text-white font-semibold">Volledige integratie</h3>
-                  <p className="text-white/70 text-sm">Naadloos in je bestaande systemen</p>
+                  <h3 className="text-white font-semibold">Werkt in je bestaande systemen</h3>
+                  <p className="text-white/70 text-sm">Geen dure migraties. Plug & play in wat je al hebt</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3 justify-center lg:justify-start">
                 <Briefcase className="w-6 h-6 text-pink-400 mt-1 flex-shrink-0" />
                 <div className="text-left">
-                  <h3 className="text-white font-semibold">4-6 weken delivery</h3>
-                  <p className="text-white/70 text-sm">Van concept tot werkende oplossing</p>
+                  <h3 className="text-white font-semibold">30 dagen garantie</h3>
+                  <p className="text-white/70 text-sm">Werkt niet zoals beloofd? Geld terug</p>
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@ const AgencyWhatIsBuildrsSection = () => {
                 onClick={handlePartnershipClick}
                 className="group flex items-center px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all duration-300 text-lg"
               >
-                <span>Bespreek je project</span>
+                <span>Ja, bouw dit voor ons</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </button>
               
@@ -95,7 +95,7 @@ const AgencyWhatIsBuildrsSection = () => {
                 className="group flex items-center px-8 py-4 bg-transparent border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300 text-lg backdrop-blur-sm"
               >
                 <Play className="mr-2 w-5 h-5" />
-                <span>Bekijk voorbeelden</span>
+                <span>Toon me cases</span>
               </button>
             </div>
           </div>

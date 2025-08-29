@@ -53,15 +53,15 @@ const AgencyGenerateLeadsSection = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-              <span className="block">Klaar voor custom</span>
+              <span className="block">Stop met wachten.</span>
               <span className="font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent">
-                AI ontwikkeling?
+                Start met automatiseren.
               </span>
             </h2>
             
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-              Standaard niet genoeg? Laat ons <span className="font-semibold text-white">custom AI agents en automations</span> ontwikkelen. 
-              Van concept tot live implementatie - <span className="font-semibold text-white">volledig op maat</span>.
+              Elke dag dat je wacht, verlies je <span className="font-semibold text-white">€200+ aan productiviteit</span>. 
+              Binnen 30 dagen heb je werkende automatisering. <span className="font-semibold text-white">Gegarandeerd.</span>
             </p>
           </motion.div>
 
