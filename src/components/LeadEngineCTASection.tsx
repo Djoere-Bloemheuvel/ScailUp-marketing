@@ -61,7 +61,8 @@ const LeadEngineCTASection = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-white font-semibold text-lg">Eerste maand €99 <span className="text-white/60 line-through text-base font-normal">normaal €249</span></h3>
-                  <p className="text-white/80 text-sm">1000 leads • 2000 emails • Garantie: minimaal 1 meeting of geld terug</p>
+                  <p className="text-white/80 text-sm">1000 leads • 2000 emails</p>
+                  <p className="text-white/80 text-sm"><span className="font-semibold text-cyan-400">100% garantie:</span> minimaal 1 meeting of geld terug</p>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
                   Beperkt beschikbaar

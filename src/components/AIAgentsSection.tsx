@@ -7,34 +7,34 @@ const AIAgentsSection = () => {
       title: 'Smart Deal Agent',
       description: 'Analyseert automatisch deals, voorspelt close-kansen en stelt de beste next actions voor.',
       icon: Building2,
-      color: 'from-green-500 to-emerald-500',
-      bgColor: 'bg-gradient-to-br from-green-900/30 to-emerald-900/30',
+      color: 'from-blue-500 to-blue-400',
+      bgColor: 'bg-gradient-to-br from-blue-900/30 to-blue-800/30',
       href: '/lead-engine/smart-deal-agent',
       mockup: (
         <div className="bg-gray-900 rounded-lg p-3 shadow-sm border border-gray-700 scale-90">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center space-x-2">
-              <Building2 className="w-3 h-3 text-green-400" />
+              <Building2 className="w-3 h-3 text-blue-400" />
               <span className="text-xs font-medium text-white">Smart Deal Agent</span>
             </div>
-            <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+            <div className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
               Analyzing
             </div>
           </div>
           <div className="bg-gray-800 rounded p-2 border border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <div className="text-xs text-gray-400">Deal: InnovaTech B.V.</div>
-              <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">85% Close</div>
+              <div className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">85% Close</div>
             </div>
             <div className="space-y-1">
               <p className="text-xs text-white font-medium">AI Recommendation:</p>
-              <p className="text-xs text-gray-300">• <span className="bg-green-500 text-white px-1 rounded">Follow-up</span> binnen 2 dagen</p>
-              <p className="text-xs text-gray-300">• <span className="bg-green-500 text-white px-1 rounded">Pricing proposal</span> klaar voor verzending</p>
-              <p className="text-xs text-gray-300">• <span className="bg-green-500 text-white px-1 rounded">Decision maker</span> nog niet bereikt</p>
+              <p className="text-xs text-gray-300">• <span className="bg-blue-500 text-white px-1 rounded">Follow-up</span> binnen 2 dagen</p>
+              <p className="text-xs text-gray-300">• <span className="bg-blue-500 text-white px-1 rounded">Pricing proposal</span> klaar voor verzending</p>
+              <p className="text-xs text-gray-300">• <span className="bg-blue-500 text-white px-1 rounded">Decision maker</span> nog niet bereikt</p>
             </div>
             <div className="mt-2 pt-2 border-t border-gray-600">
               <div className="flex items-center justify-between text-xs">
-                <span className="text-green-400 font-medium">Next: Book meeting</span>
+                <span className="text-blue-400 font-medium">Next: Book meeting</span>
                 <span className="text-gray-500">Priority: High</span>
               </div>
             </div>

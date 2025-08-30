@@ -1,4 +1,4 @@
-import { MessageSquare, Cog, Brain, Linkedin } from 'lucide-react';
+import { MessageSquare, Cog, Brain, Linkedin, Sparkles } from 'lucide-react';
 import ServiceSection from './ServiceSection';
 import { useState, useEffect } from 'react';
 
@@ -7,12 +7,13 @@ const AgencyDienstenSection = () => {
     0: false,
     1: false,
     2: false,
-    3: false
+    3: false,
+    4: false
   });
 
   useEffect(() => {
     // Simulate visibility for all services
-    setIsVisible({ 0: true, 1: true, 2: true, 3: true });
+    setIsVisible({ 0: true, 1: true, 2: true, 3: true, 4: true });
   }, []);
 
   // Agency AI Agents Services
@@ -124,6 +125,33 @@ const AgencyDienstenSection = () => {
       number: '04',
       highlight: 'AI prospectie',
       metrics: 'ROI: 1-2 maanden'
+    },
+    {
+      id: 'custom-agent',
+      icon: Sparkles,
+      title: (
+        <div>
+          <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
+            Custom Solutions
+          </div>
+          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-normal bg-gradient-to-r from-pink-400 via-purple-400 to-blue-500 bg-clip-text text-transparent tracking-[-0.01em] leading-[1.2] antialiased mt-1">
+            Maatwerk AI Agent
+          </div>
+        </div>
+      ),
+      subtitle: 'Jouw wildste automatiseringsdromen worden realiteit',
+      subtitleStyle: 'text-white/95 font-light tracking-[-0.02em] leading-[1.2] antialiased',
+      description: 'Denk je aan een workflow die te complex lijkt om te automatiseren? Challenge accepted. We duiken diep in jouw proces, ontrafelen de complexiteit en bouwen een AI-systeem dat je collega\'s versteld doet staan. Van onmogelijk geachte integraties tot volledig futuristische workflows - geen uitdaging is te groot. In één strategiesessie ontdekken we samen wat mogelijk is en maken we het onmogelijke mogelijk.',
+      descriptionStyle: 'text-premium-silver/85',
+      background: 'from-black via-purple-900/15 to-black',
+      accentColor: 'from-pink-400 via-purple-400 to-blue-500',
+      primaryButtonText: 'Plan strategiesessie',
+      secondaryButtonText: 'Plan strategiesessie',
+      primaryButtonAction: () => window.location.href = '/contact',
+      secondaryButtonAction: () => window.location.href = '/contact',
+      number: '05',
+      highlight: 'Het onmogelijke mogelijk',
+      metrics: 'ROI: 2-6 maanden'
     }
   ];
 

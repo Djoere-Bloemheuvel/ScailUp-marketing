@@ -1,4 +1,63 @@
 ---
-return Astro.redirect('/agency');
+return Astro.redirect('/agency', 301);
 ---
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=/agency">
+  <link rel="canonical" href="/agency">
+  <title>ScailUp - Redirecting...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .loader {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeIn 0.3s ease-out 0.1s forwards;
+    }
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #333;
+      border-top: 2px solid #3B82F6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="spinner"></div>
+    <span>Doorsturen...</span>
+  </div>
+  <script>
+    // Immediate redirect for instant navigation
+    if (window.location.pathname === '/') {
+      window.location.replace('/agency');
+    }
+  </script>
+</body>
+</html>
 

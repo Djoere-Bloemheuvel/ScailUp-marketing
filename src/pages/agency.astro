@@ -6,21 +6,25 @@ import AIAgentsSection from '../components/AIAgentsSection';
 import CustomAgentCTASection from '../components/AgencyWhatIsBuildrsSection';
 import LeadEngineCTASection from '../components/LeadEngineCTASection';
 import WhatIsBuildrsSection from '../components/WhatIsBuildrsSection';
-import AgencyServicesSection from '../components/AgencyServicesSection';
-import GenerateLeadsSection from '../components/GenerateLeadsSection';
+import AgencyCustomServicesSection from '../components/AgencyCustomServicesSection';
+import AgencyCaseStudiesSection from '../components/AgencyCaseStudiesSection';
+import AgencyPlatformComparisonSection from '../components/AgencyPlatformComparisonSection';
 import AgencyFAQSection from '../components/AgencyFAQSection';
 import AgencyDienstenSection from '../components/AgencyDienstenSection';
+import AppleStyleTransition from '../components/AppleStyleTransition';
+import AppleStyleTransition2 from '../components/AppleStyleTransition2';
+import AgencyProcessSection from '../components/AgencyProcessSection';
 
 // Agency structured data
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "ScailUp Agency Solutions",
-  "description": "White-label AI-gedreven outbound oplossingen voor marketing agencies. Schaal je agency met onze proven outbound systemen.",
-  "url": "https://scailup.nl/agency",
-  "logo": "https://scailup.nl/logo.png",
+  "name": "Buildrs",
+  "description": "Custom AI agents en automatisering workflows voor B2B service providers. Van LinkedIn automation tot proposal generators - we bouwen het voor je.",
+  "url": "https://buildrs.nl/agency",
+  "logo": "https://buildrs.nl/logo.png",
   "sameAs": [
-    "https://linkedin.com/company/scailup"
+    "https://linkedin.com/company/buildrs"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -36,27 +40,27 @@ const structuredData = {
   "service": [
     {
       "@type": "Service",
-      "name": "White-label Outbound",
-      "description": "Volledig white-label outbound systemen voor je agency klanten"
+      "name": "Custom AI Agents",
+      "description": "Maatwerk AI workflows zoals LinkedIn automation, proposal generators en lead processing agents"
     },
     {
       "@type": "Service", 
-      "name": "Agency Partnership",
-      "description": "Strategische partnerships voor scale en groei van je agency"
+      "name": "Platform Integration",
+      "description": "Integreer custom agents in ons Buildrs platform voor betere dashboards en monitoring"
     },
     {
       "@type": "Service",
-      "name": "Training & Support",
-      "description": "Volledige training en ongoing support voor je team"
+      "name": "Standalone Solutions",
+      "description": "Volledig eigenaarschap van je agent - draai het via Google Sheets, Airtable of eigen stack"
     }
   ]
 };
 ---
 
 <Layout 
-  title="ScailUp | White-label Outbound voor Agencies"
-  description="Schaal je marketing agency met onze white-label AI outbound oplossingen. Van lead generation tot full-service campaign management. Voor agencies die willen groeien."
-  keywords="marketing agency, white-label outbound, agency partnership, lead generation, B2B marketing agencies, outbound systemen, Netherlands"
+  title="Buildrs | Custom AI Agents & Automatisering"
+  description="We bouwen custom AI agents voor B2B bedrijven. LinkedIn automation, proposal generators, lead processing - standalone of geïntegreerd in ons platform. Klaar in 1-2 weken."
+  keywords="custom AI agents, marketing automation, LinkedIn automation, workflow automation, AI ontwikkeling, B2B automatisering, proposal generator, Netherlands"
 >
   <!-- Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
@@ -129,17 +133,29 @@ const structuredData = {
     <!-- What is Buildrs Section -->
     <CustomAgentCTASection client:visible />
     
+    <!-- Apple Style Transition 2 -->
+    <AppleStyleTransition2 client:visible />
+    
     <!-- Agency Diensten Section -->
     <AgencyDienstenSection client:visible />
+    
+    <!-- Apple Style Transition -->
+    <AppleStyleTransition client:visible />
     
     <!-- Lead Engine CTA Section -->
     <LeadEngineCTASection client:visible />
     
-    <!-- Agency Services Section -->
-    <AgencyServicesSection client:visible />
+    <!-- Process & Development Methodology Section -->
+    <AgencyProcessSection client:visible />
     
-    <!-- Generate Leads Section -->
-    <GenerateLeadsSection client:visible />
+    <!-- Agency Custom Services Section -->
+    <AgencyCustomServicesSection client:visible />
+    
+    <!-- Case Studies Section -->
+    <AgencyCaseStudiesSection client:visible />
+    
+    <!-- Platform Comparison Section -->
+    <AgencyPlatformComparisonSection client:visible />
     
     <!-- FAQ Section -->
     <AgencyFAQSection client:visible />
