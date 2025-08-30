@@ -113,7 +113,12 @@ const AgencyHero = () => {
         
       {/* Content Container - Centered Layout like main Hero */}
       <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
-        <div className="max-w-4xl mx-auto relative">
+        <motion.div 
+          className="max-w-4xl mx-auto relative"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           {/* Subtle background glow for content area */}
           <div className="absolute inset-0 rounded-3xl opacity-5 pointer-events-none" 
                style={{
@@ -122,12 +127,24 @@ const AgencyHero = () => {
                }} />
           
           {/* Animated Headline */}
-          <div className="mb-2">
+          <motion.div 
+            className="mb-2"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
+          >
             <AgencyAnimatedHeadline />
-          </div>
+          </motion.div>
 
           {/* Subtitle */}
-          <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 xs:mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-2 xs:px-4">
+          <motion.p 
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 xs:mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-2 xs:px-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
+          >
             <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
               Agents & automations die jouw bedrijf
             </span>
@@ -136,17 +153,23 @@ const AgencyHero = () => {
             <span className="text-white font-medium bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
               daadwerkelijk transformeren.
             </span>
-          </p>
+          </motion.p>
 
           {/* CTA Buttons - Agency themed to match hero */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
+          >
             {/* Primary CTA - Matches agency background colors */}
             <Button
               className="group relative px-6 xs:px-7 sm:px-8 py-3 xs:py-4 text-white text-base xs:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 overflow-hidden border-0 w-full xs:w-auto sm:w-auto max-w-xs sm:max-w-none"
               style={{
-                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(168, 85, 247, 0.8) 50%, rgba(6, 182, 212, 0.7) 100%)',
+                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(236, 72, 153, 0.8) 50%, rgba(219, 39, 119, 0.7) 100%)',
                 backdropFilter: 'blur(16px)',
-                boxShadow: '0 8px 32px rgba(59, 130, 246, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                boxShadow: '0 8px 32px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
               }}
               onClick={() => {
                 if (typeof window !== 'undefined') {
@@ -185,8 +208,8 @@ const AgencyHero = () => {
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </span>
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
       
       {/* Agency-themed floating elements */}

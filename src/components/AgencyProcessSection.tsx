@@ -118,12 +118,8 @@ const AgencyProcessSection = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {processSteps.map((step, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
                   className="relative group"
                 >
                   {/* Step Number Circle */}
@@ -156,20 +152,14 @@ const AgencyProcessSection = () => {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </div>
 
         {/* Deliverables */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
+        <div className="mb-16">
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
             <h3 className="text-3xl font-bold text-white mb-8 text-center">Wat je krijgt</h3>
             
@@ -185,7 +175,7 @@ const AgencyProcessSection = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

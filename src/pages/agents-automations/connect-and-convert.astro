@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ScailUpFooter from '../../components/ScailUpFooter';
+import ConnectToClientHero from '../../components/ConnectToClientHero';
+import ConnectToClientContentSection from '../../components/ConnectToClientContentSection';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Connect & Convert - LinkedIn Outreach Agent",
+  "description": "AI-powered LinkedIn prospectie agent. Automatisch prospects vinden, kwalificeren en benaderen met hyper-gepersonaliseerde berichten. Van prospectie tot eerste gesprek - volledig geautomatiseerd.",
+  "url": "https://buildrs.nl/agents-automations/connect-and-convert",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "offers": {
+    "@type": "Offer",
+    "description": "Custom LinkedIn Outreach Agent Development",
+    "priceCurrency": "EUR",
+    "priceRange": "€2500-€5000"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Buildrs",
+    "url": "https://buildrs.nl",
+    "description": "Custom AI agent development voor B2B bedrijven"
+  },
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "B2B Sales Teams"
+  },
+  "featureList": [
+    "Automatische prospect discovery",
+    "AI-gestuurde leadkwalificatie", 
+    "Hyper-gepersonaliseerde berichten",
+    "LinkedIn-compliant automation",
+    "CRM integratie",
+    "Meeting scheduling"
+  ]
+};
+---
+
+<Layout 
+  title="Connect & Convert | LinkedIn Outreach Agent | Buildrs"
+  description="Automatische LinkedIn prospectie met AI. Vindt, kwalificeert en benadert prospects met hyper-gepersonaliseerde berichten. Van prospectie tot eerste gesprek - volledig geautomatiseerd."
+  keywords="LinkedIn automation, AI prospectie, LinkedIn outreach, B2B leads, sales automation, LinkedIn agent, prospect automation, Netherlands"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Connect & Convert Hero -->
+    <ConnectToClientHero client:load />
+    
+    <!-- Connect & Convert Content -->
+    <ConnectToClientContentSection client:visible />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:visible />
+  </main>
+
+</Layout>

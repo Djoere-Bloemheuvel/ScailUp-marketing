@@ -4,7 +4,10 @@ import { ArrowRight, Calendar, MessageSquare, CheckCircle, Euro } from 'lucide-r
 
 const AgencyFinalCTASection = () => {
   return (
-    <section className="relative py-24 bg-black overflow-hidden">
+    <section className="relative pt-32 pb-24 bg-black overflow-hidden">
+      {/* Subtle fade to black at top */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/15 via-black/5 to-transparent z-10"></div>
+      
       {/* Ambient Background - Continuation of FAQ glows */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main central glow using CSS radial gradient */}

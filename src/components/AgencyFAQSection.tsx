@@ -244,19 +244,6 @@ const AgencyFAQSection = () => {
           
         </div>
         
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-white/70 mb-6">
-            Nog meer vragen? We helpen je graag persoonlijk verder.
-          </p>
-          <button
-            onClick={() => window.location.href = '/contact'}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
-            style={{ boxShadow: '0 0 30px -8px rgba(168, 85, 247, 0.4)' }}
-          >
-            Plan een strategiesessie
-          </button>
-        </div>
       </div>
     </section>
   );

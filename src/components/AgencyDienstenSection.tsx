@@ -120,8 +120,8 @@ const AgencyDienstenSection = () => {
       accentColor: 'from-blue-500 to-indigo-600',
       primaryButtonText: 'Lees meer',
       secondaryButtonText: 'Lees meer',
-      primaryButtonAction: () => window.location.href = '/contact',
-      secondaryButtonAction: () => window.location.href = '/contact',
+      primaryButtonAction: () => window.location.href = '/agents-automations/connect-and-convert',
+      secondaryButtonAction: () => window.location.href = '/agents-automations/connect-and-convert',
       number: '04',
       highlight: 'AI prospectie',
       metrics: 'ROI: 1-2 maanden'

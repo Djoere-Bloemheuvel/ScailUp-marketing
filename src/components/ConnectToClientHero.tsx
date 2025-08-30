@@ -108,15 +108,15 @@ const ConnectToClientHero = () => {
             transition={{ duration: 0.72, ease: "easeOut" }}
           >
             
-            {/* Connect to Client Headline - H1 - Mobile Optimized */}
+            {/* Connect & Convert Headline - H1 - Mobile Optimized */}
             <h1 className="font-light text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
               <span className="lg:hidden">
                 {/* Mobile/Tablet: Larger sizing for better readability */}
                 <div className="space-y-3">
                   <div className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
-                    Connect to Client
+                    Connect & Convert
                   </div>
-                  <div className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent tracking-[-0.01em] leading-normal antialiased pb-2">
+                  <div className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-normal bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent tracking-[-0.01em] leading-normal antialiased pb-2">
                     LinkedIn Outreach Agent
                   </div>
                 </div>
@@ -125,9 +125,9 @@ const ConnectToClientHero = () => {
                 {/* Desktop: 2 lines */}
                 <div className="space-y-2">
                   <div className="text-6xl xl:text-7xl font-light text-white leading-[1.1] tracking-[-0.02em] antialiased">
-                    Connect to Client
+                    Connect & Convert
                   </div>
-                  <div className="text-4xl xl:text-5xl font-normal bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent tracking-[-0.01em] leading-normal antialiased pb-2">
+                  <div className="text-4xl xl:text-5xl font-normal bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent tracking-[-0.01em] leading-normal antialiased pb-2">
                     LinkedIn Outreach Agent
                   </div>
                 </div>
@@ -137,10 +137,10 @@ const ConnectToClientHero = () => {
             {/* Apple-style Description */}
             <div className="mb-6 sm:mb-8 md:mb-10 mt-2 sm:mt-3 md:mt-4 max-w-2xl lg:max-w-none">
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-medium leading-relaxed mb-4 sm:mb-6" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-                Van connectieverzoek naar warme klantrelatie.
+                Van prospectie naar eerste gesprek. Volledig geautomatiseerd.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-400 font-normal leading-relaxed" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-                Connect to Client is jouw autonome LinkedIn-agent die authentieke connecties maakt en natuurlijk doorloopt tot afspraken. Hyperpersoonlijke berichten, slimme leadselectie en direct naar je agenda.
+                Connect & Convert vindt automatisch de juiste prospects voor jouw business op LinkedIn. Hyper-gepersonaliseerde berichten worden verstuurd op het perfecte moment, met AI-gestuurde follow-ups die voelen als authentieke gesprekken.
               </p>
             </div>
 
