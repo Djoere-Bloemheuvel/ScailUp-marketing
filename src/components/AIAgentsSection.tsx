@@ -4,30 +4,39 @@ import { Mail, Linkedin, Building2, ArrowRight } from 'lucide-react';
 const AIAgentsSection = () => {
   const agents = [
     {
-      title: 'Outbound Email Agent',
-      description: 'Personaliseert en verstuurt automatisch email sequences die daadwerkelijk responses krijgen.',
-      icon: Mail,
-      color: 'from-blue-500 to-blue-400',
-      bgColor: 'bg-gradient-to-br from-blue-900/30 to-blue-800/30',
-      href: '/lead-engine/lead-database',
+      title: 'Smart Deal Agent',
+      description: 'Analyseert automatisch deals, voorspelt close-kansen en stelt de beste next actions voor.',
+      icon: Building2,
+      color: 'from-green-500 to-emerald-500',
+      bgColor: 'bg-gradient-to-br from-green-900/30 to-emerald-900/30',
+      href: '/lead-engine/smart-deal-agent',
       mockup: (
         <div className="bg-gray-900 rounded-lg p-3 shadow-sm border border-gray-700 scale-90">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center space-x-2">
-              <Mail className="w-3 h-3 text-blue-400" />
-              <span className="text-xs font-medium text-white">Email Agent</span>
+              <Building2 className="w-3 h-3 text-green-400" />
+              <span className="text-xs font-medium text-white">Smart Deal Agent</span>
             </div>
-            <div className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
-              Schrijft email
+            <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+              Analyzing
             </div>
           </div>
           <div className="bg-gray-800 rounded p-2 border border-gray-700">
-            <div className="text-xs text-gray-400 mb-1">Aan: Jan</div>
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs text-gray-400">Deal: InnovaTech B.V.</div>
+              <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">85% Close</div>
+            </div>
             <div className="space-y-1">
-              <p className="text-xs text-white font-medium">Gepersonaliseerde Email Draft</p>
-              <p className="text-xs text-gray-300">Hoi <span className="bg-blue-500 text-white px-1 rounded">{'{first_name}'}</span>,</p>
-              <p className="text-xs text-gray-300">Ik zag dat <span className="bg-blue-500 text-white px-1 rounded">{'{recent_achievement}'}</span>. Wat gaaf! <span className="bg-blue-500 text-white px-1 rounded">{'{company}'}</span> groeit hard in <span className="bg-blue-500 text-white px-1 rounded">{'{industry}'}</span>.</p>
-              <p className="text-xs text-gray-300">Ik help bedrijven met <span className="bg-blue-500 text-white px-1 rounded">{'{pain_point}'}</span>. 5 min call deze week?</p>
+              <p className="text-xs text-white font-medium">AI Recommendation:</p>
+              <p className="text-xs text-gray-300">• <span className="bg-green-500 text-white px-1 rounded">Follow-up</span> binnen 2 dagen</p>
+              <p className="text-xs text-gray-300">• <span className="bg-green-500 text-white px-1 rounded">Pricing proposal</span> klaar voor verzending</p>
+              <p className="text-xs text-gray-300">• <span className="bg-green-500 text-white px-1 rounded">Decision maker</span> nog niet bereikt</p>
+            </div>
+            <div className="mt-2 pt-2 border-t border-gray-600">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-green-400 font-medium">Next: Book meeting</span>
+                <span className="text-gray-500">Priority: High</span>
+              </div>
             </div>
           </div>
         </div>
@@ -150,8 +159,8 @@ const AIAgentsSection = () => {
                 {/* Card - optimized for performance */}
                 <div className="rounded-2xl shadow-lg overflow-hidden h-full flex flex-col relative will-change-transform" style={{ 
                   backgroundColor: '#0A0A0A', 
-                  boxShadow: `0 0 40px -10px ${agent.color.includes('pink') ? 'rgba(236, 72, 153, 0.3)' : 'rgba(59, 130, 246, 0.3)'}`,
-                  border: `1px solid ${agent.color.includes('pink') ? 'rgba(236, 72, 153, 0.1)' : 'rgba(59, 130, 246, 0.1)'}`
+                  boxShadow: `0 0 40px -10px ${agent.color.includes('pink') ? 'rgba(236, 72, 153, 0.3)' : agent.color.includes('green') ? 'rgba(34, 197, 94, 0.3)' : 'rgba(59, 130, 246, 0.3)'}`,
+                  border: `1px solid ${agent.color.includes('pink') ? 'rgba(236, 72, 153, 0.1)' : agent.color.includes('green') ? 'rgba(34, 197, 94, 0.1)' : 'rgba(59, 130, 246, 0.1)'}`
                 }}>
                   
                   {/* Enhanced Colored Header with Mockup - performance optimized */}

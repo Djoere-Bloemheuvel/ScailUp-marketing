@@ -2,11 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import ScailUpFooter from '../components/ScailUpFooter';
 import AgencyHero from '../components/AgencyHero';
-import AgencyAIAgentsSection from '../components/AgencyAIAgentsSection';
-import AgencyWhatIsBuildrsSection from '../components/AgencyWhatIsBuildrsSection';
-import AgencyTestServicesSection from '../components/AgencyTestServicesSection';
-import AgencyGenerateLeadsSection from '../components/AgencyGenerateLeadsSection';
+import AIAgentsSection from '../components/AIAgentsSection';
+import CustomAgentCTASection from '../components/AgencyWhatIsBuildrsSection';
+import LeadEngineCTASection from '../components/LeadEngineCTASection';
+import WhatIsBuildrsSection from '../components/WhatIsBuildrsSection';
+import AgencyServicesSection from '../components/AgencyServicesSection';
+import GenerateLeadsSection from '../components/GenerateLeadsSection';
 import AgencyFAQSection from '../components/AgencyFAQSection';
+import AgencyDienstenSection from '../components/AgencyDienstenSection';
 
 // Agency structured data
 const structuredData = {
@@ -120,19 +123,25 @@ const structuredData = {
     <!-- Agency Hero section -->
     <AgencyHero client:load />
     
-    <!-- Agency AI Agents Section -->
-    <AgencyAIAgentsSection client:visible />
+    <!-- AI Agents Section -->
+    <AIAgentsSection client:visible />
     
-    <!-- Agency What is Buildrs Section -->
-    <AgencyWhatIsBuildrsSection client:visible />
+    <!-- What is Buildrs Section -->
+    <CustomAgentCTASection client:visible />
+    
+    <!-- Agency Diensten Section -->
+    <AgencyDienstenSection client:visible />
+    
+    <!-- Lead Engine CTA Section -->
+    <LeadEngineCTASection client:visible />
     
     <!-- Agency Services Section -->
-    <AgencyTestServicesSection client:visible />
+    <AgencyServicesSection client:visible />
     
-    <!-- Agency Generate Leads Section -->
-    <AgencyGenerateLeadsSection client:visible />
+    <!-- Generate Leads Section -->
+    <GenerateLeadsSection client:visible />
     
-    <!-- Agency FAQ Section -->
+    <!-- FAQ Section -->
     <AgencyFAQSection client:visible />
     
     <!-- Footer -->

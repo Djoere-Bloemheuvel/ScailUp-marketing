@@ -24,11 +24,11 @@ const AgencyHero = () => {
       {/* Black Background */}
       <div className="absolute inset-0 bg-black" />
       
-      {/* Agency-themed backlights - performance optimized */}
-      <div className="absolute inset-0 overflow-hidden opacity-50 sm:opacity-60 will-change-transform">
-        <div className="absolute top-1/4 left-1/2 w-[300px] h-[150px] sm:w-[400px] sm:h-[200px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-2xl sm:blur-3xl will-change-transform" style={{ transform: 'translate3d(-50%, -25%, 0)' }}></div>
-        <div className="absolute bottom-1/3 right-1/4 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full blur-2xl sm:blur-3xl will-change-transform" style={{ transform: 'translate3d(25%, 0, 0)' }}></div>
-        <div className="absolute top-1/2 left-1/4 w-[200px] h-[120px] sm:w-[300px] sm:h-[180px] md:w-[400px] md:h-[240px] lg:w-[500px] lg:h-[300px] bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-2xl sm:blur-3xl opacity-70 will-change-transform"></div>
+      {/* Agency-themed backlights - closer positioning on mobile */}
+      <div className="absolute inset-0 overflow-hidden opacity-70 xs:opacity-75 sm:opacity-70 md:opacity-65 lg:opacity-60 will-change-transform">
+        <div className="absolute top-[25%] xs:top-[27%] sm:top-1/4 left-1/2 w-[350px] h-[200px] xs:w-[400px] xs:h-[225px] sm:w-[400px] sm:h-[200px] md:w-[500px] md:h-[250px] lg:w-[700px] lg:h-[350px] xl:w-[800px] xl:h-[400px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-2xl xs:blur-2xl sm:blur-3xl will-change-transform" style={{ transform: 'translate3d(-50%, -25%, 0)' }}></div>
+        <div className="absolute bottom-[30%] xs:bottom-[32%] sm:bottom-1/3 right-[15%] xs:right-[17%] sm:right-1/4 w-[300px] h-[300px] xs:w-[330px] xs:h-[330px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full blur-2xl xs:blur-2xl sm:blur-3xl will-change-transform" style={{ transform: 'translate3d(25%, 0, 0)' }}></div>
+        <div className="absolute top-[50%] xs:top-[52%] sm:top-1/2 left-[20%] xs:left-[22%] sm:left-1/4 w-[250px] h-[150px] xs:w-[280px] xs:h-[170px] sm:w-[260px] sm:h-[160px] md:w-[320px] md:h-[200px] lg:w-[450px] lg:h-[270px] xl:w-[500px] xl:h-[300px] bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-2xl xs:blur-2xl sm:blur-3xl opacity-80 will-change-transform"></div>
       </div>
       
       {/* Agency-specific animation styles */}
@@ -127,7 +127,7 @@ const AgencyHero = () => {
           </div>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-4">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 xs:mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-2 xs:px-4">
             <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
               Agents & automations die jouw bedrijf
             </span>
@@ -138,13 +138,15 @@ const AgencyHero = () => {
             </span>
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Agency themed to match hero */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+            {/* Primary CTA - Matches agency background colors */}
             <Button
-              className="group relative bg-white text-black apple-button-hover transition-all duration-300 px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full overflow-hidden w-full sm:w-80 hover:scale-[1.03]"
+              className="group relative px-6 xs:px-7 sm:px-8 py-3 xs:py-4 text-white text-base xs:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 overflow-hidden border-0 w-full xs:w-auto sm:w-auto max-w-xs sm:max-w-none"
               style={{
-                background: 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(168, 85, 247, 0.8) 50%, rgba(6, 182, 212, 0.7) 100%)',
+                backdropFilter: 'blur(16px)',
+                boxShadow: '0 8px 32px rgba(59, 130, 246, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
               }}
               onClick={() => {
                 if (typeof window !== 'undefined') {
@@ -152,40 +154,37 @@ const AgencyHero = () => {
                 }
               }}
             >
-              <span className="relative z-10 flex items-center justify-center">
-                Start je transformatie
-                <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              <span className="flex items-center space-x-2">
+                <span>Start je transformatie</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </span>
             </Button>
 
-            <div className="relative group">
-              <div 
-                className="absolute inset-0 rounded-full transition-all duration-300 group-hover:scale-[1.03]"
-                style={{
-                  background: 'linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(59, 130, 246) 25%, rgb(147, 197, 253) 50%, rgb(59, 130, 246) 75%, rgb(37, 99, 235) 100%)',
-                  padding: '2px'
-                }}
-              >
-                <div className="w-full h-full rounded-full" style={{ background: 'rgba(0, 0, 0, 0.85)' }} />
-              </div>
-              <Button
-                variant="outline"
-                className="group relative apple-button-hover px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full transition-all duration-300 overflow-hidden w-full sm:w-72 border-0 hover:scale-[1.03]"
-                style={{
-                  background: 'rgba(0, 0, 0, 0.85)',
-                  backdropFilter: 'blur(20px)',
-                  color: '#ffffff',
-                  boxShadow: '0 4px 24px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(59, 130, 246, 0.1)',
-                  margin: '2px'
-                }}
-                onClick={handleCasesClick}
-              >
-                <span className="relative z-10 flex items-center justify-center">
-                  Bekijk cases
-                  <ChevronRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-200" />
-                </span>
-              </Button>
-            </div>
+            {/* Secondary CTA - Subtle with agency colors */}
+            <Button
+              variant="outline"
+              className="group relative px-6 xs:px-7 sm:px-8 py-3 xs:py-4 text-white text-base xs:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 border-0 w-full xs:w-auto sm:w-auto max-w-xs sm:max-w-none"
+              style={{
+                background: 'rgba(0, 0, 0, 0.4)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(59, 130, 246, 0.3)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.4)';
+                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+              }}
+              onClick={handleCasesClick}
+            >
+              <span className="flex items-center space-x-2">
+                <span>Bekijk cases</span>
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </span>
+            </Button>
           </div>
         </div>
       </div>

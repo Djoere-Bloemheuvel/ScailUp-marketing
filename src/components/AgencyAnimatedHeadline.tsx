@@ -42,9 +42,8 @@ const AgencyAnimatedHeadline = () => {
   return (
     <div className="relative px-2 sm:px-4">
       <h1 className="font-bold tracking-[-0.03em] leading-[0.85] sm:leading-[0.9] text-center antialiased" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif', fontVariant: 'normal', fontFeatureSettings: '"kern" 1, "liga" 1, "calt" 1' }}>
-        <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-semibold tracking-[-0.025em] antialiased" style={{ textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
-          <span className="whitespace-nowrap xl:whitespace-normal font-semibold">Wij bouwen AI-</span>
-          <span className="relative inline-block min-w-[200px] sm:min-w-[250px] md:min-w-[300px] lg:min-w-[350px] xl:min-w-[400px] text-left">
+        <div className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-semibold tracking-[-0.025em] antialiased" style={{ textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
+          <span className="whitespace-nowrap md:whitespace-normal font-semibold">Wij bouwen AI-</span><span className="relative inline-block">
             <span
               className={`relative z-20 transition-opacity duration-75 ${
                 isGlitching ? 'opacity-0' : 'opacity-100'

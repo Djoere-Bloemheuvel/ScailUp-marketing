@@ -1,7 +1,7 @@
 import React from 'react';
 import { Play, ArrowRight, Sparkles, Users, Target, Briefcase } from 'lucide-react';
 
-const AgencyWhatIsBuildrsSection = () => {
+const CustomAgentCTASection = () => {
   const handlePartnershipClick = () => {
     window.location.href = '/contact';
   };
@@ -41,16 +41,19 @@ const AgencyWhatIsBuildrsSection = () => {
           
           {/* Left Side - Content */}
           <div className="text-center lg:text-left">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-              <span className="block">Jouw unieke situatie</span>
-              <span className="font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                vraagt maatwerk.
-              </span>
-            </h2>
+            <div className="mb-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed text-center lg:text-left pb-2" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif' }}>
+                <span className="block font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-500 bg-clip-text text-transparent whitespace-nowrap pb-1">
+                  Agents & Automations
+                </span>
+                <span className="block font-light text-white whitespace-nowrap">Op maat gemaakt</span>
+                <span className="block font-light text-white whitespace-nowrap">Voor jouw business</span>
+              </h2>
+            </div>
             
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Standard software kan het niet. Jouw team blijft vastzitten in handmatig werk. 
-              <span className="font-semibold text-white"> Wij bouwen precies wat jij nodig hebt</span> - werkend binnen 30 dagen.
+              <span className="font-semibold text-white"> Wij bouwen precies wat jij nodig hebt.</span> Werkend binnen 14 dagen.
             </p>
 
             {/* Hard Value Props */}
@@ -100,85 +103,130 @@ const AgencyWhatIsBuildrsSection = () => {
             </div>
           </div>
 
-          {/* Right Side - Custom Development Showcase */}
+          {/* Right Side - Custom Development Dashboard */}
           <div className="relative">
-            {/* Main Development Mockup */}
-            <div className="bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
-              {/* Header */}
-              <div className="bg-gray-800 px-6 py-4 border-b border-gray-700">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">AI</span>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-semibold">Custom Agent Development</h3>
-                      <p className="text-gray-400 text-sm">Project overzicht</p>
-                    </div>
+            {/* Browser Window - Custom Agent Development */}
+            <div 
+              className="relative w-full rounded-xl shadow-2xl border overflow-hidden"
+              style={{ 
+                backgroundColor: '#0A0A0A',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: '1.5px',
+                minHeight: '400px'
+              }}
+            >
+              {/* Browser Top Bar */}
+              <div className="flex items-center px-4 py-2 border-b" style={{ 
+                borderColor: 'rgba(255, 255, 255, 0.05)',
+                backgroundColor: '#0A0A0A'
+              }}>
+                {/* Traffic Light Buttons */}
+                <div className="flex items-center space-x-1.5 mr-3">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(239, 68, 68, 0.6)' }}></div>
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(245, 158, 11, 0.6)' }}></div>
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(34, 197, 94, 0.6)' }}></div>
+                </div>
+                
+                {/* Address Bar */}
+                <div className="flex-1 max-w-sm">
+                  <div className="rounded-md px-3 py-1 text-sm text-gray-500 border" style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                    borderColor: 'rgba(255, 255, 255, 0.05)'
+                  }}>
+                    <span className="text-green-400 mr-1">🔐</span>
+                    <span>buildrs.ai/agency</span>
                   </div>
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-3 py-1 rounded-full">
+                </div>
+              </div>
+
+              {/* Header */}
+              <div className="p-4 border-b" style={{ 
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                backgroundColor: '#0A0A0A'
+              }}>
+                <div className="flex items-center justify-between">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-bold text-white text-lg">Custom Agent Development</h4>
+                    <p className="text-sm text-gray-400">Project overzicht & voortgang</p>
+                  </div>
+                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-2 rounded-xl text-sm font-medium">
                     In ontwikkeling
                   </div>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                {/* Project Stats */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gray-800 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-white">4.2 weken</div>
-                    <div className="text-gray-400 text-sm">Ontwikkeltijd</div>
-                    <div className="text-green-400 text-xs">Binnen timeline</div>
+              {/* Stats Cards */}
+              <div className="p-4" style={{ backgroundColor: '#0A0A0A' }}>
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  
+                  {/* Development Time */}
+                  <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl p-3 text-white border border-purple-500/20">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs opacity-90 font-medium">Ontwikkeltijd</span>
+                      <Sparkles className="w-4 h-4 opacity-75" />
+                    </div>
+                    <div className="text-lg font-bold">4.2 weken</div>
+                    <div className="text-xs opacity-75">binnen timeline</div>
                   </div>
-                  <div className="bg-gray-800 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-white">8</div>
-                    <div className="text-gray-400 text-sm">API integraties</div>
-                    <div className="text-blue-400 text-xs">CRM + Marketing stack</div>
+
+                  {/* API Integrations */}
+                  <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-3 text-white border border-blue-500/20">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs opacity-90 font-medium">Integraties</span>
+                      <Briefcase className="w-4 h-4 opacity-75" />
+                    </div>
+                    <div className="text-lg font-bold">8</div>
+                    <div className="text-xs opacity-75">API's connected</div>
                   </div>
+
                 </div>
 
                 {/* Development Progress */}
-                <div className="space-y-3">
-                  <h4 className="text-white font-semibold mb-3">Development Status</h4>
+                <div className="rounded-lg p-3 border" style={{
+                  backgroundColor: '#0A0A0A',
+                  borderColor: 'rgba(255, 255, 255, 0.1)'
+                }}>
+                  <div className="flex items-center justify-between mb-3">
+                    <h5 className="font-semibold text-white text-sm">Development Status</h5>
+                  </div>
                   
-                  <div className="flex items-center justify-between bg-gray-800 rounded-lg p-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
-                        ✓
+                  {/* Progress Items */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between p-2 rounded border-l-2 border-l-green-500" style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)'
+                    }}>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-medium text-gray-200 text-sm">Lead Qualification Agent</div>
+                        <div className="text-gray-400 text-xs">Custom scoring & routing</div>
                       </div>
-                      <div>
-                        <div className="text-white font-medium">Lead Qualification Agent</div>
-                        <div className="text-gray-400 text-sm">Custom scoring & routing</div>
+                      <div className="text-right ml-2">
+                        <div className="font-bold text-green-400 text-sm">✓ Live</div>
                       </div>
                     </div>
-                    <div className="text-green-400 font-semibold">Live</div>
-                  </div>
+                    
+                    <div className="flex items-center justify-between p-2 rounded border-l-2 border-l-blue-500" style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)'
+                    }}>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-medium text-gray-200 text-sm">Process Automation</div>
+                        <div className="text-gray-400 text-xs">Workflow optimization</div>
+                      </div>
+                      <div className="text-right ml-2">
+                        <div className="font-bold text-blue-400 text-sm">Testing</div>
+                      </div>
+                    </div>
 
-                  <div className="flex items-center justify-between bg-gray-800 rounded-lg p-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
-                        ⚡
+                    <div className="flex items-center justify-between p-2 rounded border-l-2 border-l-yellow-500" style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)'
+                    }}>
+                      <div className="min-w-0 flex-1">
+                        <div className="font-medium text-gray-200 text-sm">API Integration Suite</div>
+                        <div className="text-gray-400 text-xs">Multi-platform sync</div>
                       </div>
-                      <div>
-                        <div className="text-white font-medium">Process Automation</div>
-                        <div className="text-gray-400 text-sm">Workflow optimization</div>
-                      </div>
-                    </div>
-                    <div className="text-blue-400 font-semibold">Testing</div>
-                  </div>
-
-                  <div className="flex items-center justify-between bg-gray-800 rounded-lg p-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white text-sm">
-                        🔧
-                      </div>
-                      <div>
-                        <div className="text-white font-medium">API Integration Suite</div>
-                        <div className="text-gray-400 text-sm">Multi-platform sync</div>
+                      <div className="text-right ml-2">
+                        <div className="font-bold text-yellow-400 text-sm">Development</div>
                       </div>
                     </div>
-                    <div className="text-yellow-400 font-semibold">Development</div>
                   </div>
                 </div>
               </div>
@@ -200,4 +248,4 @@ const AgencyWhatIsBuildrsSection = () => {
   );
 };
 
-export default AgencyWhatIsBuildrsSection;
+export default CustomAgentCTASection;
