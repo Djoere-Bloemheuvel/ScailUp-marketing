@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, Zap, Shield, Settings, BarChart3, Cloud, HardDrive } from 'lucide-react';
+import { Check, ArrowRight, Zap, Shield, Settings, BarChart3, Cloud, HardDrive, CheckCircle } from 'lucide-react';
 
 const AgencyPlatformComparisonSection = () => {
   const comparisonData = {
@@ -36,7 +36,7 @@ const AgencyPlatformComparisonSection = () => {
       title: "Buildrs Platform",
       subtitle: "Geïntegreerd met dashboard en monitoring",
       icon: Cloud,
-      gradient: "from-blue-500 to-purple-500",
+      gradient: "from-purple-500 to-pink-500",
       pricing: "Setup fee + usage-based",
       bestFor: "Bedrijven die meerdere agents willen of centrale monitoring nodig hebben",
       features: [
@@ -64,50 +64,36 @@ const AgencyPlatformComparisonSection = () => {
 
   return (
     <section className="relative py-32 bg-black overflow-hidden">
-      {/* Ambient Background */}
+      {/* Ambient Background - Subtle but Visible Style */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-r from-green-500/15 to-blue-500/15 rounded-full blur-3xl opacity-60"></div>
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/15 to-cyan-500/15 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-blue-500/5 via-transparent to-transparent rounded-full"></div>
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/25 to-purple-500/25 rounded-full blur-3xl opacity-70"></div>
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/25 to-pink-500/25 rounded-full blur-3xl opacity-65"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-blue-500/12 via-purple-500/6 to-transparent rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
+        <div className="text-left mb-12">
           <h2 
-            className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight mb-1"
             style={{ 
               fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
               fontWeight: '200'
             }}
           >
-            Welke optie past
-            <br />
-            <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent font-normal">bij jou?</span>
+            Welke optie past <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-normal">bij jou?</span>
           </h2>
-          <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-            Beide opties geven je volledige eigenaarschap van je agent. Het verschil zit in hosting en features.
+          <p className="text-xl text-white/70 max-w-4xl leading-relaxed">
+            Beide opties geven je volledige eigenaarschap van je agent. <span className="text-white font-medium">Platform agents blijven altijd exporteerbaar</span> - je kunt altijd overstappen naar zelf hosten.
           </p>
-        </motion.div>
+        </div>
 
         {/* Comparison Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {Object.entries(comparisonData).map(([key, option], index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group"
-            >
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500 h-full">
+            <div key={key} className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500 h-full">
                 
                 {/* Header */}
                 <div className="flex items-center mb-6">
@@ -164,20 +150,14 @@ const AgencyPlatformComparisonSection = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Decision Helper - Clean Version */}
-        <motion.div 
-          className="relative"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
+        <div className="relative">
           {/* Background Glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-60"></div>
           
           <div className="relative bg-black/40 backdrop-blur-sm border border-white/20 rounded-3xl p-8 lg:p-10">
             <h3 className="text-3xl font-light text-white text-center mb-10"
@@ -186,7 +166,7 @@ const AgencyPlatformComparisonSection = () => {
                   fontWeight: '300'
                 }}
             >
-              Welke optie past <span className="bg-gradient-to-r from-green-400 to-purple-400 bg-clip-text text-transparent">bij jou?</span>
+              Welke optie past <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">bij jou?</span>
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -228,6 +208,8 @@ const AgencyPlatformComparisonSection = () => {
             <div className="text-center mt-8">
               <p className="text-white/60 mb-2">Beide opties beginnen met hetzelfde gesprek</p>
               <p className="text-white/40 text-xs mb-6">*Usage-based fees zijn vaak lager dan eigen software licenties, hosting en onderhoud</p>
+              
+              
               <button
                 onClick={() => window.location.href = '/contact'}
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
@@ -237,7 +219,7 @@ const AgencyPlatformComparisonSection = () => {
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

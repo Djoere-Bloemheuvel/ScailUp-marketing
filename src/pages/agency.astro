@@ -5,15 +5,12 @@ import AgencyHero from '../components/AgencyHero';
 import AIAgentsSection from '../components/AIAgentsSection';
 import CustomAgentCTASection from '../components/AgencyWhatIsBuildrsSection';
 import LeadEngineCTASection from '../components/LeadEngineCTASection';
-import WhatIsBuildrsSection from '../components/WhatIsBuildrsSection';
-import AgencyCustomServicesSection from '../components/AgencyCustomServicesSection';
-import AgencyCaseStudiesSection from '../components/AgencyCaseStudiesSection';
 import AgencyPlatformComparisonSection from '../components/AgencyPlatformComparisonSection';
 import AgencyFAQSection from '../components/AgencyFAQSection';
 import AgencyDienstenSection from '../components/AgencyDienstenSection';
 import AppleStyleTransition from '../components/AppleStyleTransition';
-import AppleStyleTransition2 from '../components/AppleStyleTransition2';
 import AgencyProcessSection from '../components/AgencyProcessSection';
+import AgencyFinalCTASection from '../components/AgencyFinalCTASection';
 
 // Agency structured data
 const structuredData = {
@@ -133,32 +130,29 @@ const structuredData = {
     <!-- What is Buildrs Section -->
     <CustomAgentCTASection client:visible />
     
-    <!-- Apple Style Transition 2 -->
-    <AppleStyleTransition2 client:visible />
+    <!-- Apple Style Transition - Capabilities -->
+    <AppleStyleTransition variant="capabilities" client:visible />
     
     <!-- Agency Diensten Section -->
     <AgencyDienstenSection client:visible />
     
-    <!-- Apple Style Transition -->
-    <AppleStyleTransition client:visible />
-    
-    <!-- Lead Engine CTA Section -->
-    <LeadEngineCTASection client:visible />
-    
     <!-- Process & Development Methodology Section -->
     <AgencyProcessSection client:visible />
     
-    <!-- Agency Custom Services Section -->
-    <AgencyCustomServicesSection client:visible />
+    <!-- Apple Style Transition - Platform -->
+    <AppleStyleTransition variant="platform" client:visible />
     
-    <!-- Case Studies Section -->
-    <AgencyCaseStudiesSection client:visible />
+    <!-- Lead Engine CTA Section -->
+    <LeadEngineCTASection client:visible />
     
     <!-- Platform Comparison Section -->
     <AgencyPlatformComparisonSection client:visible />
     
     <!-- FAQ Section -->
     <AgencyFAQSection client:visible />
+    
+    <!-- Final CTA Section -->
+    <AgencyFinalCTASection client:visible />
     
     <!-- Footer -->
     <ScailUpFooter client:visible />

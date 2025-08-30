@@ -118,7 +118,7 @@ const AgencyFAQSection = () => {
                       
                       {/* Answer with smooth animation */}
                       <div 
-                        className={`overflow-hidden transition-all duration-400 ease-in-out ${
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
                           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}
                       >
@@ -170,7 +170,7 @@ const AgencyFAQSection = () => {
                       
                       {/* Answer with smooth animation */}
                       <div 
-                        className={`overflow-hidden transition-all duration-400 ease-in-out ${
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
                           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}
                       >
@@ -223,7 +223,7 @@ const AgencyFAQSection = () => {
                       
                       {/* Answer with smooth animation */}
                       <div 
-                        className={`overflow-hidden transition-all duration-400 ease-in-out ${
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
                           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}
                       >
