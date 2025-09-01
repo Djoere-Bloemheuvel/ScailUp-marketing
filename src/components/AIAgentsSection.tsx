@@ -9,7 +9,7 @@ const AIAgentsSection = () => {
       icon: Building2,
       color: 'from-blue-500 to-blue-400',
       bgColor: 'bg-gradient-to-br from-blue-900/30 to-blue-800/30',
-      href: '/lead-engine/smart-deal-agent',
+      href: '/agents-automations/seal-the-deal',
       mockup: (
         <div className="bg-gray-900 rounded-lg p-3 shadow-sm border border-gray-700 scale-90">
           <div className="flex items-center justify-between mb-2">
