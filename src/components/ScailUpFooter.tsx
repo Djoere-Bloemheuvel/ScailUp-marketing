@@ -9,7 +9,7 @@ const ScailUpFooter = () => {
 
   const handleEmailClick = () => {
     if (typeof window === 'undefined') return;
-    window.location.href = 'mailto:hello@buildrs.nl';
+    window.location.href = 'mailto:admin@buildrs.ai';
   };
 
   const footerLinks = [
@@ -77,11 +77,11 @@ const ScailUpFooter = () => {
                 className="flex items-center text-gray-400 hover:text-white transition-colors text-sm group"
               >
                 <Mail className="w-4 h-4 mr-3 group-hover:text-blue-400 transition-colors" />
-                hello@buildrs.nl
+                admin@buildrs.ai
               </button>
               <div className="flex items-center text-gray-400 text-sm">
                 <MapPin className="w-4 h-4 mr-3" />
-                Amsterdam, Nederland
+                Arnhem, Nederland
               </div>
             </div>
           </div>

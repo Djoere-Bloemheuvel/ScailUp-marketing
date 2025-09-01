@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MarketingDashboard from '../components/MarketingDashboard.tsx';
+import ProtectedRoute from '../components/ProtectedRoute.tsx';
+---
+
+<Layout 
+  title="Marketing Dashboard - ScailUp Marketing" 
+  description="Beheer je content, SEO en marketing prestaties met onze geavanceerde dashboard"
+>
+  <ProtectedRoute client:load>
+    <MarketingDashboard client:load />
+  </ProtectedRoute>
+</Layout>

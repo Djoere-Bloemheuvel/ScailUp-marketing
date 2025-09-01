@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeadsDashboard from '../components/LeadsDashboard.tsx';
+import ProtectedRoute from '../components/ProtectedRoute.tsx';
+---
+
+<Layout 
+  title="Lead Management - ScailUp Marketing" 
+  description="Beheer en volg al je inbound leads met onze geavanceerde dashboard"
+>
+  <ProtectedRoute client:load>
+    <LeadsDashboard client:load />
+  </ProtectedRoute>
+</Layout>

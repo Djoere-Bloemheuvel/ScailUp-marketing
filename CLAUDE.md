@@ -170,3 +170,44 @@ These are productized but custom, usually with a one-time setup fee, and optiona
   - Proposal Generator – Closing agent
 
 **TL;DR:** Buildrs = AI-first platform + agency for B2B service providers. Engines = scalable SaaS modules. Agents = custom workflows, exportable or integrated. Client chooses: standalone as productized agent, or within Buildrs platform. Unique: hybrid model, no lock-in, AI at core, B2B service provider focus.
+
+## ⚠️ CRITICAL SUPABASE SAFETY RULES
+
+**🚨 NEVER RESET SUPABASE DATABASE**
+
+The following operations are **ABSOLUTELY FORBIDDEN**:
+- `DROP DATABASE`
+- `DROP SCHEMA public CASCADE`  
+- `TRUNCATE ALL TABLES`
+- `DELETE FROM table WITHOUT WHERE CLAUSE`
+- Any operation that wipes/resets the entire database
+- Any operation that drops production tables without explicit user confirmation
+
+**✅ SAFE OPERATIONS ONLY:**
+- SELECT queries to read data
+- INSERT with specific data
+- UPDATE with proper WHERE clauses
+- CREATE TABLE (after user confirmation)
+- ALTER TABLE to add columns (after user confirmation)
+
+**🔐 Supabase MCP Server Configuration:**
+- URL: https://cwgbgvulfiwbydpinbqf.supabase.co
+- MCP Config: `~/.config/claude-code/mcp/supabase-config.json`
+- Environment: `~/.config/claude-code/mcp/.env.supabase`
+
+**⚡ Usage Examples:**
+```
+"Show me all tables in my Supabase database"
+"Create a new table called 'leads' with columns: id, email, name, created_at"
+"Insert test data into the leads table" 
+"Select all data from the users table"
+"Update user with id=1 to set status='active'"
+```
+
+**❌ NEVER EVER SAY:**
+```
+"Let me reset your database"
+"I'll drop all tables and start fresh"  
+"Should I truncate all data?"
+```
+- We heten GEEN scailUp maar Buildrs

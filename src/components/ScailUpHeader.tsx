@@ -100,38 +100,26 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
 
   const navItems = [
     { 
-      label: 'Producten', 
+      label: 'Producten & Diensten', 
       href: '#', 
       path: '/producten',
       hasDropdown: true,
       dropdownItems: {
-        title: 'Alles wat je nodig hebt voor outbound',
+        title: 'Alles wat je nodig hebt voor AI-automatisering',
         sections: [
           {
-            title: 'Core Platform',
+            title: 'Platform',
             items: [
-              { 
-                icon: Target, 
-                label: 'Sales Engine', 
-                href: '/sales-engine',
-                description: 'Complete sales automation platform'
-              },
               { 
                 icon: Send, 
                 label: 'Lead Engine', 
                 href: '/lead-engine',
                 description: 'Complete outbound platform voor leads en meetings'
-              },
-              { 
-                icon: Globe, 
-                label: 'Marketing Engine', 
-                href: '/marketing-engine',
-                description: 'AI-gedreven marketing automation'
               }
             ]
           },
           {
-            title: 'Agents',
+            title: 'AI Agents & Automations',
             items: [
               { 
                 icon: Brain, 
@@ -141,14 +129,20 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               },
               { 
                 icon: Zap, 
-                label: 'Automations', 
+                label: 'Custom Automations', 
                 href: '/agents-automations',
                 description: 'Slimme workflows en triggers'
+              },
+              { 
+                icon: Settings, 
+                label: 'Workflow Development', 
+                href: '/diensten/automation',
+                description: 'End-to-end proces automatisering'
               }
             ]
           },
           {
-            title: 'Tools',
+            title: 'Tools & Services',
             items: [
               { 
                 icon: Database, 
@@ -157,84 +151,16 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 description: '500k+ decision makers database'
               },
               { 
-                icon: Mail, 
-                label: 'Email Sequenties', 
-                href: '/lead-engine/connect-to-client',
-                description: 'Persoonlijke email campagnes'
-              },
-              { 
                 icon: Calendar, 
                 label: 'Meeting Booking', 
                 href: '/lead-engine/inbox-to-meeting',
                 description: 'Van inbox direct naar agenda'
-              }
-            ]
-          }
-        ]
-      }
-    },
-    { 
-      label: 'Diensten', 
-      href: '#', 
-      path: '/diensten',
-      hasDropdown: true,
-      dropdownItems: {
-        title: 'Volledige service voor jouw transformatie',
-        sections: [
-          {
-            title: 'Implementatie',
-            items: [
-              { 
-                icon: Brain, 
-                label: 'AI Agent Development', 
-                href: '/diensten/ai-agents',
-                description: 'Custom AI agents ontwikkeling'
-              },
-              { 
-                icon: Settings, 
-                label: 'Workflow Automation', 
-                href: '/diensten/automation',
-                description: 'End-to-end proces automatisering'
               },
               { 
                 icon: Database, 
                 label: 'Data Integration', 
                 href: '/diensten/integration',
                 description: 'Systeem koppelingen en API\'s'
-              }
-            ]
-          },
-          {
-            title: 'Consultancy',
-            items: [
-              { 
-                icon: Target, 
-                label: 'AI Strategy', 
-                href: '/diensten/strategy',
-                description: 'Strategische AI roadmap ontwikkeling'
-              },
-              { 
-                icon: Users, 
-                label: 'Change Management', 
-                href: '/diensten/change-management',
-                description: 'Team training en adoptie begeleiding'
-              }
-            ]
-          },
-          {
-            title: 'Support',
-            items: [
-              { 
-                icon: Zap, 
-                label: '24/7 Monitoring', 
-                href: '/diensten/monitoring',
-                description: 'Continue monitoring en optimalisatie'
-              },
-              { 
-                icon: Settings, 
-                label: 'Maintenance', 
-                href: '/diensten/maintenance',
-                description: 'Onderhoud en updates'
               }
             ]
           }
