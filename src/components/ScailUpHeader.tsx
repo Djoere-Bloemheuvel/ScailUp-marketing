@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Send, Users, Globe, Brain, Database, Mail, Calendar, Target, Zap, Settings, BookOpen, FileText, Video, Building2 } from 'lucide-react';
+import { Menu, X, ChevronDown, Send, Users, Globe, Brain, Database, Mail, Calendar, Target, Zap, Settings, BookOpen, FileText, Video, Building2, Rocket, HandHeart, ShieldCheck } from 'lucide-react';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -100,7 +100,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
 
   const navItems = [
     { 
-      label: 'Producten & Diensten', 
+      label: 'Diensten', 
       href: '#', 
       path: '/producten',
       hasDropdown: true,
@@ -108,41 +108,59 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
         title: 'Alles wat je nodig hebt voor AI-automatisering',
         sections: [
           {
-            title: 'Platform',
+            title: 'AI Agent Voorbeelden',
             items: [
               { 
-                icon: Send, 
-                label: 'Lead Engine', 
-                href: '/lead-engine',
-                description: 'Complete outbound platform voor leads en meetings'
+                icon: Rocket, 
+                label: 'Speed to Lead', 
+                href: '/agents-automations/speed-to-lead',
+                description: 'Van lead naar contact binnen 5 minuten'
+              },
+              { 
+                icon: Target, 
+                label: 'Connect & Convert', 
+                href: '/agents-automations/connect-and-convert',
+                description: 'Leads omzetten naar qualified prospects'
+              },
+              { 
+                icon: ShieldCheck, 
+                label: 'Seal the Deal', 
+                href: '/agents-automations/seal-the-deal',
+                description: 'Deals sluiten met AI-assistentie'
+              },
+              { 
+                icon: HandHeart, 
+                label: 'Onboard & Beyond', 
+                href: '/agents-automations/onboard-and-beyond',
+                description: 'Client onboarding en retention'
               }
             ]
           },
           {
-            title: 'AI Agents & Automations',
+            title: 'Diensten',
             items: [
               { 
                 icon: Brain, 
-                label: 'AI Agents', 
+                label: 'Custom AI Agents', 
                 href: '/agents-automations',
-                description: 'AI agents die je outbound automatiseren'
+                description: 'AI agents die je business automatiseren'
               },
               { 
                 icon: Zap, 
-                label: 'Custom Automations', 
+                label: 'Workflow Automations', 
                 href: '/agents-automations',
                 description: 'Slimme workflows en triggers'
               },
               { 
                 icon: Settings, 
-                label: 'Workflow Development', 
+                label: 'Process Development', 
                 href: '/diensten/automation',
                 description: 'End-to-end proces automatisering'
               }
             ]
           },
           {
-            title: 'Tools & Services',
+            title: 'Tools & Integraties',
             items: [
               { 
                 icon: Database, 
@@ -161,74 +179,6 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 label: 'Data Integration', 
                 href: '/diensten/integration',
                 description: 'Systeem koppelingen en API\'s'
-              }
-            ]
-          }
-        ]
-      }
-    },
-    { 
-      label: 'Oplossingen', 
-      href: '#', 
-      path: '/oplossingen',
-      hasDropdown: true,
-      dropdownItems: {
-        title: 'Voor elke business case',
-        sections: [
-          {
-            title: 'Per industrie',
-            items: [
-              { 
-                icon: Users, 
-                label: 'Agencies', 
-                href: '/agencies',
-                description: 'Marketing en creative agencies'
-              },
-              { 
-                icon: Globe, 
-                label: 'B2B SaaS', 
-                href: '/saas',
-                description: 'Software bedrijven en platforms'
-              },
-              { 
-                icon: Settings, 
-                label: 'Consultancy & Coaches', 
-                href: '/consultancy',
-                description: 'Strategic consulting en business coaches'
-              }
-            ]
-          },
-          {
-            title: 'Meer industrieën',
-            items: [
-              { 
-                icon: Building2, 
-                label: 'B2B Services', 
-                href: '/b2b-services',
-                description: 'Professional service providers'
-              }
-            ]
-          },
-          {
-            title: 'Per functie',
-            items: [
-              { 
-                icon: Target, 
-                label: 'Marketing', 
-                href: '/marketing',
-                description: 'Lead generation en brand awareness'
-              },
-              { 
-                icon: Users, 
-                label: 'Sales', 
-                href: '/sales',
-                description: 'Pipeline building en deal closing'
-              },
-              { 
-                icon: Settings, 
-                label: 'Operations', 
-                href: '/operations',
-                description: 'Processen en workflow optimalisatie'
               }
             ]
           }
