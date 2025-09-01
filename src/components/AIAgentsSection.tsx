@@ -82,8 +82,8 @@ const AIAgentsSection = () => {
       )
     },
     {
-      title: 'Key Account Agent', 
-      description: 'Plant automatisch meetings en zorgt voor naadloze overdracht van inbox naar agenda.',
+      title: 'Outbound Email Agent', 
+      description: 'Verstuurt automatisch gepersonaliseerde e-mailcampagnes en zorgt voor optimale open- en responserates.',
       icon: Building2,
       color: 'from-blue-500 to-blue-400',
       bgColor: 'bg-gradient-to-br from-blue-900/30 to-blue-800/30',

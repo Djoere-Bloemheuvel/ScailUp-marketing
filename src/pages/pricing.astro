@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ScailUpFooter from '../components/ScailUpFooter';
+import PricingSection from '../components/PricingSection';
+import AgencyFinalCTASection from '../components/AgencyFinalCTASection';
+
+// Pricing page structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Prijzen | Buildrs Custom AI Agents",
+  "description": "Transparante prijzen voor custom AI agents en automatisering. Van LinkedIn automation tot proposal generators - vaste projectprijzen vanaf €1.000.",
+  "url": "https://buildrs.nl/pricing",
+  "mainEntity": {
+    "@type": "Product",
+    "name": "Custom AI Agents",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Simple Agent",
+        "description": "LinkedIn outreach, basic workflows",
+        "price": "1000",
+        "priceCurrency": "EUR",
+        "priceRange": "€1000-€2500"
+      },
+      {
+        "@type": "Offer", 
+        "name": "Complex Workflow",
+        "description": "Multi-system integraties",
+        "price": "2500",
+        "priceCurrency": "EUR",
+        "priceRange": "€2500-€5000"
+      },
+      {
+        "@type": "Offer",
+        "name": "Platform Setup",
+        "description": "Dashboard & monitoring",
+        "price": "500",
+        "priceCurrency": "EUR"
+      }
+    ]
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Buildrs",
+    "url": "https://buildrs.nl"
+  }
+};
+---
+
+<Layout 
+  title="Prijzen | Custom AI Agents & Automatisering | Buildrs"
+  description="Transparante prijzen voor custom AI agents en automatisering. Vaste projectprijzen vanaf €1.000. LinkedIn automation, proposal generators, lead processing agents - geen verborgen kosten."
+  keywords="prijzen, custom AI agents, AI automatisering, LinkedIn automation, pricing, vaste prijzen, Nederland, B2B automatisering"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <!-- Critical CSS for instant black background -->
+  <style>
+    body {
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Final CTA Section -->
+    <AgencyFinalCTASection fullHeight={true} client:visible />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:visible />
+  </main>
+
+</Layout>

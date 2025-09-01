@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Send, Users, Globe, Brain, Database, Mail, Calendar, Target, Zap, Settings, BookOpen, FileText, Video } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Menu, X, ChevronDown, Send, Users, Globe, Brain, Database, Mail, Calendar, Target, Zap, Settings, BookOpen, FileText, Video, Building2 } from 'lucide-react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ScailUpHeaderProps {
@@ -11,6 +11,29 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
   const [isVisible, setIsVisible] = useState(showAlways);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Professional dropdown handlers with proper debouncing
+  const handleDropdownEnter = useCallback((itemPath: string) => {
+    // Clear any existing timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setActiveDropdown(itemPath);
+  }, []);
+
+  const handleDropdownLeave = useCallback(() => {
+    // Clear any existing timeout first
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    // Set a new timeout to close the dropdown
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 100); // Shorter delay for better UX
+  }, []);
 
   useEffect(() => {
     // SSR Guard: Only run in browser environment
@@ -49,14 +72,28 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       }
     };
 
-    // Setup scroll listener with retry mechanism
+    // Escape key handler
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveDropdown(null);
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    // Setup listeners
     const cleanupScroll = setupScrollListener();
     window.addEventListener('popstate', handleNavigation);
+    document.addEventListener('keydown', handleEscape);
     
     return () => {
       if (cleanupScroll) cleanupScroll();
       if (typeof window !== 'undefined') {
         window.removeEventListener('popstate', handleNavigation);
+      }
+      document.removeEventListener('keydown', handleEscape);
+      // Cleanup timeout
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
       }
     };
   }, []);
@@ -74,10 +111,22 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
             title: 'Core Platform',
             items: [
               { 
+                icon: Target, 
+                label: 'Sales Engine', 
+                href: '/sales-engine',
+                description: 'Complete sales automation platform'
+              },
+              { 
                 icon: Send, 
                 label: 'Lead Engine', 
                 href: '/lead-engine',
                 description: 'Complete outbound platform voor leads en meetings'
+              },
+              { 
+                icon: Globe, 
+                label: 'Marketing Engine', 
+                href: '/marketing-engine',
+                description: 'AI-gedreven marketing automation'
               }
             ]
           },
@@ -125,6 +174,74 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       }
     },
     { 
+      label: 'Diensten', 
+      href: '#', 
+      path: '/diensten',
+      hasDropdown: true,
+      dropdownItems: {
+        title: 'Volledige service voor jouw transformatie',
+        sections: [
+          {
+            title: 'Implementatie',
+            items: [
+              { 
+                icon: Brain, 
+                label: 'AI Agent Development', 
+                href: '/diensten/ai-agents',
+                description: 'Custom AI agents ontwikkeling'
+              },
+              { 
+                icon: Settings, 
+                label: 'Workflow Automation', 
+                href: '/diensten/automation',
+                description: 'End-to-end proces automatisering'
+              },
+              { 
+                icon: Database, 
+                label: 'Data Integration', 
+                href: '/diensten/integration',
+                description: 'Systeem koppelingen en API\'s'
+              }
+            ]
+          },
+          {
+            title: 'Consultancy',
+            items: [
+              { 
+                icon: Target, 
+                label: 'AI Strategy', 
+                href: '/diensten/strategy',
+                description: 'Strategische AI roadmap ontwikkeling'
+              },
+              { 
+                icon: Users, 
+                label: 'Change Management', 
+                href: '/diensten/change-management',
+                description: 'Team training en adoptie begeleiding'
+              }
+            ]
+          },
+          {
+            title: 'Support',
+            items: [
+              { 
+                icon: Zap, 
+                label: '24/7 Monitoring', 
+                href: '/diensten/monitoring',
+                description: 'Continue monitoring en optimalisatie'
+              },
+              { 
+                icon: Settings, 
+                label: 'Maintenance', 
+                href: '/diensten/maintenance',
+                description: 'Onderhoud en updates'
+              }
+            ]
+          }
+        ]
+      }
+    },
+    { 
       label: 'Oplossingen', 
       href: '#', 
       path: '/oplossingen',
@@ -132,6 +249,40 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       dropdownItems: {
         title: 'Voor elke business case',
         sections: [
+          {
+            title: 'Per industrie',
+            items: [
+              { 
+                icon: Users, 
+                label: 'Agencies', 
+                href: '/agencies',
+                description: 'Marketing en creative agencies'
+              },
+              { 
+                icon: Globe, 
+                label: 'B2B SaaS', 
+                href: '/saas',
+                description: 'Software bedrijven en platforms'
+              },
+              { 
+                icon: Settings, 
+                label: 'Consultancy & Coaches', 
+                href: '/consultancy',
+                description: 'Strategic consulting en business coaches'
+              }
+            ]
+          },
+          {
+            title: 'Meer industrieën',
+            items: [
+              { 
+                icon: Building2, 
+                label: 'B2B Services', 
+                href: '/b2b-services',
+                description: 'Professional service providers'
+              }
+            ]
+          },
           {
             title: 'Per functie',
             items: [
@@ -154,31 +305,11 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 description: 'Processen en workflow optimalisatie'
               }
             ]
-          },
-          {
-            title: 'Per industrie',
-            items: [
-              { 
-                icon: Globe, 
-                label: 'B2B SaaS', 
-                href: '/saas',
-                description: 'Specialized voor software bedrijven'
-              },
-              { 
-                icon: Users, 
-                label: 'Professional Services', 
-                href: '/services',
-                description: 'Voor consultancy en agencies'
-              }
-            ]
           }
         ]
       }
     },
-    { label: 'Kenniscentrum', href: '/kenniscentrum', path: '/kenniscentrum' },
-    { label: 'Agency', href: '/agency', path: '/agency' },
-    { label: 'Docs', href: '/docs', path: '/docs' },
-    { label: 'Pricing', href: '/pricing', path: '/pricing' }
+    { label: 'Prijzen', href: '/pricing', path: '/pricing' }
   ];
 
   const isActive = (item: typeof navItems[0]) => {
@@ -201,24 +332,14 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     window.location.href = '/';
   };
 
-  const handleLoginClick = () => {
-    if (typeof window === 'undefined') return;
-    window.location.href = '/login';
-  };
-
   const handleContactClick = () => {
     if (typeof window === 'undefined') return;
     window.location.href = '/contact';
   };
 
-  const handleSignUpClick = () => {
-    if (typeof window === 'undefined') return;
-    window.location.href = '/signup';
-  };
-
   return (
     <>
-      {/* Vercel-style Header */}
+      {/* Professional Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ 
@@ -226,7 +347,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
           y: isVisible ? 0 : -20 
         }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-[9999] bg-black border-b border-gray-800 ${
+        className={`fixed top-0 left-0 right-0 z-[9999] bg-black/95 backdrop-blur-xl border-b border-gray-800/50 ${
           isVisible ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
       >
@@ -251,18 +372,40 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8 ml-12">
               {navItems.map((item) => (
-                <div key={item.path} className="relative group">
+                <div 
+                  key={item.path} 
+                  className="relative"
+                  onMouseEnter={() => item.hasDropdown && handleDropdownEnter(item.path)}
+                  onMouseLeave={() => item.hasDropdown && handleDropdownLeave()}
+                >
                   <button
                     onClick={() => !item.hasDropdown && handleNavClick(item)}
-                    className="flex items-center space-x-1 text-gray-400 hover:text-white transition-colors py-2 text-sm font-medium"
+                    className={`flex items-center space-x-1 transition-colors py-2 text-sm font-medium ${
+                      activeDropdown === item.path ? 'text-white' : 'text-gray-400 hover:text-white'
+                    }`}
+                    aria-expanded={item.hasDropdown ? activeDropdown === item.path : undefined}
+                    aria-haspopup={item.hasDropdown ? 'menu' : undefined}
                   >
                     <span>{item.label}</span>
-                    {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                    {item.hasDropdown && (
+                      <ChevronDown 
+                        className={`w-4 h-4 transition-transform duration-300 ease-out ${
+                          activeDropdown === item.path ? 'rotate-180' : ''
+                        }`} 
+                      />
+                    )}
                   </button>
                   
-                  {/* Vercel-Style Mega Menu */}
+                  {/* Professional Dropdown Menu */}
                   {item.hasDropdown && item.dropdownItems && (
-                    <div className="absolute top-full left-0 mt-2 bg-black border border-gray-800 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[800px] p-6">
+                    <div 
+                      className={`absolute top-full left-0 mt-1 bg-black/95 backdrop-blur-xl border border-gray-800/50 rounded-xl shadow-2xl transition-all duration-300 ease-out min-w-[800px] max-w-[900px] p-6 z-[9998] ${
+                        activeDropdown === item.path 
+                          ? 'opacity-100 visible translate-y-0' 
+                          : 'opacity-0 invisible translate-y-2 pointer-events-none'
+                      }`}
+                      role="menu"
+                    >
                       {/* Menu Title */}
                       <div className="mb-6">
                         <h3 className="text-lg font-semibold text-white mb-1">{item.dropdownItems.title}</h3>
@@ -284,8 +427,12 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                                 return (
                                   <button
                                     key={menuItem.href}
-                                    onClick={() => window.location.href = menuItem.href}
-                                    className="flex items-start space-x-3 w-full text-left p-3 rounded-lg hover:bg-gray-900 transition-colors group/item"
+                                    onClick={() => {
+                                      setActiveDropdown(null);
+                                      window.location.href = menuItem.href;
+                                    }}
+                                    className="flex items-start space-x-3 w-full text-left p-3 rounded-lg hover:bg-gray-900/50 transition-all duration-200 group/item focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                                    role="menuitem"
                                   >
                                     {/* Icon */}
                                     <div className="flex-shrink-0 mt-0.5">
@@ -316,28 +463,15 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
 
             {/* Right Side Buttons */}
             <div className="flex items-center space-x-1 ml-auto">
-              {/* Login Button */}
-              <button
-                onClick={handleLoginClick}
-                className="hidden md:block px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors rounded-lg"
-              >
-                Log In
-              </button>
-
-              {/* Contact Button */}
+              {/* Contact CTA Button */}
               <button
                 onClick={handleContactClick}
-                className="hidden md:block px-3 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors rounded-lg"
+                className="hidden md:inline-flex items-center px-8 py-2.5 bg-gradient-to-r from-blue-500 to-blue-400 text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-sm"
+                style={{ 
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+                }}
               >
-                Contact
-              </button>
-
-              {/* Sign Up Button */}
-              <button
-                onClick={handleSignUpClick}
-                className="hidden md:flex items-center px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                Sign Up
+                Neem contact op
               </button>
 
               {/* Mobile Menu Button */}
@@ -378,7 +512,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="absolute top-0 left-0 right-0 bg-black border-b border-gray-800"
+              className="absolute top-0 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-gray-800/50"
             >
               <div className="px-4 pt-20 pb-6">
                 {/* Mobile Navigation */}
@@ -386,13 +520,26 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                   {navItems.map((item) => (
                     <div key={item.path}>
                       <button
-                        onClick={() => !item.hasDropdown && handleNavClick(item)}
-                        className="block w-full text-left px-4 py-3 text-base text-gray-400 hover:text-white transition-colors"
+                        onClick={() => {
+                          if (!item.hasDropdown) {
+                            handleNavClick(item);
+                          } else {
+                            setActiveDropdown(activeDropdown === item.path ? null : item.path);
+                          }
+                        }}
+                        className="flex items-center justify-between w-full text-left px-4 py-3 text-base text-gray-400 hover:text-white transition-colors"
                       >
-                        {item.label}
+                        <span>{item.label}</span>
+                        {item.hasDropdown && <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.path ? 'rotate-180' : ''}`} />}
                       </button>
-                      {item.hasDropdown && item.dropdownItems && (
-                        <div className="ml-4 mt-2 space-y-4">
+                      {item.hasDropdown && item.dropdownItems && activeDropdown === item.path && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeOut' }}
+                          className="ml-4 mt-2 space-y-4 overflow-hidden"
+                        >
                           {item.dropdownItems.sections.map((section, sectionIndex) => (
                             <div key={sectionIndex}>
                               <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-2">
@@ -421,7 +568,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                               </div>
                             </div>
                           ))}
-                        </div>
+                        </motion.div>
                       )}
                     </div>
                   ))}
@@ -430,22 +577,10 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 {/* Mobile Buttons */}
                 <div className="space-y-3">
                   <button
-                    onClick={handleLoginClick}
-                    className="w-full px-4 py-3 text-base text-gray-400 hover:text-white transition-colors text-left"
-                  >
-                    Log In
-                  </button>
-                  <button
                     onClick={handleContactClick}
-                    className="w-full px-4 py-3 text-base text-gray-400 hover:text-white transition-colors text-left"
+                    className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-400 text-white text-base font-medium rounded-lg hover:from-blue-600 hover:to-blue-500 transition-all duration-300"
                   >
-                    Contact
-                  </button>
-                  <button
-                    onClick={handleSignUpClick}
-                    className="w-full flex items-center px-4 py-3 bg-white text-black text-base font-medium rounded-lg hover:bg-gray-100 transition-colors"
-                  >
-                    Sign Up
+                    Neem contact op
                   </button>
                 </div>
               </div>

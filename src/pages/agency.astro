@@ -1,27 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ScailUpFooter from '../components/ScailUpFooter';
-import AgencyHero from '../components/AgencyHero';
-import AIAgentsSection from '../components/AIAgentsSection';
-import CustomAgentCTASection from '../components/AgencyWhatIsBuildrsSection';
+import ScailUpHero from '../components/ScailUpHero';
+import LeadEngineFeatures from '../components/LeadEngineFeatures';
+import PricingSection from '../components/PricingSection';
 import LeadEngineCTASection from '../components/LeadEngineCTASection';
-import AgencyPlatformComparisonSection from '../components/AgencyPlatformComparisonSection';
-import AgencyFAQSection from '../components/AgencyFAQSection';
-import AgencyDienstenSection from '../components/AgencyDienstenSection';
-import AppleStyleTransition from '../components/AppleStyleTransition';
-import AgencyProcessSection from '../components/AgencyProcessSection';
-import AgencyFinalCTASection from '../components/AgencyFinalCTASection';
 
-// Agency structured data
+// ScailUp agency page structured data
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Buildrs",
-  "description": "Custom AI agents en automatisering workflows voor B2B service providers. Van LinkedIn automation tot proposal generators - we bouwen het voor je.",
-  "url": "https://buildrs.nl/agency",
-  "logo": "https://buildrs.nl/logo.png",
+  "name": "ScailUp",
+  "description": "Done-for-you outbound agency. E-mailcampagnes, LinkedIn outreach en Account Based Marketing die echt converteren.",
+  "url": "https://scailup.nl/agency",
+  "logo": "https://scailup.nl/logo.png",
   "sameAs": [
-    "https://linkedin.com/company/buildrs"
+    "https://linkedin.com/company/scailup"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -37,27 +30,27 @@ const structuredData = {
   "service": [
     {
       "@type": "Service",
-      "name": "Custom AI Agents",
-      "description": "Maatwerk AI workflows zoals LinkedIn automation, proposal generators en lead processing agents"
+      "name": "E-mailcampagnes",
+      "description": "AI-gedreven e-mailcampagnes die opvallen tussen de ruis"
     },
     {
       "@type": "Service", 
-      "name": "Platform Integration",
-      "description": "Integreer custom agents in ons Buildrs platform voor betere dashboards en monitoring"
+      "name": "LinkedIn Outreach",
+      "description": "Strategische LinkedIn-campagnes die leiden tot afspraken"
     },
     {
       "@type": "Service",
-      "name": "Standalone Solutions",
-      "description": "Volledig eigenaarschap van je agent - draai het via Google Sheets, Airtable of eigen stack"
+      "name": "Account Based Marketing",
+      "description": "ABM-campagnes gericht op jouw ideale klanten"
     }
   ]
 };
 ---
 
 <Layout 
-  title="Buildrs | Custom AI Agents & Automatisering"
-  description="We bouwen custom AI agents voor B2B bedrijven. LinkedIn automation, proposal generators, lead processing - standalone of geïntegreerd in ons platform. Klaar in 1-2 weken."
-  keywords="custom AI agents, marketing automation, LinkedIn automation, workflow automation, AI ontwikkeling, B2B automatisering, proposal generator, Netherlands"
+  title="ScailUp Agency | Done-for-You Outbound Marketing"
+  description="Meer afspraken, minder ruis. AI-gedreven e-mailcampagnes, LinkedIn outreach en ABM die echt converteren. Geen spam, wel resultaat."
+  keywords="outbound marketing, e-mailcampagnes, LinkedIn outreach, Account Based Marketing, ABM, lead generation, B2B marketing, Netherlands"
 >
   <!-- Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
@@ -121,41 +114,17 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- Agency Hero section -->
-    <AgencyHero client:load />
+    <!-- ScailUp Hero section -->
+    <ScailUpHero client:load />
     
-    <!-- AI Agents Section -->
-    <AIAgentsSection client:visible />
+    <!-- Lead Engine Features section -->
+    <LeadEngineFeatures client:visible />
     
-    <!-- What is Buildrs Section -->
-    <CustomAgentCTASection client:visible />
-    
-    <!-- Apple Style Transition - Capabilities -->
-    <AppleStyleTransition variant="capabilities" client:visible />
-    
-    <!-- Agency Diensten Section -->
-    <AgencyDienstenSection client:visible />
-    
-    <!-- Process & Development Methodology Section -->
-    <AgencyProcessSection client:visible />
-    
-    <!-- Apple Style Transition - Platform -->
-    <AppleStyleTransition variant="platform" client:visible />
+    <!-- Pricing section -->
+    <PricingSection client:visible />
     
     <!-- Lead Engine CTA Section -->
     <LeadEngineCTASection client:visible />
-    
-    <!-- Platform Comparison Section -->
-    <AgencyPlatformComparisonSection client:visible />
-    
-    <!-- FAQ Section -->
-    <AgencyFAQSection client:visible />
-    
-    <!-- Final CTA Section -->
-    <AgencyFinalCTASection client:visible />
-    
-    <!-- Footer -->
-    <ScailUpFooter client:visible />
   </main>
 
 </Layout>

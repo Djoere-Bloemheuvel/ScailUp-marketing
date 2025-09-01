@@ -1,63 +1,157 @@
 ---
-return Astro.redirect('/agency', 301);
+import Layout from '../layouts/Layout.astro';
+import ScailUpFooter from '../components/ScailUpFooter';
+import AgencyHero from '../components/AgencyHero';
+import AIAgentsSection from '../components/AIAgentsSection';
+import CustomAgentCTASection from '../components/AgencyWhatIsBuildrsSection';
+import AgencyPlatformComparisonSection from '../components/AgencyPlatformComparisonSection';
+import AgencyFAQSection from '../components/AgencyFAQSection';
+import AgencyDienstenSection from '../components/AgencyDienstenSection';
+import AppleStyleTransition from '../components/AppleStyleTransition';
+import AgencyProcessSection from '../components/AgencyProcessSection';
+import AgencyFinalCTASection from '../components/AgencyFinalCTASection';
+
+// Main landing page structured data (moved from agency)
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Buildrs",
+  "description": "Custom AI agents en automatisering workflows voor B2B service providers. Van LinkedIn automation tot proposal generators - we bouwen het voor je.",
+  "url": "https://buildrs.nl",
+  "logo": "https://buildrs.nl/logo.png",
+  "sameAs": [
+    "https://linkedin.com/company/buildrs"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+31-6-12345678",
+    "contactType": "customer service",
+    "availableLanguage": "Dutch"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "NL",
+    "addressLocality": "Amsterdam"
+  },
+  "service": [
+    {
+      "@type": "Service",
+      "name": "Custom AI Agents",
+      "description": "Maatwerk AI workflows zoals LinkedIn automation, proposal generators en lead processing agents"
+    },
+    {
+      "@type": "Service", 
+      "name": "Platform Integration",
+      "description": "Integreer custom agents in ons Buildrs platform voor betere dashboards en monitoring"
+    },
+    {
+      "@type": "Service",
+      "name": "Standalone Solutions",
+      "description": "Volledig eigenaarschap van je agent - draai het via Google Sheets, Airtable of eigen stack"
+    }
+  ]
+};
 ---
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=/agency">
-  <link rel="canonical" href="/agency">
-  <title>ScailUp - Redirecting...</title>
+<Layout 
+  title="Buildrs | Custom AI Agents & Automatisering"
+  description="We bouwen custom AI agents voor B2B bedrijven. LinkedIn automation, proposal generators, lead processing - standalone of geïntegreerd in ons platform. Klaar in 1-2 weken."
+  keywords="custom AI agents, marketing automation, LinkedIn automation, workflow automation, AI ontwikkeling, B2B automatisering, proposal generator, Netherlands"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
   <style>
+    
+    /* Ensure page starts with true black background */
     body {
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* Ensure no spacing anywhere that could create black canvas */
+    * {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: system-ui, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      box-sizing: border-box;
+    }
+    
+    /* Force hero to start at very top */
+    #main-content {
+      position: relative;
+      top: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Critical hero styles for instant rendering */
+    .hero-section {
+      position: relative;
+      min-height: 90vh;
+      background-color: #000000;
+      color: #ffffff;
       overflow: hidden;
-    }
-    .loader {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      opacity: 0;
-      animation: fadeIn 0.3s ease-out 0.1s forwards;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 25vh 1rem 3rem;
     }
-    .spinner {
-      width: 24px;
-      height: 24px;
-      border: 2px solid #333;
-      border-top: 2px solid #3B82F6;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    
+    /* Prevent any layout shift */
+    .hero-content {
+      position: relative;
+      max-width: 80rem;
+      width: 100%;
+      text-align: center;
+      z-index: 30;
     }
   </style>
-</head>
-<body>
-  <div class="loader">
-    <div class="spinner"></div>
-    <span>Doorsturen...</span>
-  </div>
-  <script>
-    // Immediate redirect for instant navigation
-    if (window.location.pathname === '/') {
-      window.location.replace('/agency');
-    }
-  </script>
-</body>
-</html>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Agency Hero section -->
+    <AgencyHero client:load />
+    
+    <!-- AI Agents Section -->
+    <AIAgentsSection client:visible />
+    
+    <!-- What is Buildrs Section -->
+    <CustomAgentCTASection client:visible />
+    
+    <!-- Apple Style Transition - Capabilities -->
+    <AppleStyleTransition variant="capabilities" client:visible />
+    
+    <!-- Agency Diensten Section -->
+    <AgencyDienstenSection client:visible />
+    
+    <!-- Process & Development Methodology Section -->
+    <AgencyProcessSection client:visible />
+    
+    <!-- Apple Style Transition - Platform -->
+    <AppleStyleTransition variant="platform" client:visible />
+    <!-- Platform Comparison Section -->
+    <AgencyPlatformComparisonSection client:visible />
+    
+    <!-- FAQ Section -->
+    <AgencyFAQSection client:visible />
+    
+    <!-- Final CTA Section -->
+    <AgencyFinalCTASection client:visible />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:visible />
+  </main>
+
+</Layout>
 

@@ -2,9 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, MessageSquare, CheckCircle, Euro } from 'lucide-react';
 
-const AgencyFinalCTASection = () => {
+interface AgencyFinalCTASectionProps {
+  fullHeight?: boolean;
+}
+
+const AgencyFinalCTASection: React.FC<AgencyFinalCTASectionProps> = ({ fullHeight = false }) => {
   return (
-    <section className="relative pt-32 pb-24 bg-black overflow-hidden">
+    <section className={`relative bg-black overflow-hidden ${fullHeight ? 'min-h-screen flex items-center justify-center' : 'pt-32 pb-24'}`}>
       {/* Subtle fade to black at top */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/15 via-black/5 to-transparent z-10"></div>
       

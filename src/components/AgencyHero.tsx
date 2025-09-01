@@ -155,7 +155,7 @@ const AgencyHero = () => {
             </span>
           </motion.p>
 
-          {/* CTA Buttons - Agency themed to match hero */}
+          {/* Redesigned CTA Section */}
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
             initial={{ opacity: 0, y: 30 }}
@@ -163,52 +163,54 @@ const AgencyHero = () => {
             transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
             style={{ willChange: 'transform, opacity' }}
           >
-            {/* Primary CTA - Matches agency background colors */}
-            <Button
-              className="group relative px-6 xs:px-7 sm:px-8 py-3 xs:py-4 text-white text-base xs:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 overflow-hidden border-0 w-full xs:w-auto sm:w-auto max-w-xs sm:max-w-none"
-              style={{
-                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(236, 72, 153, 0.8) 50%, rgba(219, 39, 119, 0.7) 100%)',
-                backdropFilter: 'blur(16px)',
-                boxShadow: '0 8px 32px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
-              }}
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.location.href = '/contact';
-                }
-              }}
-            >
-              <span className="flex items-center space-x-2">
-                <span>Start je transformatie</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-              </span>
-            </Button>
+            {/* Primary CTA - Modern floating design */}
+            <div className="relative group">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 scale-110"></div>
+              
+              <button
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.location.href = '/contact';
+                  }
+                }}
+                className="relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-full hover:shadow-2xl hover:shadow-blue-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg border-0 w-full xs:w-auto"
+                style={{ 
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                  boxShadow: '0 20px 40px -10px rgba(59, 130, 246, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)' 
+                }}
+              >
+                <span className="mr-3">Start je transformatie</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
 
-            {/* Secondary CTA - Subtle with agency colors */}
-            <Button
-              variant="outline"
-              className="group relative px-6 xs:px-7 sm:px-8 py-3 xs:py-4 text-white text-base xs:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 border-0 w-full xs:w-auto sm:w-auto max-w-xs sm:max-w-none"
-              style={{
-                background: 'rgba(0, 0, 0, 0.4)',
-                backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(59, 130, 246, 0.3)',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.4)';
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
-              }}
-              onClick={handleCasesClick}
-            >
-              <span className="flex items-center space-x-2">
-                <span>Bekijk cases</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-              </span>
-            </Button>
+            {/* Secondary CTA - Modern outline design */}
+            <div className="relative group">
+              <button
+                onClick={handleCasesClick}
+                className="relative inline-flex items-center px-8 py-4 text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:shadow-xl hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg w-full xs:w-auto"
+                style={{ 
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
+                }}
+              >
+                <span className="mr-3">Bekijk voorbeelden</span>
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
           </motion.div>
+
+          {/* Trust indicator */}
+          <motion.p 
+            className="text-white/50 text-sm text-center mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
+            Gratis strategiegesprek • Geen verplichtingen • Direct inzicht
+          </motion.p>
         </motion.div>
       </div>
       
