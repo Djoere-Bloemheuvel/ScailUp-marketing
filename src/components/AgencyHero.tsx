@@ -14,8 +14,8 @@ const AgencyHero = () => {
 
   const handleCasesClick = () => {
     if (typeof window !== 'undefined') {
-      // Scroll to AI Agents section (voorbeelden)
-      const targetSection = document.querySelector('#ai-agents-section');
+      // Scroll to What is Buildrs section (dit kunnen we bouwen voor je)
+      const targetSection = document.querySelector('#what-is-buildrs-section');
       if (targetSection) {
         targetSection.scrollIntoView({ 
           behavior: 'smooth', 

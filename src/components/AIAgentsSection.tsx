@@ -195,22 +195,13 @@ const AIAgentsSection = () => {
                       {agent.description}
                     </p>
 
-                    <button
-                      onClick={() => {
-                        // Scroll to What is Buildrs section (voorbeelden)
-                        const targetSection = document.querySelector('#what-is-buildrs-section');
-                        if (targetSection) {
-                          targetSection.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'start' 
-                          });
-                        }
-                      }}
+                    <a
+                      href={agent.href}
                       className="inline-flex items-center text-blue-400 font-semibold hover:text-blue-300 transition-colors group"
                     >
-                      Bekijk voorbeelden
+                      Leer meer over {agent.title.toLowerCase()}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
