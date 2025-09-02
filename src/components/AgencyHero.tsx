@@ -14,7 +14,14 @@ const AgencyHero = () => {
 
   const handleCasesClick = () => {
     if (typeof window !== 'undefined') {
-      window.location.href = '/kenniscentrum';
+      // Scroll to AI Agents section (voorbeelden)
+      const targetSection = document.querySelector('#ai-agents-section');
+      if (targetSection) {
+        targetSection.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
     }
   };
 

@@ -126,7 +126,7 @@ const AIAgentsSection = () => {
   ];
 
   return (
-    <section className="relative pt-24 pb-16 bg-black overflow-hidden" style={{ minHeight: '60vh' }}>
+    <section id="ai-agents-section" className="relative pt-24 pb-16 bg-black overflow-hidden" style={{ minHeight: '60vh' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 relative">

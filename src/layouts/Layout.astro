@@ -2,6 +2,7 @@
 // Import main CSS for styling
 import '../index.css';
 import ScailUpHeader from '../components/ScailUpHeader';
+import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
   title: string;
@@ -15,10 +16,35 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
 ---
 
 <!DOCTYPE html>
-<html lang="nl" style="margin: 0 !important; padding: 0 !important; height: 100% !important;">
+<html lang="nl" style="margin: 0 !important; padding: 0 !important; height: 100% !important; background-color: #000000 !important;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- CRITICAL: Prevent white flash by setting background immediately -->
+  <style>
+    html, body {
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 100vh !important;
+    }
+    
+    /* Ensure smooth transitions */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Prevent FOUC but keep content visible */
+    body {
+      opacity: 0;
+      transition: opacity 0.1s ease;
+    }
+    
+    body.loaded {
+      opacity: 1;
+    }
+  </style>
   <meta name="favicon-timestamp" content="1725192587" />
   <!-- Force favicon refresh -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -72,6 +98,9 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
 
   <!-- Structured Data -->
   {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>}
+
+  <!-- Astro View Transitions for smooth page changes -->
+  <ViewTransitions />
 
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -474,6 +503,25 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
 
     // Start setup
     setupAnimations();
+  </script>
+  
+  <!-- FOUC Prevention Script - Must be at end -->
+  <script>
+    // Show body content immediately - no delay
+    function showContent() {
+      document.body.classList.add('loaded');
+    }
+    
+    // Multiple triggers for fast visibility
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', showContent);
+    } else {
+      // DOM already loaded
+      showContent();
+    }
+    
+    // Fallback timeout
+    setTimeout(showContent, 50);
   </script>
 </body>
 </html>
