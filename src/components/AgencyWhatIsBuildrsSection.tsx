@@ -11,7 +11,7 @@ const CustomAgentCTASection = () => {
   };
 
   return (
-    <section className="relative py-32 lg:py-40 bg-black overflow-hidden">
+    <section id="what-is-buildrs-section" className="relative py-32 lg:py-40 bg-black overflow-hidden">
       {/* Ambient Background Lights - Agency Colors */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main agency orbs - partnership theme */}
