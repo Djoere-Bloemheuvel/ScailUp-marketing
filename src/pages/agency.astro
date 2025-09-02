@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ScailUpHero from '../components/ScailUpHero';
+import AgencyHero from '../components/AgencyHero';
 import LeadEngineFeatures from '../components/LeadEngineFeatures';
 import PricingSection from '../components/PricingSection';
 import LeadEngineCTASection from '../components/LeadEngineCTASection';
+import GenerateLeadsSection from '../components/GenerateLeadsSection';
 
 // Buildrs agency page structured data
 const structuredData = {
@@ -114,8 +115,8 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- ScailUp Hero section -->
-    <ScailUpHero client:load />
+    <!-- Agency Split-Screen Hero section (restored) -->
+    <AgencyHero client:load />
     
     <!-- Lead Engine Features section -->
     <LeadEngineFeatures client:visible />
@@ -125,6 +126,9 @@ const structuredData = {
     
     <!-- Lead Engine CTA Section -->
     <LeadEngineCTASection client:visible />
+    
+    <!-- Generate Leads Section -->
+    <GenerateLeadsSection client:visible />
   </main>
 
 </Layout>
