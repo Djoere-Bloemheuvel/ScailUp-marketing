@@ -115,6 +115,7 @@ const AgencyHero = () => {
       <div className="relative max-w-5xl mx-auto z-30 text-center px-4">
         <motion.div 
           className="max-w-4xl mx-auto relative"
+          style={{ minHeight: '400px' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -128,22 +129,22 @@ const AgencyHero = () => {
           
           {/* Animated Headline */}
           <motion.div 
-            className="mb-2"
+            className="mb-1"
+            style={{ minHeight: '160px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            style={{ willChange: 'transform, opacity' }}
           >
             <AgencyAnimatedHeadline />
           </motion.div>
 
           {/* Subtitle */}
           <motion.p 
-            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 xs:mb-8 sm:mb-12 md:mb-16 leading-relaxed font-light px-2 xs:px-4"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-1 xs:mb-2 sm:mb-3 md:mb-4 leading-relaxed font-light px-2 xs:px-4"
+            style={{ minHeight: '80px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-            style={{ willChange: 'transform, opacity' }}
           >
             <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
               Agents & automations die jouw bedrijf
@@ -158,10 +159,10 @@ const AgencyHero = () => {
           {/* Redesigned CTA Section */}
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+            style={{ minHeight: '100px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
-            style={{ willChange: 'transform, opacity' }}
           >
             {/* Primary CTA - Modern floating design */}
             <div className="relative group">
@@ -205,6 +206,7 @@ const AgencyHero = () => {
           {/* Trust indicator */}
           <motion.p 
             className="text-white/50 text-sm text-center mt-6"
+            style={{ minHeight: '20px' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.3 }}

@@ -211,3 +211,4 @@ The following operations are **ABSOLUTELY FORBIDDEN**:
 "Should I truncate all data?"
 ```
 - We heten GEEN scailUp maar Buildrs
+- Performance van de website is super belangrijk.
