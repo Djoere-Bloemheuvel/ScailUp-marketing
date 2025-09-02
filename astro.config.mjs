@@ -7,12 +7,15 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind({
-      // Use existing Tailwind config and styles
       configFile: './tailwind.config.ts',
     }),
   ],
+  build: {
+    // Advanced build optimizations
+    inlineStylesheets: 'auto', // Inline small CSS files
+    assets: '_astro', // Organize assets
+  },
   vite: {
-    // Preserve existing Vite configuration
     define: {
       global: 'globalThis',
     },
@@ -22,7 +25,6 @@ export default defineConfig({
       }
     },
     css: {
-      // Zorg ervoor dat CSS classes behouden blijven
       preprocessorOptions: {
         css: {
           charset: false
@@ -31,9 +33,33 @@ export default defineConfig({
       postcss: {
         plugins: []
       }
+    },
+    build: {
+      // Advanced bundling optimizations
+      rollupOptions: {
+        output: {
+          // Better chunk splitting
+          manualChunks: {
+            // Separate vendor chunks
+            'react-vendor': ['react', 'react-dom'],
+            'framer-motion': ['framer-motion'],
+            'lucide': ['lucide-react'],
+            // Keep supabase separate for better caching
+            'supabase': ['@supabase/supabase-js', '@supabase/auth-helpers-react']
+          }
+        }
+      },
+      // Enable CSS minification
+      cssMinify: true,
+      // Enable terser for better JS compression  
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove console.logs in production
+          drop_debugger: true
+        }
+      }
     }
   },
-  // View transitions are now stable in Astro 5
-  // Optimize for performance
   output: 'static'
 });

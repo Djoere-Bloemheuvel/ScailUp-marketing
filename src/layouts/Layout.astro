@@ -36,6 +36,18 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
   {description && <meta name="description" content={description} />}
   {keywords && <meta name="keywords" content={keywords} />}
 
+  <!-- Performance & Caching Optimizations -->
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  
+  <!-- Resource Hints for Better Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+  <link rel="dns-prefetch" href="https://api.supabase.io" />
+  
+  <!-- Critical CSS will be inlined by Astro build process -->
+  <link rel="modulepreload" href="/src/index.css" />
+
   <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self' https://res.cloudinary.com; font-src 'self' data:; connect-src 'self' https:; object-src 'none'; base-uri 'self';" />
 

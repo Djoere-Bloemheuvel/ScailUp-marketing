@@ -151,12 +151,6 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 href: '/agents-automations',
                 description: 'Slimme workflows en triggers'
               },
-              { 
-                icon: Settings, 
-                label: 'Process Development', 
-                href: '/diensten/automation',
-                description: 'End-to-end proces automatisering'
-              }
             ]
           },
           {
@@ -174,12 +168,6 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 href: '/lead-engine/inbox-to-meeting',
                 description: 'Van inbox direct naar agenda'
               },
-              { 
-                icon: Database, 
-                label: 'Data Integration', 
-                href: '/diensten/integration',
-                description: 'Systeem koppelingen en API\'s'
-              }
             ]
           }
         ]
