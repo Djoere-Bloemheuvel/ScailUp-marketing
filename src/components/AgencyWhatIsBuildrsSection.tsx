@@ -7,7 +7,24 @@ const CustomAgentCTASection = () => {
   };
 
   const handleGetStartedClick = () => {
-    window.location.href = '/agency';
+    if (typeof window !== 'undefined') {
+      // Find next section after this one and scroll to it
+      const currentSection = document.getElementById('what-is-buildrs-section');
+      if (currentSection) {
+        const nextSection = currentSection.nextElementSibling;
+        if (nextSection) {
+          nextSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        } else {
+          // Fallback to agency page if no next section
+          window.location.href = '/agency';
+        }
+      } else {
+        window.location.href = '/agency';
+      }
+    }
   };
 
   return (
@@ -98,7 +115,7 @@ const CustomAgentCTASection = () => {
                 className="group flex items-center px-8 py-4 bg-transparent border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300 text-lg backdrop-blur-sm"
               >
                 <Play className="mr-2 w-5 h-5" />
-                <span>Toon me cases</span>
+                <span>Toon me voorbeelden</span>
               </button>
             </div>
           </div>

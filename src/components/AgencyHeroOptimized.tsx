@@ -15,7 +15,17 @@ const AgencyAnimatedHeadline = lazy(() => import('./AgencyAnimatedHeadline'));
 const AgencyHeroOptimized = () => {
   const handleCasesClick = () => {
     if (typeof window !== 'undefined') {
-      window.location.href = '/kenniscentrum';
+      // Smooth scroll to next section
+      const nextSection = document.querySelector('section:nth-of-type(2)');
+      if (nextSection) {
+        nextSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      } else {
+        // Fallback to kenniscentrum if section not found
+        window.location.href = '/kenniscentrum';
+      }
     }
   };
 
@@ -24,6 +34,9 @@ const AgencyHeroOptimized = () => {
       
       {/* Black Background */}
       <div className="absolute inset-0 bg-black" />
+      
+      {/* Subtle Fade to Black at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20 pointer-events-none" />
       
       {/* Optimized backlights - using CSS transforms only */}
       <div className="absolute inset-0 overflow-hidden opacity-70 xs:opacity-75 sm:opacity-70 md:opacity-65 lg:opacity-60">

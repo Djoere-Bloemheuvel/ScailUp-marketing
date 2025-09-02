@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BarChart3, TrendingUp, FileText, Eye, Calendar, Search, Plus, Edit, Trash2, Globe, Target, Users, UserPlus, Mail, Phone } from 'lucide-react';
+import { BarChart3, TrendingUp, FileText, Eye, Calendar, Search, Plus, Edit, Trash2, Globe, Target, Users, UserPlus, Mail, Phone, Webhook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { leadService, Lead } from '@/lib/supabase';
 
@@ -48,6 +48,37 @@ const MarketingDashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const triggerWebhook = async () => {
+    try {
+      const webhookUrl = 'https://buildrs.app.n8n.cloud/webhook/1be84a94-b215-4dc4-aa91-1b60e47b4183';
+      
+      const payload = {
+        source: 'marketing-dashboard',
+        timestamp: new Date().toISOString(),
+        stats: stats,
+        leads: leads.slice(0, 5), // Send recent leads
+        action: 'dashboard-webhook-trigger'
+      };
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        alert('Webhook succesvol verzonden naar n8n!');
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Webhook error:', error);
+      alert('Fout bij verzenden webhook: ' + error.message);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -143,12 +174,22 @@ const MarketingDashboard = () => {
               <h1 className="text-4xl font-bold mb-2">Marketing Dashboard</h1>
               <p className="text-gray-400">Overzicht van content, leads en marketing prestaties</p>
             </div>
-            <button 
-              onClick={fetchData}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-            >
-              Vernieuwen
-            </button>
+            <div className="flex gap-3">
+              <button 
+                onClick={fetchData}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+              >
+                Vernieuwen
+              </button>
+              <button 
+                onClick={triggerWebhook}
+                className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                title="Verstuur dashboard data naar n8n workflow"
+              >
+                <Webhook className="w-4 h-4" />
+                Trigger Webhook
+              </button>
+            </div>
           </div>
 
           {/* Navigation Tabs */}
