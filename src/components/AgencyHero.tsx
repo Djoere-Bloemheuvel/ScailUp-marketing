@@ -129,7 +129,7 @@ const AgencyHero = () => {
           
           {/* Animated Headline */}
           <motion.div 
-            className="mb-1"
+            className="-mb-2"
             style={{ minHeight: '160px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -140,7 +140,7 @@ const AgencyHero = () => {
 
           {/* Subtitle */}
           <motion.p 
-            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-1 xs:mb-2 sm:mb-3 md:mb-4 leading-relaxed font-light px-2 xs:px-4"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-4 xs:mb-6 sm:mb-8 md:mb-10 leading-relaxed font-light px-2 xs:px-4"
             style={{ minHeight: '80px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -205,7 +205,7 @@ const AgencyHero = () => {
 
           {/* Trust indicator */}
           <motion.p 
-            className="text-white/50 text-sm text-center mt-6"
+            className="text-white/50 text-sm text-center mt-1"
             style={{ minHeight: '20px' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
