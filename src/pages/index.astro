@@ -1,15 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ScailUpFooter from '../components/ScailUpFooter';
-import AgencyHero from '../components/AgencyHero';
-import AIAgentsSection from '../components/AIAgentsSection';
-import CustomAgentCTASection from '../components/AgencyWhatIsBuildrsSection';
-import AgencyPlatformComparisonSection from '../components/AgencyPlatformComparisonSection';
-import AgencyFAQSection from '../components/AgencyFAQSection';
-import AgencyDienstenSection from '../components/AgencyDienstenSection';
-import AppleStyleTransition from '../components/AppleStyleTransition';
-import AgencyProcessSection from '../components/AgencyProcessSection';
-import AgencyFinalCTASection from '../components/AgencyFinalCTASection';
+import ScailUpFooter from '../components/active/shared/ScailUpFooter';
+import HomeHero from '../components/active/agency/HomeHero';
+import DienstenSection from '../components/active/agency/DienstenSection';
+import UseCaseSection from '../components/active/agency/UseCaseSection';
+import FoundersSection from '../components/active/agency/CEOSection';
+import AIAgentsSection from '../components/active/agency/AIAgentsSection';
+import WhatIsBuildrsSection from '../components/active/agency/WhatIsBuildrsSection';
+import PlatformComparisonSection from '../components/active/agency/PlatformComparisonSection';
+import HomeFAQSection from '../components/active/agency/HomeFAQSection';
+import FeaturesSection from '../components/active/agency/FeaturesSection';
+import AppleStyleTransition from '../components/active/agency/AppleStyleTransition';
+import ProcessSection from '../components/active/agency/ProcessSection';
+import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 
 // Main landing page structured data (moved from agency)
 const structuredData = {
@@ -121,33 +124,42 @@ const structuredData = {
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
     <!-- Agency Hero section -->
-    <AgencyHero client:load />
+    <HomeHero client:load />
+    
+    <!-- Diensten Section -->
+    <DienstenSection client:visible />
+    
+    <!-- Use Case Section -->
+    <UseCaseSection client:visible />
+    
+    <!-- Founders Section -->
+    <FoundersSection client:visible />
     
     <!-- AI Agents Section -->
     <AIAgentsSection client:visible />
     
     <!-- What is Buildrs Section -->
-    <CustomAgentCTASection client:visible />
+    <WhatIsBuildrsSection client:visible />
     
     <!-- Apple Style Transition - Capabilities -->
     <AppleStyleTransition variant="capabilities" client:visible />
     
-    <!-- Agency Diensten Section -->
-    <AgencyDienstenSection client:visible />
+    <!-- Features Section -->
+    <FeaturesSection client:visible />
     
     <!-- Process & Development Methodology Section -->
-    <AgencyProcessSection client:visible />
+    <ProcessSection client:visible />
     
     <!-- Apple Style Transition - Platform -->
     <AppleStyleTransition variant="platform" client:visible />
     <!-- Platform Comparison Section -->
-    <AgencyPlatformComparisonSection client:visible />
+    <PlatformComparisonSection client:visible />
     
     <!-- FAQ Section -->
-    <AgencyFAQSection client:visible />
+    <HomeFAQSection client:visible />
     
     <!-- Final CTA Section -->
-    <AgencyFinalCTASection client:visible />
+    <HomeFinalCTASection client:visible />
     
     <!-- Footer -->
     <ScailUpFooter client:visible />

@@ -1,7 +1,7 @@
 ---
 // Import main CSS for styling
 import '../index.css';
-import ScailUpHeader from '../components/ScailUpHeader';
+import ScailUpHeader from '../components/legacy/ScailUpHeader';
 import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
@@ -48,6 +48,9 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
   <meta name="favicon-timestamp" content="1725192587" />
   <!-- Force favicon refresh -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  
+  <!-- Preload critical hero background image -->
+  <link rel="preload" as="image" href="/hero-bg-buildrs-8k.jpg" fetchpriority="high" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   
