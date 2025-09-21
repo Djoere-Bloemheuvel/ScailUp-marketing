@@ -1,7 +1,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import CinematicBackground from '@/components/hero/CinematicBackground';
+import CinematicBackground from '@/components/legacy/hero/CinematicBackground';
 
 const ConsultancyFinalCTA = () => {
   return (

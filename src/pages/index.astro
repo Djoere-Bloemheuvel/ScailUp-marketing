@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ScailUpFooter from '../components/active/shared/ScailUpFooter';
 import HomeHero from '../components/active/agency/HomeHero';
 import DienstenSection from '../components/active/agency/DienstenSection';
+import PlatformSection from '../components/active/agency/PlatformSection';
 import UseCaseSection from '../components/active/agency/UseCaseSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import AIAgentsSection from '../components/active/agency/AIAgentsSection';
@@ -125,6 +126,9 @@ const structuredData = {
   <main id="main-content" role="main" class="min-h-screen bg-black">
     <!-- Agency Hero section -->
     <HomeHero client:load />
+    
+    <!-- Platform Section -->
+    <PlatformSection client:visible />
     
     <!-- Diensten Section -->
     <DienstenSection client:visible />

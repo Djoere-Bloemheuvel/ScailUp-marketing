@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/legacy/Footer';
+
+// Legacy Agency Components
+import AIAutomations from '../components/legacy/AIAutomations';
+import AutonomousAIAgents from '../components/legacy/AutonomousAIAgents';
+import CTA from '../components/legacy/CTA';
+import CinematicServiceSection from '../components/legacy/CinematicServiceSection';
+import Consultancy from '../components/legacy/Consultancy';
+import CustomAISaaS from '../components/legacy/CustomAISaaS';
+import Showcase from '../components/legacy/Showcase';
+import Target from '../components/legacy/Target';
+import TechCommandCenterCTA from '../components/legacy/TechCommandCenterCTA';
+import WhyBuildrs from '../components/legacy/WhyBuildrs';
+import WhyBuildrsCards from '../components/legacy/WhyBuildrsCards';
+import WhyBuildrsMinimal from '../components/legacy/WhyBuildrsMinimal';
+import WorkMethodology from '../components/legacy/WorkMethodology';
+import Workflow from '../components/legacy/Workflow';
+
+// Legacy Hero Components
+import AppleStyleBackground from '../components/legacy/hero/AppleStyleBackground';
+import CinematicBackground from '../components/legacy/hero/CinematicBackground';
+import FloatingIcons from '../components/legacy/hero/FloatingIcons';
+
+// Legacy Shared
+import ScailUpFinalCTA from '../components/legacy/ScailUpFinalCTA';
+import ScailUpMetrics from '../components/legacy/ScailUpMetrics';
+import CasesPreview from '../components/legacy/CasesPreview';
+import ServicesGlassTabs from '../components/legacy/ServicesGlassTabs';
+import Approach from '../components/legacy/Approach';
+import ProblemStatement from '../components/legacy/ProblemStatement';
+import SocialProofStrip from '../components/legacy/SocialProofStrip';
+import SolutionsSection from '../components/legacy/SolutionsSection';
+import TransitionSection from '../components/legacy/TransitionSection';
+import WhyScailUp from '../components/legacy/WhyScailUp';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Test Agency - Legacy Components",
+  "description": "Testing page for legacy agency components"
+};
+---
+
+<Layout 
+  title="Test Agency - Legacy Components"
+  description="Testing page for legacy agency components"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <main class="min-h-screen bg-black">
+    
+    <!-- Hero Section with Background -->
+    <section class="relative min-h-screen">
+      <AppleStyleBackground client:load />
+      <CinematicBackground client:load />
+      <FloatingIcons client:visible />
+      
+      <div class="relative z-10 flex items-center justify-center min-h-screen">
+        <div class="text-center text-white px-6">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">Legacy Agency Components</h1>
+          <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+            Testing ground voor alle legacy componenten van de agency website
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Legacy Components -->
+    <ProblemStatement client:visible />
+    <SolutionsSection client:visible />
+    <ServicesGlassTabs client:visible />
+    <AIAutomations client:visible />
+    <AutonomousAIAgents client:visible />
+    <CustomAISaaS client:visible />
+    <Consultancy client:visible />
+    <CinematicServiceSection client:visible />
+    <Showcase client:visible />
+    <Target client:visible />
+    <WhyBuildrs client:visible />
+    <WhyBuildrsCards client:visible />
+    <WhyBuildrsMinimal client:visible />
+    <WhyScailUp client:visible />
+    <WorkMethodology client:visible />
+    <Workflow client:visible />
+    <Approach client:visible />
+    <ScailUpMetrics client:visible />
+    <CasesPreview client:visible />
+    <SocialProofStrip client:visible />
+    <TransitionSection client:visible />
+    <TechCommandCenterCTA client:visible />
+    <CTA client:visible />
+    <ScailUpFinalCTA client:visible />
+    
+    <!-- Footer -->
+    <Footer client:visible />
+  </main>
+
+</Layout>
