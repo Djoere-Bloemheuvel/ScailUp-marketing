@@ -1,0 +1,226 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ScailUpFooter from '../../components/active/shared/ScailUpFooter';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Automatisering voor SaaS Bedrijven - Buildrs",
+  "description": "Ontdek hoe SaaS bedrijven hun customer journey automatiseren met AI. Van lead nurturing tot customer success - optimaliseer je funnel met slimme automatisering.",
+  "url": "https://buildrs.nl/use-cases/saas"
+};
+---
+
+<Layout 
+  title="AI Automatisering voor SaaS Bedrijven | Buildrs"
+  description="Ontdek hoe SaaS bedrijven hun customer journey automatiseren met AI. Van lead nurturing tot customer success - optimaliseer je funnel met slimme automatisering."
+  keywords="SaaS automatisering, AI customer journey, lead nurturing automation, customer success AI, SaaS funnel optimalisatie, user onboarding automatisering"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <main class="min-h-screen bg-black">
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-green-900/20 to-black overflow-hidden">
+      
+      <!-- Background Effects -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-1/4 left-1/6 w-96 h-96 bg-green-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s' }} />
+        <div class="absolute bottom-1/4 right-1/6 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '14s', animationDelay: '3s' }} />
+      </div>
+      
+      <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-full mb-8 backdrop-blur-sm">
+          <span class="text-green-300 text-sm font-medium">Use Case: SaaS Companies</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-tight tracking-[-0.02em]" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif' }}>
+          Optimaliseer je <span class="bg-gradient-to-r from-green-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent font-medium">SaaS Funnel</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-12 max-w-4xl mx-auto">
+          Van lead nurturing tot customer success - automatiseer je gehele customer journey en maximaliseer retention
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg">
+            Bekijk SaaS Solutions
+          </button>
+          <button class="inline-flex items-center px-8 py-4 text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+            Download Use Case
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20 bg-black">
+      <div class="max-w-6xl mx-auto px-6">
+        
+        <!-- Problem Statement -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">De Uitdagingen van SaaS Bedrijven</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-4">Lage Conversion Rates</h3>
+              <p class="text-gray-300">Van trial naar betaalde klant is vaak een complex proces met veel drop-off punten</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-4">Churn Problemen</h3>
+              <p class="text-gray-300">Klanten die churnen voordat ze echte waarde ervaren uit het product</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-4">Manual Customer Success</h3>
+              <p class="text-gray-300">Handmatige follow-up en onboarding die niet schaalt met groei</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solutions -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">AI Oplossingen voor SaaS</h2>
+          <div class="space-y-12">
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+              <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold text-green-400 mb-4">Intelligente Lead Nurturing</h3>
+                <p class="text-gray-300 mb-6">AI agents die prospects door de funnel begeleiden op basis van gedrag en interesse</p>
+                <ul class="space-y-2 text-gray-300">
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Behavioral triggered email sequences</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Personalized product demos</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Predictive lead scoring</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Automated follow-up sequences</li>
+                </ul>
+              </div>
+              <div class="lg:w-1/2 bg-gradient-to-br from-green-900/20 to-blue-900/20 border border-green-500/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-green-400">45%</div>
+                  <div class="text-gray-300">Hogere trial-to-paid conversion</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+              <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-4">Geautomatiseerde Onboarding</h3>
+                <p class="text-gray-300 mb-6">AI-gedreven onboarding die zich aanpast aan gebruikers gedrag en voortgang</p>
+                <ul class="space-y-2 text-gray-300">
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Progressive onboarding flows</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> In-app guidance en tutorials</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Success milestone tracking</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Proactive support interventies</li>
+                </ul>
+              </div>
+              <div class="lg:w-1/2 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-blue-400">60%</div>
+                  <div class="text-gray-300">Snellere time-to-value</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+              <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold text-cyan-400 mb-4">Predictive Customer Success</h3>
+                <p class="text-gray-300 mb-6">AI die churn voorspelt en proactief ingrijpt om klanten te behouden</p>
+                <ul class="space-y-2 text-gray-300">
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Churn risk scoring</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Automated health check alerts</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Personalized retention campaigns</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Upsell opportunity detection</li>
+                </ul>
+              </div>
+              <div class="lg:w-1/2 bg-gradient-to-br from-cyan-900/20 to-green-900/20 border border-cyan-500/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-cyan-400">35%</div>
+                  <div class="text-gray-300">Reductie in churn rate</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Metrics Section -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">SaaS Metrics Impact</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gradient-to-br from-green-900/20 to-green-800/10 border border-green-500/20 rounded-2xl p-6 backdrop-blur-sm text-center">
+              <div class="text-3xl font-bold text-green-400 mb-2">↑ MRR</div>
+              <div class="text-gray-300">Monthly Recurring Revenue groei door betere conversie</div>
+            </div>
+            <div class="bg-gradient-to-br from-blue-900/20 to-blue-800/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm text-center">
+              <div class="text-3xl font-bold text-blue-400 mb-2">↓ CAC</div>
+              <div class="text-gray-300">Customer Acquisition Cost reductie</div>
+            </div>
+            <div class="bg-gradient-to-br from-cyan-900/20 to-cyan-800/10 border border-cyan-500/20 rounded-2xl p-6 backdrop-blur-sm text-center">
+              <div class="text-3xl font-bold text-cyan-400 mb-2">↑ LTV</div>
+              <div class="text-gray-300">Lifetime Value stijging door retentie</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-900/20 to-purple-800/10 border border-purple-500/20 rounded-2xl p-6 backdrop-blur-sm text-center">
+              <div class="text-3xl font-bold text-purple-400 mb-2">↓ Churn</div>
+              <div class="text-gray-300">Churn rate reductie door proactieve interventie</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROI Section -->
+        <div class="text-center bg-gradient-to-br from-green-900/10 to-blue-900/10 border border-green-500/20 rounded-3xl p-12 backdrop-blur-sm">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8">SaaS ROI Calculator</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div class="text-4xl font-bold text-green-400 mb-2">€150K+</div>
+              <div class="text-gray-300">Extra MRR per jaar</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-blue-400 mb-2">40%</div>
+              <div class="text-gray-300">Lagere customer acquisition cost</div>
+            </div>
+            <div class="border-l border-white/10 pl-8">
+              <div class="text-4xl font-bold text-cyan-400 mb-2">3 mnd</div>
+              <div class="text-gray-300">Payback period</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Case Study Preview -->
+    <section class="py-20 bg-gradient-to-br from-green-900/5 to-blue-900/5">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-light text-white mb-6">Success Story</h2>
+        <div class="bg-gradient-to-br from-white/5 to-white/10 border border-white/20 rounded-3xl p-8 backdrop-blur-sm">
+          <blockquote class="text-xl text-gray-300 mb-6 italic">
+            "Onze trial-to-paid conversie is gestegen van 12% naar 18% binnen 3 maanden. 
+            De AI agents hebben ons geholpen om elke prospect persoonlijk te begeleiden 
+            zonder extra personeel."
+          </blockquote>
+          <div class="text-green-400 font-medium">- CEO, B2B SaaS Platform (€5M ARR)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-black via-green-900/10 to-black">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-3xl md:text-4xl font-light text-white mb-6">Ready to optimize your SaaS funnel?</h2>
+        <p class="text-xl text-gray-300 mb-8">Zie hoe andere SaaS bedrijven hun metrics hebben verbeterd met AI automatisering</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-medium rounded-full hover:scale-[1.02] transition-all duration-300">
+            Plan een Demo
+          </button>
+          <button class="inline-flex items-center px-8 py-4 text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+            Download ROI Calculator
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <ScailUpFooter client:visible />
+  </main>
+
+</Layout>

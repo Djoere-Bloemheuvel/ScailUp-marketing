@@ -1,0 +1,269 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ScailUpFooter from '../../components/active/shared/ScailUpFooter';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AI Automatisering voor Consultants - Buildrs",
+  "description": "Ontdek hoe consultants hun practice automatiseren met AI. Van business development tot client delivery - schaal je consultancy met slimme automatisering.",
+  "url": "https://buildrs.nl/use-cases/consultants"
+};
+---
+
+<Layout 
+  title="AI Automatisering voor Consultants | Buildrs"
+  description="Ontdek hoe consultants hun practice automatiseren met AI. Van business development tot client delivery - schaal je consultancy met slimme automatisering."
+  keywords="consultant automatisering, AI consultancy tools, business development automation, proposal generator AI, consultant productivity, consultancy schalen"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <main class="min-h-screen bg-black">
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-900/20 to-black overflow-hidden">
+      
+      <!-- Background Effects -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-1/4 left-1/6 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
+        <div class="absolute bottom-1/4 right-1/6 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '16s', animationDelay: '4s' }} />
+      </div>
+      
+      <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full mb-8 backdrop-blur-sm">
+          <span class="text-purple-300 text-sm font-medium">Use Case: Consultants</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-tight tracking-[-0.02em]" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif' }}>
+          Schaal je <span class="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent font-medium">Consultancy Practice</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-12 max-w-4xl mx-auto">
+          Van business development tot client delivery - automatiseer je workflows en focus op high-value strategy werk
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-600 text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg">
+            Bekijk Consultant Solutions
+          </button>
+          <button class="inline-flex items-center px-8 py-4 text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+            Download Use Case
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20 bg-black">
+      <div class="max-w-6xl mx-auto px-6">
+        
+        <!-- Problem Statement -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">De Uitdagingen van Consultants</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-4">Feast or Famine Cyclus</h3>
+              <p class="text-gray-300">Constant switchen tussen business development en client delivery werk</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-4">Administratieve Overhead</h3>
+              <p class="text-gray-300">Veel tijd besteed aan proposals, rapportages en admin in plaats van strategy</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-4">Beperkte Schaalbaarheid</h3>
+              <p class="text-gray-300">Tijd-voor-geld model maakt het moeilijk om exponentieel te groeien</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solutions -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">AI Oplossingen voor Consultants</h2>
+          <div class="space-y-12">
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+              <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold text-purple-400 mb-4">Automatische Business Development</h3>
+                <p class="text-gray-300 mb-6">AI agents die continue prospects identificeren en kwalificeren terwijl jij client werk doet</p>
+                <ul class="space-y-2 text-gray-300">
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> LinkedIn prospecting automation</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Company research en insights</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Personalized outreach sequences</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Meeting scheduling automation</li>
+                </ul>
+              </div>
+              <div class="lg:w-1/2 bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-purple-500/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-purple-400">3x</div>
+                  <div class="text-gray-300">Meer qualified meetings per maand</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+              <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold text-pink-400 mb-4">AI Proposal Generator</h3>
+                <p class="text-gray-300 mb-6">Genereer professionele proposals op basis van client requirements en je expertise</p>
+                <ul class="space-y-2 text-gray-300">
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Template-based proposal creation</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Automatic pricing calculations</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Scope of work automation</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Professional formatting</li>
+                </ul>
+              </div>
+              <div class="lg:w-1/2 bg-gradient-to-br from-pink-900/20 to-purple-900/20 border border-pink-500/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-pink-400">85%</div>
+                  <div class="text-gray-300">Sneller proposals maken</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+              <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold text-blue-400 mb-4">Client Delivery Automatisering</h3>
+                <p class="text-gray-300 mb-6">Automatiseer standaard deliverables en focus op strategic thinking</p>
+                <ul class="space-y-2 text-gray-300">
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Automated research & data collection</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Report template population</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Progress tracking dashboards</li>
+                  <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Client communication automation</li>
+                </ul>
+              </div>
+              <div class="lg:w-1/2 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-blue-400">60%</div>
+                  <div class="text-gray-300">Meer tijd voor strategy werk</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Revenue Models -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">Nieuwe Revenue Streams</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gradient-to-br from-purple-900/20 to-purple-800/10 border border-purple-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-purple-400 mb-4">💰 Productized Consulting</h3>
+              <p class="text-gray-300 mb-4">Standaardiseer je expertise in herbruikbare packages</p>
+              <ul class="space-y-2 text-gray-300 text-sm">
+                <li>• Fixed-price diagnostic tools</li>
+                <li>• Automated industry benchmarks</li>
+                <li>• Self-service assessment platforms</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-blue-900/20 to-blue-800/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-blue-400 mb-4">📈 Recurring Revenue</h3>
+              <p class="text-gray-300 mb-4">Ontwikkel ongoing monitoring en optimization services</p>
+              <ul class="space-y-2 text-gray-300 text-sm">
+                <li>• Monthly performance dashboards</li>
+                <li>• Automated alert systems</li>
+                <li>• Continuous improvement tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Time Allocation -->
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8 text-center">Time Allocation Transformation</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="bg-gradient-to-br from-red-900/20 to-red-800/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-red-400 mb-6 text-center">Voor Automatisering</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300">Admin & Proposals</span>
+                  <span class="text-red-400 font-semibold">40%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300">Business Development</span>
+                  <span class="text-red-400 font-semibold">25%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300">Client Work</span>
+                  <span class="text-red-400 font-semibold">35%</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-green-900/20 to-green-800/10 border border-green-500/20 rounded-2xl p-6 backdrop-blur-sm">
+              <h3 class="text-xl font-semibold text-green-400 mb-6 text-center">Na Automatisering</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300">Admin & Proposals</span>
+                  <span class="text-green-400 font-semibold">10%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300">Business Development</span>
+                  <span class="text-green-400 font-semibold">15%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300">High-Value Strategy</span>
+                  <span class="text-green-400 font-semibold">75%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROI Section -->
+        <div class="text-center bg-gradient-to-br from-purple-900/10 to-blue-900/10 border border-purple-500/20 rounded-3xl p-12 backdrop-blur-sm">
+          <h2 class="text-3xl md:text-4xl font-light text-white mb-8">Consultant ROI Impact</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div class="text-4xl font-bold text-purple-400 mb-2">€75K+</div>
+              <div class="text-gray-300">Extra revenue per jaar door efficiëntie</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-pink-400 mb-2">50%</div>
+              <div class="text-gray-300">Meer tijd voor high-value werk</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-blue-400 mb-2">2x</div>
+              <div class="text-gray-300">Client capacity zonder extra uren</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Case Study Preview -->
+    <section class="py-20 bg-gradient-to-br from-purple-900/5 to-blue-900/5">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-light text-white mb-6">Success Story</h2>
+        <div class="bg-gradient-to-br from-white/5 to-white/10 border border-white/20 rounded-3xl p-8 backdrop-blur-sm">
+          <blockquote class="text-xl text-gray-300 mb-6 italic">
+            "Dankzij AI automatisering heb ik mijn practice kunnen verdubbelen zonder extra uren te maken. 
+            Ik focus nu volledig op strategy work terwijl de AI agents zorgen voor een constante pipeline 
+            van gekwalificeerde prospects."
+          </blockquote>
+          <div class="text-purple-400 font-medium">- Senior Strategy Consultant, €350K jaaromzet</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-black via-purple-900/10 to-black">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-3xl md:text-4xl font-light text-white mb-6">Ready to scale your consultancy?</h2>
+        <p class="text-xl text-gray-300 mb-8">Ontdek hoe andere consultants hun practice hebben geautomatiseerd en geschaald</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-600 text-white font-medium rounded-full hover:scale-[1.02] transition-all duration-300">
+            Plan een Demo
+          </button>
+          <button class="inline-flex items-center px-8 py-4 text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+            Download Scaling Guide
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <ScailUpFooter client:visible />
+  </main>
+
+</Layout>

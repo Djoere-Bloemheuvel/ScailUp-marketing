@@ -148,7 +148,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               { 
                 icon: Zap, 
                 label: 'Workflow Automations', 
-                href: '/agents-automations',
+                href: '/agents-automations/workflows',
                 description: 'Slimme workflows en triggers'
               },
             ]

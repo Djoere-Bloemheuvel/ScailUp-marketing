@@ -231,9 +231,30 @@ const DienstenSection = () => {
                 {/* Subtle overlay for readability on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)]" style={{ transitionDelay: '200ms' }} />
                 
+                {/* Coming Soon Overlay - Only on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-purple-500/15 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] backdrop-blur-sm z-20" style={{ transitionDelay: '300ms' }} />
+                
+                {/* Premium Coming Soon Badge - Only on Hover */}
+                <div className="absolute inset-0 flex items-center justify-center z-30 opacity-0 group-hover:opacity-100 transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)]" style={{ transitionDelay: '500ms' }}>
+                  <div className="text-center bg-gradient-to-br from-black/90 via-black/80 to-black/90 backdrop-blur-xl rounded-3xl px-8 py-8 border border-pink-400/30 shadow-[0_0_60px_rgba(219,39,119,0.4)] transform scale-95 group-hover:scale-100 transition-transform duration-[800ms] ease-[cubic-bezier(0.4,0.0,0.2,1)]">
+                    <div className="mb-4">
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shadow-[0_0_30px_rgba(219,39,119,0.6)]">
+                        <Clock className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-pink-300 via-pink-200 to-white bg-clip-text text-transparent mb-3" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif' }}>
+                      Coming Soon
+                    </h3>
+                    <p className="text-pink-200/90 text-lg font-medium mb-2">Q1 2025 Release</p>
+                    <p className="text-gray-300 text-sm max-w-xs">
+                      Wordt momenteel ontwikkeld voor early access klanten
+                    </p>
+                  </div>
+                </div>
+                
                 
                 {/* Apple-Style Content Section - Always visible base state */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white bg-gradient-to-t from-black/95 via-black/70 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white bg-gradient-to-t from-black/95 via-black/70 to-transparent group-hover:opacity-20 transition-opacity duration-[800ms] ease-[cubic-bezier(0.4,0.0,0.2,1)]">
                   <div>
                     {/* Title - Always visible */}
                     <div>
