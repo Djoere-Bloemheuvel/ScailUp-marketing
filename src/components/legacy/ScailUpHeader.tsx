@@ -227,9 +227,15 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 {/* Subtle backlight glow */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-blue-400/30 to-blue-500/20 rounded-lg blur-lg -z-10 opacity-60"></div>
                 
-                <span className="text-white font-bold text-lg tracking-widest uppercase relative z-10">
-                  BUILDRS
-                </span>
+                <div className="relative z-10 flex flex-col items-start">
+                  {/* Logo text */}
+                  <span className="text-white font-black text-lg tracking-widest uppercase leading-none" style={{ fontFamily: 'SF Pro Display, system-ui, -apple-system, monospace', fontWeight: '900', letterSpacing: '0.15em' }}>
+                    BUILDRS
+                  </span>
+                  
+                  {/* Gradient bar */}
+                  <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-pink-400 rounded-full mt-0.5"></div>
+                </div>
               </button>
             </div>
 

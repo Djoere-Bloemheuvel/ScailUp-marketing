@@ -8,11 +8,10 @@ export interface Props {
   title: string;
   description?: string;
   keywords?: string;
-  showHeaderAlways?: boolean;
   structuredData?: object;
 }
 
-const { title, description, keywords, showHeaderAlways = false, structuredData } = Astro.props;
+const { title, description, keywords, structuredData } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -53,11 +52,8 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   
-  <!-- Buildrs Logo Icon -->
-  <link rel="icon" href="/logo-icon.png?v=4&bust=1737464500" />
-  <link rel="apple-touch-icon" href="/logo-icon.png?v=4&bust=1737464500" />
-  <link rel="shortcut icon" href="/logo-icon.png?v=4&bust=1737464500" />
-  <meta name="msapplication-TileImage" content="/logo-icon.png?v=4&bust=1737464500" />
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
 
   <!-- SEO Meta Tags -->
   <title>{title}</title>
@@ -90,13 +86,11 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
   {description && <meta property="og:description" content={description} />}
   <meta property="og:type" content="website" />
   <meta property="og:url" content={`https://scailup.nl${Astro.url.pathname}`} />
-  <meta property="og:image" content="https://scailup.nl/favicon-new.svg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   {description && <meta name="twitter:description" content={description} />}
-  <meta name="twitter:image" content="https://scailup.nl/favicon-new.svg" />
 
   <!-- Structured Data -->
   {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>}
@@ -382,56 +376,7 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
   <ScailUpHeader client:load showAlways={true} />
   
   <slot />
-
-  <!-- CRITICAL: Force favicon refresh in browser -->
-  <script>
-    // 🔥 AGGRESSIVE FAVICON REFRESH - Nuclear option for browser cache
-    (function forceCompleteRefresh() {
-      // Step 1: Remove ALL existing favicon links
-      const allIcons = document.querySelectorAll('link[rel*="icon"]');
-      allIcons.forEach(link => {
-        console.log('🗑️ Removing existing favicon:', link.href);
-        link.remove();
-      });
-      
-      // Step 2: Add a small delay to ensure browser processes removal
-      setTimeout(() => {
-        // Step 3: Force browser to forget favicon cache
-        const faviconPath = '/favicon-diamond-1756721743.svg';
-        const randomParam = Math.random().toString(36).substr(2, 9);
-        const timestamp = Date.now();
-        const freshUrl = `${faviconPath}?bust=${timestamp}&random=${randomParam}&v=1725192587&modern=true`;
-        
-        console.log('🔥 Adding fresh modern favicon:', freshUrl);
-        
-        // Create new favicon elements with aggressive cache busting
-        const iconLink = document.createElement('link');
-        iconLink.rel = 'icon';
-        iconLink.type = 'image/svg+xml';
-        iconLink.href = freshUrl;
-        document.head.appendChild(iconLink);
-        
-        const appleLink = document.createElement('link');
-        appleLink.rel = 'apple-touch-icon';
-        appleLink.href = freshUrl;
-        document.head.appendChild(appleLink);
-        
-        const shortcutLink = document.createElement('link');
-        shortcutLink.rel = 'shortcut icon';
-        shortcutLink.type = 'image/svg+xml';
-        shortcutLink.href = freshUrl;
-        document.head.appendChild(shortcutLink);
-        
-        console.log('✅ Diamond layers Buildrs favicon loaded!');
-        
-        // Step 4: Force a browser refresh of the favicon by manipulating it
-        setTimeout(() => {
-          iconLink.href = iconLink.href + '&force=' + Math.random();
-        }, 100);
-        
-      }, 50);
-    })();
-  </script>
+  
 
   <!-- CRITICAL: Preemptive Header Animation Fix -->
   <script>
@@ -464,9 +409,13 @@ const { title, description, keywords, showHeaderAlways = false, structuredData }
   <script>
     // Simple performance monitoring
     window.addEventListener('load', () => {
-      const navigation = performance.getEntriesByType('navigation')[0];
-      if (navigation && navigation.loadEventEnd - navigation.fetchStart > 0) {
-        console.log(`Page loaded in ${Math.round(navigation.loadEventEnd - navigation.fetchStart)}ms`);
+      const entries = performance.getEntriesByType('navigation');
+      const nav = entries && entries[0] as PerformanceNavigationTiming | undefined;
+      if (nav && typeof nav.loadEventEnd === 'number' && typeof nav.fetchStart === 'number') {
+        const durationMs = Math.round(nav.loadEventEnd - nav.fetchStart);
+        if (!Number.isNaN(durationMs) && durationMs > 0) {
+          console.log(`Page loaded in ${durationMs}ms`);
+        }
       }
     });
 

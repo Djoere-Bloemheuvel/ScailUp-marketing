@@ -3,25 +3,25 @@ import { ArrowRight } from 'lucide-react';
 
 const PlatformSection = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center py-20 bg-black">
+    <section className="relative w-full min-h-screen flex items-center justify-center py-32 bg-black">
       
       {/* Subtle Concentrated Ambient Effects */}
       <div className="absolute inset-0 z-0">
         {/* Top-Left Concentrated Cluster - Lead Engine Blue */}
-        <div className="absolute top-[5%] left-[15%] w-96 h-64 rounded-full blur-3xl opacity-85" 
+        <div className="absolute top-[15%] left-[15%] w-96 h-64 rounded-full blur-3xl opacity-85" 
              style={{ 
                background: 'radial-gradient(ellipse 400px 200px, rgba(96, 165, 250, 0.8) 0%, transparent 60%)',
                mixBlendMode: 'screen'
              }} />
         
-        <div className="absolute top-[8%] left-[12%] w-64 h-96 rounded-full blur-2xl opacity-75" 
+        <div className="absolute top-[18%] left-[12%] w-64 h-96 rounded-full blur-2xl opacity-75" 
              style={{ 
                background: 'radial-gradient(ellipse 200px 300px, rgba(96, 165, 250, 0.6) 0%, transparent 70%)',
                mixBlendMode: 'screen'
              }} />
         
         {/* Top-Right Sparse - Marketing Engine Pink */}
-        <div className="absolute top-[25%] right-[20%] w-80 h-48 rounded-full blur-3xl opacity-70" 
+        <div className="absolute top-[35%] right-[20%] w-80 h-48 rounded-full blur-3xl opacity-70" 
              style={{ 
                background: 'radial-gradient(ellipse 350px 150px, rgba(244, 114, 182, 0.7) 0%, transparent 80%)',
                mixBlendMode: 'screen'
@@ -42,7 +42,7 @@ const PlatformSection = () => {
              }} />
         
         {/* Subtle Corner Accents */}
-        <div className="absolute top-[2%] right-[8%] w-48 h-48 rounded-full blur-2xl opacity-75" 
+        <div className="absolute top-[12%] right-[8%] w-48 h-48 rounded-full blur-2xl opacity-75" 
              style={{ 
                background: 'radial-gradient(circle at 20% 80%, rgba(244, 114, 182, 0.6) 0%, transparent 70%)',
                mixBlendMode: 'screen'
@@ -87,20 +87,24 @@ const PlatformSection = () => {
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8 leading-[0.95] tracking-[-0.04em]" 
                 style={{ 
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif', 
-                  fontWeight: '100'
+                  fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif', 
+                  fontWeight: '300'
                 }}>
-              Één platform.<br />
-              <span className="text-gray-200">Eindeloze mogelijkheden.</span>
+              <div style={{ fontWeight: '300' }}>
+                Één platform.
+              </div>
+              <div style={{ fontWeight: '400' }}>
+                Eindeloze mogelijkheden.
+              </div>
             </h1>
             
             <p className="text-2xl md:text-3xl text-gray-300 font-light leading-relaxed mb-12 max-w-4xl mx-auto tracking-[-0.02em]" 
                style={{ 
-                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                 fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                  fontWeight: '200' 
                }}>
-              Buildrs verenigt sales, marketing en automatisering<br />
-              in een AI-hub die je business slimmer en schaalbaarder maakt.
+              Vandaag brengen we AI, Sales en Marketing samen in één platform.<br />
+              <span style={{ fontWeight: '400', color: '#ffffff', fontSize: '1.05em' }}>Morgen bouwen we verder met jou.</span>
             </p>
 
             {/* Premium CTA */}

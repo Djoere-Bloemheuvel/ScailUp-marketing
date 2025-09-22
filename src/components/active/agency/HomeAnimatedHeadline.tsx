@@ -1,109 +1,54 @@
-import { useEffect, useState } from 'react';
-
 const HomeAnimatedHeadline = () => {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [isGlitching, setIsGlitching] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
-
-  const words = ['agents', 'automations', 'integraties', 'oplossingen'];
-
-  useEffect(() => {
-    if (animationComplete) return;
-
-    const sequence = async () => {
-      // Snellere entrance animatie (~0.34 seconden - 15% eerder)
-      await new Promise(resolve => setTimeout(resolve, 340));
-
-      // Nu pas starten met de woord cycling animatie
-      for (let i = 0; i < words.length; i++) {
-        if (i > 0) {
-          // Snelle glitch-animatie tussen woorden
-          setIsGlitching(true);
-          await new Promise(resolve => setTimeout(resolve, 100));
-          setIsGlitching(false);
-        }
-
-        // Toon het nieuwe woord
-        setCurrentWordIndex(i);
-
-        // Snellere overgang naar volgende woord (15% eerder voor oplossingen)
-        if (i < words.length - 1) {
-          const delay = i === words.length - 2 ? 212 : 250; // 15% korter voor de laatste overgang naar 'oplossingen'
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
-      }
-
-      setAnimationComplete(true);
-    };
-
-    sequence();
-  }, []);
-
   return (
-    <div className="relative px-2 sm:px-4">
-      <h1 className="font-bold tracking-[-0.03em] leading-[0.85] sm:leading-[0.9] text-center antialiased" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif', fontVariant: 'normal', fontFeatureSettings: '"kern" 1, "liga" 1, "calt" 1' }}>
-        <div className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-semibold tracking-[-0.025em] antialiased" style={{ textRendering: 'optimizeLegibility', WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
-          <span className="whitespace-nowrap font-semibold">AI-</span><span className="relative inline-block">
-            <span
-              className={`relative z-20 transition-opacity duration-75 ${
-                isGlitching ? 'opacity-0' : 'opacity-100'
-              }`}
-            >
-              {words[currentWordIndex]}
-            </span>
+    <div className="relative px-4 sm:px-6 max-w-5xl mx-auto">
+      <div className="text-left" style={{ 
+        '@media (min-width: 1680px)': { 
+          marginLeft: '-2rem' 
+        }
+      }}>
+        <style jsx>{`
+          @media (min-width: 1680px) {
+            .title-container {
+              margin-left: -2rem;
+            }
+          }
+          @media (min-width: 1920px) {
+            .title-container {
+              margin-left: -3rem;
+            }
+          }
+          @media (min-width: 2560px) {
+            .title-container {
+              margin-left: -4rem;
+            }
+          }
+        `}</style>
+        <div className="title-container">
+        
+        {/* Main Headline - Clean Typography */}
+        <h1 
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white"
+          style={{ 
+            fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+            fontWeight: '300',
+            letterSpacing: '-0.045em',
+            lineHeight: '0.9',
+            textRendering: 'optimizeLegibility', 
+            WebkitFontSmoothing: 'antialiased'
+          }}
+        >
+          <div className="space-y-2 sm:space-y-3">
+            <div style={{ fontWeight: '300' }}>
+              Wij bouwen de systemen
+            </div>
+            <div style={{ fontWeight: '400' }}>
+              achter jouw groei.
+            </div>
+          </div>
+        </h1>
 
-            {/* Glitch Layers */}
-            {isGlitching && (
-              <>
-                {/* RGB Split Layers */}
-                <span
-                  className="absolute top-0 left-0 z-10 text-red-500 glitch-rgb-red"
-                  style={{
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                  }}
-                >
-                  {words[currentWordIndex]}
-                </span>
-
-                <span
-                  className="absolute top-0 left-0 z-10 text-green-500 glitch-rgb-green"
-                  style={{
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                  }}
-                >
-                  {words[currentWordIndex]}
-                </span>
-
-                <span
-                  className="absolute top-0 left-0 z-10 text-blue-500 glitch-rgb-blue"
-                  style={{
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                  }}
-                >
-                  {words[currentWordIndex]}
-                </span>
-
-                {/* Slice Layers */}
-                <span
-                  className="absolute top-0 left-0 z-15 text-white glitch-slice-1"
-                >
-                  {words[currentWordIndex]}
-                </span>
-
-                <span
-                  className="absolute top-0 left-0 z-15 text-white glitch-slice-2"
-                >
-                  {words[currentWordIndex]}
-                </span>
-
-                {/* Scanline effect */}
-                <div className="absolute inset-0 z-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-60 h-1 glitch-scanline"></div>
-              </>
-            )}
-          </span>
- <span className="font-semibold"> die werken.</span>
         </div>
-      </h1>
+      </div>
     </div>
   );
 };

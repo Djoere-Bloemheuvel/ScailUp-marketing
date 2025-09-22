@@ -200,7 +200,7 @@ const HomeHero = () => {
       />
         
       {/* Content Container - Responsive positioning above BUILDRS logo */}
-      <div className="relative max-w-6xl mx-auto z-30 text-center px-4 content-container">
+      <div className="relative max-w-6xl mx-auto z-30 text-center px-4 content-container" style={{ marginTop: '-13vh' }}>
         <motion.div 
           className="max-w-5xl mx-auto relative"
           style={{ minHeight: '280px' }}
@@ -225,30 +225,37 @@ const HomeHero = () => {
             <HomeAnimatedHeadline />
           </motion.div>
 
-          {/* Subtitle - Direct aansluiting */}
-          <motion.p 
-            className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl mb-4 leading-relaxed font-light px-2 xs:px-4 mt-2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-          >
-            <span className="bg-gradient-to-r from-premium-silver/90 via-white to-premium-silver/90 bg-clip-text text-transparent">
-              AI-agents die jouw business écht vooruithelpen.
-            </span>
-          </motion.p>
 
           {/* Redesigned CTA Section */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-start items-start mt-4 sm:mt-6 md:mt-8"
             style={{ minHeight: '100px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
           >
+            <style jsx>{`
+              @media (min-width: 1680px) {
+                .cta-container {
+                  margin-left: -2rem;
+                }
+              }
+              @media (min-width: 1920px) {
+                .cta-container {
+                  margin-left: -3rem;
+                }
+              }
+              @media (min-width: 2560px) {
+                .cta-container {
+                  margin-left: -4rem;
+                }
+              }
+            `}</style>
+            <div className="cta-container px-4 sm:px-6 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-start items-start w-full">
             {/* Primary CTA - Modern floating design */}
             <div className="relative group">
               {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 scale-110" style={{ background: 'linear-gradient(to right, #0066FF, #FF2E7E)' }}></div>
+              <div className="absolute inset-0 rounded-full blur-lg opacity-25 group-hover:opacity-40 transition-opacity duration-300 scale-105" style={{ background: 'linear-gradient(to right, #0066FF, #FF2E7E)' }}></div>
               
               <button
                 onClick={() => {
@@ -256,11 +263,11 @@ const HomeHero = () => {
                     window.location.href = '/contact';
                   }
                 }}
-                className="relative inline-flex items-center px-8 py-3 text-white font-medium rounded-full hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg border-0 w-full xs:w-auto"
+                className="relative inline-flex items-center px-8 py-3 text-white font-medium rounded-full hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg w-full xs:w-auto"
                 style={{ 
                   background: 'linear-gradient(to right, rgba(0, 102, 255, 0.2), rgba(255, 46, 126, 0.2))',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  boxShadow: '0 20px 40px -10px rgba(0, 102, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)' 
+                  boxShadow: '0 20px 40px -10px rgba(0, 102, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2)' 
                 }}
               >
                 <span className="mr-3">Ontdek de mogelijkheden</span>
@@ -282,6 +289,7 @@ const HomeHero = () => {
                 <span className="mr-3">Bekijk voorbeelden</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
+            </div>
             </div>
           </motion.div>
 

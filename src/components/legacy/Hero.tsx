@@ -19,7 +19,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden" style={{ alignItems: 'flex-start', paddingTop: '25vh' }}>
+    <section className="relative min-h-[90vh] lg:min-h-[100vh] flex items-center justify-center px-4 py-12 bg-black overflow-hidden" style={{ alignItems: 'flex-start', paddingTop: '45vh' }}>
       {/* Responsive Video Background - Optimized for Different Screen Sizes */}
       <div className="absolute inset-0 opacity-90">
         <video
