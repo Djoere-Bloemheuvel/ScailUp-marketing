@@ -133,7 +133,7 @@ const Hero = () => {
               </span>
             </Button>
 
-            <div className="relative group">
+            <div className="relative group w-full sm:w-80">
               <div 
                 className="absolute inset-0 rounded-full transition-all duration-300 group-hover:scale-[1.03]"
                 style={{
@@ -145,13 +145,12 @@ const Hero = () => {
               </div>
               <Button
                 variant="outline"
-                className="group relative apple-button-hover px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full transition-all duration-300 overflow-hidden w-full sm:w-72 border-0 hover:scale-[1.03]"
+                className="group relative apple-button-hover px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-lg sm:text-xl font-semibold rounded-full transition-all duration-300 overflow-hidden w-full sm:w-80 border-0 hover:scale-[1.03]"
                 style={{
                   background: 'rgba(0, 0, 0, 0.85)',
                   backdropFilter: 'blur(20px)',
                   color: '#ffffff',
-                  boxShadow: '0 4px 24px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(59, 130, 246, 0.1)',
-                  margin: '2px'
+                  boxShadow: '0 4px 24px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 20px rgba(59, 130, 246, 0.1)'
                 }}
               onClick={handleDeepDiveClick}
               data-contact-trigger="true"

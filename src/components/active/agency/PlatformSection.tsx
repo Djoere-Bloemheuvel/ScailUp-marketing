@@ -5,6 +5,18 @@ const PlatformSection = () => {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center py-32 bg-black">
       
+      {/* CSS Fallback Styles */}
+      <style>{`
+        .platform-dashboard-fallback {
+          background-image: url(/platform-dashboard-fullwidth.png);
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          filter: brightness(0.75) contrast(1.15) blur(0.5px);
+          opacity: 0.6;
+        }
+      `}</style>
+      
       {/* Subtle Concentrated Ambient Effects */}
       <div className="absolute inset-0 z-0">
         {/* Top-Left Concentrated Cluster - Lead Engine Blue */}
@@ -68,15 +80,32 @@ const PlatformSection = () => {
           <img 
             src="/platform-dashboard-fullwidth.png" 
             alt="Buildrs AI Platform Dashboard"
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-60 platform-dashboard-img"
+            width="1920"
+            height="1080"
+            loading="lazy"
+            fetchPriority="low"
+            onError={(e) => {
+              // Fallback to CSS background on error
+              e.currentTarget.style.display = 'none';
+              const fallback = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement;
+              if (fallback) fallback.style.display = 'block';
+            }}
             style={{
               filter: 'brightness(0.75) contrast(1.15) blur(0.5px)',
-              imageRendering: 'high-quality'
+              imageRendering: 'high-quality',
+              transform: 'translateZ(0)'
             }}
           />
           
           {/* Premium overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/20" />
+          
+          {/* CSS Background Fallback */}
+          <div 
+            className="absolute inset-0 platform-dashboard-fallback"
+            style={{ display: 'none' }}
+          />
         </div>
 
         {/* Content overlay */}

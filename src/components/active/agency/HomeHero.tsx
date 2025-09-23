@@ -26,6 +26,132 @@ const HomeHero = () => {
   };
 
   return (
+    <>
+      <style jsx>{`
+        /* Fijnere CTA responsive scaling voor <12 inch schermen */
+        .cta-responsive {
+          font-size: 0.875rem; /* text-sm */
+          padding: 0.5rem 1rem; /* py-2 px-4 */
+        }
+        
+        @media (min-width: 640px) {
+          .cta-responsive {
+            font-size: 0.875rem; /* blijft text-sm */
+            padding: 0.5rem 1rem; /* py-2 px-4 */
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .cta-responsive {
+            font-size: 0.875rem; /* blijft klein bij kleine title */
+            padding: 0.5rem 1.125rem; /* py-2 px-4.5 */
+          }
+        }
+        
+        @media (min-width: 900px) {
+          .cta-responsive {
+            font-size: 0.95rem; /* tussen sm en base */
+            padding: 0.625rem 1.25rem; /* py-2.5 px-5 */
+          }
+        }
+        
+        @media (min-width: 1000px) {
+          .cta-responsive {
+            font-size: 1rem; /* text-base */
+            padding: 0.625rem 1.375rem; /* py-2.5 px-5.5 */
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .cta-responsive {
+            font-size: 1.05rem; /* tussen base en lg */
+            padding: 0.625rem 1.5rem; /* py-2.5 px-6 */
+          }
+        }
+        
+        @media (min-width: 1200px) {
+          .cta-responsive {
+            font-size: 1.125rem; /* text-lg - desktop */
+            padding: 0.75rem 2rem; /* py-3 px-8 */
+          }
+        }
+        
+        /* Icon responsive scaling */
+        .icon-responsive {
+          width: 0.75rem; /* w-3 */
+          height: 0.75rem; /* h-3 */
+        }
+        
+        @media (min-width: 640px) {
+          .icon-responsive {
+            width: 0.75rem; /* blijft w-3 */
+            height: 0.75rem; /* h-3 */
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .icon-responsive {
+            width: 0.875rem; /* tussen w-3 en w-4 */
+            height: 0.875rem;
+          }
+        }
+        
+        @media (min-width: 900px) {
+          .icon-responsive {
+            width: 1rem; /* w-4 */
+            height: 1rem; /* h-4 */
+          }
+        }
+        
+        @media (min-width: 1000px) {
+          .icon-responsive {
+            width: 1.125rem; /* tussen w-4 en w-5 */
+            height: 1.125rem;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .icon-responsive {
+            width: 1.25rem; /* w-5 */
+            height: 1.25rem; /* h-5 */
+          }
+        }
+        
+        /* Text margin responsive scaling */
+        .text-margin-responsive {
+          margin-right: 0.25rem; /* mr-1 */
+        }
+        
+        @media (min-width: 640px) {
+          .text-margin-responsive {
+            margin-right: 0.25rem; /* mr-1 */
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .text-margin-responsive {
+            margin-right: 0.375rem; /* tussen mr-1 en mr-2 */
+          }
+        }
+        
+        @media (min-width: 900px) {
+          .text-margin-responsive {
+            margin-right: 0.5rem; /* mr-2 */
+          }
+        }
+        
+        @media (min-width: 1000px) {
+          .text-margin-responsive {
+            margin-right: 0.625rem; /* tussen mr-2 en mr-3 */
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .text-margin-responsive {
+            margin-right: 0.75rem; /* mr-3 */
+          }
+        }
+      `}</style>
     <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
       {/* Hero Background Image - Primary IMG with CSS fallback */}
@@ -133,12 +259,21 @@ const HomeHero = () => {
         
         /* Responsive content positioning */
         .content-container {
-          margin-top: 0vh;
+          margin-top: 5vh;
+          padding-top: 2rem;
+        }
+        
+        @media (min-width: 640px) {
+          .content-container {
+            margin-top: 0vh;
+            padding-top: 1rem;
+          }
         }
         
         @media (min-width: 768px) {
           .content-container {
             margin-top: -5vh;
+            padding-top: 0;
           }
         }
         
@@ -200,7 +335,7 @@ const HomeHero = () => {
       />
         
       {/* Content Container - Responsive positioning above BUILDRS logo */}
-      <div className="relative max-w-6xl mx-auto z-30 text-center px-4 content-container" style={{ marginTop: '-13vh' }}>
+      <div className="relative max-w-6xl mx-auto z-30 text-center px-6 sm:px-4 content-container" style={{ marginTop: '-13vh' }}>
         <motion.div 
           className="max-w-5xl mx-auto relative"
           style={{ minHeight: '280px' }}
@@ -228,7 +363,7 @@ const HomeHero = () => {
 
           {/* Redesigned CTA Section */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-start items-start mt-4 sm:mt-6 md:mt-8"
+            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-2 sm:mt-4 md:mt-6 lg:mt-8"
             style={{ minHeight: '100px', willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -251,7 +386,7 @@ const HomeHero = () => {
                 }
               }
             `}</style>
-            <div className="cta-container px-4 sm:px-6 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-start items-start w-full">
+            <div className="cta-container px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full">
             {/* Primary CTA - Modern floating design */}
             <div className="relative group">
               {/* Glow effect */}
@@ -263,15 +398,15 @@ const HomeHero = () => {
                     window.location.href = '/contact';
                   }
                 }}
-                className="relative inline-flex items-center px-8 py-3 text-white font-medium rounded-full hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg w-full xs:w-auto"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
                 style={{ 
                   background: 'linear-gradient(to right, rgba(0, 102, 255, 0.2), rgba(255, 46, 126, 0.2))',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                   boxShadow: '0 20px 40px -10px rgba(0, 102, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2)' 
                 }}
               >
-                <span className="mr-3">Ontdek de mogelijkheden</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <span className="text-margin-responsive">Ontdek de mogelijkheden</span>
+                <ArrowRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
 
@@ -279,15 +414,15 @@ const HomeHero = () => {
             <div className="relative group">
               <button
                 onClick={handleCasesClick}
-                className="relative inline-flex items-center px-8 py-3 text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:shadow-xl hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-lg w-full xs:w-auto"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:shadow-xl hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
                 style={{ 
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                   background: 'rgba(255, 255, 255, 0.05)',
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
                 }}
               >
-                <span className="mr-3">Bekijk voorbeelden</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <span className="text-margin-responsive">Bekijk voorbeelden</span>
+                <ChevronRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
             </div>
@@ -308,6 +443,7 @@ const HomeHero = () => {
       </div>
         
     </section>
+    </>
   );
 };
 

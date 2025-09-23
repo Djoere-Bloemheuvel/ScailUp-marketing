@@ -5,6 +5,7 @@ import HomeHero from '../components/active/agency/HomeHero';
 import DienstenSection from '../components/active/agency/DienstenSection';
 import PlatformSection from '../components/active/agency/PlatformSection';
 import UseCaseSection from '../components/active/agency/UseCaseSection';
+import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import AIAgentsSection from '../components/active/agency/AIAgentsSection';
 import WhatIsBuildrsSection from '../components/active/agency/WhatIsBuildrsSection';
@@ -14,6 +15,7 @@ import FeaturesSection from '../components/active/agency/FeaturesSection';
 import AppleStyleTransition from '../components/active/agency/AppleStyleTransition';
 import ProcessSection from '../components/active/agency/ProcessSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
+import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
 
 // Main landing page structured data (moved from agency)
 const structuredData = {
@@ -135,6 +137,12 @@ const structuredData = {
     
     <!-- Use Case Section -->
     <UseCaseSection client:visible />
+    
+    <!-- Partnership Section -->
+    <PartnershipSection client:load />
+    
+    <!-- Integrations Showcase -->
+    <IntegrationsShowcase client:visible />
     
     <!-- Founders Section -->
     <FoundersSection client:visible />

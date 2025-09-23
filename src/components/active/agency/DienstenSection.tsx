@@ -4,6 +4,31 @@ import { ArrowRight, Play, Zap, Target, Clock, Users, Briefcase, Sparkles, Trend
 const DienstenSection = () => {
   return (
     <>
+      {/* CSS Fallback Styles */}
+      <style>{`
+        .lead-engine-fallback {
+          background-image: url(/lead-engine-portrait.png);
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+        
+        .agents-automations-fallback {
+          background-image: url(/marketing_engine_backup_image.png);
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+        
+        .marketing-engine-fallback {
+          background-image: url(/marketing-engine-tree-2k.png);
+          background-size: cover;
+          background-position: 30% center;
+          background-repeat: no-repeat;
+          transform: scale(1.1);
+        }
+      `}</style>
+      
       <section className="relative w-full bg-black py-20 lg:py-28">
 
         {/* Subtle fade to black at top */}
@@ -14,33 +39,53 @@ const DienstenSection = () => {
           }}
         />
 
-        {/* Subtle Ambient Lights - Service Colors */}
-        <div className="absolute inset-0 overflow-hidden opacity-30 group-hover:opacity-40 transition-opacity duration-1000 ease-out z-0">
-          {/* Lead Engine Blue - left portrait area */}
-          <div className="absolute top-[18%] left-[8%] w-80 h-96 bg-blue-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '11.8s', animationDelay: '2.1s' }} />
+        {/* Balanced Lead Engine & Marketing Engine Ambient Lighting */}
+        <div className="absolute inset-0 overflow-hidden z-0 opacity-45">
+          {/* Lead Engine blue glows (left side) */}
+          <div className="absolute top-1/4 left-1/5 w-[40rem] h-[35rem] bg-gradient-radial from-blue-500/30 via-blue-500/15 to-transparent blur-3xl" />
+          <div className="absolute bottom-1/3 left-1/8 w-[35rem] h-[30rem] bg-gradient-radial from-blue-500/25 via-blue-500/10 to-transparent blur-3xl" />
           
-          {/* Agents & Automations Purple - middle area */}
-          <div className="absolute bottom-[31%] left-[45%] w-72 h-80 bg-purple-400/25 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '14.3s', animationDelay: '5.7s' }} />
+          {/* Marketing Engine pink glows (right side) - Enhanced 3D wrap effect */}
+          <div className="absolute top-1/3 right-1/5 w-[40rem] h-[35rem] bg-gradient-radial from-pink-500/28 via-pink-500/14 to-transparent blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/8 w-[37rem] h-[32rem] bg-gradient-radial from-pink-500/26 via-pink-500/12 to-transparent blur-3xl" />
           
-          {/* Marketing Engine Pink - right area */}
-          <div className="absolute top-[67%] right-[12%] w-64 h-72 bg-pink-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '9.7s', animationDelay: '8.4s' }} />
+          {/* Additional wrap-around glows for 3D effect behind Marketing Engine */}
+          <div className="absolute top-[40%] right-[2%] w-[25rem] h-[40rem] bg-gradient-radial from-pink-500/20 via-pink-500/8 to-transparent blur-3xl" />
+          <div className="absolute top-[25%] right-[8%] w-[30rem] h-[25rem] bg-gradient-radial from-pink-500/18 via-pink-500/6 to-transparent blur-3xl" />
+          <div className="absolute bottom-[15%] right-[5%] w-[28rem] h-[30rem] bg-gradient-radial from-pink-500/22 via-pink-500/9 to-transparent blur-3xl" />
           
-          {/* Subtle blue accent */}
-          <div className="absolute bottom-[23%] left-[28%] w-56 h-64 bg-blue-300/18 rounded-full blur-3xl" />
+          {/* Balanced headline backlighting */}
+          <div className="absolute top-[32%] left-1/2 transform -translate-x-1/2 w-[45rem] h-[25rem] bg-gradient-radial from-blue-500/18 via-blue-500/8 to-transparent blur-3xl" />
           
-          {/* Subtle pink background */}
-          <div className="absolute top-[41%] right-[35%] w-60 h-68 bg-pink-300/15 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7.2s', animationDelay: '3.3s' }} />
+          {/* Service card balanced accents */}
+          <div className="absolute top-[50%] left-[12%] w-[22rem] h-[25rem] bg-gradient-radial from-blue-500/22 via-blue-500/10 to-transparent blur-3xl" />
+          <div className="absolute top-[50%] right-[12%] w-[22rem] h-[25rem] bg-gradient-radial from-pink-500/22 via-pink-500/10 to-transparent blur-3xl" />
+          
+          {/* Center middle service subtle glow */}
+          <div className="absolute top-[48%] left-1/2 transform -translate-x-1/2 w-[20rem] h-[22rem] bg-gradient-radial from-blue-500/15 via-pink-500/8 to-transparent blur-3xl" />
         </div>
 
         {/* Header Section */}
-        <div className="relative text-center mb-16 lg:mb-20 z-10">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight tracking-[-0.02em]" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif' }}>
-              Kies Jouw <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">AI-Engine</span>
+        <div className="relative text-left mb-8 lg:mb-12 z-10">
+          {/* Subtle glow behind headline */}
+          <div className="absolute top-1/2 left-1/4 w-32 h-20 bg-blue-400 rounded-full blur-3xl opacity-5 transform -translate-y-1/2" />
+          <div className="absolute top-1/2 right-1/3 w-24 h-16 bg-pink-400 rounded-full blur-3xl opacity-4 transform -translate-y-1/2" />
+          
+          <div className="max-w-5xl mx-auto px-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-white mb-8 leading-tight tracking-[-0.03em]" 
+                style={{ 
+                  fontFamily: '"Neue Haas Grotesk Display Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                  fontWeight: '300'
+                }}>
+              <div className="space-y-2">
+                <div style={{ fontWeight: '300' }}>
+                  Kies de AI-engine
+                </div>
+                <div style={{ fontWeight: '400', marginLeft: '2rem' }}>
+                  voor jouw platform.
+                </div>
+              </div>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
-              Van complete sales automation tot maatwerk consultancy - ontdek welke oplossing bij jouw business past
-            </p>
           </div>
         </div>
 
@@ -67,12 +112,27 @@ const DienstenSection = () => {
                   <img 
                     src="/lead-engine-portrait.png" 
                     alt="Sales Engine"
-                    className="w-full h-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] group-hover:blur-sm group-hover:brightness-75"
-                    style={{
-                      imageRendering: 'crisp-edges',
-                      willChange: 'filter, transform',
-                      transitionDelay: '100ms'
+                    className="w-full h-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] group-hover:blur-sm group-hover:brightness-75 lead-engine-img"
+                    width="800"
+                    height="1200"
+                    loading="lazy"
+                    fetchPriority="low"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'block';
                     }}
+                    style={{
+                      imageRendering: 'high-quality',
+                      willChange: 'filter, transform',
+                      transitionDelay: '100ms',
+                      transform: 'translateZ(0)'
+                    }}
+                  />
+                  {/* CSS Background Fallback */}
+                  <div 
+                    className="absolute inset-0 lead-engine-fallback"
+                    style={{ display: 'none' }}
                   />
                 </div>
                 
@@ -95,19 +155,28 @@ const DienstenSection = () => {
                       </h3>
                     </div>
                     
-                    {/* Description - Progressive reveal */}
-                    <div className="overflow-hidden transition-all duration-[800ms] delay-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] h-auto opacity-100 mt-3 lg:h-0 lg:opacity-0 lg:mt-0 lg:group-hover:h-auto lg:group-hover:opacity-100 lg:group-hover:mt-3">
-                      <p className="text-sm sm:text-base text-white/95 font-medium drop-shadow-md">
+                    {/* Description - Always visible */}
+                    <div className="mt-3">
+                      <p className="text-sm sm:text-base text-white/85 font-medium drop-shadow-md">
                         2.500+ leads per maand met 95% deliverability
                       </p>
                     </div>
                     
                     {/* Concrete Benefits - Final reveal */}
                     <div className="overflow-hidden transition-all duration-[800ms] delay-[500ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] h-auto opacity-100 mt-4 lg:h-0 lg:opacity-0 lg:mt-0 lg:group-hover:h-auto lg:group-hover:opacity-100 lg:group-hover:mt-4">
-                      <div className="space-y-2 bg-black/40 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-blue-300/20">
-                        <p className="text-xs sm:text-sm text-blue-100 font-medium">• Geautomatiseerde prospecting en enrichment</p>
-                        <p className="text-xs sm:text-sm text-blue-100 font-medium">• Enterprise-grade email infrastructure</p>
-                        <p className="text-xs sm:text-sm text-blue-100 font-medium">• 24/7 automatisch actief</p>
+                      <div className="space-y-3 bg-gradient-to-br from-black/60 via-black/50 to-black/40 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-blue-400/30 shadow-[0_8px_32px_rgba(96,165,250,0.2)]">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_rgba(96,165,250,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-blue-50 font-medium tracking-wide">Geautomatiseerde prospecting en enrichment</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_rgba(96,165,250,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-blue-50 font-medium tracking-wide">Enterprise-grade email infrastructure</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_rgba(96,165,250,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-blue-50 font-medium tracking-wide">24/7 automatisch actief</p>
+                        </div>
                       </div>
                     </div>
                     
@@ -142,13 +211,28 @@ const DienstenSection = () => {
                   <img 
                     src="/marketing_engine_backup_image.png" 
                     alt="Agents & Automations"
-                    className="w-full h-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] group-hover:blur-sm group-hover:brightness-75"
+                    className="w-full h-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] group-hover:blur-sm group-hover:brightness-75 agents-automations-img"
+                    width="800"
+                    height="1200"
+                    loading="lazy"
+                    fetchPriority="low"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'block';
+                    }}
                     style={{
-                      imageRendering: 'crisp-edges',
+                      imageRendering: 'high-quality',
                       objectPosition: 'center center',
                       willChange: 'filter, transform',
-                      transitionDelay: '100ms'
+                      transitionDelay: '100ms',
+                      transform: 'translateZ(0)'
                     }}
+                  />
+                  {/* CSS Background Fallback */}
+                  <div 
+                    className="absolute inset-0 agents-automations-fallback"
+                    style={{ display: 'none' }}
                   />
                 </div>
                 
@@ -171,19 +255,28 @@ const DienstenSection = () => {
                       </h3>
                     </div>
                     
-                    {/* Description - Progressive reveal */}
-                    <div className="overflow-hidden transition-all duration-[800ms] delay-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] h-auto opacity-100 mt-3 lg:h-0 lg:opacity-0 lg:mt-0 lg:group-hover:h-auto lg:group-hover:opacity-100 lg:group-hover:mt-3">
-                      <p className="text-sm sm:text-base text-white/95 font-medium drop-shadow-md">
+                    {/* Description - Always visible */}
+                    <div className="mt-3">
+                      <p className="text-sm sm:text-base text-white/85 font-medium drop-shadow-md">
                         €50K+ besparing per jaar, 14 dagen oplevering
                       </p>
                     </div>
                     
                     {/* Concrete Benefits - Final reveal */}
                     <div className="overflow-hidden transition-all duration-[800ms] delay-[500ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] h-auto opacity-100 mt-4 lg:h-0 lg:opacity-0 lg:mt-0 lg:group-hover:h-auto lg:group-hover:opacity-100 lg:group-hover:mt-4">
-                      <div className="space-y-2 bg-black/40 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-purple-300/20">
-                        <p className="text-xs sm:text-sm text-purple-100 font-medium">• Automatisering betaalt zichzelf binnen 3 maanden terug</p>
-                        <p className="text-xs sm:text-sm text-purple-100 font-medium">• Geen dure migraties, plug & play integratie</p>
-                        <p className="text-xs sm:text-sm text-purple-100 font-medium">• Van concept naar werkende AI-oplossing</p>
+                      <div className="space-y-3 bg-gradient-to-br from-black/60 via-black/50 to-black/40 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-purple-400/30 shadow-[0_8px_32px_rgba(168,85,247,0.2)]">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-purple-50 font-medium tracking-wide">Automatisering betaalt zichzelf binnen 3 maanden terug</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-purple-50 font-medium tracking-wide">Geen dure migraties, plug & play integratie</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-purple-50 font-medium tracking-wide">Van concept naar werkende AI-oplossing</p>
+                        </div>
                       </div>
                     </div>
                     
@@ -218,13 +311,28 @@ const DienstenSection = () => {
                   <img 
                     src="/marketing-engine-tree-2k.png" 
                     alt="Marketing Engine"
-                    className="w-full h-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] group-hover:blur-sm group-hover:brightness-75 scale-110"
+                    className="w-full h-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0.0,0.2,1)] group-hover:blur-sm group-hover:brightness-75 scale-110 marketing-engine-img"
+                    width="800"
+                    height="1200"
+                    loading="lazy"
+                    fetchPriority="low"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'block';
+                    }}
                     style={{
-                      imageRendering: 'crisp-edges',
+                      imageRendering: 'high-quality',
                       objectPosition: '30% center',
                       willChange: 'filter, transform',
-                      transitionDelay: '100ms'
+                      transitionDelay: '100ms',
+                      transform: 'translateZ(0)'
                     }}
+                  />
+                  {/* CSS Background Fallback */}
+                  <div 
+                    className="absolute inset-0 marketing-engine-fallback"
+                    style={{ display: 'none' }}
                   />
                 </div>
                 
@@ -268,19 +376,28 @@ const DienstenSection = () => {
                       </h3>
                     </div>
                     
-                    {/* Description - Progressive reveal */}
-                    <div className="overflow-hidden transition-all duration-[800ms] delay-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] h-auto opacity-100 mt-3 lg:h-0 lg:opacity-0 lg:mt-0 lg:group-hover:h-auto lg:group-hover:opacity-100 lg:group-hover:mt-3">
-                      <p className="text-sm sm:text-base text-white/95 font-medium drop-shadow-md">
+                    {/* Description - Always visible */}
+                    <div className="mt-3">
+                      <p className="text-sm sm:text-base text-white/85 font-medium drop-shadow-md">
                         10x sneller content, Q1 2025 verwacht
                       </p>
                     </div>
                     
                     {/* Concrete Benefits - Final reveal */}
                     <div className="overflow-hidden transition-all duration-[800ms] delay-[500ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] h-auto opacity-100 mt-4 lg:h-0 lg:opacity-0 lg:mt-0 lg:group-hover:h-auto lg:group-hover:opacity-100 lg:group-hover:mt-4">
-                      <div className="space-y-2 bg-black/40 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-pink-400/20">
-                        <p className="text-xs sm:text-sm text-pink-100 font-medium">• AI-gedreven content workflows en optimalisatie</p>
-                        <p className="text-xs sm:text-sm text-pink-100 font-medium">• Automatische SEO-optimalisatie en ranking boost</p>
-                        <p className="text-xs sm:text-sm text-pink-100 font-medium">• Early access voor pre-launch klanten</p>
+                      <div className="space-y-3 bg-gradient-to-br from-black/60 via-black/50 to-black/40 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-pink-400/30 shadow-[0_8px_32px_rgba(236,72,153,0.2)]">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(236,72,153,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-pink-50 font-medium tracking-wide">AI-gedreven content workflows en optimalisatie</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(236,72,153,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-pink-50 font-medium tracking-wide">Automatische SEO-optimalisatie en ranking boost</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-1.5 h-1.5 bg-pink-400 rounded-full shadow-[0_0_8px_rgba(236,72,153,0.6)]"></div>
+                          <p className="text-xs sm:text-sm text-pink-50 font-medium tracking-wide">Early access voor pre-launch klanten</p>
+                        </div>
                       </div>
                     </div>
                     
