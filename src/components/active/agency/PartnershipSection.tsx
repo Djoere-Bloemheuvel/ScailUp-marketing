@@ -8,7 +8,7 @@ const PartnershipSection = () => {
       <div className="relative w-full h-[77vh] overflow-hidden">
         
         {/* Background Visual */}
-        <div className="absolute inset-0" style={{ backgroundColor: '#1a1a1a', backgroundImage: "url('/partnership-copy-bg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center 60%', backgroundRepeat: 'no-repeat' }}>
+        <div className="absolute inset-0" style={{ backgroundColor: '#1a1a1a', backgroundImage: "url('/partnership-optimized.webp')", backgroundSize: 'cover', backgroundPosition: 'center 60%', backgroundRepeat: 'no-repeat' }}>
           <picture>
             <source type="image/webp" srcSet="/partnership-optimized.webp" />
             <img 
