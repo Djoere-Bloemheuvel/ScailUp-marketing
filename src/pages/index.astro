@@ -10,8 +10,7 @@ import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
-import ImagePerformanceManager from '../components/ImagePerformanceManager';
-import PerformanceMonitor from '../components/PerformanceMonitor';
+// Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
 const structuredData = {
@@ -122,42 +121,19 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- Performance monitoring for Core Web Vitals -->
-    <PerformanceMonitor client:load />
-    
-    <!-- Agency Hero section (always loaded, not managed by IPM) -->
+    <!-- Hero -->
     <HomeHero client:load />
 
-    <!-- Image Performance Manager - Aggressive preloading for the rest -->
-    <ImagePerformanceManager client:load>
-      
-      <!-- Platform Section -->
-      <PlatformSection client:load />
-      
-      <!-- Sales Engine Section -->
-      <SalesEngineSection client:load />
-      
-      <!-- Marketing Engine Section -->
-      <MarketingEngineSection client:load />
-      
-      <!-- Use Case Section -->
-      <UseCaseSection client:load />
-      
-      <!-- Partnership Section -->
-      <PartnershipSection client:load />
-      
-      <!-- Integrations Showcase -->
-      <IntegrationsShowcase client:load />
-      
-      <!-- Founders Section -->
-      <FoundersSection client:load />
-      
-      <!-- Final CTA Section -->
-      <HomeFinalCTASection client:load />
-      
-      <!-- Footer -->
-      <ScailUpFooter client:load />
-    </ImagePerformanceManager>
+    <!-- Sections (keep mounted once loaded) -->
+    <PlatformSection client:load />
+    <SalesEngineSection client:load />
+    <MarketingEngineSection client:load />
+    <UseCaseSection client:load />
+    <PartnershipSection client:load />
+    <IntegrationsShowcase client:load />
+    <FoundersSection client:load />
+    <HomeFinalCTASection client:load />
+    <ScailUpFooter client:load />
   </main>
 
 </Layout>
