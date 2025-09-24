@@ -1,5 +1,6 @@
 ---
-// Astro version of the Marketing Engine section with WebP + JPG fallback
+import SectionImage from '../../SectionImage.astro';
+import marketingTree from '../../../assets/marketing-tree.webp';
 ---
 
 <section class="relative w-full bg-black py-16 lg:py-20">
@@ -16,18 +17,14 @@
       <!-- Left Visual -->
       <div class="relative">
         <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source type="image/webp" srcset="/marketing-engine-tree-visual.webp" />
-            <img
-              src="/marketing-engine-tree-visual.jpg"
-              alt="Marketing Engine Tree Visual"
-              class="w-full h-[400px] lg:h-[480px] object-cover"
-              loading="eager"
-              decoding="sync"
-              fetchpriority="high"
-              style="filter: brightness(1.1) contrast(1.2) saturate(1.1); image-rendering: -webkit-optimize-contrast; transform: translateZ(0);"
-            />
-          </picture>
+          <SectionImage 
+            src={marketingTree}
+            alt="Marketing Engine Tree Visual"
+            eager={true}
+            opacity={100}
+            filter="brightness(1.1) contrast(1.2) saturate(1.1)"
+            className="w-full h-[400px] lg:h-[480px] object-cover"
+          />
           <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/10 via-transparent to-purple-500/5 opacity-60" />
           <div class="absolute inset-0 rounded-2xl border border-pink-400/20 shadow-xl shadow-pink-500/10" />
         </div>

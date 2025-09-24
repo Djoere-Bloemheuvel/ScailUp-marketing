@@ -154,40 +154,37 @@ const HomeHero = () => {
       `}</style>
     <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
-      {/* Hero Background Image - Ultra-stable instant loading */}
-      <div className="absolute inset-0 bg-black">
-        {/* INSTANT CSS Background - shows immediately */}
-        <div 
-          className="absolute inset-0 hero-background-instant"
-          style={{
-            backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 23%',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'scroll',
-            transform: 'translateZ(0)',
-            willChange: 'transform'
-          }}
-        />
-        
-        {/* High-priority IMG for better quality */}
+      {/* PERSISTENT Background Paint - Never disappears */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundColor: '#000000',
+          backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 23%',
+          backgroundRepeat: 'no-repeat',
+          contain: 'paint',
+          imageRendering: 'high-quality'
+        }}
+      >
+        {/* High-quality overlay - paint-through when loaded */}
         <img 
           src="/hero-bg-buildrs-8k.webp"
-          alt="Buildrs Hero Background"
-          className="absolute inset-0 w-full h-full object-cover hero-background-img"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          width="1920"
+          height="1080"
           style={{
             objectPosition: 'center 23%',
             imageRendering: 'high-quality',
-            transform: 'translateZ(0)',
-            willChange: 'transform'
+            opacity: '0',
+            transition: 'opacity 0.3s ease-out'
           }}
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="sync"
           onLoad={(e) => {
-            // Hide CSS background when IMG loads
-            const instant = document.querySelector('.hero-background-instant');
-            if (instant) (instant as HTMLElement).style.opacity = '0';
+            (e.target as HTMLImageElement).style.opacity = '0.9';
           }}
         />
       </div>
@@ -198,76 +195,8 @@ const HomeHero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
       </div>
       
-      {/* Responsive image positioning and CSS fallback */}
+      {/* Clean responsive content positioning */}
       <style>{`
-        /* Primary IMG element responsive positioning */
-        .hero-background-img {
-          object-position: center 23%;
-        }
-        
-        @media (min-width: 768px) {
-          .hero-background-img {
-            object-position: center 23%;
-          }
-        }
-        
-        @media (min-width: 1024px) {
-          .hero-background-img {
-            object-position: center 23%;
-          }
-        }
-        
-        @media (min-width: 1920px) {
-          .hero-background-img {
-            object-position: center 23%;
-            filter: brightness(0.95);
-          }
-        }
-        
-        @media (min-width: 2560px) {
-          .hero-background-img {
-            object-size: 50% auto;
-            object-position: center 23%;
-            filter: brightness(0.85);
-          }
-        }
-        
-        /* CSS Background Fallback Styles with aspect ratio */
-        .hero-background-fallback {
-          background-image: url(/hero-bg-buildrs-8k.webp);
-          background-size: cover;
-          background-position: center 23%;
-          background-repeat: no-repeat;
-          background-attachment: scroll;
-          aspect-ratio: 16/9;
-        }
-        
-        @media (min-width: 768px) {
-          .hero-background-fallback {
-            background-position: center 23%;
-          }
-        }
-        
-        @media (min-width: 1024px) {
-          .hero-background-fallback {
-            background-position: center 23%;
-          }
-        }
-        
-        @media (min-width: 1920px) {
-          .hero-background-fallback {
-            background-position: center 23%;
-            filter: brightness(0.95);
-          }
-        }
-        
-        @media (min-width: 2560px) {
-          .hero-background-fallback {
-            background-size: 50% auto;
-            background-position: center 23%;
-            filter: brightness(0.85);
-          }
-        }
         
         /* Responsive content positioning */
         .content-container {
@@ -327,7 +256,7 @@ const HomeHero = () => {
       `}</style>
       
       {/* Minimal accent lights to complement background */}
-      <div className="absolute inset-0 opacity-5 will-change-transform">
+      <div className="absolute inset-0 opacity-5" style={{ contain: 'paint' }}>
         {/* Very subtle accent lighting */}
         <div 
           className="absolute bottom-1/4 right-1/4 w-48 h-16 sm:w-72 sm:h-24 md:w-96 md:h-32 bg-gradient-to-l from-blue-500/20 to-cyan-500/15 rounded-lg sm:rounded-xl blur-3xl" 
@@ -376,7 +305,7 @@ const HomeHero = () => {
           {/* Redesigned CTA Section */}
           <motion.div 
             className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-2 sm:mt-4 md:mt-6 lg:mt-8"
-            style={{ minHeight: '100px', willChange: 'transform, opacity' }}
+            style={{ minHeight: '100px' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}

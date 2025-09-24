@@ -7,29 +7,40 @@ const PartnershipSection = () => {
       {/* Full-width Cinematographic Container */}
       <div className="relative w-full h-[77vh] overflow-hidden">
         
-        {/* Background Visual */}
-        <div className="absolute inset-0" style={{ backgroundColor: '#1a1a1a', backgroundImage: "url('/partnership-optimized.webp')", backgroundSize: 'cover', backgroundPosition: 'center 60%', backgroundRepeat: 'no-repeat' }}>
-          <picture>
-            <source type="image/webp" srcSet="/partnership-optimized.webp" />
-            <img 
-              src="/partnership-copy-bg.jpg" 
-              alt="Buildrs Premium Partnership"
-              className="w-full h-full object-cover"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              width="1600"
-              height="900"
-              style={{
-                filter: 'brightness(1.0) contrast(1.1)',
-                imageRendering: 'high-quality',
-                transform: 'translateZ(0)',
-                objectPosition: 'center 60%',
-                opacity: '0.9',
-                willChange: 'transform'
-              }}
-            />
-          </picture>
+        {/* PERSISTENT Background Paint - Never disappears */}
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            backgroundColor: '#1a1a1a',
+            backgroundImage: "url('/partnership-optimized.webp')",
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center 60%', 
+            backgroundRepeat: 'no-repeat',
+            contain: 'paint',
+            imageRendering: 'high-quality'
+          }}
+        >
+          {/* High-quality overlay - paint-through when loaded */}
+          <img 
+            src="/partnership-optimized.webp" 
+            alt=""
+            className="w-full h-full object-cover"
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
+            width="1600"
+            height="900"
+            style={{
+              filter: 'brightness(1.0) contrast(1.1)',
+              imageRendering: 'high-quality',
+              objectPosition: 'center 60%',
+              opacity: '0',
+              transition: 'opacity 0.3s ease-out'
+            }}
+            onLoad={(e) => {
+              (e.target as HTMLImageElement).style.opacity = '0.9';
+            }}
+          />
           
           {/* Simplified Overlay - Hero style */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />

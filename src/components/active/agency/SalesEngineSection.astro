@@ -1,6 +1,6 @@
 ---
-import { Picture } from 'astro:assets';
-import funnel from '@/assets/lead-engine-funnel-visual.jpg';
+import SectionImage from '../../SectionImage.astro';
+import funnel from '../../../assets/lead-engine-funnel-visual.jpg';
 ---
 
 <section class="relative w-full bg-black py-16 lg:py-20">
@@ -45,17 +45,12 @@ import funnel from '@/assets/lead-engine-funnel-visual.jpg';
       <!-- Right Visual -->
       <div class="relative">
         <div class="relative overflow-hidden rounded-2xl">
-          <Picture
+          <SectionImage 
             src={funnel}
-            formats={["avif","webp"]}
-            widths={[480,768,1024,1280,1536,1920]}
-            sizes="(max-width: 768px) 100vw, 1280px"
-            quality={90}
             alt="Lead Engine Funnel Visual"
-            loading="eager"
-            decoding="sync"
-            fetchpriority="high"
-            class="w-full h-[400px] lg:h-[480px] object-cover"
+            eager={true}
+            opacity={100}
+            className="w-full h-[400px] lg:h-[480px] object-cover"
           />
           <div class="absolute inset-0 bg-gradient-to-tl from-blue-500/10 via-transparent to-cyan-500/5 opacity-60" />
           <div class="absolute inset-0 rounded-2xl border border-blue-400/20 shadow-xl shadow-blue-500/10" />

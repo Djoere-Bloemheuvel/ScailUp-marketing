@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpFooter from '../components/active/shared/ScailUpFooter';
-// New Astro-first components
-import Hero from '../components/sections/Hero.astro';
+// Hero back to React for interactivity
+import HomeHero from '../components/active/agency/HomeHero';
+// Astro-first components
 import Platform from '../components/sections/Platform.astro';
-import SalesEngineSection from '../components/active/agency/SalesEngineSection.astro';
-import MarketingEngineSection from '../components/active/agency/MarketingEngineSection.astro';
+import SalesEngineSection from '../components/active/agency/SalesEngineSection';
+import MarketingEngineSection from '../components/active/agency/MarketingEngineSection';
 // React components for interactive features
 import UseCaseSection from '../components/active/agency/UseCaseSection';
 import PartnershipSection from '../components/active/agency/PartnershipSection';
@@ -81,8 +82,8 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- Server-rendered Hero with strategic React hydration -->
-    <Hero />
+    <!-- React Hero with direct hydration for interactivity -->
+    <HomeHero client:load />
 
     <!-- Server-rendered Platform section -->
     <Platform />
@@ -91,9 +92,10 @@ const structuredData = {
     <SalesEngineSection />
     <MarketingEngineSection />
 
-    <!-- Interactive React sections (hydrated when needed) -->
-    <UseCaseSection client:idle />
-    <PartnershipSection client:idle />
+    <!-- Anti-unload hydration - early sections always mounted -->
+    <UseCaseSection client:load />
+    <PartnershipSection client:load />
+    <!-- Later sections can use idle without scroll impact -->
     <IntegrationsShowcase client:idle />
     <FoundersSection client:idle />
     <HomeFinalCTASection client:idle />

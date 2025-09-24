@@ -1,0 +1,61 @@
+---
+import { Picture, getImage } from 'astro:assets';
+
+export interface Props {
+  src: ImageMetadata;
+  alt: string;
+  eager?: boolean;
+  className?: string;
+  style?: string;
+  quality?: number;
+  opacity?: number;
+  filter?: string;
+}
+
+const { 
+  src, 
+  alt, 
+  eager = false, 
+  className = "w-full h-full object-cover", 
+  style = "",
+  quality = 85,
+  opacity = 100,
+  filter = ""
+} = Astro.props;
+
+// Generate optimized background for instant paint
+const backgroundImage = await getImage({ 
+  src, 
+  format: 'webp', 
+  quality: 30, 
+  width: 800 
+});
+---
+
+<div 
+  class="absolute inset-0"
+  style={`background-image: url(${backgroundImage.src}); background-size: cover; background-position: center; background-repeat: no-repeat; contain: paint;`}
+>
+  <!-- High-quality Picture component -->
+  <Picture
+    src={src}
+    alt={alt}
+    class={className}
+    style={`${filter ? `filter: ${filter};` : ''} ${style}`}
+    formats={['avif', 'webp', 'jpg']}
+    loading={eager ? "eager" : "lazy"}
+    fetchpriority={eager ? "high" : "auto"}
+    decoding={eager ? "sync" : "async"}
+    widths={[800, 1200, 1600, 1920]}
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+    quality={quality}
+    style={`opacity: ${opacity / 100}; ${style}`}
+  />
+</div>
+
+<style>
+  /* Smooth transition from background to high-quality image */
+  [astro-image] {
+    transition: opacity 0.3s ease;
+  }
+</style>

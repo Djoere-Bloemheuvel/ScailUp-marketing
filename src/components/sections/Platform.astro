@@ -1,6 +1,6 @@
 ---
-import { Picture } from 'astro:assets';
-import platformDashboard from '../../../public/platform-dashboard-fullwidth.webp';
+import SectionImage from '../SectionImage.astro';
+import platformDashboard from '../../assets/platform-dashboard.webp';
 ---
 
 <section class="relative w-full min-h-screen flex items-center justify-center py-32 bg-black">
@@ -38,24 +38,18 @@ import platformDashboard from '../../../public/platform-dashboard-fullwidth.webp
   <div class="relative w-[90vw] h-[75vh] rounded-3xl overflow-hidden backdrop-blur-2xl border border-white/15 z-10"
     style="background: rgba(255, 255, 255, 0.06); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);">
     
-    <!-- Background image with server-rendered Picture component -->
-    <div class="absolute inset-0">
-      <Picture
-        src={platformDashboard}
-        alt="Buildrs AI Platform Dashboard"
-        class="w-full h-full object-cover opacity-60 platform-dashboard-img"
-        style="filter: brightness(0.75) contrast(1.15);"
-        formats={['webp', 'jpg']}
-        loading="eager"
-        fetchpriority="high"
-        widths={[1200, 1600, 1920]}
-        sizes="90vw"
-        quality={85}
-      />
-      
-      <!-- Premium overlay for text readability -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/20"></div>
-    </div>
+    <!-- Uniform section image with instant background paint -->
+    <SectionImage 
+      src={platformDashboard}
+      alt="Buildrs AI Platform Dashboard"
+      eager={true}
+      opacity={60}
+      filter="brightness(0.75) contrast(1.15)"
+      className="w-full h-full object-cover platform-dashboard-img"
+    />
+    
+    <!-- Premium overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/20 pointer-events-none"></div>
 
     <!-- Content overlay -->
     <div class="relative w-full h-full flex items-center justify-center z-10">
