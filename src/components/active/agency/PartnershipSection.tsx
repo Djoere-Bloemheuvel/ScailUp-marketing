@@ -9,23 +9,26 @@ const PartnershipSection = () => {
         
         {/* Background Visual */}
         <div className="absolute inset-0" style={{ backgroundColor: '#1a1a1a' }}>
-          <img 
-            src="/partnership-optimized.webp" 
-            alt="Buildrs Premium Partnership"
-            className="w-full h-full object-cover"
-            fetchPriority="high"
-            decoding="async"
-            width="1600"
-            height="900"
-            style={{
-              filter: 'brightness(1.0) contrast(1.1)',
-              imageRendering: 'high-quality',
-              transform: 'translateZ(0)',
-              objectPosition: 'center 60%',
-              opacity: '0.8',
-              willChange: 'transform'
-            }}
-          />
+          <picture>
+            <source type="image/webp" srcSet="/partnership-optimized.webp" />
+            <img 
+              src="/partnership-copy-bg.jpg" 
+              alt="Buildrs Premium Partnership"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width="1600"
+              height="900"
+              style={{
+                filter: 'brightness(1.0) contrast(1.1)',
+                imageRendering: 'high-quality',
+                transform: 'translateZ(0)',
+                objectPosition: 'center 60%',
+                opacity: '0.85',
+                willChange: 'transform'
+              }}
+            />
+          </picture>
           
           {/* Simplified Overlay - Hero style */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />

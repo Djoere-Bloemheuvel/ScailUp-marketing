@@ -24,10 +24,6 @@ const { title, description, keywords, structuredData } = Astro.props;
   
   <!-- Critical Image Preloading - Hero First -->
   <link rel="preload" href="/hero-bg-buildrs-8k.webp" as="image" fetchpriority="high" />
-  <link rel="preload" href="/platform-dashboard-fullwidth.webp" as="image" fetchpriority="high" />
-  <link rel="preload" href="/marketing-engine-tree-visual.webp" as="image" fetchpriority="high" />
-  <link rel="preload" href="/images/marketing-agency-owner.webp" as="image" fetchpriority="high" />
-  <link rel="preload" href="/lead-engine-portrait.png" as="image" fetchpriority="high" />
   
   <!-- Logo preloading for IntegrationsShowcase -->
   <link rel="preload" href="https://cdn.simpleicons.org/hubspot/FF7A59" as="image" fetchpriority="high" />
@@ -111,6 +107,9 @@ const { title, description, keywords, structuredData } = Astro.props;
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="dns-prefetch" href="https://res.cloudinary.com" />
   <link rel="dns-prefetch" href="https://api.supabase.io" />
+  <!-- Preconnect for external logo CDNs used in IntegrationsShowcase -->
+  <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
+  <link rel="preconnect" href="https://logo.clearbit.com" crossorigin />
   
   <!-- Prefetch likely next routes for faster nav (landing-only) -->
   <link rel="prefetch" href="/contact/" />

@@ -1,21 +1,10 @@
-import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const PlatformSection = () => {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center py-32 bg-black">
       
-      {/* CSS Fallback Styles */}
-      <style>{`
-        .platform-dashboard-fallback {
-          background-image: url(/platform-dashboard-fullwidth.webp);
-          background-size: cover;
-          background-position: center center;
-          background-repeat: no-repeat;
-          filter: brightness(0.75) contrast(1.15) blur(0.5px);
-          opacity: 0.6;
-        }
-      `}</style>
+      {/* Removed CSS fallback that preloaded background image unnecessarily */}
       
       {/* Subtle Concentrated Ambient Effects */}
       <div className="absolute inset-0 z-0">
@@ -84,17 +73,17 @@ const PlatformSection = () => {
             width="1920"
             height="1080"
             loading="lazy"
-            fetchpriority="high"
+            fetchPriority="low"
             decoding="async"
             onError={(e) => {
               // Fallback to CSS background on error
-              e.currentTarget.style.display = 'none';
-              const fallback = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement;
+              (e.currentTarget.style.display as any) = 'none';
+              const fallback = document.getElementById('platform-fallback');
               if (fallback) fallback.style.display = 'block';
             }}
             style={{
               filter: 'brightness(0.75) contrast(1.15)',
-              imageRendering: 'high-quality',
+              imageRendering: 'auto',
               transform: 'translateZ(0)',
               willChange: 'transform',
               backfaceVisibility: 'hidden'
@@ -104,9 +93,10 @@ const PlatformSection = () => {
           {/* Premium overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/20" />
           
-          {/* CSS Background Fallback */}
+          {/* Background fallback (only activated on error) */}
           <div 
-            className="absolute inset-0 platform-dashboard-fallback"
+            id="platform-fallback"
+            className="absolute inset-0"
             style={{ display: 'none' }}
           />
         </div>
@@ -117,7 +107,7 @@ const PlatformSection = () => {
           {/* Content Container */}
           <div className="text-center px-8 max-w-5xl">
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8 leading-[0.95] tracking-[-0.04em]" 
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8 leading-[0.95] tracking-[-0.04em]"
                 style={{ 
                   fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif', 
                   fontWeight: '300'
