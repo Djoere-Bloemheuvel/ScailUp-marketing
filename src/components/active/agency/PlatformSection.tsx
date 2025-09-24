@@ -7,7 +7,7 @@ const PlatformSection = () => {
       {/* Removed CSS fallback that preloaded background image unnecessarily */}
       
       {/* Subtle Concentrated Ambient Effects */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" style={{ contain: 'paint' }}>
         {/* Top-Left Concentrated Cluster - Lead Engine Blue */}
         <div className="absolute top-[15%] left-[15%] w-96 h-64 rounded-full blur-3xl opacity-85" 
              style={{ 
