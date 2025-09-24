@@ -3,7 +3,7 @@
 import '../index.css';
 import '../styles/integrations-animations.css';
 import '../styles/image-performance.css';
-import ScailUpHeader from '../components/legacy/ScailUpHeader';
+import ScailUpHeader from '../components/active/shared/ScailUpHeader';
 import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
@@ -112,14 +112,8 @@ const { title, description, keywords, structuredData } = Astro.props;
   <link rel="dns-prefetch" href="https://res.cloudinary.com" />
   <link rel="dns-prefetch" href="https://api.supabase.io" />
   
-  <!-- Prefetch likely next routes for faster nav -->
-  <link rel="prefetch" href="/features/" />
-  <link rel="prefetch" href="/salesengine/" />
-  <link rel="prefetch" href="/partnership/" />
-  <link rel="prefetch" href="/kenniscentrum/" />
-  <link rel="prefetch" href="/use-cases/marketing-bureau/" />
-  <link rel="prefetch" href="/use-cases/consultants/" />
-  <link rel="prefetch" href="/use-cases/saas/" />
+  <!-- Prefetch likely next routes for faster nav (landing-only) -->
+  <link rel="prefetch" href="/contact/" />
   
   <!-- Critical CSS will be inlined by Astro build process -->
   <link rel="modulepreload" href="/src/index.css" />
