@@ -116,8 +116,8 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <!-- Structured Data -->
   {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>}
 
-  <!-- Astro View Transitions for smooth page changes -->
-  <ViewTransitions />
+  <!-- View Transitions DISABLED - preventing scroll restoration conflicts -->
+  <!-- <ViewTransitions /> -->
 
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -220,8 +220,36 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <slot />
   
 
-  <!-- Minimal header visibility -->
+  <!-- AGGRESSIVE Scroll Restoration - Multiple Fallbacks -->
   <script>
+    // 1. DISABLE all automatic scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // 2. IMMEDIATE position save (before any scripts run)
+    let currentScrollY = 0;
+    const STORAGE_KEY = 'buildrs_scroll_pos';
+    
+    // Save continuously during scroll
+    let saveScrollTimeout;
+    function saveScrollPosition() {
+      clearTimeout(saveScrollTimeout);
+      saveScrollTimeout = setTimeout(() => {
+        currentScrollY = window.scrollY;
+        sessionStorage.setItem(STORAGE_KEY, currentScrollY.toString());
+      }, 16); // 60fps
+    }
+    
+    // 3. MULTIPLE save triggers
+    window.addEventListener('scroll', saveScrollPosition, { passive: true });
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem(STORAGE_KEY, window.scrollY.toString());
+    });
+    window.addEventListener('pagehide', () => {
+      sessionStorage.setItem(STORAGE_KEY, window.scrollY.toString());
+    });
+
     function handleHeaderVisibility() {
       const header = document.querySelector('header');
       if (header && window.scrollY > 100) {
@@ -230,12 +258,49 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
       }
     }
 
-    // Initialize immediately
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', handleHeaderVisibility);
-    } else {
-      handleHeaderVisibility();
+    // 4. AGGRESSIVE restoration with multiple attempts
+    function restoreScrollPosition() {
+      const savedPosition = sessionStorage.getItem(STORAGE_KEY);
+      if (savedPosition && savedPosition !== '0') {
+        const position = parseInt(savedPosition, 10);
+        
+        // Immediate attempt
+        window.scrollTo(0, position);
+        
+        // Retry after hydration
+        setTimeout(() => {
+          window.scrollTo(0, position);
+          handleHeaderVisibility();
+        }, 100);
+        
+        // Final retry after all React components mount
+        setTimeout(() => {
+          window.scrollTo(0, position);
+          handleHeaderVisibility();
+        }, 500);
+        
+        // Emergency retry for slow connections
+        setTimeout(() => {
+          if (Math.abs(window.scrollY - position) > 50) {
+            window.scrollTo(0, position);
+            handleHeaderVisibility();
+          }
+        }, 1000);
+      } else {
+        handleHeaderVisibility();
+      }
     }
+
+    // 5. IMMEDIATE execution - don't wait for DOMContentLoaded
+    restoreScrollPosition();
+    
+    // Also try when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restoreScrollPosition);
+    }
+    
+    // And when everything is loaded
+    window.addEventListener('load', restoreScrollPosition);
   </script>
 </body>
 </html>

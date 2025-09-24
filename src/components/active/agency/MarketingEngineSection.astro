@@ -3,7 +3,7 @@ import SectionImage from '../../SectionImage.astro';
 import marketingTree from '../../../assets/marketing-tree.webp';
 ---
 
-<section class="relative w-full bg-black py-16 lg:py-20">
+<section class="relative w-full bg-black py-2 lg:py-3">
   <!-- Ambient Pink Backlight -->
   <div class="absolute inset-0 overflow-hidden z-0 opacity-30" style="contain: paint;">
     <div class="absolute top-1/3 right-1/6 w-[30rem] h-[25rem] bg-gradient-radial from-pink-500/80 via-pink-500/35 to-transparent blur-2xl" />
@@ -13,17 +13,17 @@ import marketingTree from '../../../assets/marketing-tree.webp';
 
   <!-- Split Layout Container -->
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[70vh]">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-[70vh]">
       <!-- Left Visual -->
       <div class="relative">
-        <div class="relative overflow-hidden rounded-2xl">
+        <div class="relative overflow-hidden rounded-2xl h-[400px] lg:h-[480px]">
           <SectionImage 
             src={marketingTree}
             alt="Marketing Engine Tree Visual"
             eager={true}
             opacity={100}
             filter="brightness(1.1) contrast(1.2) saturate(1.1)"
-            className="w-full h-[400px] lg:h-[480px] object-cover"
+            className="w-full h-full object-cover"
           />
           <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/10 via-transparent to-purple-500/5 opacity-60" />
           <div class="absolute inset-0 rounded-2xl border border-pink-400/20 shadow-xl shadow-pink-500/10" />

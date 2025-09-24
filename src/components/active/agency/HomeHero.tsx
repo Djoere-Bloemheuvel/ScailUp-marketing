@@ -152,7 +152,7 @@ const HomeHero = () => {
           }
         }
       `}</style>
-    <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
+    <section className="relative w-full h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
       {/* PERSISTENT Background Paint - Never disappears */}
       <div 

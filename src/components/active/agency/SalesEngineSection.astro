@@ -3,7 +3,7 @@ import SectionImage from '../../SectionImage.astro';
 import funnel from '../../../assets/lead-engine-funnel-visual.jpg';
 ---
 
-<section class="relative w-full bg-black py-16 lg:py-20">
+<section class="relative w-full bg-black py-2 lg:py-3">
   <!-- Ambient Blue Backlight -->
   <div class="absolute inset-0 overflow-hidden z-0 opacity-30" style="contain: paint;">
     <div class="absolute top-1/3 left-1/6 w-[30rem] h-[25rem] bg-gradient-radial from-blue-500/80 via-blue-500/35 to-transparent blur-2xl" />
@@ -12,7 +12,7 @@ import funnel from '../../../assets/lead-engine-funnel-visual.jpg';
   </div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[70vh]">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center h-[70vh]">
       <!-- Left Content -->
       <div class="relative">
         <div class="max-w-xl">
@@ -44,13 +44,13 @@ import funnel from '../../../assets/lead-engine-funnel-visual.jpg';
 
       <!-- Right Visual -->
       <div class="relative">
-        <div class="relative overflow-hidden rounded-2xl">
+        <div class="relative overflow-hidden rounded-2xl h-[400px] lg:h-[480px]">
           <SectionImage 
             src={funnel}
             alt="Lead Engine Funnel Visual"
             eager={true}
             opacity={100}
-            className="w-full h-[400px] lg:h-[480px] object-cover"
+            className="w-full h-full object-cover"
           />
           <div class="absolute inset-0 bg-gradient-to-tl from-blue-500/10 via-transparent to-cyan-500/5 opacity-60" />
           <div class="absolute inset-0 rounded-2xl border border-blue-400/20 shadow-xl shadow-blue-500/10" />
