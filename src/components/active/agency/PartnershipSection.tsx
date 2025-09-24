@@ -8,15 +8,16 @@ const PartnershipSection = () => {
       <div className="relative w-full h-[77vh] overflow-hidden">
         
         {/* Background Visual */}
-        <div className="absolute inset-0" style={{ backgroundColor: '#1a1a1a' }}>
+        <div className="absolute inset-0" style={{ backgroundColor: '#1a1a1a', backgroundImage: "url('/partnership-copy-bg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center 60%', backgroundRepeat: 'no-repeat' }}>
           <picture>
             <source type="image/webp" srcSet="/partnership-optimized.webp" />
             <img 
               src="/partnership-copy-bg.jpg" 
               alt="Buildrs Premium Partnership"
               className="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager"
               decoding="async"
+              fetchPriority="high"
               width="1600"
               height="900"
               style={{
@@ -24,7 +25,7 @@ const PartnershipSection = () => {
                 imageRendering: 'high-quality',
                 transform: 'translateZ(0)',
                 objectPosition: 'center 60%',
-                opacity: '0.85',
+                opacity: '0.9',
                 willChange: 'transform'
               }}
             />
