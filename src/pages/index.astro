@@ -82,8 +82,8 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- React Hero with direct hydration for interactivity -->
-    <HomeHero client:load />
+    <!-- React Hero with immediate idle hydration for smoother loading -->
+    <HomeHero client:idle />
 
     <!-- Server-rendered Platform section -->
     <Platform />

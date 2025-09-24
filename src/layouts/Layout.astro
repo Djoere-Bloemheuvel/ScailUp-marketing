@@ -34,6 +34,10 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <link rel="preload" href={optimizedPlatform.src} as="image" fetchpriority="high" />
   <link rel="preload" href="/marketing-engine-tree-visual.webp" as="image" fetchpriority="high" />
   
+  <!-- CRITICAL: Preload key fonts for instant text rendering -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  
   <!-- Secondary preloads for above-fold content -->
   <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
@@ -130,7 +134,11 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
       padding: 0;
       background-color: #000000;
       color: #ffffff;
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv05' 1, 'kern' 1;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
     
@@ -139,8 +147,16 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
       box-sizing: border-box;
     }
     
-    /* Main container - always black background */
+    /* Main container - always black background with GPU acceleration */
     main {
+      background-color: #000000;
+      min-height: 100vh;
+      transform: translateZ(0);
+      will-change: auto;
+    }
+    
+    /* Instant hero background visibility */
+    section[class*="hero"] {
       background-color: #000000;
       min-height: 100vh;
     }

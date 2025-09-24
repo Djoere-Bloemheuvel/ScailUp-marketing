@@ -282,7 +282,7 @@ const HomeHero = () => {
           style={{ minHeight: '280px' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           {/* Subtle background glow for content area */}
           <div className="absolute inset-0 rounded-3xl opacity-5 pointer-events-none" 
@@ -291,24 +291,24 @@ const HomeHero = () => {
                  filter: 'blur(40px)'
                }} />
           
-          {/* Animated Headline */}
+          {/* Animated Headline - Start immediately, no delay */}
           <motion.div 
             className="mb-0"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 15, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
             <HomeAnimatedHeadline />
           </motion.div>
 
 
-          {/* Redesigned CTA Section */}
+          {/* Redesigned CTA Section - Staggered but quick */}
           <motion.div 
             className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-2 sm:mt-4 md:mt-6 lg:mt-8"
             style={{ minHeight: '100px' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 12, scale: 0.99 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.35, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
             <style jsx>{`
               @media (min-width: 1680px) {
