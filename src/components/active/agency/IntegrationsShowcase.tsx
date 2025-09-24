@@ -187,6 +187,8 @@ const IntegrationsShowcase = () => {
                   style={{
                     opacity: 0.9
                   }}
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}
@@ -254,6 +256,8 @@ const IntegrationsShowcase = () => {
                   style={{
                     opacity: 0.9
                   }}
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}

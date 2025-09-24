@@ -15,6 +15,7 @@ export default defineConfig({
     inlineStylesheets: 'auto', // Inline small CSS files
     assets: '_astro', // Organize assets
   },
+  // Reduce JS where possible; ensure minify with terser is enabled in Vite
   vite: {
     define: {
       global: 'globalThis',
