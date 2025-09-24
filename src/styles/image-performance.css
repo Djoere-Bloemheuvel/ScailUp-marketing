@@ -1,0 +1,139 @@
+/* Advanced Image Performance Optimizations */
+
+/* Force GPU acceleration for all image containers */
+.hero-section,
+.platform-section,
+.marketing-section,
+.use-case-section,
+section[class*="bg-"],
+div[style*="background-image"],
+img[class*="hero"],
+img[class*="platform"],
+img[class*="marketing"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  contain: layout style paint;
+}
+
+/* Prevent layout shifts with container queries */
+@supports (container-type: inline-size) {
+  .image-container {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 768px) {
+    .responsive-image {
+      object-position: center 25%;
+    }
+  }
+}
+
+/* Advanced scroll performance */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize for high-refresh displays */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  .smooth-scroll {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+}
+
+/* Critical resource hints */
+.preload-critical {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 100vh;
+}
+
+/* Intersection observer targets */
+[data-observe] {
+  content-visibility: auto;
+  contain-intrinsic-size: 100% 50vh;
+}
+
+/* Background image performance */
+.bg-image-container {
+  background-attachment: scroll; /* Better performance than fixed */
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Prevent image flash during loading */
+.image-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-loaded {
+  opacity: 1;
+}
+
+/* Advanced aspect ratio preservation */
+.aspect-16-9 {
+  aspect-ratio: 16/9;
+}
+
+.aspect-4-3 {
+  aspect-ratio: 4/3;
+}
+
+.aspect-1-1 {
+  aspect-ratio: 1/1;
+}
+
+.aspect-1-1-5 {
+  aspect-ratio: 1/1.5;
+}
+
+/* Force compositing layers for smoother animations */
+.composite-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+/* High-performance scroll snap */
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
+}
+
+.scroll-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Browser-specific optimizations */
+@supports (-webkit-appearance: none) {
+  /* Safari/WebKit specific optimizations */
+  .webkit-optimize {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Firefox specific optimizations */
+@-moz-document url-prefix() {
+  .moz-optimize {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Chromium specific optimizations */
+@supports (image-rendering: pixelated) {
+  .chrome-optimize {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+}

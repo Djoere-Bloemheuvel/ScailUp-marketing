@@ -154,10 +154,10 @@ const HomeHero = () => {
       `}</style>
     <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
-      {/* Hero Background Image - Primary IMG with CSS fallback */}
+      {/* Hero Background Image - Simplified and working */}
       <div className="absolute inset-0 bg-black">
         <img 
-          src="/hero-bg-buildrs-8k.jpg"
+          src="/hero-bg-buildrs-8k.webp"
           alt="Buildrs Hero Background"
           className="absolute inset-0 w-full h-full object-cover hero-background-img"
           style={{
@@ -165,15 +165,10 @@ const HomeHero = () => {
             imageRendering: 'high-quality',
             transform: 'translateZ(0)'
           }}
-          onError={(e) => {
-            // Fallback to CSS background on error
-            e.currentTarget.style.display = 'none';
-            const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-            if (fallback) fallback.style.display = 'block';
-          }}
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
         />
+        
         {/* CSS Background Fallback */}
         <div 
           className="absolute inset-0 hero-background-fallback"
@@ -221,13 +216,14 @@ const HomeHero = () => {
           }
         }
         
-        /* CSS Background Fallback Styles */
+        /* CSS Background Fallback Styles with aspect ratio */
         .hero-background-fallback {
-          background-image: url(/hero-bg-buildrs-8k.jpg);
+          background-image: url(/hero-bg-buildrs-8k.webp);
           background-size: cover;
           background-position: center 23%;
           background-repeat: no-repeat;
           background-attachment: scroll;
+          aspect-ratio: 16/9;
         }
         
         @media (min-width: 768px) {
@@ -405,7 +401,7 @@ const HomeHero = () => {
                   boxShadow: '0 20px 40px -10px rgba(0, 102, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2)' 
                 }}
               >
-                <span className="text-margin-responsive">Ontdek de mogelijkheden</span>
+                <span className="text-margin-responsive">Plan strategiesessie</span>
                 <ArrowRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>

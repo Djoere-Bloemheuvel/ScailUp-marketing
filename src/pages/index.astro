@@ -2,20 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import ScailUpFooter from '../components/active/shared/ScailUpFooter';
 import HomeHero from '../components/active/agency/HomeHero';
-import DienstenSection from '../components/active/agency/DienstenSection';
+import SalesEngineSection from '../components/active/agency/SalesEngineSection';
+import MarketingEngineSection from '../components/active/agency/MarketingEngineSection';
 import PlatformSection from '../components/active/agency/PlatformSection';
 import UseCaseSection from '../components/active/agency/UseCaseSection';
 import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
-import AIAgentsSection from '../components/active/agency/AIAgentsSection';
-import WhatIsBuildrsSection from '../components/active/agency/WhatIsBuildrsSection';
-import PlatformComparisonSection from '../components/active/agency/PlatformComparisonSection';
-import HomeFAQSection from '../components/active/agency/HomeFAQSection';
-import FeaturesSection from '../components/active/agency/FeaturesSection';
-import AppleStyleTransition from '../components/active/agency/AppleStyleTransition';
-import ProcessSection from '../components/active/agency/ProcessSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
+import ImagePerformanceManager from '../components/ImagePerformanceManager';
+import PerformanceMonitor from '../components/PerformanceMonitor';
 
 // Main landing page structured data (moved from agency)
 const structuredData = {
@@ -126,55 +122,42 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- Agency Hero section -->
+    <!-- Performance monitoring for Core Web Vitals -->
+    <PerformanceMonitor client:load />
+    
+    <!-- Agency Hero section (always loaded, not managed by IPM) -->
     <HomeHero client:load />
-    
-    <!-- Platform Section -->
-    <PlatformSection client:visible />
-    
-    <!-- Diensten Section -->
-    <DienstenSection client:visible />
-    
-    <!-- Use Case Section -->
-    <UseCaseSection client:visible />
-    
-    <!-- Partnership Section -->
-    <PartnershipSection client:load />
-    
-    <!-- Integrations Showcase -->
-    <IntegrationsShowcase client:visible />
-    
-    <!-- Founders Section -->
-    <FoundersSection client:visible />
-    
-    <!-- AI Agents Section -->
-    <AIAgentsSection client:visible />
-    
-    <!-- What is Buildrs Section -->
-    <WhatIsBuildrsSection client:visible />
-    
-    <!-- Apple Style Transition - Capabilities -->
-    <AppleStyleTransition variant="capabilities" client:visible />
-    
-    <!-- Features Section -->
-    <FeaturesSection client:visible />
-    
-    <!-- Process & Development Methodology Section -->
-    <ProcessSection client:visible />
-    
-    <!-- Apple Style Transition - Platform -->
-    <AppleStyleTransition variant="platform" client:visible />
-    <!-- Platform Comparison Section -->
-    <PlatformComparisonSection client:visible />
-    
-    <!-- FAQ Section -->
-    <HomeFAQSection client:visible />
-    
-    <!-- Final CTA Section -->
-    <HomeFinalCTASection client:visible />
-    
-    <!-- Footer -->
-    <ScailUpFooter client:visible />
+
+    <!-- Image Performance Manager - Aggressive preloading for the rest -->
+    <ImagePerformanceManager client:load>
+      
+      <!-- Platform Section -->
+      <PlatformSection client:load />
+      
+      <!-- Sales Engine Section -->
+      <SalesEngineSection client:load />
+      
+      <!-- Marketing Engine Section -->
+      <MarketingEngineSection client:load />
+      
+      <!-- Use Case Section -->
+      <UseCaseSection client:load />
+      
+      <!-- Partnership Section -->
+      <PartnershipSection client:load />
+      
+      <!-- Integrations Showcase -->
+      <IntegrationsShowcase client:load />
+      
+      <!-- Founders Section -->
+      <FoundersSection client:load />
+      
+      <!-- Final CTA Section -->
+      <HomeFinalCTASection client:load />
+      
+      <!-- Footer -->
+      <ScailUpFooter client:load />
+    </ImagePerformanceManager>
   </main>
 
 </Layout>

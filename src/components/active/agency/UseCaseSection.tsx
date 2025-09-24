@@ -8,11 +8,11 @@ const UseCaseSection = () => {
       <div className="relative py-16 lg:py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-white leading-tight mb-6" 
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium text-white leading-[1.1] mb-8 tracking-tight" 
                 style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif' }}>
-              <span className="block font-normal text-white/90">Hoe Buildrs jouw bedrijf</span>
-              <span className="block font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                vooruit helpt
+              <span className="block font-light text-white/95 mb-2">3 manieren waarop AI agents</span>
+              <span className="block font-semibold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                jouw business transformeren
               </span>
             </h2>
           </div>
@@ -67,11 +67,11 @@ const UseCaseSection = () => {
                   </div>
                 </div>
                 
-                {/* Background Image */}
+                {/* Background Image - simplified */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center md:bg-[center_35%] bg-no-repeat transition-all duration-700 group-hover:blur-[2px]"
                   style={{
-                    backgroundImage: `url('/images/marketing-agency-owner.png')`
+                    backgroundImage: `url('/images/marketing-agency-owner.webp')`
                   }}
                 >
                   {/* Hover Color Overlay - only on background */}
@@ -171,11 +171,11 @@ const UseCaseSection = () => {
                   </div>
                 </div>
                 
-                {/* Background Image */}
+                {/* Background Image - simplified */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700 group-hover:blur-[2px]"
                   style={{
-                    backgroundImage: `url('/images/consultancy-founder.png')`
+                    backgroundImage: `url('/images/consultancy-founder.webp')`
                   }}
                 >
                   {/* Light pink/magenta overlay to enhance the existing tint */}
@@ -278,11 +278,11 @@ const UseCaseSection = () => {
                   </div>
                 </div>
                 
-                {/* Background Image */}
+                {/* Background Image - simplified */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700 group-hover:blur-[2px]"
                   style={{
-                    backgroundImage: `url('/images/saas-team-meeting.png')`
+                    backgroundImage: `url('/images/saas-team-meeting.webp')`
                   }}
                 >
                   {/* Light blue overlay */}

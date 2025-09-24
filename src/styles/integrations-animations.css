@@ -1,25 +1,40 @@
-/* Integration logo scroll animations */
+/* Integration logo scroll animations - Ultra Optimized */
 
-@keyframes scroll-left {
-  0% {
+/* New keyframe animations with absolute values for perfect loop */
+@keyframes scroll-continuous {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translateX(calc(-100% - 80px)); /* -100% plus spacing between items */
   }
 }
 
-@keyframes scroll-left-slow {
-  0% {
+@keyframes scroll-continuous-slow {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translateX(calc(-100% - 80px)); /* Same distance but slower timing */
   }
 }
 
+/* GPU acceleration and performance optimization */
+.scroll-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Main scroll classes with performance hints */
 .scroll-left {
-  animation: scroll-left 120s linear infinite;
+  animation: scroll-continuous 120s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  display: flex;
+  width: fit-content;
 }
 
 .scroll-left:hover {
@@ -27,14 +42,97 @@
 }
 
 .scroll-left-slow {
-  animation: scroll-left-slow 100s linear infinite;
+  animation: scroll-continuous-slow 100s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  display: flex;
+  width: fit-content;
 }
 
 .scroll-left-slow:hover {
   animation-play-state: paused;
 }
 
+/* Enhanced fade effect for smoother edges */
 .logo-fade {
   mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
   -webkit-mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Browser compatibility fallbacks */
+@-webkit-keyframes scroll-continuous {
+  from {
+    -webkit-transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(calc(-100% - 80px));
+  }
+}
+
+@-webkit-keyframes scroll-continuous-slow {
+  from {
+    -webkit-transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(calc(-100% - 80px));
+  }
+}
+
+@-moz-keyframes scroll-continuous {
+  from {
+    -moz-transform: translateX(0);
+  }
+  to {
+    -moz-transform: translateX(calc(-100% - 80px));
+  }
+}
+
+@-moz-keyframes scroll-continuous-slow {
+  from {
+    -moz-transform: translateX(0);
+  }
+  to {
+    -moz-transform: translateX(calc(-100% - 80px));
+  }
+}
+
+/* Fallback for browsers without CSS calc support */
+@media screen and (max-width: 0) {
+  .scroll-left {
+    animation: scroll-left-fallback 120s linear infinite;
+  }
+  
+  .scroll-left-slow {
+    animation: scroll-left-fallback-slow 100s linear infinite;
+  }
+  
+  @keyframes scroll-left-fallback {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
+  @keyframes scroll-left-fallback-slow {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+/* Image optimization for smooth rendering */
+.logo-item img {
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Hover pause functionality for Framer Motion */
+.hover-pause:hover * {
+  animation-play-state: paused !important;
+}
+
+.hover-pause:hover {
+  animation-play-state: paused !important;
 }

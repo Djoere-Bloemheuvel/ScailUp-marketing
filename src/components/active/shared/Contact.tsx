@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Phone, MapPin, Clock, Building2, Users, Zap, CheckCircle, Star, ChevronDown, Target, Wrench, TrendingUp, Cog, Play } from 'lucide-react';
-import Footer from './Footer';
+import ScailUpFooter from './ScailUpFooter';
 import ScrollToTop from './ScrollToTop';
 import { motion } from 'framer-motion';
 import { leadService } from '@/lib/supabase';
@@ -430,7 +430,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <Footer />
+      <ScailUpFooter />
       <ScrollToTop />
     </div>
   );

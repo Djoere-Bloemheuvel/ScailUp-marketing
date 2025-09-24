@@ -8,7 +8,7 @@ const PlatformSection = () => {
       {/* CSS Fallback Styles */}
       <style>{`
         .platform-dashboard-fallback {
-          background-image: url(/platform-dashboard-fullwidth.png);
+          background-image: url(/platform-dashboard-fullwidth.webp);
           background-size: cover;
           background-position: center center;
           background-repeat: no-repeat;
@@ -75,16 +75,17 @@ const PlatformSection = () => {
         }}
       >
         
-        {/* Background image inside glass */}
+        {/* Background image inside glass - simplified */}
         <div className="absolute inset-0">
           <img 
-            src="/platform-dashboard-fullwidth.png" 
+            src="/platform-dashboard-fullwidth.webp" 
             alt="Buildrs AI Platform Dashboard"
             className="w-full h-full object-cover opacity-60 platform-dashboard-img"
             width="1920"
             height="1080"
             loading="lazy"
-            fetchPriority="low"
+            fetchpriority="high"
+            decoding="async"
             onError={(e) => {
               // Fallback to CSS background on error
               e.currentTarget.style.display = 'none';
@@ -92,9 +93,11 @@ const PlatformSection = () => {
               if (fallback) fallback.style.display = 'block';
             }}
             style={{
-              filter: 'brightness(0.75) contrast(1.15) blur(0.5px)',
+              filter: 'brightness(0.75) contrast(1.15)',
               imageRendering: 'high-quality',
-              transform: 'translateZ(0)'
+              transform: 'translateZ(0)',
+              willChange: 'transform',
+              backfaceVisibility: 'hidden'
             }}
           />
           

@@ -1,0 +1,108 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+type Props = {
+  src: ImageMetadata;
+  alt: string;
+  widths?: number[];
+  sizes?: string;
+  lqWidth?: number;
+  lqQuality?: number;
+  hqQuality?: number;
+  class?: string;
+  style?: string;
+};
+
+const {
+  src,
+  alt,
+  widths = [480, 768, 1024, 1280, 1536, 1920],
+  sizes = '(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px',
+  lqWidth = 360,
+  lqQuality = 70,
+  hqQuality = 90,
+  class: className = '',
+  style = '',
+} = Astro.props as Props;
+
+const lq = await getImage({
+  src,
+  width: lqWidth,
+  format: 'webp',
+  quality: lqQuality,
+});
+---
+
+<style>
+  .pi-root {
+    position: relative;
+    inline-size: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .pi-hq {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 240ms ease-out;
+    will-change: opacity;
+    display: block;
+  }
+
+  .pi-hq :where(img, picture) {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .pi-root.hq-visible .pi-hq {
+    opacity: 1;
+  }
+</style>
+
+<div
+  class="pi-root"
+  style={`aspect-ratio: ${src.width} / ${src.height}; background-image: url(${lq.src}); ${style}`}
+>
+  <Picture
+    src={src}
+    alt={alt}
+    formats={['webp']}
+    widths={widths}
+    sizes={sizes}
+    quality={hqQuality}
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    class={`pi-hq ${className}`}
+  />
+
+  <script is:inline>
+    (() => {
+      const root = document.currentScript && document.currentScript.parentElement;
+      if (!root) return;
+      const picture = root.querySelector('picture.pi-hq');
+      if (!picture) return;
+      const img = picture.querySelector('img');
+      if (!img) return;
+
+      const reveal = () => {
+        root.classList.add('hq-visible');
+        root.style.backgroundImage = 'none';
+      };
+
+      if (img.complete && img.naturalWidth > 0) {
+        reveal();
+      } else {
+        img.addEventListener('load', reveal, { once: true });
+      }
+    })();
+  </script>
+</div>
+
+

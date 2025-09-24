@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ScailUpFooter from '../../components/active/shared/ScailUpFooter';
-import HomeHero from '../../components/active/agency/HomeHero';
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -183,7 +182,7 @@ const structuredData = {
     </section>
 
     <!-- Footer -->
-    <ScailUpFooter client:visible />
+  <ScailUpFooter client:load />
   </main>
 
 </Layout>

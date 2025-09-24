@@ -2,6 +2,7 @@
 // Import main CSS for styling
 import '../index.css';
 import '../styles/integrations-animations.css';
+import '../styles/image-performance.css';
 import ScailUpHeader from '../components/legacy/ScailUpHeader';
 import { ViewTransitions } from 'astro:transitions';
 
@@ -21,6 +22,25 @@ const { title, description, keywords, structuredData } = Astro.props;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <!-- Critical Image Preloading - Hero First -->
+  <link rel="preload" href="/hero-bg-buildrs-8k.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/platform-dashboard-fullwidth.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/marketing-engine-tree-visual.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/images/marketing-agency-owner.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/lead-engine-portrait.png" as="image" fetchpriority="high" />
+  
+  <!-- Logo preloading for IntegrationsShowcase -->
+  <link rel="preload" href="https://cdn.simpleicons.org/hubspot/FF7A59" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/salesforce/00A1E0" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/slack/4A154B" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/google/4285F4" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/notion/FFFFFF" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/airtable/18BFFF" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/asana/F06A6A" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/mailchimp/FFE01B" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/zapier/FF4A00" as="image" fetchpriority="high" />
+  <link rel="preload" href="https://cdn.simpleicons.org/stripe/FFFFFF" as="image" fetchpriority="high" />
+  
   <!-- CRITICAL: Prevent white flash by setting background immediately -->
   <style>
     html, body {
@@ -33,6 +53,28 @@ const { title, description, keywords, structuredData } = Astro.props;
     /* Ensure smooth transitions */
     * {
       box-sizing: border-box;
+    }
+    
+    /* Critical image container styles to prevent layout shift */
+    .platform-dashboard-img,
+    .lead-engine-img,
+    .marketing-engine-img,
+    .agents-automations-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: crisp-edges;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+    
+    /* Logo container optimization */
+    .logo-item img {
+      image-rendering: crisp-edges;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      contain: layout style paint;
     }
     
     /* Prevent FOUC but keep content visible */
@@ -69,6 +111,15 @@ const { title, description, keywords, structuredData } = Astro.props;
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="dns-prefetch" href="https://res.cloudinary.com" />
   <link rel="dns-prefetch" href="https://api.supabase.io" />
+  
+  <!-- Prefetch likely next routes for faster nav -->
+  <link rel="prefetch" href="/features/" />
+  <link rel="prefetch" href="/salesengine/" />
+  <link rel="prefetch" href="/partnership/" />
+  <link rel="prefetch" href="/kenniscentrum/" />
+  <link rel="prefetch" href="/use-cases/marketing-bureau/" />
+  <link rel="prefetch" href="/use-cases/consultants/" />
+  <link rel="prefetch" href="/use-cases/saas/" />
   
   <!-- Critical CSS will be inlined by Astro build process -->
   <link rel="modulepreload" href="/src/index.css" />
