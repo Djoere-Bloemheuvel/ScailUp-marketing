@@ -1,15 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpFooter from '../components/active/shared/ScailUpFooter';
-import HomeHero from '../components/active/agency/HomeHero';
+// New Astro-first components
+import Hero from '../components/sections/Hero.astro';
+import Platform from '../components/sections/Platform.astro';
 import SalesEngineSection from '../components/active/agency/SalesEngineSection.astro';
 import MarketingEngineSection from '../components/active/agency/MarketingEngineSection.astro';
-import PlatformSection from '../components/active/agency/PlatformSection';
+// React components for interactive features
 import UseCaseSection from '../components/active/agency/UseCaseSection';
 import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
+// Interactive headline component
+import HomeAnimatedHeadline from '../components/active/agency/HomeAnimatedHeadline';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -67,67 +71,27 @@ const structuredData = {
     Skip to main content
   </a>
 
-  <!-- Critical CSS to prevent FOUC and ensure instant hero visibility -->
+  <!-- Clean CSS for professional loading -->
   <style>
-    
-    /* Ensure page starts with true black background */
-    body {
-      background-color: #000000 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    
-    html {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    
-    /* Ensure no spacing anywhere that could create black canvas */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    /* Force hero to start at very top */
+    /* Minimal essential styling */
     #main-content {
-      position: relative;
-      top: 0 !important;
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-    
-    /* Critical hero styles for instant rendering */
-    .hero-section {
-      position: relative;
-      min-height: 90vh;
       background-color: #000000;
-      color: #ffffff;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 25vh 1rem 3rem;
-    }
-    
-    /* Prevent any layout shift */
-    .hero-content {
-      position: relative;
-      max-width: 80rem;
-      width: 100%;
-      text-align: center;
-      z-index: 30;
+      min-height: 100vh;
     }
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- Hero -->
-    <HomeHero client:load />
+    <!-- Server-rendered Hero with strategic React hydration -->
+    <Hero />
 
-    <!-- Sections (keep mounted once loaded) -->
-    <PlatformSection client:idle />
-    <SalesEngineSection client:idle />
-    <MarketingEngineSection client:idle />
+    <!-- Server-rendered Platform section -->
+    <Platform />
+
+    <!-- Already optimized Astro sections -->
+    <SalesEngineSection />
+    <MarketingEngineSection />
+
+    <!-- Interactive React sections (hydrated when needed) -->
     <UseCaseSection client:idle />
     <PartnershipSection client:idle />
     <IntegrationsShowcase client:idle />

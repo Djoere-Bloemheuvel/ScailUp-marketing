@@ -5,6 +5,9 @@ import '../styles/integrations-animations.css';
 import '../styles/image-performance.css';
 import ScailUpHeader from '../components/active/shared/ScailUpHeader';
 import { ViewTransitions } from 'astro:transitions';
+import { getImage } from 'astro:assets';
+import heroImage from '../../public/hero-bg-buildrs-8k.webp';
+import platformDashboard from '../../public/platform-dashboard-fullwidth.webp';
 
 export interface Props {
   title: string;
@@ -14,6 +17,10 @@ export interface Props {
 }
 
 const { title, description, keywords, structuredData } = Astro.props;
+
+// Generate optimized image URLs for preloading
+const optimizedHero = await getImage({ src: heroImage, format: 'webp', quality: 90, width: 1920 });
+const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp', quality: 90, width: 1920 });
 ---
 
 <!DOCTYPE html>
@@ -22,20 +29,14 @@ const { title, description, keywords, structuredData } = Astro.props;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Critical Image Preloading - Hero First -->
-  <link rel="preload" href="/hero-bg-buildrs-8k.webp" as="image" fetchpriority="high" />
+  <!-- CRITICAL: Ultra-priority preloading with optimized Astro assets -->
+  <link rel="preload" href={optimizedHero.src} as="image" fetchpriority="high" />
+  <link rel="preload" href={optimizedPlatform.src} as="image" fetchpriority="high" />
+  <link rel="preload" href="/marketing-engine-tree-visual.webp" as="image" fetchpriority="high" />
   
-  <!-- Logo preloading for IntegrationsShowcase -->
-  <link rel="preload" href="https://cdn.simpleicons.org/hubspot/FF7A59" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/salesforce/00A1E0" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/slack/4A154B" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/google/4285F4" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/notion/FFFFFF" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/airtable/18BFFF" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/asana/F06A6A" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/mailchimp/FFE01B" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/zapier/FF4A00" as="image" fetchpriority="high" />
-  <link rel="preload" href="https://cdn.simpleicons.org/stripe/FFFFFF" as="image" fetchpriority="high" />
+  <!-- Secondary preloads for above-fold content -->
+  <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+  <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
   
   <!-- CRITICAL: Prevent white flash by setting background immediately -->
   <style>
@@ -46,50 +47,24 @@ const { title, description, keywords, structuredData } = Astro.props;
       min-height: 100vh !important;
     }
     
-    /* Ensure smooth transitions */
+    /* Basic styling */
     * {
       box-sizing: border-box;
     }
     
-    /* Critical image container styles to prevent layout shift */
-    .platform-dashboard-img,
-    .lead-engine-img,
-    .marketing-engine-img,
-    .agents-automations-img {
+    /* Image defaults */
+    img {
+      max-width: 100%;
+      height: auto;
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      image-rendering: crisp-edges;
-      backface-visibility: hidden;
-      transform: translateZ(0);
     }
     
-    /* Logo container optimization */
-    .logo-item img {
-      image-rendering: crisp-edges;
-      backface-visibility: hidden;
-      transform: translateZ(0);
-      contain: layout style paint;
-    }
-    
-    /* Prevent FOUC but keep content visible */
+    /* Professional loading - content always visible */
     body {
-      opacity: 0;
-      transition: opacity 0.1s ease;
-    }
-    
-    body.loaded {
       opacity: 1;
+      background-color: #000000;
     }
   </style>
-  <meta name="favicon-timestamp" content="1725192587" />
-  <!-- Force favicon refresh -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  
-  <!-- Preload removed to prevent unused resource warning -->
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
@@ -424,101 +399,39 @@ const { title, description, keywords, structuredData } = Astro.props;
   <slot />
   
 
-  <!-- CRITICAL: Preemptive Header Animation Fix -->
+  <!-- Header scroll handling -->
   <script>
-    // 🔥 INSTANT header animation fix - before React hydration
-    function preemptiveHeaderFix() {
-      const scrollY = window.scrollY;
+    function handleHeaderVisibility() {
       const header = document.querySelector('header');
-      
-      if (header && scrollY > 100) {
-        // User has already scrolled - make header visible immediately
+      if (header && window.scrollY > 100) {
         header.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
         header.classList.add('opacity-100', 'translate-y-0');
-        console.log('🔥 Preemptive header fix applied - user already scrolled:', scrollY);
       }
     }
 
-    // Run multiple times to catch any timing issues
+    // Initialize header visibility
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', preemptiveHeaderFix);
+      document.addEventListener('DOMContentLoaded', handleHeaderVisibility);
     } else {
-      preemptiveHeaderFix();
+      handleHeaderVisibility();
     }
-    
-    // Backup triggers
-    setTimeout(preemptiveHeaderFix, 10);
-    setTimeout(preemptiveHeaderFix, 100);
   </script>
 
-  <!-- Performance monitoring & Animation Fallback script -->
+  <!-- Simple animation setup -->
   <script>
-    // Simple performance monitoring
-    window.addEventListener('load', () => {
-      const entries = performance.getEntriesByType('navigation');
-      const nav = entries && entries[0] as PerformanceNavigationTiming | undefined;
-      if (nav && typeof nav.loadEventEnd === 'number' && typeof nav.fetchStart === 'number') {
-        const durationMs = Math.round(nav.loadEventEnd - nav.fetchStart);
-        if (!Number.isNaN(durationMs) && durationMs > 0) {
-          console.log(`Page loaded in ${durationMs}ms`);
-        }
-      }
-    });
-
-    // Fail-safe animation system for Astro
-    function initAppleAnimations() {
-      // Add animate-ready class to body for progressive enhancement
+    // Simple animation initialization
+    function initAnimations() {
       document.body.classList.add('animate-ready');
-      console.log('✅ Apple animations ready - text should be visible with smooth transitions');
-
-      // Log current visibility state for debugging
-      const fadeElements = document.querySelectorAll('.apple-fade-in');
-      fadeElements.forEach((el, i) => {
-        const opacity = window.getComputedStyle(el).opacity;
-        console.log(`Element ${i}: opacity = ${opacity}`);
-      });
     }
 
-    // Multiple initialization strategies for reliability
-    function setupAnimations() {
-      // Strategy 1: Immediate if DOM already loaded
-      if (document.readyState !== 'loading') {
-        setTimeout(initAppleAnimations, 50);
-        return;
-      }
-
-      // Strategy 2: Wait for DOM
-      document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initAppleAnimations, 50);
-      });
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAnimations);
+    } else {
+      initAnimations();
     }
-
-    // Strategy 3: Listen for Astro-specific events
-    window.addEventListener('astro:load', () => {
-      setTimeout(initAppleAnimations, 100);
-    });
-
-    // Start setup
-    setupAnimations();
   </script>
   
-  <!-- FOUC Prevention Script - Must be at end -->
-  <script>
-    // Show body content immediately - no delay
-    function showContent() {
-      document.body.classList.add('loaded');
-    }
-    
-    // Multiple triggers for fast visibility
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showContent);
-    } else {
-      // DOM already loaded
-      showContent();
-    }
-    
-    // Fallback timeout
-    setTimeout(showContent, 50);
-  </script>
+  <!-- Professional loading - no FOUC prevention needed -->
 </body>
 </html>

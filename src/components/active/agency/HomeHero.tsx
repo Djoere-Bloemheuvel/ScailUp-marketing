@@ -154,8 +154,23 @@ const HomeHero = () => {
       `}</style>
     <section className="relative w-full min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
-      {/* Hero Background Image - Simplified and working */}
+      {/* Hero Background Image - Ultra-stable instant loading */}
       <div className="absolute inset-0 bg-black">
+        {/* INSTANT CSS Background - shows immediately */}
+        <div 
+          className="absolute inset-0 hero-background-instant"
+          style={{
+            backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 23%',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'scroll',
+            transform: 'translateZ(0)',
+            willChange: 'transform'
+          }}
+        />
+        
+        {/* High-priority IMG for better quality */}
         <img 
           src="/hero-bg-buildrs-8k.webp"
           alt="Buildrs Hero Background"
@@ -163,16 +178,17 @@ const HomeHero = () => {
           style={{
             objectPosition: 'center 23%',
             imageRendering: 'high-quality',
-            transform: 'translateZ(0)'
+            transform: 'translateZ(0)',
+            willChange: 'transform'
           }}
           loading="eager"
           fetchpriority="high"
-        />
-        
-        {/* CSS Background Fallback */}
-        <div 
-          className="absolute inset-0 hero-background-fallback"
-          style={{ display: 'none' }}
+          decoding="sync"
+          onLoad={(e) => {
+            // Hide CSS background when IMG loads
+            const instant = document.querySelector('.hero-background-instant');
+            if (instant) (instant as HTMLElement).style.opacity = '0';
+          }}
         />
       </div>
       

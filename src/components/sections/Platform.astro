@@ -1,0 +1,104 @@
+---
+import { Picture } from 'astro:assets';
+import platformDashboard from '../../../public/platform-dashboard-fullwidth.webp';
+---
+
+<section class="relative w-full min-h-screen flex items-center justify-center py-32 bg-black">
+  
+  <!-- Subtle Concentrated Ambient Effects -->
+  <div class="absolute inset-0 z-0" style="contain: paint;">
+    <!-- Top-Left Concentrated Cluster - Lead Engine Blue -->
+    <div class="absolute top-[15%] left-[15%] w-96 h-64 rounded-full blur-3xl opacity-85" 
+         style="background: radial-gradient(ellipse 400px 200px, rgba(96, 165, 250, 0.8) 0%, transparent 60%); mix-blend-mode: screen;"></div>
+    
+    <div class="absolute top-[18%] left-[12%] w-64 h-96 rounded-full blur-2xl opacity-75" 
+         style="background: radial-gradient(ellipse 200px 300px, rgba(96, 165, 250, 0.6) 0%, transparent 70%); mix-blend-mode: screen;"></div>
+    
+    <!-- Top-Right Sparse - Marketing Engine Pink -->
+    <div class="absolute top-[35%] right-[20%] w-80 h-48 rounded-full blur-3xl opacity-70" 
+         style="background: radial-gradient(ellipse 350px 150px, rgba(244, 114, 182, 0.7) 0%, transparent 80%); mix-blend-mode: screen;"></div>
+    
+    <!-- Bottom Center Large Soft Glow -->
+    <div class="absolute bottom-[15%] left-[35%] w-[500px] h-[300px] rounded-full blur-3xl opacity-80" 
+         style="background: radial-gradient(ellipse 500px 300px at 30% 70%, rgba(96, 165, 250, 0.5) 0%, rgba(244, 114, 182, 0.4) 50%, transparent 85%); mix-blend-mode: screen;"></div>
+    
+    <!-- Mid-Right Edge Lighting - Vertical Streak -->
+    <div class="absolute top-[45%] right-[5%] w-32 h-80 rounded-full blur-2xl opacity-90" 
+         style="background: radial-gradient(ellipse 100px 400px, rgba(244, 114, 182, 0.8) 0%, transparent 75%); mix-blend-mode: screen;"></div>
+    
+    <!-- Subtle Corner Accents -->
+    <div class="absolute top-[12%] right-[8%] w-48 h-48 rounded-full blur-2xl opacity-75" 
+         style="background: radial-gradient(circle at 20% 80%, rgba(244, 114, 182, 0.6) 0%, transparent 70%); mix-blend-mode: screen;"></div>
+    
+    <div class="absolute bottom-[8%] left-[10%] w-56 h-32 rounded-full blur-3xl opacity-95" 
+         style="background: radial-gradient(ellipse 280px 120px, rgba(96, 165, 250, 0.7) 0%, transparent 65%); mix-blend-mode: screen;"></div>
+  </div>
+  
+  <!-- Premium Glass Container -->
+  <div class="relative w-[90vw] h-[75vh] rounded-3xl overflow-hidden backdrop-blur-2xl border border-white/15 z-10"
+    style="background: rgba(255, 255, 255, 0.06); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);">
+    
+    <!-- Background image with server-rendered Picture component -->
+    <div class="absolute inset-0">
+      <Picture
+        src={platformDashboard}
+        alt="Buildrs AI Platform Dashboard"
+        class="w-full h-full object-cover opacity-60 platform-dashboard-img"
+        style="filter: brightness(0.75) contrast(1.15);"
+        formats={['webp', 'jpg']}
+        loading="eager"
+        fetchpriority="high"
+        widths={[1200, 1600, 1920]}
+        sizes="90vw"
+        quality={85}
+      />
+      
+      <!-- Premium overlay for text readability -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/20"></div>
+    </div>
+
+    <!-- Content overlay -->
+    <div class="relative w-full h-full flex items-center justify-center z-10">
+      
+      <!-- Content Container -->
+      <div class="text-center px-8 max-w-5xl">
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8 leading-[0.95] tracking-[-0.04em]"
+            style="font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-weight: 300;">
+          <div style="font-weight: 300;">
+            Één platform.
+          </div>
+          <div style="font-weight: 400;">
+            Eindeloze mogelijkheden.
+          </div>
+        </h1>
+        
+        <p class="text-2xl md:text-3xl text-gray-300 font-light leading-relaxed mb-12 max-w-4xl mx-auto tracking-[-0.02em]" 
+           style="font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-weight: 200;">
+          Vandaag brengen we AI, Sales en Marketing samen in één platform.<br />
+          <span style="font-weight: 400; color: #ffffff; font-size: 1.05em;">Morgen bouwen we verder met jou.</span>
+        </p>
+
+        <!-- Static CTA button - server-rendered for performance -->
+        <div class="relative group inline-block">
+          <div class="absolute inset-0 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-all duration-500 scale-110" 
+               style="background: linear-gradient(to right, rgba(59, 130, 246, 0.4), rgba(156, 163, 175, 0.3));"></div>
+          
+          <a href="/contact" class="relative inline-flex items-center px-8 py-4 text-white font-light rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 border border-white/25 hover:border-white/40 text-lg"
+            style="background: rgba(255, 255, 255, 0.08); font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif; backdrop-filter: blur(20px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
+            <span class="mr-3">Platform Demo</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .platform-dashboard-img {
+    image-rendering: high-quality;
+  }
+</style>

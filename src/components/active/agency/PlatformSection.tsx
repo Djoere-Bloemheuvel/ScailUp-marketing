@@ -64,41 +64,49 @@ const PlatformSection = () => {
         }}
       >
         
-        {/* Background image inside glass - simplified */}
+        {/* Background image inside glass - ultra-stable permanent loading */}
         <div className="absolute inset-0">
+          {/* INSTANT CSS Background - always visible */}
+          <div 
+            className="absolute inset-0 platform-background-instant"
+            style={{
+              backgroundImage: 'url(/platform-dashboard-fullwidth.webp)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              opacity: 0.6,
+              filter: 'brightness(0.75) contrast(1.15)',
+              transform: 'translateZ(0)',
+              willChange: 'transform'
+            }}
+          />
+          
+          {/* High-priority IMG for enhanced quality */}
           <img 
             src="/platform-dashboard-fullwidth.webp" 
             alt="Buildrs AI Platform Dashboard"
             className="w-full h-full object-cover opacity-60 platform-dashboard-img"
             width="1920"
             height="1080"
-            loading="lazy"
-            fetchPriority="low"
-            decoding="async"
-            onError={(e) => {
-              // Fallback to CSS background on error
-              (e.currentTarget.style.display as any) = 'none';
-              const fallback = document.getElementById('platform-fallback');
-              if (fallback) fallback.style.display = 'block';
-            }}
+            loading="eager"
+            fetchpriority="high"
+            decoding="sync"
             style={{
               filter: 'brightness(0.75) contrast(1.15)',
-              imageRendering: 'auto',
+              imageRendering: 'high-quality',
               transform: 'translateZ(0)',
               willChange: 'transform',
               backfaceVisibility: 'hidden'
+            }}
+            onLoad={(e) => {
+              // Smooth transition from CSS to IMG
+              const instant = document.querySelector('.platform-background-instant');
+              if (instant) (instant as HTMLElement).style.opacity = '0';
             }}
           />
           
           {/* Premium overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/20" />
-          
-          {/* Background fallback (only activated on error) */}
-          <div 
-            id="platform-fallback"
-            className="absolute inset-0"
-            style={{ display: 'none' }}
-          />
         </div>
 
         {/* Content overlay */}

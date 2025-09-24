@@ -7,35 +7,32 @@ const HomeAnimatedHeadline = () => {
         }
       }}>
         <style jsx>{`
-          /* Custom responsive title scaling - veel geleidelijker en langer groot blijven */
+          /* Ultra-stable responsive title scaling - smooth calculations */
+          .title-responsive {
+            font-size: clamp(3rem, 5vw + 1rem, 6rem);
+            line-height: 0.85;
+            will-change: transform;
+            transform: translateZ(0);
+            /* Prevent any layout jumping */
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+          }
+          
+          /* Fine-tuned breakpoint adjustments */
           @media (min-width: 768px) {
             .title-responsive {
-              font-size: 3.25rem; /* tussen text-5xl en text-6xl */
-              line-height: 0.85;
-            }
-          }
-          @media (min-width: 900px) {
-            .title-responsive {
-              font-size: 3.5rem; /* tussen text-5xl en text-6xl */
-              line-height: 0.85;
-            }
-          }
-          @media (min-width: 1000px) {
-            .title-responsive {
-              font-size: 4.25rem; /* tussen text-6xl en text-7xl */
-              line-height: 0.85;
+              font-size: clamp(3.25rem, 4.5vw + 1.2rem, 6rem);
             }
           }
           @media (min-width: 1024px) {
             .title-responsive {
-              font-size: 4.5rem; /* text-7xl equivalent - originele laptop grootte */
-              line-height: 0.85;
+              font-size: clamp(4.5rem, 3vw + 2rem, 6rem);
             }
           }
           @media (min-width: 1280px) {
             .title-responsive {
-              font-size: 6rem; /* text-8xl equivalent - originele desktop grootte */
-              line-height: 0.85;
+              font-size: 6rem;
             }
           }
           

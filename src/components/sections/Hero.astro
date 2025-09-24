@@ -1,0 +1,140 @@
+---
+import { Picture } from 'astro:assets';
+import heroImage from '../../../public/hero-bg-buildrs-8k.webp';
+import HomeAnimatedHeadline from '../active/agency/HomeAnimatedHeadline.tsx';
+---
+
+<section class="hero-section relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Server-rendered background with Astro's Picture component -->
+  <div class="absolute inset-0 bg-black">
+    <Picture
+      src={heroImage}
+      alt="Buildrs AI Platform Background"
+      class="absolute inset-0 w-full h-full object-cover hero-background-img"
+      style="object-position: center 23%"
+      formats={['webp', 'jpg']}
+      loading="eager"
+      fetchpriority="high"
+      widths={[1200, 1600, 1920]}
+      sizes="100vw"
+      quality={85}
+    />
+  </div>
+  
+  <!-- Enhanced gradient overlay -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10"></div>
+  </div>
+  
+  <!-- Minimal ambient lighting -->
+  <div class="absolute inset-0 opacity-5" style="will-change: transform;">
+    <div class="absolute bottom-1/4 right-1/4 w-48 h-16 sm:w-72 sm:h-24 md:w-96 md:h-32 bg-gradient-to-l from-blue-500/20 to-cyan-500/15 rounded-lg sm:rounded-xl blur-3xl animate-pulse"></div>
+  </div>
+  
+  <!-- Content area with strategic React hydration -->
+  <div class="relative max-w-6xl mx-auto z-30 text-center px-6 sm:px-4" style="margin-top: -13vh;">
+    <div class="max-w-5xl mx-auto relative" style="min-height: 280px;">
+      
+      <!-- Subtle background glow -->
+      <div 
+        class="absolute inset-0 rounded-3xl opacity-5 pointer-events-none blur-10"
+        style="background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%);"
+      ></div>
+      
+      <!-- Interactive headline with client hydration -->
+      <HomeAnimatedHeadline client:load />
+      
+      <!-- Static CTA buttons - server-rendered for performance -->
+      <div class="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+        <div class="px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full">
+          
+          <!-- Primary CTA -->
+          <div class="relative group">
+            <div class="absolute inset-0 rounded-full blur-lg opacity-25 group-hover:opacity-40 transition-opacity duration-300 scale-105 bg-gradient-to-r from-blue-500 to-pink-500"></div>
+            <a
+              href="/contact"
+              class="relative inline-flex items-center justify-center text-sm lg:text-base text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 px-6 py-3 lg:px-8 lg:py-4 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
+              style="
+                background: linear-gradient(to right, rgba(0, 102, 255, 0.2), rgba(255, 46, 126, 0.2));
+                font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+                box-shadow: 0 20px 40px -10px rgba(0, 102, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+              "
+            >
+              <span class="mr-2">Plan strategiesessie</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Secondary CTA -->
+          <div class="relative group">
+            <a
+              href="#what-is-buildrs-section"
+              class="relative inline-flex items-center justify-center text-sm lg:text-base text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:shadow-xl hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 px-6 py-3 lg:px-8 lg:py-4 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
+              style="
+                font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+                background: rgba(255, 255, 255, 0.05);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+              "
+            >
+              <span class="mr-2">Bekijk voorbeelden</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Subtle fade to next section -->
+  <div 
+    class="absolute bottom-0 left-0 right-0 h-40 sm:h-44 lg:h-48 pointer-events-none z-10"
+    style="background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.05) 25%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0.35) 65%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.85) 95%, rgba(0, 0, 0, 1) 100%);"
+  ></div>
+  
+  <!-- Floating design elements -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/4 left-10 w-3 h-3 bg-purple-400/60 rounded-full opacity-40 animate-pulse"></div>
+    <div class="absolute top-1/3 right-16 w-2 h-2 bg-blue-400/50 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-4 h-4 bg-pink-400/40 rounded-full opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+    <div class="absolute top-2/3 right-1/4 w-2 h-2 bg-purple-500/60 rounded-full opacity-40 animate-pulse" style="animation-delay: 3s;"></div>
+    <div class="absolute bottom-1/3 right-12 w-3 h-3 bg-cyan-500/50 rounded-full opacity-35 animate-pulse" style="animation-delay: 4s;"></div>
+    <div class="absolute top-1/2 left-1/3 w-2 h-2 bg-blue-500/45 rounded-full opacity-45 animate-pulse" style="animation-delay: 5s;"></div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .hero-background-img {
+    image-rendering: high-quality;
+  }
+  
+  /* Responsive positioning */
+  @media (min-width: 768px) {
+    .hero-background-img {
+      object-position: center 23%;
+    }
+  }
+  
+  @media (min-width: 1920px) {
+    .hero-background-img {
+      filter: brightness(0.95);
+    }
+  }
+  
+  @media (min-width: 2560px) {
+    .hero-background-img {
+      filter: brightness(0.85);
+    }
+  }
+</style>
