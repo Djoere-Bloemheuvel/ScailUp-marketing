@@ -42,7 +42,7 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
   
-  <!-- CRITICAL: Prevent white flash by setting background immediately -->
+  <!-- CRITICAL: Prevent white flash and scroll flash -->
   <style>
     html, body {
       background-color: #000000 !important;
@@ -67,6 +67,15 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
     body {
       opacity: 1;
       background-color: #000000;
+    }
+    
+    /* Prevent scroll flash during restoration */
+    body.scroll-restoring {
+      overflow: hidden;
+    }
+    
+    body.scroll-restoring main {
+      visibility: hidden;
     }
   </style>
   
@@ -236,87 +245,17 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <slot />
   
 
-  <!-- AGGRESSIVE Scroll Restoration - Multiple Fallbacks -->
+  <!-- Smooth, minimal scroll restoration -->
   <script>
-    // 1. DISABLE all automatic scroll restoration
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    // 2. IMMEDIATE position save (before any scripts run)
-    let currentScrollY = 0;
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch {}
     const STORAGE_KEY = 'buildrs_scroll_pos';
-    
-    // Save continuously during scroll
-    let saveScrollTimeout;
-    function saveScrollPosition() {
-      clearTimeout(saveScrollTimeout);
-      saveScrollTimeout = setTimeout(() => {
-        currentScrollY = window.scrollY;
-        sessionStorage.setItem(STORAGE_KEY, currentScrollY.toString());
-      }, 16); // 60fps
-    }
-    
-    // 3. MULTIPLE save triggers
-    window.addEventListener('scroll', saveScrollPosition, { passive: true });
-    window.addEventListener('beforeunload', () => {
-      sessionStorage.setItem(STORAGE_KEY, window.scrollY.toString());
-    });
-    window.addEventListener('pagehide', () => {
-      sessionStorage.setItem(STORAGE_KEY, window.scrollY.toString());
-    });
-
-    function handleHeaderVisibility() {
-      const header = document.querySelector('header');
-      if (header && window.scrollY > 100) {
-        header.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
-        header.classList.add('opacity-100', 'translate-y-0');
-      }
-    }
-
-    // 4. AGGRESSIVE restoration with multiple attempts
-    function restoreScrollPosition() {
-      const savedPosition = sessionStorage.getItem(STORAGE_KEY);
-      if (savedPosition && savedPosition !== '0') {
-        const position = parseInt(savedPosition, 10);
-        
-        // Immediate attempt
-        window.scrollTo(0, position);
-        
-        // Retry after hydration
-        setTimeout(() => {
-          window.scrollTo(0, position);
-          handleHeaderVisibility();
-        }, 100);
-        
-        // Final retry after all React components mount
-        setTimeout(() => {
-          window.scrollTo(0, position);
-          handleHeaderVisibility();
-        }, 500);
-        
-        // Emergency retry for slow connections
-        setTimeout(() => {
-          if (Math.abs(window.scrollY - position) > 50) {
-            window.scrollTo(0, position);
-            handleHeaderVisibility();
-          }
-        }, 1000);
-      } else {
-        handleHeaderVisibility();
-      }
-    }
-
-    // 5. IMMEDIATE execution - don't wait for DOMContentLoaded
-    restoreScrollPosition();
-    
-    // Also try when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', restoreScrollPosition);
-    }
-    
-    // And when everything is loaded
-    window.addEventListener('load', restoreScrollPosition);
+    function save(){ const y = window.scrollY||0; if (y>0) sessionStorage.setItem(STORAGE_KEY,String(y)); }
+    let t; window.addEventListener('scroll',()=>{ clearTimeout(t); t=setTimeout(save,60); },{passive:true});
+    window.addEventListener('beforeunload', save);
+    window.addEventListener('pagehide', save);
+    function restore(){ const s=sessionStorage.getItem(STORAGE_KEY); const pos=s?parseInt(s,10):0; if(!Number.isFinite(pos)||pos<=0) return; window.scrollTo(0,pos); requestAnimationFrame(()=>{ requestAnimationFrame(()=>window.scrollTo(0,pos)); }); }
+    restore();
+    window.addEventListener('pageshow', e=>{ if(e.persisted) restore(); });
   </script>
 </body>
 </html>

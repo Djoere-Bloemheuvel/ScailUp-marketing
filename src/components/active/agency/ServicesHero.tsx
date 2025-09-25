@@ -38,9 +38,9 @@ const ServicesHero = () => {
       </div>
       
       {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto z-30 text-center px-6 sm:px-4">
+      <div className="relative max-w-7xl mx-auto z-30 text-left px-6 sm:px-4">
         <motion.div 
-          className="max-w-6xl mx-auto"
+          className="max-w-6xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -73,7 +73,7 @@ const ServicesHero = () => {
             transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <p 
-              className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+              className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl"
               style={{
                 fontFamily: "'Neue Haas Grotesk Display Pro', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
                 fontWeight: 300,

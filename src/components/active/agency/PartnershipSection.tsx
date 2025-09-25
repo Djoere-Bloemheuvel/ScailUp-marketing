@@ -90,10 +90,8 @@ const PartnershipSection = () => {
               {/* CTA Buttons Container */}
               <div className="mt-10 lg:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 items-stretch sm:items-start w-full">
                 
-                {/* Primary CTA Button - Smooth & Elegant */}
+                {/* Primary CTA Button - Clean */}
                 <div className="relative group flex-1 sm:flex-initial">
-                  {/* Soft glow effect */}
-                  <div className="absolute inset-0 rounded-full blur-xl opacity-25 group-hover:opacity-40 transition-all duration-500 scale-110 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"></div>
                   
                   {/* Smooth pill-shaped button */}
                   <button
@@ -104,13 +102,16 @@ const PartnershipSection = () => {
                     }}
                     className="relative inline-flex items-center justify-center text-sm sm:text-sm md:text-sm lg:text-base xl:text-lg text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-400 group-hover:shadow-2xl w-full sm:w-auto sm:min-w-[200px] py-2 px-4 sm:py-3 sm:px-6"
                     style={{ 
-                      background: `linear-gradient(135deg, rgba(96, 165, 250, 0.12) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(244, 114, 182, 0.12) 100%)`,
+                      background: 'rgba(0, 0, 0, 0.8)',
                       fontFamily: '"Neue Haas Grotesk Display Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                       fontWeight: '500',
                       backdropFilter: 'blur(16px) saturate(160%)',
                       WebkitBackdropFilter: 'blur(16px) saturate(160%)',
-                      border: '1.5px solid rgba(96, 165, 250, 0.2)',
-                      boxShadow: `0 8px 24px rgba(96, 165, 250, 0.12), 0 4px 12px rgba(168, 85, 247, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12)`,
+                      border: '2px solid transparent',
+                      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+                      backgroundOrigin: 'border-box',
+                      backgroundClip: 'padding-box, border-box',
+                      boxShadow: 'none',
                       letterSpacing: '-0.01em'
                     }}
                   >

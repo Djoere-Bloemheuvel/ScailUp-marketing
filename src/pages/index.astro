@@ -88,9 +88,9 @@ const structuredData = {
     <!-- Server-rendered Platform section -->
     <Platform />
 
-    <!-- Already optimized Astro sections -->
-    <SalesEngineSection />
-    <MarketingEngineSection />
+    <!-- Interactive Engine sections with accordions -->
+    <SalesEngineSection client:load />
+    <MarketingEngineSection client:load />
 
     <!-- Anti-unload hydration - early sections always mounted -->
     <UseCaseSection client:load />

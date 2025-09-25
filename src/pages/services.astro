@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ScailUpFooter from '../components/active/shared/ScailUpFooter';
-import ServicesHero from '../components/active/agency/ServicesHero';
 import ServicesAccordion from '../components/active/agency/ServicesAccordion';
+import CombinedSalesEngineSection from '../components/active/agency/CombinedSalesEngineSection';
+import CombinedMarketingSection from '../components/active/agency/CombinedMarketingSection';
+import PartnershipCopySection from '../components/active/agency/PartnershipSection';
 
 // Services page structured data
 const structuredData = {
@@ -61,14 +63,30 @@ const structuredData = {
     }
   </style>
 
-  <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- Services Hero Section -->
-    <ServicesHero client:load />
+  <main id="main-content" role="main" class="min-h-screen">
+    <!-- Services Overview Section -->
+    <section id="services-overview">
+      <ServicesAccordion client:visible />
+    </section>
 
-    <!-- Services Accordion Section -->
-    <ServicesAccordion client:load />
+    <!-- Combined Sales Engine Section -->
+    <section id="sales-engine">
+      <CombinedSalesEngineSection client:visible />
+    </section>
+
+    <!-- Partnership Copy Section -->
+    <section id="partnership">
+      <PartnershipCopySection client:idle />
+    </section>
+
+    <!-- Combined Marketing Section -->
+    <section id="marketing-engine">
+      <CombinedMarketingSection client:idle />
+    </section>
 
     <!-- Footer -->
-    <ScailUpFooter client:load />
+    <section id="footer">
+      <ScailUpFooter client:idle />
+    </section>
   </main>
 </Layout>

@@ -291,11 +291,11 @@ const HomeHero = () => {
                  filter: 'blur(40px)'
                }} />
           
-          {/* Animated Headline - Start immediately, no delay */}
+          {/* Animated Headline - Enter from left */}
           <motion.div 
             className="mb-0"
-            initial={{ opacity: 0, y: 15, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, x: -30, scale: 0.98 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
             <HomeAnimatedHeadline />
@@ -328,10 +328,8 @@ const HomeHero = () => {
               }
             `}</style>
             <div className="cta-container px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full">
-            {/* Primary CTA - Modern floating design */}
+            {/* Primary CTA - Clean gradient border */}
             <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full blur-lg opacity-25 group-hover:opacity-40 transition-opacity duration-300 scale-105" style={{ background: 'linear-gradient(to right, #0066FF, #FF2E7E)' }}></div>
               
               <button
                 onClick={() => {
@@ -339,11 +337,15 @@ const HomeHero = () => {
                     window.location.href = '/contact';
                   }
                 }}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
                 style={{ 
-                  background: 'linear-gradient(to right, rgba(0, 102, 255, 0.2), rgba(255, 46, 126, 0.2))',
+                  backgroundColor: 'rgba(0, 0, 0, 0.8)',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  boxShadow: '0 20px 40px -10px rgba(0, 102, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2)' 
+                  border: '2px solid transparent',
+                  backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+                  backgroundOrigin: 'border-box',
+                  backgroundClip: 'padding-box, border-box',
+                  boxShadow: 'none'
                 }}
               >
                 <span className="text-margin-responsive">Plan strategiesessie</span>
