@@ -1,0 +1,89 @@
+---
+// TrackingScript.astro - Universal tracking script for all pages
+---
+
+<script>
+  // Import tracking functionality 
+  import { utmTracker, enhanceForm } from '../lib/tracking.ts';
+
+  // Initialize tracking on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    // Automatically enhance all forms on the page
+    const forms = document.querySelectorAll('form[data-track="true"]');
+    forms.forEach((form) => {
+      if (form instanceof HTMLFormElement) {
+        enhanceForm(form);
+      }
+    });
+
+    // Auto-enhance forms that get added dynamically
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) {
+            const dynamicForms = node.querySelectorAll('form[data-track="true"]');
+            dynamicForms.forEach((form) => {
+              if (form instanceof HTMLFormElement) {
+                enhanceForm(form);
+              }
+            });
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    // Debug mode - enable with ?debug_tracking=1
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('debug_tracking') === '1') {
+      console.log('🔍 Tracking Debug Mode Enabled');
+      console.log('Current tracking data:', utmTracker.getTrackingData());
+      
+      // Add debug info to page
+      const debugDiv = document.createElement('div');
+      debugDiv.style.cssText = `
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        background: rgba(0,0,0,0.9); 
+        color: white; 
+        padding: 15px; 
+        border-radius: 8px; 
+        font-family: monospace; 
+        font-size: 12px; 
+        max-width: 300px; 
+        z-index: 9999;
+        border: 1px solid #333;
+      `;
+      debugDiv.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 10px;">🔍 UTM Tracking Debug</div>
+        <pre style="white-space: pre-wrap; margin: 0;">${JSON.stringify(utmTracker.getTrackingData(), null, 2)}</pre>
+        <button onclick="this.parentElement.remove()" style="background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-top: 10px; cursor: pointer;">Close</button>
+      `;
+      document.body.appendChild(debugDiv);
+    }
+  });
+
+  // Handle page navigation for SPA-like behavior
+  let currentPath = window.location.pathname;
+  
+  // Check for path changes (useful for Astro view transitions)
+  setInterval(() => {
+    if (window.location.pathname !== currentPath) {
+      currentPath = window.location.pathname;
+      // Re-initialize tracking for new page
+      utmTracker.captureTrackingData?.();
+    }
+  }, 100);
+</script>
+
+<style>
+  /* Hide tracking fields from user */
+  input[data-tracking-field="true"] {
+    display: none !important;
+  }
+</style>

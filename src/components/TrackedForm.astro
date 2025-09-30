@@ -1,0 +1,280 @@
+---
+// TrackedForm.astro - Example form component with automatic UTM tracking
+export interface Props {
+  webhookUrl: string;
+  title?: string;
+  submitText?: string;
+  className?: string;
+  fields?: Array<{
+    name: string;
+    type: string;
+    label: string;
+    required?: boolean;
+    placeholder?: string;
+  }>;
+}
+
+const { 
+  webhookUrl, 
+  title = "Contact Form", 
+  submitText = "Submit", 
+  className = "",
+  fields = [
+    { name: "name", type: "text", label: "Name", required: true, placeholder: "Your name" },
+    { name: "email", type: "email", label: "Email", required: true, placeholder: "your@email.com" },
+    { name: "message", type: "textarea", label: "Message", required: false, placeholder: "Your message..." }
+  ]
+} = Astro.props;
+
+const formId = `tracked-form-${Date.now()}`;
+---
+
+<div class={`tracked-form-container ${className}`}>
+  {title && <h3 class="form-title">{title}</h3>}
+  
+  <form 
+    id={formId}
+    data-track="true" 
+    data-webhook={webhookUrl}
+    class="tracked-form"
+  >
+    {fields.map((field) => (
+      <div class="form-group">
+        <label for={`${formId}-${field.name}`} class="form-label">
+          {field.label}
+          {field.required && <span class="required">*</span>}
+        </label>
+        
+        {field.type === "textarea" ? (
+          <textarea
+            id={`${formId}-${field.name}`}
+            name={field.name}
+            placeholder={field.placeholder}
+            required={field.required}
+            class="form-control"
+            rows="4"
+          ></textarea>
+        ) : (
+          <input
+            id={`${formId}-${field.name}`}
+            type={field.type}
+            name={field.name}
+            placeholder={field.placeholder}
+            required={field.required}
+            class="form-control"
+          />
+        )}
+      </div>
+    ))}
+    
+    <div class="form-group">
+      <button type="submit" class="form-submit" disabled>
+        <span class="submit-text">{submitText}</span>
+        <span class="loading-text" style="display: none;">Sending...</span>
+      </button>
+    </div>
+    
+    <div class="form-status" style="display: none;"></div>
+  </form>
+</div>
+
+<script>
+  import { submitToWebhook, enhanceForm, getPayloadPreview } from '../lib/tracking.ts';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('{formId}') as HTMLFormElement;
+    if (!form) return;
+
+    const submitButton = form.querySelector('.form-submit') as HTMLButtonElement;
+    const submitText = form.querySelector('.submit-text') as HTMLElement;
+    const loadingText = form.querySelector('.loading-text') as HTMLElement;
+    const statusDiv = form.querySelector('.form-status') as HTMLElement;
+    const webhookUrl = form.dataset.webhook || '';
+
+    // Enable submit button once form is ready
+    setTimeout(() => {
+      if (submitButton) submitButton.disabled = false;
+    }, 100);
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      if (!webhookUrl) {
+        console.error('No webhook URL provided for form');
+        return;
+      }
+
+      // Show loading state
+      submitButton.disabled = true;
+      submitText.style.display = 'none';
+      loadingText.style.display = 'inline';
+      statusDiv.style.display = 'none';
+
+      try {
+        // Get form data
+        const formData = new FormData(form);
+        const formObject: Record<string, any> = {};
+        
+        formData.forEach((value, key) => {
+          // Skip tracking fields as they're handled separately
+          if (!key.startsWith('tracking_')) {
+            formObject[key] = value;
+          }
+        });
+
+        // Submit with tracking data
+        const success = await submitToWebhook(webhookUrl, formObject);
+
+        if (success) {
+          // Success state
+          statusDiv.innerHTML = `
+            <div style="color: #22c55e; padding: 12px; background: rgba(34, 197, 94, 0.1); border-radius: 8px; margin-top: 16px;">
+              ✅ Thank you! Your message has been sent successfully.
+            </div>
+          `;
+          statusDiv.style.display = 'block';
+          form.reset();
+          
+          // Log payload for debugging (remove in production)
+          console.log('Form submitted with payload:', getPayloadPreview(formObject));
+        } else {
+          throw new Error('Failed to submit form');
+        }
+      } catch (error) {
+        // Error state
+        statusDiv.innerHTML = `
+          <div style="color: #ef4444; padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; margin-top: 16px;">
+            ❌ Something went wrong. Please try again.
+          </div>
+        `;
+        statusDiv.style.display = 'block';
+        console.error('Form submission error:', error);
+      } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        submitText.style.display = 'inline';
+        loadingText.style.display = 'none';
+      }
+    });
+
+    // Auto-enhance form with tracking data
+    enhanceForm(form);
+  });
+</script>
+
+<style>
+  .tracked-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary, #ffffff);
+  }
+
+  .tracked-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-weight: 500;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+    font-size: 0.9rem;
+  }
+
+  .required {
+    color: #ef4444;
+    margin-left: 4px;
+  }
+
+  .form-control {
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  }
+
+  .form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .loading-text {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: light) {
+    .form-title {
+      color: var(--text-primary, #1f2937);
+    }
+    
+    .form-label {
+      color: var(--text-secondary, #4b5563);
+    }
+    
+    .form-control {
+      border-color: #d1d5db;
+      background: #ffffff;
+      color: #1f2937;
+    }
+    
+    .form-control:focus {
+      border-color: #3b82f6;
+      background: #ffffff;
+    }
+    
+    .form-control::placeholder {
+      color: #9ca3af;
+    }
+  }
+</style>
