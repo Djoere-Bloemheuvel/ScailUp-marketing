@@ -164,31 +164,25 @@ declare module 'astro:content' {
 	type DataEntryMap = {
 		"artikelen": Record<string, {
   id: string;
-  render(): Render[".md"];
-  slug: string;
-  body: string;
+  body?: string;
   collection: "artikelen";
-  data: InferEntrySchema<"artikelen">;
+  data: any;
   rendered?: RenderedContent;
   filePath?: string;
 }>;
 "clusters": Record<string, {
   id: string;
-  render(): Render[".md"];
-  slug: string;
-  body: string;
+  body?: string;
   collection: "clusters";
-  data: InferEntrySchema<"clusters">;
+  data: any;
   rendered?: RenderedContent;
   filePath?: string;
 }>;
 "pillars": Record<string, {
   id: string;
-  render(): Render[".md"];
-  slug: string;
-  body: string;
+  body?: string;
   collection: "pillars";
-  data: InferEntrySchema<"pillars">;
+  data: any;
   rendered?: RenderedContent;
   filePath?: string;
 }>;

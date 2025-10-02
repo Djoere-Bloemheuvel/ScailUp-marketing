@@ -72,7 +72,7 @@ const HomeAnimatedHeadline = () => {
               Wij bouwen de systemen
             </div>
             <div style={{ fontWeight: '400', whiteSpace: 'nowrap' }}>
-              achter jouw groei.
+              achter jouw B2B groei.
             </div>
           </div>
         </h1>

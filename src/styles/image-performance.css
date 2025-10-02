@@ -1,6 +1,6 @@
 /* Advanced Image Performance Optimizations */
 
-/* Force GPU acceleration for all image containers */
+/* Ultra-smooth GPU acceleration for all sections and images */
 .hero-section,
 .platform-section,
 .marketing-section,
@@ -9,11 +9,35 @@ section[class*="bg-"],
 div[style*="background-image"],
 img[class*="hero"],
 img[class*="platform"],
-img[class*="marketing"] {
-  transform: translateZ(0);
+img[class*="marketing"],
+section,
+main {
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   will-change: transform, opacity;
   contain: layout style paint;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+}
+
+/* Ultra-smooth scroll containers */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+}
+
+/* Force compositing layers for smooth scrolling */
+section > div {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Prevent layout shifts with container queries */
@@ -29,17 +53,32 @@ img[class*="marketing"] {
   }
 }
 
-/* Advanced scroll performance */
-html {
-  scroll-behavior: smooth;
+/* Anti-flicker scroll optimization */
+.scroll-optimized {
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 100% 50vh;
+}
+
+/* Pause transitions during fast scroll to prevent flicker */
+.fast-scrolling * {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+}
+
+.fast-scrolling img,
+.fast-scrolling [style*="background-image"] {
+  image-rendering: optimizeSpeed;
+}
+
+/* Resume normal transitions when scroll stops */
+.scroll-stable * {
+  transition-duration: revert;
+  animation-duration: revert;
 }
 
 /* Optimize for high-refresh displays */
 @media (prefers-reduced-motion: no-preference) {
-  * {
-    scroll-behavior: smooth;
-  }
-  
   .smooth-scroll {
     transform-style: preserve-3d;
     will-change: transform;
@@ -67,14 +106,51 @@ html {
   will-change: transform, opacity;
 }
 
-/* Prevent image flash during loading */
+/* Premium image loading states with smooth transitions */
 .image-loading {
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
 }
 
 .image-loaded {
   opacity: 1;
+}
+
+/* Blur-to-clear progressive loading */
+.progressive-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.progressive-image-thumbnail {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  transform: scale(1.05);
+  transition: opacity 0.5s ease-out;
+  z-index: 1;
+}
+
+.progressive-image-main {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.progressive-image-main.loaded {
+  opacity: 1;
+}
+
+.progressive-image-main.loaded + .progressive-image-thumbnail {
+  opacity: 0;
 }
 
 /* Advanced aspect ratio preservation */

@@ -31,51 +31,154 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   
-  <!-- CRITICAL: Ultra-priority preloading with optimized Astro assets -->
-  <link rel="preload" href={optimizedHero.src} as="image" fetchpriority="high" />
+  <!-- ULTRA-CRITICAL: Aggressive preloading - All above-fold content -->
+  <link rel="preload" href="/hero-bg-buildrs-thumb.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/hero-bg-buildrs-8k.webp" as="image" fetchpriority="high" />
   <link rel="preload" href={optimizedPlatform.src} as="image" fetchpriority="high" />
-  <link rel="preload" href="/marketing-engine-tree-visual.webp" as="image" fetchpriority="high" />
   
-  <!-- CRITICAL: Preload key fonts for instant text rendering -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  <!-- CRITICAL: Preload ALL fonts immediately -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   
-  <!-- Secondary preloads for above-fold content -->
-  <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+  <!-- AGGRESSIVE: Preconnect to all external domains immediately -->
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
+  <link rel="preconnect" href="https://logo.clearbit.com" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
-  <!-- CRITICAL: INSTANT scroll restoration - no flash -->
+  <!-- Prefetch critical JavaScript modules -->
+  <link rel="modulepreload" href="/src/components/active/agency/HomeHero.tsx" />
+  <link rel="modulepreload" href="/src/components/active/agency/SalesEngineSection.tsx" />
+  <link rel="modulepreload" href="/src/components/active/agency/MarketingEngineSection.tsx" />
+  
+  <!-- CRITICAL: Anti-flicker scroll manager -->
   <script>
-    // Phase 1: INSTANT synchronous restore to prevent hero flash
+    // Ultra-smooth scroll optimization with anti-flicker
+    (function() {
+      let isScrolling = false;
+      let scrollTimer = null;
+      let lastScrollY = 0;
+      let scrollVelocity = 0;
+      
+      function handleScroll() {
+        const currentScrollY = window.scrollY;
+        const currentTime = Date.now();
+        
+        if (!isScrolling) {
+          isScrolling = true;
+          document.documentElement.classList.add('fast-scrolling');
+          document.documentElement.classList.remove('scroll-stable');
+        }
+        
+        // Calculate scroll velocity
+        const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+        scrollVelocity = scrollDelta;
+        
+        // If fast scrolling, disable transitions
+        if (scrollVelocity > 50) {
+          document.documentElement.classList.add('fast-scrolling');
+        }
+        
+        lastScrollY = currentScrollY;
+        
+        // Clear existing timer
+        clearTimeout(scrollTimer);
+        
+        // Set timer to detect scroll end
+        scrollTimer = setTimeout(() => {
+          isScrolling = false;
+          document.documentElement.classList.remove('fast-scrolling');
+          document.documentElement.classList.add('scroll-stable');
+          
+          // Remove scroll-stable class after transitions complete
+          setTimeout(() => {
+            document.documentElement.classList.remove('scroll-stable');
+          }, 500);
+        }, 100);
+      }
+      
+      // Add scroll listener with passive for better performance
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    })();
+  </script>
+
+  <!-- CRITICAL: Smart scroll restoration - fresh visit vs refresh -->
+  <script>
+    // Disable browser scroll restoration
     try {
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
     } catch(e) {}
     
-    // IMMEDIATE synchronous scroll restore
+    // Smart scroll restoration with navigation type detection
     (function() {
       const STORAGE_KEY = 'buildrs_scroll_pos';
       const URL_KEY = 'buildrs_scroll_url';
+      const VISIT_TYPE_KEY = 'buildrs_visit_type';
       
+      // Detect navigation type
+      function getNavigationType() {
+        // Modern API
+        if (performance.navigation) {
+          return performance.navigation.type;
+        }
+        // Fallback for older browsers
+        if (performance.getEntriesByType) {
+          const navEntries = performance.getEntriesByType('navigation');
+          if (navEntries.length > 0) {
+            const navType = navEntries[0].type;
+            if (navType === 'navigate') return 0;
+            if (navType === 'reload') return 1;
+            if (navType === 'back_forward') return 2;
+          }
+        }
+        return 0; // Default to fresh visit
+      }
+      
+      const navigationType = getNavigationType();
+      const currentUrl = location.href;
       const savedPosition = sessionStorage.getItem(STORAGE_KEY);
       const savedUrl = sessionStorage.getItem(URL_KEY);
-      const currentUrl = location.href;
       
-      if (savedPosition && savedUrl === currentUrl) {
+      // Determine if this is a fresh visit or refresh
+      const isFreshVisit = navigationType === 0; // TYPE_NAVIGATE
+      const isRefresh = navigationType === 1;     // TYPE_RELOAD  
+      const isBackForward = navigationType === 2; // TYPE_BACK_FORWARD
+      
+      // Store visit type for debugging
+      sessionStorage.setItem(VISIT_TYPE_KEY, navigationType.toString());
+      
+      // Only restore scroll position if:
+      // 1. NOT a fresh visit AND
+      // 2. We have a saved position AND  
+      // 3. URL matches AND
+      // 4. Position is valid
+      const shouldRestore = !isFreshVisit && 
+                           savedPosition && 
+                           savedUrl === currentUrl &&
+                           parseInt(savedPosition, 10) > 0;
+      
+      if (shouldRestore) {
         const targetPosition = parseInt(savedPosition, 10);
-        if (Number.isFinite(targetPosition) && targetPosition > 0) {
-          // INSTANT scroll before first paint - no waiting!
+        if (Number.isFinite(targetPosition)) {
+          // INSTANT scroll restore for refresh/back
           document.documentElement.scrollTop = targetPosition;
           window.scrollTo(0, targetPosition);
-          
-          // No hiding needed - instant scroll is fast enough
           document.documentElement.classList.add('scroll-restored');
         }
+      } else if (isFreshVisit) {
+        // Clear stale scroll data on fresh visits
+        sessionStorage.removeItem(STORAGE_KEY);
+        sessionStorage.removeItem(URL_KEY);
+        // Ensure we start at top
+        document.documentElement.scrollTop = 0;
+        window.scrollTo(0, 0);
       }
     })();
     
-    // Phase 2: Complex restore system for accuracy
+    // Simplified scroll position saving for session tracking
     (function() {
       const STORAGE_KEY = 'buildrs_scroll_pos';
       const URL_KEY = 'buildrs_scroll_url';
@@ -89,137 +192,17 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
         }
       }
       
-      // Save on scroll with throttle
+      // Save on scroll with throttle for session persistence
       let saveTimeout;
       function throttledSave() {
         clearTimeout(saveTimeout);
-        saveTimeout = setTimeout(saveScrollPosition, 50);
+        saveTimeout = setTimeout(saveScrollPosition, 100);
       }
       
-      // Optimized restore scroll with performance focus
-      function restoreScrollPosition() {
-        const savedPosition = sessionStorage.getItem(STORAGE_KEY);
-        const savedUrl = sessionStorage.getItem(URL_KEY);
-        const currentUrl = location.href;
-        
-        if (!savedPosition || !savedUrl || savedUrl !== currentUrl) return false;
-        
-        const targetPosition = parseInt(savedPosition, 10);
-        if (!Number.isFinite(targetPosition) || targetPosition <= 0) return false;
-        
-        let attempts = 0;
-        const maxAttempts = 10; // Reduced from 50 for performance
-        
-        function attemptRestore() {
-          if (attempts++ > maxAttempts) return;
-          
-          const bodyHeight = Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-          );
-          
-          // Only restore if page is tall enough
-          if (bodyHeight < targetPosition + window.innerHeight) {
-            requestAnimationFrame(attemptRestore);
-            return;
-          }
-          
-          // Get current scroll before setting
-          const currentScrollBefore = document.documentElement.scrollTop || document.body.scrollTop || window.scrollY || 0;
-          
-          // Force scroll to exact position
-          document.documentElement.scrollTop = targetPosition;
-          document.body.scrollTop = targetPosition;
-          window.scrollTo(0, targetPosition);
-          
-          // Only verify if we actually moved
-          requestAnimationFrame(() => {
-            const currentScroll = document.documentElement.scrollTop || document.body.scrollTop || window.scrollY || 0;
-            if (Math.abs(currentScroll - targetPosition) > 5 && currentScroll !== currentScrollBefore) {
-              attemptRestore();
-            }
-          });
-        }
-        
-        attemptRestore();
-        return true; // Indicate restore was attempted
-      }
-      
-      // Setup event listeners
-      function setupListeners() {
-        window.addEventListener('scroll', throttledSave, { passive: true });
-        window.addEventListener('beforeunload', saveScrollPosition, { passive: true });
-        window.addEventListener('pagehide', saveScrollPosition, { passive: true });
-      }
-      
-      // Conditional restore initialization for performance
-      function initializeRestore() {
-        // Quick check if restore is needed
-        const savedPosition = sessionStorage.getItem(STORAGE_KEY);
-        const savedUrl = sessionStorage.getItem(URL_KEY);
-        const currentUrl = location.href;
-        
-        if (!savedPosition || !savedUrl || savedUrl !== currentUrl) {
-          return; // No restore needed, skip all setup
-        }
-        
-        const targetPosition = parseInt(savedPosition, 10);
-        if (!Number.isFinite(targetPosition) || targetPosition <= 0) {
-          return; // Invalid position, skip
-        }
-        
-        // Attempt initial restore
-        const restored = restoreScrollPosition();
-        
-        // Only setup MutationObserver if we need complex restore
-        if (restored && targetPosition > 1000) {
-          let mutationTimeout;
-          let observerActive = true;
-          
-          // Debounced MutationObserver for performance
-          const observer = new MutationObserver(() => {
-            if (!observerActive) return;
-            
-            clearTimeout(mutationTimeout);
-            mutationTimeout = setTimeout(() => {
-              if (observerActive) {
-                restoreScrollPosition();
-              }
-            }, 150); // Debounced to reduce calls
-          });
-          
-          // Less aggressive observation
-          observer.observe(document.body, {
-            childList: true,
-            subtree: false, // Don't observe deep changes
-            attributes: false // Skip attribute changes
-          });
-          
-          // Stop observing after 3 seconds (reduced from 5)
-          setTimeout(() => {
-            observerActive = false;
-            observer.disconnect();
-          }, 3000);
-        }
-      }
-      
-      // Initialize based on document state
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          setupListeners();
-          initializeRestore();
-        });
-      } else {
-        setupListeners();
-        initializeRestore();
-      }
-      
-      // Handle pageshow for bfcache
-      window.addEventListener('pageshow', (e) => {
-        if (e.persisted) restoreScrollPosition();
-      });
+      // Setup event listeners only for saving scroll position
+      window.addEventListener('scroll', throttledSave, { passive: true });
+      window.addEventListener('beforeunload', saveScrollPosition, { passive: true });
+      window.addEventListener('pagehide', saveScrollPosition, { passive: true });
     })();
   </script>
   
@@ -277,8 +260,14 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
   <link rel="preconnect" href="https://logo.clearbit.com" crossorigin />
   
-  <!-- Prefetch likely next routes for faster nav (landing-only) -->
+  <!-- Aggressive prefetch likely next routes for instant navigation -->
   <link rel="prefetch" href="/contact/" />
+  <link rel="prefetch" href="/contact" />
+  
+  <!-- Prefetch critical assets that might be needed -->
+  <link rel="prefetch" href="/platform-dashboard-fullwidth.webp" />
+  <link rel="prefetch" href="/sales-engine-dashboard.webp" />
+  <link rel="prefetch" href="/marketing-engine-dashboard.webp" />
   
   <!-- Critical CSS will be inlined by Astro build process -->
   <link rel="modulepreload" href="/src/index.css" />

@@ -23,39 +23,71 @@ const {
   filter = ""
 } = Astro.props;
 
-// Generate optimized background for instant paint
-const backgroundImage = await getImage({ 
+// Generate optimized thumbnail for instant paint (much smaller and blurred)
+const thumbnailImage = await getImage({ 
   src, 
   format: 'webp', 
-  quality: 30, 
-  width: 800 
+  quality: 20, 
+  width: 200 
+});
+
+// Generate optimized main image
+const optimizedImage = await getImage({ 
+  src, 
+  format: 'webp', 
+  quality: quality, 
+  width: 1600 
 });
 ---
 
-<div 
-  class="absolute inset-0"
-  style={`background-image: url(${backgroundImage.src}); background-size: cover; background-position: center; background-repeat: no-repeat; contain: paint;`}
->
-  <!-- High-quality Picture component -->
+<div class="absolute inset-0 overflow-hidden">
+  <!-- Instant background color -->
+  <div class="absolute inset-0 bg-gray-900" />
+  
+  <!-- Skeleton placeholder for layout stability -->
+  <div 
+    class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900"
+    style="animation: pulse 2s ease-in-out infinite;"
+  />
+  
+  <!-- Ultra-fast loading thumbnail - only if not eager -->
+  {!eager && (
+    <div 
+      class="absolute inset-0 opacity-60"
+      style={`background-image: url(${thumbnailImage.src}); background-size: cover; background-position: center; background-repeat: no-repeat; filter: blur(8px); transform: scale(1.05);`}
+    />
+  )}
+  
+  <!-- High-quality Picture component with intersection observer -->
   <Picture
     src={src}
     alt={alt}
-    class={className}
-    style={`${filter ? `filter: ${filter};` : ''} ${style}`}
+    class={`${className} ${eager ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 ease-out`}
+    style={`${filter ? `filter: ${filter};` : ''} ${style} opacity: ${opacity / 100}; backface-visibility: hidden; transform: translate3d(0,0,0); will-change: opacity;`}
     formats={['avif', 'webp', 'jpg']}
     loading={eager ? "eager" : "lazy"}
-    fetchpriority={eager ? "high" : "auto"}
+    fetchpriority={eager ? "high" : "low"}
     decoding={eager ? "sync" : "async"}
-    widths={[800, 1200, 1600, 1920]}
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+    widths={[400, 800, 1200, 1600, 1920]}
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1600px"
     quality={quality}
-    style={`opacity: ${opacity / 100}; ${style}`}
+    onload="this.style.opacity='1'; this.previousElementSibling && (this.previousElementSibling.style.opacity='0');"
   />
 </div>
 
 <style>
-  /* Smooth transition from background to high-quality image */
+  /* Enhanced smooth transitions with GPU acceleration */
   [astro-image] {
-    transition: opacity 0.3s ease;
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+    contain: layout style paint;
+  }
+  
+  /* Intersection observer optimization */
+  @supports (content-visibility: auto) {
+    [astro-image] {
+      content-visibility: auto;
+      contain-intrinsic-size: 100% 50vh;
+    }
   }
 </style>

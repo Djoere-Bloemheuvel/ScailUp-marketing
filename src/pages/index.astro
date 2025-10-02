@@ -13,8 +13,6 @@ import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
-// Interactive headline component
-import HomeAnimatedHeadline from '../components/active/agency/HomeAnimatedHeadline';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -82,20 +80,20 @@ const structuredData = {
   </style>
 
   <main id="main-content" role="main" class="min-h-screen bg-black">
-    <!-- React Hero with immediate idle hydration for smoother loading -->
-    <HomeHero client:idle />
+    <!-- React Hero with immediate load hydration -->
+    <HomeHero client:load />
 
     <!-- Server-rendered Platform section -->
     <Platform />
 
-    <!-- Interactive Engine sections with accordions -->
-    <SalesEngineSection client:load />
-    <MarketingEngineSection client:load />
+    <!-- Interactive Engine sections - load immediately after idle -->
+    <SalesEngineSection client:idle />
+    <MarketingEngineSection client:idle />
 
-    <!-- Anti-unload hydration - early sections always mounted -->
-    <UseCaseSection client:load />
-    <PartnershipSection client:load />
-    <!-- Later sections can use idle without scroll impact -->
+    <!-- Progressive loading - start loading earlier with media queries -->
+    <UseCaseSection client:media="(max-width: 9999px)" />
+    <PartnershipSection client:media="(max-width: 9999px)" />
+    <!-- Later sections - load immediately -->
     <IntegrationsShowcase client:idle />
     <FoundersSection client:idle />
     <HomeFinalCTASection client:idle />

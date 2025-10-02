@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import HomeAnimatedHeadline from './HomeAnimatedHeadline';
-import HomeROICalculator from './HomeROICalculator';
 
 const HomeHero = () => {
   const handlePartnershipClick = () => {
@@ -154,38 +153,41 @@ const HomeHero = () => {
       `}</style>
     <section className="relative w-full h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
-      {/* PERSISTENT Background Paint - Never disappears */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundColor: '#000000',
-          backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 23%',
-          backgroundRepeat: 'no-repeat',
-          contain: 'paint',
-          imageRendering: 'high-quality'
-        }}
-      >
-        {/* High-quality overlay - paint-through when loaded */}
+      {/* Instant Hero Background - No transitions */}
+      <div className="absolute inset-0">
+        {/* Instant background with image */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundColor: '#000000',
+            backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 23%',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.9,
+            imageRendering: 'high-quality',
+            backfaceVisibility: 'hidden',
+            transform: 'translate3d(0,0,0)', // Force GPU layer
+            contain: 'paint'
+          }}
+        />
+        
+        {/* Fallback high-quality image for browsers that don't support CSS background */}
         <img 
           src="/hero-bg-buildrs-8k.webp"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover opacity-90"
           width="1920"
           height="1080"
           style={{
             objectPosition: 'center 23%',
             imageRendering: 'high-quality',
-            opacity: '0',
-            transition: 'opacity 0.3s ease-out'
+            backfaceVisibility: 'hidden',
+            transform: 'translate3d(0,0,0)'
           }}
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          onLoad={(e) => {
-            (e.target as HTMLImageElement).style.opacity = '0.9';
-          }}
         />
       </div>
       

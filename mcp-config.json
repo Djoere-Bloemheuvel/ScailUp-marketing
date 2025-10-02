@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "hubspot": {
+      "command": "npx",
+      "args": [
+        "@hubspot/mcp-server",
+        "--oauth-client-id",
+        "${HUBSPOT_CLIENT_ID}",
+        "--oauth-client-secret", 
+        "${HUBSPOT_CLIENT_SECRET}",
+        "--oauth-redirect-uri",
+        "${HUBSPOT_REDIRECT_URI}",
+        "--portal-id",
+        "${HUBSPOT_PORTAL_ID}"
+      ],
+      "env": {
+        "HUBSPOT_CLIENT_ID": "${HUBSPOT_CLIENT_ID}",
+        "HUBSPOT_CLIENT_SECRET": "${HUBSPOT_CLIENT_SECRET}",
+        "HUBSPOT_REDIRECT_URI": "${HUBSPOT_REDIRECT_URI}",
+        "HUBSPOT_PORTAL_ID": "${HUBSPOT_PORTAL_ID}"
+      }
+    }
+  }
+}
