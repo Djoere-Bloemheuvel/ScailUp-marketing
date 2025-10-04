@@ -45,7 +45,7 @@ const MarketingEngineSection = () => {
       
       {/* Main Container */}
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-24 lg:gap-32 xl:gap-40 items-start">
           
           {/* Left Side - Visual Only */}
           <div className="relative">

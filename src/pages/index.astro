@@ -8,6 +8,7 @@ import Platform from '../components/sections/Platform.astro';
 import SalesEngineSection from '../components/active/agency/SalesEngineSection';
 import MarketingEngineSection from '../components/active/agency/MarketingEngineSection';
 // React components for interactive features
+import SpecialistSection from '../components/active/agency/SpecialistSection';
 import UseCaseSection from '../components/active/agency/UseCaseSection';
 import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
@@ -86,15 +87,20 @@ const structuredData = {
     <!-- Server-rendered Platform section -->
     <Platform />
 
+    <!-- Specialist Section - Ultra-smooth Framer Motion animations -->
+    <SpecialistSection client:load />
+
+    <!-- Use Case Section - Ultra-smooth Framer Motion animations -->
+    <UseCaseSection client:load />
+
     <!-- Interactive Engine sections - load immediately after idle -->
     <SalesEngineSection client:idle />
     <MarketingEngineSection client:idle />
 
     <!-- Progressive loading - start loading earlier with media queries -->
-    <UseCaseSection client:media="(max-width: 9999px)" />
+    <IntegrationsShowcase client:idle />
     <PartnershipSection client:media="(max-width: 9999px)" />
     <!-- Later sections - load immediately -->
-    <IntegrationsShowcase client:idle />
     <FoundersSection client:idle />
     <HomeFinalCTASection client:idle />
     <ScailUpFooter client:idle />

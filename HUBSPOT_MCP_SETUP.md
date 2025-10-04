@@ -13,7 +13,7 @@ De custom meeting scheduler heeft nu een **hybride implementatie** met drie API 
 
 1. **Ga naar HubSpot Developer Portal:**
    - Bezoek: https://developers.hubspot.com/
-Fi   - Log in met je HubSpot account
+HaaFi   - Log in met je HubSpot account
 
 2. **Maak een nieuwe Private App:**
    - Ga naar "Private Apps" in je developer account

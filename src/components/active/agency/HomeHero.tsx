@@ -331,15 +331,14 @@ const HomeHero = () => {
             `}</style>
             <div className="cta-container px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full">
             {/* Primary CTA - Clean gradient border */}
-            <div className="relative group">
-              
-              <button
+            <div className="relative">
+              <motion.button
                 onClick={() => {
                   if (typeof window !== 'undefined') {
                     window.location.href = '/contact';
                   }
                 }}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
                 style={{ 
                   backgroundColor: 'rgba(0, 0, 0, 0.8)',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
@@ -349,26 +348,45 @@ const HomeHero = () => {
                   backgroundClip: 'padding-box, border-box',
                   boxShadow: 'none'
                 }}
+                whileHover={{ 
+                  scale: 1.01,
+                  backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(120, 185, 255), rgb(255, 134, 202))',
+                  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+                }}
+                whileTap={{ 
+                  scale: 0.99,
+                  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
+                }}
               >
                 <span className="text-margin-responsive">Plan strategiesessie</span>
                 <ArrowRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              </motion.button>
             </div>
 
             {/* Secondary CTA - Modern outline design */}
-            <div className="relative group">
-              <button
+            <div className="relative">
+              <motion.button
                 onClick={handleCasesClick}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 hover:border-white/40 backdrop-blur-sm hover:shadow-xl hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 backdrop-blur-sm flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
                 style={{ 
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                   background: 'rgba(255, 255, 255, 0.05)',
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
                 }}
+                whileHover={{ 
+                  scale: 1.01,
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  borderColor: 'rgba(255, 255, 255, 0.4)',
+                  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+                }}
+                whileTap={{ 
+                  scale: 0.99,
+                  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
+                }}
               >
                 <span className="text-margin-responsive">Bekijk voorbeelden</span>
                 <ChevronRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              </motion.button>
             </div>
             </div>
           </motion.div>

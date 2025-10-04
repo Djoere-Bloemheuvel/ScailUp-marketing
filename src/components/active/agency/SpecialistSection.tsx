@@ -14,12 +14,12 @@ interface Props {
 
 const defaultServices: [Service, Service] = [
   {
-    title: "SaaS Bedrijven",
+    title: "Lead Generatie",
     image: "/images/saas-team-meeting.webp",
     accent: "blue"
   },
   {
-    title: "Marketing Bureaus", 
+    title: "Content & SEO", 
     image: "/images/consultancy-founder.webp", 
     accent: "blue"
   }
@@ -84,7 +84,7 @@ const titleVariants = {
 };
 
 
-const UseCaseSection: React.FC<Props> = ({ 
+const SpecialistSection: React.FC<Props> = ({ 
   services = defaultServices,
   sectionTitle = ""
 }) => {
@@ -173,12 +173,13 @@ const UseCaseSection: React.FC<Props> = ({
                   
                   {/* Main Title - Premium Buildrs Typography */}
                   <motion.h2 
-                    className="text-4xl lg:text-5xl xl:text-6xl font-light mb-8 lg:mb-12 max-w-lg text-white"
+                    className="text-4xl lg:text-5xl xl:text-6xl font-light mb-1 lg:mb-2 max-w-2xl text-white"
                     style={{ 
                       fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                       lineHeight: 0.9,
                       letterSpacing: '-0.045em',
-                      WebkitFontSmoothing: 'antialiased'
+                      WebkitFontSmoothing: 'antialiased',
+                      whiteSpace: 'nowrap'
                     }}
                     variants={titleVariants}
                     initial="inactive"
@@ -186,6 +187,39 @@ const UseCaseSection: React.FC<Props> = ({
                   >
                     {service.title}
                   </motion.h2>
+
+                  {/* Taglines */}
+                  {service.title === "Lead Generatie" && (
+                    <motion.p 
+                      className="text-xl lg:text-2xl text-gray-300 font-light mb-8 lg:mb-12 max-w-xl"
+                      style={{ 
+                        fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                        letterSpacing: '-0.02em',
+                        WebkitFontSmoothing: 'antialiased'
+                      }}
+                      variants={titleVariants}
+                      initial="inactive"
+                      animate={animationState}
+                    >
+                      Persoonlijke outreach, op schaal.
+                    </motion.p>
+                  )}
+                  
+                  {service.title === "Content & SEO" && (
+                    <motion.p 
+                      className="text-xl lg:text-2xl text-gray-300 font-light mb-8 lg:mb-12 max-w-xl"
+                      style={{ 
+                        fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                        letterSpacing: '-0.02em',
+                        WebkitFontSmoothing: 'antialiased'
+                      }}
+                      variants={titleVariants}
+                      initial="inactive"
+                      animate={animationState}
+                    >
+                      Vindbaar worden, op het juiste moment.
+                    </motion.p>
+                  )}
 
 
                 </div>
@@ -200,4 +234,4 @@ const UseCaseSection: React.FC<Props> = ({
   );
 };
 
-export default UseCaseSection;
+export default SpecialistSection;
