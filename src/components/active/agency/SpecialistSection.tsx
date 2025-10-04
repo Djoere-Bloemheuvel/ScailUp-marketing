@@ -15,7 +15,7 @@ interface Props {
 const defaultServices: [Service, Service] = [
   {
     title: "Lead Generatie",
-    image: "/images/saas-team-meeting.webp",
+    image: "/images/lead-generatie.webp",
     accent: "blue"
   },
   {
@@ -132,7 +132,7 @@ const SpecialistSection: React.FC<Props> = ({
             return (
               <motion.div 
                 key={index}
-                className="group relative h-screen cursor-pointer"
+                className="group relative h-screen cursor-pointer specialist-section-item"
                 onHoverStart={() => {
                   setCurrentlyHovering(index);
                   setActiveIndex(index); // Update active state immediately
@@ -159,9 +159,36 @@ const SpecialistSection: React.FC<Props> = ({
                   {/* Dark overlay for text readability */}
                   <div className="absolute inset-0 bg-black/40" />
                   
-                  {/* Clean black background (inactive state) */}
+                  {/* Subtle blue color grading for Lead Generatie */}
+                  {service.title === "Lead Generatie" && (
+                    <div 
+                      className="absolute inset-0 mix-blend-overlay opacity-45"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(96, 165, 250, 0.15) 50%, rgba(147, 197, 253, 0.10) 100%)'
+                      }}
+                    />
+                  )}
+                  
+                  {/* Clean black background (inactive state) with colored glow */}
                   <motion.div 
-                    className="absolute inset-0 bg-black"
+                    className="absolute inset-0"
+                    style={{ 
+                      background: service.title === "Lead Generatie" 
+                        ? `
+                          radial-gradient(ellipse 400px 300px at 30% 40%, rgba(59, 130, 246, 0.15) 0%, transparent 70%),
+                          radial-gradient(ellipse 500px 350px at 70% 60%, rgba(96, 165, 250, 0.12) 0%, transparent 70%),
+                          radial-gradient(ellipse 600px 400px at 20% 80%, rgba(37, 99, 235, 0.10) 0%, transparent 70%),
+                          #000000
+                        `
+                        : service.title === "Content & SEO"
+                        ? `
+                          radial-gradient(ellipse 400px 300px at 70% 40%, rgba(236, 72, 153, 0.15) 0%, transparent 70%),
+                          radial-gradient(ellipse 500px 350px at 30% 60%, rgba(244, 114, 182, 0.12) 0%, transparent 70%),
+                          radial-gradient(ellipse 600px 400px at 80% 80%, rgba(219, 39, 119, 0.10) 0%, transparent 70%),
+                          #000000
+                        `
+                        : '#000000'
+                    }}
                     variants={overlayVariants}
                     initial="inactive"
                     animate={animationState}
@@ -230,6 +257,15 @@ const SpecialistSection: React.FC<Props> = ({
 
         </div>
       </div>
+      
+      {/* Custom styles for larger screens (20+ inch) */}
+      <style jsx>{`
+        @media (min-width: 1680px) {
+          .specialist-section-item {
+            height: 80vh !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

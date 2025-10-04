@@ -19,8 +19,8 @@ const SalesEngineSection = () => {
       content: "Van prospecting tot eerste contact. AI vindt en benadert jouw ideale klanten automatisch met gepersonaliseerde berichten die converteren."
     },
     {
-      title: "INTELLIGENTE NURTURING FLOWS",
-      content: "Geautomatiseerde follow-up sequenties die leads warm houden. Slimme timing en content die leads natuurlijk naar een gesprek leidt."
+      title: "LINKEDIN AUTOMATION",
+      content: "Geautomatiseerde LinkedIn outreach en follow-up berichten. Persoonlijke connectie-verzoeken en berichten die leads warm houden en naar gesprekken leiden."
     },
     {
       title: "SALES PIPELINE AUTOMATION",
