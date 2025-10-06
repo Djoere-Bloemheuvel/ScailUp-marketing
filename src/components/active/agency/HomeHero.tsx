@@ -29,8 +29,8 @@ const HomeHero = () => {
       <style jsx>{`
         /* Fijnere CTA responsive scaling voor <12 inch schermen */
         .cta-responsive {
-          font-size: 0.8rem; /* iets kleiner dan text-sm */
-          padding: 0.45rem 0.9rem; /* kleinere padding */
+          font-size: 0.7rem; /* nog kleiner op mobile */
+          padding: 0.35rem 0.75rem; /* kleinere padding */
         }
         
         @media (min-width: 640px) {

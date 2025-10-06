@@ -50,41 +50,41 @@ const HomeFinalCTASection: React.FC<HomeFinalCTASectionProps> = ({ fullHeight = 
               fontWeight: '200'
             }}
           >
-            Klaar voor jouw{' '}
+            Klaar om te{' '}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-normal">
-              AI agent?
+              beginnen?
             </span>
           </h2>
 
           <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-            Gratis strategiesessie → Vaste offerte → Live binnen 1-2 weken
+            Van eerste gesprek tot jouw succes — we begeleiden je door alle drie de fasen
           </p>
 
-          {/* Pricing overview - clean cards */}
+          {/* Proces overview - clean cards met referentie naar drie fasen */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-              <div className="text-2xl font-light text-white mb-2 flex items-center justify-center gap-1"><span className="text-white/50 text-base font-normal">vanaf</span><span>€1.000</span></div>
-              <div className="text-white/60 text-sm">Simple agent</div>
+              <div className="text-2xl font-light text-white mb-2">Fase 1</div>
+              <div className="text-white/60 text-sm">Jouw perfecte groeiplan</div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-              <div className="text-2xl font-light text-white mb-2 flex items-center justify-center gap-1"><span className="text-white/50 text-base font-normal">vanaf</span><span>€2.500</span></div>
-              <div className="text-white/60 text-sm">Complex workflow</div>
+              <div className="text-2xl font-light text-white mb-2">Fase 2</div>
+              <div className="text-white/60 text-sm">Wij zorgen voor alles</div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-              <div className="text-2xl font-light text-white mb-2 flex items-center justify-center gap-1"><span className="text-white/50 text-base font-normal">vanaf</span><span>€500</span></div>
-              <div className="text-white/60 text-sm">Platform setup</div>
+              <div className="text-2xl font-light text-white mb-2">Fase 3</div>
+              <div className="text-white/60 text-sm">Jij neemt het over</div>
             </div>
           </div>
 
-          {/* Simple guarantees */}
+          {/* Process guarantees */}
           <div className="flex flex-wrap justify-center gap-8 text-sm text-white/60 mb-12">
             <div className="flex items-center">
               <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-              Vaste prijzen
+              Persoonlijke begeleiding
             </div>
             <div className="flex items-center">
               <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
-              14-dagen garantie
+              Eigenaarschap blijft bij jou
             </div>
             <div className="flex items-center">
               <CheckCircle className="w-4 h-4 text-green-400 mr-2" />

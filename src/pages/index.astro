@@ -9,7 +9,6 @@ import SalesEngineSection from '../components/active/agency/SalesEngineSection';
 import MarketingEngineSection from '../components/active/agency/MarketingEngineSection';
 // React components for interactive features
 import SpecialistSection from '../components/active/agency/SpecialistSection';
-import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
@@ -101,9 +100,8 @@ const structuredData = {
 
     <!-- Progressive loading - start loading earlier with media queries -->
     <!-- <IntegrationsShowcase client:idle /> -->
-    <PartnershipSection client:media="(max-width: 9999px)" />
     <!-- Later sections - load immediately -->
-    <FoundersSection client:idle />
+    <!-- <FoundersSection client:idle /> -->
     <HomeFinalCTASection client:idle />
     <ScailUpFooter client:idle />
   </main>

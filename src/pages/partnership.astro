@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ScailUpFooter from '../components/active/shared/ScailUpFooter';
+import PartnershipSection from '../components/active/agency/PartnershipSection';
+
+// Partnership page structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Partnership - Buildrs",
+  "description": "Partner met Buildrs voor AI-gedreven groei. Samen bouwen we de toekomst van automatisering voor B2B bedrijven.",
+  "url": "https://buildrs.nl/partnership",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Buildrs",
+    "description": "Custom AI agents en automatisering workflows voor B2B service providers"
+  }
+};
+---
+
+<Layout 
+  title="Partnership | Buildrs - Samen Bouwen aan AI-gedreven Groei"
+  description="Partner met Buildrs voor AI-gedreven groei. Samen bouwen we de toekomst van automatisering voor B2B bedrijven."
+  keywords="partnership, AI partnership, business partnership, Buildrs partnership, automation partnership"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <main id="main-content" role="main" class="min-h-screen bg-black">
+    <!-- Partnership Section -->
+    <PartnershipSection client:load />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:idle />
+  </main>
+
+</Layout>

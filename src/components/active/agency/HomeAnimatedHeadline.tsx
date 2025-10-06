@@ -88,7 +88,7 @@ const HomeAnimatedHeadline = () => {
         {/* Hero Tagline - 2 lines on mobile only */}
         <div className="mt-3 sm:mt-4 md:mt-6">
           <p 
-            className="text-lg sm:text-xl md:text-2xl text-white font-light"
+            className="text-base sm:text-xl md:text-2xl text-white font-light"
             style={{ 
               fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
               fontWeight: '300',
