@@ -227,9 +227,9 @@ const ThreePhasesSection = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <style jsx>{`
-            /* Hero-style responsive title scaling - slightly larger */
+            /* Hero-style responsive title scaling - smaller on mobile */
             .hero-title-responsive {
-              font-size: clamp(2.2rem, 4vw + 0.8rem, 4rem);
+              font-size: clamp(1.8rem, 4vw + 0.6rem, 4rem);
               line-height: 0.85;
               will-change: transform;
               transform: translateZ(0);
@@ -314,13 +314,13 @@ const ThreePhasesSection = () => {
             >
               
               {/* Wireframe Visual Container - Clean like Jet */}
-              <div className="relative h-64 lg:h-72 mb-12 flex items-center justify-center"
+              <div className="relative h-80 lg:h-72 mb-12 flex items-center justify-center"
               >
                 
                 {/* Discovery & Keuze - Research Target */}
                 {phase.visual === "wireframe-discovery" && (
                   <motion.svg 
-                    className="w-48 h-36 lg:w-56 lg:h-42" 
+                    className="w-56 h-42 lg:w-56 lg:h-42" 
                     viewBox="0 0 200 120" 
                     fill="none"
                   >
@@ -391,7 +391,7 @@ const ThreePhasesSection = () => {
                 {/* Onboarding & Implementatie - Building Process */}
                 {phase.visual === "wireframe-implementation" && (
                   <motion.svg 
-                    className="w-48 h-36 lg:w-56 lg:h-42" 
+                    className="w-56 h-42 lg:w-56 lg:h-42" 
                     viewBox="0 0 200 120" 
                     fill="none"
                   >
@@ -462,7 +462,7 @@ const ThreePhasesSection = () => {
                 {/* Overdracht & Eigenaarschap - Handshake/Transfer */}
                 {phase.visual === "wireframe-ownership" && (
                   <motion.svg 
-                    className="w-48 h-36 lg:w-56 lg:h-42" 
+                    className="w-56 h-42 lg:w-56 lg:h-42" 
                     viewBox="0 0 200 120" 
                     fill="none"
                   >
@@ -523,7 +523,7 @@ const ThreePhasesSection = () => {
                 {/* Cost Savings - Simple Coin Stack */}
                 {phase.visual === "wireframe-coins" && (
                   <motion.svg 
-                    className="w-48 h-36 lg:w-56 lg:h-42" 
+                    className="w-56 h-42 lg:w-56 lg:h-42" 
                     viewBox="0 0 200 120" 
                     fill="none"
                   >
