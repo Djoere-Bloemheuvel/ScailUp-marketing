@@ -1,10 +1,9 @@
 import type { APIRoute } from 'astro';
-import { hubspotClient } from '../../../lib/hubspot-mcp';
 
 export const GET: APIRoute = async () => {
   try {
-    // Get connection status from HubSpot client
-    const status = await hubspotClient.getConnectionStatus();
+    // Mock connection status since hubspot-mcp is not available
+    const status = { connected: false, error: 'hubspot-mcp not configured' };
     
     // Get environment info
     const environment = {
