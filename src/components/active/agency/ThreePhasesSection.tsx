@@ -2,56 +2,56 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, Phone, ChevronDown, Clock, CheckCircle2, Zap, Target, Search, FileText, Map, Settings, Link, BarChart3, TestTube, Rocket, BookOpen, Wrench, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ExperimentalSection = () => {
+const ThreePhasesSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [expandedPhases, setExpandedPhases] = useState<Set<number>>(new Set());
 
   const growthPhases = [
     {
-      title: "Samen je Groeiplan Bepalen",
-      description: "In 1-2 gesprekken maken we een compleet plan voor jouw groei.",
+      title: "Jouw Perfecte Groeiplan",
+      description: "We kiezen samen de beste passende weg voor groei en elimineren bottlenecks.",
       visual: "wireframe-discovery",
       phase: "FASE 1",
       expandedContent: {
-        subtitle: "Jouw ideale weg naar meer leads en klanten",
+        subtitle: "Hoe ga jij nieuwe klanten krijgen?",
         duration: "1-2 gesprekken",
         steps: [
-          { icon: Target, title: "Jouw Doelen Begrijpen", description: "We luisteren naar jouw groeidoelen en huidige uitdagingen" },
-          { icon: Search, title: "Knelpunten Ontdekken", description: "Samen kijken we waar je tijd verliest en welke processen je kunnen helpen" },
-          { icon: FileText, title: "Persoonlijk Plan", description: "Een op maat gemaakt plan: welke aanpak past het beste bij jouw bedrijf" },
-          { icon: Map, title: "Helder Voorstel", description: "Je krijgt een concrete roadmap met tijdlijn en verwachtingen" }
+          { icon: Target, title: "Hoe Vind Je Nieuwe Klanten?", description: "Direct benaderen via email en Linkedin, of klanten organisch laten binnenstromen?" },
+          { icon: Search, title: "Waar Kun Je Tijd Besparen?", description: "Welke vervelende taken kunnen we automatiseren zodat jij meer tijd hebt voor klantgesprekken?" },
+          { icon: Settings, title: "Jouw Systeem Bouwen", description: "We bouwen precies wat jij nodig hebt om meer klanten te krijgen en tijd te besparen" },
+          { icon: Map, title: "Wat Mag Je Verwachten?", description: "Je weet precies wat we gaan maken, wanneer het klaar is en hoeveel klanten je kunt verwachten" }
         ]
       }
     },
     {
       title: "Wij Zorgen voor Alles", 
-      description: "6 weken waarin jij je kunt focussen op je bedrijf terwijl wij zorgen voor resultaten.",
+      description: "6 weken waarin wij alles uit handen nemen en bewijzen dat het systeem werkt.",
       visual: "wireframe-implementation",
       phase: "FASE 2",
       expandedContent: {
-        subtitle: "Jij ontvangt leads, wij regelen de rest",
-        duration: "6 weken begeleiding",
+        subtitle: "Jij ziet resultaten, wij doen het werk",
+        duration: "6 weken waarin wij alles doen",
         steps: [
-          { icon: Settings, title: "Direct Toegang", description: "Vanaf dag 1 kun je inloggen en meekijken, maar wij zorgen dat alles perfect werkt" },
-          { icon: Link, title: "Jouw Oplossingen", description: "We bouwen specifieke tools voor jouw bedrijf en koppelen alles wat je nodig hebt" },
-          { icon: BarChart3, title: "Resultaten Zien", description: "Je ziet direct hoe het platform leads genereert en processen verbetert" },
-          { icon: TestTube, title: "Garantie op Succes", description: "Werkt het niet zoals beloofd? Dan kunnen we samen besluiten te stoppen" }
+          { icon: Settings, title: "Je Kunt Meekijken", description: "Vanaf dag 1 kun je inloggen en zien wat we doen, maar wij zorgen dat alles perfect werkt" },
+          { icon: Link, title: "Wij Regelen Alles", description: "6 weken lang zorgen wij dat je klanten krijgt - jij hoeft niets te doen behalve de gesprekken voeren" },
+          { icon: TestTube, title: "We Bewijzen Het", description: "Je ziet echt dat het werkt: nieuwe klanten, meer afspraken, minder gedoe voor jou" },
+          { icon: BarChart3, title: "Echte Resultaten Zien", description: "Je ziet live hoe nieuwe klanten binnenkomen en hoe het systeem jou tijd bespaart" }
         ]
       }
     },
     {
       title: "Jij Neemt het Over",
-      description: "Je leert alles en krijgt de sleutels, met backup wanneer je het nodig hebt.",
+      description: "Alles wat werkt blijft lopen, jij leert hoe je het zelf doet met hulp wanneer nodig.",
       visual: "wireframe-ownership",
       phase: "FASE 3",
       expandedContent: {
-        subtitle: "Van onze zorg naar jouw controle, met een vangnet",
-        duration: "Flexibele ondersteuning",
+        subtitle: "Van ons zorgen naar jouw succes",
+        duration: "Hulp wanneer je het nodig hebt",
         steps: [
-          { icon: Rocket, title: "Alles Uitgelegd", description: "In een persoonlijke sessie leer je precies hoe alles werkt en hoe je het gebruikt" },
-          { icon: BookOpen, title: "Jij Aan het Roer", description: "6 weken lang voer je alles zelf uit, zodat je vertrouwd raakt met het systeem" },
-          { icon: Wrench, title: "Hulp Wanneer Nodig", description: "Je hebt een vast aanspreekpunt die altijd kan helpen als je vastloopt" },
-          { icon: RotateCcw, title: "Geen Lange Verplichtingen", description: "Na de eerste periode kun je maandelijks opzeggen - geen verrassingen" }
+          { icon: Rocket, title: "We Leren Je Alles", description: "In persoonlijke training leer je precies hoe alles werkt zodat je het zelf kunt doen" },
+          { icon: CheckCircle2, title: "Alles Blijft Gewoon Werken", description: "De klanten die nu binnenkomen blijven binnenkomen - niets stopt" },
+          { icon: BookOpen, title: "Jij Doet Het Zelf", description: "Jij neemt de controle over, maar met de zekerheid dat alles al bewezen heeft te werken" },
+          { icon: Wrench, title: "Hulp Als Je Vastloopt", description: "Heb je hulp nodig? We zijn er altijd - geen lange contracten, gewoon hulp wanneer jij het wilt" }
         ]
       }
     }
@@ -60,22 +60,121 @@ const ExperimentalSection = () => {
   return (
     <section className="relative w-full bg-black py-24 lg:py-40 overflow-hidden">
       
-      {/* Ambient Blue Backlight - Exact same as CustomerJourney Section */}
-      <div className="absolute inset-0 overflow-hidden z-0 opacity-30">
-        {/* Blue glows positioned behind text (left side) */}
+      {/* Premium Background - CompanyHero Style */}
+      <motion.div 
+        className="absolute inset-0 z-0" 
+        style={{ contain: 'paint' }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        {/* Top-Left Blue Glow */}
         <div 
-          className="absolute top-1/3 left-1/6 w-[30rem] h-[25rem] rounded-full blur-2xl" 
-          style={{ background: 'radial-gradient(ellipse, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0.35) 35%, transparent 70%)' }}
+          className="absolute rounded-full blur-3xl opacity-35" 
+          style={{
+            top: '10%',
+            left: '10%',
+            width: '320px',
+            height: '220px',
+            background: 'radial-gradient(ellipse 320px 220px, rgba(96, 165, 250, 0.4) 0%, transparent 70%)',
+            mixBlendMode: 'screen'
+          }}
         />
+        
+        
+        
+        {/* Top-Right Pink Glow */}
         <div 
-          className="absolute bottom-1/4 left-1/8 w-[25rem] h-[20rem] rounded-full blur-2xl" 
-          style={{ background: 'radial-gradient(ellipse, rgba(96, 165, 250, 0.75) 0%, rgba(96, 165, 250, 0.30) 35%, transparent 70%)' }}
+          className="absolute rounded-full blur-3xl opacity-30 xl:right-[10%]" 
+          style={{
+            top: '20%',
+            right: '5%',
+            width: '280px',
+            height: '200px',
+            background: 'radial-gradient(ellipse 280px 200px, rgba(244, 114, 182, 0.35) 0%, transparent 75%)',
+            mixBlendMode: 'screen'
+          }}
         />
+        
+        {/* Middle-Left Blue Accent */}
         <div 
-          className="absolute top-1/2 left-1/4 w-[35rem] h-[30rem] rounded-full blur-2xl" 
-          style={{ background: 'radial-gradient(ellipse, rgba(59, 130, 246, 0.7) 0%, rgba(59, 130, 246, 0.25) 35%, transparent 70%)', transform: 'translateY(-50%)' }}
+          className="absolute rounded-full blur-2xl opacity-28 xl:left-[6%]" 
+          style={{
+            top: '50%',
+            left: '2%',
+            width: '220px',
+            height: '320px',
+            background: 'radial-gradient(ellipse 220px 320px, rgba(96, 165, 250, 0.25) 0%, transparent 80%)',
+            mixBlendMode: 'screen'
+          }}
         />
-      </div>
+        
+        {/* Middle-Center Mixed Glow for Phase 2 */}
+        <div 
+          className="absolute rounded-full blur-3xl opacity-35" 
+          style={{
+            top: '45%',
+            left: '48%',
+            width: '320px',
+            height: '260px',
+            background: 'radial-gradient(ellipse 320px 260px, rgba(96, 165, 250, 0.25) 0%, rgba(244, 114, 182, 0.3) 40%, transparent 75%)',
+            mixBlendMode: 'screen'
+          }}
+        />
+        
+        {/* Middle-Right Pink Accent */}
+        <div 
+          className="absolute rounded-full blur-2xl opacity-32 xl:right-[8%]" 
+          style={{
+            top: '60%',
+            right: '3%',
+            width: '200px',
+            height: '280px',
+            background: 'radial-gradient(ellipse 200px 280px, rgba(244, 114, 182, 0.25) 0%, transparent 75%)',
+            mixBlendMode: 'screen'
+          }}
+        />
+        
+        {/* Bottom-Left Blue */}
+        <div 
+          className="absolute rounded-full blur-3xl opacity-22 xl:left-[10%]" 
+          style={{
+            bottom: '15%',
+            left: '5%',
+            width: '250px',
+            height: '180px',
+            background: 'radial-gradient(ellipse 250px 180px, rgba(96, 165, 250, 0.2) 0%, transparent 80%)',
+            mixBlendMode: 'screen'
+          }}
+        />
+        
+        {/* Bottom Center Large Soft Glow */}
+        <div 
+          className="absolute rounded-full blur-3xl opacity-25" 
+          style={{
+            bottom: '10%',
+            left: '40%',
+            width: '380px',
+            height: '220px',
+            background: 'radial-gradient(ellipse 380px 220px, rgba(96, 165, 250, 0.2) 0%, rgba(244, 114, 182, 0.15) 50%, transparent 85%)',
+            mixBlendMode: 'screen'
+          }}
+        />
+        
+        {/* Bottom-Right Pink */}
+        <div 
+          className="absolute rounded-full blur-2xl opacity-26 xl:right-[15%]" 
+          style={{
+            bottom: '20%',
+            right: '8%',
+            width: '220px',
+            height: '160px',
+            background: 'radial-gradient(ellipse 220px 160px, rgba(244, 114, 182, 0.22) 0%, transparent 75%)',
+            mixBlendMode: 'screen'
+          }}
+        />
+      </motion.div>
       
       
       {/* Subtle Grid Background - Jet Style */}
@@ -119,31 +218,60 @@ const ExperimentalSection = () => {
       {/* Hero Section */}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-20">
         
-        {/* Hero Headline - Jet Style */}
+        {/* Hero Headline - Hero Style Typography */}
         <motion.div 
-          className="text-center mb-24 lg:mb-40"
+          className="text-left mb-8 lg:mb-12"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
+          <style jsx>{`
+            /* Hero-style responsive title scaling - slightly larger */
+            .hero-title-responsive {
+              font-size: clamp(2.2rem, 4vw + 0.8rem, 4rem);
+              line-height: 0.85;
+              will-change: transform;
+              transform: translateZ(0);
+              backface-visibility: hidden;
+              -webkit-font-smoothing: antialiased;
+              text-rendering: optimizeLegibility;
+            }
+            
+            @media (min-width: 768px) {
+              .hero-title-responsive {
+                font-size: clamp(2.5rem, 3.5vw + 0.9rem, 4rem);
+              }
+            }
+            @media (min-width: 1024px) {
+              .hero-title-responsive {
+                font-size: clamp(3rem, 2.5vw + 1.3rem, 4rem);
+              }
+            }
+          `}</style>
+          
           <h2 
-            className="text-4xl lg:text-5xl xl:text-6xl text-white font-light tracking-tight"
+            className="hero-title-responsive text-white"
             style={{ 
               fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-              letterSpacing: '-0.035em',
+              fontWeight: '300',
+              letterSpacing: '-0.045em',
               lineHeight: '1.1',
               textRendering: 'optimizeLegibility', 
               WebkitFontSmoothing: 'antialiased'
             }}
           >
-            Van eerste gesprek tot jouw succes:<br />
-            Zo werken we samen in drie stappen.
+            <div style={{ fontWeight: '300' }}>
+              Van eerste gesprek tot jouw succes:
+            </div>
+            <div style={{ fontWeight: '400' }}>
+              Zo werken we samen in drie fasen.
+            </div>
           </h2>
         </motion.div>
 
         {/* 3 Phases Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 lg:gap-20 xl:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12 xl:gap-16">
           {growthPhases.map((phase, index) => (
             <motion.div
               key={index}
@@ -654,40 +782,10 @@ const ExperimentalSection = () => {
           ))}
         </div>
 
-        {/* CTA Section - Minimal Jet Style */}
-        <motion.div 
-          className="text-center mt-32 lg:mt-48"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <motion.button
-            onClick={() => {
-              if (typeof window !== 'undefined') {
-                window.location.href = '/contact';
-              }
-            }}
-            className="inline-flex items-center justify-center px-6 py-3 text-white font-medium rounded-full border border-white/20 hover:bg-white/5 transition-all duration-300 group backdrop-blur-sm"
-            style={{
-              fontFamily: '"Neue Haas Grotesk Display Pro", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-              fontWeight: '400',
-              background: 'rgba(255, 255, 255, 0.02)'
-            }}
-            whileHover={{ 
-              scale: 1.02,
-              borderColor: 'rgba(255, 255, 255, 0.3)'
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span>Start jouw groeitraject</span>
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-          </motion.button>
-        </motion.div>
         
       </div>
     </section>
   );
 };
 
-export default ExperimentalSection;
+export default ThreePhasesSection;

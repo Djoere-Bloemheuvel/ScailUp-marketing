@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ScailUpFooter from '../components/active/shared/ScailUpFooter';
+import ScrollHeader from '../components/active/shared/ScrollHeader';
+import CompanyHero from '../components/active/company/CompanyHero';
+import CompanyMission from '../components/active/company/CompanyMission';
+import CompanyMethod from '../components/active/company/CompanyMethod';
+import CEOSection from '../components/active/agency/CEOSection';
+
+// About page structured data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Buildrs",
+  "description": "AI-first platform en agency voor B2B service providers. Wij bouwen custom AI agents en automatisering workflows - standalone of geïntegreerd in ons platform.",
+  "url": "https://buildrs.nl",
+  "logo": "https://buildrs.nl/logo.png",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "name": "Djoere Bloemheuvel",
+    "jobTitle": "CEO & Founder",
+    "description": "Founder van Buildrs, expert in AI automation en B2B workflows"
+  },
+  "sameAs": [
+    "https://linkedin.com/company/buildrs"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+31-6-12345678",
+    "contactType": "customer service",
+    "availableLanguage": "Dutch"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "NL",
+    "addressLocality": "Amsterdam"
+  },
+  "knowsAbout": [
+    "AI Automation",
+    "Custom Workflows", 
+    "B2B Service Providers",
+    "LinkedIn Automation",
+    "Proposal Generation",
+    "Lead Processing"
+  ],
+  "serviceType": [
+    "AI Platform Development",
+    "Custom Agent Creation", 
+    "Workflow Automation",
+    "B2B Process Optimization"
+  ]
+};
+---
+
+<Layout 
+  title="Over Ons - Buildrs | AI-first Platform & Agency"
+  description="Ontdek het verhaal achter Buildrs. Wij zijn een AI-first platform en agency die custom workflows bouwt voor B2B service providers. Hybrid model, client ownership, en snelle implementatie."
+  keywords="over Buildrs, AI automation bedrijf, Djoere Bloemheuvel, custom AI agents, B2B workflows, hybrid platform agency model, Nederland"
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+  
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded">
+    Skip to main content
+  </a>
+
+  <!-- Header -->
+  <ScrollHeader client:load />
+
+  <!-- Premium about page styling -->
+  <style>
+    /* Premium about page styling */
+    #main-content {
+      background-color: #000000;
+      min-height: 100vh;
+    }
+    
+    /* Ambient background effects */
+    .about-ambient {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .about-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.3;
+      mix-blend-mode: screen;
+    }
+    
+    .about-glow-1 {
+      top: 5%;
+      left: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+    }
+    
+    .about-glow-2 {
+      top: 30%;
+      right: 15%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(147, 51, 234, 0.3) 0%, transparent 70%);
+    }
+    
+    .about-glow-3 {
+      bottom: 10%;
+      left: 20%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(ellipse, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+    }
+    
+    /* Grid pattern */
+    .about-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+  </style>
+
+  <main id="main-content" role="main" class="relative min-h-screen bg-black">
+    
+    <!-- Ambient Background -->
+    <div class="about-ambient">
+      <!-- Gradient glows -->
+      <div class="about-glow about-glow-1"></div>
+      <div class="about-glow about-glow-2"></div>
+      <div class="about-glow about-glow-3"></div>
+      
+      <!-- Grid pattern -->
+      <div class="about-grid"></div>
+      
+      <!-- Floating particles -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            class="absolute w-1 h-1 bg-white/15 rounded-full opacity-40"
+            style={`
+              left: ${Math.random() * 100}%;
+              top: ${Math.random() * 100}%;
+              animation: float ${10 + Math.random() * 6}s infinite ease-in-out;
+              animation-delay: ${Math.random() * 8}s;
+            `}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 pt-32">
+      
+      <!-- Company Hero Section -->
+      <CompanyHero client:visible />
+
+      <!-- Company Mission Section -->
+      <CompanyMission client:visible />
+
+      <!-- Company Method Section -->
+      <CompanyMethod client:visible />
+
+      <!-- CEO Section (Reused from homepage) -->
+      <CEOSection client:visible />
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <ScailUpFooter client:idle />
+
+  <!-- Floating animation styles -->
+  <style>
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.4;
+      }
+      50% {
+        transform: translateY(-25px) rotate(180deg);
+        opacity: 0.8;
+      }
+    }
+  </style>
+
+</Layout>

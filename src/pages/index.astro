@@ -13,8 +13,7 @@ import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
-import CustomerJourney from '../components/active/agency/CustomerJourney';
-import ExperimentalSection from '../components/active/agency/ExperimentalSection';
+import ThreePhasesSection from '../components/active/agency/ThreePhasesSection';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -92,18 +91,16 @@ const structuredData = {
     <!-- Specialist Section - Ultra-smooth Framer Motion animations -->
     <SpecialistSection client:load />
 
-    <!-- Customer Journey Section - 3-fase proces -->
-    <CustomerJourney client:visible />
 
-    <!-- Experimental Section - Uitgebreide roadmap -->
-    <ExperimentalSection client:visible />
+    <!-- Three Phases Section - Uitgebreide roadmap -->
+    <ThreePhasesSection client:visible />
 
     <!-- Interactive Engine sections - load immediately after idle -->
-    <SalesEngineSection client:idle />
-    <MarketingEngineSection client:idle />
+    <!-- <SalesEngineSection client:idle /> -->
+    <!-- <MarketingEngineSection client:idle /> -->
 
     <!-- Progressive loading - start loading earlier with media queries -->
-    <IntegrationsShowcase client:idle />
+    <!-- <IntegrationsShowcase client:idle /> -->
     <PartnershipSection client:media="(max-width: 9999px)" />
     <!-- Later sections - load immediately -->
     <FoundersSection client:idle />

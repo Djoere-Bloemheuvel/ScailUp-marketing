@@ -29,49 +29,49 @@ const HomeHero = () => {
       <style jsx>{`
         /* Fijnere CTA responsive scaling voor <12 inch schermen */
         .cta-responsive {
-          font-size: 0.875rem; /* text-sm */
-          padding: 0.5rem 1rem; /* py-2 px-4 */
+          font-size: 0.8rem; /* iets kleiner dan text-sm */
+          padding: 0.45rem 0.9rem; /* kleinere padding */
         }
         
         @media (min-width: 640px) {
           .cta-responsive {
-            font-size: 0.875rem; /* blijft text-sm */
-            padding: 0.5rem 1rem; /* py-2 px-4 */
+            font-size: 0.8rem; /* blijft klein */
+            padding: 0.45rem 0.9rem; /* kleinere padding */
           }
         }
         
         @media (min-width: 768px) {
           .cta-responsive {
-            font-size: 0.875rem; /* blijft klein bij kleine title */
-            padding: 0.5rem 1.125rem; /* py-2 px-4.5 */
+            font-size: 0.8rem; /* blijft klein */
+            padding: 0.45rem 1rem; /* iets meer padding */
           }
         }
         
         @media (min-width: 900px) {
           .cta-responsive {
-            font-size: 0.95rem; /* tussen sm en base */
-            padding: 0.625rem 1.25rem; /* py-2.5 px-5 */
+            font-size: 0.875rem; /* text-sm */
+            padding: 0.55rem 1.125rem; /* kleinere padding */
           }
         }
         
         @media (min-width: 1000px) {
           .cta-responsive {
-            font-size: 1rem; /* text-base */
-            padding: 0.625rem 1.375rem; /* py-2.5 px-5.5 */
+            font-size: 0.9rem; /* iets kleiner dan text-base */
+            padding: 0.55rem 1.25rem; /* kleinere padding */
           }
         }
         
         @media (min-width: 1024px) {
           .cta-responsive {
-            font-size: 1.05rem; /* tussen base en lg */
-            padding: 0.625rem 1.5rem; /* py-2.5 px-6 */
+            font-size: 0.95rem; /* tussen sm en base */
+            padding: 0.55rem 1.35rem; /* kleinere padding */
           }
         }
         
         @media (min-width: 1200px) {
           .cta-responsive {
-            font-size: 1.125rem; /* text-lg - desktop */
-            padding: 0.75rem 2rem; /* py-3 px-8 */
+            font-size: 1rem; /* text-base ipv lg */
+            padding: 0.65rem 1.75rem; /* kleinere padding */
           }
         }
         
@@ -150,6 +150,31 @@ const HomeHero = () => {
             margin-right: 0.75rem; /* mr-3 */
           }
         }
+        
+        /* Background positioning for all screens */
+        .hero-bg {
+          background-position: center 23% !important; /* Desktop default */
+        }
+        
+        /* Mobile responsive background positioning - TRANSFORM SOLUTION */
+        @media (max-width: 639px) {
+          .hero-bg {
+            background-position: center center !important;
+            transform: translate3d(0, 20%, 0) !important;
+          }
+        }
+        
+        @media (min-width: 640px) and (max-width: 767px) {
+          .hero-bg {
+            background-position: center 50% !important;
+          }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .hero-bg {
+            background-position: center 35% !important;
+          }
+        }
       `}</style>
     <section className="relative w-full h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
       
@@ -157,12 +182,11 @@ const HomeHero = () => {
       <div className="absolute inset-0">
         {/* Instant background with image */}
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 hero-bg"
           style={{
             backgroundColor: '#000000',
             backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center 23%',
             backgroundRepeat: 'no-repeat',
             opacity: 0.9,
             imageRendering: 'high-quality',
@@ -176,11 +200,10 @@ const HomeHero = () => {
         <img 
           src="/hero-bg-buildrs-8k.webp"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
+          className="absolute inset-0 w-full h-full object-cover opacity-90 object-pos-responsive hidden"
           width="1920"
           height="1080"
           style={{
-            objectPosition: 'center 23%',
             imageRendering: 'high-quality',
             backfaceVisibility: 'hidden',
             transform: 'translate3d(0,0,0)'
@@ -200,10 +223,10 @@ const HomeHero = () => {
       {/* Clean responsive content positioning */}
       <style>{`
         
-        /* Responsive content positioning - subtle adjustment higher */
+        /* Responsive content positioning - better mobile visibility */
         .content-container {
-          margin-top: 5vh;
-          padding-top: 2rem;
+          margin-top: 2vh;
+          padding-top: 1rem;
         }
         
         @media (min-width: 640px) {
@@ -278,7 +301,7 @@ const HomeHero = () => {
       />
         
       {/* Content Container - Responsive positioning above BUILDRS logo */}
-      <div className="relative max-w-6xl mx-auto z-30 text-center px-6 sm:px-4 content-container">
+      <div className="relative max-w-6xl mx-auto z-30 text-left px-6 sm:px-4 content-container">
         <motion.div 
           className="max-w-5xl mx-auto relative"
           style={{ minHeight: '280px' }}
@@ -306,7 +329,7 @@ const HomeHero = () => {
 
           {/* Redesigned CTA Section - Staggered but quick */}
           <motion.div 
-            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-1 sm:mt-2 md:mt-4 lg:mt-6"
+            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-0 sm:mt-1 md:mt-2 lg:mt-4 cta-container"
             style={{ minHeight: '100px' }}
             initial={{ opacity: 0, y: 12, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -329,7 +352,7 @@ const HomeHero = () => {
                 }
               }
             `}</style>
-            <div className="cta-container px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full">
+            <div className="cta-container px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full" style={{ marginLeft: '-0.5rem' }}>
             {/* Primary CTA - Clean gradient border */}
             <div className="relative">
               <motion.button
