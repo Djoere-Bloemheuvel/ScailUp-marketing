@@ -227,15 +227,26 @@ const ThreePhasesSection = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <style jsx>{`
-            /* Hero-style responsive title scaling - smaller on mobile */
+            /* Mobile-optimized title scaling with better spacing */
             .hero-title-responsive {
-              font-size: clamp(1.8rem, 4vw + 0.6rem, 4rem);
-              line-height: 0.85;
+              font-size: clamp(1.6rem, 6vw + 0.4rem, 4rem);
+              line-height: 1.1;
               will-change: transform;
               transform: translateZ(0);
               backface-visibility: hidden;
               -webkit-font-smoothing: antialiased;
               text-rendering: optimizeLegibility;
+              contain: layout style paint;
+              margin-bottom: clamp(1rem, 4vw, 2rem);
+            }
+            
+            /* Ultra-small mobile optimization */
+            @media (max-width: 374px) {
+              .hero-title-responsive {
+                font-size: clamp(1.4rem, 7vw + 0.2rem, 1.8rem);
+                line-height: 1.15;
+                margin-bottom: 0.75rem;
+              }
             }
             
             @media (min-width: 768px) {

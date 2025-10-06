@@ -27,10 +27,24 @@ const HomeHero = () => {
   return (
     <>
       <style jsx>{`
-        /* Fijnere CTA responsive scaling voor <12 inch schermen */
+        /* Mobile-first CTA responsive scaling - proper touch targets */
         .cta-responsive {
           font-size: 0.7rem; /* nog kleiner op mobile */
-          padding: 0.35rem 0.75rem; /* kleinere padding */
+          padding: 0.65rem 0.75rem; /* minimum 44px touch target */
+          min-height: 44px; /* iOS/Android touch target guideline */
+          min-width: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        /* Mobile-specific touch optimizations */
+        @media (max-width: 479px) {
+          .cta-responsive {
+            font-size: 0.65rem;
+            padding: 0.7rem 0.8rem;
+            min-height: 48px; /* larger for small screens */
+          }
         }
         
         @media (min-width: 640px) {
@@ -161,6 +175,31 @@ const HomeHero = () => {
           .hero-bg {
             background-position: center center !important;
             transform: translate3d(0, 20%, 0) !important;
+            will-change: transform;
+            contain: layout style paint;
+          }
+        }
+        
+        /* Mobile performance optimizations */
+        @media (max-width: 639px) {
+          /* Reduce motion for users who prefer it */
+          @media (prefers-reduced-motion: reduce) {
+            .hero-bg {
+              transform: none !important;
+              animation: none !important;
+            }
+          }
+          
+          /* Mobile scroll performance */
+          body {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: none;
+          }
+          
+          /* Mobile tap highlight removal */
+          * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
           }
         }
         
@@ -176,7 +215,16 @@ const HomeHero = () => {
           }
         }
       `}</style>
-    <section className="relative w-full h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
+    <section 
+      className="relative w-full h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
+      style={{
+        // Mobile performance optimizations
+        willChange: 'transform',
+        contain: 'layout style paint',
+        // Mobile viewport height fix
+        minHeight: typeof window !== 'undefined' && window.innerWidth < 640 ? '100svh' : '100vh'
+      }}
+    >
       
       {/* Instant Hero Background - No transitions */}
       <div className="absolute inset-0">
@@ -223,10 +271,28 @@ const HomeHero = () => {
       {/* Clean responsive content positioning */}
       <style>{`
         
-        /* Responsive content positioning - better mobile visibility */
+        /* Responsive content positioning - desktop preserved */
         .content-container {
           margin-top: 2vh;
           padding-top: 1rem;
+        }
+        
+        /* Mobile-only positioning adjustments */
+        @media (max-width: 639px) {
+          .content-container {
+            margin-top: 8vh; /* More space from top on mobile */
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+        }
+        
+        /* Extra small mobile phones */
+        @media (max-width: 374px) {
+          .content-container {
+            margin-top: 6vh;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+          }
         }
         
         @media (min-width: 640px) {
@@ -304,10 +370,22 @@ const HomeHero = () => {
       <div className="relative max-w-6xl mx-auto z-30 text-left px-6 sm:px-4 content-container">
         <motion.div 
           className="max-w-5xl mx-auto relative"
-          style={{ minHeight: '280px' }}
+          style={{ 
+            minHeight: '280px',
+            contain: 'layout style paint',
+            willChange: 'transform'
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ 
+            duration: 0.15, 
+            ease: [0.25, 0.46, 0.45, 0.94],
+            // Mobile-specific optimization
+            ...(typeof window !== 'undefined' && window.innerWidth < 640 && {
+              duration: 0.2,
+              ease: "easeOut"
+            })
+          }}
         >
           {/* Subtle background glow for content area */}
           <div className="absolute inset-0 rounded-3xl opacity-5 pointer-events-none" 
@@ -327,28 +405,42 @@ const HomeHero = () => {
           </motion.div>
 
 
-          {/* Redesigned CTA Section - Staggered but quick */}
+          {/* Redesigned CTA Section - Mobile-optimized animations */}
           <motion.div 
             className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-0 sm:mt-1 md:mt-2 lg:mt-4 cta-container"
-            style={{ minHeight: '100px' }}
+            style={{ 
+              minHeight: '100px',
+              contain: 'layout style',
+              willChange: 'transform'
+            }}
             initial={{ opacity: 0, y: 12, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.35, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ 
+              duration: 0.35, 
+              delay: 0.08, 
+              ease: [0.16, 1, 0.3, 1],
+              // Mobile-specific easing
+              ...(typeof window !== 'undefined' && window.innerWidth < 640 && {
+                duration: 0.4,
+                ease: "easeOut",
+                delay: 0.1
+              })
+            }}
           >
             <style jsx>{`
               @media (min-width: 1680px) {
                 .cta-container {
-                  margin-left: -2rem;
+                  margin-left: -0.5rem;
                 }
               }
               @media (min-width: 1920px) {
                 .cta-container {
-                  margin-left: -3rem;
+                  margin-left: -1rem;
                 }
               }
               @media (min-width: 2560px) {
                 .cta-container {
-                  margin-left: -4rem;
+                  margin-left: -1.5rem;
                 }
               }
             `}</style>
@@ -372,9 +464,12 @@ const HomeHero = () => {
                   boxShadow: 'none'
                 }}
                 whileHover={{ 
-                  scale: 1.01,
+                  scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
                   backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(120, 185, 255), rgb(255, 134, 202))',
-                  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+                  transition: { 
+                    duration: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.2 : 0.3, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }
                 }}
                 whileTap={{ 
                   scale: 0.99,
@@ -397,10 +492,13 @@ const HomeHero = () => {
                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
                 }}
                 whileHover={{ 
-                  scale: 1.01,
+                  scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
                   background: 'rgba(255, 255, 255, 0.1)',
                   borderColor: 'rgba(255, 255, 255, 0.4)',
-                  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+                  transition: { 
+                    duration: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.2 : 0.3, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }
                 }}
                 whileTap={{ 
                   scale: 0.99,

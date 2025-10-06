@@ -70,5 +70,12 @@ export default defineConfig({
       }
     },
   },
-  output: 'static'
+  output: 'static',
+  server: {
+    host: true
+  },
+  preview: {
+    host: true,
+    port: 4323
+  }
 });

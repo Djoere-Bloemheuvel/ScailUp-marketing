@@ -5,7 +5,7 @@ const HomeAnimatedHeadline = () => {
         marginLeft: '-0.5rem'
       }}>
         <style jsx>{`
-          /* Ultra-stable responsive title scaling - smooth calculations */
+          /* Mobile-first responsive title scaling - desktop preserved */
           .title-responsive {
             font-size: clamp(2.75rem, 4.5vw + 0.9rem, 5.5rem);
             line-height: 0.85;
@@ -15,6 +15,24 @@ const HomeAnimatedHeadline = () => {
             backface-visibility: hidden;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
+          }
+          
+          /* Mobile-only refinements */
+          @media (max-width: 639px) {
+            .title-responsive {
+              font-size: clamp(2.2rem, 8vw + 0.5rem, 2.8rem);
+              line-height: 0.9;
+              contain: layout style paint;
+            }
+          }
+          
+          /* Extra small mobile */
+          @media (max-width: 479px) {
+            .title-responsive {
+              font-size: clamp(2rem, 9vw + 0.3rem, 2.6rem);
+              line-height: 0.95;
+              letter-spacing: -0.035em;
+            }
           }
           
           /* Fine-tuned breakpoint adjustments */
@@ -46,17 +64,17 @@ const HomeAnimatedHeadline = () => {
           }
           @media (min-width: 1680px) {
             .title-container {
-              margin-left: -2rem;
+              margin-left: -0.5rem;
             }
           }
           @media (min-width: 1920px) {
             .title-container {
-              margin-left: -3rem;
+              margin-left: -1rem;
             }
           }
           @media (min-width: 2560px) {
             .title-container {
-              margin-left: -4rem;
+              margin-left: -1.5rem;
             }
           }
         `}</style>
@@ -85,15 +103,51 @@ const HomeAnimatedHeadline = () => {
           </div>
         </h1>
 
-        {/* Hero Tagline - 2 lines on mobile only */}
+        {/* Hero Tagline - Mobile-optimized 2 lines */}
         <div className="mt-3 sm:mt-4 md:mt-6">
+          <style jsx>{`
+            /* Desktop-first tagline - preserve original sizing */
+            .tagline-responsive {
+              font-size: 1.125rem; /* text-lg */
+              line-height: 1.3;
+              letter-spacing: -0.045em;
+            }
+            
+            /* Mobile-only optimizations */
+            @media (max-width: 639px) {
+              .tagline-responsive {
+                font-size: clamp(0.9rem, 4vw + 0.2rem, 1rem);
+                line-height: 1.4;
+                letter-spacing: -0.02em;
+                contain: layout style;
+              }
+            }
+            
+            @media (max-width: 479px) {
+              .tagline-responsive {
+                font-size: clamp(0.85rem, 4.5vw + 0.1rem, 0.95rem);
+                line-height: 1.45;
+                letter-spacing: -0.015em;
+              }
+            }
+            
+            @media (min-width: 640px) {
+              .tagline-responsive {
+                font-size: 1.25rem; /* text-xl */
+              }
+            }
+            
+            @media (min-width: 768px) {
+              .tagline-responsive {
+                font-size: 1.5rem; /* text-2xl */
+              }
+            }
+          `}</style>
           <p 
-            className="text-base sm:text-xl md:text-2xl text-white font-light"
+            className="tagline-responsive text-white font-light"
             style={{ 
               fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
               fontWeight: '300',
-              letterSpacing: '-0.045em',
-              lineHeight: '1.3',
               textRendering: 'optimizeLegibility', 
               WebkitFontSmoothing: 'antialiased',
               color: '#ffffff'
