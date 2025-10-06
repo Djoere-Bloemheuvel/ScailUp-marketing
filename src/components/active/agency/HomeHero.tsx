@@ -200,7 +200,7 @@ const HomeHero = () => {
       {/* Clean responsive content positioning */}
       <style>{`
         
-        /* Responsive content positioning */
+        /* Responsive content positioning - subtle adjustment higher */
         .content-container {
           margin-top: 5vh;
           padding-top: 2rem;
@@ -222,19 +222,19 @@ const HomeHero = () => {
         
         @media (min-width: 1024px) {
           .content-container {
-            margin-top: -10vh;
+            margin-top: -8vh;
           }
         }
         
         @media (min-width: 1920px) {
           .content-container {
-            margin-top: -12vh;
+            margin-top: -10vh;
           }
         }
         
         @media (min-width: 2560px) {
           .content-container {
-            margin-top: -15vh;
+            margin-top: -12vh;
           }
         }
         
@@ -278,7 +278,7 @@ const HomeHero = () => {
       />
         
       {/* Content Container - Responsive positioning above BUILDRS logo */}
-      <div className="relative max-w-6xl mx-auto z-30 text-center px-6 sm:px-4 content-container" style={{ marginTop: '-13vh' }}>
+      <div className="relative max-w-6xl mx-auto z-30 text-center px-6 sm:px-4 content-container">
         <motion.div 
           className="max-w-5xl mx-auto relative"
           style={{ minHeight: '280px' }}
@@ -306,7 +306,7 @@ const HomeHero = () => {
 
           {/* Redesigned CTA Section - Staggered but quick */}
           <motion.div 
-            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-2 sm:mt-4 md:mt-6 lg:mt-8"
+            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-1 sm:mt-2 md:mt-4 lg:mt-6"
             style={{ minHeight: '100px' }}
             initial={{ opacity: 0, y: 12, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}

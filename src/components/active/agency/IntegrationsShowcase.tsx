@@ -208,22 +208,19 @@ const IntegrationsShowcase = () => {
                 textShadow: '0 2px 20px rgba(0, 0, 0, 0.5)',
                 letterSpacing: '-0.03em'
               }}>
-            <div className="space-y-2">
-              <div style={{ fontWeight: '300' }}>
-                Niet jij die zich aanpast aan het platform,
-              </div>
-              <div style={{ fontWeight: '400' }}>
-                maar het platform dat zich aanpast aan jou.
-              </div>
+            <div style={{ fontWeight: '400', whiteSpace: 'nowrap' }}>
+              Één AI-platform dat werkt met alles wat jij al gebruikt.
             </div>
           </h2>
-          <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto">
-            Of je nu met HubSpot of Pipedrive werkt, Slack of Teams, Airtable of Notion.<br/>
-            <span className="relative inline-block text-gray-100 font-medium">
-              Meer dan 600 integraties, verbonden in één AI-first platform.
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 via-blue-500 to-pink-500" />
-            </span>
-          </p>
+          <div className="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto flex flex-col items-center">
+            <div style={{ whiteSpace: 'nowrap' }}>Of je nu met HubSpot of Pipedrive werkt, Slack of Teams, Airtable of Notion.</div>
+            <div className="mt-2">
+              <span className="relative inline-block text-gray-100 font-medium" style={{ whiteSpace: 'nowrap' }}>
+                Meer dan 600 integraties, verbonden in één AI-first platform.
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 via-blue-500 to-pink-500" />
+              </span>
+            </div>
+          </div>
           
         </div>
       </div>

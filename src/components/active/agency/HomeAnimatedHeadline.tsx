@@ -77,6 +77,25 @@ const HomeAnimatedHeadline = () => {
           </div>
         </h1>
 
+        {/* Hero Tagline - Exact same style as headline but smaller */}
+        <div className="mt-3 sm:mt-4 md:mt-6">
+          <p 
+            className="text-lg sm:text-xl md:text-2xl text-white font-light"
+            style={{ 
+              fontFamily: '"Neue Haas Grotesk Display Pro", "Helvetica Neue", "Arial Nova", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+              fontWeight: '300',
+              letterSpacing: '-0.045em',
+              lineHeight: '0.85',
+              textRendering: 'optimizeLegibility', 
+              WebkitFontSmoothing: 'antialiased',
+              whiteSpace: 'nowrap',
+              color: '#ffffff'
+            }}
+          >
+            De partner voor AI-software, growth marketing en geautomatiseerde lead generatie.
+          </p>
+        </div>
+
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const ScrollHeader = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
 
@@ -15,37 +15,21 @@ const ScrollHeader = () => {
     // Set current path on mount and listen for changes
     setCurrentPath(window.location.pathname);
     
-    // Check if we're on kenniscentrum page and set header visible immediately
-    if (window.location.pathname.startsWith('/kenniscentrum')) {
-      setIsVisible(true);
-    }
+    // Header is always visible now
+    setIsVisible(true);
     
-    // SIMPLIFIED SCROLL HANDLER - geen over-throttling meer
+    // SIMPLIFIED SCROLL HANDLER - header always visible
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const isKenniscentrum = window.location.pathname.startsWith('/kenniscentrum');
-      
-      // Header altijd zichtbaar op kenniscentrum pagina's
-      if (isKenniscentrum) {
-        setIsVisible(true);
-        return;
-      }
-      
-      const triggerHeight = window.location.pathname === '/' ? 100 : 80;
-      const shouldBeVisible = scrollY > triggerHeight;
-      
-      // Direct state update - geen ref complexity
-      setIsVisible(shouldBeVisible);
+      // Header stays visible - no conditional logic needed
+      setIsVisible(true);
     };
 
     // Listen for navigation changes (for Astro)
     const handleNavigation = () => {
       if (typeof window !== 'undefined') {
         setCurrentPath(window.location.pathname);
-        // Check if we navigated to kenniscentrum and make header visible
-        if (window.location.pathname.startsWith('/kenniscentrum')) {
-          setIsVisible(true);
-        }
+        // Header always visible
+        setIsVisible(true);
       }
     };
 

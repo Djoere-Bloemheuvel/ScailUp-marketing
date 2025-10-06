@@ -13,6 +13,8 @@ import PartnershipSection from '../components/active/agency/PartnershipSection';
 import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
+import CustomerJourney from '../components/active/agency/CustomerJourney';
+import ExperimentalSection from '../components/active/agency/ExperimentalSection';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -86,8 +88,15 @@ const structuredData = {
     <!-- Server-rendered Platform section -->
     <Platform />
 
+
     <!-- Specialist Section - Ultra-smooth Framer Motion animations -->
     <SpecialistSection client:load />
+
+    <!-- Customer Journey Section - 3-fase proces -->
+    <CustomerJourney client:visible />
+
+    <!-- Experimental Section - Uitgebreide roadmap -->
+    <ExperimentalSection client:visible />
 
     <!-- Interactive Engine sections - load immediately after idle -->
     <SalesEngineSection client:idle />

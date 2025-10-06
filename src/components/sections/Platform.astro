@@ -57,30 +57,38 @@ import platformDashboard from '../../assets/platform-dashboard.webp';
       <!-- Content Container -->
       <div class="text-center px-8 max-w-5xl">
         
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-8 leading-[0.95] tracking-[-0.04em]"
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-6 leading-[0.95] tracking-[-0.04em]"
             style="font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-weight: 300;">
           <div style="font-weight: 300;">
-            Één platform.
+            Één platform,
           </div>
           <div style="font-weight: 400;">
-            Eindeloze mogelijkheden.
+            eindeloze mogelijkheden.
           </div>
         </h1>
         
-        <p class="text-2xl md:text-3xl text-gray-300 font-light leading-relaxed mb-12 max-w-4xl mx-auto tracking-[-0.02em]" 
+        <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-10 max-w-4xl mx-auto tracking-[-0.02em]" 
            style="font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-weight: 200;">
-          Vandaag brengen we AI, Sales en Marketing samen.<br />
-          <span style="font-weight: 400; color: #ffffff; font-size: 1.05em;">Morgen bouwen we verder met jou.</span>
+          Leadgeneratie, marketing automation, CRM en sales - alles in één systeem. <br>
+          <span class="text-gray-400 text-lg">Morgen bouwen we verder met jou.</span>
         </p>
-
-        <!-- Static CTA button - server-rendered for performance -->
-        <div class="relative group inline-block">
-          <div class="absolute inset-0 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-all duration-500 scale-110" 
-               style="background: linear-gradient(to right, rgba(59, 130, 246, 0.4), rgba(156, 163, 175, 0.3));"></div>
-          
-          <a href="/contact" class="relative inline-flex items-center px-8 py-4 text-white font-light rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 border border-white/25 hover:border-white/40 text-lg"
-            style="background: rgba(255, 255, 255, 0.08); font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif; backdrop-filter: blur(20px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
-            <span class="mr-3">Platform Demo</span>
+        
+        <!-- Gradient CTA button - matches hero style -->
+        <div class="relative">
+          <a href="#strategie" 
+             class="relative inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-full hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 group whitespace-nowrap"
+             style="
+               background-color: rgba(0, 0, 0, 0.8);
+               font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+               border: 2px solid transparent;
+               background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182));
+               background-origin: border-box;
+               background-clip: padding-box, border-box;
+               box-shadow: none;
+             "
+             onmouseover="this.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(120, 185, 255), rgb(255, 134, 202))'"
+             onmouseout="this.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))'">
+            <span class="mr-3">Ontdek de strategie</span>
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
