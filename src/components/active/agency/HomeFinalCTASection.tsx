@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, MessageSquare, CheckCircle, Euro } from 'lucide-react';
+import { trackEvent, EVENTS } from '@/utils/analytics';
 
 interface HomeFinalCTASectionProps {
   fullHeight?: boolean;
@@ -94,7 +95,19 @@ const HomeFinalCTASection: React.FC<HomeFinalCTASectionProps> = ({ fullHeight = 
 
           {/* Single prominent CTA */}
           <button
-            onClick={() => window.location.href = '/contact'}
+            onClick={() => {
+              // Track the CTA click with Plausible Analytics
+              trackEvent(EVENTS.CTA_CLICKED, {
+                props: {
+                  cta_text: 'Plan gratis strategiesessie',
+                  section: 'final_cta',
+                  destination: '/contact'
+                }
+              });
+              
+              // Navigate to contact page
+              window.location.href = '/contact';
+            }}
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:shadow-xl hover:shadow-purple-500/25 hover:scale-105 active:scale-95 transition-all duration-300 text-lg mb-6"
           >
             Plan gratis strategiesessie

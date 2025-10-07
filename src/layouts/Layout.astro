@@ -5,6 +5,7 @@ import '../styles/integrations-animations.css';
 import '../styles/image-performance.css';
 import ScailUpHeader from '../components/active/shared/ScailUpHeader';
 import TrackingScript from '../components/TrackingScript.astro';
+import Analytics from '../components/Analytics.astro';
 import { ViewTransitions } from 'astro:transitions';
 import { getImage } from 'astro:assets';
 import heroImage from '../../public/hero-bg-buildrs-8k.webp';
@@ -34,6 +35,7 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <!-- ULTRA-CRITICAL: Aggressive preloading - All above-fold content -->
   <link rel="preload" href="/hero-bg-buildrs-thumb.webp" as="image" fetchpriority="high" />
   <link rel="preload" href="/hero-bg-buildrs-8k.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/lead-generation-hero-optimized.webp" as="image" fetchpriority="high" />
   <link rel="preload" href={optimizedPlatform.src} as="image" fetchpriority="high" />
   
   <!-- CRITICAL: Preload ALL fonts immediately -->
@@ -273,10 +275,11 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <link rel="modulepreload" href="/src/index.css" />
 
   <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.hsappstatic.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; media-src 'self' https://res.cloudinary.com; font-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self' https:; frame-src 'self' https://meetings-eu1.hubspot.com; object-src 'none'; base-uri 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.hsappstatic.net https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; media-src 'self' https://res.cloudinary.com; font-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self' https: https://plausible.io; frame-src 'self' https://meetings-eu1.hubspot.com; object-src 'none'; base-uri 'self';" />
 
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://res.cloudinary.com" />
+  <link rel="preconnect" href="https://plausible.io" crossorigin />
 
   <!-- Canonical URL -->
   <link rel="canonical" href={`https://scailup.nl${Astro.url.pathname}`} />
@@ -294,6 +297,9 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
 
   <!-- Structured Data -->
   {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>}
+
+  <!-- Plausible Analytics - Privacy-First Analytics -->
+  <Analytics />
 
   <!-- View Transitions DISABLED - preventing scroll restoration conflicts -->
   <!-- <ViewTransitions /> -->

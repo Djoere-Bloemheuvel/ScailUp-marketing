@@ -35,7 +35,7 @@ import platformDashboard from '../../assets/platform-dashboard.webp';
   </div>
   
   <!-- Premium Glass Container -->
-  <div class="relative w-[90vw] h-[75vh] rounded-3xl overflow-hidden backdrop-blur-2xl border border-white/15 z-10"
+  <div class="relative platform-glass-container rounded-3xl overflow-hidden backdrop-blur-2xl border border-white/15 z-10"
     style="background: rgba(255, 255, 255, 0.06); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);">
     
     <!-- Uniform section image with instant background paint -->
@@ -55,9 +55,9 @@ import platformDashboard from '../../assets/platform-dashboard.webp';
     <div class="relative w-full h-full flex items-center justify-center z-10">
       
       <!-- Content Container -->
-      <div class="text-center px-8 max-w-5xl">
+      <div class="text-center platform-content-container max-w-5xl">
         
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-6 leading-[0.95] tracking-[-0.04em]"
+        <h1 class="platform-title-responsive text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-6 leading-[0.95] tracking-[-0.04em]"
             style="font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-weight: 300;">
           <div style="font-weight: 300;">
             Één platform,
@@ -67,10 +67,10 @@ import platformDashboard from '../../assets/platform-dashboard.webp';
           </div>
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-10 max-w-4xl mx-auto tracking-[-0.02em]" 
+        <p class="platform-tagline-responsive text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-10 max-w-4xl mx-auto tracking-[-0.02em]" 
            style="font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-weight: 200;">
           Leadgeneratie, marketing automation, CRM en sales - alles in één systeem. <br>
-          <span class="text-gray-400 text-lg">Morgen bouwen we verder met jou.</span>
+          <span class="platform-subtitle-responsive text-gray-400 text-lg">Morgen bouwen we verder met jou.</span>
         </p>
         
         <!-- Gradient CTA button - matches hero style -->
@@ -102,5 +102,148 @@ import platformDashboard from '../../assets/platform-dashboard.webp';
 <style>
   .platform-dashboard-img {
     image-rendering: high-quality;
+  }
+  
+  /* Mobile-only responsive typography - desktop/laptop blijft exact hetzelfde */
+  .platform-title-responsive {
+    /* Desktop/laptop behouden exact dezelfde styling */
+    font-size: 3rem; /* text-5xl */
+  }
+  
+  .platform-tagline-responsive {
+    /* Desktop/laptop behouden exact dezelfde styling */
+    font-size: 1.25rem; /* text-xl */
+  }
+  
+  .platform-subtitle-responsive {
+    /* Desktop/laptop behouden exact dezelfde styling */
+    font-size: 1.125rem; /* text-lg */
+  }
+  
+  /* Mobile-only optimizations - alleen voor kleine schermen */
+  @media (max-width: 639px) {
+    .platform-title-responsive {
+      font-size: clamp(1.5rem, 5vw + 0.5rem, 2.5rem) !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.02em !important;
+      text-align: center !important;
+    }
+    
+    .platform-tagline-responsive {
+      font-size: clamp(0.9rem, 3.5vw + 0.1rem, 1.1rem) !important;
+      line-height: 1.4 !important;
+      text-align: center !important;
+    }
+    
+    .platform-subtitle-responsive {
+      font-size: clamp(0.8rem, 3vw + 0.05rem, 1rem) !important;
+      line-height: 1.45 !important;
+      text-align: center !important;
+    }
+  }
+  
+  /* Extra kleine mobiele apparaten */
+  @media (max-width: 479px) {
+    .platform-title-responsive {
+      font-size: clamp(1.25rem, 4.5vw + 0.3rem, 2rem) !important;
+      line-height: 1.15 !important;
+    }
+    
+    .platform-tagline-responsive {
+      font-size: clamp(0.8rem, 3vw + 0.08rem, 1rem) !important;
+      line-height: 1.5 !important;
+    }
+    
+    .platform-subtitle-responsive {
+      font-size: clamp(0.75rem, 2.8vw + 0.03rem, 0.9rem) !important;
+      line-height: 1.5 !important;
+    }
+  }
+  
+  /* Tablet en groter - originele styling behouden */
+  @media (min-width: 640px) {
+    .platform-title-responsive {
+      font-size: 3rem; /* text-5xl */
+    }
+    
+    .platform-tagline-responsive {
+      font-size: 1.25rem; /* text-xl */
+    }
+    
+    .platform-subtitle-responsive {
+      font-size: 1.125rem; /* text-lg */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .platform-title-responsive {
+      font-size: 3.75rem; /* text-6xl */
+    }
+    
+    .platform-tagline-responsive {
+      font-size: 1.5rem; /* text-2xl */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .platform-title-responsive {
+      font-size: 4.5rem; /* text-7xl */
+    }
+  }
+  
+  /* Mobile container optimizations - desktop/laptop blijft exact hetzelfde */
+  .platform-glass-container {
+    /* Desktop/laptop originele styling */
+    width: 90vw;
+    height: 75vh;
+  }
+  
+  .platform-content-container {
+    /* Desktop/laptop originele styling */
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  /* Mobile-only container aanpassingen */
+  @media (max-width: 639px) {
+    .platform-glass-container {
+      width: 95vw !important;
+      height: 60vh !important;
+      min-height: 400px !important;
+      border-radius: 1.5rem !important; /* rounded-3xl naar rounded-2xl voor mobile */
+    }
+    
+    .platform-content-container {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      max-width: 100% !important;
+    }
+  }
+  
+  @media (max-width: 479px) {
+    .platform-glass-container {
+      width: 98vw !important;
+      height: 55vh !important;
+      min-height: 350px !important;
+      border-radius: 1rem !important; /* nog kleiner op extra kleine schermen */
+    }
+    
+    .platform-content-container {
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+    }
+  }
+  
+  /* Tablet en groter - originele styling behouden */
+  @media (min-width: 640px) {
+    .platform-glass-container {
+      width: 90vw;
+      height: 75vh;
+    }
+    
+    .platform-content-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 </style>

@@ -9,41 +9,33 @@
   <!-- Homepage -->
   <url>
     <loc>https://buildrs.ai/</loc>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- AI Automatisering -->
+  <!-- Meeting Page -->
   <url>
-    <loc>https://buildrs.ai/ai-automations</loc>
-    <lastmod>2024-12-19</lastmod>
+    <loc>https://buildrs.ai/meeting</loc>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Custom AI SaaS -->
+  <!-- Over Ons Page -->
   <url>
-    <loc>https://buildrs.ai/custom-ai-saas</loc>
-    <lastmod>2024-12-19</lastmod>
+    <loc>https://buildrs.ai/over-ons</loc>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
-  <!-- AI Consultancy -->
+  <!-- Partnership Page -->
   <url>
-    <loc>https://buildrs.ai/consultancy</loc>
-    <lastmod>2024-12-19</lastmod>
+    <loc>https://buildrs.ai/partnership</loc>
+    <lastmod>2025-01-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Autonomous AI Agents -->
-  <url>
-    <loc>https://buildrs.ai/autonomous-ai-agents</loc>
-    <lastmod>2024-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

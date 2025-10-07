@@ -5,6 +5,61 @@ import { motion } from 'framer-motion';
 import HomeAnimatedHeadline from './HomeAnimatedHeadline';
 
 const HomeHero = () => {
+  const [hasTriggeredPreload, setHasTriggeredPreload] = useState(false);
+
+  // Ultra-aggressive preload: Trigger on ANY user interaction
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const preloadLeadGenImage = () => {
+      if (hasTriggeredPreload) return;
+      setHasTriggeredPreload(true);
+      
+      // Preload lead generation image immediately
+      const leadGenImage = new Image();
+      leadGenImage.src = '/lead-generation-hero-optimized.webp';
+      leadGenImage.loading = 'eager';
+      leadGenImage.fetchPriority = 'high';
+      
+      // Also preload the ultra-hd version as backup
+      const leadGenImageBackup = new Image();
+      leadGenImageBackup.src = '/lead-generation-hero-ultra-hd.webp';
+      leadGenImageBackup.loading = 'eager';
+    };
+
+    const handleScroll = () => {
+      // Trigger preload immediately when user starts scrolling (even 1px)
+      if (window.scrollY > 1) {
+        preloadLeadGenImage();
+      }
+    };
+
+    const handleMouseMove = () => {
+      // Trigger on first mouse movement over hero
+      preloadLeadGenImage();
+    };
+
+    const handleTouch = () => {
+      // Trigger on first touch (mobile)
+      preloadLeadGenImage();
+    };
+
+    // Multiple trigger points for maximum coverage
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true, once: true });
+    window.addEventListener('touchstart', handleTouch, { passive: true, once: true });
+    
+    // Fallback: preload after 2 seconds regardless
+    const fallbackTimeout = setTimeout(preloadLeadGenImage, 2000);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchstart', handleTouch);
+      clearTimeout(fallbackTimeout);
+    };
+  }, [hasTriggeredPreload]);
+
   const handlePartnershipClick = () => {
     if (typeof window !== 'undefined') {
       window.location.href = '/kenniscentrum';
@@ -27,23 +82,23 @@ const HomeHero = () => {
   return (
     <>
       <style jsx>{`
-        /* Mobile-first CTA responsive scaling - proper touch targets */
+        /* Mobile-first CTA responsive scaling - nog kleiner en lager */
         .cta-responsive {
-          font-size: 0.7rem; /* nog kleiner op mobile */
-          padding: 0.65rem 0.75rem; /* minimum 44px touch target */
-          min-height: 44px; /* iOS/Android touch target guideline */
-          min-width: 44px;
+          font-size: 0.6rem; /* nog kleiner op mobile */
+          padding: 0.4rem 0.65rem; /* nog kleinere padding voor lagere hoogte */
+          min-height: 30px; /* lager voor compactere look */
+          min-width: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         
-        /* Mobile-specific touch optimizations */
+        /* Mobile-specific touch optimizations - extra klein en laag */
         @media (max-width: 479px) {
           .cta-responsive {
-            font-size: 0.65rem;
-            padding: 0.7rem 0.8rem;
-            min-height: 48px; /* larger for small screens */
+            font-size: 0.55rem; /* nog kleiner */
+            padding: 0.35rem 0.6rem; /* nog compactere padding */
+            min-height: 28px; /* nog lager voor zeer compacte look */
           }
         }
         
@@ -170,10 +225,11 @@ const HomeHero = () => {
           background-position: center 23% !important; /* Desktop default */
         }
         
-        /* Mobile responsive background positioning - TRANSFORM SOLUTION */
+        /* Mobile responsive background positioning - TRANSFORM SOLUTION + ZOOM OUT */
         @media (max-width: 639px) {
           .hero-bg {
             background-position: center center !important;
+            background-size: 120% auto !important; /* Uitzoomen zodat volledige breedte zichtbaar is */
             transform: translate3d(0, 20%, 0) !important;
             will-change: transform;
             contain: layout style paint;
@@ -367,13 +423,25 @@ const HomeHero = () => {
       />
         
       {/* Content Container - Responsive positioning above BUILDRS logo */}
-      <div className="relative max-w-6xl mx-auto z-30 text-left px-6 sm:px-4 content-container">
+      <div className="relative max-w-6xl mx-auto z-30 text-center sm:text-left content-container"
+           style={{
+             /* Safe padding voor cutoff prevention op alle breakpoints */
+             paddingLeft: '2rem',
+             paddingRight: '2rem',
+             /* Zorg dat de container zelf links uitlijnt op laptop/desktop */
+             textAlign: typeof window !== 'undefined' && window.innerWidth >= 768 ? 'left' : undefined,
+             /* Prevent any overflow issues */
+             overflow: 'visible'
+           }}>
         <motion.div 
           className="max-w-5xl mx-auto relative"
           style={{ 
             minHeight: '280px',
-            contain: 'layout style paint',
-            willChange: 'transform'
+            /* Remove contain voor betere alignment */
+            contain: 'none',
+            willChange: 'transform',
+            /* Ensure no overflow cutoff */
+            overflow: 'visible'
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -407,11 +475,14 @@ const HomeHero = () => {
 
           {/* Redesigned CTA Section - Mobile-optimized animations */}
           <motion.div 
-            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center mt-0 sm:mt-1 md:mt-2 lg:mt-4 cta-container"
+            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-center sm:justify-start items-center -mt-4 sm:mt-0 md:mt-0 lg:mt-1 cta-container"
             style={{ 
               minHeight: '100px',
-              contain: 'layout style',
-              willChange: 'transform'
+              /* Remove contain voor betere alignment */
+              contain: 'none',
+              willChange: 'transform',
+              /* Ensure perfect alignment */
+              overflow: 'visible'
             }}
             initial={{ opacity: 0, y: 12, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -428,23 +499,92 @@ const HomeHero = () => {
             }}
           >
             <style jsx>{`
+              /* Mobile-first CTA positioning - geen negatieve margins */
+              .cta-container {
+                margin-left: 0rem !important; /* Geen cutoffs */
+              }
+              
+              /* Mobile CTA button responsive sizing - smaller & shorter */
+              .cta-responsive {
+                padding: 0.375rem 0.75rem; /* Smaller padding */
+                font-size: 0.65rem; /* Smaller text */
+                height: 2rem; /* Much shorter height */
+              }
+              
+              .text-margin-responsive {
+                font-size: 0.65rem; /* Smaller text */
+                font-weight: 500;
+              }
+              
+              .icon-responsive {
+                width: 0.875rem; /* Smaller icon */
+                height: 0.875rem;
+                margin-left: 0.25rem;
+              }
+              
+              @media (min-width: 640px) {
+                .cta-responsive {
+                  padding: 0.75rem 1.5rem;
+                  font-size: 0.875rem;
+                  height: 3rem;
+                }
+                
+                .text-margin-responsive {
+                  font-size: 0.875rem;
+                  font-weight: 500;
+                }
+                
+                .icon-responsive {
+                  width: 1.125rem;
+                  height: 1.125rem;
+                  margin-left: 0.5rem;
+                }
+              }
+              
+              @media (min-width: 768px) {
+                .cta-container {
+                  margin-left: -0.5rem !important; /* Exact match met headline container */
+                  justify-content: flex-start !important;
+                }
+                
+                .cta-responsive {
+                  padding: 1rem 2rem;
+                  font-size: 1rem;
+                  height: 3.5rem;
+                }
+                
+                .text-margin-responsive {
+                  font-size: 1rem;
+                  font-weight: 500;
+                }
+                
+                .icon-responsive {
+                  width: 1.25rem;
+                  height: 1.25rem;
+                  margin-left: 0.5rem;
+                }
+              }
+              
               @media (min-width: 1680px) {
                 .cta-container {
-                  margin-left: -0.5rem;
+                  margin-left: -0.5rem !important; /* Exact match met headline container */
+                  justify-content: flex-start !important;
                 }
               }
               @media (min-width: 1920px) {
                 .cta-container {
-                  margin-left: -1rem;
+                  margin-left: -1rem !important; /* Exact match met headline container */
+                  justify-content: flex-start !important;
                 }
               }
               @media (min-width: 2560px) {
                 .cta-container {
-                  margin-left: -1.5rem;
+                  margin-left: -1.5rem !important; /* Exact match met headline container */
+                  justify-content: flex-start !important;
                 }
               }
             `}</style>
-            <div className="cta-container px-6 sm:px-6 flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-start items-center w-full" style={{ marginLeft: '-0.5rem' }}>
+            <div className="cta-container flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-center sm:justify-start items-center w-full">
             {/* Primary CTA - Clean gradient border */}
             <div className="relative">
               <motion.button
@@ -453,7 +593,7 @@ const HomeHero = () => {
                     window.location.href = '/contact';
                   }
                 }}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
                 style={{ 
                   backgroundColor: 'rgba(0, 0, 0, 0.8)',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
@@ -485,7 +625,7 @@ const HomeHero = () => {
             <div className="relative">
               <motion.button
                 onClick={handleCasesClick}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 backdrop-blur-sm flex-1 min-w-0 w-[calc(45vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
+                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 backdrop-blur-sm flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
                 style={{ 
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                   background: 'rgba(255, 255, 255, 0.05)',

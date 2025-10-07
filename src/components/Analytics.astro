@@ -1,0 +1,48 @@
+---
+// Plausible Analytics Component - Privacy-First Setup
+// Automatically detects domain and works in all environments
+
+// Get the current domain for Plausible
+const getDataDomain = () => {
+  // In production, use the actual domain
+  if (import.meta.env.PROD) {
+    return 'buildrs.nl'; // Your production domain
+  }
+  
+  // In development, use localhost (Plausible won't track this by default)
+  return 'localhost';
+};
+
+const dataDomain = getDataDomain();
+---
+
+<!-- Plausible Analytics Script - Privacy-First Configuration -->
+<script 
+  async 
+  defer 
+  data-domain={dataDomain}
+  src="https://plausible.io/js/script.js"
+></script>
+
+<!-- Initialize Plausible tracking with privacy settings -->
+<script>
+  // Ensure Plausible respects Do Not Track
+  window.plausible = window.plausible || function() { 
+    (window.plausible.q = window.plausible.q || []).push(arguments) 
+  };
+  
+  // Optional: Log when analytics is loaded (development only)
+  if (import.meta.env.DEV) {
+    console.log('📊 Plausible Analytics loaded for domain:', {dataDomain});
+  }
+</script>
+
+<!-- Add type definitions for TypeScript -->
+<script>
+  // Global Plausible type definition for TypeScript
+  if (typeof window !== 'undefined') {
+    window.plausible = window.plausible || function() { 
+      (window.plausible.q = window.plausible.q || []).push(arguments) 
+    };
+  }
+</script>

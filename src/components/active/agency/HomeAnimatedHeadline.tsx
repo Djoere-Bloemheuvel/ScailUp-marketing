@@ -1,6 +1,6 @@
 const HomeAnimatedHeadline = () => {
   return (
-    <div className="relative px-6 sm:px-6 max-w-5xl mx-auto">
+    <div className="relative px-4 sm:px-6 max-w-5xl mx-auto">
       <div className="text-left title-container" style={{ 
         marginLeft: '-0.5rem'
       }}>
@@ -17,21 +17,49 @@ const HomeAnimatedHeadline = () => {
             text-rendering: optimizeLegibility;
           }
           
-          /* Mobile-only refinements */
+          /* Mobile-only refinements - veel groter voor betere leesbaarheid, fix cutoffs */
           @media (max-width: 639px) {
             .title-responsive {
-              font-size: clamp(2.2rem, 8vw + 0.5rem, 2.8rem);
-              line-height: 0.9;
+              font-size: clamp(2.2rem, 7vw + 0.7rem, 3rem) !important; /* Nog groter! */
+              line-height: 1.05; /* Strakker voor betere impact */
               contain: layout style paint;
+              letter-spacing: -0.03em;
+              text-align: center !important;
+              color: #ffffff !important;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+              hyphens: auto;
+              max-width: 100%;
+              padding: 0.25rem 0 0.5rem 0; /* Extra padding om cutoffs te voorkomen */
+              font-weight: 350 !important; /* Iets zwaarder voor betere leesbaarheid */
+            }
+            
+            .title-container {
+              padding-bottom: 0.5rem !important; /* Minder ruimte onder titel voor compactere look */
             }
           }
           
-          /* Extra small mobile */
+          /* Extra small mobile - ook veel groter */
           @media (max-width: 479px) {
             .title-responsive {
-              font-size: clamp(2rem, 9vw + 0.3rem, 2.6rem);
-              line-height: 0.95;
-              letter-spacing: -0.035em;
+              font-size: clamp(2rem, 6.5vw + 0.5rem, 2.6rem) !important; /* Groter! */
+              line-height: 1.05;
+              letter-spacing: -0.025em;
+              text-align: center !important;
+              color: #ffffff !important;
+              font-weight: 350 !important;
+            }
+          }
+          
+          /* Ultra small phones - ook flink groter */
+          @media (max-width: 374px) {
+            .title-responsive {
+              font-size: clamp(1.8rem, 6vw + 0.4rem, 2.2rem) !important; /* Veel groter! */
+              line-height: 1.1;
+              letter-spacing: -0.02em;
+              text-align: center !important;
+              color: #ffffff !important;
+              font-weight: 350 !important;
             }
           }
           
@@ -55,6 +83,12 @@ const HomeAnimatedHeadline = () => {
             .title-responsive {
               font-size: 6.5rem;
             }
+          }
+          
+          /* Mobile container positioning - less left offset, meer ruimte aan onderkant */
+          .title-container {
+            margin-left: 0rem; /* No left offset on mobile */
+            padding-bottom: 0.75rem; /* Extra ruimte aan onderkant om cutoffs te voorkomen */
           }
           
           @media (min-width: 768px) {
@@ -89,22 +123,21 @@ const HomeAnimatedHeadline = () => {
             letterSpacing: '-0.045em',
             lineHeight: '0.85',
             textRendering: 'optimizeLegibility', 
-            WebkitFontSmoothing: 'antialiased',
-            whiteSpace: 'nowrap'
+            WebkitFontSmoothing: 'antialiased'
           }}
         >
           <div className="space-y-1 sm:space-y-2 md:space-y-3">
-            <div style={{ fontWeight: '300', whiteSpace: 'nowrap' }}>
+            <div style={{ fontWeight: '300' }}>
               Wij bouwen de systemen
             </div>
-            <div style={{ fontWeight: '400', whiteSpace: 'nowrap' }}>
+            <div style={{ fontWeight: '400' }}>
               achter jouw B2B groei.
             </div>
           </div>
         </h1>
 
-        {/* Hero Tagline - Mobile-optimized 2 lines */}
-        <div className="mt-3 sm:mt-4 md:mt-6">
+        {/* Hero Tagline - Mobile-optimized 2 lines, dichter bij titel */}
+        <div className="mt-2 sm:mt-3 md:mt-4">
           <style jsx>{`
             /* Desktop-first tagline - preserve original sizing */
             .tagline-responsive {
@@ -113,21 +146,35 @@ const HomeAnimatedHeadline = () => {
               letter-spacing: -0.045em;
             }
             
-            /* Mobile-only optimizations */
+            /* Mobile-only optimizations - veel groter en centered */
             @media (max-width: 639px) {
               .tagline-responsive {
-                font-size: clamp(0.9rem, 4vw + 0.2rem, 1rem);
-                line-height: 1.4;
-                letter-spacing: -0.02em;
+                font-size: clamp(1rem, 4vw + 0.2rem, 1.3rem) !important; /* Groter! */
+                line-height: 1.35;
+                letter-spacing: -0.01em;
                 contain: layout style;
+                text-align: center !important;
+                font-weight: 300 !important;
               }
             }
             
             @media (max-width: 479px) {
               .tagline-responsive {
-                font-size: clamp(0.85rem, 4.5vw + 0.1rem, 0.95rem);
+                font-size: clamp(0.9rem, 3.5vw + 0.15rem, 1.2rem) !important; /* Groter! */
+                line-height: 1.4;
+                letter-spacing: -0.005em;
+                text-align: center !important;
+                font-weight: 300 !important;
+              }
+            }
+            
+            @media (max-width: 374px) {
+              .tagline-responsive {
+                font-size: clamp(0.8rem, 3.2vw + 0.1rem, 1rem) !important; /* Groter! */
                 line-height: 1.45;
-                letter-spacing: -0.015em;
+                letter-spacing: 0em;
+                text-align: center !important;
+                font-weight: 300 !important;
               }
             }
             

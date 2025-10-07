@@ -5,6 +5,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 const ThreePhasesSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [expandedPhases, setExpandedPhases] = useState<Set<number>>(new Set());
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    const checkReducedMotion = () => {
+      setPrefersReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    };
+
+    checkIsMobile();
+    checkReducedMotion();
+    
+    window.addEventListener('resize', checkIsMobile);
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    mediaQuery.addEventListener('change', checkReducedMotion);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+      mediaQuery.removeEventListener('change', checkReducedMotion);
+    };
+  }, []);
 
   const growthPhases = [
     {
@@ -63,11 +87,18 @@ const ThreePhasesSection = () => {
       {/* Premium Background - CompanyHero Style */}
       <motion.div 
         className="absolute inset-0 z-0" 
-        style={{ contain: 'paint' }}
+        style={{ 
+          ...(isMobile ? {} : {
+            contain: 'paint',
+            willChange: 'opacity',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden'
+          })
+        }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={prefersReducedMotion ? { duration: 0.1 } : isMobile ? { duration: 0.4, ease: "easeOut" } : { duration: 0.6, ease: "easeOut" }}
       >
         {/* Top-Left Blue Glow */}
         <div 
@@ -191,29 +222,31 @@ const ThreePhasesSection = () => {
         />
       </div>
       
-      {/* Floating Particles - More Subtle */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-0.5 h-0.5 bg-blue-400/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [-20, -40, -20],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 5
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating Particles - More Subtle, disabled on mobile for performance */}
+      {!isMobile && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-0.5 h-0.5 bg-blue-400/30 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [-20, -40, -20],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: Math.random() * 5
+              }}
+            />
+          ))}
+        </div>
+      )}
       
       {/* Hero Section */}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-20">
@@ -224,28 +257,32 @@ const ThreePhasesSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={prefersReducedMotion ? { duration: 0.1 } : isMobile ? { duration: 0.5, ease: "easeOut" } : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <style jsx>{`
-            /* Mobile-optimized title scaling with better spacing */
+            /* Mobile-first title scaling - more conservative */
             .hero-title-responsive {
-              font-size: clamp(1.6rem, 6vw + 0.4rem, 4rem);
-              line-height: 1.1;
+              font-size: clamp(1.4rem, 5vw + 0.3rem, 1.8rem);
+              line-height: 1.15;
               will-change: transform;
               transform: translateZ(0);
               backface-visibility: hidden;
               -webkit-font-smoothing: antialiased;
               text-rendering: optimizeLegibility;
               contain: layout style paint;
-              margin-bottom: clamp(1rem, 4vw, 2rem);
+              margin-bottom: clamp(0.75rem, 3vw, 1.5rem);
+              padding-left: 0.5rem;
+              padding-right: 0.5rem;
             }
             
             /* Ultra-small mobile optimization */
             @media (max-width: 374px) {
               .hero-title-responsive {
-                font-size: clamp(1.4rem, 7vw + 0.2rem, 1.8rem);
-                line-height: 1.15;
-                margin-bottom: 0.75rem;
+                font-size: clamp(1.2rem, 6vw + 0.1rem, 1.6rem);
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
               }
             }
             
@@ -289,14 +326,19 @@ const ThreePhasesSection = () => {
               className="relative group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 rounded-2xl select-none"
               style={{ 
                 outline: 'none',
-                WebkitTapHighlightColor: 'transparent'
+                WebkitTapHighlightColor: 'transparent',
+                ...(isMobile ? {} : {
+                  willChange: 'transform, opacity',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden'
+                })
               }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: isMobile ? "0px" : "-100px" }}
+              transition={prefersReducedMotion ? { duration: 0.1, delay: 0 } : isMobile ? { duration: 0.6, delay: index * 0.1, ease: "easeOut" } : { duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               onViewportEnter={() => setHasAnimated(true)}
-              whileHover={{ y: -8 }}
+              whileHover={isMobile ? {} : { y: -8 }}
               onClick={() => {
                 const newExpandedPhases = new Set(expandedPhases);
                 if (newExpandedPhases.has(index)) {
@@ -342,7 +384,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                     />
                     {/* Laptop base */}
@@ -352,23 +394,23 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.2, delay: 0.3, ease: "easeInOut" }}
                     />
                     {/* Content lines */}
                     <motion.line x1="50" y1="35" x2="110" y2="35" stroke="rgba(33, 203, 243, 0.4)" strokeWidth="1"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.8, delay: 1.5 }}
                     />
                     <motion.line x1="50" y1="45" x2="130" y2="45" stroke="rgba(33, 203, 243, 0.4)" strokeWidth="1"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.8, delay: 1.7 }}
                     />
                     <motion.line x1="50" y1="55" x2="120" y2="55" stroke="rgba(33, 203, 243, 0.4)" strokeWidth="1"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.8, delay: 1.9 }}
                     />
                     {/* Stars around laptop */}
@@ -377,7 +419,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1" 
                       fill="none"
                       initial={{ pathLength: 0, scale: 0 }}
-                      animate={hasAnimated ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
+                      animate={(hasAnimated || isMobile) ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
                       transition={{ duration: 0.8, delay: 2.2 }}
                     />
                     <motion.path d="M175 45 L180 55 L170 55 Z M175 50 L180 40 L170 40 Z" 
@@ -385,7 +427,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1" 
                       fill="none"
                       initial={{ pathLength: 0, scale: 0 }}
-                      animate={hasAnimated ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
+                      animate={(hasAnimated || isMobile) ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
                       transition={{ duration: 0.8, delay: 2.4 }}
                     />
                     <motion.path d="M165 15 L170 25 L160 25 Z M165 20 L170 10 L160 10 Z" 
@@ -393,7 +435,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1" 
                       fill="none"
                       initial={{ pathLength: 0, scale: 0 }}
-                      animate={hasAnimated ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
+                      animate={(hasAnimated || isMobile) ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
                       transition={{ duration: 0.8, delay: 2.6 }}
                     />
                   </motion.svg>
@@ -413,7 +455,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.2, ease: "easeInOut" }}
                     />
                     {/* Top face */}
@@ -423,7 +465,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.2, delay: 0.3, ease: "easeInOut" }}
                     />
                     {/* Right face */}
@@ -433,7 +475,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.2, delay: 0.6, ease: "easeInOut" }}
                     />
                     {/* #1 Badge circle */}
@@ -443,7 +485,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0, scale: 0 }}
-                      animate={hasAnimated ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
+                      animate={(hasAnimated || isMobile) ? { pathLength: 1, scale: 1 } : { pathLength: 0, scale: 0 }}
                       transition={{ duration: 0.8, delay: 1.5 }}
                     />
                     {/* #1 Text */}
@@ -464,7 +506,7 @@ const ThreePhasesSection = () => {
                       stroke="rgba(147, 51, 234, 0.6)" 
                       strokeWidth="1" 
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.6, delay: 2.3 }}
                     />
                   </motion.svg>
@@ -485,7 +527,7 @@ const ThreePhasesSection = () => {
                       fill="none"
                       strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                     />
                     {/* Inner lightning detail */}
@@ -495,7 +537,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1.2, delay: 0.5, ease: "easeInOut" }}
                     />
                     {/* Energy sparks around */}
@@ -525,7 +567,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1" 
                       strokeLinecap="round"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.8, delay: 2.6 }}
                     />
                   </motion.svg>
@@ -545,7 +587,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1, ease: "easeInOut" }}
                     />
                     {/* Second coin */}
@@ -555,7 +597,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1, delay: 0.2, ease: "easeInOut" }}
                     />
                     {/* Third coin */}
@@ -565,7 +607,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1, delay: 0.4, ease: "easeInOut" }}
                     />
                     {/* Top coin */}
@@ -575,18 +617,18 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 1, delay: 0.6, ease: "easeInOut" }}
                     />
                     {/* Stack vertical lines */}
                     <motion.line x1="70" y1="85" x2="70" y2="55" stroke="rgba(34, 197, 94, 0.4)" strokeWidth="1"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.8, delay: 1.2 }}
                     />
                     <motion.line x1="130" y1="85" x2="130" y2="55" stroke="rgba(34, 197, 94, 0.4)" strokeWidth="1"
                       initial={{ pathLength: 0 }}
-                      animate={hasAnimated ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={isMobile ? { pathLength: 1 } : (hasAnimated ? { pathLength: 1 } : { pathLength: 0 })}
                       transition={{ duration: 0.8, delay: 1.4 }}
                     />
                     {/* Dollar signs */}
@@ -596,7 +638,7 @@ const ThreePhasesSection = () => {
                       fontSize="16" 
                       fontWeight="bold"
                       initial={{ opacity: 0, scale: 0 }}
-                      animate={hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                      animate={isMobile ? { opacity: 1, scale: 1 } : (hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 })}
                       transition={{ duration: 0.5, delay: 1.8 }}
                     >
                       $
@@ -607,7 +649,7 @@ const ThreePhasesSection = () => {
                       fontSize="16" 
                       fontWeight="bold"
                       initial={{ opacity: 0, scale: 0 }}
-                      animate={hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                      animate={isMobile ? { opacity: 1, scale: 1 } : (hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 })}
                       transition={{ duration: 0.5, delay: 2 }}
                     >
                       $
@@ -619,7 +661,7 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ scale: 0, y: 10 }}
-                      animate={hasAnimated ? { scale: 1, y: 0 } : { scale: 0, y: 10 }}
+                      animate={isMobile ? { scale: 1, y: 0 } : (hasAnimated ? { scale: 1, y: 0 } : { scale: 0, y: 10 })}
                       transition={{ duration: 0.8, delay: 2.3 }}
                     />
                     <motion.circle 
@@ -628,37 +670,39 @@ const ThreePhasesSection = () => {
                       strokeWidth="1.5" 
                       fill="none"
                       initial={{ scale: 0, y: 10 }}
-                      animate={hasAnimated ? { scale: 1, y: 0 } : { scale: 0, y: 10 }}
+                      animate={isMobile ? { scale: 1, y: 0 } : (hasAnimated ? { scale: 1, y: 0 } : { scale: 0, y: 10 })}
                       transition={{ duration: 0.8, delay: 2.5 }}
                     />
                   </motion.svg>
                 )}
 
-                {/* Jet-style particle mist around each wireframe */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                  {[...Array(12)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-0.5 h-0.5 bg-white/20 rounded-full"
-                      style={{
-                        left: `${35 + Math.random() * 30}%`,
-                        top: `${35 + Math.random() * 30}%`,
-                      }}
-                      animate={{
-                        x: [0, Math.random() * 40 - 20],
-                        y: [0, Math.random() * 40 - 20],
-                        opacity: [0, 0.6, 0],
-                        scale: [0, 1, 0]
-                      }}
-                      transition={{
-                        duration: 6 + Math.random() * 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: Math.random() * 3
-                      }}
-                    />
-                  ))}
-                </div>
+                {/* Jet-style particle mist around each wireframe - disabled on mobile for performance */}
+                {!isMobile && (
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    {[...Array(12)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-0.5 h-0.5 bg-white/20 rounded-full"
+                        style={{
+                          left: `${35 + Math.random() * 30}%`,
+                          top: `${35 + Math.random() * 30}%`,
+                        }}
+                        animate={{
+                          x: [0, Math.random() * 40 - 20],
+                          y: [0, Math.random() * 40 - 20],
+                          opacity: [0, 0.6, 0],
+                          scale: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 6 + Math.random() * 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: Math.random() * 3
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
               
               {/* Phase Label */}
@@ -671,7 +715,7 @@ const ThreePhasesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
+                transition={isMobile ? { duration: 0.4, delay: index * 0.1 + 0.1, ease: "easeOut" } : { duration: 0.6, delay: index * 0.15 + 0.2 }}
               >
                 {phase.phase}
               </motion.span>
@@ -688,7 +732,7 @@ const ThreePhasesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 + 0.3 }}
+                transition={isMobile ? { duration: 0.4, delay: index * 0.1 + 0.2, ease: "easeOut" } : { duration: 0.6, delay: index * 0.15 + 0.3 }}
               >
                 {phase.title}
               </motion.h3>
@@ -703,7 +747,7 @@ const ThreePhasesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 + 0.4 }}
+                transition={isMobile ? { duration: 0.4, delay: index * 0.1 + 0.3, ease: "easeOut" } : { duration: 0.6, delay: index * 0.15 + 0.4 }}
               >
                 {phase.description}
               </motion.p>

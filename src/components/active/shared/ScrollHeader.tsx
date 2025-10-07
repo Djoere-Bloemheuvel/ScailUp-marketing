@@ -166,9 +166,23 @@ const ScrollHeader = () => {
                 );
               })}
               <Button
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 text-sm px-4 py-2 rounded-lg backdrop-blur-sm transition-all duration-200"
+                className="text-white text-sm px-4 py-2 rounded-lg font-medium transition-all duration-200"
                 variant="outline"
                 onClick={() => handleNavClick({ label: 'Contact', href: '#contact', path: '/' })}
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                  border: '2px solid transparent',
+                  backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+                  backgroundOrigin: 'border-box',
+                  backgroundClip: 'padding-box, border-box',
+                  boxShadow: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(120, 185, 255), rgb(255, 134, 202))';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))';
+                }}
               >
                 Contact
               </Button>
@@ -242,11 +256,25 @@ const ScrollHeader = () => {
                 );
               })}
               <Button
-                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 text-sm px-4 py-2 rounded-lg backdrop-blur-sm transition-all duration-200 w-full mt-2"
+                className="text-white text-sm px-4 py-2 rounded-lg font-medium transition-all duration-200 w-full mt-2"
                 variant="outline"
                 onClick={() => {
                   handleNavClick({ label: 'Contact', href: '#contact', path: '/' });
                   setIsMobileMenuOpen(false);
+                }}
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                  border: '2px solid transparent',
+                  backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+                  backgroundOrigin: 'border-box',
+                  backgroundClip: 'padding-box, border-box',
+                  boxShadow: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(120, 185, 255), rgb(255, 134, 202))';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))';
                 }}
               >
                 Contact

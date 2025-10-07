@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CustomerJourney = () => {
   const [selectedPhase, setSelectedPhase] = useState<number>(0); // Default to fase 1
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   const selectPhase = (index: number) => {
     setSelectedPhase(index);
@@ -78,10 +89,10 @@ const CustomerJourney = () => {
           {/* Left Side - Hero + Phase Selector */}
           <motion.div 
             className="relative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : { opacity: 0, y: 30 }}
+            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={isMobile ? {} : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Hero-style Headline */}
             <h2 
@@ -127,12 +138,12 @@ const CustomerJourney = () => {
                     className={`w-full text-left group relative overflow-hidden transition-all duration-500 ${
                       isSelected ? 'transform scale-[1.01]' : 'hover:transform hover:scale-[1.005]'
                     }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.99 }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={isMobile ? {} : { x: 4 }}
+                    whileTap={isMobile ? {} : { scale: 0.99 }}
+                    initial={isMobile ? false : { opacity: 0, x: -20 }}
+                    whileInView={isMobile ? false : { opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={isMobile ? {} : { duration: 0.6, delay: index * 0.1 }}
                   >
                     {/* Background Glow */}
                     <div className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
@@ -212,10 +223,10 @@ const CustomerJourney = () => {
 
             {/* CTA Button */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={isMobile ? false : { opacity: 0, y: 20 }}
+              whileInView={isMobile ? false : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={isMobile ? {} : { duration: 0.6, delay: 0.4 }}
             >
               <button
                 onClick={() => {
@@ -244,18 +255,18 @@ const CustomerJourney = () => {
           {/* Right Side - Dynamic Content Area */}
           <motion.div 
             className="relative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : { opacity: 0, y: 30 }}
+            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={isMobile ? {} : { duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedPhase}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                initial={isMobile ? false : { opacity: 0, y: 40 }}
+                animate={isMobile ? false : { opacity: 1, y: 0 }}
+                exit={isMobile ? false : { opacity: 0, y: -40 }}
+                transition={isMobile ? {} : { duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="h-full"
               >
                 {/* Content Card */}

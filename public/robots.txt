@@ -1,5 +1,5 @@
 # Robots.txt for Buildrs.AI - Elite AI Engineering Studio
-# Last updated: 2024-12-19
+# Last updated: 2025-01-07
 
 User-agent: Googlebot
 Allow: /
