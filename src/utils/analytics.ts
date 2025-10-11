@@ -154,7 +154,7 @@ export function trackEventWithUTM(
   try {
     // Get existing UTM data from your tracking system
     const utmData = localStorage.getItem('buildrs_tracking_data');
-    let utmProps: Record<string, string> = {};
+    const utmProps: Record<string, string> = {};
     
     if (utmData) {
       const parsed = JSON.parse(utmData);

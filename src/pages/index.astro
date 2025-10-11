@@ -13,6 +13,8 @@ import FoundersSection from '../components/active/agency/CEOSection';
 import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
 import ThreePhasesSection from '../components/active/agency/ThreePhasesSection';
+import CaseStudiesSection from '../components/active/agency/CaseStudiesSection';
+import ServicesOfferingSection from '../components/active/agency/ServicesOfferingSection';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -84,15 +86,21 @@ const structuredData = {
     <HomeHero client:load />
 
     <!-- Server-rendered Platform section -->
-    <Platform />
+    <!-- <Platform /> -->
 
 
     <!-- Specialist Section - Ultra-smooth Framer Motion animations -->
     <SpecialistSection client:load />
 
+    <!-- Services Offering Section - Sticky scroll features -->
+    <ServicesOfferingSection client:visible />
 
     <!-- Three Phases Section - Uitgebreide roadmap -->
     <ThreePhasesSection client:visible />
+
+
+    <!-- Case Studies Section - Premium client success stories -->
+    <CaseStudiesSection client:visible />
 
     <!-- Interactive Engine sections - load immediately after idle -->
     <!-- <SalesEngineSection client:idle /> -->

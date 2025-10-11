@@ -239,7 +239,13 @@ const SpecialistSection: React.FC<Props> = ({
   }, [isMobile]);
 
   return (
-    <section className="relative bg-black overflow-hidden py-0 pb-24">
+    <section 
+      className="relative bg-black overflow-hidden py-0 pb-24"
+      data-section-theme="dark"
+      data-section-accent="blue"
+      data-section-id="specialist"
+      data-lighting-intensity="subtle"
+    >
       {/* Headline - Hero Style */}
       <div className="relative z-20 pt-24 pb-16 px-6 sm:px-8 max-w-6xl mx-auto">
         <div className="text-left">

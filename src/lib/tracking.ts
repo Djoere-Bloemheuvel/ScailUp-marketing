@@ -13,7 +13,7 @@ export interface TrackingData {
 }
 
 export interface FormSubmissionPayload {
-  form_data: Record<string, any>;
+  form_data: Record<string, string | number | boolean>;
   tracking: TrackingData;
 }
 
@@ -124,7 +124,7 @@ class UTMTracker {
     });
   }
 
-  public async submitToWebhook(webhookUrl: string, formData: Record<string, any>): Promise<boolean> {
+  public async submitToWebhook(webhookUrl: string, formData: Record<string, string | number | boolean>): Promise<boolean> {
     if (typeof window === 'undefined') return false;
     
     const trackingData = this.getTrackingData();
@@ -154,7 +154,7 @@ class UTMTracker {
     }
   }
 
-  public getPayloadPreview(formData: Record<string, any> = {}): FormSubmissionPayload {
+  public getPayloadPreview(formData: Record<string, string | number | boolean> = {}): FormSubmissionPayload {
     return {
       form_data: formData,
       tracking: this.getTrackingData()
@@ -179,8 +179,8 @@ export const utmTracker = new UTMTracker();
 // Helper functions for easy access
 export const getTrackingData = () => utmTracker.getTrackingData();
 export const enhanceForm = (form: HTMLFormElement) => utmTracker.enhanceForm(form);
-export const submitToWebhook = (webhookUrl: string, formData: Record<string, any>) => 
+export const submitToWebhook = (webhookUrl: string, formData: Record<string, string | number | boolean>) => 
   utmTracker.submitToWebhook(webhookUrl, formData);
-export const getPayloadPreview = (formData?: Record<string, any>) => 
+export const getPayloadPreview = (formData?: Record<string, string | number | boolean>) => 
   utmTracker.getPayloadPreview(formData);
 export const debugTracking = () => utmTracker.debugTrackingData();

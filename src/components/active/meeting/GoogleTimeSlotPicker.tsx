@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, User, Mail, Building2, Phone, MessageSquare, CheckCircle, AlertCircle, Loader2, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -98,7 +98,7 @@ const GoogleTimeSlotPicker: React.FC<GoogleTimeSlotPickerProps> = ({
     if (selectedDate && accessToken) {
       fetchAvailability(selectedDate);
     }
-  }, [selectedDate, accessToken]);
+  }, [selectedDate, accessToken, fetchAvailability]);
 
   const initiateGoogleAuth = () => {
     setBookingStatus('loading');
@@ -109,7 +109,7 @@ const GoogleTimeSlotPicker: React.FC<GoogleTimeSlotPickerProps> = ({
     window.location.href = authUrl;
   };
 
-  const fetchAvailability = async (date: string) => {
+  const fetchAvailability = useCallback(async (date: string) => {
     try {
       setBookingStatus('loading');
       setError('');
@@ -132,7 +132,7 @@ const GoogleTimeSlotPicker: React.FC<GoogleTimeSlotPickerProps> = ({
     } finally {
       setBookingStatus('idle');
     }
-  };
+  }, [accessToken]);
 
   const handleDateSelect = (date: Date) => {
     const dateString = date.toISOString().split('T')[0];

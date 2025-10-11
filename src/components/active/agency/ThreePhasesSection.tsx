@@ -82,7 +82,13 @@ const ThreePhasesSection = () => {
   ];
 
   return (
-    <section className="relative w-full bg-black py-24 lg:py-40 overflow-hidden">
+    <section 
+      className="relative w-full bg-black py-24 lg:py-40 overflow-hidden"
+      data-section-theme="dark"
+      data-section-accent="purple"
+      data-section-id="phases"
+      data-lighting-intensity="moderate"
+    >
       
       {/* Premium Background - CompanyHero Style */}
       <motion.div 

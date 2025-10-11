@@ -57,7 +57,7 @@ class GoogleCalendarClient {
 
   constructor(config?: Partial<GoogleCalendarConfig>) {
     this.config = {
-      mode: (process.env.GOOGLE_CALENDAR_MODE as any) || 'mock',
+      mode: (process.env.GOOGLE_CALENDAR_MODE as 'real' | 'mock') || 'mock',
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       redirectUri: process.env.GOOGLE_REDIRECT_URI,

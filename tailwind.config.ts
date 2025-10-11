@@ -44,11 +44,29 @@ export default {
 		// Transition classes voor header
 		'transition-all',
 		'duration-500',
+		'duration-700',
 		'opacity-0',
 		'opacity-100',
 		'-translate-y-2',
 		'translate-y-0',
-		'pointer-events-none'
+		'pointer-events-none',
+		// Glassmorphism classes - KRITIEK voor premium header effects
+		'backdrop-blur-xl',
+		'backdrop-blur-2xl',
+		'backdrop-blur-3xl',
+		'backdrop-blur-4xl',
+		'backdrop-blur-5xl',
+		'backdrop-blur-6xl',
+		'bg-glass-gradient',
+		'bg-glass-border',
+		'will-change-transform',
+		'transform-gpu',
+		// Dynamic backdrop filters
+		'saturate-150',
+		'saturate-180',
+		'brightness-110',
+		'brightness-105',
+		'contrast-110'
 	],
 	prefix: "",
 	theme: {
@@ -131,6 +149,14 @@ export default {
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 				'scailup-gradient': 'linear-gradient(135deg, #2196F3 0%, #21CBF3 100%)',
 				'scailup-ambient': 'radial-gradient(ellipse at center, rgba(33, 203, 243, 0.05) 0%, rgba(33, 150, 243, 0.02) 50%, transparent 70%)',
+				'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+				'glass-border': 'linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%)',
+			},
+			backdropBlur: {
+				xs: '2px',
+				'4xl': '72px',
+				'5xl': '96px',
+				'6xl': '128px',
 			},
 			fontFamily: {
 				'apple': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -374,5 +400,8 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		// eslint-disable-next-line @typescript-eslint/no-require-imports
+		require("tailwindcss-animate")
+	],
 } satisfies Config;

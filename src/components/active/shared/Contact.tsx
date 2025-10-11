@@ -177,7 +177,7 @@ const Contact = () => {
     }));
   };
 
-  const getDisplayLabel = (field: string, options: any[]) => {
+  const getDisplayLabel = (field: string, options: Array<{value: string; label: string}>) => {
     const selected = options.find(opt => opt.value === formData[field as keyof typeof formData]);
     return selected ? selected.label : '';
   };

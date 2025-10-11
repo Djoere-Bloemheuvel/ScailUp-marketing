@@ -19,11 +19,11 @@ export const usePerformanceOptimization = (): PerformanceMetrics => {
     
     // Detect low-end device based on hardware concurrency and memory
     const isLowEnd = navigator.hardwareConcurrency <= 2 || 
-      // @ts-ignore - deviceMemory is experimental but useful
+      // @ts-expect-error - deviceMemory is experimental but useful
       (navigator.deviceMemory && navigator.deviceMemory <= 4);
 
     // Detect connection speed
-    // @ts-ignore - connection is experimental but widely supported
+    // @ts-expect-error - connection is experimental but widely supported
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     let connectionSpeed: 'fast' | 'slow' | 'unknown' = 'unknown';
     

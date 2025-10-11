@@ -3,16 +3,29 @@ import { Menu, X, ChevronDown, Send, Users, Globe, Brain, Database, Mail, Calend
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Section theme detection interface
+interface SectionTheme {
+  id: string;
+  theme: 'light' | 'dark';
+  accent: 'blue' | 'purple' | 'green' | 'orange' | 'teal';
+  lightingIntensity: 'subtle' | 'moderate' | 'heavy';
+}
+
 interface ScailUpHeaderProps {
   showAlways?: boolean;
 }
 
 const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
-  const [isVisible, setIsVisible] = useState(showAlways);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('/');
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [currentSection, setCurrentSection] = useState<SectionTheme | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  
+  // Always show header when showAlways is true, or show based on scroll
+  const shouldShowHeader = showAlways || isScrolled;
 
   // Professional dropdown handlers with proper debouncing
   const handleDropdownEnter = useCallback((itemPath: string) => {
@@ -35,44 +48,160 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     }, 100); // Shorter delay for better UX
   }, []);
 
+  // Advanced section detection with theme parsing
+  const detectSectionTheme = useCallback((element: Element): SectionTheme | null => {
+    const id = element.getAttribute('data-section-id');
+    const theme = element.getAttribute('data-section-theme') as 'light' | 'dark';
+    const accent = element.getAttribute('data-section-accent') as 'blue' | 'purple' | 'green' | 'orange' | 'teal';
+    const lightingIntensity = element.getAttribute('data-lighting-intensity') as 'subtle' | 'moderate' | 'heavy';
+
+    if (!id || !theme || !accent || !lightingIntensity) {
+      return null;
+    }
+
+    return { id, theme, accent, lightingIntensity };
+  }, []);
+
+  // Initialize section observer
+  const initializeSectionObserver = useCallback(() => {
+    if (typeof window === 'undefined') return;
+
+    // Clean up existing observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    // Create new observer with optimized settings for performance
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        // Use requestAnimationFrame for smooth updates
+        requestAnimationFrame(() => {
+          let mostVisibleSection: { element: Element; ratio: number } | null = null;
+
+          // Find the section with the highest intersection ratio
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+              if (!mostVisibleSection || entry.intersectionRatio > mostVisibleSection.ratio) {
+                mostVisibleSection = {
+                  element: entry.target,
+                  ratio: entry.intersectionRatio
+                };
+              }
+            }
+          });
+
+          // Update current section based on most visible
+          if (mostVisibleSection) {
+            const sectionTheme = detectSectionTheme(mostVisibleSection.element);
+            if (sectionTheme && (!currentSection || currentSection.id !== sectionTheme.id)) {
+              setCurrentSection(sectionTheme);
+            }
+          }
+        });
+      },
+      {
+        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Multiple thresholds for precision
+        rootMargin: '-20% 0px -20% 0px' // Exclude header/footer areas
+      }
+    );
+
+    // Observe all sections with data attributes
+    const sections = document.querySelectorAll('[data-section-id]');
+    sections.forEach((section) => {
+      if (observerRef.current) {
+        observerRef.current.observe(section);
+      }
+    });
+  }, [detectSectionTheme, currentSection]);
+
+  // Adaptive styling system based on current section
+  const getAdaptiveHeaderStyles = useCallback(() => {
+    if (!currentSection) {
+      // Perfect camouflage glassmorphism header
+      return {
+        background: isScrolled 
+          ? 'rgba(0, 0, 0, 0.75)' 
+          : 'rgba(0, 0, 0, 0.1)', // Ultra transparent when not scrolled for perfect camouflage
+        backdropFilter: isScrolled 
+          ? 'blur(20px) saturate(1.8)' 
+          : 'blur(12px) saturate(1.2)', // Subtle blur for camouflage
+        borderColor: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)',
+        textColor: 'white',
+        accentColor: 'rgba(59, 130, 246, 1)' // Default blue accent
+      };
+    }
+
+    const { theme, accent, lightingIntensity } = currentSection;
+    
+    // Define accent colors
+    const accentColors = {
+      blue: { primary: '59, 130, 246', secondary: '96, 165, 250' },
+      purple: { primary: '147, 51, 234', secondary: '168, 85, 247' },
+      green: { primary: '34, 197, 94', secondary: '74, 222, 128' },
+      orange: { primary: '251, 146, 60', secondary: '251, 191, 36' },
+      teal: { primary: '20, 184, 166', secondary: '45, 212, 191' }
+    };
+
+    const colors = accentColors[accent];
+    
+    // Determine opacity based on lighting intensity
+    const intensityOpacity = {
+      subtle: 0.7,
+      moderate: 0.8,
+      heavy: 0.9
+    };
+
+    const opacity = intensityOpacity[lightingIntensity];
+
+    if (theme === 'light') {
+      // Light theme: perfect camouflage
+      return {
+        background: isScrolled || showAlways
+          ? `rgba(255, 255, 255, ${opacity * 0.8})`
+          : 'rgba(255, 255, 255, 0.05)', // Ultra transparent for camouflage
+        backdropFilter: isScrolled || showAlways
+          ? 'blur(20px) saturate(1.8)'
+          : 'blur(8px) saturate(1.1)', // Lighter blur for camouflage
+        borderColor: `rgba(${colors.primary}, 0.1)`,
+        textColor: 'black',
+        accentColor: `rgba(${colors.primary}, 1)`
+      };
+    } else {
+      // Dark theme: perfect camouflage with background blend
+      return {
+        background: isScrolled || showAlways
+          ? `linear-gradient(135deg, rgba(0, 0, 0, ${opacity * 0.7}) 0%, rgba(${colors.primary}, 0.05) 100%)`
+          : `rgba(0, 0, 0, 0.05)`, // Ultra transparent for perfect camouflage
+        backdropFilter: isScrolled || showAlways
+          ? 'blur(20px) saturate(1.8)'
+          : 'blur(8px) saturate(1.1)', // Subtle blur for camouflage
+        borderColor: `rgba(${colors.secondary}, 0.1)`,
+        textColor: 'white',
+        accentColor: `rgba(${colors.primary}, 1)`
+      };
+    }
+  }, [currentSection, isScrolled, showAlways]);
+
   useEffect(() => {
-    // SSR Guard: Only run in browser environment
     if (typeof window === 'undefined') return;
     
-    // Set current path on mount
     setCurrentPath(window.location.pathname);
     
-    // Function to setup scroll listener
-    const setupScrollListener = () => {
-      const mainContainer = document.getElementById('main-content');
+    // Optimized scroll handler with throttling
+    let scrollTimeout: NodeJS.Timeout | null = null;
+    const handleScroll = () => {
+      // Use requestAnimationFrame for smooth scroll handling
+      if (scrollTimeout) return;
       
-      if (mainContainer) {
-        // Simplified scroll handler for header visibility
-        const handleScroll = () => {
-          const scrollY = mainContainer.scrollTop;
-          const shouldBeVisible = showAlways || scrollY > 100; // Show always if prop is true
-          setIsVisible(shouldBeVisible);
-        };
-
-        mainContainer.addEventListener('scroll', handleScroll, { passive: true });
-        
-        return () => {
-          mainContainer.removeEventListener('scroll', handleScroll);
-        };
-      } else {
-        // Retry after a short delay if container not found yet
-        setTimeout(setupScrollListener, 100);
-      }
+      scrollTimeout = setTimeout(() => {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setIsScrolled(scrollY > 50);
+        });
+        scrollTimeout = null;
+      }, 16); // ~60fps throttling
     };
 
-    // Navigation change handler
-    const handleNavigation = () => {
-      if (typeof window !== 'undefined') {
-        setCurrentPath(window.location.pathname);
-      }
-    };
-
-    // Escape key handler
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setActiveDropdown(null);
@@ -80,23 +209,40 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       }
     };
 
-    // Setup listeners
-    const cleanupScroll = setupScrollListener();
-    window.addEventListener('popstate', handleNavigation);
+    // Initialize section observer with a delay to ensure DOM is ready
+    const initTimeout = setTimeout(() => {
+      initializeSectionObserver();
+    }, 100);
+
+    // Set initial section if available
+    const initialTimeout = setTimeout(() => {
+      const sections = document.querySelectorAll('[data-section-id]');
+      if (sections.length > 0) {
+        const firstSection = sections[0];
+        const initialTheme = detectSectionTheme(firstSection);
+        if (initialTheme) {
+          setCurrentSection(initialTheme);
+        }
+      }
+    }, 200);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('keydown', handleEscape);
     
     return () => {
-      if (cleanupScroll) cleanupScroll();
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('popstate', handleNavigation);
-      }
+      clearTimeout(initTimeout);
+      clearTimeout(initialTimeout);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('keydown', handleEscape);
-      // Cleanup timeout
       if (hoverTimeoutRef.current) {
         clearTimeout(hoverTimeoutRef.current);
       }
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
     };
-  }, []);
+  }, [initializeSectionObserver]);
 
   const navItems = [
     // Diensten and Prijzen links removed as requested
@@ -127,40 +273,81 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     window.location.href = '/contact';
   };
 
+  // Get adaptive styles
+  const headerStyles = getAdaptiveHeaderStyles();
+
+  // Debug log to ensure component renders
+  console.log('ScailUpHeader rendering with styles:', headerStyles);
+
   return (
     <>
-      {/* Professional Header */}
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ 
-          opacity: isVisible ? 1 : 0, 
-          y: isVisible ? 0 : -20 
+      {/* Adaptive Glassmorphism Header - Proper Sticky */}
+      <header
+        className="sticky top-0 w-full transition-all duration-500"
+        style={{
+          background: headerStyles.background,
+          backdropFilter: headerStyles.backdropFilter,
+          WebkitBackdropFilter: headerStyles.backdropFilter,
+          borderColor: headerStyles.borderColor,
+          color: headerStyles.textColor,
+          // Add smooth transitions for theme changes
+          transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+          // Performance optimizations
+          willChange: 'background, border-color, color',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          // Sticky positioning with high z-index
+          position: 'sticky',
+          zIndex: 9999,
+          height: '64px',
+          opacity: 1,
+          visibility: 'visible',
+          // Only show border when scrolled
+          borderBottom: isScrolled ? `1px solid ${headerStyles.borderColor}` : 'none'
         }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-[9999] bg-black/95 backdrop-blur-xl border-b border-gray-800/50 ${
-          isVisible ? 'pointer-events-auto' : 'pointer-events-none'
-        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-16">
             
-            {/* Logo */}
+            {/* Adaptive Logo */}
             <div className="flex items-center">
               <button
                 onClick={handleLogoClick}
                 className="flex items-center hover:opacity-80 transition-opacity relative"
               >
-                {/* Subtle backlight glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-blue-400/30 to-blue-500/20 rounded-lg blur-lg -z-10 opacity-60"></div>
+                {/* Adaptive backlight glow */}
+                <div 
+                  className="absolute inset-0 rounded-lg blur-lg -z-10 opacity-60"
+                  style={{
+                    background: headerStyles.accentColor 
+                      ? `linear-gradient(to right, ${headerStyles.accentColor.replace('1)', '0.2)')}, ${headerStyles.accentColor.replace('1)', '0.3)')}, ${headerStyles.accentColor.replace('1)', '0.2)')})`
+                      : 'linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.3), rgba(59, 130, 246, 0.2))'
+                  }}
+                ></div>
                 
                 <div className="relative z-10 flex flex-col items-start">
-                  {/* Logo text */}
-                  <span className="text-white font-black text-lg tracking-widest uppercase leading-none" style={{ fontFamily: 'SF Pro Display, system-ui, -apple-system, monospace', fontWeight: '900', letterSpacing: '0.15em' }}>
+                  {/* Adaptive logo text */}
+                  <span 
+                    className="font-black text-lg tracking-widest uppercase leading-none transition-colors duration-500" 
+                    style={{ 
+                      fontFamily: 'SF Pro Display, system-ui, -apple-system, monospace', 
+                      fontWeight: '900', 
+                      letterSpacing: '0.15em',
+                      color: headerStyles.textColor
+                    }}
+                  >
                     BUILDRS
                   </span>
                   
-                  {/* Gradient bar */}
-                  <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-pink-400 rounded-full mt-0.5"></div>
+                  {/* Adaptive gradient bar */}
+                  <div 
+                    className="w-20 h-1 rounded-full mt-0.5 transition-all duration-500"
+                    style={{
+                      background: headerStyles.accentColor 
+                        ? `linear-gradient(to right, ${headerStyles.accentColor}, ${headerStyles.accentColor.replace(headerStyles.accentColor.split(',')[3].split(')')[0], '0.8)')})`
+                        : 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))'
+                    }}
+                  ></div>
                 </div>
               </button>
             </div>
@@ -176,9 +363,22 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 >
                   <button
                     onClick={() => !item.hasDropdown && handleNavClick(item)}
-                    className={`flex items-center space-x-1 transition-colors py-2 text-sm font-medium ${
-                      activeDropdown === item.path ? 'text-white' : 'text-gray-400 hover:text-white'
-                    }`}
+                    className="flex items-center space-x-1 transition-colors py-2 text-sm font-medium"
+                    style={{
+                      color: activeDropdown === item.path 
+                        ? headerStyles.textColor 
+                        : headerStyles.textColor === 'white' 
+                          ? 'rgba(156, 163, 175, 1)' // gray-400 for dark theme
+                          : 'rgba(75, 85, 99, 1)', // gray-600 for light theme
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = headerStyles.textColor}
+                    onMouseLeave={(e) => {
+                      if (activeDropdown !== item.path) {
+                        e.currentTarget.style.color = headerStyles.textColor === 'white' 
+                          ? 'rgba(156, 163, 175, 1)' 
+                          : 'rgba(75, 85, 99, 1)';
+                      }
+                    }}
                     aria-expanded={item.hasDropdown ? activeDropdown === item.path : undefined}
                     aria-haspopup={item.hasDropdown ? 'menu' : undefined}
                   >
@@ -259,21 +459,39 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
 
             {/* Right Side Buttons */}
             <div className="flex items-center space-x-1 ml-auto">
-              {/* Contact CTA Button */}
+              {/* Adaptive Contact CTA Button */}
               <button
                 onClick={handleContactClick}
-                className="hidden md:inline-flex items-center px-8 py-2.5 bg-gradient-to-r from-blue-500 to-blue-400 text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-sm"
+                className="hidden md:inline-flex items-center px-8 py-2.5 font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-sm"
                 style={{ 
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                  background: headerStyles.accentColor 
+                    ? `linear-gradient(to right, ${headerStyles.accentColor}, ${headerStyles.accentColor.replace('1)', '0.8)')})`
+                    : 'linear-gradient(to right, rgb(59, 130, 246), rgb(96, 165, 250))',
+                  color: 'white', // CTA always white text for contrast
+                  boxShadow: headerStyles.accentColor 
+                    ? `0 4px 12px ${headerStyles.accentColor.replace('1)', '0.3)')}`
+                    : '0 4px 12px rgba(59, 130, 246, 0.3)'
                 }}
               >
                 Neem contact op
               </button>
 
-              {/* Mobile Menu Button */}
+              {/* Adaptive Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 text-gray-400 hover:text-white transition-colors"
+                className="lg:hidden p-2 transition-colors"
+                style={{
+                  color: headerStyles.textColor === 'white' 
+                    ? 'rgba(156, 163, 175, 1)' // gray-400 for dark theme
+                    : 'rgba(75, 85, 99, 1)', // gray-600 for light theme
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = headerStyles.textColor}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = headerStyles.textColor === 'white' 
+                    ? 'rgba(156, 163, 175, 1)' 
+                    : 'rgba(75, 85, 99, 1)';
+                }}
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -284,7 +502,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

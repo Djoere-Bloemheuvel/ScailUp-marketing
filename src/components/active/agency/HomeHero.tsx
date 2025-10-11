@@ -272,13 +272,24 @@ const HomeHero = () => {
         }
       `}</style>
     <section 
-      className="relative w-full h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
+      className="relative w-full h-screen flex justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
+      data-section-theme="dark"
+      data-section-accent="blue"
+      data-section-id="hero"
+      data-lighting-intensity="moderate"
       style={{
         // Mobile performance optimizations
         willChange: 'transform',
         contain: 'layout style paint',
         // Mobile viewport height fix
-        minHeight: typeof window !== 'undefined' && window.innerWidth < 640 ? '100svh' : '100vh'
+        minHeight: typeof window !== 'undefined' && window.innerWidth < 640 ? '100svh' : '100vh',
+        // Cut off from top by starting higher
+        marginTop: '-10vh',
+        // Add that cut space to the bottom
+        paddingBottom: '10vh',
+        // Position content slightly lower than center
+        alignItems: 'flex-start',
+        paddingTop: '30vh' // Start content at 30% from top - slightly higher than before
       }}
     >
       
