@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  canonical?: string;
+  noindex?: boolean;
+  structuredData?: object;
+}
+
+const {
+  title,
+  description,
+  keywords = "AI automation, custom AI agents, LinkedIn automation, proposal generator, B2B automation, Netherlands",
+  ogImage = "https://buildrs.ai/hero-bg-buildrs-8k.webp",
+  ogType = "website",
+  canonical,
+  noindex = false,
+  structuredData
+} = Astro.props;
+
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const siteTitle = "Buildrs | AI Software, Marketing & Sales Tools";
+const fullTitle = title === siteTitle ? title : `${title} | Buildrs`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<link rel="canonical" href={canonicalURL} />
+
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="Buildrs" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Additional Meta Tags -->
+<meta name="author" content="Buildrs" />
+<meta name="language" content="Dutch" />
+<meta name="geo.region" content="NL" />
+<meta name="geo.placename" content="Netherlands" />
+
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}

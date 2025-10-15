@@ -7,40 +7,30 @@ interface ServiceFeature {
   description: string;
 }
 
-const ServicesOfferingSection = () => {
+const MarketingBureauServicesSection = () => {
   const [activeFeature, setActiveFeature] = useState<string>('');
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   const features: ServiceFeature[] = [
     {
-      id: 'custom-ai-agents',
-      title: 'Custom AI Agents',
-      description: 'We bouwen maatwerk AI workflows die perfect aansluiten bij jouw bedrijfsprocessen. Van LinkedIn automation tot proposal generators - elke agent wordt specifiek ontwikkeld voor jouw unieke uitdagingen en doelstellingen.'
+      id: 'outbound-email',
+      title: 'Outbound Email',
+      description: 'Geautomatiseerde e-mail campagnes die leads converteren. Van cold outreach tot follow-up sequences - gepersonaliseerde berichten die resultaat opleveren en jouw sales pipeline vullen.'
     },
     {
       id: 'linkedin-automation',
-      title: 'LinkedIn Automation',
-      description: 'Geautomatiseerde outbound campagnes via LinkedIn die echte connecties maken. Onze agents versturen gepersonaliseerde berichten, volgen leads op en kwalificeren prospects - allemaal terwijl jij focust op de gesprekken die ertoe doen.'
+      title: 'Linkedin Automation',
+      description: 'Slimme Linkedin automation die echte connecties maakt. Geautomatiseerde connection requests, follow-ups en messaging - terwijl jij focust op de gesprekken die ertoe doen.'
     },
     {
-      id: 'proposal-generator',
-      title: 'Proposal Generator',
-      description: 'AI-gegenereerde offertes en voorstellen die tijd besparen en conversie verhogen. Onze agents analyseren klantgegevens, maken gepersonaliseerde voorstellen en zorgen voor consistente communicatie met elke prospect.'
+      id: 'linkedin-branding',
+      title: 'Linkedin Branding',
+      description: 'Versterk jouw persoonlijke merk op Linkedin. Content planning, post scheduling en engagement automation - bouw authority en trek de juiste prospects aan.'
     },
     {
-      id: 'lead-processing',
-      title: 'Lead Processing',
-      description: 'Automatische lead enrichment en kwalificatie die jouw sales team effectiever maakt. Van eerste contact tot gekwalificeerde afspraak - onze agents zorgen dat alleen de beste leads jouw agenda bereiken.'
-    },
-    {
-      id: 'platform-integration',
-      title: 'Platform Integration',
-      description: 'Naadloze integratie in ons Buildrs platform voor betere dashboards, monitoring en samenwerking. Krijg volledige inzicht in je automation workflows met real-time analytics en uitgebreide rapportage mogelijkheden.'
-    },
-    {
-      id: 'standalone-solutions',
-      title: 'Standalone Solutions',
-      description: 'Volledig eigenaarschap van je agents met exporteerbare workflows voor je eigen stack. Draai je automation via Google Sheets, Airtable of je eigen systemen - zonder vendor lock-in of maandelijkse kosten.'
+      id: 'ai-agents-automations',
+      title: 'AI Agents & Automations',
+      description: 'Maatwerk AI-oplossingen voor jouw specifieke uitdagingen. Van proposal generators tot lead qualification - volledig geautomatiseerde workflows die tijd besparen.'
     }
   ];
 
@@ -192,43 +182,42 @@ const ServicesOfferingSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_50%)]" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="hidden md:grid md:grid-cols-[350px_1fr] md:gap-8 lg:grid-cols-[400px_1fr] lg:gap-12 lg:min-h-screen">
+        <div className="hidden md:grid md:grid-cols-[350px_1fr] md:gap-16 lg:grid-cols-[400px_1fr] lg:gap-28 xl:gap-32 lg:min-h-screen">
           {/* Left Sticky Panel */}
-          <div className="sticky top-0 self-start flex items-center justify-start h-screen">
-            <div className="max-w-sm">
-              {/* Award Badge */}
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
-                <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-2" />
-                <span className="text-xs text-white/80 uppercase tracking-wide font-medium">
-                  FULL-SERVICE AI AUTOMATION AGENCY
-                </span>
-              </div>
+          <div className="sticky top-40 self-start flex items-start justify-start h-fit" style={{bottom: '2rem'}}>
+            <div className="max-w-sm pt-12 xl:pt-16 pb-12 xl:pb-16">
 
               {/* Main Headline */}
               <h2
-                className="text-white font-light mb-6"
+                className="text-white font-light mb-8"
                 style={{
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                   fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                  lineHeight: '1.15',
-                  letterSpacing: '-0.02em',
-                  fontWeight: '300'
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.025em',
+                  fontWeight: '200'
                 }}
               >
-                Onze Agency Services
+                <div className="space-y-1">
+                  <div style={{ fontWeight: '200' }}>
+                    Wat wij bouwen voor
+                  </div>
+                  <div style={{ fontWeight: '500' }}>
+                    marketingbureaus
+                  </div>
+                </div>
               </h2>
 
               {/* Description */}
               <p
-                className="text-white/60 leading-relaxed"
+                className="text-white/90 leading-relaxed text-sm md:text-base lg:text-lg xl:text-lg"
                 style={{
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
                   fontWeight: '400',
                   lineHeight: '1.6'
                 }}
               >
-                Als gespecialiseerd AI automation agency bieden we end-to-end oplossingen. Van strategie en ontwikkeling tot implementatie en support - wij zorgen ervoor dat jouw bedrijf optimaal profiteert van AI-gedreven automatisering.
+                Deze 4 diensten vormen de kern van onze aanpak. Van outbound campagnes tot Linkedin branding. Elk onderdeel specifiek ingericht op jouw B2B groei.
               </p>
 
               {/* Decorative line */}
@@ -237,48 +226,80 @@ const ServicesOfferingSection = () => {
           </div>
 
           {/* Right Scrollable Features */}
-          <div className="py-24">
+          <div className="py-16 pb-48">
             <div className="space-y-0">
               {features.map((feature, index) => (
                 <div
                   key={feature.id}
                   data-feature-id={feature.id}
-                  className={`relative py-20 xl:py-22 transition-opacity duration-500 ${
-                    activeFeature === feature.id ? 'opacity-100' : 'opacity-80'
-                  }`}
+                  className="relative py-12 xl:py-16 opacity-100"
                 >
                   {/* Feature Layout */}
-                  <div className="flex gap-8 xl:gap-12">
+                  <div className="flex items-center gap-16 xl:gap-20">
                     {/* Left Column - Feature Title */}
                     <div className="w-5/12 xl:w-4/12 flex-shrink-0">
-                      <h3
-                        className="text-white font-medium"
-                        style={{
-                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                          fontSize: 'clamp(1.25rem, 1.8vw, 1.75rem)',
-                          lineHeight: '1.2',
-                          letterSpacing: '-0.01em',
-                          fontWeight: '500'
-                        }}
-                      >
-                        {feature.title}
-                      </h3>
-                      
-                      {/* Subtle number indicator */}
-                      <div className="mt-2 text-xs text-white/40 font-mono">
-                        {String(index + 1).padStart(2, '0')}
+                      <div className="pr-4 xl:pr-6">
+                        <h3
+                          className="text-white font-normal text-xl md:text-2xl lg:text-3xl xl:text-3xl"
+                          style={{
+                            fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                            lineHeight: '1.2',
+                            letterSpacing: '-0.02em',
+                            fontWeight: '400'
+                          }}
+                        >
+                          {feature.id === 'outbound-email' ? (
+                            <div className="space-y-1">
+                              <div style={{ fontWeight: '200' }}>
+                                Outbound Email
+                              </div>
+                              <div style={{ fontWeight: '500' }}>
+                                Campagnes
+                              </div>
+                            </div>
+                          ) : feature.id === 'linkedin-automation' ? (
+                            <div className="space-y-1">
+                              <div style={{ fontWeight: '200' }}>
+                                Linkedin
+                              </div>
+                              <div style={{ fontWeight: '500' }}>
+                                Automation
+                              </div>
+                            </div>
+                          ) : feature.id === 'linkedin-branding' ? (
+                            <div className="space-y-1">
+                              <div style={{ fontWeight: '200' }}>
+                                Linkedin
+                              </div>
+                              <div style={{ fontWeight: '500' }}>
+                                Branding
+                              </div>
+                            </div>
+                          ) : feature.id === 'ai-agents-automations' ? (
+                            <div className="space-y-1">
+                              <div style={{ fontWeight: '200' }}>
+                                AI Agents &
+                              </div>
+                              <div style={{ fontWeight: '500' }}>
+                                Automations
+                              </div>
+                            </div>
+                          ) : (
+                            feature.title
+                          )}
+                        </h3>
                       </div>
                     </div>
 
                     {/* Right Column - Feature Description */}
                     <div className="w-7/12 xl:w-8/12">
                       <p
-                        className="text-white/70"
+                        className="text-white/90 text-sm md:text-base lg:text-lg xl:text-lg"
                         style={{
                           fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                          fontSize: 'clamp(0.9rem, 1.1vw, 1rem)',
-                          fontWeight: '400',
-                          lineHeight: '1.6'
+                          fontWeight: '300',
+                          lineHeight: '1.7',
+                          letterSpacing: '0.005em'
                         }}
                       >
                         {feature.description}
@@ -302,11 +323,11 @@ const ServicesOfferingSection = () => {
         </div>
       </div>
       
-      {/* Subtle fade to black at bottom - full width */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
+      {/* Enhanced fade to black at bottom - full width */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none z-10" />
 
       {/* Mobile Layout */}
-      <div className="md:hidden py-16 sm:py-20 relative">
+      <div className="md:hidden py-16 sm:py-20 pb-48 relative">
         {/* Mobile Ambient Lighting */}
         <div className="absolute inset-0 z-0" style={{ contain: 'paint', transform: 'translateZ(0)' }}>
           {/* Top mobile subtle blue glow */}
@@ -385,12 +406,12 @@ const ServicesOfferingSection = () => {
                 fontWeight: '300'
               }}
             >
-              Wat wij aanbieden
+              Wat wij bouwen voor marketingbureaus
             </h2>
 
             {/* Description */}
             <p
-              className="text-white/60 leading-relaxed max-w-2xl"
+              className="text-white/90 leading-relaxed max-w-2xl"
               style={{
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                 fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)',
@@ -398,7 +419,7 @@ const ServicesOfferingSection = () => {
                 lineHeight: '1.6'
               }}
             >
-              Onze AI automation services omvatten een 360-graden aanpak. Met deze benadering tillen we jouw bedrijfsprocessen naar een hoger niveau en zorgen we ervoor dat je altijd voorop loopt.
+              Deze 4 diensten vormen de kern van onze aanpak. Van outbound campagnes tot Linkedin branding. Elk onderdeel specifiek ingericht op jouw B2B groei.
             </p>
 
             {/* Decorative line */}
@@ -414,10 +435,7 @@ const ServicesOfferingSection = () => {
               >
                 {/* Mobile: Stacked Layout */}
                 <div className="block">
-                  <div className="flex items-baseline mb-3">
-                    <span className="text-xs text-white/30 font-mono mr-4">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
+                  <div className="mb-3">
                     <h3
                       className="text-white font-medium"
                       style={{
@@ -432,7 +450,7 @@ const ServicesOfferingSection = () => {
                     </h3>
                   </div>
                   <p
-                    className="text-white/70 pl-8"
+                    className="text-white/95"
                     style={{
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                       fontSize: 'clamp(0.875rem, 4vw, 1rem)',
@@ -460,4 +478,4 @@ const ServicesOfferingSection = () => {
   );
 };
 
-export default ServicesOfferingSection;
+export default MarketingBureauServicesSection;

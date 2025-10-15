@@ -48,7 +48,9 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     }, 100); // Shorter delay for better UX
   }, []);
 
-  // Advanced section detection with theme parsing
+  // Stabilized section detection with debouncing
+  const sectionUpdateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
   const detectSectionTheme = useCallback((element: Element): SectionTheme | null => {
     const id = element.getAttribute('data-section-id');
     const theme = element.getAttribute('data-section-theme') as 'light' | 'dark';
@@ -62,7 +64,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     return { id, theme, accent, lightingIntensity };
   }, []);
 
-  // Initialize section observer
+  // Stabilized section observer with proper debouncing
   const initializeSectionObserver = useCallback(() => {
     if (typeof window === 'undefined') return;
 
@@ -71,16 +73,21 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       observerRef.current.disconnect();
     }
 
-    // Create new observer with optimized settings for performance
+    // Create stable observer with hysteresis to prevent flickering
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        // Use requestAnimationFrame for smooth updates
-        requestAnimationFrame(() => {
+        // Clear existing timeout to prevent rapid updates
+        if (sectionUpdateTimeoutRef.current) {
+          clearTimeout(sectionUpdateTimeoutRef.current);
+        }
+
+        // Debounce section updates to prevent flickering
+        sectionUpdateTimeoutRef.current = setTimeout(() => {
           let mostVisibleSection: { element: Element; ratio: number } | null = null;
 
-          // Find the section with the highest intersection ratio
+          // Find the section with the highest intersection ratio (requires 50% visibility)
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
               if (!mostVisibleSection || entry.intersectionRatio > mostVisibleSection.ratio) {
                 mostVisibleSection = {
                   element: entry.target,
@@ -90,18 +97,18 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
             }
           });
 
-          // Update current section based on most visible
+          // Only update if significantly different section
           if (mostVisibleSection) {
             const sectionTheme = detectSectionTheme(mostVisibleSection.element);
             if (sectionTheme && (!currentSection || currentSection.id !== sectionTheme.id)) {
               setCurrentSection(sectionTheme);
             }
           }
-        });
+        }, 150); // 150ms debounce to prevent rapid changes
       },
       {
-        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Multiple thresholds for precision
-        rootMargin: '-20% 0px -20% 0px' // Exclude header/footer areas
+        threshold: [0.5, 0.75], // Require more visibility to trigger change
+        rootMargin: '-25% 0px -25% 0px' // Larger exclusion area for stability
       }
     );
 
@@ -114,8 +121,11 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
     });
   }, [detectSectionTheme, currentSection]);
 
-  // Adaptive styling system based on current section
+  // Stabilized adaptive styling system with consistent CTA color
   const getAdaptiveHeaderStyles = useCallback(() => {
+    // Always use consistent blue for CTA button to prevent jumping
+    const stableCTAColor = 'rgba(59, 130, 246, 1)'; // Always blue
+    
     if (!currentSection) {
       // Perfect camouflage glassmorphism header
       return {
@@ -127,22 +137,15 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
           : 'blur(12px) saturate(1.2)', // Subtle blur for camouflage
         borderColor: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)',
         textColor: 'white',
-        accentColor: 'rgba(59, 130, 246, 1)' // Default blue accent
+        accentColor: stableCTAColor // Stable blue
       };
     }
 
-    const { theme, accent, lightingIntensity } = currentSection;
+    const { theme, lightingIntensity } = currentSection;
     
-    // Define accent colors
-    const accentColors = {
-      blue: { primary: '59, 130, 246', secondary: '96, 165, 250' },
-      purple: { primary: '147, 51, 234', secondary: '168, 85, 247' },
-      green: { primary: '34, 197, 94', secondary: '74, 222, 128' },
-      orange: { primary: '251, 146, 60', secondary: '251, 191, 36' },
-      teal: { primary: '20, 184, 166', secondary: '45, 212, 191' }
-    };
-
-    const colors = accentColors[accent];
+    // Simplified color system - always use blue for stability
+    const primaryBlue = '59, 130, 246';
+    const secondaryBlue = '96, 165, 250';
     
     // Determine opacity based on lighting intensity
     const intensityOpacity = {
@@ -162,22 +165,22 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
         backdropFilter: isScrolled || showAlways
           ? 'blur(20px) saturate(1.8)'
           : 'blur(8px) saturate(1.1)', // Lighter blur for camouflage
-        borderColor: `rgba(${colors.primary}, 0.1)`,
+        borderColor: `rgba(${primaryBlue}, 0.1)`,
         textColor: 'black',
-        accentColor: `rgba(${colors.primary}, 1)`
+        accentColor: stableCTAColor // Always stable blue
       };
     } else {
-      // Dark theme: perfect camouflage with background blend
+      // Dark theme: perfect camouflage with subtle blue accent
       return {
         background: isScrolled || showAlways
-          ? `linear-gradient(135deg, rgba(0, 0, 0, ${opacity * 0.7}) 0%, rgba(${colors.primary}, 0.05) 100%)`
+          ? `linear-gradient(135deg, rgba(0, 0, 0, ${opacity * 0.7}) 0%, rgba(${primaryBlue}, 0.03) 100%)`
           : `rgba(0, 0, 0, 0.05)`, // Ultra transparent for perfect camouflage
         backdropFilter: isScrolled || showAlways
           ? 'blur(20px) saturate(1.8)'
           : 'blur(8px) saturate(1.1)', // Subtle blur for camouflage
-        borderColor: `rgba(${colors.secondary}, 0.1)`,
+        borderColor: `rgba(${secondaryBlue}, 0.1)`,
         textColor: 'white',
-        accentColor: `rgba(${colors.primary}, 1)`
+        accentColor: stableCTAColor // Always stable blue
       };
     }
   }, [currentSection, isScrolled, showAlways]);
@@ -233,6 +236,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
       clearTimeout(initTimeout);
       clearTimeout(initialTimeout);
       if (scrollTimeout) clearTimeout(scrollTimeout);
+      if (sectionUpdateTimeoutRef.current) clearTimeout(sectionUpdateTimeoutRef.current);
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('keydown', handleEscape);
       if (hoverTimeoutRef.current) {
@@ -459,23 +463,55 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
 
             {/* Right Side Buttons */}
             <div className="flex items-center space-x-1 ml-auto">
-              {/* Adaptive Contact CTA Button */}
-              <button
+              {/* Adaptive Contact CTA Button with gradient border and animation */}
+              <motion.button
                 onClick={handleContactClick}
-                className="hidden md:inline-flex items-center px-8 py-2.5 font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-sm"
+                className="hidden md:inline-flex items-center px-8 py-2.5 font-medium rounded-full text-sm overflow-hidden relative"
                 style={{ 
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  background: headerStyles.accentColor 
-                    ? `linear-gradient(to right, ${headerStyles.accentColor}, ${headerStyles.accentColor.replace('1)', '0.8)')})`
-                    : 'linear-gradient(to right, rgb(59, 130, 246), rgb(96, 165, 250))',
-                  color: 'white', // CTA always white text for contrast
-                  boxShadow: headerStyles.accentColor 
-                    ? `0 4px 12px ${headerStyles.accentColor.replace('1)', '0.3)')}`
-                    : '0 4px 12px rgba(59, 130, 246, 0.3)'
+                  background: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box, linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182)) border-box',
+                  border: '2px solid transparent',
+                  backdropFilter: 'blur(10px)',
+                  color: 'white',
+                  cursor: 'pointer'
+                }}
+                whileHover="hover"
+                initial="initial"
+                variants={{
+                  initial: { scale: 1 },
+                  hover: { 
+                    scale: 1.02,
+                    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+                  }
+                }}
+                whileTap={{ 
+                  scale: 0.98,
+                  transition: { duration: 0.1 }
                 }}
               >
-                Neem contact op
-              </button>
+                {/* Bottom-to-top gradient fill animation */}
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+                    transformOrigin: 'bottom center'
+                  }}
+                  variants={{
+                    initial: { scaleY: 0, scale: 1 },
+                    hover: { 
+                      scaleY: 1,
+                      scale: 1.08,
+                      transition: { 
+                        duration: 0.6, 
+                        ease: [0.16, 1, 0.3, 1],
+                        type: 'tween'
+                      }
+                    }
+                  }}
+                />
+                
+                <span className="relative z-10">Neem contact op</span>
+              </motion.button>
 
               {/* Adaptive Mobile Menu Button */}
               <button

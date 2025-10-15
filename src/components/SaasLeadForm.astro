@@ -1,0 +1,695 @@
+---
+import LeadFormButton from './LeadFormButton';
+
+export interface Props {
+  formTitle?: string;
+  formDescription?: string;
+  submitText?: string;
+}
+
+const { 
+  formTitle = "Plan je strategiesessie",
+  formDescription = "Ontdek hoe wij de systemen bouwen achter jouw SaaS groei.",
+  submitText = "Plan gratis strategiesessie"
+} = Astro.props;
+
+---
+
+<!-- Premium Cinematic Lead Section - SaaS Specific -->
+<section 
+  class="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+  data-section-theme="dark"
+  data-section-accent="blue"
+  data-section-id="leadform"
+  data-lighting-intensity="heavy"
+  style="background-color: #000000; margin-top: -10vh; padding-bottom: 10vh;"
+>
+  <!-- Hero Background with Cinematic Quality -->
+  <div class="absolute inset-0">
+    <!-- Primary background image -->
+    <div 
+      class="absolute inset-0 hero-bg"
+      style="
+        backgroundColor: #000000;
+        backgroundImage: url(/hero-bg-buildrs-8k.webp);
+        backgroundSize: cover;
+        backgroundRepeat: no-repeat;
+        backgroundPosition: center 25%;
+        opacity: 0.85;
+        imageRendering: high-quality;
+        backfaceVisibility: hidden;
+        transform: translate3d(0,0,0);
+        contain: paint;
+      "
+    ></div>
+    
+    <!-- Cinematic overlay gradients -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30"></div>
+  </div>
+
+  <!-- Advanced Ambient Lighting System -->
+  <div class="absolute inset-0 z-0" style="contain: paint; transform: translateZ(0);">
+    <!-- Primary blue constellation - top left -->
+    <div class="absolute rounded-full blur-3xl opacity-40" 
+      style="top:12%;left:8%;width:500px;height:350px;background:radial-gradient(ellipse 500px 350px, rgba(96, 165, 250, 0.6) 0%, rgba(96, 165, 250, 0.35) 40%, transparent 80%);mix-blend-mode:screen"
+    ></div>
+    
+    <!-- Secondary pink cluster - bottom right -->
+    <div class="absolute rounded-full blur-3xl opacity-35" 
+      style="bottom:15%;right:10%;width:400px;height:300px;background:radial-gradient(ellipse 400px 300px, rgba(236, 72, 153, 0.45) 0%, rgba(244, 114, 182, 0.25) 50%, transparent 85%);mix-blend-mode:screen"
+    ></div>
+    
+    <!-- Accent pink nebula - center right -->
+    <div class="absolute rounded-full blur-3xl opacity-25" 
+      style="top:35%;right:15%;width:350px;height:250px;background:radial-gradient(ellipse 350px 250px, rgba(236, 72, 153, 0.3) 0%, rgba(244, 114, 182, 0.15) 60%, transparent 90%);mix-blend-mode:screen"
+    ></div>
+    
+    <!-- Central hero glow -->
+    <div class="absolute rounded-full blur-2xl opacity-30" 
+      style="top:50%;left:50%;transform:translate(-50%, -50%);width:400px;height:500px;background:radial-gradient(ellipse 400px 500px, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.1) 50%, transparent 80%);mix-blend-mode:screen"
+    ></div>
+    
+    <!-- Subtle peripheral glows -->
+    <div class="absolute rounded-full blur-3xl opacity-20" 
+      style="top:20%;left:15%;width:250px;height:180px;background:radial-gradient(ellipse 250px 180px, rgba(96, 165, 250, 0.25) 0%, transparent 70%);mix-blend-mode:screen"
+    ></div>
+    
+    <div class="absolute rounded-full blur-2xl opacity-15" 
+      style="bottom:25%;left:20%;width:200px;height:150px;background:radial-gradient(ellipse 200px 150px, rgba(244, 114, 182, 0.3) 0%, transparent 75%);mix-blend-mode:screen"
+    ></div>
+    
+    <!-- Subtle pink ambient light behind form (top-right corner) -->
+    <div class="absolute rounded-full blur-3xl opacity-20" 
+      style="top:20%;right:15%;width:350px;height:250px;background:radial-gradient(ellipse 350px 250px, rgba(244, 114, 182, 0.25) 0%, rgba(244, 114, 182, 0.15) 50%, transparent 80%);mix-blend-mode:screen"
+    ></div>
+    
+    <!-- Additional form corner accent -->
+    <div class="absolute rounded-full blur-2xl opacity-12" 
+      style="top:35%;right:8%;width:200px;height:300px;background:radial-gradient(ellipse 200px 300px, rgba(236, 72, 153, 0.18) 0%, rgba(244, 114, 182, 0.10) 60%, transparent 85%);mix-blend-mode:screen"
+    ></div>
+  </div>
+
+  <!-- Split Screen Content Container -->
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-30" style="padding-top: 25vh;">
+    
+    <!-- Split Screen Grid -->
+    <div class="grid lg:grid-cols-5 gap-12 items-center">
+      
+      <!-- Left Column - Content -->
+      <div class="lg:col-span-2 space-y-8">
+
+        <!-- Hero-Style Animated Headline -->
+        <div>
+          <h1 
+            class="text-white mb-6 headline-animation"
+            style="
+              font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+              font-size: clamp(1.9rem, 3.2vw + 0.5rem, 3.2rem);
+              font-weight: 300;
+              line-height: 1.1;
+              letter-spacing: -0.04em;
+              text-rendering: optimizeLegibility;
+              -webkit-font-smoothing: antialiased;
+              opacity: 1;
+              transform: translateY(0px);
+            "
+          >
+            <span style="font-weight: 300;">Wij laten AI werken</span> <span style="font-weight: 300;">voor</span> <span style="font-weight: 400;">SaaS bedrijven.</span>
+          </h1>
+          
+          <!-- Hero Tagline -->
+          <p 
+            class="text-white/90 mb-8 tagline-animation"
+            style="
+              font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+              font-size: clamp(1rem, 2.5vw, 1.25rem);
+              font-weight: 300;
+              line-height: 1.4;
+              letter-spacing: -0.01em;
+              text-rendering: optimizeLegibility;
+              opacity: 1;
+              transform: translateY(0px);
+            "
+          >
+Van lead generatie naar geautomatiseerde sales funnels. <span style="font-weight: 400;">Wij bouwen de systemen achter jouw SaaS groei.</span>
+          </p>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="flex items-center space-x-8">
+          <div class="text-center">
+            <div class="text-white font-light text-2xl">2-4x</div>
+            <div class="text-white/60 text-xs uppercase tracking-wide">Meer leads</div>
+          </div>
+          <div class="text-center">
+            <div class="text-white font-light text-2xl">70%</div>
+            <div class="text-white/60 text-xs uppercase tracking-wide">Tijdsbesparing</div>
+          </div>
+          <div class="text-center">
+            <div class="text-white font-light text-2xl">Vrijblijvende</div>
+            <div class="text-white/60 text-xs uppercase tracking-wide">Kennismaking</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Form -->
+      <div class="lg:col-span-3 form-entrance-animation">
+        <div class="relative w-full form-card-animation">
+        
+        <!-- Premium Clean Black Form Container -->
+        <div 
+          class="relative rounded-2xl z-10 form-clean-container"
+          style="
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 
+              0 25px 50px -12px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(0px);
+            opacity: 1;
+          "
+        >
+          
+          <!-- Form Content -->
+          <div class="relative p-6 z-10">
+            
+            <!-- Form Header -->
+            <div class="text-left mb-6">
+              <h2 
+                class="text-white mb-3"
+                style="
+                  font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial Nova', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+                  font-size: clamp(1.25rem, 3vw, 1.75rem);
+                  font-weight: 300;
+                  line-height: 1.2;
+                  letter-spacing: -0.02em;
+                "
+              >
+                <div class="space-y-1">
+                  <div style="font-weight: 300;">Laten we verder praten</div>
+                  <div style="font-weight: 400;">hoe jouw SaaS AI kan implementeren</div>
+                </div>
+              </h2>
+            </div>
+            
+            <!-- Premium Lead Form -->
+            <form id="leadForm" class="space-y-4" data-track="true">
+              <!-- UTM Tracking Fields (Hidden) -->
+              <input type="hidden" name="utm_source" id="utm_source" data-tracking-field="true" />
+              <input type="hidden" name="utm_medium" id="utm_medium" data-tracking-field="true" />
+              <input type="hidden" name="utm_campaign" id="utm_campaign" data-tracking-field="true" />
+              <input type="hidden" name="utm_content" id="utm_content" data-tracking-field="true" />
+              <input type="hidden" name="utm_term" id="utm_term" data-tracking-field="true" />
+              <input type="hidden" name="referrer" id="referrer" data-tracking-field="true" />
+              <input type="hidden" name="page_url" id="page_url" data-tracking-field="true" />
+              <input type="hidden" name="landing_page" id="landing_page" data-tracking-field="true" />
+              
+              <!-- Name & Company Row -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="relative group">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    autocomplete="off"
+                    placeholder="Volledige naam"
+                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
+                  />
+                </div>
+                <div class="relative group">
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    required
+                    autocomplete="off"
+                    placeholder="SaaS bedrijfsnaam"
+                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
+                  />
+                </div>
+              </div>
+              
+              <!-- Email & Phone Row -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="relative group">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    autocomplete="off"
+                    placeholder="Zakelijk e-mailadres"
+                    pattern="^[a-zA-Z0-9._%+-]+@(?!gmail\.com|hotmail\.com|outlook\.com|yahoo\.com)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="Voer een zakelijk e-mailadres in"
+                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
+                  />
+                </div>
+                <div class="relative group">
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    required
+                    autocomplete="off"
+                    placeholder="Telefoonnummer"
+                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
+                  />
+                </div>
+              </div>
+              
+              <!-- Message Field -->
+              <div class="relative group">
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="3"
+                  autocomplete="off"
+                  placeholder="Kort over je SaaS uitdagingen (optioneel)"
+                  class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300 resize-none"
+                  style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
+                ></textarea>
+              </div>
+              
+              <!-- Privacy Consent Checkbox -->
+              <div class="relative group">
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <div class="relative flex-shrink-0">
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      id="consent"
+                      required
+                      class="sr-only"
+                    />
+                    <div class="premium-checkbox w-5 h-5 bg-black border border-gray-800 rounded transition-all duration-300 flex items-center justify-center">
+                      <svg class="checkbox-icon w-3 h-3 text-blue-400 opacity-0 transition-opacity duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <span class="text-white/80 text-sm leading-relaxed"
+                    style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-weight:400;line-height:1.5"
+                  >
+                    Ik geef toestemming om contact met mij op te nemen over producten en diensten van Buildrs.
+                  </span>
+                </label>
+              </div>
+              
+              <!-- Hero-Style Premium CTA Button - Exact copy from hero -->
+              <div class="pt-4">
+                <LeadFormButton 
+                  submitText={submitText}
+                  onSubmit={(e) => {
+                    // Form submission will be handled by the form's submit event
+                    // This is just for the button click
+                  }}
+                  client:load
+                />
+              </div>
+
+              <!-- Status Messages -->
+              <div id="formStatus" class="text-center mt-6" style="min-height: 2rem;">
+                <div id="successMessage" class="text-green-400 hidden p-4 rounded-2xl bg-green-500/10 border border-green-500/20 backdrop-blur-xl"
+                  style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:0.875rem;font-weight:500"
+                >
+                  ✅ Bedankt! We nemen binnen 24 uur contact met je op.
+                </div>
+                <div id="errorMessage" class="text-red-400 hidden p-4 rounded-2xl bg-red-500/10 border border-red-500/20 backdrop-blur-xl"
+                  style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:0.875rem;font-weight:500"
+                >
+                  ❌ Er ging iets mis. Probeer het opnieuw of neem direct contact op.
+                </div>
+              </div>
+            </form>
+            
+            
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Statement -->
+    <div class="text-center mt-12 z-20">
+      <p class="text-white/60 text-sm"
+        style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-weight:400"
+      >
+        Door dit formulier te versturen ga ik akkoord met het <a href="/privacy" class="text-blue-400 hover:text-blue-300 underline transition-colors">privacybeleid</a> van Buildrs.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Remove default text selection styling */
+  ::selection {
+    background: transparent;
+  }
+  
+  ::-moz-selection {
+    background: transparent;
+  }
+  
+  /* Or if you want custom selection colors, use this instead:
+  ::selection {
+    background: rgba(96, 165, 250, 0.2);
+    color: white;
+  }
+  
+  ::-moz-selection {
+    background: rgba(96, 165, 250, 0.2);
+    color: white;
+  }
+  */
+  
+  /* Hero Background Performance */
+  .hero-bg {
+    will-change: transform;
+    contain: layout style paint;
+  }
+  
+  /* Disable text selection for form labels and containers */
+  .form-clean-container {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  /* Allow text selection in input fields */
+  .premium-input {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+  }
+  
+  /* Premium Form Styling */
+  .premium-input {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  
+  .premium-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.15), 0 4px 15px rgba(33, 203, 243, 0.08);
+    outline: none !important;
+    border: 1px solid transparent !important;
+  }
+  
+  .premium-input:focus + .focus-glow {
+    opacity: 1 !important;
+  }
+  
+  /* Premium Checkbox Styling */
+  .premium-checkbox {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  
+  .premium-checkbox:hover {
+    border-color: rgba(96, 165, 250, 0.4);
+    transform: scale(1.05);
+  }
+  
+  input[type="checkbox"]:checked + .premium-checkbox {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(33, 203, 243, 0.2));
+    border-color: rgba(96, 165, 250, 0.6);
+  }
+  
+  input[type="checkbox"]:checked + .premium-checkbox .checkbox-icon {
+    opacity: 1;
+  }
+  
+  /* Desktop hover effects */
+  @media (min-width: 769px) {
+    .premium-input:hover {
+      transform: translateY(-1px);
+      border-color: rgba(96, 165, 250, 0.3);
+    }
+  }
+  
+  /* Accessibility */
+  .premium-input:focus-visible {
+    outline: 2px solid rgba(96, 165, 250, 0.5);
+    outline-offset: 2px;
+  }
+  
+  /* Advanced Entrance Animations */
+  @keyframes badgeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes headlineSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes taglineSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes formSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Ambient Light Pulses */
+  @keyframes ambientPulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+  
+  @keyframes ambientFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Enhanced Micro-interactions */
+  .form-glass-container {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .form-glass-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 50px 100px -12px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 0 60px rgba(96, 165, 250, 0.1);
+  }
+  
+  /* Advanced Form Entrance */
+  .form-entrance-animation {
+    animation: formContainerFloat 20s ease-in-out infinite;
+  }
+  
+  @keyframes formContainerFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* Field Focus Ripple Effect */
+  .premium-input {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .premium-input::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .premium-input:focus::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .premium-input,
+    .form-glass-container,
+    .form-entrance-animation {
+      transition: none;
+      animation: none;
+    }
+    
+    .animate-pulse,
+    .badge-animation,
+    .headline-animation,
+    .tagline-animation {
+      animation: none;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Lead Form Setup
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('leadForm') as HTMLFormElement;
+    const submitButton = document.getElementById('hero-cta-button') as HTMLButtonElement;
+    const submitText = document.getElementById('submitText') as HTMLElement;
+    const submitArrow = document.getElementById('submitArrow') as HTMLElement;
+    const loadingSpinner = document.getElementById('loadingSpinner') as HTMLElement;
+    const successMessage = document.getElementById('successMessage') as HTMLElement;
+    const errorMessage = document.getElementById('errorMessage') as HTMLElement;
+    
+    // Checkbox elements
+    const consentCheckbox = document.getElementById('consent') as HTMLInputElement;
+    const premiumCheckbox = document.querySelector('.premium-checkbox') as HTMLElement;
+
+    if (!form) return;
+
+    // Handle checkbox clicks - Enhanced sensitivity
+    if (consentCheckbox && premiumCheckbox) {
+      premiumCheckbox.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        consentCheckbox.checked = !consentCheckbox.checked;
+        consentCheckbox.dispatchEvent(new Event('change'));
+      });
+      
+      const checkboxContainer = premiumCheckbox.parentElement;
+      if (checkboxContainer) {
+        checkboxContainer.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          consentCheckbox.checked = !consentCheckbox.checked;
+          consentCheckbox.dispatchEvent(new Event('change'));
+        });
+      }
+    }
+
+    // Email validation function
+    function validateBusinessEmail(email) {
+      const freeEmailProviders = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'icloud.com', 'aol.com'];
+      const domain = email.split('@')[1]?.toLowerCase();
+      return !freeEmailProviders.includes(domain);
+    }
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Validate business email
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+      if (!validateBusinessEmail(emailInput.value)) {
+        errorMessage.textContent = '❌ Gebruik een zakelijk e-mailadres (geen Gmail, Hotmail, etc.)';
+        errorMessage.classList.remove('hidden');
+        emailInput.focus();
+        return;
+      }
+      
+      // Show loading state
+      if (submitText) submitText.textContent = 'Bezig...';
+      if (submitArrow) submitArrow.style.display = 'none';
+      if (loadingSpinner) loadingSpinner.classList.remove('hidden');
+      if (submitButton) submitButton.disabled = true;
+      
+      // Hide any previous messages
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+
+      try {
+        const formData = new FormData(form);
+        
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Show success message
+          successMessage.classList.remove('hidden');
+          
+          // Reset form
+          form.reset();
+          
+          // Reset button after delay
+          setTimeout(() => {
+            if (submitText) submitText.textContent = 'Bedankt voor je interesse!';
+            if (loadingSpinner) loadingSpinner.classList.add('hidden');
+            if (submitArrow) submitArrow.style.display = 'inline-block';
+          }, 1000);
+          
+        } else {
+          throw new Error(result.error || 'Er ging iets mis');
+        }
+
+      } catch (error) {
+        console.error('Form submission error:', error);
+        
+        // Show error message
+        errorMessage.classList.remove('hidden');
+        
+        // Reset button
+        if (submitText) submitText.textContent = 'Probeer opnieuw';
+        if (submitArrow) submitArrow.style.display = 'inline-block';
+        if (loadingSpinner) loadingSpinner.classList.add('hidden');
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+
+    // Note: Button hover effects are now handled by pure CSS
+    // The .hero-cta-button:hover .hero-button-fill rule handles the fill animation
+  });
+</script>

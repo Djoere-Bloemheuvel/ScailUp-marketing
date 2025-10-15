@@ -282,18 +282,22 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <link rel="preconnect" href="https://plausible.io" crossorigin />
 
   <!-- Canonical URL -->
-  <link rel="canonical" href={`https://scailup.nl${Astro.url.pathname}`} />
+  <link rel="canonical" href={`https://buildrs.ai${Astro.url.pathname}`} />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   {description && <meta property="og:description" content={description} />}
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={`https://scailup.nl${Astro.url.pathname}`} />
+  <meta property="og:url" content={`https://buildrs.ai${Astro.url.pathname}`} />
+  <meta property="og:image" content="https://buildrs.ai/hero-bg-buildrs-8k.webp" />
+  <meta property="og:site_name" content="Buildrs" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   {description && <meta name="twitter:description" content={description} />}
+  <meta name="twitter:image" content="https://buildrs.ai/hero-bg-buildrs-8k.webp" />
+  <meta name="twitter:site" content="@buildrs" />
 
   <!-- Structured Data -->
   {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>}

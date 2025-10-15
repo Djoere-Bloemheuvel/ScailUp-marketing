@@ -145,12 +145,17 @@ const SpecialistSection: React.FC<Props> = ({
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
   
-  // Preload lead generation image for faster initial display
+  // Preload both images for faster initial display
   useEffect(() => {
     const leadGenImage = new Image();
     leadGenImage.src = '/lead-generation-hero-optimized.webp';
     leadGenImage.loading = 'eager';
     leadGenImage.fetchPriority = 'high';
+    
+    const contentSEOImage = new Image();
+    contentSEOImage.src = '/images/consultancy-founder.webp';
+    contentSEOImage.loading = 'eager';
+    contentSEOImage.fetchPriority = 'high';
   }, []);
   
   // Refs for intersection observer
@@ -328,8 +333,19 @@ const SpecialistSection: React.FC<Props> = ({
                 
                 {/* Background Image Container */}
                 <div className="absolute inset-0 overflow-hidden">
-                  {/* Preload image for immediate availability - especially lead generation */}
+                  {/* Preload image for immediate availability - both sections */}
                   {service.title === "Lead Generatie" && (
+                    <img 
+                      src={service.image}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover opacity-0 pointer-events-none"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="sync"
+                    />
+                  )}
+                  
+                  {service.title === "Content & SEO" && (
                     <img 
                       src={service.image}
                       alt=""

@@ -2,9 +2,57 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import HomeAnimatedHeadline from './HomeAnimatedHeadline';
+import SaasAnimatedHeadline from './SaasAnimatedHeadline';
 
-const HomeHero = () => {
+// TestCase CTA Button styles for Hero
+const HERO_CTA_STYLES = {
+  button: {
+    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    letterSpacing: '-0.01em',
+    fontSize: 'clamp(0.875rem, 1.2vw, 1rem)',
+    fontWeight: '500',
+    padding: 'clamp(0.75rem, 1.2vw, 1rem) clamp(2rem, 3vw, 2.5rem)',
+    background: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box, linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182)) border-box',
+    border: '2px solid transparent',
+    minWidth: '200px',
+    backdropFilter: 'blur(10px)',
+    cursor: 'pointer' as const,
+    color: 'white'
+  },
+  buttonFill: {
+    background: 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+    transformOrigin: 'bottom center' as const
+  }
+};
+
+// Animation variants for TestCase style
+const HERO_BUTTON_VARIANTS = {
+  initial: { scale: 1 },
+  hover: { 
+    scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
+    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const HERO_BUTTON_TAP_VARIANT = {
+  scale: 0.99,
+  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+const HERO_FILL_VARIANTS = {
+  initial: { scaleY: 0, scale: 1 },
+  hover: { 
+    scaleY: 1,
+    scale: 1.08,
+    transition: { 
+      duration: 0.6, 
+      ease: [0.16, 1, 0.3, 1],
+      type: 'tween'
+    }
+  }
+};
+
+const SaasHero = () => {
   const [hasTriggeredPreload, setHasTriggeredPreload] = useState(false);
 
   // Ultra-aggressive preload: Trigger on ANY user interaction
@@ -68,8 +116,8 @@ const HomeHero = () => {
 
   const handleCasesClick = () => {
     if (typeof window !== 'undefined') {
-      // Scroll to What is Buildrs section (dit kunnen we bouwen voor je)
-      const targetSection = document.querySelector('#what-is-buildrs-section');
+      // Scroll to Case Studies section
+      const targetSection = document.querySelector('[data-section-id="testcasestudies"]');
       if (targetSection) {
         targetSection.scrollIntoView({ 
           behavior: 'smooth', 
@@ -222,14 +270,14 @@ const HomeHero = () => {
         
         /* Default background positioning */
         .hero-bg {
-          background-position: center 25% !important; /* Default for smaller screens */
+          background-position: center 30% !important; /* Higher positioned */
         }
         
-        /* Mobile responsive background positioning - TRANSFORM SOLUTION + ZOOM OUT */
+        /* Mobile responsive background positioning */
         @media (max-width: 639px) {
           .hero-bg {
-            background-position: center center !important;
-            background-size: 120% auto !important; /* Uitzoomen zodat volledige breedte zichtbaar is */
+            background-position: center 30% !important;
+            background-size: 120% auto !important;
             transform: translate3d(0, 20%, 0) !important;
             will-change: transform;
             contain: layout style paint;
@@ -262,26 +310,26 @@ const HomeHero = () => {
         /* Tablet landscape positioning */
         @media (min-width: 640px) and (max-width: 767px) {
           .hero-bg {
-            background-position: center 35% !important;
+            background-position: center 30% !important;
           }
         }
         
         /* Laptop screens (13-16 inch) - background position */
         @media (min-width: 768px) and (max-width: 1679px) {
           .hero-bg {
-            background-position: center 22% !important; /* Laptop background position */
+            background-position: center 30% !important;
           }
         }
         
         /* Desktop screens (18+ inch) - background position */
         @media (min-width: 1680px) {
           .hero-bg {
-            background-position: center 19% !important; /* Desktop background position */
+            background-position: center 30% !important;
           }
         }
       `}</style>
     <section 
-      className="relative w-full h-screen flex justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
+      className="relative w-full flex justify-center px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden"
       data-section-theme="dark"
       data-section-accent="blue"
       data-section-id="hero"
@@ -290,26 +338,21 @@ const HomeHero = () => {
         // Mobile performance optimizations
         willChange: 'transform',
         contain: 'layout style paint',
-        // Mobile viewport height fix
-        minHeight: typeof window !== 'undefined' && window.innerWidth < 640 ? '100svh' : '100vh',
-        // Cut off from top by starting higher
-        marginTop: '-10vh',
-        // Add that cut space to the bottom
-        paddingBottom: '10vh',
+        height: '75vh',
         // Position content slightly lower than center
-        alignItems: 'flex-start',
-        paddingTop: '31vh' // Start content at 31% from top - subtly shifted towards specialist section
+        alignItems: 'center',
+        paddingTop: '0'
       }}
     >
       
       {/* Instant Hero Background - No transitions */}
       <div className="absolute inset-0">
-        {/* Instant background with image */}
+        {/* Instant background with partnership image */}
         <div 
           className="absolute inset-0 hero-bg"
           style={{
             backgroundColor: '#000000',
-            backgroundImage: 'url(/hero-bg-buildrs-8k.webp)',
+            backgroundImage: 'url(/partnership-optimized.webp)',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             opacity: 0.9,
@@ -322,7 +365,7 @@ const HomeHero = () => {
         
         {/* Fallback high-quality image for browsers that don't support CSS background */}
         <img 
-          src="/hero-bg-buildrs-8k.webp"
+          src="/partnership-optimized.webp"
           alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-90 object-pos-responsive hidden"
           width="1920"
@@ -491,7 +534,7 @@ const HomeHero = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           >
-            <HomeAnimatedHeadline />
+            <SaasAnimatedHeadline />
           </motion.div>
 
 
@@ -549,173 +592,207 @@ const HomeHero = () => {
               .icon-responsive {
                 width: 0.875rem; /* Smaller icon */
                 height: 0.875rem;
-                margin-left: 0.25rem;
               }
               
+              /* Progressive scaling for larger screens */
               @media (min-width: 640px) {
                 .cta-responsive {
-                  padding: 0.75rem 1.5rem;
+                  padding: 0.5rem 1rem;
+                  font-size: 0.75rem;
+                  height: 2.25rem;
+                }
+                
+                .text-margin-responsive {
+                  font-size: 0.75rem;
+                }
+              }
+              
+              @media (min-width: 768px) {
+                .cta-responsive {
+                  padding: 0.5rem 1.25rem;
+                  font-size: 0.8rem;
+                  height: 2.5rem;
+                }
+                
+                .text-margin-responsive {
+                  font-size: 0.8rem;
+                }
+              }
+              
+              @media (min-width: 900px) {
+                .cta-responsive {
+                  padding: 0.55rem 1.375rem;
                   font-size: 0.875rem;
-                  height: 3rem;
+                  height: 2.75rem;
                 }
                 
                 .text-margin-responsive {
                   font-size: 0.875rem;
-                  font-weight: 500;
+                }
+                
+                .icon-responsive {
+                  width: 1rem;
+                  height: 1rem;
+                }
+              }
+              
+              @media (min-width: 1000px) {
+                .cta-responsive {
+                  padding: 0.6rem 1.5rem;
+                  font-size: 0.9rem;
+                  height: 3rem;
+                }
+                
+                .text-margin-responsive {
+                  font-size: 0.9rem;
                 }
                 
                 .icon-responsive {
                   width: 1.125rem;
                   height: 1.125rem;
-                  margin-left: 0.5rem;
                 }
               }
               
-              /* Consistent styling for all larger screens */
-              @media (min-width: 768px) {
+              @media (min-width: 1024px) {
                 .cta-responsive {
-                  padding: 1rem 2rem;
+                  padding: 0.65rem 1.75rem;
+                  font-size: 0.95rem;
+                  height: 3.25rem;
+                }
+                
+                .text-margin-responsive {
+                  font-size: 0.95rem;
+                }
+                
+                .icon-responsive {
+                  width: 1.25rem;
+                  height: 1.25rem;
+                }
+              }
+              
+              @media (min-width: 1200px) {
+                .cta-responsive {
+                  padding: 0.65rem 2rem;
                   font-size: 1rem;
                   height: 3.5rem;
                 }
                 
                 .text-margin-responsive {
                   font-size: 1rem;
-                  font-weight: 500;
                 }
-                
-                .icon-responsive {
-                  width: 1.25rem;
-                  height: 1.25rem;
-                  margin-left: 0.5rem;
-                }
-              }
-              
-              /* No additional positioning adjustments needed - all handled by main breakpoint */
-              
-              /* Fix button cursor and hover states */
-              .cta-responsive {
-                cursor: default !important;
-                transition: all 0.3s ease !important;
-              }
-              
-              .cta-responsive:hover {
-                cursor: pointer !important;
-              }
-              
-              /* Reset any inherited link styling */
-              .cta-responsive, .cta-responsive * {
-                text-decoration: none !important;
-                color: inherit !important;
               }
             `}</style>
-            <div className="cta-container flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-center sm:justify-start items-center w-full">
-            {/* Primary CTA - Perfect gradient border with bottom-to-top fill */}
-            <div className="relative">
-              <motion.button
-                onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    window.location.href = '/contact';
-                  }
-                }}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group overflow-hidden"
-                style={{ 
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  background: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box, linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182)) border-box',
-                  border: '2px solid transparent',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: 'none',
-                  cursor: 'pointer'
-                }}
-                whileHover="hover"
-                initial="initial"
-                variants={{
-                  initial: { scale: 1 },
-                  hover: { 
-                    scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
-                    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
-                  }
-                }}
-                whileTap={{ 
-                  scale: 0.99,
-                  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
-                }}
-              >
-                {/* Bottom-to-top gradient fill animation */}
-                <motion.div
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
-                    transformOrigin: 'bottom center'
-                  }}
-                  variants={{
-                    initial: { scaleY: 0, scale: 1 },
-                    hover: { 
-                      scaleY: 1,
-                      scale: 1.08,
-                      transition: { 
-                        duration: 0.6, 
-                        ease: [0.16, 1, 0.3, 1],
-                        type: 'tween'
-                      }
-                    }
-                  }}
-                />
-                
-                <span className="relative z-10 text-margin-responsive">Plan strategiesessie</span>
-                <ArrowRight className="relative z-10 icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.button>
-            </div>
-
-            {/* Secondary CTA - Modern outline design */}
-            <div className="relative">
-              <motion.button
-                onClick={handleCasesClick}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 backdrop-blur-sm flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
-                style={{ 
-                  fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-                  cursor: 'pointer'
-                }}
-                whileHover={{ 
+            
+            {/* Primary CTA - Plan Strategiesessie */}
+            <motion.button
+              className="cta-responsive relative inline-flex items-center justify-center text-white font-medium rounded-full overflow-hidden"
+              style={HERO_CTA_STYLES.button}
+              whileHover="hover"
+              initial="initial"
+              variants={HERO_BUTTON_VARIANTS}
+              whileTap={HERO_BUTTON_TAP_VARIANT}
+              onClick={() => {
+                const targetSection = document.querySelector('[data-section-id="leadform"]');
+                if (targetSection) {
+                  targetSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                  });
+                }
+              }}
+            >
+              {/* Bottom-to-top gradient fill animation */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={HERO_CTA_STYLES.buttonFill}
+                variants={HERO_FILL_VARIANTS}
+              />
+              
+              {/* Text content */}
+              <span className="relative z-10 text-white text-margin-responsive" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)', color: 'white' }}>
+                Plan Strategiesessie
+              </span>
+            </motion.button>
+            
+            {/* Secondary CTA - Contact - EXACT COPY from HomeHero "Bekijk voorbeelden" button */}
+            <motion.button
+              className="cta-responsive relative inline-flex items-center justify-center text-white font-medium rounded-full overflow-hidden"
+              style={{ 
+                fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '2px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+                cursor: 'pointer',
+                zIndex: 50
+              }}
+              whileHover="hover"
+              initial="initial"
+              variants={{
+                initial: { 
+                  scale: 1,
+                  borderColor: 'rgba(255, 255, 255, 0.2)'
+                },
+                hover: { 
                   scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  borderColor: 'rgba(255, 255, 255, 0.4)',
+                  borderColor: 'rgba(0, 0, 0, 0.8)',
                   transition: { 
-                    duration: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.2 : 0.3, 
+                    duration: 0.4, 
                     ease: [0.16, 1, 0.3, 1] 
                   }
+                }
+              }}
+              whileTap={HERO_BUTTON_TAP_VARIANT}
+              onClick={() => {
+                // Scroll to services section
+                const targetSection = document.querySelector('[data-section-id="services"]');
+                if (targetSection) {
+                  targetSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                  });
+                }
+              }}
+            >
+              {/* Top-to-bottom black fill animation - exact copy from "Bekijk voorbeelden" */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'rgba(0, 0, 0, 1)',
+                  transformOrigin: 'top center'
                 }}
-                whileTap={{ 
-                  scale: 0.99,
-                  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
+                variants={{
+                  initial: { scaleY: 0, scale: 1 },
+                  hover: { 
+                    scaleY: 1,
+                    scale: 1,
+                    transition: { 
+                      duration: 0.4, 
+                      ease: [0.16, 1, 0.3, 1],
+                      type: 'tween'
+                    }
+                  }
+                }}
+              />
+              
+              {/* Button content */}
+              <span className="relative z-10 text-margin-responsive">Bekijk de voorbeelden</span>
+              <motion.div
+                className="relative z-10"
+                whileHover={{
+                  rotate: 90,
+                  y: 4,
+                  transition: { duration: 0.5, ease: "easeOut" }
                 }}
               >
-                <span className="text-margin-responsive">Bekijk voorbeelden</span>
-                <ChevronRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.button>
-            </div>
-            </div>
+                <ChevronRight className="icon-responsive" />
+              </motion.div>
+            </motion.button>
           </motion.div>
-
         </motion.div>
       </div>
-      
-      {/* Agency-themed floating elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Network connection dots */}
-        <div className="absolute top-1/4 left-10 w-3 h-3 bg-purple-400/60 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-1/3 right-16 w-2 h-2 bg-blue-400/50 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/4 left-1/4 w-4 h-4 bg-pink-400/40 rounded-full opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-2/3 right-1/4 w-2 h-2 bg-purple-500/60 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-1/3 right-12 w-3 h-3 bg-cyan-500/50 rounded-full opacity-35 animate-pulse" style={{ animationDelay: '4s' }} />
-        <div className="absolute top-1/2 left-1/3 w-2 h-2 bg-blue-500/45 rounded-full opacity-45 animate-pulse" style={{ animationDelay: '5s' }} />
-      </div>
-        
     </section>
     </>
   );
 };
 
-export default HomeHero;
+export default SaasHero;

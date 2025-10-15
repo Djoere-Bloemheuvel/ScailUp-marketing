@@ -4,11 +4,13 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://buildrs.ai', // Required for sitemap generation
   integrations: [
     react(),
     tailwind({
       configFile: './tailwind.config.ts',
     }),
+    // TODO: Add sitemap() when @astrojs/sitemap is installed
   ],
   build: {
     // Advanced build optimizations

@@ -15,6 +15,7 @@ import IntegrationsShowcase from '../components/active/agency/IntegrationsShowca
 import ThreePhasesSection from '../components/active/agency/ThreePhasesSection';
 import CaseStudiesSection from '../components/active/agency/CaseStudiesSection';
 import ServicesOfferingSection from '../components/active/agency/ServicesOfferingSection';
+import TestCaseStudiesSection from '../components/active/agency/TestCaseStudiesSection';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -23,8 +24,8 @@ const structuredData = {
   "@type": "Organization",
   "name": "Buildrs",
   "description": "Custom AI agents en automatisering workflows voor B2B service providers. Van LinkedIn automation tot proposal generators - we bouwen het voor je.",
-  "url": "https://buildrs.nl",
-  "logo": "https://buildrs.nl/logo.png",
+  "url": "https://buildrs.ai",
+  "logo": "https://buildrs.ai/logo.png",
   "sameAs": [
     "https://linkedin.com/company/buildrs"
   ],
@@ -101,6 +102,9 @@ const structuredData = {
 
     <!-- Case Studies Section - Premium client success stories -->
     <CaseStudiesSection client:visible />
+
+    <!-- Test Case Studies Section - Copy of Case Studies -->
+    <TestCaseStudiesSection client:visible />
 
     <!-- Interactive Engine sections - load immediately after idle -->
     <!-- <SalesEngineSection client:idle /> -->

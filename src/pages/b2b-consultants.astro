@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ConsultantsHero from '../components/active/usecase/consultants/ConsultantsHero';
+import ConsultantsServicesSection from '../components/active/usecase/consultants/ConsultantsServicesSection';
+import ConsultantsFinalCTA from '../components/active/usecase/consultants/ConsultantsFinalCTA';
+import ConsultantsLeadForm from '../components/ConsultantsLeadForm.astro';
+import ScailUpFooter from '../components/active/shared/ScailUpFooter';
+
+// Structured data for B2B Consultants page
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Lead Generatie voor Consultancies",
+  "description": "Schaalt jouw consultancy naar 400% meer gekwalificeerde leads met geautomatiseerde email outbound en LinkedIn automation.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Buildrs",
+    "url": "https://buildrs.ai"
+  },
+  "serviceType": "Lead Generation Automation",
+  "areaServed": "Netherlands",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Consultancies"
+  }
+};
+---
+
+<Layout 
+  title="Consultancy Lead Generatie | Buildrs - 400% Meer Leads"
+  description="Schaalt jouw consultancy naar 400% meer gekwalificeerde leads. Email outbound automation, LinkedIn lead generatie en AI agents voor consultancies."
+  keywords="consultancy lead generatie, email automation consultancy, LinkedIn automation consultancy, lead generation tools, consultancy marketing automation Netherlands"
+  structuredData={structuredData}
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+
+  <main class="min-h-screen bg-black text-white" style="background-color: #000000 !important;">
+    <!-- Instant loading state -->
+    <div class="fixed inset-0 bg-black z-0" style="background-color: #000000 !important;"></div>
+    
+    <!-- Hero Section - prioritize loading -->
+    <ConsultantsHero client:load />
+    
+    <!-- Services Section - load when visible to reduce initial load -->
+    <ConsultantsServicesSection client:visible />
+    
+    <!-- Premium Lead Form Section -->
+    <ConsultantsLeadForm 
+      formTitle="Klaar voor 2-4x meer leads?"
+      formDescription="Vul je gegevens in en ontdek hoe we jouw consultancy kunnen helpen groeien met geautomatiseerde lead generatie."
+      submitText="Laten we praten"
+    />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:idle />
+  </main>
+</Layout>

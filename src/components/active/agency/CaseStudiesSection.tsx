@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { motion } from 'framer-motion';
 
 interface CaseStudy {
   id: string;
@@ -16,131 +16,216 @@ interface Props {
 
 const defaultCaseStudies: CaseStudy[] = [
   {
-    id: 'lead-automation',
-    company: '400% meer gekwalificeerde leads',
-    industry: 'MARKETING AGENCY',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    id: 'marketing-agency',
+    company: '400% meer gekwalificeerde leads per maand',
+    industry: 'MARKETINGBUREAUS',
+    image: '/partnership-optimized.webp',
     accent: 'blue'
   },
   {
-    id: 'linkedin-automation',
-    company: '2.500 nieuwe connecties per maand',
-    industry: 'CONSULTANCY FIRM', 
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    id: 'creative-agency',
+    company: '2.500 nieuwe LinkedIn connecties',
+    industry: 'CREATIVE AGENCIES', 
+    image: '/marketing-engine-tree-visual.webp',
     accent: 'teal'
   },
   {
-    id: 'proposal-generator',
-    company: '80% tijdsbesparing in offertes',
-    industry: 'CREATIVE AGENCY',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    id: 'b2b-saas',
+    company: '80% snellere sales cycles & geautomatiseerde proposals',
+    industry: 'B2B SAAS',
+    image: '/gemini-case-study-3.webp',
     accent: 'orange'
   },
   {
-    id: 'content-workflow',
-    company: '5x sneller content productie',
-    industry: 'CONTENT BUREAU',
-    image: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    id: 'b2b-consultants',
+    company: '5x snellere content productie & meer expertise schaling',
+    industry: 'B2B CONSULTANCIES',
+    image: '/gemini-case-study-4.webp',
     accent: 'green'
-  },
-  {
-    id: 'client-onboarding',
-    company: '90% geautomatiseerde onboarding',
-    industry: 'TECH STARTUP',
-    image: 'https://images.unsplash.com/photo-1497366858526-0766cadbe8fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
-    accent: 'purple'
   }
 ];
 
-// Horizontal scroll animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { 
-    opacity: 0, 
-    x: 50
+// Style constants to prevent re-computation
+const CARD_STYLES = {
+  container: {
+    width: 'clamp(400px, 28vw, 600px)',
+    height: 'clamp(600px, 80vh, 850px)',
+    scrollSnapAlign: 'start' as const,
+    willChange: 'transform',
+    backfaceVisibility: 'hidden' as const,
+    WebkitBackfaceVisibility: 'hidden' as const,
+    transform: 'translate3d(0,0,0)'
   },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1]
-    }
+  background: {
+    willChange: 'transform, opacity',
+    backfaceVisibility: 'hidden' as const,
+    WebkitBackfaceVisibility: 'hidden' as const,
+    transform: 'translateZ(0)'
   },
-  hover: {
-    scale: 1.03,
-    transition: {
-      duration: 0.3,
-      ease: [0.16, 1, 0.3, 1]
+  content: {
+    padding: 'clamp(1.5rem, 4vw, 2.5rem)'
+  },
+  title: {
+    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    fontSize: 'clamp(1.125rem, 2.5vw, 1.875rem)',
+    letterSpacing: '-0.02em',
+    textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+    lineHeight: 1.2,
+    fontWeight: '500'
+  },
+  industry: {
+    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    fontSize: 'clamp(0.625rem, 1.2vw, 0.75rem)',
+    marginBottom: 'clamp(0.75rem, 1.5vw, 1rem)',
+    textShadow: '0 1px 4px rgba(0,0,0,0.7)',
+    letterSpacing: '0.1em',
+    fontWeight: '400'
+  },
+  button: {
+    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    letterSpacing: '-0.01em',
+    fontSize: 'clamp(0.625rem, 1.2vw, 0.8rem)',
+    fontWeight: '500',
+    padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(2rem, 3vw, 2.5rem)',
+    background: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box, linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182)) border-box',
+    border: '2px solid transparent',
+    minWidth: '160px',
+    backdropFilter: 'blur(10px)',
+    cursor: 'pointer' as const,
+    color: 'white'
+  },
+  buttonFill: {
+    background: 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+    transformOrigin: 'bottom center' as const
+  }
+};
+
+const SCROLL_STYLES = {
+  container: {
+    overflowX: 'scroll' as const,
+    overflowY: 'hidden' as const,
+    scrollbarWidth: 'none' as const,
+    msOverflowStyle: 'none' as const,
+    scrollBehavior: 'smooth' as const,
+    position: 'relative' as const,
+    left: '-16rem',
+    width: 'calc(100vw + 32rem)',
+    paddingLeft: 'calc(16rem + 2rem)',
+    paddingRight: '25vw'
+  }
+};
+
+// EXACT COPY from LeadFormButton.tsx  
+const HERO_BUTTON_VARIANTS = {
+  initial: { scale: 1 },
+  hover: { 
+    scale: 1.01,
+    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const HERO_BUTTON_TAP_VARIANT = {
+  scale: 0.99,
+  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+const HERO_FILL_VARIANTS = {
+  initial: { scaleY: 0, scale: 1 },
+  hover: { 
+    scaleY: 1,
+    scale: 1.08,
+    transition: { 
+      duration: 0.6, 
+      ease: [0.16, 1, 0.3, 1],
+      type: 'tween'
     }
   }
 };
 
-const imageVariants = {
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.4,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  }
-};
-
-const CaseStudiesSection: React.FC<Props> = ({ 
+const CaseStudiesSection: React.FC<Props> = React.memo(({ 
   caseStudies = defaultCaseStudies,
-  sectionTitle = "BEWEZEN RESULTATEN"
+  sectionTitle = "TEST RESULTATEN"
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   
-  // Check scroll position
-  const checkScrollPosition = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      
-      // Calculate actual content boundaries (same logic as in scrollTo) - updated for new responsive sizes
+  // State for scroll calculations (will be set on client-side)
+  const [scrollConfig, setScrollConfig] = useState({
+    cardWidth: 400,
+    gap: 8,
+    scrollAmount: 408,
+    actualContentWidth: caseStudies.length * 408 - 8,
+    paddingRight: 400 // Start with larger padding to ensure right arrow shows
+  });
+
+  // Calculate scroll config on client-side only
+  useEffect(() => {
+    const calculateScrollConfig = () => {
       const viewportWidth = window.innerWidth;
       const calculatedVw = viewportWidth * 0.28;
       const cardWidth = Math.max(400, Math.min(calculatedVw, 600));
       const gap = 8;
       const scrollAmount = cardWidth + gap;
       const actualContentWidth = caseStudies.length * scrollAmount - gap;
-      const paddingRight = viewportWidth * 0.25; // 25vw
+      const paddingRight = viewportWidth * 0.25;
+      
+      setScrollConfig({
+        cardWidth,
+        gap,
+        scrollAmount,
+        actualContentWidth,
+        paddingRight
+      });
+    };
+
+    calculateScrollConfig();
+    
+    // Check scroll position after config is set
+    setTimeout(() => checkScrollPosition(), 50);
+    
+    // Recalculate on window resize
+    window.addEventListener('resize', calculateScrollConfig);
+    return () => window.removeEventListener('resize', calculateScrollConfig);
+  }, [caseStudies.length]);
+
+  // Optimized scroll position check
+  const checkScrollPosition = useCallback(() => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      const { actualContentWidth, paddingRight } = scrollConfig;
       const maxScroll = Math.max(0, actualContentWidth - clientWidth + paddingRight);
       
       setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < maxScroll - 200); // Much higher tolerance so arrow stays visible much longer
+      setCanScrollRight(scrollLeft < maxScroll - 200);
     }
-  };
+  }, [scrollConfig]);
 
-  // Card-to-card scroll function
-  const scrollTo = (direction: 'left' | 'right') => {
+  // Get navigation URL for case study pages - let Astro handle the routing
+  const getUsecaseUrl = useCallback((caseStudyId: string) => {
+    switch (caseStudyId) {
+      case 'marketing-agency':
+        return '/marketingbureaus';
+      case 'creative-agency':
+        return '/marketingbureaus';
+      case 'b2b-saas':
+        return '/b2b-saas';
+      case 'b2b-consultants':
+        return '/b2b-consultants';
+      default:
+        return 'https://meetings-eu1.hubspot.com/djoe1';
+    }
+  }, []);
+
+  // Optimized scroll function
+  const scrollTo = useCallback((direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      // Calculate actual card width based on clamp - updated for new responsive sizes
-      const viewportWidth = window.innerWidth;
-      const calculatedVw = viewportWidth * 0.28;
-      const cardWidth = Math.max(400, Math.min(calculatedVw, 600));
-      const gap = 8; // gap-2
-      const scrollAmount = cardWidth + gap;
-      
+      const { scrollAmount, actualContentWidth, paddingRight } = scrollConfig;
       const currentScroll = scrollContainerRef.current.scrollLeft;
       const { clientWidth } = scrollContainerRef.current;
       
-      // Calculate which card we're currently closest to
       const currentCardIndex = Math.round(currentScroll / scrollAmount);
       
-      // Calculate target card index
       let targetCardIndex;
       if (direction === 'right') {
         targetCardIndex = Math.min(currentCardIndex + 1, caseStudies.length - 1);
@@ -148,12 +233,7 @@ const CaseStudiesSection: React.FC<Props> = ({
         targetCardIndex = Math.max(currentCardIndex - 1, 0);
       }
       
-      // Calculate exact scroll position for target card
       let targetScroll = targetCardIndex * scrollAmount;
-      
-      // Apply max scroll bounds with padding right
-      const actualContentWidth = caseStudies.length * scrollAmount - gap;
-      const paddingRight = viewportWidth * 0.25; // 25vw
       const maxScroll = Math.max(0, actualContentWidth - clientWidth + paddingRight);
       targetScroll = Math.min(targetScroll, maxScroll);
       
@@ -162,10 +242,9 @@ const CaseStudiesSection: React.FC<Props> = ({
         behavior: 'smooth'
       });
       
-      // Update scroll position state after scroll
       setTimeout(() => checkScrollPosition(), 100);
     }
-  };
+  }, [scrollConfig, caseStudies.length, checkScrollPosition]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -184,7 +263,7 @@ const CaseStudiesSection: React.FC<Props> = ({
       className="relative bg-black overflow-hidden pt-16 pb-16 lg:pt-24 lg:pb-24 xl:pt-32 xl:pb-32 min-h-screen flex items-center"
       data-section-theme="dark"
       data-section-accent="blue"
-      data-section-id="casestudies"
+      data-section-id="testcasestudies"
       data-lighting-intensity="subtle"
     >
       
@@ -193,12 +272,8 @@ const CaseStudiesSection: React.FC<Props> = ({
         <div className="w-full">
           
           {/* Title */}
-          <motion.div 
+          <div 
             className="mb-8 lg:mb-12 xl:mb-16 text-left"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={containerVariants}
           >
             <style jsx>{`
               /* Mobile-first title scaling - exact copy from ThreePhasesSection */
@@ -252,177 +327,120 @@ const CaseStudiesSection: React.FC<Props> = ({
               }}
             >
               <div style={{ fontWeight: '300' }}>
-                Van eerste gesprek tot echte resultaten:
+                Wat wij bouwen voor
               </div>
               <div style={{ fontWeight: '400' }}>
-                Klanten die het zelf ervaren.
+                verschillende branches
               </div>
             </h2>
-          </motion.div>
+          </div>
 
           {/* Horizontal Scroll Container */}
           <div className="relative pb-16 lg:pb-20" style={{ overflow: 'visible' }}>
-            <motion.div 
+            <div 
               ref={scrollContainerRef}
               className="flex gap-2 pb-4 scrollbar-hide"
-              style={{
-                overflowX: 'scroll',
-                overflowY: 'hidden',
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                scrollBehavior: 'smooth',
-                position: 'relative',
-                left: '-16rem',
-                width: 'calc(100vw + 32rem)',
-                paddingLeft: 'calc(16rem + 2rem)',
-                paddingRight: '25vw'
-              }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={containerVariants}
+              style={SCROLL_STYLES.container}
             >
-              {caseStudies.map((caseStudy, index) => (
-                <motion.div
-                  key={caseStudy.id}
-                  className="group relative flex-shrink-0 cursor-pointer overflow-hidden case-study-card"
-                  style={{
-                    width: 'clamp(400px, 28vw, 600px)',
-                    height: 'clamp(600px, 80vh, 850px)',
-                    scrollSnapAlign: 'start',
-                    willChange: 'transform',
-                    backfaceVisibility: 'hidden',
-                    WebkitBackfaceVisibility: 'hidden',
-                    transform: 'translate3d(0,0,0)'
-                  }}
-                  variants={cardVariants}
-                  onClick={() => {
-                    console.log(`View case study: ${caseStudy.id}`);
-                  }}
-                >
-                  
-                  {/* Full Background Image */}
-                  <motion.div
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ 
-                      backgroundImage: `url('${caseStudy.image}')`,
-                      willChange: 'transform',
-                      backfaceVisibility: 'hidden'
-                    }}
-                  />
-                  
-                  {/* Dark Gradient Overlay for Text Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
-                  {/* Content Overlay */}
-                  <div 
-                    className="absolute inset-0 flex flex-col justify-between" 
-                    style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}
+              {caseStudies.map((caseStudy, index) => {
+                const url = getUsecaseUrl(caseStudy.id);
+                const isExternal = url.startsWith('http');
+                
+                // Render as <a> for internal links, <div> for external/disabled
+                const CardElement = isExternal ? 'div' : 'a';
+                const cardProps = isExternal 
+                  ? { onClick: () => window.open(url, '_blank') }
+                  : { href: url };
+
+                return (
+                  <CardElement
+                    key={caseStudy.id}
+                    className="group relative flex-shrink-0 cursor-pointer overflow-hidden case-study-card block"
+                    style={CARD_STYLES.container}
+                    {...cardProps}
                   >
-                    
-                    {/* Top spacing */}
-                    <div></div>
-                    
-                    {/* Bottom Content */}
-                    <div className="flex flex-col items-start">
+                    {/* Optimized Image Container like SpecialistSection */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <img 
+                        src={caseStudy.image}
+                        alt={`Case study: ${caseStudy.company}`}
+                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                        style={{ ...CARD_STYLES.background }}
+                        loading={index < 2 ? "eager" : "lazy"}
+                        fetchPriority={index < 2 ? "high" : "auto"}
+                        decoding={index < 2 ? "sync" : "async"}
+                      />
                       
-                      {/* Company Name */}
-                      <h3 
-                        className="text-white font-medium mb-2"
+                      {/* Background blur placeholder for smooth loading */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 blur-sm opacity-30 pointer-events-none"
                         style={{ 
-                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                          fontSize: 'clamp(1.125rem, 2.5vw, 1.875rem)',
-                          letterSpacing: '-0.02em',
-                          textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-                          lineHeight: 1.2,
-                          fontWeight: '500'
+                          backgroundSize: '20px 20px',
+                          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)'
                         }}
-                      >
-                        {caseStudy.company}
-                      </h3>
-                      
-                      {/* Industry/See All Cases */}
-                      <p 
-                        className="text-white/60 font-normal tracking-wide uppercase"
-                        style={{ 
-                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                          fontSize: 'clamp(0.625rem, 1.2vw, 0.75rem)',
-                          marginBottom: 'clamp(0.75rem, 1.5vw, 1rem)',
-                          textShadow: '0 1px 4px rgba(0,0,0,0.7)',
-                          letterSpacing: '0.1em',
-                          fontWeight: '400'
-                        }}
-                      >
-                        {caseStudy.industry}
-                      </p>
-
-                      {/* CTA Button - Neutral to Hero Gradient with Bottom-to-Top Animation */}
-                      <motion.button
-                        className="relative inline-flex items-center justify-center text-white font-medium rounded-full overflow-hidden"
-                        style={{ 
-                          fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                          letterSpacing: '-0.01em',
-                          fontSize: 'clamp(0.625rem, 1.2vw, 0.8rem)',
-                          fontWeight: '500',
-                          padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(2rem, 3vw, 2.5rem)',
-                          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.3)',
-                          minWidth: '160px',
-                          backdropFilter: 'blur(10px)'
-                        }}
-                        initial="default"
-                        whileHover="hovered"
-                        whileTap={{ 
-                          scale: 0.99,
-                          transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
-                        }}
-                        variants={{
-                          default: {},
-                          hovered: {
-                            border: '2px solid transparent',
-                            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
-                            backgroundOrigin: 'border-box',
-                            backgroundClip: 'padding-box, border-box',
-                            transition: { 
-                              duration: 0.4, 
-                              ease: [0.16, 1, 0.3, 1] 
-                            }
-                          }
-                        }}
-                      >
-                        {/* Hero gradient animation layer - slides up from bottom, behind content */}
-                        <motion.div
-                          className="absolute inset-0 z-0"
-                          style={{
-                            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
-                            backgroundOrigin: 'border-box',
-                            backgroundClip: 'padding-box, border-box'
-                          }}
-                          variants={{
-                            default: { 
-                              y: "100%" 
-                            },
-                            hovered: { 
-                              y: "0%" 
-                            }
-                          }}
-                          transition={{
-                            duration: 0.4,
-                            ease: [0.16, 1, 0.3, 1]
-                          }}
-                        />
-                        
-                        {/* Text layer */}
-                        <span className="relative z-20" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
-                          Bekijk case
-                        </span>
-                      </motion.button>
+                      />
                     </div>
-                  </div>
+                    
+                    {/* Dark Gradient Overlay for Text Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    {/* Content Overlay */}
+                    <div 
+                      className="absolute inset-0 flex flex-col justify-between" 
+                      style={CARD_STYLES.content}
+                    >
+                      
+                      {/* Top spacing */}
+                      <div></div>
+                      
+                      {/* Bottom Content */}
+                      <div className="flex flex-col items-start">
+                        
+                        {/* Company Name */}
+                        <h3 
+                          className="text-white font-medium mb-2"
+                          style={CARD_STYLES.title}
+                        >
+                          {caseStudy.company}
+                        </h3>
+                        
+                        {/* Industry/See All Cases */}
+                        <p 
+                          className="text-white/60 font-normal tracking-wide uppercase"
+                          style={CARD_STYLES.industry}
+                        >
+                          {caseStudy.industry}
+                        </p>
 
-                </motion.div>
-              ))}
-            </motion.div>
+                        {/* CTA Button with Hero-style Fill Animation */}
+                        <motion.div
+                          className="relative inline-flex items-center justify-center text-white font-medium rounded-full overflow-hidden cursor-pointer"
+                          style={CARD_STYLES.button}
+                          whileHover="hover"
+                          initial="initial"
+                          variants={HERO_BUTTON_VARIANTS}
+                          whileTap={HERO_BUTTON_TAP_VARIANT}
+                        >
+                          {/* Bottom-to-top gradient fill animation - EXACT COPY */}
+                          <motion.div
+                            className="absolute inset-0 rounded-full"
+                            style={CARD_STYLES.buttonFill}
+                            variants={HERO_FILL_VARIANTS}
+                          />
+                          
+                          <span 
+                            className="relative z-10 text-white"
+                            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)', color: 'white' }}
+                          >
+Lees meer
+                          </span>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </CardElement>
+                );
+              })}
+            </div>
 
           </div>
 
@@ -463,6 +481,7 @@ const CaseStudiesSection: React.FC<Props> = ({
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
+        
         
         /* Fix laptop cutoffs and improve scaling */
         @media (min-width: 1024px) and (max-width: 1366px) {
@@ -506,6 +525,8 @@ const CaseStudiesSection: React.FC<Props> = ({
       `}</style>
     </section>
   );
-};
+});
+
+CaseStudiesSection.displayName = 'CaseStudiesSection';
 
 export default CaseStudiesSection;
