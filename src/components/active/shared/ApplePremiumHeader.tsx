@@ -228,7 +228,7 @@ const ApplePremiumHeader = ({ showAlways = false }: ApplePremiumHeaderProps) => 
                 {/* Apple-style CTA Button */}
                 <Button
                   onClick={handleContactClick}
-                  className="hidden md:inline-flex items-center px-6 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
+                  className="hidden md:inline-flex items-center px-6 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md"
                   style={{ 
                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                     fontWeight: 510,

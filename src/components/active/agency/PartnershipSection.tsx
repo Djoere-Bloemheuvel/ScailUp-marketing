@@ -100,7 +100,7 @@ const PartnershipSection = () => {
                         window.location.href = '/contact';
                       }
                     }}
-                    className="relative inline-flex items-center justify-center text-sm sm:text-sm md:text-sm lg:text-base xl:text-lg text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-400 group-hover:shadow-2xl w-full sm:w-auto sm:min-w-[200px] py-2 px-4 sm:py-3 sm:px-6"
+                    className="relative inline-flex items-center justify-center text-sm sm:text-sm md:text-sm lg:text-base xl:text-lg text-white font-medium rounded-full transition-all duration-400 group-hover:shadow-2xl w-full sm:w-auto sm:min-w-[200px] py-2 px-4 sm:py-3 sm:px-6"
                     style={{ 
                       background: 'rgba(0, 0, 0, 0.8)',
                       fontFamily: '"Neue Haas Grotesk Display Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
@@ -129,7 +129,7 @@ const PartnershipSection = () => {
                         window.location.href = '/partnership';
                       }
                     }}
-                    className="relative inline-flex items-center justify-center text-sm sm:text-sm md:text-sm lg:text-base xl:text-lg text-gray-300 hover:text-white font-medium rounded-full border border-gray-600 hover:border-gray-400 backdrop-blur-sm hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 w-full sm:w-auto sm:min-w-[200px] py-2 px-4 sm:py-3 sm:px-6"
+                    className="relative inline-flex items-center justify-center text-sm sm:text-sm md:text-sm lg:text-base xl:text-lg text-gray-300 hover:text-white font-medium rounded-full border border-gray-600 hover:border-gray-400 backdrop-blur-sm hover:shadow-lg transition-all duration-300 w-full sm:w-auto sm:min-w-[200px] py-2 px-4 sm:py-3 sm:px-6"
                     style={{ 
                       fontFamily: '"Neue Haas Grotesk Display Pro", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                       fontWeight: '400',

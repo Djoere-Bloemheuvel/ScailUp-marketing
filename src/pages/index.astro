@@ -10,12 +10,11 @@ import MarketingEngineSection from '../components/active/agency/MarketingEngineS
 // React components for interactive features
 import SpecialistSection from '../components/active/agency/SpecialistSection';
 import FoundersSection from '../components/active/agency/CEOSection';
-import HomeFinalCTASection from '../components/active/agency/HomeFinalCTASection';
+import EndingCTAHomepage from '../components/EndingCTAHomepage.astro';
 import IntegrationsShowcase from '../components/active/agency/IntegrationsShowcase';
 import ThreePhasesSection from '../components/active/agency/ThreePhasesSection';
-import CaseStudiesSection from '../components/active/agency/CaseStudiesSection';
 import ServicesOfferingSection from '../components/active/agency/ServicesOfferingSection';
-import TestCaseStudiesSection from '../components/active/agency/TestCaseStudiesSection';
+import CaseStudiesSection from '../components/active/agency/CaseStudiesSection';
 // Simplified: remove custom performance managers
 
 // Main landing page structured data (moved from agency)
@@ -101,10 +100,7 @@ const structuredData = {
 
 
     <!-- Case Studies Section - Premium client success stories -->
-    <CaseStudiesSection client:visible />
-
-    <!-- Test Case Studies Section - Copy of Case Studies -->
-    <TestCaseStudiesSection client:visible />
+    <CaseStudiesSection client:only="react" />
 
     <!-- Interactive Engine sections - load immediately after idle -->
     <!-- <SalesEngineSection client:idle /> -->
@@ -114,7 +110,12 @@ const structuredData = {
     <!-- <IntegrationsShowcase client:idle /> -->
     <!-- Later sections - load immediately -->
     <!-- <FoundersSection client:idle /> -->
-    <HomeFinalCTASection client:idle />
+    <!-- Ending CTA Section for Homepage - B2B focused -->
+    <EndingCTAHomepage 
+      formTitle="Plan je strategiesessie"
+      formDescription="Ontdek hoe wij de systemen bouwen achter jouw bedrijf's groei."
+      submitText="Plan gratis strategiesessie"
+    />
     <ScailUpFooter client:idle />
   </main>
 

@@ -7,7 +7,7 @@ const HomeAnimatedHeadline = () => {
         <style jsx>{`
           /* Mobile-first responsive title scaling - desktop preserved */
           .title-responsive {
-            font-size: clamp(2.75rem, 4.5vw + 0.9rem, 5.5rem);
+            font-size: clamp(2.5rem, 4vw + 0.8rem, 5rem);
             line-height: 0.85;
             will-change: transform;
             transform: translateZ(0);
@@ -24,7 +24,7 @@ const HomeAnimatedHeadline = () => {
               line-height: 1.05; /* Strakker voor betere impact */
               contain: layout style paint;
               letter-spacing: -0.03em;
-              text-align: center !important;
+              text-align: left !important;
               color: #ffffff !important;
               word-wrap: break-word;
               overflow-wrap: break-word;
@@ -45,7 +45,7 @@ const HomeAnimatedHeadline = () => {
               font-size: clamp(2rem, 6.5vw + 0.5rem, 2.6rem) !important; /* Groter! */
               line-height: 1.05;
               letter-spacing: -0.025em;
-              text-align: center !important;
+              text-align: left !important;
               color: #ffffff !important;
               font-weight: 350 !important;
             }
@@ -57,7 +57,7 @@ const HomeAnimatedHeadline = () => {
               font-size: clamp(1.8rem, 6vw + 0.4rem, 2.2rem) !important; /* Veel groter! */
               line-height: 1.1;
               letter-spacing: -0.02em;
-              text-align: center !important;
+              text-align: left !important;
               color: #ffffff !important;
               font-weight: 350 !important;
             }
@@ -66,12 +66,12 @@ const HomeAnimatedHeadline = () => {
           /* Fine-tuned breakpoint adjustments */
           @media (min-width: 768px) {
             .title-responsive {
-              font-size: clamp(3rem, 4vw + 1.1rem, 5.5rem);
+              font-size: clamp(3rem, 4vw + 1.2rem, 5.5rem);
             }
           }
           @media (min-width: 1024px) {
             .title-responsive {
-              font-size: clamp(4.25rem, 2.8vw + 1.8rem, 5.5rem);
+              font-size: clamp(4rem, 3vw + 2rem, 5.5rem);
             }
           }
           @media (min-width: 1280px) {
@@ -81,7 +81,7 @@ const HomeAnimatedHeadline = () => {
           }
           @media (min-width: 1680px) {
             .title-responsive {
-              font-size: 6.5rem;
+              font-size: 6rem;
             }
           }
           
@@ -89,26 +89,27 @@ const HomeAnimatedHeadline = () => {
           .title-container {
             margin-left: 0rem; /* No left offset on mobile */
             padding-bottom: 0.75rem; /* Extra ruimte aan onderkant om cutoffs te voorkomen */
+            padding-top: 1rem; /* Move content down slightly */
           }
           
           @media (min-width: 768px) {
             .title-container {
-              margin-left: -0.5rem;
+              margin-left: -1.5rem;
             }
           }
           @media (min-width: 1680px) {
             .title-container {
-              margin-left: -0.5rem;
+              margin-left: -2rem;
             }
           }
           @media (min-width: 1920px) {
             .title-container {
-              margin-left: -1rem;
+              margin-left: -2.5rem;
             }
           }
           @media (min-width: 2560px) {
             .title-container {
-              margin-left: -1.5rem;
+              margin-left: -3rem;
             }
           }
         `}</style>
@@ -127,11 +128,11 @@ const HomeAnimatedHeadline = () => {
           }}
         >
           <div className="space-y-1 sm:space-y-2 md:space-y-3">
-            <div style={{ fontWeight: '300' }}>
-              Wij bouwen de systemen
+            <div style={{ fontWeight: '300', whiteSpace: 'nowrap' }}>
+              Wij bouwen de systemen achter
             </div>
-            <div style={{ fontWeight: '400' }}>
-              achter jouw B2B groei.
+            <div style={{ fontWeight: '400', whiteSpace: 'nowrap' }}>
+              de groei van B2B bedrijven.
             </div>
           </div>
         </h1>
@@ -146,14 +147,14 @@ const HomeAnimatedHeadline = () => {
               letter-spacing: -0.045em;
             }
             
-            /* Mobile-only optimizations - veel groter en centered */
+            /* Mobile-only optimizations - veel groter en left aligned */
             @media (max-width: 639px) {
               .tagline-responsive {
                 font-size: clamp(1rem, 4vw + 0.2rem, 1.3rem) !important; /* Groter! */
                 line-height: 1.35;
                 letter-spacing: -0.01em;
                 contain: layout style;
-                text-align: center !important;
+                text-align: left !important;
                 font-weight: 300 !important;
               }
             }
@@ -163,7 +164,7 @@ const HomeAnimatedHeadline = () => {
                 font-size: clamp(0.9rem, 3.5vw + 0.15rem, 1.2rem) !important; /* Groter! */
                 line-height: 1.4;
                 letter-spacing: -0.005em;
-                text-align: center !important;
+                text-align: left !important;
                 font-weight: 300 !important;
               }
             }
@@ -173,7 +174,7 @@ const HomeAnimatedHeadline = () => {
                 font-size: clamp(0.8rem, 3.2vw + 0.1rem, 1rem) !important; /* Groter! */
                 line-height: 1.45;
                 letter-spacing: 0em;
-                text-align: center !important;
+                text-align: left !important;
                 font-weight: 300 !important;
               }
             }

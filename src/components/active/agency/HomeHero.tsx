@@ -4,6 +4,82 @@ import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import HomeAnimatedHeadline from './HomeAnimatedHeadline';
 
+// TestCase CTA Button styles for Hero
+const HERO_CTA_STYLES = {
+  button: {
+    fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+    letterSpacing: '-0.01em',
+    fontSize: 'clamp(0.875rem, 1.2vw, 1rem)',
+    fontWeight: '500',
+    padding: 'clamp(0.75rem, 1.2vw, 1rem) clamp(2rem, 3vw, 2.5rem)',
+    background: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box, linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182)) border-box',
+    border: '2px solid transparent',
+    minWidth: '200px',
+    backdropFilter: 'blur(10px)',
+    cursor: 'pointer' as const,
+    color: 'white'
+  },
+  buttonFill: {
+    background: 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
+    transformOrigin: 'bottom center' as const
+  }
+};
+
+// Animation variants for TestCase style
+const HERO_BUTTON_VARIANTS = {
+  initial: { scale: 1 },
+  hover: { 
+    scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
+    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const HERO_BUTTON_TAP_VARIANT = {
+  scale: 0.99,
+  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+const HERO_FILL_VARIANTS = {
+  initial: { scaleY: 0, scale: 1 },
+  hover: { 
+    scaleY: 1,
+    scale: 1.08,
+    transition: { 
+      duration: 0.6, 
+      ease: [0.16, 1, 0.3, 1],
+      type: 'tween'
+    }
+  }
+};
+
+const SECONDARY_FILL_VARIANTS = {
+  initial: { scaleY: 0, scale: 1 },
+  hover: { 
+    scaleY: 1,
+    scale: 1,
+    transition: { 
+      duration: 0.4, 
+      ease: [0.16, 1, 0.3, 1],
+      type: 'tween'
+    }
+  }
+};
+
+const SECONDARY_BUTTON_VARIANTS = {
+  initial: { 
+    scale: 1,
+    borderColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  hover: { 
+    scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
+    borderColor: 'rgba(0, 0, 0, 0.8)',
+    transition: { 
+      duration: 0.4, 
+      ease: [0.16, 1, 0.3, 1] 
+    }
+  }
+};
+
 const HomeHero = () => {
   const [hasTriggeredPreload, setHasTriggeredPreload] = useState(false);
 
@@ -68,8 +144,8 @@ const HomeHero = () => {
 
   const handleCasesClick = () => {
     if (typeof window !== 'undefined') {
-      // Scroll to What is Buildrs section (dit kunnen we bouwen voor je)
-      const targetSection = document.querySelector('#what-is-buildrs-section');
+      // Scroll to Case Studies section
+      const targetSection = document.querySelector('[data-section-id="testcasestudies"]');
       if (targetSection) {
         targetSection.scrollIntoView({ 
           behavior: 'smooth', 
@@ -338,11 +414,6 @@ const HomeHero = () => {
         />
       </div>
       
-      {/* Enhanced gradient for better shadow overlay effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
-      </div>
       
       {/* Clean responsive content positioning */}
       <style>{`
@@ -379,10 +450,10 @@ const HomeHero = () => {
           }
         }
         
-        /* Laptop screens (13-16 inch) - standardized positioning */
+        /* Laptop screens (13-16 inch) - higher positioning */
         @media (min-width: 768px) and (max-width: 1679px) {
           .content-container {
-            margin-top: -8vh; /* Laptop content positioning */
+            margin-top: -12vh; /* Higher positioning for laptop */
             padding-top: 0;
           }
         }
@@ -497,14 +568,15 @@ const HomeHero = () => {
 
           {/* Redesigned CTA Section - Mobile-optimized animations */}
           <motion.div 
-            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-center sm:justify-start items-center -mt-4 sm:mt-0 md:mt-0 lg:mt-1 cta-container"
+            className="flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-center sm:justify-start items-center -mt-4 sm:mt-0 md:mt-0 lg:mt-1 cta-container relative z-50"
             style={{ 
               minHeight: '100px',
               /* Remove contain voor betere alignment */
               contain: 'none',
               willChange: 'transform',
               /* Ensure perfect alignment */
-              overflow: 'visible'
+              overflow: 'visible',
+              zIndex: 50
             }}
             initial={{ opacity: 0, y: 12, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -529,8 +601,26 @@ const HomeHero = () => {
               /* Laptop & Desktop: perfecte uitlijning met headline */
               @media (min-width: 768px) {
                 .cta-container {
-                  margin-left: 0rem !important; /* Perfect uitlijning met headline */
+                  margin-left: -0.5rem !important; /* Subtiele uitlijning met headline */
                   justify-content: flex-start !important;
+                }
+              }
+              
+              @media (min-width: 1680px) {
+                .cta-container {
+                  margin-left: -1rem !important; /* Iets meer uitlijning voor desktop */
+                }
+              }
+              
+              @media (min-width: 1920px) {
+                .cta-container {
+                  margin-left: -1.5rem !important; /* Matige uitlijning voor grote desktop */
+                }
+              }
+              
+              @media (min-width: 2560px) {
+                .cta-container {
+                  margin-left: -2rem !important; /* Maximale uitlijning voor zeer grote desktop */
                 }
               }
               
@@ -611,89 +701,89 @@ const HomeHero = () => {
             `}</style>
             <div className="cta-container flex flex-row gap-2 sm:gap-4 lg:gap-6 justify-center sm:justify-start items-center w-full">
             {/* Primary CTA - Perfect gradient border with bottom-to-top fill */}
-            <div className="relative">
+            <div className="relative z-50">
               <motion.button
                 onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    window.location.href = '/contact';
+                  // Scroll to endingctahomepage section
+                  const targetSection = document.querySelector('[data-section-id="endingctahomepage"]');
+                  if (targetSection) {
+                    targetSection.scrollIntoView({ 
+                      behavior: 'smooth', 
+                      block: 'start' 
+                    });
                   }
                 }}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group overflow-hidden"
+                className="relative z-50 inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group overflow-hidden"
                 style={{ 
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
                   background: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box, linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182)) border-box',
                   border: '2px solid transparent',
                   backdropFilter: 'blur(10px)',
                   boxShadow: 'none',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  zIndex: 50
                 }}
                 whileHover="hover"
                 initial="initial"
-                variants={{
-                  initial: { scale: 1 },
-                  hover: { 
-                    scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
-                    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
-                  }
-                }}
-                whileTap={{ 
-                  scale: 0.99,
-                  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
-                }}
+                variants={HERO_BUTTON_VARIANTS}
+                whileTap={HERO_BUTTON_TAP_VARIANT}
               >
                 {/* Bottom-to-top gradient fill animation */}
                 <motion.div
                   className="absolute inset-0 rounded-full"
-                  style={{
-                    background: 'linear-gradient(to right, rgb(96, 165, 250), rgb(244, 114, 182))',
-                    transformOrigin: 'bottom center'
-                  }}
-                  variants={{
-                    initial: { scaleY: 0, scale: 1 },
-                    hover: { 
-                      scaleY: 1,
-                      scale: 1.08,
-                      transition: { 
-                        duration: 0.6, 
-                        ease: [0.16, 1, 0.3, 1],
-                        type: 'tween'
-                      }
-                    }
-                  }}
+                  style={HERO_CTA_STYLES.buttonFill}
+                  variants={HERO_FILL_VARIANTS}
                 />
                 
-                <span className="relative z-10 text-margin-responsive">Plan strategiesessie</span>
+                <span 
+                  className="relative z-10 text-white text-margin-responsive"
+                  style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)', color: 'white' }}
+                >
+                  Plan strategiesessie
+                </span>
                 <ArrowRight className="relative z-10 icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
               </motion.button>
             </div>
 
-            {/* Secondary CTA - Modern outline design */}
-            <div className="relative">
+            {/* Secondary CTA - Using exact same approach as primary button */}
+            <div className="relative z-50">
               <motion.button
                 onClick={handleCasesClick}
-                className="relative inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full border border-white/20 backdrop-blur-sm flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group"
+                className="relative z-50 inline-flex items-center justify-center cta-responsive text-white font-medium rounded-full flex-1 min-w-0 w-[calc(42vw-0.5rem)] sm:w-[calc(40vw-1rem)] md:w-[calc(32vw-1rem)] lg:w-80 whitespace-nowrap group overflow-hidden"
                 style={{ 
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-                  cursor: 'pointer'
-                }}
-                whileHover={{ 
-                  scale: typeof window !== 'undefined' && window.innerWidth < 640 ? 1.02 : 1.01,
                   background: 'rgba(255, 255, 255, 0.1)',
-                  borderColor: 'rgba(255, 255, 255, 0.4)',
-                  transition: { 
-                    duration: typeof window !== 'undefined' && window.innerWidth < 640 ? 0.2 : 0.3, 
-                    ease: [0.16, 1, 0.3, 1] 
-                  }
+                  border: '2px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+                  cursor: 'pointer',
+                  zIndex: 50
                 }}
-                whileTap={{ 
-                  scale: 0.99,
-                  transition: { duration: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }
-                }}
+                whileHover="hover"
+                initial="initial"
+                variants={SECONDARY_BUTTON_VARIANTS}
+                whileTap={HERO_BUTTON_TAP_VARIANT}
               >
-                <span className="text-margin-responsive">Bekijk voorbeelden</span>
-                <ChevronRight className="icon-responsive group-hover:translate-x-1 transition-transform duration-300" />
+                {/* Top-to-bottom black fill animation - exact copy from primary */}
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'rgba(0, 0, 0, 1)',
+                    transformOrigin: 'top center'
+                  }}
+                  variants={SECONDARY_FILL_VARIANTS}
+                />
+                
+                <span className="relative z-10 text-margin-responsive">Bekijk voorbeelden</span>
+                <motion.div
+                  className="relative z-10"
+                  whileHover={{
+                    rotate: 90,
+                    y: 4,
+                    transition: { duration: 0.5, ease: "easeOut" }
+                  }}
+                >
+                  <ChevronRight className="icon-responsive" />
+                </motion.div>
               </motion.button>
             </div>
             </div>

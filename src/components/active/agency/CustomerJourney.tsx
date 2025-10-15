@@ -136,10 +136,10 @@ const CustomerJourney = () => {
                     key={index}
                     onClick={() => selectPhase(index)}
                     className={`w-full text-left group relative overflow-hidden transition-all duration-500 ${
-                      isSelected ? 'transform scale-[1.01]' : 'hover:transform hover:scale-[1.005]'
+                      isSelected ? 'transform' : 'hover:transform'
                     }`}
                     whileHover={isMobile ? {} : { x: 4 }}
-                    whileTap={isMobile ? {} : { scale: 0.99 }}
+                    whileTap={isMobile ? {} : {}}
                     initial={isMobile ? false : { opacity: 0, x: -20 }}
                     whileInView={isMobile ? false : { opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -234,7 +234,7 @@ const CustomerJourney = () => {
                     window.location.href = '/contact';
                   }
                 }}
-                className="relative inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group whitespace-nowrap"
+                className="relative inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-full transition-all duration-300 group whitespace-nowrap"
                 style={{
                   backgroundColor: 'rgba(0, 0, 0, 0.8)',
                   fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',

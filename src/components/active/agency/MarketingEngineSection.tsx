@@ -187,7 +187,7 @@ const MarketingEngineSection = () => {
                       window.location.href = '/contact';
                     }
                   }}
-                  className="relative inline-flex items-center justify-center text-sm lg:text-base text-white font-medium rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-400 group-hover:shadow-xl px-6 py-3"
+                  className="relative inline-flex items-center justify-center text-sm lg:text-base text-white font-medium rounded-full transition-all duration-400 group-hover:shadow-xl px-6 py-3"
                   style={{ 
                     background: `
                       linear-gradient(135deg, rgba(244, 114, 182, 0.12) 0%, rgba(236, 72, 153, 0.09) 50%, rgba(219, 39, 119, 0.12) 100%),

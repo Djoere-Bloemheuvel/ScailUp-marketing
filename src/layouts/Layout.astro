@@ -26,21 +26,196 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
 ---
 
 <!DOCTYPE html>
-<html lang="nl" style="margin: 0 !important; padding: 0 !important; height: 100% !important; background-color: #000000 !important;">
+<html lang="nl" style="margin: 0 !important; padding: 0 !important; height: 100% !important; background-color: #000000 !important; overflow-x: hidden !important;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <!-- CRITICAL: NUCLEAR BLACK BACKGROUND - ZERO TOLERANCE FOR WHITE -->
+  <style>
+    /* INSTANT BLACK - HIGHEST PRIORITY */
+    :root {
+      background: #000000 !important;
+      background-color: #000000 !important;
+    }
+    
+    html {
+      background: #000000 !important;
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 100% !important;
+      overflow-x: hidden !important;
+      /* Browser default overrides */
+      -webkit-background-color: #000000 !important;
+      -moz-background-color: #000000 !important;
+    }
+    
+    html::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000000 !important;
+      z-index: -9999;
+      pointer-events: none;
+    }
+    
+    body {
+      background: #000000 !important;
+      background-color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 100vh !important;
+      color: #ffffff !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif !important;
+      opacity: 1 !important;
+      overflow-x: hidden !important;
+      /* Browser default overrides */
+      -webkit-background-color: #000000 !important;
+      -moz-background-color: #000000 !important;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000000 !important;
+      z-index: -9998;
+      pointer-events: none;
+    }
+    
+    /* FORCE BLACK ON EVERYTHING */
+    * {
+      box-sizing: border-box;
+    }
+    
+    *:not(img):not(video):not(iframe):not(svg):not(canvas) {
+      background-color: inherit !important;
+    }
+    
+    /* Viewport meta override */
+    html, body, #__next, #root, main, .app, [data-astro-root] {
+      background: #000000 !important;
+      background-color: #000000 !important;
+      min-height: 100vh !important;
+    }
+    
+    /* Browser chrome override */
+    @media screen {
+      html {
+        background: #000000 !important;
+      }
+    }
+    
+    /* MODERN NATIVE VIEW TRANSITIONS - Zero JavaScript */
+    @view-transition {
+      navigation: auto;
+    }
+    
+    /* View transition root animations - always black */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      background-color: #000000 !important;
+      mix-blend-mode: normal;
+    }
+    
+    /* Smooth fade transitions */
+    ::view-transition-old(root) {
+      animation: fade-out 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    ::view-transition-new(root) {
+      animation: fade-in 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* Ensure transition container is black */
+    ::view-transition-group(root) {
+      background-color: #000000 !important;
+    }
+    
+    @keyframes fade-out {
+      from {
+        opacity: 1;
+        background-color: #000000;
+      }
+      to {
+        opacity: 0;
+        background-color: #000000;
+      }
+    }
+    
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        background-color: #000000;
+      }
+      to {
+        opacity: 1;
+        background-color: #000000;
+      }
+    }
+    
+    /* SMOOTH ELEMENT TRANSITIONS */
+    /* Header persistence - no animation to avoid jank */
+    ::view-transition-group(main-header) {
+      animation-duration: 0ms;
+    }
+    
+    ::view-transition-old(main-header),
+    ::view-transition-new(main-header) {
+      animation: none;
+    }
+    
+    /* Main content smooth morph */
+    ::view-transition-old(main-content) {
+      animation: slide-out-left 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    ::view-transition-new(main-content) {
+      animation: slide-in-right 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    @keyframes slide-out-left {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes slide-in-right {
+      from {
+        transform: translateX(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
   
-  <!-- ULTRA-CRITICAL: Aggressive preloading - All above-fold content -->
-  <link rel="preload" href="/hero-bg-buildrs-thumb.webp" as="image" fetchpriority="high" />
-  <link rel="preload" href="/hero-bg-buildrs-8k.webp" as="image" fetchpriority="high" />
-  <link rel="preload" href="/lead-generation-hero-optimized.webp" as="image" fetchpriority="high" />
+  <!-- ESSENTIAL: Only critical assets that should always load -->
   <link rel="preload" href={optimizedPlatform.src} as="image" fetchpriority="high" />
   
+  <!-- Dynamic preloading handles section-specific images based on scroll position -->
+  
   <!-- CRITICAL: Preload ALL fonts immediately -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  
+  <!-- Preload critical font files directly -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
   
   <!-- AGGRESSIVE: Preconnect to all external domains immediately -->
   <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
@@ -54,190 +229,125 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <link rel="modulepreload" href="/src/components/active/agency/SalesEngineSection.tsx" />
   <link rel="modulepreload" href="/src/components/active/agency/MarketingEngineSection.tsx" />
   
-  <!-- CRITICAL: Anti-flicker scroll manager -->
-  <script>
-    // Ultra-smooth scroll optimization with anti-flicker
-    (function() {
-      let isScrolling = false;
-      let scrollTimer = null;
-      let lastScrollY = 0;
-      let scrollVelocity = 0;
-      
-      function handleScroll() {
-        const currentScrollY = window.scrollY;
-        const currentTime = Date.now();
-        
-        if (!isScrolling) {
-          isScrolling = true;
-          document.documentElement.classList.add('fast-scrolling');
-          document.documentElement.classList.remove('scroll-stable');
-        }
-        
-        // Calculate scroll velocity
-        const scrollDelta = Math.abs(currentScrollY - lastScrollY);
-        scrollVelocity = scrollDelta;
-        
-        // If fast scrolling, disable transitions
-        if (scrollVelocity > 50) {
-          document.documentElement.classList.add('fast-scrolling');
-        }
-        
-        lastScrollY = currentScrollY;
-        
-        // Clear existing timer
-        clearTimeout(scrollTimer);
-        
-        // Set timer to detect scroll end
-        scrollTimer = setTimeout(() => {
-          isScrolling = false;
-          document.documentElement.classList.remove('fast-scrolling');
-          document.documentElement.classList.add('scroll-stable');
-          
-          // Remove scroll-stable class after transitions complete
-          setTimeout(() => {
-            document.documentElement.classList.remove('scroll-stable');
-          }, 500);
-        }, 100);
-      }
-      
-      // Add scroll listener with passive for better performance
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    })();
-  </script>
 
-  <!-- CRITICAL: Smart scroll restoration - fresh visit vs refresh -->
-  <script>
-    // Disable browser scroll restoration
-    try {
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
-    } catch(e) {}
-    
-    // Smart scroll restoration with navigation type detection
-    (function() {
-      const STORAGE_KEY = 'buildrs_scroll_pos';
-      const URL_KEY = 'buildrs_scroll_url';
-      const VISIT_TYPE_KEY = 'buildrs_visit_type';
-      
-      // Detect navigation type
-      function getNavigationType() {
-        // Modern API
-        if (performance.navigation) {
-          return performance.navigation.type;
-        }
-        // Fallback for older browsers
-        if (performance.getEntriesByType) {
-          const navEntries = performance.getEntriesByType('navigation');
-          if (navEntries.length > 0) {
-            const navType = navEntries[0].type;
-            if (navType === 'navigate') return 0;
-            if (navType === 'reload') return 1;
-            if (navType === 'back_forward') return 2;
-          }
-        }
-        return 0; // Default to fresh visit
-      }
-      
-      const navigationType = getNavigationType();
-      const currentUrl = location.href;
-      const savedPosition = sessionStorage.getItem(STORAGE_KEY);
-      const savedUrl = sessionStorage.getItem(URL_KEY);
-      
-      // Determine if this is a fresh visit or refresh
-      const isFreshVisit = navigationType === 0; // TYPE_NAVIGATE
-      const isRefresh = navigationType === 1;     // TYPE_RELOAD  
-      const isBackForward = navigationType === 2; // TYPE_BACK_FORWARD
-      
-      // Store visit type for debugging
-      sessionStorage.setItem(VISIT_TYPE_KEY, navigationType.toString());
-      
-      // Only restore scroll position if:
-      // 1. NOT a fresh visit AND
-      // 2. We have a saved position AND  
-      // 3. URL matches AND
-      // 4. Position is valid
-      const shouldRestore = !isFreshVisit && 
-                           savedPosition && 
-                           savedUrl === currentUrl &&
-                           parseInt(savedPosition, 10) > 0;
-      
-      if (shouldRestore) {
-        const targetPosition = parseInt(savedPosition, 10);
-        if (Number.isFinite(targetPosition)) {
-          // INSTANT scroll restore for refresh/back
-          document.documentElement.scrollTop = targetPosition;
-          window.scrollTo(0, targetPosition);
-          document.documentElement.classList.add('scroll-restored');
-        }
-      } else if (isFreshVisit) {
-        // Clear stale scroll data on fresh visits
-        sessionStorage.removeItem(STORAGE_KEY);
-        sessionStorage.removeItem(URL_KEY);
-        // Ensure we start at top
-        document.documentElement.scrollTop = 0;
-        window.scrollTo(0, 0);
-      }
-    })();
-    
-    // Simplified scroll position saving for session tracking
-    (function() {
-      const STORAGE_KEY = 'buildrs_scroll_pos';
-      const URL_KEY = 'buildrs_scroll_url';
-      
-      function saveScrollPosition() {
-        const scrollY = document.documentElement.scrollTop || document.body.scrollTop || window.scrollY || 0;
-        const currentUrl = location.href;
-        if (scrollY > 0) {
-          sessionStorage.setItem(STORAGE_KEY, String(scrollY));
-          sessionStorage.setItem(URL_KEY, currentUrl);
-        }
-      }
-      
-      // Save on scroll with throttle for session persistence
-      let saveTimeout;
-      function throttledSave() {
-        clearTimeout(saveTimeout);
-        saveTimeout = setTimeout(saveScrollPosition, 100);
-      }
-      
-      // Setup event listeners only for saving scroll position
-      window.addEventListener('scroll', throttledSave, { passive: true });
-      window.addEventListener('beforeunload', saveScrollPosition, { passive: true });
-      window.addEventListener('pagehide', saveScrollPosition, { passive: true });
-    })();
-  </script>
   
-  <!-- CRITICAL: Prevent white flash and scroll flash -->
+  <!-- ULTRA-SMOOTH: Layout stability and refresh optimization -->
   <style>
     html, body {
       background-color: #000000 !important;
       margin: 0 !important;
       padding: 0 !important;
       min-height: 100vh !important;
+      
+      /* Modern layout stability */
+      overflow-anchor: none !important;
+      scroll-behavior: smooth; /* Smooth scrolling for better UX */
     }
     
-    /* Basic styling */
+    /* Visual stability during refresh and navigation */
+    html {
+      contain: layout style;
+      transform: translateZ(0); /* Hardware acceleration */
+    }
+    
+    /* Prevent layout shifts */
     * {
       box-sizing: border-box;
     }
     
-    /* Image defaults */
+    /* Image stability - prevent CLS */
     img {
       max-width: 100%;
       height: auto;
       display: block;
+      contain: layout;
+    }
+    
+    /* Section stability with hardware acceleration */
+    section {
+      contain: layout style;
+      will-change: auto;
+      transform: translateZ(0);
     }
     
     /* Professional loading - content always visible */
     body {
       opacity: 1;
       background-color: #000000;
+      contain: layout style;
+      transform: translateZ(0);
     }
     
-    /* No hiding needed - instant scroll is fast enough to prevent flash */
-    html.scroll-restored {
-      /* Optional marker class for debugging */
+    /* Font loading stability */
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        font-display: swap;
+      }
+    }
+    
+    /* Reduced motion compliance */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto !important;
+      }
+      
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Smooth page transitions preparation */
+    body {
+      transition: none;
+    }
+    
+    /* Enhanced hardware acceleration and paint optimization */
+    html, body, main {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    
+    /* Optimize rendering layers */
+    header, nav, section, footer {
+      will-change: auto;
+      transform: translateZ(0);
+    }
+    
+    /* Prevent paint flashing during transitions */
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Optimize scroll performance */
+    body {
+      scroll-behavior: smooth;
+      overscroll-behavior: none;
+    }
+    
+    /* Navigation optimization without view transitions */
+    .page-loading {
+      background-color: #000000 !important;
+      opacity: 1;
+    }
+    
+    /* Instant black for React hydration */
+    [data-astro-cid-j7pv25f6], [astro-island] {
+      background-color: #000000 !important;
+    }
+    
+    /* Anti-flash utility classes */
+    .no-flash {
+      background-color: #000000 !important;
+      transition: none !important;
+    }
+    
+    .instant-black {
+      background: #000000 !important;
+      background-color: #000000 !important;
     }
   </style>
   
@@ -265,6 +375,12 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <!-- Aggressive prefetch likely next routes for instant navigation -->
   <link rel="prefetch" href="/contact/" />
   <link rel="prefetch" href="/contact" />
+  <link rel="prefetch" href="/marketingbureaus" />
+  
+  <!-- Prefetch critical React components for marketingbureaus page -->
+  <link rel="modulepreload" href="/src/components/active/usecase/MarketingBureauHero.tsx" />
+  <link rel="modulepreload" href="/src/components/active/usecase/MarketingBureauServicesSection.tsx" />
+  <link rel="modulepreload" href="/src/components/active/usecase/MarketingBureauFinalCTA.tsx" />
   
   <!-- Prefetch critical assets that might be needed -->
   <link rel="prefetch" href="/platform-dashboard-fullwidth.webp" />
@@ -305,8 +421,8 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <!-- Plausible Analytics - Privacy-First Analytics -->
   <Analytics />
 
-  <!-- View Transitions DISABLED - preventing scroll restoration conflicts -->
-  <!-- <ViewTransitions /> -->
+  <!-- Modern View Transitions with theme persistence -->
+  <ViewTransitions />
 
   <!-- Performance optimizations -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -414,7 +530,62 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
     }
   </style>
 </head>
-<body class="min-h-screen bg-black text-white" style="margin: 0 !important; padding: 0 !important; height: 100% !important; position: relative !important; top: 0 !important;">
+<body class="min-h-screen bg-black text-white" style="margin: 0 !important; padding: 0 !important; height: 100% !important; position: relative !important; top: 0 !important; background-color: #000000 !important;">
+  <!-- MODERN ASTRO VIEW TRANSITIONS - PERFECT THEME PERSISTENCE -->
+  <script>
+    // Modern Astro View Transitions Best Practice
+    function ensureBlackTheme() {
+      // Force black background immediately - before any paint
+      const style = {
+        backgroundColor: '#000000 !important',
+        background: '#000000 !important',
+        color: '#ffffff !important'
+      };
+      
+      // Apply to document elements
+      if (document.documentElement) {
+        Object.assign(document.documentElement.style, style);
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+      if (document.body) {
+        Object.assign(document.body.style, style);
+        document.body.setAttribute('data-theme', 'dark');
+      }
+      
+      // Ensure main content is black
+      const main = document.querySelector('main');
+      if (main) {
+        main.style.backgroundColor = '#000000 !important';
+      }
+    }
+    
+    // Execute immediately for first page load
+    ensureBlackTheme();
+    
+    // CRITICAL: Astro View Transitions lifecycle events
+    document.addEventListener('astro:after-swap', () => {
+      // This runs after new page content is swapped in but before paint
+      ensureBlackTheme();
+      
+      // Re-initialize any scripts that need to run on new page
+      console.log('Page transition complete - theme preserved');
+    });
+    
+    document.addEventListener('astro:before-swap', () => {
+      // Ensure black background is maintained during transition
+      ensureBlackTheme();
+    });
+    
+    document.addEventListener('astro:page-load', () => {
+      // Ensure theme consistency on any page load
+      ensureBlackTheme();
+    });
+    
+    // Fallback for older browsers or direct navigation
+    window.addEventListener('pageshow', ensureBlackTheme);
+    window.addEventListener('DOMContentLoaded', ensureBlackTheme);
+  </script>
+  
   <!-- ScailUp Navigation Header -->
   <ScailUpHeader client:load showAlways={true} />
   
@@ -423,6 +594,5 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
   <!-- UTM Tracking Script - No cookies, localStorage only -->
   <TrackingScript />
 
-  <!-- Scroll restoration is now handled in HEAD for immediate execution -->
 </body>
 </html>

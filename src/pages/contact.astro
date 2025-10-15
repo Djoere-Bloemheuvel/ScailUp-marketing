@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EndingCTAHomepage from '../components/EndingCTAHomepage.astro';
+import ScailUpFooter from '../components/active/shared/ScailUpFooter';
+
+// Structured data for contact page
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Buildrs",
+  "description": "Plan je strategiesessie met Buildrs. Ontdek hoe wij de systemen bouwen achter jouw bedrijf's groei.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Buildrs",
+    "url": "https://buildrs.ai"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+31-6-12345678",
+    "contactType": "customer service",
+    "availableLanguage": "Dutch"
+  }
+};
+---
+
+<Layout 
+  title="Contact | Buildrs - Plan je Strategiesessie"
+  description="Plan je strategiesessie met Buildrs. Ontdek hoe wij de systemen bouwen achter jouw bedrijf's groei. Custom AI agents en automatisering workflows."
+  keywords="contact buildrs, strategiesessie, AI automation consultatie, marketing automation contact, Netherlands"
+  structuredData={structuredData}
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+
+  <main class="min-h-screen bg-black text-white" style="background-color: #000000 !important;">
+    <!-- Instant loading state -->
+    <div class="fixed inset-0 bg-black z-0" style="background-color: #000000 !important;"></div>
+    
+    <!-- Contact Form Section -->
+    <EndingCTAHomepage 
+      formTitle="Plan je strategiesessie"
+      formDescription="Ontdek hoe wij de systemen bouwen achter jouw bedrijf's groei."
+      submitText="Plan gratis strategiesessie"
+    />
+    
+    <!-- Footer -->
+    <ScailUpFooter client:idle />
+  </main>
+</Layout>

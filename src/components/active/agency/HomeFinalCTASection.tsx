@@ -114,7 +114,7 @@ const HomeFinalCTASection: React.FC<HomeFinalCTASectionProps> = ({ fullHeight = 
               // Navigate to contact page
               window.location.href = '/contact';
             }}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:shadow-xl hover:shadow-purple-500/25 hover:scale-105 active:scale-95 transition-all duration-300 text-lg mb-6"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 text-lg mb-6"
           >
             Plan gratis strategiesessie
             <ArrowRight className="ml-3 w-5 h-5" />
