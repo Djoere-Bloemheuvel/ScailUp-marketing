@@ -29,7 +29,7 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
 <html lang="nl" style="margin: 0 !important; padding: 0 !important; height: 100% !important; background-color: #000000 !important; overflow-x: hidden !important;">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
   
   <!-- CRITICAL: NUCLEAR BLACK BACKGROUND - ZERO TOLERANCE FOR WHITE -->
   <style>
@@ -76,6 +76,10 @@ const optimizedPlatform = await getImage({ src: platformDashboard, format: 'webp
       /* Browser default overrides */
       -webkit-background-color: #000000 !important;
       -moz-background-color: #000000 !important;
+      /* Mobile scroll performance optimizations */
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: none;
+      scroll-behavior: smooth;
     }
     
     body::before {

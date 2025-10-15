@@ -158,23 +158,25 @@ const HomeHero = () => {
   return (
     <>
       <style jsx>{`
-        /* Mobile-first CTA responsive scaling - nog kleiner en lager */
+        /* Mobile-first CTA responsive scaling - improved touch targets */
         .cta-responsive {
-          font-size: 0.6rem; /* nog kleiner op mobile */
-          padding: 0.4rem 0.65rem; /* nog kleinere padding voor lagere hoogte */
-          min-height: 30px; /* lager voor compactere look */
-          min-width: 30px;
+          font-size: 0.8rem; /* Larger for better readability */
+          padding: 0.75rem 1rem; /* Better touch target padding */
+          min-height: 44px; /* iOS minimum touch target */
+          min-width: 120px; /* Adequate button width */
           display: flex;
           align-items: center;
           justify-content: center;
+          touch-action: manipulation; /* Prevent zoom on double tap */
         }
         
-        /* Mobile-specific touch optimizations - extra klein en laag */
-        @media (max-width: 479px) {
+        /* Extra small mobile optimization - maintain touch targets */
+        @media (max-width: 374px) {
           .cta-responsive {
-            font-size: 0.55rem; /* nog kleiner */
-            padding: 0.35rem 0.6rem; /* nog compactere padding */
-            min-height: 28px; /* nog lager voor zeer compacte look */
+            font-size: 0.75rem; /* Slightly smaller but readable */
+            padding: 0.6rem 0.8rem; /* Adequate padding */
+            min-height: 44px; /* Maintain touch target size */
+            min-width: 100px; /* Minimum usable width */
           }
         }
         
@@ -220,10 +222,10 @@ const HomeHero = () => {
           }
         }
         
-        /* Icon responsive scaling */
+        /* Icon responsive scaling - better mobile visibility */
         .icon-responsive {
-          width: 0.75rem; /* w-3 */
-          height: 0.75rem; /* h-3 */
+          width: 1rem; /* w-4 - better mobile visibility */
+          height: 1rem; /* h-4 */
         }
         
         @media (min-width: 640px) {
@@ -328,10 +330,32 @@ const HomeHero = () => {
             overscroll-behavior: none;
           }
           
-          /* Mobile tap highlight removal */
+          /* Mobile touch optimizations */
           * {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+          }
+          
+          /* Allow text selection only in inputs and text areas */
+          input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+          }
+          
+          /* Optimize CTA buttons for mobile performance */
+          .cta-responsive {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
+            backface-visibility: hidden;
+          }
+          
+          /* Mobile viewport optimization */
+          .hero-bg {
+            image-rendering: optimizeSpeed;
+            image-rendering: -webkit-optimize-contrast;
           }
         }
         

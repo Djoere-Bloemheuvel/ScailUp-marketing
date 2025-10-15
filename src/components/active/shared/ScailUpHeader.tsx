@@ -426,8 +426,8 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               </button>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8 ml-12">
+            {/* Desktop Navigation - visible from tablet landscape up */}
+            <nav className="hidden md:flex items-center space-x-8 ml-12">
               {navItems.map((item) => (
                 <div 
                   key={item.path} 
@@ -570,11 +570,17 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 </span>
               </motion.button>
 
-              {/* Adaptive Mobile Menu Button */}
+              {/* Mobile Menu Button - Only visible on mobile and tablet */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 transition-colors"
+                className="md:hidden transition-colors touch-manipulation"
                 style={{
+                  padding: '12px', // 44px total touch target
+                  minWidth: '44px',
+                  minHeight: '44px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   color: headerStyles.textColor === 'white' 
                     ? 'rgba(248, 250, 252, 1)' // slate-50 (veel witter) for dark theme
                     : 'rgba(75, 85, 99, 1)', // gray-600 for light theme
@@ -585,6 +591,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                     ? 'rgba(248, 250, 252, 1)' 
                     : 'rgba(75, 85, 99, 1)';
                 }}
+                aria-label={isMobileMenuOpen ? 'Sluit menu' : 'Open menu'}
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -605,7 +612,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-40 md:hidden"
           >
             {/* Backdrop */}
             <div 
@@ -621,7 +628,7 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
               transition={{ duration: 0.3, ease: 'easeOut' }}
               className="absolute top-0 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-gray-800/50"
             >
-              <div className="px-4 pt-20 pb-6">
+              <div className="px-6 pt-24 pb-8">
                 {/* Mobile Navigation */}
                 <nav className="space-y-1 mb-8">
                   {navItems.map((item) => (
@@ -634,7 +641,13 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                             setActiveDropdown(activeDropdown === item.path ? null : item.path);
                           }
                         }}
-                        className="flex items-center justify-between w-full text-left px-4 py-3 text-base text-gray-400 hover:text-white transition-colors"
+                        className="flex items-center justify-between w-full text-left text-base text-gray-400 hover:text-white transition-colors touch-manipulation"
+                        style={{
+                          padding: '16px',
+                          minHeight: '56px', // Larger touch target for mobile
+                          fontSize: '18px', // Better readability on mobile
+                          fontWeight: '500'
+                        }}
                       >
                         <span>{item.label}</span>
                         {item.hasDropdown && <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.path ? 'rotate-180' : ''}`} />}
@@ -685,7 +698,13 @@ const ScailUpHeader = ({ showAlways = false }: ScailUpHeaderProps) => {
                 <div className="space-y-3">
                   <button
                     onClick={handleContactClick}
-                    className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-400 text-white text-base font-medium rounded-lg hover:from-blue-600 hover:to-blue-500 transition-all duration-300"
+                    className="w-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-400 text-white font-medium rounded-lg hover:from-blue-600 hover:to-blue-500 transition-all duration-300 touch-manipulation"
+                    style={{
+                      padding: '16px 24px',
+                      minHeight: '56px', // Large touch target
+                      fontSize: '18px', // Better mobile readability
+                      fontWeight: '600'
+                    }}
                   >
                     Neem contact op
                   </button>

@@ -214,7 +214,7 @@ Van e-mailcampagnes naar complete Linkedin funnels <span style="font-weight: 400
                     required
                     autocomplete="off"
                     placeholder="Volledige naam"
-                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    class="premium-input w-full px-4 py-4 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
                     style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
                   />
                 </div>
@@ -226,7 +226,7 @@ Van e-mailcampagnes naar complete Linkedin funnels <span style="font-weight: 400
                     required
                     autocomplete="off"
                     placeholder="Bureau naam"
-                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    class="premium-input w-full px-4 py-4 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
                     style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
                   />
                 </div>
@@ -244,7 +244,7 @@ Van e-mailcampagnes naar complete Linkedin funnels <span style="font-weight: 400
                     placeholder="Zakelijk e-mailadres"
                     pattern="^[a-zA-Z0-9._%+-]+@(?!gmail\.com|hotmail\.com|outlook\.com|yahoo\.com)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     title="Voer een zakelijk e-mailadres in"
-                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    class="premium-input w-full px-4 py-4 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
                     style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
                   />
                 </div>
@@ -256,7 +256,7 @@ Van e-mailcampagnes naar complete Linkedin funnels <span style="font-weight: 400
                     required
                     autocomplete="off"
                     placeholder="Telefoonnummer"
-                    class="premium-input w-full px-4 py-3 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
+                    class="premium-input w-full px-4 py-4 bg-black border border-gray-800 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-all duration-300"
                     style="font-family:SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;font-size:1rem;font-weight:400"
                   />
                 </div>
@@ -394,6 +394,8 @@ Van e-mailcampagnes naar complete Linkedin funnels <span style="font-weight: 400
     will-change: transform;
     backface-visibility: hidden;
     transform: translateZ(0);
+    touch-action: manipulation;
+    min-height: 48px; /* Better touch target for mobile */
   }
   
   .premium-input:focus {

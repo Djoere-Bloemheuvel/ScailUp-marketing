@@ -450,8 +450,10 @@ Lees meer
       {/* Left Navigation Arrow */}
       {canScrollLeft && (
         <button
-          className="fixed left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors z-50"
+          className="fixed left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors z-50 touch-manipulation"
           onClick={() => scrollTo('left')}
+          style={{ minWidth: '48px', minHeight: '48px' }}
+          aria-label="Vorige case study"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-gray-700">
             <path d="M12.5 5L7.5 10L12.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -462,9 +464,10 @@ Lees meer
       {/* Right Navigation Arrow */}
       {canScrollRight && (
         <button
-          className="fixed right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors z-50"
+          className="fixed right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors z-50 touch-manipulation"
           onClick={() => scrollTo('right')}
-          style={{ pointerEvents: 'all' }}
+          style={{ pointerEvents: 'all', minWidth: '48px', minHeight: '48px' }}
+          aria-label="Volgende case study"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-gray-700">
             <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -482,6 +485,27 @@ Lees meer
           display: none;
         }
         
+        
+        /* Mobile optimizations */
+        @media (max-width: 639px) {
+          section {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+          }
+          
+          .case-study-card {
+            width: clamp(280px, 85vw, 350px) !important;
+            height: clamp(400px, 60vh, 500px) !important;
+            touch-action: manipulation;
+          }
+          
+          .hero-title-responsive {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+          }
+        }
         
         /* Fix laptop cutoffs and improve scaling */
         @media (min-width: 1024px) and (max-width: 1366px) {

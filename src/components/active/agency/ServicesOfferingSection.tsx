@@ -384,9 +384,9 @@ const ServicesOfferingSection = () => {
           />
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 z-10">
           {/* Header Section */}
-          <div className="mb-12 sm:mb-16">
+          <div className="mb-8 sm:mb-12 md:mb-16">
             {/* Award Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
               <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-2" />
@@ -400,10 +400,12 @@ const ServicesOfferingSection = () => {
               className="text-white font-light mb-6"
               style={{
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                fontSize: 'clamp(1.75rem, 8vw, 2.5rem)',
-                lineHeight: '1.15',
+                fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', // Better mobile sizing
+                lineHeight: '1.2', // Improved mobile line height
                 letterSpacing: '-0.02em',
-                fontWeight: '300'
+                fontWeight: '300',
+                textRendering: 'optimizeLegibility',
+                WebkitFontSmoothing: 'antialiased'
               }}
             >
               Wat wij aanbieden
@@ -414,9 +416,11 @@ const ServicesOfferingSection = () => {
               className="text-white/90 leading-relaxed max-w-2xl"
               style={{
                 fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)',
+                fontSize: 'clamp(1rem, 4vw, 1.1rem)', // Better mobile readability
                 fontWeight: '400',
-                lineHeight: '1.6'
+                lineHeight: '1.7', // Improved line height for mobile
+                textRendering: 'optimizeLegibility',
+                WebkitFontSmoothing: 'antialiased'
               }}
             >
               Deze 4 diensten vormen de kern van onze aanpak. Van outbound campagnes tot Linkedin branding. Elk onderdeel specifiek ingericht op jouw B2B groei.
@@ -427,7 +431,7 @@ const ServicesOfferingSection = () => {
           </div>
 
           {/* Features List */}
-          <div className="space-y-16 sm:space-y-20">
+          <div className="space-y-12 sm:space-y-16 md:space-y-20">
             {features.map((feature, index) => (
               <div
                 key={feature.id}
@@ -435,15 +439,17 @@ const ServicesOfferingSection = () => {
               >
                 {/* Mobile: Stacked Layout */}
                 <div className="block">
-                  <div className="mb-3">
+                  <div className="mb-4">
                     <h3
                       className="text-white font-medium"
                       style={{
                         fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                        fontSize: 'clamp(1.125rem, 5vw, 1.375rem)',
-                        lineHeight: '1.2',
+                        fontSize: 'clamp(1.25rem, 5vw, 1.375rem)', // Better mobile sizing
+                        lineHeight: '1.3', // Better mobile line height
                         letterSpacing: '-0.01em',
-                        fontWeight: '500'
+                        fontWeight: '500',
+                        textRendering: 'optimizeLegibility',
+                        WebkitFontSmoothing: 'antialiased'
                       }}
                     >
                       {feature.title}
@@ -453,9 +459,11 @@ const ServicesOfferingSection = () => {
                     className="text-white/95"
                     style={{
                       fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                      fontSize: 'clamp(0.875rem, 4vw, 1rem)',
+                      fontSize: 'clamp(1rem, 4vw, 1rem)', // Better mobile readability
                       fontWeight: '400',
-                      lineHeight: '1.6'
+                      lineHeight: '1.7', // Better mobile line spacing
+                      textRendering: 'optimizeLegibility',
+                      WebkitFontSmoothing: 'antialiased'
                     }}
                   >
                     {feature.description}
